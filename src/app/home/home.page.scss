@@ -29,3 +29,26 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.column {
+  float: left;
+  border-radius: 5px;
+  width: 50%;
+  padding: 5px;
+}
+
+.backimg{
+  background-image: url(http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg);
+  height:20%;
+   width: 20%;
+}
+.background-image{
+  --background: url(../../assets/user.png) 0 0/100% 100% no-repeat;
+}
+
+.background{
+  --background: url(../../assets/user.png) 0 0/100% 100% no-repeat;
+}
+.half-black {
+  background: rgba(0, 0, 0, 0.5);
+}
