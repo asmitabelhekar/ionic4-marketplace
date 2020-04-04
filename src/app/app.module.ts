@@ -8,17 +8,24 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopupPage } from './pages/popup/popup.page';
+import { FilterpopupComponent } from './filterpopup/filterpopup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,
+     PopupPage],
+  entryComponents: [PopupPage],
   imports: [BrowserModule, IonicModule.forRoot(), 
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule, BrowserAnimationsModule],
   providers: [
     StatusBar,

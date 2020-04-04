@@ -1,0 +1,16 @@
+
+
+  <mat-form-field style="width:100%">
+    <input matInput placeholder="Filter"  [(ngModel)]="popupModel.filterName"
+      name="filter" class="form-control" />
+    
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-left:5%; margin-right:5%; margin-top:10px; width:90%">
+    <button  mat-raised-button (click)="resetFilter()" style="margin-right:5px; margin-left: 5px">RESET</button>
+    <button  mat-raised-button (click)="applyFilter(popupModel)" style="margin-right:5px; margin-left: 5px">APPLY</button>
+    <button  mat-raised-button (click)="closeDialog()" style="margin-left: 5px">CANCEL</button>
+
+  </div>
+
+

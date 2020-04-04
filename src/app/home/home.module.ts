@@ -5,13 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomePage } from './home.page';
+import { MaterialModule } from '../material.module'
+import { MatDialogModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     FlexLayoutModule,
+    MatDialogModule,
     IonicModule,
+    MaterialModule,
     RouterModule.forChild([
       {
         path: '',

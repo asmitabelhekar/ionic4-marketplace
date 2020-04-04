@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'links',
     loadChildren: () => import('./pages/links/links.module').then( m => m.LinksPageModule)
   },
+  {
+    path: 'popup',
+    loadChildren: () => import('./pages/popup/popup.module').then( m => m.PopupPageModule)
+  },
 ];
 
 @NgModule({
