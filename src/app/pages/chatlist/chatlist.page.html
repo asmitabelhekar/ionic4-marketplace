@@ -9,22 +9,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="masters">
+<ion-content>
   <div style="width:100%;height:100%;">
     <div *ngFor="let item of chatListArray" style="margin-top:10px">
-      <!-- <ion-item-divider style="padding-bottom: 10px;" (click)="detailChat(item.name)"> -->
 
-        <ion-row (click)="detailChat(item.name)">
-          <ion-col size="2">
-            <button style="border-radius: 50%; padding:20px; background-color:gray;color:white;margin-right:20px">{{item.name.charAt(0)}}</button>
-          </ion-col>
-          <ion-col size="10" style="margin-top:15px">
-            <label style="color:white;">{{item.name}}</label>
-            <div style="border: 1px solid gray; margin-top:10px"></div>
-          </ion-col>
-        </ion-row>
-      
-      <!-- </ion-item-divider> -->
+      <ion-row (click)="detailChat(item.name)" style="margin-left:10px; width:100%">
+        <ion-col size="2">
+          <img src="../../../assets/defaultprofilepicimg.png"
+            style="border-radius: 50%;width:55px; height:55px; border:1px solid rgb(240, 234, 234)" />
+        </ion-col>
+        <ion-col size="10" style="margin-top:5px;">
+          <ion-item style="margin-left:-10px">
+            <div fxLayout="column" >
+              <label style="color:black; font-size:12px;">{{item.name}}</label><br />
+              <label style="color:black;font-size:17px;">{{item.name}}</label>
+            </div>
+            
+
+          </ion-item>
+
+
+        </ion-col>
+      </ion-row>
+
     </div>
 
   </div>

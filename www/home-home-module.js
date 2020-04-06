@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white\">\n      New App\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div style=\"width:100%; height:100%; background-color:white\">\n\n    <div>\n      <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\"\n        class=\"half-black\">\n        <ion-slide *ngFor=\"let item of dataArray\">\n          <div style=\"width:100%; height:250px;position: relative;\">\n            <img src=\"../../assets/dancetwo.png\" style=\"width:100%;height:100%\" />\n\n          \n\n              <div fxLayout=\"column\" fxLayoutAlign=\"start start\"\n                style=\"width:100%;color:white;position:absolute; bottom:0\">\n                <div fxLayout=\"row\" fxLayoutAlign=\"start start\"\n                  style=\"width:100%; padding-left:10px; padding-right:10px\">\n                  <label>{{item.name}}</label>\n                </div>\n                <div style=\"width:100%; margin-top:-10px; padding-left:5px; padding-right:5px\">\n                  <ion-row>\n                    <ion-col size=\"8\" fxLayoutAlign=\"start start\">\n                      <label style=\"font-size:13px\">{{item.subTitle}}</label>\n                    </ion-col>\n                    <ion-col size=\"4\">\n                      <label style=\"font-size:13px\">{{item.location}}</label>\n                    </ion-col>\n                  </ion-row>\n\n                </div>\n\n              </div>\n      \n    </div>\n  </ion-slide>\n</ion-slides>\n  </div>\n  <!-- </div> -->\n\n\n  <div style=\"width:100%; background-color:white;margin-top:15px; height:80%\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-bottom:10px\">\n      <div fxLayout=\"column\" fxLayoutAlign=\"center center\" *ngFor=\"let item of tabsArray\"(click)=\"checkType(item.title)\" >\n        <img src=\"{{item.img}}\" style=\"width:30px;height:30px\" />\n        <label style=\"margin-top:5px;font-size:12px\">{{item.title}}</label>\n      </div>\n    </div>\n\n\n<div *ngIf=\"arrayLength > 0\" style=\"margin-bottom:20%\">\n\n  <div class=\"row\" *ngFor=\"let item of imageArray\">\n    <div class=\"column\" style=\"position:relative\">\n      <img src={{item.image}} style=\"border-radius: 5px;\" />\n      <div style=\"position:absolute; bottom:10px;width:100%\">\n\n        <ion-row style=\"color:white\">\n          <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n            <label style=\"font-size:12px\"><b>Ad Title</b></label>\n          </ion-col>\n          <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n            <label style=\"font-size:12px;padding-right:13px\"><b>$100</b></label>\n          </ion-col>\n        </ion-row>\n\n        <ion-row style=\"width:100%; margin-top:-5px\">\n          <ion-col size=\"3\">\n            <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n            <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n          </ion-col>\n          <ion-col size=\"9\" fxLayoutAlign=\"end start\">\n            <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>Mumbai, 120km</b></label>\n          </ion-col>\n        </ion-row>\n\n\n      </div>\n    </div>\n  </div>\n</div>\n  \n<div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n  <h3 align=\"center\">No records found.</h3>\n</div>\n\n\n  </div>\n\n  <div style=\"position: fixed; bottom:0px;height:50px; width: 100%; background-color: white;\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n      <ion-icon name=\"document\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n      <ion-icon name=\"add-circle\" style=\"width:30px;height:30px;color:rgb(247, 97, 97)\"></ion-icon>\n      <ion-icon name=\"heart\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n      <ion-icon name=\"person\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n    </div>\n  </div>\n\n  </div>\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white\">\n      New App\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div style=\"width:100%; height:100%; background-color:white\">\n\n    <div>\n      <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\"\n        class=\"half-black\">\n        <ion-slide *ngFor=\"let item of dataArray\">\n          <div style=\"width:100%; height:250px;position: relative;\">\n            <img src=\"../../assets/dancetwo.png\" style=\"width:100%;height:100%\" />\n\n          \n\n              <div fxLayout=\"column\" fxLayoutAlign=\"start start\"\n                style=\"width:100%;color:white;position:absolute; bottom:0\">\n                <div fxLayout=\"row\" fxLayoutAlign=\"start start\"\n                  style=\"width:100%; padding-left:10px; padding-right:10px\">\n                  <label>{{item.name}}</label>\n                </div>\n                <div style=\"width:100%; margin-top:-10px; padding-left:5px; padding-right:5px\">\n                  <ion-row>\n                    <ion-col size=\"8\" fxLayoutAlign=\"start start\">\n                      <label style=\"font-size:13px\">{{item.subTitle}}</label>\n                    </ion-col>\n                    <ion-col size=\"4\">\n                      <label style=\"font-size:13px\">{{item.location}}</label>\n                    </ion-col>\n                  </ion-row>\n\n                </div>\n\n              </div>\n      \n    </div>\n  </ion-slide>\n</ion-slides>\n  </div>\n  <!-- </div> -->\n\n\n  <div style=\"width:100%; background-color:white;margin-top:15px; height:80%\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-bottom:10px\">\n      <div fxLayout=\"column\" fxLayoutAlign=\"center center\" *ngFor=\"let item of tabsArray\"(click)=\"checkType(item.title)\" >\n        <img src=\"{{item.img}}\" style=\"width:30px;height:30px\" />\n        <label style=\"margin-top:5px;font-size:12px\">{{item.title}}</label>\n      </div>\n    </div>\n\n\n<div *ngIf=\"arrayLength > 0\" style=\"margin-bottom:20%\">\n\n  <div class=\"row\" *ngFor=\"let item of imageArray\">\n    <div class=\"column\" style=\"position:relative\">\n      <img src={{item.image}} style=\"border-radius: 5px;\" />\n      <div style=\"position:absolute; bottom:10px;width:100%\">\n\n        <ion-row style=\"color:white\">\n          <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n            <label style=\"font-size:12px\"><b>Ad Title</b></label>\n          </ion-col>\n          <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n            <label style=\"font-size:12px;padding-right:13px\"><b>$100</b></label>\n          </ion-col>\n        </ion-row>\n\n        <ion-row style=\"width:100%; margin-top:-5px\">\n          <ion-col size=\"3\">\n            <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n            <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n          </ion-col>\n          <ion-col size=\"9\" fxLayoutAlign=\"end start\">\n            <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>Mumbai, 120km</b></label>\n          </ion-col>\n        </ion-row>\n\n\n      </div>\n    </div>\n  </div>\n</div>\n  \n<div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n  <h3 align=\"center\">No records found.</h3>\n</div>\n\n\n  </div>\n\n  <div style=\"position: fixed; bottom:0px;height:50px; width: 100%; background-color: white;\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" style=\"width:30px;height:30px;color:gray\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"document\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n      <ion-icon name=\"add-circle\" style=\"width:30px;height:30px;color:rgb(247, 97, 97)\"></ion-icon>\n      <ion-icon name=\"heart\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n      <ion-icon name=\"person\" style=\"width:30px;height:30px;color:gray\"></ion-icon>\n    </div>\n  </div>\n\n  </div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -99,13 +99,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/popup/popup.page */ "./src/app/pages/popup/popup.page.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(dialog) {
+    function HomePage(dialog, router) {
         this.dialog = dialog;
+        this.router = router;
         this.dataArray = [
             {
                 "name": "Retox Dance Academy",
@@ -176,23 +179,6 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.checkType = function (title) {
         if (title == "") {
             this.showPopup();
-            // this.imageArray = [
-            //   {
-            //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-            //   },
-            //   {
-            //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-            //   },
-            //   {
-            //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-            //   },
-            //   {
-            //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-            //   },
-            //   {
-            //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-            //   }
-            // ];
         }
         else if (title == "Dance") {
             this.imageArray = [
@@ -416,8 +402,12 @@ var HomePage = /** @class */ (function () {
             });
         }); });
     };
+    HomePage.prototype.openChatList = function () {
+        this.router.navigate(['/chatlist']);
+    };
     HomePage.ctorParameters = function () { return [
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] }
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
     ]; };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -425,7 +415,8 @@ var HomePage = /** @class */ (function () {
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/home/home.page.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], HomePage);
     return HomePage;
 }());

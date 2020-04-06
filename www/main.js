@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <img src=\"../assets/dancetwo.png\" class=\"cl-sidemenu-logo\" />\n      <!-- <ion-header>\n        <ion-toolbar style=\"height:400px\">\n          <img src=\"../assets/dancetwo.png\" class=\"cl-sidemenu-logo\" />\n\n\n        </ion-toolbar>\n      </ion-header> -->\n      <ion-content style=\"margin-top: 5%;\">\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\" (click)=\"sideMenuClicked(p.title)\">\n              <!-- <ion-icon slot=\"start\" [name]=\"p.icon\" style=\"color:white\"></ion-icon> -->\n              <ion-label style=\"color:white; font-size: 15px;\">\n                {{p.title}}\n              </ion-label>\n              <ion-icon name=\"arrow-dropright\" style=\"color:white\"></ion-icon>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <img src=\"../assets/dancetwo.png\" class=\"cl-sidemenu-logo\" />\n      <!-- <ion-header>\n        <ion-toolbar style=\"height:400px\">\n          <img src=\"../assets/dancetwo.png\" class=\"cl-sidemenu-logo\" />\n\n\n        </ion-toolbar>\n      </ion-header> -->\n      <ion-content style=\"margin-top: 5%;\">\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\" (click)=\"sideMenuClicked(p.title)\">\n              <!-- <ion-icon slot=\"start\" [name]=\"p.icon\" style=\"color:white\"></ion-icon> -->\n              <ion-label style=\"color:white; font-size: 15px;\">\n                {{p.title}}\n              </ion-label>\n              <ion-icon name=\"arrow-dropright-circle\" style=\"color:white\"></ion-icon>\n              \n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
 
 /***/ }),
 
@@ -726,18 +726,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-popup-popup-module"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
-    {
-        path: 'technologies',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-technologies-technologies-module */ "pages-technologies-technologies-module").then(__webpack_require__.bind(null, /*! ./pages/technologies/technologies.module */ "./src/app/pages/technologies/technologies.module.ts")).then(function (m) { return m.TechnologiesPageModule; }); }
-    },
-    {
-        path: 'links',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-links-links-module */ "pages-links-links-module").then(__webpack_require__.bind(null, /*! ./pages/links/links.module */ "./src/app/pages/links/links.module.ts")).then(function (m) { return m.LinksPageModule; }); }
-    },
+    { path: 'home', loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
     {
         path: 'popup',
-        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-popup-popup-module"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+    },
+    {
+        path: 'chatlist',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-chatlist-chatlist-module */ "pages-chatlist-chatlist-module").then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
+    },
+    {
+        path: 'detailchat',
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -798,12 +798,12 @@ var AppComponent = /** @class */ (function () {
         this.statusBar = statusBar;
         this.appPages = [
             {
-                title: 'first',
-                url: '/',
+                title: 'Home',
+                url: '/home',
             },
             {
-                title: 'second',
-                url: '/',
+                title: 'Chat List',
+                url: '/chatlist',
             },
             {
                 title: 'third',
@@ -885,7 +885,8 @@ var AppModule = /** @class */ (function () {
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
                 _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"]],
             entryComponents: [_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"]],
-            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
+            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatIconModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"],

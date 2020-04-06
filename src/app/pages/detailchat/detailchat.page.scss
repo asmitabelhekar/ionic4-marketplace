@@ -13,17 +13,20 @@
     clear: both;
 }
 
+// .masters {
+//     --background: linear-gradient(to bottom, #152a3f 0%, #66ccff 100%);
+//   }
+
+
 .masters {
-    --background: linear-gradient(to bottom, #152a3f 0%, #66ccff 100%);
+    --background: #f1f4f9;
   }
 
   .TitleHeader{
     width: 100%;
-    // padding: 0 10px 0 10px;
     height: 50px;
     display: inline-flex;
     align-items: center;
-    // background-color: blue;
 }
 .TitleText{
     display: inline-flex;
@@ -31,7 +34,6 @@
     font-size: 19px;
     width: 81%;
     color: #ffffff;
-    // font-weight: 700;
     align-items: center;
 }
 
