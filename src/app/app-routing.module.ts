@@ -8,6 +8,14 @@ const routes: Routes = [
     path: 'popup',
     loadChildren: () => import('./pages/popup/popup.module').then( m => m.PopupPageModule)
   },
+  {
+    path: 'chatlist',
+    loadChildren: () => import('./pages/chatlist/chatlist.module').then( m => m.ChatlistPageModule)
+  },
+  {
+    path: 'detailchat',
+    loadChildren: () => import('./pages/detailchat/detailchat.module').then( m => m.DetailchatPageModule)
+  },
 ];
 
 @NgModule({

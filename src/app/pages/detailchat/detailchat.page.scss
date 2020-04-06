@@ -1,0 +1,49 @@
+.innermsg.left {
+    float: left;
+    background-color: #F1F0F0;
+    color: black;
+    clear: both;
+}
+
+.innermsg.right {
+    float: right;
+    //margin-right: 10%;
+    background-color: #0084FF;
+    color: white;
+    clear: both;
+}
+
+.masters {
+    --background: linear-gradient(to bottom, #152a3f 0%, #66ccff 100%);
+  }
+
+  .TitleHeader{
+    width: 100%;
+    // padding: 0 10px 0 10px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    // background-color: blue;
+}
+.TitleText{
+    display: inline-flex;
+    text-align:left;
+    font-size: 19px;
+    width: 81%;
+    color: #ffffff;
+    // font-weight: 700;
+    align-items: center;
+}
+
+
+.cl-back-button{
+    background: url('../../../assets/back_white.png') center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    margin-right: 15px;
+}

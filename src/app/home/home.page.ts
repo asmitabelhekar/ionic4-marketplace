@@ -3,6 +3,7 @@ import { IonSlides } from '@ionic/angular';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { PopupPage } from '../pages/popup/popup.page';
 import { FilterpopupComponent } from '../filterpopup/filterpopup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -77,7 +78,8 @@ export class HomePage {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
     }
   ];
-  constructor(public dialog : MatDialog) { }
+  constructor(public dialog : MatDialog,
+    public router : Router) { }
 
 
   ionViewWillEnter(){
@@ -92,23 +94,7 @@ export class HomePage {
     if (title == "") {
 
       this.showPopup();
-      // this.imageArray = [
-      //   {
-      //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-      //   },
-      //   {
-      //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-      //   },
-      //   {
-      //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-      //   },
-      //   {
-      //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-      //   },
-      //   {
-      //     "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-      //   }
-      // ];
+     
     } else if (title == "Dance") {
       this.imageArray = [
         {
@@ -330,5 +316,9 @@ export class HomePage {
     }
 
     });
+  }
+
+  openChatList(){
+    this.router.navigate(['/chatlist']);
   }
 }

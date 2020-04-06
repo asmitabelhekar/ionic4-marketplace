@@ -13,13 +13,13 @@ export class AppComponent {
 
   appPages = [
     {
-      title: 'first',
-      url: '/',
+      title: 'Home',
+      url: '/home',
 
     },
     {
-      title: 'second',
-      url: '/',
+      title: 'Chat List',
+      url: '/chatlist',
 
     },
     {
