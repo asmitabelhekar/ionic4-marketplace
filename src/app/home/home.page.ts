@@ -321,4 +321,8 @@ export class HomePage {
   openChatList(){
     this.router.navigate(['/chatlist']);
   }
+
+  postAdvertisement(){
+    this.router.navigate(['/postadvertisement']);
+  }
 }

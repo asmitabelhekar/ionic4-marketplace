@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'detailchat',
     loadChildren: () => import('./pages/detailchat/detailchat.module').then( m => m.DetailchatPageModule)
   },
+  {
+    path: 'postadvertisement',
+    loadChildren: () => import('./pages/postadvertisement/postadvertisement.module').then( m => m.PostadvertisementPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-row>
+      <ion-col size="2">
+        <label style="color:white; font-size:17px; margin-left:10px">LOGO</label>
+      </ion-col>
+      <ion-col size="7"></ion-col>
+      <ion-col size="3">
+        <label style="color:white;margin-right:10px;font-size:17px;">Pune</label>
+        <ion-icon name="person" style="width:20px;height:20px; color:white; margin-top:-2px"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="masters">
+  <form #userForm="ngForm" style="width:100%">
+ 
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
+    <mat-form-field style="width:96%" appearance="outline">
+      <mat-label>Title</mat-label>
+          <input matInput class="form-control" type="number" name="title" [(ngModel)]="advertisementModel.title"
+            align="center" required pattern="[a-zA-Z0-9,.  ]+$">
+            <!-- <mat-error>
+              <div class="form-group">
+                <div *ngIf="title.invalid && (title.dirty || title.touched)">
+                  User Name Is Requird
+                </div>
+              </div>
+            </mat-error> -->
+    </mat-form-field>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+    <mat-form-field style="width:96%" appearance="outline">
+      <mat-label>Description</mat-label>
+          <input matInput class="form-control" type="text" name="description" [(ngModel)]="advertisementModel.description"
+            align="center" required pattern="[a-zA-Z0-9,.  ]+$">
+        
+    </mat-form-field>
+  </div>
+</form>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%" appearance="outline">
+    <mat-label>Location</mat-label>
+        <input matInput class="form-control" type="text" name="location" [(ngModel)]="advertisementModel.location"
+          align="center" required pattern="[a-zA-Z0-9,.  ]+$">
+      
+  </mat-form-field>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%" appearance="outline">
+    <mat-label>Price</mat-label>
+        <input matInput class="form-control" type="number" name="price" [(ngModel)]="advertisementModel.price"
+          align="center" required pattern="[0-9.]+$">
+      
+  </mat-form-field>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%" appearance="outline">
+    <mat-label>Contact No.</mat-label>
+        <input matInput class="form-control" type="number" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact"
+          align="center" required pattern="[0-9]+$">
+      
+  </mat-form-field>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%" appearance="outline">
+    <mat-label>Languages you know</mat-label>
+        <input matInput class="form-control" type="text" name="languages" [(ngModel)]="advertisementModel.languages"
+          align="center" required pattern="[a-zA-Z0-9,.  ]+$">
+      
+  </mat-form-field>
+
+  <!-- <div fxLayout="row" fxLayoutAlign="center center"> -->
+    <button mat-raised-button class="loginButton"
+      (click)="addDealerData(dealerModel)"><b>Save</b></button>
+
+  <!-- </div> -->
+</div>
+
+</ion-content>
