@@ -7,13 +7,14 @@
       <ion-col size="7"></ion-col>
       <ion-col size="3">
         <label style="color:white;margin-right:10px;font-size:17px;">Pune</label>
-        <ion-icon name="person" style="width:20px;height:20px; color:white; margin-top:-2px"></ion-icon>
+        <mat-icon style="width:15px;height:18px; color:white;position:fixed;right:10">room</mat-icon>
+       
       </ion-col>
     </ion-row>
 
   </ion-toolbar>
 </ion-header>
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 <ion-content class="masters">
   <form #userForm="ngForm" style="width:100%">
  
@@ -21,15 +22,15 @@
   <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
     <mat-form-field style="width:96%" appearance="outline">
       <mat-label>Title</mat-label>
-          <input matInput class="form-control" type="number" name="title" [(ngModel)]="advertisementModel.title"
+          <input matInput class="form-control" type="text" name="title" [(ngModel)]="advertisementModel.title" #title="ngModel"
             align="center" required pattern="[a-zA-Z0-9,.  ]+$">
-            <!-- <mat-error>
+            <mat-error>
               <div class="form-group">
                 <div *ngIf="title.invalid && (title.dirty || title.touched)">
-                  User Name Is Requird
+                  Title Is Requird
                 </div>
               </div>
-            </mat-error> -->
+            </mat-error>
     </mat-form-field>
   </div>
 
@@ -37,9 +38,15 @@
   <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
     <mat-form-field style="width:96%" appearance="outline">
       <mat-label>Description</mat-label>
-          <input matInput class="form-control" type="text" name="description" [(ngModel)]="advertisementModel.description"
+          <input matInput class="form-control" type="text" name="description" [(ngModel)]="advertisementModel.description" #description="ngModel"
             align="center" required pattern="[a-zA-Z0-9,.  ]+$">
-        
+            <mat-error>
+              <div class="form-group">
+                <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                  Description Is Requird
+                </div>
+              </div>
+            </mat-error>
     </mat-form-field>
   </div>
 </form>
@@ -47,41 +54,65 @@
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Location</mat-label>
-        <input matInput class="form-control" type="text" name="location" [(ngModel)]="advertisementModel.location"
+        <input matInput class="form-control" type="text" name="location" [(ngModel)]="advertisementModel.location" #location="ngModel"
           align="center" required pattern="[a-zA-Z0-9,.  ]+$">
-      
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="location.invalid && (location.dirty || location.touched)">
+                Location Is Requird
+              </div>
+            </div>
+          </mat-error>
   </mat-form-field>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Price</mat-label>
-        <input matInput class="form-control" type="number" name="price" [(ngModel)]="advertisementModel.price"
+        <input matInput class="form-control" type="number" name="price" [(ngModel)]="advertisementModel.price" #price="ngModel"
           align="center" required pattern="[0-9.]+$">
-      
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="price.invalid && (price.dirty || price.touched)">
+                Price Is Requird
+              </div>
+            </div>
+          </mat-error>
   </mat-form-field>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Contact No.</mat-label>
-        <input matInput class="form-control" type="number" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact"
+        <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact" #contact="ngModel"
           align="center" required pattern="[0-9]+$">
-      
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
+                Contact No. Is Requird
+              </div>
+            </div>
+          </mat-error>
   </mat-form-field>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Languages you know</mat-label>
-        <input matInput class="form-control" type="text" name="languages" [(ngModel)]="advertisementModel.languages"
+        <input matInput class="form-control" type="text" name="languages" [(ngModel)]="advertisementModel.languages" #languages="ngModel"
           align="center" required pattern="[a-zA-Z0-9,.  ]+$">
-      
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="languages.invalid && (languages.dirty || languages.touched)">
+                Languages Is Requird
+              </div>
+            </div>
+          </mat-error>
   </mat-form-field>
 
   <!-- <div fxLayout="row" fxLayoutAlign="center center"> -->
     <button mat-raised-button class="loginButton"
-      (click)="addDealerData(dealerModel)"><b>Save</b></button>
+      (click)="addAdvertisementData(advertisementModel)"><b>Next</b></button>
 
   <!-- </div> -->
 </div>

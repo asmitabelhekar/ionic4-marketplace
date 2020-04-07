@@ -15,4 +15,8 @@ export class PostadvertisementPage implements OnInit {
   ngOnInit() {
   }
 
+  addAdvertisementData(data){
+
+    alert("shoe advertisement data::"+JSON.stringify(data));
+  }
 }
