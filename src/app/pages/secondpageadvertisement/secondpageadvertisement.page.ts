@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -12,14 +13,20 @@ export class SecondpageadvertisementPage implements OnInit {
   getData: any;
   fileToUpload: any;
   profilePic : any;
+  usersId : any;
   imageUrl  = 1;
   urls  = [];
+  submitAdvertisementData
   advertisementModel: any = {};
+
   constructor(
     public activatedRoute: ActivatedRoute,
+    public router : Router,
     public apiCall : ApiService)
      { }
   ngOnInit() {
+    this.getData = JSON.parse(this.activatedRoute.snapshot.params['advertisementData']);
+    console.log("show advertisement data:" + (this.getData.title));
   }
 
   detectEventGallery(event) {
@@ -72,5 +79,47 @@ export class SecondpageadvertisementPage implements OnInit {
 
   submmitAdvertisementData(data){
 
+    this.submitAdvertisementData = {
+      "title" : this.getData.title,
+      "description" : this.getData.description,
+      "price" : this.getData.price,
+      "lattitude" : this.getData.lattitude,
+      "longitude" : this.getData.longitude,
+      "address" : this.getData.address,
+      "gender" : this.getData.gender,
+      "languages" : this.getData.languages,
+      "email" : this.getData.email,
+      "mobile" : this.getData.mobile,
+      "categoryId" : this.getData.categoryId,
+      "startDateTime" : this.advertisementModel['fromdate'],
+      "endDateTime" : this.advertisementModel['todate'],
+      "isActive" : 0,
+      "images" : this.urls
+    }
+
+    let send_date = {};
+              send_date['title'] = this.getData.title;
+              send_date['description'] = this.getData.description;
+              send_date['price'] = this.getData.price;
+              send_date['latitude'] = this.getData.lattitude;
+              send_date['longitude'] = this.getData.longitude;
+              send_date['address'] = this.getData.address;
+              send_date['gender'] = this.getData.gender;
+              send_date['languages'] = this.getData.languages;
+              send_date['email'] = this.getData.email;
+              send_date['mobile'] = this.getData.mobile;
+              send_date['categoryId'] = this.getData.categoryId;
+              send_date['startDateTime'] = 0;
+              send_date['endDateTime'] = 0;
+              send_date['isActive'] = 0;
+              send_date['images'] = this.urls;
+              // send_date['transaction'] = "credited";
+
+              this.usersId = localStorage.getItem("userId");
+              let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
+              this.apiCall.post(url, send_date).subscribe(MyResponse => {
+              this.router.navigate(['/home']);
+              }, error => {
+              })
   }
 }

@@ -79,11 +79,15 @@ export class HomePage {
     }
   ];
   constructor(public dialog : MatDialog,
-    public router : Router) { }
+    public router : Router) { 
+      // let id = localStorage.get("userId");
+      // alert("show user id:"+id);
+    }
 
 
   ionViewWillEnter(){
     this.arrayLength = this.imageArray.length;
+   
   }
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();

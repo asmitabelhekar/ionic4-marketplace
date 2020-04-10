@@ -18,4 +18,21 @@ export class ApiService {
     return this.http.post(url, formData)
   }
 
+
+  
+//POST
+public post(url,data) {
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      // 'Authorization':'Token' + " " +auth_token
+    })
+  }
+  console.log(url);
+  
+  return this.http.post(url,data,httpOptions);
+}
+
+
 }

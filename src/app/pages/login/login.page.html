@@ -1,0 +1,83 @@
+<div class="MainLoginClass" fxLayout="column" fxLayoutAlign="center center" style="margin-top:20%">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <h3 align="center" >Market Place</h3>
+      <!-- <img src="../../../assets/logoapp.png" style="width:100px;height:100px; border-radius: 50%;"/> -->
+    </div>
+      <div class="LoginFormClass">
+    
+          <form name="entryform" style="width: 100%;" #f="ngForm" novalidate>
+    
+    
+              <mat-form-field style="width:98%; margin-top:10%">
+                  <input matInput placeholder="Phone Number" (input)="valueEnter()" type="tel" id="mobile"
+                    name="mobile" class="form-control" required minlength="10" maxlength="10" [(ngModel)]="loginModel.mobile"
+                    #mobile="ngModel" />
+                  <mat-error>
+                    <div class="form-group">
+                      <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+                        <div class="LoginError" *ngIf="mobile.errors.required">
+                          Wrong Phone Number
+                        </div>
+                         <div class="LoginError" *ngIf="mobile.errors.minlength">
+                          Phone Number must be at least 10 digits long.
+                        </div>
+                        <!--<div *ngIf="mobile.errors.maxlength">c
+                          Mobile Number must be 10 digits long.
+                        </div> -->
+      
+                      </div>
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field class="FullWidth">
+                    <input matInput placeholder="Password" (input)="valueEnter()" [type]="hide ? 'password' : 'text'" id="password"
+                      name="password" class="form-control" required  [(ngModel)]="loginModel.password"
+                      #password="ngModel" />
+                      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error>
+                      <div class="form-group">
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                          <div class="LoginError" *ngIf="password.errors.required">
+                            Please Enter Password
+                          </div>
+                          
+                         
+        
+                        </div>
+                      </div>
+                    </mat-error>
+                  </mat-form-field>
+                  <div *ngIf="is_error" class="LoginError">
+                      {{message}}
+                    </div>
+    
+    
+                  <div class="LoginClass">
+                      <button mat-raised-button [disabled]="mobile.invalid || password.invalid" class="LogoutBtn" (click)="login(loginModel)">Login</button>
+    
+                  </div>
+    
+    
+            </form>
+    
+      </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

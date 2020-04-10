@@ -80,8 +80,8 @@ export class PostadvertisementPage implements OnInit {
     }
 
     // alert("show data::"+JSON.stringify(advertisemntInfo));
-    this.router.navigate(['/nextadvertisement']);
-    // this.router.navigate(['/nextadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
+    // this.router.navigate(['/nextadvertisement']);
+    this.router.navigate(['/secondpageadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
     // console.log("shoe advertisement data::" + this.languagesArray);
   }
 

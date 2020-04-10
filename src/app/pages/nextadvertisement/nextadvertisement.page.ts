@@ -19,8 +19,7 @@ export class NextadvertisementPage implements OnInit {
      { }
 
   ngOnInit() {
-    // this.getData = JSON.parse(this.activatedRoute.snapshot.params['advertisementData']);
-    // console.log("show advertisement data:" + (this.getData.title));
+    
   }
 
   goBackword(){
