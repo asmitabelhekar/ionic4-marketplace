@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PostadvertisementPageRoutingModule } from './postadvertisement-routing.module';
-
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { PostadvertisementPage } from './postadvertisement.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/app/material.module';
@@ -17,6 +17,7 @@ import { MaterialModule } from 'src/app/material.module';
     IonicModule,
     MaterialModule,
     FlexLayoutModule,
+    GooglePlaceModule,
     PostadvertisementPageRoutingModule
   ],
   declarations: [PostadvertisementPage]

@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar class="new-background-color">
     <ion-row>
-      <ion-col size="2">
+      <ion-col size="3">
         <label style="color:white; font-size:17px; margin-left:10px">LOGO</label>
       </ion-col>
-      <ion-col size="7"></ion-col>
+      <ion-col size="6"></ion-col>
       <ion-col size="3">
         <label style="color:white;margin-right:10px;font-size:17px;">Pune</label>
         <mat-icon style="width:15px;height:18px; color:white;position:fixed;right:10">room</mat-icon>
@@ -51,19 +51,57 @@
   </div>
 </form>
 
-<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+<div fxLayout="row" fxLayoutAlign="center center">
   <mat-form-field style="width:96%" appearance="outline">
-    <mat-label>Location</mat-label>
-        <input matInput class="form-control" type="text" name="location" [(ngModel)]="advertisementModel.location" #location="ngModel"
-          align="center" required pattern="[a-zA-Z0-9,.  ]+$">
-          <mat-error>
+    <mat-label>Select Category</mat-label>
+    <select matNativeControl required #categorytype (change)="selectCategoryType(categorytype.value)" [(ngModel)]="advertisementModel.categoryType">
+      <option *ngFor="let type of categoryArray" [value]="type.categoryId"> {{type.categoryName}}</option>
+    </select>
+  </mat-form-field>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-form-field style="width:96%" appearance="outline">
+    <mat-label>Select Gender</mat-label>
+    <select matNativeControl required #gendertype (change)="selectGenderType(gendertype.value)" [(ngModel)]="advertisementModel.gender">
+      <option *ngFor="let type of genderArray" [value]="type.genderId"> {{type.gender}}</option>
+    </select>
+  </mat-form-field>
+</div>
+
+
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
+    <mat-label style="color:black; background-color: white;">Email</mat-label>
+    <input matInput class="form-control " name="email" [(ngModel)]="advertisementModel.email" #email="ngModel"
+      pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+    <mat-error>
+      <div class="form-group">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          Email Is Requird
+        </div>
+      </div>
+    </mat-error>
+
+  </mat-form-field>
+</div>
+
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Location" [(ngModel)]="advertisementModel.address" ngx-google-places-autocomplete
+          [options]='options' #placesRef="ngx-places" name="city" required pattern="[a-zA-Z0-9,.  ]+$" 
+          (onAddressChange)="handleAddressChange($event)">
+          <!-- <mat-error>
             <div class="form-group">
-              <div *ngIf="location.invalid && (location.dirty || location.touched)">
-                Location Is Requird
+              <div *ngIf="address.invalid && (address.dirty || address.touched)">
+                Address Is Requird
               </div>
             </div>
-          </mat-error>
-  </mat-form-field>
+          </mat-error> -->
+      </mat-form-field>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
@@ -83,20 +121,20 @@
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%" appearance="outline">
-    <mat-label>Contact No.</mat-label>
+    <mat-label>Mobile</mat-label>
         <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact" #contact="ngModel"
           align="center" required pattern="[0-9]+$">
           <mat-error>
             <div class="form-group">
               <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
-                Contact No. Is Requird
+                Mobile Is Requird
               </div>
             </div>
           </mat-error>
   </mat-form-field>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-bottom:15%">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Languages you know</mat-label>
         <input matInput class="form-control" type="text" name="languages" [(ngModel)]="advertisementModel.languages" #languages="ngModel"
@@ -109,12 +147,13 @@
             </div>
           </mat-error>
   </mat-form-field>
+</div>
 
-  <!-- <div fxLayout="row" fxLayoutAlign="center center"> -->
-    <button mat-raised-button class="loginButton"
+
+    <button mat-raised-button class="loginButton" [disabled]="email.invalid || languages.invalid || contact.invalid || price.invalid || description.invalid || title.invalid"
       (click)="addAdvertisementData(advertisementModel)"><b>Next</b></button>
 
   <!-- </div> -->
-</div>
+
 
 </ion-content>

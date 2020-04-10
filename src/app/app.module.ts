@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopupPage } from './pages/popup/popup.page';
 import { FilterpopupComponent } from './filterpopup/filterpopup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,
@@ -27,7 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule, BrowserAnimationsModule],
+    AppRoutingModule,
+    HttpClientModule, 
+    BrowserAnimationsModule],
   providers: [
     StatusBar,
     SplashScreen,

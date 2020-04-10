@@ -93,7 +93,8 @@ export class HomePage {
 
     if (title == "") {
 
-      this.showPopup();
+      this.router.navigate(['/showfilterdata']);
+      // this.showPopup();
      
     } else if (title == "Dance") {
       this.imageArray = [
@@ -205,13 +206,15 @@ export class HomePage {
       // data: send_data
     });
 
+
     dialogRef.afterClosed().subscribe(async result => {
     
       localStorage.setItem("applyFilter",result.filterName);
       this.checkString = result.filterName;
 
     
-     if(result.filterName == "Dance" || result.filterName == "dance"){
+     if(result.filterName == "Dance" || result.filterName == "dance")
+     {
       this.imageArray = [
         {
           "image": "https://i.pinimg.com/564x/54/c9/9b/54c99b01a6e6574724eda35b4ced31a8.jpg"

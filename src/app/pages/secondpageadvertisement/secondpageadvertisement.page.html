@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-row>
+      <ion-col size="2">
+        <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
+      </ion-col>
+      <ion-col size="10" class="TitleHeader TitleText">
+        <ion-label style="color:white">Advertisement</ion-label>
+      </ion-col>
+
+    </ion-row>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div fxLayoutAlign="center center" style="width:100%;margin-top:15%">
+    <mat-form-field style="width:96%" appearance="outline">
+      <mat-label>Start Date</mat-label>
+      <input matInput #input="ngModel" [(ngModel)]="advertisementModel.fromdate" [matDatepicker]="picker1"
+        [disabled]="false">
+      <mat-datepicker-toggle matSuffix [for]="picker1" [disabled]="false"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+  <div fxLayoutAlign="center center" style="width:100%;">
+    <mat-form-field style="width:96%" appearance="outline">
+      <mat-label>End Date</mat-label>
+      <input matInput #input="ngModel" [(ngModel)]="advertisementModel.todate" [matDatepicker]="picker"
+        [disabled]="false">
+      <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="false"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+
+  <div *ngIf="imageUrl == 1"
+    style="border:1px solid rgb(245, 236, 236);height:100px;width:96%;border-radius:5px;background-color: white; margin-left:2%"
+    fxLayout="column" fxLayoutAlign="center center" onclick="document.getElementById('image_upload').click()">
+    <ion-icon name="camera" style="width:70%; height:70%;color:gray">
+    </ion-icon>
+
+
+    <input style="display: none;" id="image_upload" type="file" (change)="detectEventGallery($event)">
+  </div>
+  <div class="row" *ngFor="let img of urls" style="margin-top:20px; width:96%; margin-left:2%">
+    <div class="column">
+      <img src="{{img}}" style="border-radius:10px">
+
+    </div>
+  </div>
+
+
+  <button mat-raised-button class="loginButton" 
+  (click)="submmitAdvertisementData(advertisementModel)"><b>Submit</b></button>
+</ion-content>

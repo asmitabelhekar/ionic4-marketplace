@@ -53,3 +53,47 @@ ion-content ion-toolbar {
 .half-black {
   background: rgba(0, 0, 0, 0.5);
 }
+
+.sub_div{
+  width:100%;
+   margin-top:-10px;
+    padding-left:5px;
+     padding-right:5px;
+}
+
+.cl_name_css{
+  width:100%;
+   padding-left:10px;
+    padding-right:10px;
+}
+
+.cl_margin100{
+  width:100%;
+  height:100%;
+}
+
+.cl_img_div{
+  width:100%;
+   height:250px;
+  position: relative;
+}
+
+.cl_bottom_nav_css{
+  width:30px;
+  height:30px;
+  color:gray;
+}
+
+.cl_bottom_fix{
+  position: fixed; 
+  bottom:0px;
+  height:50px;
+   width: 100%;
+    background-color: white;
+}
+
+.cl_post_css{
+  width:30px;
+  height:30px;
+  color:rgb(247, 97, 97);
+}

@@ -20,6 +20,18 @@ const routes: Routes = [
     path: 'postadvertisement',
     loadChildren: () => import('./pages/postadvertisement/postadvertisement.module').then( m => m.PostadvertisementPageModule)
   },
+  {
+    path: 'showfilterdata',
+    loadChildren: () => import('./pages/showfilterdata/showfilterdata.module').then( m => m.ShowfilterdataPageModule)
+  },
+  {
+    path: 'nextadvertisement',
+    loadChildren: () => import('./pages/nextadvertisement/nextadvertisement.module').then( m => m.NextadvertisementPageModule)
+  },
+  {
+    path: 'secondpageadvertisement',
+    loadChildren: () => import('./pages/secondpageadvertisement/secondpageadvertisement.module').then( m => m.SecondpageadvertisementPageModule)
+  },
 ];
 
 @NgModule({
