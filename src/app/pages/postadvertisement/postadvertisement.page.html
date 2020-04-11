@@ -15,9 +15,10 @@
   </ion-toolbar>
 </ion-header>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-<ion-content class="masters">
+<ion-content>
   <form #userForm="ngForm" style="width:100%">
  
+  
 
   <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
     <mat-form-field style="width:96%" appearance="outline">
@@ -55,7 +56,7 @@
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Select Category</mat-label>
     <select matNativeControl required #categorytype (change)="selectCategoryType(categorytype.value)" [(ngModel)]="advertisementModel.categoryType">
-      <option *ngFor="let type of categoryArray" [value]="type.categoryId"> {{type.categoryName}}</option>
+      <option *ngFor="let type of categoryArray" [value]="type.id"> {{type.name}}</option>
     </select>
   </mat-form-field>
 </div>
@@ -134,7 +135,28 @@
   </mat-form-field>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-bottom:15%">
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;;margin-bottom:15%">
+    <mat-form-field style="width:96%;" appearance="outline">
+    <mat-label>Languages</mat-label>
+      <mat-select 
+      name="year" 
+      (selectionChange)="selectedChanged(selectedLanguages)"
+      class="filter-select" 
+      [(ngModel)]="selectedLanguages" 
+      [compareWith]="equals"
+      multiple 
+      #yearSelect="ngModel">
+        <!-- <mat-option disabled="disabled" class="filter-option">
+          <input type="checkbox"(click)="selectAll(checkAll.checked, yearSelect, years)" #checkAll>
+        </mat-option> -->
+        <mat-option *ngFor="let year of languageArray" [value]="year.name">
+          {{year.name}}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-bottom:15%">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Languages you know</mat-label>
         <input matInput class="form-control" type="text" name="languages" [(ngModel)]="advertisementModel.languages" #languages="ngModel"
@@ -147,10 +169,10 @@
             </div>
           </mat-error>
   </mat-form-field>
-</div>
+</div> -->
 
 
-    <button mat-raised-button class="loginButton" [disabled]="email.invalid || languages.invalid || contact.invalid || price.invalid || description.invalid || title.invalid"
+    <button mat-raised-button class="loginButton" [disabled]="email.invalid || contact.invalid || price.invalid || description.invalid || title.invalid"
       (click)="addAdvertisementData(advertisementModel)"><b>Next</b></button>
 
   <!-- </div> -->

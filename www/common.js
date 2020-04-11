@@ -438,6 +438,70 @@ var MaterialModule = /** @class */ (function () {
 
 
 
+/***/ }),
+
+/***/ "./src/app/service/apiservice/api.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/service/apiservice/api.service.ts ***!
+  \***************************************************/
+/*! exports provided: ApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var ApiService = /** @class */ (function () {
+    function ApiService(http) {
+        this.http = http;
+    }
+    //Image Upload Post
+    ApiService.prototype.callPostApiForImage = function (url, data) {
+        var formData = new FormData();
+        formData.append('image', data);
+        // formData.append('isSaveToLocal', 'false');
+        // console.log("url", url,data,options);
+        return this.http.post(url, formData);
+    };
+    //POST
+    ApiService.prototype.post = function (url, data) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        console.log(url);
+        return this.http.post(url, data, httpOptions);
+    };
+    //GET
+    ApiService.prototype.get = function (url) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        console.log(url);
+        return this.http.get(url, httpOptions);
+    };
+    ApiService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ApiService);
+    return ApiService;
+}());
+
+
+
 /***/ })
 
 }]);

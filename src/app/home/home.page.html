@@ -15,24 +15,24 @@
     <div>
       <ion-slides [options]="slideOptions" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)"
         class="half-black">
-        <ion-slide *ngFor="let item of dataArray">
+        <ion-slide *ngFor="let item of bannerArray">
           <div class="cl_img_div">
-            <img src="../../assets/dancetwo.png" class="cl_margin100" />
-
+            <!-- <img src="../../assets/dancetwo.png" class="cl_margin100" /> -->
+            <img src="{{item.image}}" class="cl_margin100" />
 
 
             <div fxLayout="column" fxLayoutAlign="start start"
               style="width:100%;color:white;position:absolute; bottom:0">
               <div fxLayout="row" fxLayoutAlign="start start" class="cl_name_css">
-                <label>{{item.name}}</label>
+                <label style="font-size:16px">{{item.extraData.name}}</label>
               </div>
               <div class="sub_div">
                 <ion-row>
                   <ion-col size="8" fxLayoutAlign="start start">
-                    <label style="font-size:13px">{{item.subTitle}}</label>
+                    <label style="font-size:12px">{{item.extraData.categoryName}}</label>
                   </ion-col>
-                  <ion-col size="4">
-                    <label style="font-size:13px">{{item.location}}</label>
+                  <ion-col size="4" fxLayoutAlign="end start">
+                    <label style="font-size:12px">{{item.extraData.city}} , {{item.extraData.kilometer}}</label>
                   </ion-col>
                 </ion-row>
 
@@ -49,10 +49,12 @@
 
     <div style="width:100%; background-color:white;margin-top:15px; height:80%">
       <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-bottom:10px">
-        <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let item of tabsArray"
-          (click)="checkType(item.title)">
-          <img src="{{item.img}}" style="width:30px;height:30px" />
-          <label style="margin-top:5px;font-size:12px">{{item.title}}</label>
+        <img src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()"/>
+
+        <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let item of categoryArray"
+          (click)="checkType(item.name, item.id)">
+          <img src="{{item.image}}" style="width:30px;height:30px" />
+          <label style="margin-top:5px;font-size:12px">{{item.name}}</label>
         </div>
       </div>
 

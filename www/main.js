@@ -725,11 +725,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module~pages-postadver~c260c916"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
     {
         path: 'popup',
-        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module~pages-postadver~c260c916"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
     },
     {
         path: 'chatlist',
@@ -737,15 +737,27 @@ var routes = [
     },
     {
         path: 'detailchat',
-        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module~pages-postadver~c260c916"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
     {
         path: 'postadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-popup-popup-module~pages-postadver~c260c916"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
     },
     {
         path: 'showfilterdata',
         loadChildren: function () { return __webpack_require__.e(/*! import() | pages-showfilterdata-showfilterdata-module */ "pages-showfilterdata-showfilterdata-module").then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
+    },
+    {
+        path: 'nextadvertisement',
+        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
+    },
+    {
+        path: 'secondpageadvertisement',
+        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
+    },
+    {
+        path: 'home',
+        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -872,6 +884,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/popup/popup.page */ "./src/app/pages/popup/popup.page.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 
@@ -902,7 +916,9 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatDialogModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -1008,7 +1024,9 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 
 var environment = {
-    production: false
+    production: false,
+    base_url: "http://3.6.135.154:17700/api/",
+    version: "v1.0.0/"
 };
 /*
  * For easier debugging in development mode, you can import the following file

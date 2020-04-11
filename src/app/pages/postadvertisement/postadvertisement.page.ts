@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/service/apiservice/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-postadvertisement',
@@ -9,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class PostadvertisementPage implements OnInit {
 
-  categoryId : any;
-  address : any;
+  categoryId: any;
+  address: any;
   lattitude: any;
   longitude: any;
   countryName: any;
@@ -24,59 +26,102 @@ export class PostadvertisementPage implements OnInit {
 
   categoryArray = [
     {
-      "categoryName" : "abc",
-      "categoryId" : "1"
+      "categoryName": "abc",
+      "categoryId": "1"
     },
     {
-      "categoryName" : "abcd",
-      "categoryId" : "2"
+      "categoryName": "abcd",
+      "categoryId": "2"
     },
     {
-      "categoryName" : "abce",
-      "categoryId" : "3"
+      "categoryName": "abce",
+      "categoryId": "3"
     },
     {
-      "categoryName" : "abcf",
-      "categoryId" : "4"
+      "categoryName": "abcf",
+      "categoryId": "4"
     }
   ];
 
 
   genderArray = [
     {
-      "gender" : "Male",
-      "genderId" : "0"
+      "gender": "Male",
+      "genderId": "0"
     },
     {
-      "gender" : "Female",
-      "genderId" : "1"
+      "gender": "Female",
+      "genderId": "1"
     }
-   
+
   ];
 
-  constructor(public router: Router,
-    public changeDetectorRef : ChangeDetectorRef) { }
 
-  ngOnInit() {
+  selectedLanguages: any[];
+  languageArray: any[];
+  //toCheck: boolean =  false;
+
+  equals(objOne, objTwo) {
+    if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
+      return objOne.id === objTwo.id;
+    }
   }
 
+  selectAll(checkAll, select: NgModel, values) {
+    console.log("selected languages:" + select);
+    console.log("selected values:" + values);
+    console.log("selected values:" + this.selectedLanguages);
+    if (checkAll) {
+      select.update.emit(values);
+    }
+    else {
+      select.update.emit([]);
+    }
+  }
+
+  ngOnInit() {
+
+    this.getCategory();
+    this.languageArray = [
+      { id: 1, name: "English" },
+      { id: 2, name: "Hindi" },
+      { id: 3, name: "Marathi" },
+      { id: 4, name: "Gujrati" },
+      { id: 5, name: "Bangali" }
+    ]
+  }
+
+  constructor(public router: Router,
+    public apiCall : ApiService,
+    public changeDetectorRef: ChangeDetectorRef) { }
+
+
+  getCategory() {
+    let url = environment.base_url + environment.version  +"category/" + 0 + "/sub-category"
+    this.apiCall.get(url).subscribe(MyResponse => {
+     this.categoryArray = MyResponse['result']['list'];
+    },
+      error => {
+        
+      })
+  }
   addAdvertisementData(data) {
 
-    let languageArray = data.languages;
-    this.languagesArray = languageArray.split(',');
+    // let languageArray = data.languages;
+    // this.languagesArray = languageArray.split(',');
 
     let advertisemntInfo = {
-      "title" : data.title,
-      "description" : data.description,
-      "price" : data.price,
-      "lattitude" : this.lattitude,
-      "longitude" : this.longitude,
-      "address" : this.address,
-      "gender" : this.advertisementModel['gender'],
-      "languages" : this.languagesArray,
-      "email" : this.advertisementModel['email'],
-      "mobile" : data.contact,
-      "categoryId" : this.categoryId
+      "title": data.title,
+      "description": data.description,
+      "price": data.price,
+      "lattitude": this.lattitude,
+      "longitude": this.longitude,
+      "address": this.address,
+      "gender": this.advertisementModel['gender'],
+      "languages": this.languagesArray,
+      "email": this.advertisementModel['email'],
+      "mobile": data.contact,
+      "categoryId": this.categoryId
     }
 
     // alert("show data::"+JSON.stringify(advertisemntInfo));
@@ -93,7 +138,7 @@ export class PostadvertisementPage implements OnInit {
     this.longitude = data.geometry.location.lng();
     console.log("Address Data lattitude one::", this.lattitude);
     console.log("Address Data longitude one::", this.longitude);
-    
+
 
     console.log("lat", this.lattitude, this.longitude);
     let string = "";
@@ -118,17 +163,24 @@ export class PostadvertisementPage implements OnInit {
 
     }
     console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.advertisementModel['landmark'], this.advertisementModel['location']);
-    this.address = this.advertisementModel['landmark'],this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
+    this.address = this.advertisementModel['landmark'], this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
   }
 
 
-  selectCategoryType(data){
+  selectCategoryType(data) {
     // alert("check data:"+data);
+    console.log("show id:"+data);
     this.categoryId = data;
   }
 
-  selectGenderType(id){
+  selectGenderType(id) {
     this.advertisementModel['gender'] = id;
   }
+
+  selectedChanged(selectedLanguage) {
+    // alert("selectedLanguage:"+JSON.stringify(selectedLanguage));
+    this.languagesArray = (selectedLanguage);
+  }
+
 
 }

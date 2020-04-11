@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { environment } from 'src/environments/environment';
-
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-secondpageadvertisement',
@@ -12,19 +12,26 @@ import { environment } from 'src/environments/environment';
 export class SecondpageadvertisementPage implements OnInit {
   getData: any;
   fileToUpload: any;
-  profilePic : any;
-  usersId : any;
-  imageUrl  = 1;
-  urls  = [];
+  profilePic: any;
+  usersId: any;
+  imageUrl = 1;
+  urls = [];
   submitAdvertisementData
   advertisementModel: any = {};
+  fromDateTimestamp: number;
+  toDateTimestamp: number;
+  endDate : any;
+  finalCalculation : any;
+  totalCalculation: any;
+  weeksArray = ["1","2","3","4","5"];
+  todayDate : any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
-    public router : Router,
-    public apiCall : ApiService)
-     { }
+    public router: Router,
+    public apiCall: ApiService) { }
   ngOnInit() {
+    this.todayDate = new Date();
     this.getData = JSON.parse(this.activatedRoute.snapshot.params['advertisementData']);
     console.log("show advertisement data:" + (this.getData.title));
   }
@@ -44,7 +51,7 @@ export class SecondpageadvertisementPage implements OnInit {
       }
       this.handleFileInput(this.fileToUpload); // 1 for event gallery upload 
     }
-    console.log("file uploaded::"+JSON.stringify(this.fileToUpload));
+    console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
   }
 
 
@@ -57,13 +64,12 @@ export class SecondpageadvertisementPage implements OnInit {
       MyResponse => {
 
         this.urls.push(MyResponse['result']['url'])
-        if(this.urls.length > 4)
-        {
+        if (this.urls.length > 4) {
           this.imageUrl = 0;
-        }else{
+        } else {
           this.imageUrl = 1;
         }
-        
+
         this.profilePic = MyResponse['result']['url'];
         console.log("print url resonce:" + this.urls);
       }, error => {
@@ -73,12 +79,38 @@ export class SecondpageadvertisementPage implements OnInit {
     );
   }
 
-  goBackword(){
+  goBackword() {
     window.history.back();
   }
 
+
+  toTimestamp(strDate){
+    var datum = Date.parse(strDate);
+    return datum/1000;
+   }
+  // submmitAdvertisementData(dat) {
+  // this.fromDateTimestamp = this.toTimestamp(this.todayDate);
+  // this.toDateTimestamp = this.toTimestamp(this.endDate);
+  // alert("from date::"+this.fromDateTimestamp+ "to date:" +this.toDateTimestamp);
+    
+  // }
+
+  selectNoOfWeeksType(data){
+    this.finalCalculation = 7 + ((data - 1) * 5);
+    // this.totalCalculation = this.finalCalculation + 100;
+    // var today = moment();
+    this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
+    console.log("show next date:"+moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
+// alert("no of week:"+data);
+  }
+
+  calculateFinal(){
+    this.totalCalculation = this.finalCalculation + 100;
+  }
   submmitAdvertisementData(data){
 
+    this.fromDateTimestamp = this.toTimestamp(this.todayDate);
+    this.toDateTimestamp = this.toTimestamp(this.endDate);
     this.submitAdvertisementData = {
       "title" : this.getData.title,
       "description" : this.getData.description,
@@ -91,8 +123,8 @@ export class SecondpageadvertisementPage implements OnInit {
       "email" : this.getData.email,
       "mobile" : this.getData.mobile,
       "categoryId" : this.getData.categoryId,
-      "startDateTime" : this.advertisementModel['fromdate'],
-      "endDateTime" : this.advertisementModel['todate'],
+      "startDateTime" : this.fromDateTimestamp,
+      "endDateTime" : this.toDateTimestamp,
       "isActive" : 0,
       "images" : this.urls
     }
@@ -109,8 +141,8 @@ export class SecondpageadvertisementPage implements OnInit {
               send_date['email'] = this.getData.email;
               send_date['mobile'] = this.getData.mobile;
               send_date['categoryId'] = this.getData.categoryId;
-              send_date['startDateTime'] = 0;
-              send_date['endDateTime'] = 0;
+              send_date['startDateTime'] = this.fromDateTimestamp;
+              send_date['endDateTime'] = this.toDateTimestamp;
               send_date['isActive'] = 0;
               send_date['images'] = this.urls;
               // send_date['transaction'] = "credited";
@@ -118,6 +150,7 @@ export class SecondpageadvertisementPage implements OnInit {
               this.usersId = localStorage.getItem("userId");
               let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
               this.apiCall.post(url, send_date).subscribe(MyResponse => {
+                localStorage.setItem("categoryId",this.getData.categoryId);
               this.router.navigate(['/home']);
               }, error => {
               })

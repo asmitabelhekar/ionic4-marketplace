@@ -35,4 +35,17 @@ public post(url,data) {
 }
 
 
+ //GET
+
+ public get(url) {
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  }
+  console.log(url);
+  return this.http.get(url,httpOptions);
+}
+
 }

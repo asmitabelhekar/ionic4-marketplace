@@ -16,11 +16,82 @@
 
 <ion-content>
 
+  <h5 align="center" style=" margin-top:8%">Select Plan</h5>
+  <div fxLayout="row" fxLayoutAlign="center center"
+    style="width:96%; margin-left:2%; color: white; background-color: #50a46c; padding:25px;">
 
-  <div fxLayoutAlign="center center" style="width:100%;margin-top:15%">
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:40%; border-right: 1px solid white;">
+
+      <label>One Week</label>
+      <label style="margin-top:15px">7$</label>
+
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:60%">
+
+      <label>Multiple Weeks</label>
+      <label style="margin-top:15px">$7 + (no. of weeks * $5)</label>
+
+    </div>
+  </div>
+
+
+  <div style="width:96%; margin-left:2%; color: white; background-color: #31897b; padding:5px; margin-top:8%">
+    <ion-row>
+      <ion-col size="6" fxLayoutAlign="start center">
+        <label fxLayoutAlign="start center">Select Weeks</label>
+      </ion-col>
+      <!-- <ion-col size="2"></ion-col> -->
+      <ion-col size="3" fxLayoutAlign="center start">
+        <div>
+          <mat-form-field style="width:40px;color: black">
+            <select matNativeControl required #noweek (change)="selectNoOfWeeksType(noweek.value)" [(ngModel)]="advertisementModel.noofweek">
+              <option *ngFor="let type of weeksArray" [value]="type"> {{type}}</option>
+            </select>
+          </mat-form-field>
+        </div>
+      </ion-col>
+      <ion-col size="1" fxLayoutAlign="end center">
+        <label>=</label>
+      </ion-col>
+      <ion-col size="2" fxLayoutAlign="end center">
+        <label>$ {{finalCalculation}}</label>
+      </ion-col>
+    </ion-row>
+
+
+
+
+    <ion-row style="border: 1px solid white; padding:10px; margin-top:20px; margin-left:2%; margin-right:2%" (click)="calculateFinal()">
+      <ion-col size="3">
+        <button style="border-radius: 100%; border: 1px solid white; width: 30px; height:30px"></button>
+      </ion-col>
+      <!-- <ion-col size="2"></ion-col> -->
+      <ion-col size="7" fxLayoutAlign="start center">
+        <label fxLayoutAlign="start center">Boost Ad</label>
+      </ion-col>
+
+      <ion-col size="2" fxLayoutAlign="center center">
+        <label fxLayoutAlign="center center">$100</label>
+      </ion-col>
+    </ion-row>
+
+
+    <div style="border: 1px solid white; height:2px; margin-top:20px;margin-left:2%; margin-right:2% "></div>
+    <ion-row style="margin-top:10px;margin-left:2%; margin-right:2%">
+      <ion-col size="6" fxLayoutAlign="start start">
+        <label>Total</label>
+      </ion-col>
+
+      <ion-col size="6" fxLayoutAlign="end end">
+        <label>$ {{totalCalculation}}</label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- <div fxLayoutAlign="center center" style="width:100%;margin-top:15%">
     <mat-form-field style="width:96%" appearance="outline">
       <mat-label>Start Date</mat-label>
-      <input matInput #input="ngModel"  type="date"  [(ngModel)]="advertisementModel.fromdate" [matDatepicker]="picker1"
+      <input matInput #input="ngModel" [(ngModel)]="advertisementModel.fromdate" [matDatepicker]="picker1"
         [disabled]="false">
       <mat-datepicker-toggle matSuffix [for]="picker1" [disabled]="false"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
@@ -31,17 +102,17 @@
   <div fxLayoutAlign="center center" style="width:100%;">
     <mat-form-field style="width:96%" appearance="outline">
       <mat-label>End Date</mat-label>
-      <input matInput #input="ngModel" type="date" [(ngModel)]="advertisementModel.todate" [matDatepicker]="picker"
+      <input matInput #input="ngModel" [(ngModel)]="advertisementModel.todate" [matDatepicker]="picker"
         [disabled]="false">
       <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="false"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  </div>
+  </div> -->
 
 
 
   <div *ngIf="imageUrl == 1"
-    style="border:1px solid rgb(245, 236, 236);height:100px;width:96%;border-radius:5px;background-color: white; margin-left:2%"
+    style="border:1px solid rgb(201, 195, 195);height:100px;width:96%;border-radius:5px;background-color: white; margin-left:2%; margin-top:20px"
     fxLayout="column" fxLayoutAlign="center center" onclick="document.getElementById('image_upload').click()">
     <ion-icon name="camera" style="width:70%; height:70%;color:gray">
     </ion-icon>
@@ -57,6 +128,6 @@
   </div>
 
 
-  <button mat-raised-button class="loginButton" 
-  (click)="submmitAdvertisementData(advertisementModel)"><b>Submit</b></button>
+  <button mat-raised-button class="loginButton"
+    (click)="submmitAdvertisementData(advertisementModel)"><b>Submit</b></button>
 </ion-content>
