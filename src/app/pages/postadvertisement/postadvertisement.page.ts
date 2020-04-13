@@ -3,6 +3,7 @@ import { FormControl, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { environment } from 'src/environments/environment';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-postadvertisement',
@@ -11,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class PostadvertisementPage implements OnInit {
 
+  selectedRadioGroup : any;
   categoryId: any;
   address: any;
   lattitude: any;
@@ -93,6 +95,7 @@ export class PostadvertisementPage implements OnInit {
 
   constructor(public router: Router,
     public apiCall : ApiService,
+    public toast : ToastController,
     public changeDetectorRef: ChangeDetectorRef) { }
 
 
@@ -106,28 +109,63 @@ export class PostadvertisementPage implements OnInit {
       })
   }
   addAdvertisementData(data) {
-
+// category, languages, gender
     // let languageArray = data.languages;
     // this.languagesArray = languageArray.split(',');
-
-    let advertisemntInfo = {
-      "title": data.title,
-      "description": data.description,
-      "price": data.price,
-      "lattitude": this.lattitude,
-      "longitude": this.longitude,
-      "address": this.address,
-      "gender": this.advertisementModel['gender'],
-      "languages": this.languagesArray,
-      "email": this.advertisementModel['email'],
-      "mobile": data.contact,
-      "categoryId": this.categoryId
+if(this.address == undefined || this.address == null || this.address == ""){
+  this.presentToast("Please enter address");
+}else{
+  if(this.languagesArray.length == 0){
+    this.presentToast("Please select languages");
+  }else{
+    if(this.advertisementModel['gender'] == undefined || this.advertisementModel['gender'] == null || this.advertisementModel['gender'] == ""){
+      this.presentToast("Please select gender");
+    }else{
+      if(this.categoryId == undefined || this.categoryId == null || this.categoryId == ""){
+        this.presentToast("Please select category id");
+      }else{
+        let advertisemntInfo = {
+          "title": data.title,
+          "description": data.description,
+          "price": data.price,
+          "lattitude": this.lattitude,
+          "longitude": this.longitude,
+          "address": this.address,
+          "gender": this.advertisementModel['gender'],
+          "languages": this.languagesArray,
+          "email": this.advertisementModel['email'],
+          "mobile": data.contact,
+          "categoryId": this.categoryId
+        }
+      console.log("data:"+JSON.stringify(advertisemntInfo));
+        this.router.navigate(['/secondpageadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
+      }
+    
     }
+  }
+}
+   
+  }
 
-    // alert("show data::"+JSON.stringify(advertisemntInfo));
-    // this.router.navigate(['/nextadvertisement']);
-    this.router.navigate(['/secondpageadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
-    // console.log("shoe advertisement data::" + this.languagesArray);
+  radioGroupChange(event) {
+console.log("radioGroupChange",event.detail);
+this.selectedRadioGroup = event.detail.value;
+if(this.selectedRadioGroup == 'male'){
+  this.advertisementModel['gender'] = 0;
+}else if(this.selectedRadioGroup == 'female'){
+  this.advertisementModel['gender'] = 1;
+}else{
+  this.advertisementModel['gender'] = 1;
+}
+}
+
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
   }
 
   handleAddressChange(data) {

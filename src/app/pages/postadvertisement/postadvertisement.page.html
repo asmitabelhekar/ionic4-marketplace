@@ -61,18 +61,57 @@
   </mat-form-field>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="center center">
+
+
+<ion-row style="border: 1px solid #d3d5da;padding-top : 14px;border-radius: 5px;  padding-bottom : 14px; padding-left:8px; width:96%; margin-left: 2% ; margin-right: 2%; margin-top:5px">
+  <ion-col size="4">
+<label>Gender</label>
+
+  </ion-col>
+
+  <ion-col size="8">
+    <ion-radio-group (ionChange)="radioGroupChange($event)">
+
+    <div fxLayout="row">
+        <div style="margin-right:20px">
+          <ion-radio slot="start" value="male"></ion-radio>
+          <ion-label style="margin-left:10px">Male</ion-label>
+        </div>
+  
+        <div>
+          <ion-radio slot="start" value="female"></ion-radio>
+        <ion-label style="margin-left:10px">Female</ion-label>
+        
+      </div>
+     
+    </div>
+  </ion-radio-group>
+
+    <!-- <ion-item>
+      <ion-label>Male</ion-label>
+      <ion-radio slot="start" value="male"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Female</ion-label>
+      <ion-radio slot="start" value="female"></ion-radio>
+    </ion-item> -->
+  </ion-col>
+</ion-row>
+
+
+<!-- <div fxLayout="row" fxLayoutAlign="center center">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Select Gender</mat-label>
     <select matNativeControl required #gendertype (change)="selectGenderType(gendertype.value)" [(ngModel)]="advertisementModel.gender">
       <option *ngFor="let type of genderArray" [value]="type.genderId"> {{type.gender}}</option>
     </select>
   </mat-form-field>
-</div>
+</div> -->
 
 
 
-<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:15px">
   <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
     <mat-label style="color:black; background-color: white;">Email</mat-label>
     <input matInput class="form-control " name="email" [(ngModel)]="advertisementModel.email" #email="ngModel"
@@ -89,7 +128,7 @@
 </div>
 
 
-<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+<div fxLayout="row" fxLayoutAlign="  center center" style="width:100%;">
   <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
         <mat-label>Address</mat-label>
         <input matInput placeholder="Location" [(ngModel)]="advertisementModel.address" ngx-google-places-autocomplete

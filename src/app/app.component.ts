@@ -24,6 +24,11 @@ export class AppComponent {
 
     },
     {
+      title: 'Profile',
+      url: '/profile',
+
+    },
+    {
       title: 'Post Advertisement',
       url: '/postadvertisement',
 

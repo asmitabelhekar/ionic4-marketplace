@@ -167,7 +167,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"3\">\n        <label style=\"color:white; font-size:17px; margin-left:10px\">LOGO</label>\n      </ion-col>\n      <ion-col size=\"6\"></ion-col>\n      <ion-col size=\"3\">\n        <label style=\"color:white;margin-right:10px;font-size:17px;\">Pune</label>\n        <mat-icon style=\"width:15px;height:18px; color:white;position:fixed;right:10\">room</mat-icon>\n       \n      </ion-col>\n    </ion-row>\n\n  </ion-toolbar>\n</ion-header>\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \n<ion-content>\n  <form #userForm=\"ngForm\" style=\"width:100%\">\n \n  \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:20px\">\n    <mat-form-field style=\"width:96%\" appearance=\"outline\">\n      <mat-label>Title</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"title\" [(ngModel)]=\"advertisementModel.title\" #title=\"ngModel\"\n            align=\"center\" required pattern=\"[a-zA-Z0-9,.  ]+$\">\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"title.invalid && (title.dirty || title.touched)\">\n                  Title Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%\" appearance=\"outline\">\n      <mat-label>Description</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"description\" [(ngModel)]=\"advertisementModel.description\" #description=\"ngModel\"\n            align=\"center\" required pattern=\"[a-zA-Z0-9,.  ]+$\">\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"description.invalid && (description.dirty || description.touched)\">\n                  Description Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n</form>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Select Category</mat-label>\n    <select matNativeControl required #categorytype (change)=\"selectCategoryType(categorytype.value)\" [(ngModel)]=\"advertisementModel.categoryType\">\n      <option *ngFor=\"let type of categoryArray\" [value]=\"type.id\"> {{type.name}}</option>\n    </select>\n  </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Select Gender</mat-label>\n    <select matNativeControl required #gendertype (change)=\"selectGenderType(gendertype.value)\" [(ngModel)]=\"advertisementModel.gender\">\n      <option *ngFor=\"let type of genderArray\" [value]=\"type.genderId\"> {{type.gender}}</option>\n    </select>\n  </mat-form-field>\n</div>\n\n\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n    <mat-label style=\"color:black; background-color: white;\">Email</mat-label>\n    <input matInput class=\"form-control \" name=\"email\" [(ngModel)]=\"advertisementModel.email\" #email=\"ngModel\"\n      pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\" />\n    <mat-error>\n      <div class=\"form-group\">\n        <div *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n          Email Is Requird\n        </div>\n      </div>\n    </mat-error>\n\n  </mat-form-field>\n</div>\n\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n        <mat-label>Address</mat-label>\n        <input matInput placeholder=\"Location\" [(ngModel)]=\"advertisementModel.address\" ngx-google-places-autocomplete\n          [options]='options' #placesRef=\"ngx-places\" name=\"city\" required pattern=\"[a-zA-Z0-9,.  ]+$\" \n          (onAddressChange)=\"handleAddressChange($event)\">\n          <!-- <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"address.invalid && (address.dirty || address.touched)\">\n                Address Is Requird\n              </div>\n            </div>\n          </mat-error> -->\n      </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Price</mat-label>\n        <input matInput class=\"form-control\" type=\"number\" name=\"price\" [(ngModel)]=\"advertisementModel.price\" #price=\"ngModel\"\n          align=\"center\" required pattern=\"[0-9.]+$\">\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"price.invalid && (price.dirty || price.touched)\">\n                Price Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Mobile</mat-label>\n        <input matInput class=\"form-control\" type=\"tel\" name=\"contact\" minlength=\"10\" maxlength=\"10\" [(ngModel)]=\"advertisementModel.contact\" #contact=\"ngModel\"\n          align=\"center\" required pattern=\"[0-9]+$\">\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"contact.invalid && (contact.dirty || contact.touched)\">\n                Mobile Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%;\" appearance=\"outline\">\n    <mat-label>Languages</mat-label>\n      <mat-select \n      name=\"year\" \n      (selectionChange)=\"selectedChanged(selectedLanguages)\"\n      class=\"filter-select\" \n      [(ngModel)]=\"selectedLanguages\" \n      [compareWith]=\"equals\"\n      multiple \n      #yearSelect=\"ngModel\">\n        <!-- <mat-option disabled=\"disabled\" class=\"filter-option\">\n          <input type=\"checkbox\"(click)=\"selectAll(checkAll.checked, yearSelect, years)\" #checkAll>\n        </mat-option> -->\n        <mat-option *ngFor=\"let year of languageArray\" [value]=\"year.name\">\n          {{year.name}}\n        </mat-option>\n      </mat-select>\n  </mat-form-field>\n</div>\n\n<!-- <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-bottom:15%\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Languages you know</mat-label>\n        <input matInput class=\"form-control\" type=\"text\" name=\"languages\" [(ngModel)]=\"advertisementModel.languages\" #languages=\"ngModel\"\n          align=\"center\" required pattern=\"[a-zA-Z0-9,.  ]+$\">\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"languages.invalid && (languages.dirty || languages.touched)\">\n                Languages Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n</div> -->\n\n\n    <button mat-raised-button class=\"loginButton\" [disabled]=\"email.invalid || contact.invalid || price.invalid || description.invalid || title.invalid\"\n      (click)=\"addAdvertisementData(advertisementModel)\"><b>Next</b></button>\n\n  <!-- </div> -->\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_post_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"3\">\n        <label style=\"color:white; font-size:17px; margin-left:10px\">LOGO</label>\n      </ion-col>\n      <ion-col size=\"6\"></ion-col>\n      <ion-col size=\"3\">\n        <label style=\"color:white;margin-right:10px;font-size:17px;\">Pune</label>\n        <mat-icon style=\"width:15px;height:18px; color:white;position:fixed;right:10\">room</mat-icon>\n       \n      </ion-col>\n    </ion-row>\n\n  </ion-toolbar>\n</ion-header>\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \n<ion-content>\n  <form #userForm=\"ngForm\" style=\"width:100%\">\n \n  \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:20px\">\n    <mat-form-field style=\"width:96%\" appearance=\"outline\">\n      <mat-label>Title</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"title\" [(ngModel)]=\"advertisementModel.title\" #title=\"ngModel\"\n            align=\"center\" required pattern=\"[a-zA-Z0-9,.  ]+$\">\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"title.invalid && (title.dirty || title.touched)\">\n                  Title Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%\" appearance=\"outline\">\n      <mat-label>Description</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"description\" [(ngModel)]=\"advertisementModel.description\" #description=\"ngModel\"\n            align=\"center\" required pattern=\"[a-zA-Z0-9,.  ]+$\">\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"description.invalid && (description.dirty || description.touched)\">\n                  Description Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n</form>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Select Category</mat-label>\n    <select matNativeControl required #categorytype (change)=\"selectCategoryType(categorytype.value)\" [(ngModel)]=\"advertisementModel.categoryType\">\n      <option *ngFor=\"let type of categoryArray\" [value]=\"type.id\"> {{type.name}}</option>\n    </select>\n  </mat-form-field>\n</div>\n\n\n\n<ion-row style=\"border: 1px solid #d3d5da;padding-top : 14px;border-radius: 5px;  padding-bottom : 14px; padding-left:8px; width:96%; margin-left: 2% ; margin-right: 2%; margin-top:5px\">\n  <ion-col size=\"4\">\n<label>Gender</label>\n\n  </ion-col>\n\n  <ion-col size=\"8\">\n    <ion-radio-group (ionChange)=\"radioGroupChange($event)\">\n\n    <div fxLayout=\"row\">\n        <div style=\"margin-right:20px\">\n          <ion-radio slot=\"start\" value=\"male\"></ion-radio>\n          <ion-label style=\"margin-left:10px\">Male</ion-label>\n        </div>\n  \n        <div>\n          <ion-radio slot=\"start\" value=\"female\"></ion-radio>\n        <ion-label style=\"margin-left:10px\">Female</ion-label>\n        \n      </div>\n     \n    </div>\n  </ion-radio-group>\n\n    <!-- <ion-item>\n      <ion-label>Male</ion-label>\n      <ion-radio slot=\"start\" value=\"male\"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Female</ion-label>\n      <ion-radio slot=\"start\" value=\"female\"></ion-radio>\n    </ion-item> -->\n  </ion-col>\n</ion-row>\n\n\n<!-- <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Select Gender</mat-label>\n    <select matNativeControl required #gendertype (change)=\"selectGenderType(gendertype.value)\" [(ngModel)]=\"advertisementModel.gender\">\n      <option *ngFor=\"let type of genderArray\" [value]=\"type.genderId\"> {{type.gender}}</option>\n    </select>\n  </mat-form-field>\n</div> -->\n\n\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:15px\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n    <mat-label style=\"color:black; background-color: white;\">Email</mat-label>\n    <input matInput class=\"form-control \" name=\"email\" [(ngModel)]=\"advertisementModel.email\" #email=\"ngModel\"\n      pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\" />\n    <mat-error>\n      <div class=\"form-group\">\n        <div *ngIf=\"email.invalid && (email.dirty || email.touched)\">\n          Email Is Requird\n        </div>\n      </div>\n    </mat-error>\n\n  </mat-form-field>\n</div>\n\n\n<div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n        <mat-label>Address</mat-label>\n        <input matInput placeholder=\"Location\" [(ngModel)]=\"advertisementModel.address\" ngx-google-places-autocomplete\n          [options]='options' #placesRef=\"ngx-places\" name=\"city\" required pattern=\"[a-zA-Z0-9,.  ]+$\" \n          (onAddressChange)=\"handleAddressChange($event)\">\n          <!-- <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"address.invalid && (address.dirty || address.touched)\">\n                Address Is Requird\n              </div>\n            </div>\n          </mat-error> -->\n      </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Price</mat-label>\n        <input matInput class=\"form-control\" type=\"number\" name=\"price\" [(ngModel)]=\"advertisementModel.price\" #price=\"ngModel\"\n          align=\"center\" required pattern=\"[0-9.]+$\">\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"price.invalid && (price.dirty || price.touched)\">\n                Price Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Mobile</mat-label>\n        <input matInput class=\"form-control\" type=\"tel\" name=\"contact\" minlength=\"10\" maxlength=\"10\" [(ngModel)]=\"advertisementModel.contact\" #contact=\"ngModel\"\n          align=\"center\" required pattern=\"[0-9]+$\">\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"contact.invalid && (contact.dirty || contact.touched)\">\n                Mobile Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n</div>\n\n<div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%;\" appearance=\"outline\">\n    <mat-label>Languages</mat-label>\n      <mat-select \n      name=\"year\" \n      (selectionChange)=\"selectedChanged(selectedLanguages)\"\n      class=\"filter-select\" \n      [(ngModel)]=\"selectedLanguages\" \n      [compareWith]=\"equals\"\n      multiple \n      #yearSelect=\"ngModel\">\n        <!-- <mat-option disabled=\"disabled\" class=\"filter-option\">\n          <input type=\"checkbox\"(click)=\"selectAll(checkAll.checked, yearSelect, years)\" #checkAll>\n        </mat-option> -->\n        <mat-option *ngFor=\"let year of languageArray\" [value]=\"year.name\">\n          {{year.name}}\n        </mat-option>\n      </mat-select>\n  </mat-form-field>\n</div>\n\n<!-- <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-bottom:15%\">\n  <mat-form-field style=\"width:96%\" appearance=\"outline\">\n    <mat-label>Languages you know</mat-label>\n        <input matInput class=\"form-control\" type=\"text\" name=\"languages\" [(ngModel)]=\"advertisementModel.languages\" #languages=\"ngModel\"\n          align=\"center\" required pattern=\"[a-zA-Z0-9,.  ]+$\">\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"languages.invalid && (languages.dirty || languages.touched)\">\n                Languages Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n</div> -->\n\n\n    <button mat-raised-button class=\"loginButton\" [disabled]=\"email.invalid || contact.invalid || price.invalid || description.invalid || title.invalid\"\n      (click)=\"addAdvertisementData(advertisementModel)\"><b>Next</b></button>\n\n  <!-- </div> -->\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_post_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -295,6 +295,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
 
 
 
@@ -302,9 +304,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PostadvertisementPage = /** @class */ (function () {
-    function PostadvertisementPage(router, apiCall, changeDetectorRef) {
+    function PostadvertisementPage(router, apiCall, toast, changeDetectorRef) {
         this.router = router;
         this.apiCall = apiCall;
+        this.toast = toast;
         this.changeDetectorRef = changeDetectorRef;
         // loc: any = {};
         this.languagesArray = [];
@@ -375,25 +378,74 @@ var PostadvertisementPage = /** @class */ (function () {
         });
     };
     PostadvertisementPage.prototype.addAdvertisementData = function (data) {
+        // category, languages, gender
         // let languageArray = data.languages;
         // this.languagesArray = languageArray.split(',');
-        var advertisemntInfo = {
-            "title": data.title,
-            "description": data.description,
-            "price": data.price,
-            "lattitude": this.lattitude,
-            "longitude": this.longitude,
-            "address": this.address,
-            "gender": this.advertisementModel['gender'],
-            "languages": this.languagesArray,
-            "email": this.advertisementModel['email'],
-            "mobile": data.contact,
-            "categoryId": this.categoryId
-        };
-        // alert("show data::"+JSON.stringify(advertisemntInfo));
-        // this.router.navigate(['/nextadvertisement']);
-        this.router.navigate(['/secondpageadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
-        // console.log("shoe advertisement data::" + this.languagesArray);
+        if (this.address == undefined || this.address == null || this.address == "") {
+            this.presentToast("Please enter address");
+        }
+        else {
+            if (this.languagesArray.length == 0) {
+                this.presentToast("Please select languages");
+            }
+            else {
+                if (this.advertisementModel['gender'] == undefined || this.advertisementModel['gender'] == null || this.advertisementModel['gender'] == "") {
+                    this.presentToast("Please select gender");
+                }
+                else {
+                    if (this.categoryId == undefined || this.categoryId == null || this.categoryId == "") {
+                        this.presentToast("Please select category id");
+                    }
+                    else {
+                        var advertisemntInfo = {
+                            "title": data.title,
+                            "description": data.description,
+                            "price": data.price,
+                            "lattitude": this.lattitude,
+                            "longitude": this.longitude,
+                            "address": this.address,
+                            "gender": this.advertisementModel['gender'],
+                            "languages": this.languagesArray,
+                            "email": this.advertisementModel['email'],
+                            "mobile": data.contact,
+                            "categoryId": this.categoryId
+                        };
+                        console.log("data:" + JSON.stringify(advertisemntInfo));
+                        this.router.navigate(['/secondpageadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
+                    }
+                }
+            }
+        }
+    };
+    PostadvertisementPage.prototype.radioGroupChange = function (event) {
+        console.log("radioGroupChange", event.detail);
+        this.selectedRadioGroup = event.detail.value;
+        if (this.selectedRadioGroup == 'male') {
+            this.advertisementModel['gender'] = 0;
+        }
+        else if (this.selectedRadioGroup == 'female') {
+            this.advertisementModel['gender'] = 1;
+        }
+        else {
+            this.advertisementModel['gender'] = 1;
+        }
+    };
+    PostadvertisementPage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     PostadvertisementPage.prototype.handleAddressChange = function (data) {
         console.log("Address Data", data);
@@ -456,6 +508,7 @@ var PostadvertisementPage = /** @class */ (function () {
     PostadvertisementPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"] },
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
     ]; };
     PostadvertisementPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -466,6 +519,7 @@ var PostadvertisementPage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]])
     ], PostadvertisementPage);
     return PostadvertisementPage;

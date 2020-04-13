@@ -47,9 +47,9 @@
     <!-- </div> -->
 
 
-    <div style="width:100%; background-color:white;margin-top:15px; height:80%">
+    <div style="width:100%; background-color:white;margin-top:15px; height:100%">
       <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-bottom:10px">
-        <img src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()"/>
+        <img src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()" />
 
         <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let item of categoryArray"
           (click)="checkType(item.name, item.id)">
@@ -59,11 +59,11 @@
       </div>
 
 
-      <div *ngIf="arrayLength > 0" style="margin-bottom:20%">
+      <div *ngIf="arrayLength > 0" style="width:98%; margin-left:1%">
 
         <div class="row" *ngFor="let item of imageArray">
           <div class="column" style="position:relative">
-            <img src={{item.image}} style="border-radius: 5px;" />
+            <img src={{item.image}} style="border-radius: 5px;width:100%; height:100%" />
             <div style="position:absolute; bottom:10px;width:100%">
 
               <ion-row style="color:white">
@@ -89,9 +89,12 @@
 
             </div>
           </div>
-        </div>
-      </div>
 
+        </div>
+
+
+      </div>
+      <img style="width:100%; height:60px; visibility: hidden;" />
       <div *ngIf="arrayLength == 0 " style="margin-top:20%">
         <h3 align="center">No records found.</h3>
       </div>

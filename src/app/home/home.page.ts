@@ -78,9 +78,6 @@ export class HomePage {
     },
     {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
-    },
-    {
-      "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
     }
   ];
   constructor(public dialog : MatDialog,
