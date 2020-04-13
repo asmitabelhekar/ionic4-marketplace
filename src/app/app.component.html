@@ -1,23 +1,25 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <img src="../assets/dancetwo.png" class="cl-sidemenu-logo" />
-      <!-- <ion-header>
-        <ion-toolbar style="height:400px">
-          <img src="../assets/dancetwo.png" class="cl-sidemenu-logo" />
+      <ion-header>
+        <ion-toolbar >
+          <!-- <img src="" class="cl-sidemenu-logo" /> -->
 
+          <div class="background-img">
+            <ion-title style="color:#152a3f;color:white;position: absolute; bottom: 10px;">Chaitanya</ion-title>
+          </div>
 
         </ion-toolbar>
-      </ion-header> -->
+      </ion-header>
       <ion-content style="margin-top: 5%;">
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" (click)="sideMenuClicked(p.title)">
               <!-- <ion-icon slot="start" [name]="p.icon" style="color:white"></ion-icon> -->
-              <ion-label style="color:white; font-size: 15px;">
+              <ion-label style="color:rgb(5, 5, 5); font-size: 15px;">
                 {{p.title}}
               </ion-label>
-              <ion-icon name="arrow-dropright-circle" style="color:white"></ion-icon>
+              <ion-icon name="arrow-dropright-circle" style="color:black"></ion-icon>
               
             </ion-item>
           </ion-menu-toggle>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,11 @@ export class LoginPage implements OnInit {
   hide = true;
   loginModel: any = {};
   constructor(public router: Router,
-    public apiCall: ApiService) { }
+    public menuController : MenuController,
+    public apiCall: ApiService) { 
+
+      this.menuController.enable(false);
+    }
 
   ngOnInit() {
   }
@@ -29,6 +34,7 @@ export class LoginPage implements OnInit {
     let url = environment.base_url + environment.version + "users/login";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
       localStorage.setItem("userId", MyResponse['result']['id']);
+      localStorage.setItem("loginStatus",'yes');
       this.router.navigate(['/home']);
 
     }, error => {

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -23,13 +24,19 @@ export class AppComponent {
 
     },
     {
-      title: 'third',
+      title: 'Post Advertisement',
+      url: '/postadvertisement',
+
+    },
+    {
+      title: 'Log Out',
       url: '/',
 
     }
   ];
   constructor(
     private platform: Platform,
+    public router : Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
@@ -40,6 +47,21 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.loginSession();
     });
+  }
+
+  loginSession(){
+    let loginStatus = localStorage.getItem("loginStatus");
+    if(loginStatus == "yes"){
+      this.router.navigate(['/home']);
+    }else{
+      this.router.navigate(['/login']);
+    }
+  }
+  sideMenuClicked(pages) {
+    if (pages == "Log Out") {
+      localStorage.setItem("loginStatus", "no");
+    }
   }
 }

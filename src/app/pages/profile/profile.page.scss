@@ -1,0 +1,56 @@
+
+.cl_bottom_nav_css{
+    width:30px;
+    height:30px;
+    color:gray;
+  }
+  
+  .cl_bottom_fix{
+    position: fixed; 
+    bottom:0px;
+    height:50px;
+     width: 100%;
+      background-color: white;
+  }
+  
+  .cl_post_css{
+    width:30px;
+    height:30px;
+    color:rgb(247, 97, 97);
+  }
+
+
+.cl_title_fontsize{
+  // margin:-1px;;
+  width:18px;
+  height: 18px;
+  color: grey;
+  // margin-right:10px;
+  }
+  
+  .cl_content_fontsize{
+  font-size:17px;
+  color: black;
+  padding:3px;
+  }
+  
+
+#map_canvas{
+  width:100%;
+  margin:auto;
+  height: 35vh;
+}
+
+.cl_card_css{
+  width:100%;
+  // height:80%;
+  // border: 1px solid grey;
+  box-shadow: none !important;
+  // background-color: white;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding-bottom:20px;
+  margin:0px;
+  margin-top:-30px;
+}
+

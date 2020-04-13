@@ -1,0 +1,110 @@
+<ion-header class="new-background-color">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start" style="color:white">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color:white">
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="height:320px;position: relative; top:0px;background-color: #f1f4f9;" fxLayoutAlign="center center">
+    <!-- <img src="../../../assets/noimage.png" style="width:100%; height:100%;" /> -->
+    <div style="position: absolute; bottom :60px;" >
+      <div fxLayout="column">
+        <ion-icon name="person" 
+          style="width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px">
+        </ion-icon>
+        <label   style="margin-top:10px; color: black;font-size: 20px;">Chaitnya</label>
+      </div>
+
+
+    </div>
+    <div style="height:190px;background-color: #f1f4f9; "></div>
+
+    <!-- <ion-row>
+      <ion-col size="3">
+        <ion-icon name="person" style="width:40px; height:40px; border-radius: 100%;margin-left: 15px;color:white;background-color: rgb(168, 158, 158) ; padding:18px" ></ion-icon>
+      </ion-col>
+
+      <ion-col size="9" style="margin-top:23px; padding-left:15px; font-size: 18px">
+        <label>Chaitnya</label> 
+      </ion-col>
+    </ion-row> -->
+
+  </div>
+  <!-- <div style="height:350px;position: relative; top:0px;" >
+    <img src="../../../assets/dancetwo.png" style="width:100%; height:100%;" />
+
+  </div> -->
+
+  <ion-card class="cl_card_css">
+    <div style="margin-top:10px">
+
+
+      <ion-row style="margin:20px">
+        <ion-col size="1">
+          <ion-icon style="height:19px;width:18px; margin:2px" name="person"></ion-icon>
+        </ion-col>
+        <ion-col size="11">
+          <ion-label class="cl_content_fontsize">Chaitnya</ion-label><br />
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin:20px">
+        <ion-col size="1">
+          <ion-icon style="height:19px;width:18px; margin:2px" name="call"></ion-icon>
+        </ion-col>
+        <ion-col size="11">
+          <ion-label class="cl_content_fontsize">9527902622</ion-label><br />
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin:20px">
+        <ion-col size="1">
+          <ion-icon style="height:19px;width:18px; margin:2px" name="mail"></ion-icon>
+        </ion-col>
+        <ion-col size="11">
+          <ion-label class="cl_content_fontsize">chaitnya@gmail.com</ion-label><br />
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin:20px">
+        <ion-col size="1">
+          <ion-icon style="height:19px;width:18px; margin:2px" name="home"></ion-icon>
+        </ion-col>
+        <ion-col size="11">
+          <ion-label class="cl_content_fontsize">Chinchwad, pune-19.</ion-label><br />
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+    </div>
+
+
+
+  </ion-card>
+
+
+  <div id="map_canvas" style="margin-bottom:5%;" *ngIf="noInternet == '1' "></div>
+
+
+  <div class="cl_bottom_fix">
+    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
+      <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
+      <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
+      <ion-icon name="add-circle" class="cl_bottom_nav_css" (click)="postAdvertisement()">
+      </ion-icon>
+      <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
+      <ion-icon name="person" class="cl_post_css" (click)="openProfile()"></ion-icon>
+    </div>
+  </div>
+
+
+</ion-content>

@@ -36,12 +36,35 @@
     background-color: #152a3f;
     color: white;
     width:100%;
-    position: fixed;
-    bottom:0px;
+    // position: fixed;
+    // bottom:0px;
     // border-radius:2px;
      margin-left:0%; 
      margin-right:0%;
       padding-top:10px;
+      margin-bottom:15%;
       padding-bottom: 10px; 
     font-size:18px;
+  }
+
+
+
+  .cl_bottom_nav_css{
+    width:30px;
+    height:30px;
+    color:gray;
+  }
+  
+  .cl_bottom_fix{
+    position: fixed; 
+    bottom:0px;
+    height:50px;
+     width: 100%;
+      background-color: white;
+  }
+  
+  .cl_post_css{
+    width:30px;
+    height:30px;
+    color:rgb(247, 97, 97);
   }

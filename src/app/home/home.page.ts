@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, MenuController } from '@ionic/angular';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { PopupPage } from '../pages/popup/popup.page';
 import { FilterpopupComponent } from '../filterpopup/filterpopup.component';
@@ -85,7 +85,9 @@ export class HomePage {
   ];
   constructor(public dialog : MatDialog,
     public apiCall : ApiService,
-    public router : Router) { 
+    public menuController: MenuController,
+    public router : Router) {
+      this.menuController.enable(true); 
       this.getCategory();
       this.getBannerData(this.categoryId);
       // let id = localStorage.get("userId");
@@ -365,4 +367,17 @@ export class HomePage {
     this.router.navigate(['/postadvertisement']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
+
+  openFavourite(){
+    this.router.navigate(['/favourite']);
+  }
+
+  openProfile(){
+    this.router.navigate(['/profile']);
+  }
+
 }

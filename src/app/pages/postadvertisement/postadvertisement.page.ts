@@ -182,5 +182,24 @@ export class PostadvertisementPage implements OnInit {
     this.languagesArray = (selectedLanguage);
   }
 
+  openChatList(){
+    this.router.navigate(['/chatlist']);
+  }
 
+  postAdvertisement(){
+    this.router.navigate(['/postadvertisement']);
+    // this.router.navigate(['/secondpageadvertisement']);
+  }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
+
+  openFavourite(){
+    this.router.navigate(['/favourite']);
+  }
+
+  openProfile(){
+    this.router.navigate(['/profile']);
+  }
 }

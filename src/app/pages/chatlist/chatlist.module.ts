@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ChatlistPageRoutingModule } from './chatlist-routing.module';
 
 import { ChatlistPage } from './chatlist.page';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    FlexLayoutModule,
     ChatlistPageRoutingModule
   ],
   declarations: [ChatlistPage]

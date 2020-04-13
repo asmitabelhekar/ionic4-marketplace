@@ -20,13 +20,13 @@
   <div fxLayout="row" fxLayoutAlign="center center"
     style="width:96%; margin-left:2%; color: white; background-color: #50a46c; padding:25px;">
 
-    <div fxLayout="column" fxLayoutAlign="center center" style="width:40%; border-right: 1px solid white;">
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:35%; border-right: 1px solid white;">
 
       <label>One Week</label>
       <label style="margin-top:15px">7$</label>
 
     </div>
-    <div fxLayout="column" fxLayoutAlign="center center" style="width:60%">
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:65%">
 
       <label>Multiple Weeks</label>
       <label style="margin-top:15px">$7 + (no. of weeks * $5)</label>
@@ -130,4 +130,15 @@
 
   <button mat-raised-button class="loginButton"
     (click)="submmitAdvertisementData(advertisementModel)"><b>Submit</b></button>
+
+    <div class="cl_bottom_fix">
+      <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
+        <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
+        <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
+        <ion-icon name="add-circle" class="cl_post_css" (click)="postAdvertisement()">
+        </ion-icon>
+        <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
+        <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
+      </div>
+    </div>
 </ion-content>

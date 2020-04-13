@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chatlist',
@@ -34,7 +35,10 @@ export class ChatlistPage implements OnInit {
       "name": "Asmita Belhekar"
     }
   ];
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+    public menuController : MenuController) { 
+      this.menuController.enable(true);
+    }
 
   ngOnInit() {
   }
@@ -42,6 +46,27 @@ export class ChatlistPage implements OnInit {
 
   detailChat(name) {
     this.router.navigate(['/detailchat', { name: name }])
+  }
+
+  openChatList(){
+    this.router.navigate(['/chatlist']);
+  }
+
+  postAdvertisement(){
+    this.router.navigate(['/postadvertisement']);
+    // this.router.navigate(['/secondpageadvertisement']);
+  }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
+
+  openFavourite(){
+    this.router.navigate(['/favourite']);
+  }
+
+  openProfile(){
+    this.router.navigate(['/profile']);
   }
 
 }

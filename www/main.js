@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <img src=\"../assets/dancetwo.png\" class=\"cl-sidemenu-logo\" />\n      <!-- <ion-header>\n        <ion-toolbar style=\"height:400px\">\n          <img src=\"../assets/dancetwo.png\" class=\"cl-sidemenu-logo\" />\n\n\n        </ion-toolbar>\n      </ion-header> -->\n      <ion-content style=\"margin-top: 5%;\">\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\" (click)=\"sideMenuClicked(p.title)\">\n              <!-- <ion-icon slot=\"start\" [name]=\"p.icon\" style=\"color:white\"></ion-icon> -->\n              <ion-label style=\"color:white; font-size: 15px;\">\n                {{p.title}}\n              </ion-label>\n              <ion-icon name=\"arrow-dropright-circle\" style=\"color:white\"></ion-icon>\n              \n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-header>\n        <ion-toolbar >\n          <!-- <img src=\"\" class=\"cl-sidemenu-logo\" /> -->\n\n          <div class=\"background-img\">\n            <ion-title style=\"color:#152a3f;color:white;position: absolute; bottom: 10px;\">Chaitanya</ion-title>\n          </div>\n\n        </ion-toolbar>\n      </ion-header>\n      <ion-content style=\"margin-top: 5%;\">\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\" (click)=\"sideMenuClicked(p.title)\">\n              <!-- <ion-icon slot=\"start\" [name]=\"p.icon\" style=\"color:white\"></ion-icon> -->\n              <ion-label style=\"color:rgb(5, 5, 5); font-size: 15px;\">\n                {{p.title}}\n              </ion-label>\n              <ion-icon name=\"arrow-dropright-circle\" style=\"color:black\"></ion-icon>\n              \n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
 
 /***/ }),
 
@@ -726,22 +726,22 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
+    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
     {
         path: 'popup',
-        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
     },
     {
         path: 'chatlist',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-chatlist-chatlist-module */ "pages-chatlist-chatlist-module").then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
     },
     {
         path: 'detailchat',
-        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
     {
         path: 'postadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
     },
     {
         path: 'showfilterdata',
@@ -753,11 +753,19 @@ var routes = [
     },
     {
         path: 'secondpageadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("common"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
     },
     {
         path: 'home',
-        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+    },
+    {
+        path: 'favourite',
+        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
+    },
+    {
+        path: 'profile',
+        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -787,7 +795,7 @@ var AppRoutingModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".cl-logo-css {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n}\n\n.cl-sidemenu-logo {\n  height: 250px;\n  width: 100%;\n  display: block;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvaW9uaWM0LW1hcmtldHBsYWNlL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxhQUFBO0VBQ0MsV0FBQTtFQUVDLGNBQUE7QUNBTiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jbC1sb2dvLWNzc3tcbiAgICB3aWR0aDogODBweDtcbiAgICBoZWlnaHQgOiA4MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbn1cblxuLmNsLXNpZGVtZW51LWxvZ297XG4gICAgaGVpZ2h0OiAyNTBweDtcbiAgICAgd2lkdGggOiAxMDAlO1xuICAgIC8vICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgXG4gIH0iLCIuY2wtbG9nby1jc3Mge1xuICB3aWR0aDogODBweDtcbiAgaGVpZ2h0OiA4MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG59XG5cbi5jbC1zaWRlbWVudS1sb2dvIHtcbiAgaGVpZ2h0OiAyNTBweDtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGJsb2NrO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".cl-logo-css {\n  width: 80px;\n  height: 80px;\n  border-radius: 50%;\n}\n\n.cl-sidemenu-logo {\n  height: 250px;\n  width: 100%;\n  display: block;\n}\n\n.background-img {\n  height: 250px;\n  position: relative;\n  background-image: url('dancetwo.png');\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvaW9uaWM0LW1hcmtldHBsYWNlL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxhQUFBO0VBQ0MsV0FBQTtFQUVDLGNBQUE7QUNBTjs7QURJRTtFQUNJLGFBQUE7RUFDQSxrQkFBQTtFQUNBLHFDQUFBO0FDRE4iLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2wtbG9nby1jc3N7XG4gICAgd2lkdGg6IDgwcHg7XG4gICAgaGVpZ2h0IDogODBweDtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG59XG5cbi5jbC1zaWRlbWVudS1sb2dve1xuICAgIGhlaWdodDogMjUwcHg7XG4gICAgIHdpZHRoIDogMTAwJTtcbiAgICAvLyAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIFxuICB9XG5cbiAgLmJhY2tncm91bmQtaW1ne1xuICAgICAgaGVpZ2h0OjI1MHB4O1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKC4uL2Fzc2V0cy9kYW5jZXR3by5wbmcpO1xuICB9IiwiLmNsLWxvZ28tY3NzIHtcbiAgd2lkdGg6IDgwcHg7XG4gIGhlaWdodDogODBweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xufVxuXG4uY2wtc2lkZW1lbnUtbG9nbyB7XG4gIGhlaWdodDogMjUwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLmJhY2tncm91bmQtaW1nIHtcbiAgaGVpZ2h0OiAyNTBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoLi4vYXNzZXRzL2RhbmNldHdvLnBuZyk7XG59Il19 */");
 
 /***/ }),
 
@@ -806,14 +814,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, splashScreen, statusBar) {
+    function AppComponent(platform, router, splashScreen, statusBar) {
         this.platform = platform;
+        this.router = router;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.appPages = [
@@ -826,7 +837,11 @@ var AppComponent = /** @class */ (function () {
                 url: '/chatlist',
             },
             {
-                title: 'third',
+                title: 'Post Advertisement',
+                url: '/postadvertisement',
+            },
+            {
+                title: 'Log Out',
                 url: '/',
             }
         ];
@@ -837,10 +852,26 @@ var AppComponent = /** @class */ (function () {
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
+            _this.loginSession();
         });
+    };
+    AppComponent.prototype.loginSession = function () {
+        var loginStatus = localStorage.getItem("loginStatus");
+        if (loginStatus == "yes") {
+            this.router.navigate(['/home']);
+        }
+        else {
+            this.router.navigate(['/login']);
+        }
+    };
+    AppComponent.prototype.sideMenuClicked = function (pages) {
+        if (pages == "Log Out") {
+            localStorage.setItem("loginStatus", "no");
+        }
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] }
     ]; };
@@ -851,6 +882,7 @@ var AppComponent = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])
     ], AppComponent);

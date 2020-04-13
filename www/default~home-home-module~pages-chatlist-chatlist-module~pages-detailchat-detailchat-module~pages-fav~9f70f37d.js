@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d"],{
 
 /***/ "./node_modules/@angular/flex-layout/esm5/core.es5.js":
 /*!************************************************************!*\
@@ -8989,4 +8989,4 @@ var GridModule = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=default~home-home-module~pages-detailchat-detailchat-module~pages-login-login-module~pages-popup-pop~67247815.js.map
+//# sourceMappingURL=default~home-home-module~pages-chatlist-chatlist-module~pages-detailchat-detailchat-module~pages-fav~9f70f37d.js.map

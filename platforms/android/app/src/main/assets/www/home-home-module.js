@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white\">\n      New App\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div style=\"background-color:white\" class=\"cl_margin100\">\n\n    <div>\n      <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\"\n        class=\"half-black\">\n        <ion-slide *ngFor=\"let item of bannerArray\">\n          <div class=\"cl_img_div\">\n            <!-- <img src=\"../../assets/dancetwo.png\" class=\"cl_margin100\" /> -->\n            <img src=\"{{item.image}}\" class=\"cl_margin100\" />\n\n\n            <div fxLayout=\"column\" fxLayoutAlign=\"start start\"\n              style=\"width:100%;color:white;position:absolute; bottom:0\">\n              <div fxLayout=\"row\" fxLayoutAlign=\"start start\" class=\"cl_name_css\">\n                <label style=\"font-size:16px\">{{item.extraData.name}}</label>\n              </div>\n              <div class=\"sub_div\">\n                <ion-row>\n                  <ion-col size=\"8\" fxLayoutAlign=\"start start\">\n                    <label style=\"font-size:12px\">{{item.extraData.categoryName}}</label>\n                  </ion-col>\n                  <ion-col size=\"4\" fxLayoutAlign=\"end start\">\n                    <label style=\"font-size:12px\">{{item.extraData.city}} , {{item.extraData.kilometer}}</label>\n                  </ion-col>\n                </ion-row>\n\n              </div>\n\n            </div>\n\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </div>\n    <!-- </div> -->\n\n\n    <div style=\"width:100%; background-color:white;margin-top:15px; height:80%\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-bottom:10px\">\n        <img src=\"../../assets/funnelimg.png\" style=\"width:30px;height:30px\" (click)=\"filter()\"/>\n\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" *ngFor=\"let item of categoryArray\"\n          (click)=\"checkType(item.name, item.id)\">\n          <img src=\"{{item.image}}\" style=\"width:30px;height:30px\" />\n          <label style=\"margin-top:5px;font-size:12px\">{{item.name}}</label>\n        </div>\n      </div>\n\n\n      <div *ngIf=\"arrayLength > 0\" style=\"margin-bottom:20%\">\n\n        <div class=\"row\" *ngFor=\"let item of imageArray\">\n          <div class=\"column\" style=\"position:relative\">\n            <img src={{item.image}} style=\"border-radius: 5px;\" />\n            <div style=\"position:absolute; bottom:10px;width:100%\">\n\n              <ion-row style=\"color:white\">\n                <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n                  <label style=\"font-size:12px\"><b>Ad Title</b></label>\n                </ion-col>\n                <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n                  <label style=\"font-size:12px;padding-right:13px\"><b>$100</b></label>\n                </ion-col>\n              </ion-row>\n\n              <ion-row style=\"width:100%; margin-top:-5px\">\n                <ion-col size=\"3\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n                </ion-col>\n                <ion-col size=\"9\" fxLayoutAlign=\"end start\">\n                  <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>Mumbai, 120km</b></label>\n                </ion-col>\n              </ion-row>\n\n\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n        <h3 align=\"center\">No records found.</h3>\n      </div>\n\n\n    </div>\n\n    <div class=\"cl_bottom_fix\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n        <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n        <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" ></ion-icon>\n        <ion-icon name=\"add-circle\" class=\"cl_post_css\" (click)=\"postAdvertisement()\">\n        </ion-icon>\n        <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" ></ion-icon>\n        <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" ></ion-icon>\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white\">\n      Home\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div style=\"background-color:white\" class=\"cl_margin100\">\n\n    <div>\n      <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\"\n        class=\"half-black\">\n        <ion-slide *ngFor=\"let item of bannerArray\">\n          <div class=\"cl_img_div\">\n            <!-- <img src=\"../../assets/dancetwo.png\" class=\"cl_margin100\" /> -->\n            <img src=\"{{item.image}}\" class=\"cl_margin100\" />\n\n\n            <div fxLayout=\"column\" fxLayoutAlign=\"start start\"\n              style=\"width:100%;color:white;position:absolute; bottom:0\">\n              <div fxLayout=\"row\" fxLayoutAlign=\"start start\" class=\"cl_name_css\">\n                <label style=\"font-size:16px\">{{item.extraData.name}}</label>\n              </div>\n              <div class=\"sub_div\">\n                <ion-row>\n                  <ion-col size=\"8\" fxLayoutAlign=\"start start\">\n                    <label style=\"font-size:12px\">{{item.extraData.categoryName}}</label>\n                  </ion-col>\n                  <ion-col size=\"4\" fxLayoutAlign=\"end start\">\n                    <label style=\"font-size:12px\">{{item.extraData.city}} , {{item.extraData.kilometer}}</label>\n                  </ion-col>\n                </ion-row>\n\n              </div>\n\n            </div>\n\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </div>\n    <!-- </div> -->\n\n\n    <div style=\"width:100%; background-color:white;margin-top:15px; height:80%\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-bottom:10px\">\n        <img src=\"../../assets/funnelimg.png\" style=\"width:30px;height:30px\" (click)=\"filter()\"/>\n\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" *ngFor=\"let item of categoryArray\"\n          (click)=\"checkType(item.name, item.id)\">\n          <img src=\"{{item.image}}\" style=\"width:30px;height:30px\" />\n          <label style=\"margin-top:5px;font-size:12px\">{{item.name}}</label>\n        </div>\n      </div>\n\n\n      <div *ngIf=\"arrayLength > 0\" style=\"margin-bottom:20%\">\n\n        <div class=\"row\" *ngFor=\"let item of imageArray\">\n          <div class=\"column\" style=\"position:relative\">\n            <img src={{item.image}} style=\"border-radius: 5px;\" />\n            <div style=\"position:absolute; bottom:10px;width:100%\">\n\n              <ion-row style=\"color:white\">\n                <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n                  <label style=\"font-size:12px\"><b>Ad Title</b></label>\n                </ion-col>\n                <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n                  <label style=\"font-size:12px;padding-right:13px\"><b>$100</b></label>\n                </ion-col>\n              </ion-row>\n\n              <ion-row style=\"width:100%; margin-top:-5px\">\n                <ion-col size=\"3\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n                </ion-col>\n                <ion-col size=\"9\" fxLayoutAlign=\"end start\">\n                  <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>Mumbai, 120km</b></label>\n                </ion-col>\n              </ion-row>\n\n\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n        <h3 align=\"center\">No records found.</h3>\n      </div>\n\n\n    </div>\n\n    <div class=\"cl_bottom_fix\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n        <ion-icon name=\"home\" class=\"cl_post_css\" (click)=\"home()\"></ion-icon>\n        <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n        <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n        </ion-icon>\n        <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n        <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -97,11 +97,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePage", function() { return HomePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/popup/popup.page */ "./src/app/pages/popup/popup.page.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/popup/popup.page */ "./src/app/pages/popup/popup.page.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+
 
 
 
@@ -110,9 +112,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(dialog, apiCall, router) {
+    function HomePage(dialog, apiCall, menuController, router) {
         this.dialog = dialog;
         this.apiCall = apiCall;
+        this.menuController = menuController;
         this.router = router;
         this.bannerArray = [];
         this.categoryArray = [];
@@ -177,6 +180,7 @@ var HomePage = /** @class */ (function () {
                 "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
             }
         ];
+        this.menuController.enable(true);
         this.getCategory();
         this.getBannerData(this.categoryId);
         // let id = localStorage.get("userId");
@@ -184,7 +188,7 @@ var HomePage = /** @class */ (function () {
     }
     HomePage.prototype.getCategory = function () {
         var _this = this;
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "category/" + 0 + "/sub-category";
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + 0 + "/sub-category";
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.categoryArray = MyResponse['result']['list'];
         }, function (error) {
@@ -192,7 +196,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.getBannerData = function (categoryId) {
         var _this = this;
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "category/" + categoryId + "/banners";
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + categoryId + "/banners";
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.bannerArray = MyResponse['result']['list'];
             //  this.bannerImg = this.bannerArray['image'];
@@ -321,7 +325,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.showPopup = function () {
         var _this = this;
-        var dialogRef = this.dialog.open(_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_3__["PopupPage"], {
+        var dialogRef = this.dialog.open(_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_4__["PopupPage"], {
             width: '450px',
         });
         dialogRef.afterClosed().subscribe(function (result) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
@@ -445,10 +449,20 @@ var HomePage = /** @class */ (function () {
         this.router.navigate(['/postadvertisement']);
         // this.router.navigate(['/secondpageadvertisement']);
     };
+    HomePage.prototype.home = function () {
+        this.router.navigate(['/home']);
+    };
+    HomePage.prototype.openFavourite = function () {
+        this.router.navigate(['/favourite']);
+    };
+    HomePage.prototype.openProfile = function () {
+        this.router.navigate(['/profile']);
+    };
     HomePage.ctorParameters = function () { return [
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
-        { type: _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_6__["ApiService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"] },
+        { type: _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_7__["ApiService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
     ]; };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -456,9 +470,10 @@ var HomePage = /** @class */ (function () {
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/home/home.page.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"],
-            _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_6__["ApiService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"],
+            _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_7__["ApiService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], HomePage);
     return HomePage;
 }());
