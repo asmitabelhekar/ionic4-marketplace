@@ -14,6 +14,10 @@ import { PopupPage } from './pages/popup/popup.page';
 import { FilterpopupComponent } from './filterpopup/filterpopup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   declarations: [AppComponent,
@@ -33,6 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule],
   providers: [
     StatusBar,
+    GoogleMaps,
+    NativeGeocoder,
+    Geolocation,
+    CallNumber,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

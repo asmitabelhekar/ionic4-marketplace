@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 
 @Component({
   selector: 'app-chatlist',
@@ -36,6 +37,7 @@ export class ChatlistPage implements OnInit {
     }
   ];
   constructor(public router: Router,
+    public loader : LoaderService,
     public menuController : MenuController) { 
       this.menuController.enable(true);
     }

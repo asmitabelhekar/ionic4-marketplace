@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/service/apiservice/api.service';
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment'
 import { ToastController } from '@ionic/angular';
+import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 
 @Component({
   selector: 'app-secondpageadvertisement',
@@ -30,6 +31,7 @@ export class SecondpageadvertisementPage implements OnInit {
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
+    public loader : LoaderService,
     public toast : ToastController,
     public apiCall: ApiService) { }
   ngOnInit() {
@@ -39,6 +41,7 @@ export class SecondpageadvertisementPage implements OnInit {
   }
 
   detectEventGallery(event) {
+    this.loader.presentLoading();
     console.log(event);
     let files = event.target.files;
     console.log(files);
@@ -71,10 +74,11 @@ export class SecondpageadvertisementPage implements OnInit {
         } else {
           this.imageUrl = 1;
         }
-
+        this.loader.stopLoading();
         this.profilePic = MyResponse['result']['url'];
         console.log("print url resonce:" + this.urls);
       }, error => {
+        this.loader.stopLoading();
         console.log(error);
 
       }
@@ -110,7 +114,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.totalCalculation = this.finalCalculation + 100;
   }
   submmitAdvertisementData(data){
-
+    this.loader.presentLoading();
     let startDateTimeStamp = this.toTimestamp(this.todayDate);
     let endDateTimeStamp = this.toTimestamp(this.endDate);
     this.fromDateTimestamp = startDateTimeStamp;
@@ -167,7 +171,9 @@ export class SecondpageadvertisementPage implements OnInit {
                         localStorage.setItem("categoryId",this.getData.categoryId);
                         this.presentToast("Entry created successfully.")
                       this.router.navigate(['/home']);
+                      this.loader.stopLoading();
                       }, error => {
+                        this.loader.stopLoading();
                         this.presentToast("Please try again.")
                       })
           }
