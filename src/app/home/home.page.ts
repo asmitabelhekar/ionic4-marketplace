@@ -3,7 +3,7 @@ import { IonSlides, MenuController } from '@ionic/angular';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { PopupPage } from '../pages/popup/popup.page';
 import { FilterpopupComponent } from '../filterpopup/filterpopup.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from '../service/apiservice/api.service';
 import { LoaderService } from '../service/loaderservice/loader.service';
@@ -86,6 +86,7 @@ export class HomePage {
     public apiCall : ApiService,
     public loader : LoaderService,
     public menuController: MenuController,
+    public activatedRoute : ActivatedRoute,
     public router : Router) {
       this.menuController.enable(true); 
       this.getCategory();
@@ -136,6 +137,11 @@ export class HomePage {
     }
   ionViewWillEnter(){
     this.arrayLength = this.imageArray.length;
+    this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
+    if(this.categoryId == undefined){
+      this.categoryId = 0;
+    }
+    console.log("get categoryId::"+this.categoryId);
     this.getBannerData(this.categoryId);
     this.getAdvertisement(this.categoryId);
   }

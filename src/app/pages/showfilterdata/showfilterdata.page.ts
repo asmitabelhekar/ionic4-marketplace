@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-showfilterdata',
@@ -11,7 +12,9 @@ import { ApiService } from 'src/app/service/apiservice/api.service';
 export class ShowfilterdataPage implements OnInit {
 
   categoryArray: any;
+
   constructor(public loader: LoaderService,
+    public router : Router,
     public apiCall: ApiService
   ) { }
 
@@ -34,5 +37,10 @@ export class ShowfilterdataPage implements OnInit {
 
   goBackword() {
     window.history.back();
+  }
+
+  applyFilter(id){
+    console.log("get id::"+id);
+    this.router.navigate(['/home', { categoryId : id}]);
   }
 }
