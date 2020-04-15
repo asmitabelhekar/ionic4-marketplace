@@ -42,8 +42,8 @@
       </ion-col>
       <!-- <ion-col size="2"></ion-col> -->
       <ion-col size="3" fxLayoutAlign="center start">
-        <div>
-          <mat-form-field style="width:40px;color: black">
+        <div style="width:45px;background-color:white; height:55px">
+          <mat-form-field style="width:35px;color: black; margin-left:5px; height:40px">
             <select matNativeControl required #noweek (change)="selectNoOfWeeksType(noweek.value)" [(ngModel)]="advertisementModel.noofweek">
               <option *ngFor="let type of weeksArray" [value]="type"> {{type}}</option>
             </select>
@@ -88,30 +88,11 @@
     </ion-row>
   </div>
 
-  <!-- <div fxLayoutAlign="center center" style="width:100%;margin-top:15%">
-    <mat-form-field style="width:96%" appearance="outline">
-      <mat-label>Start Date</mat-label>
-      <input matInput #input="ngModel" [(ngModel)]="advertisementModel.fromdate" [matDatepicker]="picker1"
-        [disabled]="false">
-      <mat-datepicker-toggle matSuffix [for]="picker1" [disabled]="false"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-  </div>
-
-
-  <div fxLayoutAlign="center center" style="width:100%;">
-    <mat-form-field style="width:96%" appearance="outline">
-      <mat-label>End Date</mat-label>
-      <input matInput #input="ngModel" [(ngModel)]="advertisementModel.todate" [matDatepicker]="picker"
-        [disabled]="false">
-      <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="false"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div> -->
+  
 
 
 
-  <div *ngIf="imageUrl == 1"
+  <!-- <div *ngIf="imageUrl == 1"
     style="border:1px solid rgb(201, 195, 195);height:100px;width:96%;border-radius:5px;background-color: white; margin-left:2%; margin-top:20px"
     fxLayout="column" fxLayoutAlign="center center" onclick="document.getElementById('image_upload').click()">
     <ion-icon name="camera" style="width:70%; height:70%;color:gray">
@@ -125,7 +106,7 @@
       <img src="{{img}}" style="border-radius:10px">
 
     </div>
-  </div>
+  </div> -->
 
 
   <button mat-raised-button class="loginButton"

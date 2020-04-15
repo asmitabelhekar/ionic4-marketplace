@@ -36,54 +36,13 @@ export class SecondpageadvertisementPage implements OnInit {
     public apiCall: ApiService) { }
   ngOnInit() {
     this.todayDate = new Date();
-    this.getData = JSON.parse(this.activatedRoute.snapshot.params['advertisementData']);
-    console.log("show advertisement data:" + (this.getData.title));
+    this.advertisementModel['noofweek'] = "1";
+    this.selectNoOfWeeksType(1);
+    this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
+    console.log("second advertisement data:" + (this.getData));
   }
 
-  detectEventGallery(event) {
-    this.loader.presentLoading();
-    console.log(event);
-    let files = event.target.files;
-    console.log(files);
-    if (files) {
-      for (let file of files) {
-        let reader = new FileReader();
-        reader.onload = (e: any) => {
-        }
-        console.log(file);
-        this.fileToUpload = file;
-        reader.readAsDataURL(this.fileToUpload);
-      }
-      this.handleFileInput(this.fileToUpload); // 1 for event gallery upload 
-    }
-    console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
-  }
-
-
-  handleFileInput(files: FileList) {
-    if (this.fileToUpload == null || this.fileToUpload == undefined) {
-    }
-    let url = "http://3.6.135.154:9000/api/" + "upload-image";
-    console.log("check url : " + url);
-    this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
-      MyResponse => {
-
-        this.urls.push(MyResponse['result']['url'])
-        if (this.urls.length > 4) {
-          this.imageUrl = 0;
-        } else {
-          this.imageUrl = 1;
-        }
-        this.loader.stopLoading();
-        this.profilePic = MyResponse['result']['url'];
-        console.log("print url resonce:" + this.urls);
-      }, error => {
-        this.loader.stopLoading();
-        console.log(error);
-
-      }
-    );
-  }
+ 
 
   goBackword() {
     window.history.back();
@@ -103,11 +62,9 @@ export class SecondpageadvertisementPage implements OnInit {
 
   selectNoOfWeeksType(data){
     this.finalCalculation = 7 + ((data - 1) * 5);
-    // this.totalCalculation = this.finalCalculation + 100;
-    // var today = moment();
+    this.totalCalculation = this.finalCalculation + 100;
     this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
     console.log("show next date:"+moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-// alert("no of week:"+data);
   }
 
   calculateFinal(){
@@ -119,9 +76,7 @@ export class SecondpageadvertisementPage implements OnInit {
     let endDateTimeStamp = this.toTimestamp(this.endDate);
     this.fromDateTimestamp = startDateTimeStamp;
     this.toDateTimestamp = endDateTimeStamp;
-    if(this.urls.length == 0){
-      this.presentToast("Please select photos");
-    }else{
+   
         if(this.toDateTimestamp == undefined || this.toDateTimestamp == null || this.toDateTimestamp == NaN){
           this.presentToast("Please select weeks");
         }else{
@@ -157,7 +112,7 @@ export class SecondpageadvertisementPage implements OnInit {
                       send_date['gender'] = this.getData.gender;
                       send_date['languages'] = this.getData.languages;
                       send_date['email'] = this.getData.email;
-                      send_date['mobile'] = this.getData.mobile;
+                      send_date['mobile'] = this.getData.contact;
                       send_date['categoryId'] = this.getData.categoryId;
                       send_date['startDateTime'] = this.fromDateTimestamp;
                       send_date['endDateTime'] = this.toDateTimestamp;
@@ -178,7 +133,7 @@ export class SecondpageadvertisementPage implements OnInit {
                       })
           }
         }
-    }
+    
   
   }
 

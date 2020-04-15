@@ -1,22 +1,20 @@
 <ion-content>
 
-  <div style="position: relative; height:250px; width:100%;" fxLayoutAlign="center center">
+  <div class="cl_img_div" fxLayoutAlign="center center">
     <img src="{{getImage}}" style="width:100%; height:100%" />
 
-    <div fxLayout="row" style="position: absolute; top:0px; height:40px; width:100%; background: rgba(0, 0, 0, 0.3);">
+    <div fxLayout="row" class="cl_header">
       <ion-row style="width:100%">
         <ion-col size="2">
           <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
         </ion-col>
 
         <ion-col size="8" align="center">
-          <!-- <label fxLayoutAlign="center center" style="color:white">Asmita</label> -->
         </ion-col>
 
         <ion-col size="2" fxLayoutAlign="center center">
-          <img src="../../../assets/sharewhitee.png" style="width:25px; height:25px;margin-left:10px" />
-          <!-- <ion-icon ios="ios-share" md="md-share" style="color:white; width:20px; height:20px; margin:5px"></ion-icon> -->
-          <!-- <ion-icon fxLayoutAlign="center center" name="md-share" style="color:white; width:20px; height:20px; margin:5px"></ion-icon> -->
+          <img src="../../../assets/sharewhitee.png" class="cl_share_icon" />
+
         </ion-col>
       </ion-row>
     </div>
@@ -24,7 +22,7 @@
 
 
 
-  <div fxLayout="row" style="width:96%;margin-left:2%; margin-right:2%; margin-top:10px;">
+  <div fxLayout="row" style="margin-top:10px;" class="cl_margin">
     <div fxLayoutAlign="start start" style="width:90%; color:black">
       <div fxLayout="column" style="color:black; font-size:14px; margin-left:4px">
         <label>Eicher 1090 36 jeep</label>
@@ -38,46 +36,45 @@
     </div>
   </div>
 
-  <div fxLayout="row" style="width:96%;margin-left:2%; margin-right:2%; margin-top:10px;">
+  <div fxLayout="row" style="margin-top:10px;" class="cl_margin">
     <div fxLayoutAlign="start start" style="width:85%; color:black">
-      <!-- <img src="../../../assets/mappp.png" style="width:25px; height:15px; margin-left:-6px" /> -->
       <mat-icon style="color:black;font-size:15px">place</mat-icon>
-      <label style="color:rgb(92, 90, 90); font-size:13px; margin-left:-3px">FATIMA NAGAR, PUNE </label>
+      <label style="margin-left:-3px" class="cl_gray_label cl_font_14">FATIMA NAGAR, PUNE </label>
     </div>
 
     <div fxLayoutAlign="end start" style="width:15%;">
-      <label style="color:rgb(92, 90, 90);  font-size:13px">05 FEB</label>
+      <label class="cl_gray_label cl_font_13">05 FEB</label>
     </div>
   </div>
   <ion-item-divider style="width:100%;margin-top:-15px">
 
   </ion-item-divider>
 
-  <div style="width:96%; margin-left:2%; margin-right:2%;margin-top:5px">
-   
-<ion-row>
-  <ion-col size="12">
-    <label style="font-size: 13px; color:rgb(78, 77, 77);"><b>Details</b></label>
+  <div class="cl_margin" style="margin-top:5px">
 
-  </ion-col>
-</ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <label class="cl_gray_title cl_font_13"><b>Details</b></label>
+
+      </ion-col>
+    </ion-row>
     <ion-row style="margin-top:-5px">
       <ion-col size="6">
-        <label style="color:rgb(92, 90, 90);font-size:13px">YEAR</label>
+        <label class="cl_gray_label cl_font_14">YEAR</label>
       </ion-col>
 
       <ion-col size="6">
-        <label style="color:rgb(92, 90, 90);font-size:13px">2009</label>
+        <label class="cl_gray_label cl_font_13">2009</label>
       </ion-col>
     </ion-row>
 
     <ion-row style="margin-top:-5px">
       <ion-col size="6">
-        <label style="color:rgb(92, 90, 90);font-size:13px">KM DRIVEN</label>
+        <label class="cl_gray_label cl_font_13">KM DRIVEN</label>
       </ion-col>
 
       <ion-col size="6">
-        <label style="color:rgb(92, 90, 90);font-size:13px">200,000 KM</label>
+        <label class="cl_gray_label cl_font_13">200,000 KM</label>
       </ion-col>
     </ion-row>
   </div>
@@ -86,72 +83,59 @@
   <div style="width:96%;margin-left:2%; margin-top:5px">
     <label style="font-size:14px; color : rgb(78, 77, 77); margin-left:5px"><b>Description</b></label>
   </div>
-    <ion-item-divider style="margin-left:-2px; padding-bottom :8px; margin-top:4px">
-      <label style="font-size:14px; color : rgb(92, 90, 90); ">Want to sell Eicher 1090 Jeep with all documents clear </label>    
-    </ion-item-divider>
- 
-<ion-item-divider style="padding-bottom:10px">
-  <div style="width:96%; margin-left:2%; margin-top:10px" fxLayout="row">
-      <!-- <ion-row> -->
-        <div style="width:20%; margin-left:-10px">
-          <img src="../../../assets/defaultprofilepic.png" fxLayoutAlign="start start"
-          style="width:50px; height:50px" />
-        </div>
-    
-        <div style="width:75%">
-        <label style="font-size:13px ; color: rgb(78, 77, 77)"><b>NITIN JADHAV</b></label><br />
-        <label  style="font-size:14px;color : rgb(92, 90, 90);">Member since Nov 2017</label><br />
-        <label  style="font-size:13px; color : #50b5f2">SEE PROFILE</label>
-        </div>
+  <ion-item-divider style="margin-left:-2px; padding-bottom :8px; margin-top:4px">
+    <label class="cl_gray_label cl_font_14">Want to sell Eicher 1090 Jeep with all documents clear </label>
+  </ion-item-divider>
 
-        <div fxLayoutAlign="center center">
+  <ion-item-divider style="padding-bottom:10px">
+    <div style="margin-top:10px" class="cl_margin" fxLayout="row">
+      <div style="width:20%; margin-left:-10px">
+        <img src="../../../assets/defaultprofilepic.png" fxLayoutAlign="start start" class="cl_default_pic" />
+      </div>
 
-          <mat-icon style="color:black; width:30px; height:30px">keyboard_arrow_right</mat-icon>
-          <!-- <ion-icon name="person"></ion-icon> -->
-        </div>
-        
-      <!-- </ion-row> -->
+      <div style="width:75%">
+        <label class="cl_gray_title cl_font_13"><b>NITIN JADHAV</b></label><br />
+        <label class="cl_gray_label cl_font_14">Member since Nov 2017</label><br />
+        <label class="cl_font_13" style="color : #50b5f2">SEE PROFILE</label>
+      </div>
+
+      <div fxLayoutAlign="center center">
+
+        <mat-icon class="cl_arrow_right">keyboard_arrow_right</mat-icon>
+      </div>
+
     </div>
-   
-</ion-item-divider>
-   
-<!-- <ion-item-divider> -->
-  <div style="width:96%;margin-left:2%; margin-top:5px">
-    <label style="font-size:14px; color : rgb(78, 77, 77); margin-left:5px"><b>Add posted at</b></label>
+
+  </ion-item-divider>
+
+  <div class="cl_margin" style="margin-top:5px">
+    <label class="cl_adpost"><b>Add posted at</b></label>
   </div>
-  <div id="map_canvas" style="margin-bottom:20%;margin-top:10px" ></div>
+  <div id="map_canvas" style=" margin-bottom:20%;margin-top:10px;"></div>
 
 
 
-  
-<!-- </ion-item-divider> -->
 
-<div style="width:100%; position: fixed; bottom :0px; height:45px; background-color: #1e69c8;color:white" fxLayout="row" >
-<div style="width:50%; border-right:2px solid white" fxLayout="row">
-  <div fxFlex="50" fxLayoutAlign="center center">
-<!-- <ion-icon name="call" ></ion-icon> -->
-<mat-icon style="font-size:16px; margin-top:7px">chat_bubble_outline</mat-icon>
-  </div>
-  <div fxFlex="50" fxLayoutAlign="start center">
-<label style="font-size:14px">CHAT</label>
-  </div>
-</div>
 
-<div style="width:50%;"  (click)="makeCall()">
-  <div fxFlex="50" fxLayoutAlign="center center">
-    <ion-icon name="call" style="width:18px; height:18px"></ion-icon>
+  <div class="cl_call_message_maindiv" fxLayout="row">
+    <div class="cl_message_div" fxLayout="row" (click)="sendMessage()">
+      <div fxFlex="50" fxLayoutAlign="center center">
+        <!-- <ion-icon name="call" ></ion-icon> -->
+        <mat-icon class="cl_chat_icon">chat_bubble_outline</mat-icon>
       </div>
       <div fxFlex="50" fxLayoutAlign="start center">
-    <label style="font-size:14px">CALL</label>
+        <label class="cl_font_14">CHAT</label>
       </div>
-</div>
-</div>
-<!-- <ion-row style="margin-top:30px">
-  <ion-col size="6" style="background-color: #1e69c8;color:white">
-    <ion-icon style="color:white" name="chatboxes"></ion-icon>
-  </ion-col>
-  <ion-col size="6" style="background-color: #1e69c8;color:white">
-    
-  </ion-col>
-</ion-row> -->
+    </div>
+
+    <div style="width:50%;" (click)="makeCall()">
+      <div fxFlex="50" fxLayoutAlign="center center">
+        <ion-icon name="call" class="cl_call_icon"></ion-icon>
+      </div>
+      <div fxFlex="50" fxLayoutAlign="start center">
+        <label class="cl_font_14">CALL</label>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

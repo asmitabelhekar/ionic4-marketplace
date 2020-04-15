@@ -63,3 +63,25 @@
 }
 
 
+// .mat-form-field-outline {
+  
+//   top: 7px;
+//   height:55px;
+// }
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.344em;
+  margin-top:10px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  display: flex;
+  position: absolute;
+  /* top: .25em; */
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  height:55px;
+ 
+  pointer-events: none;
+}

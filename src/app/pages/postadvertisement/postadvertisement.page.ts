@@ -127,18 +127,18 @@ if(this.address == undefined || this.address == null || this.address == ""){
         let advertisemntInfo = {
           "title": data.title,
           "description": data.description,
-          "price": data.price,
+         
           "lattitude": this.lattitude,
           "longitude": this.longitude,
           "address": this.address,
           "gender": this.advertisementModel['gender'],
           "languages": this.languagesArray,
           "email": this.advertisementModel['email'],
-          "mobile": data.contact,
+         
           "categoryId": this.categoryId
         }
       console.log("data:"+JSON.stringify(advertisemntInfo));
-        this.router.navigate(['/secondpageadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
+        this.router.navigate(['/nextadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
       }
     
     }

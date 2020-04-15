@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
@@ -39,6 +39,7 @@ export class AdvertisementdetailPage implements OnInit {
     public platform : Platform,
     public callNumber : CallNumber,
     public googlemaps : GoogleMaps,
+    public router : Router,
     public nativeGeocoder :  NativeGeocoder,
     public loader : LoaderService) {
 
@@ -158,5 +159,9 @@ export class AdvertisementdetailPage implements OnInit {
 
   makeCall(){
     this.callNumber.callNumber("9527902622", true);
+  }
+
+  sendMessage(){
+    this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }])
   }
 }

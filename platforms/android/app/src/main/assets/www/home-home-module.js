@@ -472,8 +472,9 @@ var HomePage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     HomePage.prototype.postAdvertisement = function () {
-        this.router.navigate(['/postadvertisement']);
+        // this.router.navigate(['/postadvertisement']);
         // this.router.navigate(['/secondpageadvertisement']);
+        this.router.navigate(['/nextadvertisement']);
     };
     HomePage.prototype.home = function () {
         this.router.navigate(['/home']);

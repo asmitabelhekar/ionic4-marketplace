@@ -7,12 +7,21 @@ import { IonicModule } from '@ionic/angular';
 import { NextadvertisementPageRoutingModule } from './nextadvertisement-routing.module';
 
 import { NextadvertisementPage } from './nextadvertisement.page';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MaterialModule,
+    MatSelectModule,
     NextadvertisementPageRoutingModule
   ],
   declarations: [NextadvertisementPage]

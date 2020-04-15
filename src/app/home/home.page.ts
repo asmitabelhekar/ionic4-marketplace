@@ -390,6 +390,7 @@ export class HomePage {
   postAdvertisement(){
     this.router.navigate(['/postadvertisement']);
     // this.router.navigate(['/secondpageadvertisement']);
+    // this.router.navigate(['/nextadvertisement']);
   }
 
   home(){

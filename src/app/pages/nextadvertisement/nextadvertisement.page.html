@@ -16,22 +16,85 @@
 
 
 <ion-content>
-
-  <div
-  style="height:200px;width:95%;border-radius:5px;background-color: white; margin-top:10%"
-  fxLayout="column" fxLayoutAlign="center center"
-  onclick="document.getElementById('image_upload').click()">
-  <ion-icon *ngIf="profilePic == '' " name="camera" style="width:40%; height:40%; margin-top:15px;color:rgb(196, 184, 184)">
-  </ion-icon>
-  <img  src="{{profilePic}}"
-    style="width:100%;border-radius:5px; height:100%;" />
-
-
-  <input style="display: none;" id="image_upload" type="file" (change)="detectEventGallery($event)">
-
-  <div *ngIf="profilePic == '' " style="margin-top:12px;color: black;width:100%;margin-bottom:15px"
-    fxLayoutAlign="center">
-    <label type="file">Upload Pic</label>
-  </div>
+  <form #userForm="ngForm" style="width:100%;margin-top:10px">
+ 
+ 
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%; margin-top:10px" appearance="outline">
+    <mat-label>Mobile</mat-label>
+        <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact" #contact="ngModel"
+          align="center" required pattern="[0-9]+$">
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
+                Mobile Is Requird
+              </div>
+            </div>
+          </mat-error>
+  </mat-form-field>
 </div>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:5px">
+  <mat-form-field style="width:96%" appearance="outline">
+    <mat-label>Price</mat-label>
+        <input matInput class="form-control" type="number" name="price" [(ngModel)]="advertisementModel.price" #price="ngModel"
+          align="center" required pattern="[0-9.]+$">
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="price.invalid && (price.dirty || price.touched)">
+                Price Is Requird
+              </div>
+            </div>
+          </mat-error>
+  </mat-form-field>
+</div>
+
+<h5 style="margin-top:15px; margin-left:10px">Upload images</h5>
+<!-- <label style="margin-top:20px; margin-left:10px; color:black"><b>Upload Images</b></label> -->
+<div class="cl_image_div" fxLayout="row">
+<div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload1').click()">
+  <ion-icon *ngIf="firstImage == '' " name="camera" class="cl_images"></ion-icon>
+  <h5 *ngIf="firstImage == '' " align="center">upload Image</h5>
+  <img *ngIf="firstImage != '' " src="{{firstImage}}" class="cl_display_img" >
+</div>
+<div fxLayout="column" fxLayoutAlign="center center" class="cl_second_column_img" onclick="document.getElementById('image_upload2').click()">
+  <ion-icon *ngIf="secondImage == '' " name="camera" class="cl_images"></ion-icon>
+  <h5 *ngIf="secondImage == '' " align="center">upload Image</h5>
+  <img *ngIf="secondImage != '' " src="{{secondImage}}" class="cl_display_img">
+</div>
+</div>
+
+<div class="cl_image_div" fxLayout="row">
+  <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload3').click()">
+    <ion-icon *ngIf="thirdImage == '' " name="camera" class="cl_images"></ion-icon>
+    <h5 *ngIf="thirdImage == '' " align="center">upload Image</h5>
+    <img *ngIf="thirdImage != '' " src="{{thirdImage}}" class="cl_display_img">
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center" class="cl_second_column_img" onclick="document.getElementById('image_upload4').click()">
+    <ion-icon *ngIf="fourthImage == '' " name="camera" class="cl_images"></ion-icon>
+    <h5 *ngIf="fourthImage == '' " align="center">upload Image</h5>
+    <img  *ngIf="fourthImage != '' " src="{{fourthImage}}" class="cl_display_img">
+  </div>
+  </div>
+
+  <div class="cl_image_div" fxLayout="row">
+    <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload5').click()">
+      <ion-icon *ngIf="fifthImage == '' " name="camera" class="cl_images"></ion-icon>
+      <h5 *ngIf="fifthImage == '' " align="center">upload Image</h5>
+      <img *ngIf="fifthImage != '' " src="{{fifthImage}}" class="cl_display_img" >
+    </div>
+  
+    </div>
+
+    <input style="display: none;" id="image_upload1" type="file" (change)="detectEventGallery($event,0)">
+    <input style="display: none;" id="image_upload2" type="file" (change)="detectEventGallery($event,1)">
+    <input style="display: none;" id="image_upload3" type="file" (change)="detectEventGallery($event,2)">
+    <input style="display: none;" id="image_upload4" type="file" (change)="detectEventGallery($event,3)">
+    <input style="display: none;" id="image_upload5" type="file" (change)="detectEventGallery($event,4)">
+
+
+<div style="margin-top:5%">
+  <button [disabled]="price.invalid || contact.invalid" mat-raised-button class="nextButton" (click)="next(advertisementModel)">Next</button>
+</div>
+</form>
 </ion-content>
