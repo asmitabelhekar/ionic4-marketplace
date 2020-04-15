@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ShowfilterdataPageRoutingModule } from './showfilterdata-routing.module';
 
 import { ShowfilterdataPage } from './showfilterdata.page';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    FlexLayoutModule,
     ShowfilterdataPageRoutingModule
   ],
   declarations: [ShowfilterdataPage]

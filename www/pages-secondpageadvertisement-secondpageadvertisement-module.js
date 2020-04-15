@@ -17614,7 +17614,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"2\">\n        <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n      </ion-col>\n      <ion-col size=\"10\" class=\"TitleHeader TitleText\">\n        <ion-label style=\"color:white; margin-left:-15px\">Advertisement</ion-label>\n      </ion-col>\n\n    </ion-row>\n\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <h5 align=\"center\" style=\" margin-top:8%\">Select Plan</h5>\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n    style=\"width:96%; margin-left:2%; color: white; background-color: #50a46c; padding:25px;\">\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:35%; border-right: 1px solid white;\">\n\n      <label>One Week</label>\n      <label style=\"margin-top:15px\">7$</label>\n\n    </div>\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:65%\">\n\n      <label>Multiple Weeks</label>\n      <label style=\"margin-top:15px\">$7 + (no. of weeks * $5)</label>\n\n    </div>\n  </div>\n\n\n  <div style=\"width:96%; margin-left:2%; color: white; background-color: #31897b; padding:5px; margin-top:8%\">\n    <ion-row>\n      <ion-col size=\"6\" fxLayoutAlign=\"start center\">\n        <label fxLayoutAlign=\"start center\">Select Weeks</label>\n      </ion-col>\n      <!-- <ion-col size=\"2\"></ion-col> -->\n      <ion-col size=\"3\" fxLayoutAlign=\"center start\">\n        <div>\n          <mat-form-field style=\"width:40px;color: black\">\n            <select matNativeControl required #noweek (change)=\"selectNoOfWeeksType(noweek.value)\" [(ngModel)]=\"advertisementModel.noofweek\">\n              <option *ngFor=\"let type of weeksArray\" [value]=\"type\"> {{type}}</option>\n            </select>\n          </mat-form-field>\n        </div>\n      </ion-col>\n      <ion-col size=\"1\" fxLayoutAlign=\"end center\">\n        <label>=</label>\n      </ion-col>\n      <ion-col size=\"2\" fxLayoutAlign=\"end center\">\n        <label>$ {{finalCalculation}}</label>\n      </ion-col>\n    </ion-row>\n\n\n\n\n    <ion-row style=\"border: 1px solid white; padding:10px; margin-top:20px; margin-left:2%; margin-right:2%\" (click)=\"calculateFinal()\">\n      <ion-col size=\"3\">\n        <button style=\"border-radius: 100%; border: 1px solid white; width: 30px; height:30px\"></button>\n      </ion-col>\n      <!-- <ion-col size=\"2\"></ion-col> -->\n      <ion-col size=\"7\" fxLayoutAlign=\"start center\">\n        <label fxLayoutAlign=\"start center\">Boost Ad</label>\n      </ion-col>\n\n      <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n        <label fxLayoutAlign=\"center center\">$100</label>\n      </ion-col>\n    </ion-row>\n\n\n    <div style=\"border: 1px solid white; height:2px; margin-top:20px;margin-left:2%; margin-right:2% \"></div>\n    <ion-row style=\"margin-top:10px;margin-left:2%; margin-right:2%\">\n      <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n        <label>Total</label>\n      </ion-col>\n\n      <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n        <label>$ {{totalCalculation}}</label>\n      </ion-col>\n    </ion-row>\n  </div>\n\n  <!-- <div fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:15%\">\n    <mat-form-field style=\"width:96%\" appearance=\"outline\">\n      <mat-label>Start Date</mat-label>\n      <input matInput #input=\"ngModel\" [(ngModel)]=\"advertisementModel.fromdate\" [matDatepicker]=\"picker1\"\n        [disabled]=\"false\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker1\" [disabled]=\"false\"></mat-datepicker-toggle>\n      <mat-datepicker #picker1></mat-datepicker>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%\" appearance=\"outline\">\n      <mat-label>End Date</mat-label>\n      <input matInput #input=\"ngModel\" [(ngModel)]=\"advertisementModel.todate\" [matDatepicker]=\"picker\"\n        [disabled]=\"false\">\n      <mat-datepicker-toggle matSuffix [for]=\"picker\" [disabled]=\"false\"></mat-datepicker-toggle>\n      <mat-datepicker #picker></mat-datepicker>\n    </mat-form-field>\n  </div> -->\n\n\n\n  <div *ngIf=\"imageUrl == 1\"\n    style=\"border:1px solid rgb(201, 195, 195);height:100px;width:96%;border-radius:5px;background-color: white; margin-left:2%; margin-top:20px\"\n    fxLayout=\"column\" fxLayoutAlign=\"center center\" onclick=\"document.getElementById('image_upload').click()\">\n    <ion-icon name=\"camera\" style=\"width:70%; height:70%;color:gray\">\n    </ion-icon>\n\n\n    <input style=\"display: none;\" id=\"image_upload\" type=\"file\" (change)=\"detectEventGallery($event)\">\n  </div>\n  <div class=\"row\" *ngFor=\"let img of urls\" style=\"margin-top:20px; width:96%; margin-left:2%\">\n    <div class=\"column\">\n      <img src=\"{{img}}\" style=\"border-radius:10px\">\n\n    </div>\n  </div>\n\n\n  <button mat-raised-button class=\"loginButton\"\n    (click)=\"submmitAdvertisementData(advertisementModel)\"><b>Submit</b></button>\n\n    <div class=\"cl_bottom_fix\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n        <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n        <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n        <ion-icon name=\"add-circle\" class=\"cl_post_css\" (click)=\"postAdvertisement()\">\n        </ion-icon>\n        <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n        <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n      </div>\n    </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"2\">\n        <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n      </ion-col>\n      <ion-col size=\"10\" class=\"TitleHeader TitleText\">\n        <ion-label style=\"color:white; margin-left:-15px\">Advertisement</ion-label>\n      </ion-col>\n\n    </ion-row>\n\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <h5 align=\"center\" style=\" margin-top:8%\">Select Plan</h5>\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\"\n    style=\"width:96%; margin-left:2%; color: white; background-color: #50a46c; padding:25px;\">\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:35%; border-right: 1px solid white;\">\n\n      <label>One Week</label>\n      <label style=\"margin-top:15px\">7$</label>\n\n    </div>\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:65%\">\n\n      <label>Multiple Weeks</label>\n      <label style=\"margin-top:15px\">$7 + (no. of weeks * $5)</label>\n\n    </div>\n  </div>\n\n\n  <div style=\"width:96%; margin-left:2%; color: white; background-color: #31897b; padding:5px; margin-top:8%\">\n    <ion-row>\n      <ion-col size=\"6\" fxLayoutAlign=\"start center\">\n        <label fxLayoutAlign=\"start center\">Select Weeks</label>\n      </ion-col>\n      <!-- <ion-col size=\"2\"></ion-col> -->\n      <ion-col size=\"3\" fxLayoutAlign=\"center start\">\n        <div style=\"width:45px;background-color:white; height:60px\">\n          <mat-form-field style=\"width:35px;color: black; margin-left:5px; height:40px\">\n            <select matNativeControl required #noweek (change)=\"selectNoOfWeeksType(noweek.value)\" [(ngModel)]=\"advertisementModel.noofweek\">\n              <option *ngFor=\"let type of weeksArray\" [value]=\"type\"> {{type}}</option>\n            </select>\n          </mat-form-field>\n        </div>\n      </ion-col>\n      <ion-col size=\"1\" fxLayoutAlign=\"end center\">\n        <label>=</label>\n      </ion-col>\n      <ion-col size=\"2\" fxLayoutAlign=\"end center\">\n        <label>$ {{finalCalculation}}</label>\n      </ion-col>\n    </ion-row>\n\n\n\n\n    <ion-row style=\"border: 1px solid white; padding:10px; margin-top:20px; margin-left:2%; margin-right:2%\" (click)=\"calculateFinal()\">\n      <ion-col size=\"3\">\n        <button style=\"border-radius: 100%; border: 1px solid white; width: 30px; height:30px\"></button>\n      </ion-col>\n      <!-- <ion-col size=\"2\"></ion-col> -->\n      <ion-col size=\"7\" fxLayoutAlign=\"start center\">\n        <label fxLayoutAlign=\"start center\">Boost Ad</label>\n      </ion-col>\n\n      <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n        <label fxLayoutAlign=\"center center\">$100</label>\n      </ion-col>\n    </ion-row>\n\n\n    <div style=\"border: 1px solid white; height:2px; margin-top:20px;margin-left:2%; margin-right:2% \"></div>\n    <ion-row style=\"margin-top:10px;margin-left:2%; margin-right:2%\">\n      <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n        <label>Total</label>\n      </ion-col>\n\n      <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n        <label>$ {{totalCalculation}}</label>\n      </ion-col>\n    </ion-row>\n  </div>\n\n  \n\n\n\n  <!-- <div *ngIf=\"imageUrl == 1\"\n    style=\"border:1px solid rgb(201, 195, 195);height:100px;width:96%;border-radius:5px;background-color: white; margin-left:2%; margin-top:20px\"\n    fxLayout=\"column\" fxLayoutAlign=\"center center\" onclick=\"document.getElementById('image_upload').click()\">\n    <ion-icon name=\"camera\" style=\"width:70%; height:70%;color:gray\">\n    </ion-icon>\n\n\n    <input style=\"display: none;\" id=\"image_upload\" type=\"file\" (change)=\"detectEventGallery($event)\">\n  </div>\n  <div class=\"row\" *ngFor=\"let img of urls\" style=\"margin-top:20px; width:96%; margin-left:2%\">\n    <div class=\"column\">\n      <img src=\"{{img}}\" style=\"border-radius:10px\">\n\n    </div>\n  </div> -->\n\n\n  <button mat-raised-button class=\"loginButton\"\n    (click)=\"submmitAdvertisementData(advertisementModel)\"><b>Submit</b></button>\n\n    <div class=\"cl_bottom_fix\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n        <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n        <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n        <ion-icon name=\"add-circle\" class=\"cl_post_css\" (click)=\"postAdvertisement()\">\n        </ion-icon>\n        <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n        <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n      </div>\n    </div>\n</ion-content>");
 
 /***/ }),
 
@@ -17755,7 +17755,7 @@ var SecondpageadvertisementPageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".masters {\n  --background: #f1f4f9;\n}\n\n.TitleHeader {\n  width: 100%;\n  height: 50px;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\n.TitleText {\n  display: -webkit-inline-box;\n  display: inline-flex;\n  text-align: left;\n  font-size: 19px;\n  width: 81%;\n  color: #ffffff;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\n.cl-back-button {\n  background: url('back_white.png') center;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  width: 30px;\n  height: 30px;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n  margin-right: 15px;\n}\n\n.img-circle {\n  border-radius: 50%;\n  margin: 10px;\n  margin-top: 25px;\n  border: 2px solid #3486E8;\n}\n\n.column {\n  float: left;\n  border-radius: 5px;\n  width: 50%;\n  padding: 5px;\n  margin-top: -5px;\n}\n\n.loginButton {\n  background-color: #152a3f;\n  color: white;\n  width: 100%;\n  margin-top: 25px;\n  margin-bottom: 15%;\n  margin-left: 0%;\n  margin-right: 0%;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 18px;\n}\n\n.cl_bottom_nav_css {\n  width: 30px;\n  height: 30px;\n  color: gray;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  height: 50px;\n  width: 100%;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 30px;\n  height: 30px;\n  color: #f76161;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvaW9uaWM0LW1hcmtldHBsYWNlL3NyYy9hcHAvcGFnZXMvc2Vjb25kcGFnZWFkdmVydGlzZW1lbnQvc2Vjb25kcGFnZWFkdmVydGlzZW1lbnQucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zZWNvbmRwYWdlYWR2ZXJ0aXNlbWVudC9zZWNvbmRwYWdlYWR2ZXJ0aXNlbWVudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxxQkFBQTtBQ0FKOztBREdFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSwyQkFBQTtFQUFBLG9CQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtBQ0FKOztBREVBO0VBQ0ksMkJBQUE7RUFBQSxvQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLFVBQUE7RUFDQSxjQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtBQ0NKOztBREdBO0VBQ0ksd0NBQUE7RUFDQSxzQkFBQTtFQUNBLDJCQUFBO0VBQ0EsNEJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FDQUo7O0FER0E7RUFDSSxrQkFBQTtFQUVBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLHlCQUFBO0FDREo7O0FETUE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0FDSEo7O0FET0E7RUFDSSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtFQUlDLGVBQUE7RUFDQSxnQkFBQTtFQUNDLGlCQUFBO0VBQ0Esb0JBQUE7RUFDRixlQUFBO0FDUEo7O0FEV0E7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUNSRjs7QURXQTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNDLFdBQUE7RUFDQyx1QkFBQTtBQ1JKOztBRFdBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0FDUkYiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9zZWNvbmRwYWdlYWR2ZXJ0aXNlbWVudC9zZWNvbmRwYWdlYWR2ZXJ0aXNlbWVudC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5tYXN0ZXJzIHtcbiAgICAtLWJhY2tncm91bmQ6ICNmMWY0Zjk7XG4gIH1cblxuICAuVGl0bGVIZWFkZXJ7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiA1MHB4O1xuICAgIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4uVGl0bGVUZXh0e1xuICAgIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICAgIHRleHQtYWxpZ246bGVmdDtcbiAgICBmb250LXNpemU6IDE5cHg7XG4gICAgd2lkdGg6IDgxJTtcbiAgICBjb2xvcjogI2ZmZmZmZjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5cbi5jbC1iYWNrLWJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kOiB1cmwoJy4uLy4uLy4uL2Fzc2V0cy9iYWNrX3doaXRlLnBuZycpIGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIHdpZHRoOiAzMHB4O1xuICAgIGhlaWdodDogMzBweDtcbiAgICBvdXRsaW5lOiAwO1xuICAgIGJveC1zaGFkb3c6IDAgMCAwIDA7XG4gICAgbWFyZ2luLXJpZ2h0OiAxNXB4O1xufVxuXG4uaW1nLWNpcmNsZXtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgLy8gbWFyZ2luOiAxMHB4IDEwcHggMTBweCAwO1xuICAgIG1hcmdpbjogMTBweDtcbiAgICBtYXJnaW4tdG9wOjI1cHg7XG4gICAgYm9yZGVyOiAycHggc29saWQgIzM0ODZFODtcbiAgICAvLyBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbn1cblxuXG4uY29sdW1uIHtcbiAgICBmbG9hdDogbGVmdDtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBwYWRkaW5nOiA1cHg7XG4gICAgbWFyZ2luLXRvcDotNXB4O1xuICB9XG5cblxuLmxvZ2luQnV0dG9ue1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMxNTJhM2Y7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIHdpZHRoOjEwMCU7XG4gICAgbWFyZ2luLXRvcDogMjVweDtcbiAgICBtYXJnaW4tYm90dG9tOjE1JTtcbiAgICAvLyBwb3NpdGlvbjogZml4ZWQ7XG4gICAgLy8gYm90dG9tOjBweDtcbiAgICAvLyBib3JkZXItcmFkaXVzOjJweDtcbiAgICAgbWFyZ2luLWxlZnQ6MCU7IFxuICAgICBtYXJnaW4tcmlnaHQ6MCU7XG4gICAgICBwYWRkaW5nLXRvcDoxMHB4O1xuICAgICAgcGFkZGluZy1ib3R0b206IDEwcHg7IFxuICAgIGZvbnQtc2l6ZToxOHB4O1xuICB9XG5cblxuLmNsX2JvdHRvbV9uYXZfY3Nze1xuICB3aWR0aDozMHB4O1xuICBoZWlnaHQ6MzBweDtcbiAgY29sb3I6Z3JheTtcbn1cblxuLmNsX2JvdHRvbV9maXh7XG4gIHBvc2l0aW9uOiBmaXhlZDsgXG4gIGJvdHRvbTowcHg7XG4gIGhlaWdodDo1MHB4O1xuICAgd2lkdGg6IDEwMCU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2Nzc3tcbiAgd2lkdGg6MzBweDtcbiAgaGVpZ2h0OjMwcHg7XG4gIGNvbG9yOnJnYigyNDcsIDk3LCA5Nyk7XG59IiwiLm1hc3RlcnMge1xuICAtLWJhY2tncm91bmQ6ICNmMWY0Zjk7XG59XG5cbi5UaXRsZUhlYWRlciB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDUwcHg7XG4gIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uVGl0bGVUZXh0IHtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIGZvbnQtc2l6ZTogMTlweDtcbiAgd2lkdGg6IDgxJTtcbiAgY29sb3I6ICNmZmZmZmY7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5jbC1iYWNrLWJ1dHRvbiB7XG4gIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9iYWNrX3doaXRlLnBuZ1wiKSBjZW50ZXI7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbiAgb3V0bGluZTogMDtcbiAgYm94LXNoYWRvdzogMCAwIDAgMDtcbiAgbWFyZ2luLXJpZ2h0OiAxNXB4O1xufVxuXG4uaW1nLWNpcmNsZSB7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgbWFyZ2luOiAxMHB4O1xuICBtYXJnaW4tdG9wOiAyNXB4O1xuICBib3JkZXI6IDJweCBzb2xpZCAjMzQ4NkU4O1xufVxuXG4uY29sdW1uIHtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IDUwJTtcbiAgcGFkZGluZzogNXB4O1xuICBtYXJnaW4tdG9wOiAtNXB4O1xufVxuXG4ubG9naW5CdXR0b24ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTUyYTNmO1xuICBjb2xvcjogd2hpdGU7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAyNXB4O1xuICBtYXJnaW4tYm90dG9tOiAxNSU7XG4gIG1hcmdpbi1sZWZ0OiAwJTtcbiAgbWFyZ2luLXJpZ2h0OiAwJTtcbiAgcGFkZGluZy10b3A6IDEwcHg7XG4gIHBhZGRpbmctYm90dG9tOiAxMHB4O1xuICBmb250LXNpemU6IDE4cHg7XG59XG5cbi5jbF9ib3R0b21fbmF2X2NzcyB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGNvbG9yOiBncmF5O1xufVxuXG4uY2xfYm90dG9tX2ZpeCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDEwMCU7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4uY2xfcG9zdF9jc3Mge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xuICBjb2xvcjogI2Y3NjE2MTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".masters {\n  --background: #f1f4f9;\n}\n\n.TitleHeader {\n  width: 100%;\n  height: 50px;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\n.TitleText {\n  display: -webkit-inline-box;\n  display: inline-flex;\n  text-align: left;\n  font-size: 19px;\n  width: 81%;\n  color: #ffffff;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\n.cl-back-button {\n  background: url('back_white.png') center;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  width: 30px;\n  height: 30px;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n  margin-right: 15px;\n}\n\n.img-circle {\n  border-radius: 50%;\n  margin: 10px;\n  margin-top: 25px;\n  border: 2px solid #3486E8;\n}\n\n.column {\n  float: left;\n  border-radius: 5px;\n  width: 50%;\n  padding: 5px;\n  margin-top: -5px;\n}\n\n.loginButton {\n  background-color: #152a3f;\n  color: white;\n  width: 100%;\n  margin-top: 25px;\n  margin-bottom: 15%;\n  margin-left: 0%;\n  margin-right: 0%;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 18px;\n}\n\n.cl_bottom_nav_css {\n  width: 30px;\n  height: 30px;\n  color: gray;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  height: 50px;\n  width: 100%;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 30px;\n  height: 30px;\n  color: #f76161;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9zZWNvbmRwYWdlYWR2ZXJ0aXNlbWVudC9zZWNvbmRwYWdlYWR2ZXJ0aXNlbWVudC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3NlY29uZHBhZ2VhZHZlcnRpc2VtZW50L3NlY29uZHBhZ2VhZHZlcnRpc2VtZW50LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLHFCQUFBO0FDQUo7O0FER0U7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDJCQUFBO0VBQUEsb0JBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDQUo7O0FERUE7RUFDSSwyQkFBQTtFQUFBLG9CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsVUFBQTtFQUNBLGNBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDQ0o7O0FER0E7RUFDSSx3Q0FBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSw0QkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUNBSjs7QURHQTtFQUNJLGtCQUFBO0VBRUEsWUFBQTtFQUNBLGdCQUFBO0VBQ0EseUJBQUE7QUNESjs7QURNQTtFQUNJLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7QUNISjs7QURPQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBSUMsZUFBQTtFQUNBLGdCQUFBO0VBQ0MsaUJBQUE7RUFDQSxvQkFBQTtFQUNGLGVBQUE7QUNQSjs7QURXQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtBQ1JGOztBRFdBO0VBQ0UsZUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0MsV0FBQTtFQUNDLHVCQUFBO0FDUko7O0FEV0E7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7QUNSRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3NlY29uZHBhZ2VhZHZlcnRpc2VtZW50L3NlY29uZHBhZ2VhZHZlcnRpc2VtZW50LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLm1hc3RlcnMge1xuICAgIC0tYmFja2dyb3VuZDogI2YxZjRmOTtcbiAgfVxuXG4gIC5UaXRsZUhlYWRlcntcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDUwcHg7XG4gICAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5UaXRsZVRleHR7XG4gICAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gICAgdGV4dC1hbGlnbjpsZWZ0O1xuICAgIGZvbnQtc2l6ZTogMTlweDtcbiAgICB3aWR0aDogODElO1xuICAgIGNvbG9yOiAjZmZmZmZmO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cblxuLmNsLWJhY2stYnV0dG9ue1xuICAgIGJhY2tncm91bmQ6IHVybCgnLi4vLi4vLi4vYXNzZXRzL2JhY2tfd2hpdGUucG5nJykgY2VudGVyO1xuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gICAgd2lkdGg6IDMwcHg7XG4gICAgaGVpZ2h0OiAzMHB4O1xuICAgIG91dGxpbmU6IDA7XG4gICAgYm94LXNoYWRvdzogMCAwIDAgMDtcbiAgICBtYXJnaW4tcmlnaHQ6IDE1cHg7XG59XG5cbi5pbWctY2lyY2xle1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICAvLyBtYXJnaW46IDEwcHggMTBweCAxMHB4IDA7XG4gICAgbWFyZ2luOiAxMHB4O1xuICAgIG1hcmdpbi10b3A6MjVweDtcbiAgICBib3JkZXI6IDJweCBzb2xpZCAjMzQ4NkU4O1xuICAgIC8vIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xufVxuXG5cbi5jb2x1bW4ge1xuICAgIGZsb2F0OiBsZWZ0O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICB3aWR0aDogNTAlO1xuICAgIHBhZGRpbmc6IDVweDtcbiAgICBtYXJnaW4tdG9wOi01cHg7XG4gIH1cblxuXG4ubG9naW5CdXR0b257XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzE1MmEzZjtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgd2lkdGg6MTAwJTtcbiAgICBtYXJnaW4tdG9wOiAyNXB4O1xuICAgIG1hcmdpbi1ib3R0b206MTUlO1xuICAgIC8vIHBvc2l0aW9uOiBmaXhlZDtcbiAgICAvLyBib3R0b206MHB4O1xuICAgIC8vIGJvcmRlci1yYWRpdXM6MnB4O1xuICAgICBtYXJnaW4tbGVmdDowJTsgXG4gICAgIG1hcmdpbi1yaWdodDowJTtcbiAgICAgIHBhZGRpbmctdG9wOjEwcHg7XG4gICAgICBwYWRkaW5nLWJvdHRvbTogMTBweDsgXG4gICAgZm9udC1zaXplOjE4cHg7XG4gIH1cblxuXG4uY2xfYm90dG9tX25hdl9jc3N7XG4gIHdpZHRoOjMwcHg7XG4gIGhlaWdodDozMHB4O1xuICBjb2xvcjpncmF5O1xufVxuXG4uY2xfYm90dG9tX2ZpeHtcbiAgcG9zaXRpb246IGZpeGVkOyBcbiAgYm90dG9tOjBweDtcbiAgaGVpZ2h0OjUwcHg7XG4gICB3aWR0aDogMTAwJTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuLmNsX3Bvc3RfY3Nze1xuICB3aWR0aDozMHB4O1xuICBoZWlnaHQ6MzBweDtcbiAgY29sb3I6cmdiKDI0NywgOTcsIDk3KTtcbn0iLCIubWFzdGVycyB7XG4gIC0tYmFja2dyb3VuZDogI2YxZjRmOTtcbn1cblxuLlRpdGxlSGVhZGVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogNTBweDtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5UaXRsZVRleHQge1xuICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgZm9udC1zaXplOiAxOXB4O1xuICB3aWR0aDogODElO1xuICBjb2xvcjogI2ZmZmZmZjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmNsLWJhY2stYnV0dG9uIHtcbiAgYmFja2dyb3VuZDogdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2JhY2tfd2hpdGUucG5nXCIpIGNlbnRlcjtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xuICBvdXRsaW5lOiAwO1xuICBib3gtc2hhZG93OiAwIDAgMCAwO1xuICBtYXJnaW4tcmlnaHQ6IDE1cHg7XG59XG5cbi5pbWctY2lyY2xlIHtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBtYXJnaW46IDEwcHg7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG4gIGJvcmRlcjogMnB4IHNvbGlkICMzNDg2RTg7XG59XG5cbi5jb2x1bW4ge1xuICBmbG9hdDogbGVmdDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICB3aWR0aDogNTAlO1xuICBwYWRkaW5nOiA1cHg7XG4gIG1hcmdpbi10b3A6IC01cHg7XG59XG5cbi5sb2dpbkJ1dHRvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxNTJhM2Y7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgd2lkdGg6IDEwMCU7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG4gIG1hcmdpbi1ib3R0b206IDE1JTtcbiAgbWFyZ2luLWxlZnQ6IDAlO1xuICBtYXJnaW4tcmlnaHQ6IDAlO1xuICBwYWRkaW5nLXRvcDogMTBweDtcbiAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gIGZvbnQtc2l6ZTogMThweDtcbn1cblxuLmNsX2JvdHRvbV9uYXZfY3NzIHtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbiAgY29sb3I6IGdyYXk7XG59XG5cbi5jbF9ib3R0b21fZml4IHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBib3R0b206IDBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogMTAwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2NzcyB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGNvbG9yOiAjZjc2MTYxO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -17802,49 +17802,10 @@ var SecondpageadvertisementPage = /** @class */ (function () {
     }
     SecondpageadvertisementPage.prototype.ngOnInit = function () {
         this.todayDate = new Date();
-        this.getData = JSON.parse(this.activatedRoute.snapshot.params['advertisementData']);
-        console.log("show advertisement data:" + (this.getData.title));
-    };
-    SecondpageadvertisementPage.prototype.detectEventGallery = function (event) {
-        this.loader.presentLoading();
-        console.log(event);
-        var files = event.target.files;
-        console.log(files);
-        if (files) {
-            for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
-                var file = files_1[_i];
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                };
-                console.log(file);
-                this.fileToUpload = file;
-                reader.readAsDataURL(this.fileToUpload);
-            }
-            this.handleFileInput(this.fileToUpload); // 1 for event gallery upload 
-        }
-        console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
-    };
-    SecondpageadvertisementPage.prototype.handleFileInput = function (files) {
-        var _this = this;
-        if (this.fileToUpload == null || this.fileToUpload == undefined) {
-        }
-        var url = "http://3.6.135.154:9000/api/" + "upload-image";
-        console.log("check url : " + url);
-        this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result']['url']);
-            if (_this.urls.length > 4) {
-                _this.imageUrl = 0;
-            }
-            else {
-                _this.imageUrl = 1;
-            }
-            _this.loader.stopLoading();
-            _this.profilePic = MyResponse['result']['url'];
-            console.log("print url resonce:" + _this.urls);
-        }, function (error) {
-            _this.loader.stopLoading();
-            console.log(error);
-        });
+        this.advertisementModel['noofweek'] = "1";
+        this.selectNoOfWeeksType(1);
+        this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
+        console.log("second advertisement data:" + (this.getData));
     };
     SecondpageadvertisementPage.prototype.goBackword = function () {
         window.history.back();
@@ -17860,11 +17821,9 @@ var SecondpageadvertisementPage = /** @class */ (function () {
     // }
     SecondpageadvertisementPage.prototype.selectNoOfWeeksType = function (data) {
         this.finalCalculation = 7 + ((data - 1) * 5);
-        // this.totalCalculation = this.finalCalculation + 100;
-        // var today = moment();
+        this.totalCalculation = this.finalCalculation + 100;
         this.endDate = moment__WEBPACK_IMPORTED_MODULE_5__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
         console.log("show next date:" + moment__WEBPACK_IMPORTED_MODULE_5__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-        // alert("no of week:"+data);
     };
     SecondpageadvertisementPage.prototype.calculateFinal = function () {
         this.totalCalculation = this.finalCalculation + 100;
@@ -17876,64 +17835,59 @@ var SecondpageadvertisementPage = /** @class */ (function () {
         var endDateTimeStamp = this.toTimestamp(this.endDate);
         this.fromDateTimestamp = startDateTimeStamp;
         this.toDateTimestamp = endDateTimeStamp;
-        if (this.urls.length == 0) {
-            this.presentToast("Please select photos");
+        if (this.toDateTimestamp == undefined || this.toDateTimestamp == null || this.toDateTimestamp == NaN) {
+            this.presentToast("Please select weeks");
         }
         else {
-            if (this.toDateTimestamp == undefined || this.toDateTimestamp == null || this.toDateTimestamp == NaN) {
+            if (this.fromDateTimestamp == undefined || this.fromDateTimestamp == null) {
                 this.presentToast("Please select weeks");
             }
             else {
-                if (this.fromDateTimestamp == undefined || this.fromDateTimestamp == null) {
-                    this.presentToast("Please select weeks");
-                }
-                else {
-                    this.submitAdvertisementData = {
-                        "title": this.getData.title,
-                        "description": this.getData.description,
-                        "price": this.getData.price,
-                        "lattitude": this.getData.lattitude,
-                        "longitude": this.getData.longitude,
-                        "address": this.getData.address,
-                        "gender": this.getData.gender,
-                        "languages": this.getData.languages,
-                        "email": this.getData.email,
-                        "mobile": this.getData.mobile,
-                        "categoryId": this.getData.categoryId,
-                        "startDateTime": this.fromDateTimestamp,
-                        "endDateTime": this.toDateTimestamp,
-                        "isActive": 0,
-                        "images": this.urls
-                    };
-                    var send_date = {};
-                    send_date['title'] = this.getData.title;
-                    send_date['description'] = this.getData.description;
-                    send_date['price'] = this.getData.price;
-                    send_date['latitude'] = this.getData.lattitude;
-                    send_date['longitude'] = this.getData.longitude;
-                    send_date['address'] = this.getData.address;
-                    send_date['gender'] = this.getData.gender;
-                    send_date['languages'] = this.getData.languages;
-                    send_date['email'] = this.getData.email;
-                    send_date['mobile'] = this.getData.mobile;
-                    send_date['categoryId'] = this.getData.categoryId;
-                    send_date['startDateTime'] = this.fromDateTimestamp;
-                    send_date['endDateTime'] = this.toDateTimestamp;
-                    send_date['isActive'] = 0;
-                    send_date['images'] = this.urls;
-                    // send_date['transaction'] = "credited";
-                    this.usersId = localStorage.getItem("userId");
-                    var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + this.usersId + "/advertisements";
-                    this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
-                        localStorage.setItem("categoryId", _this.getData.categoryId);
-                        _this.presentToast("Entry created successfully.");
-                        _this.router.navigate(['/home']);
-                        _this.loader.stopLoading();
-                    }, function (error) {
-                        _this.loader.stopLoading();
-                        _this.presentToast("Please try again.");
-                    });
-                }
+                this.submitAdvertisementData = {
+                    "title": this.getData.title,
+                    "description": this.getData.description,
+                    "price": this.getData.price,
+                    "lattitude": this.getData.lattitude,
+                    "longitude": this.getData.longitude,
+                    "address": this.getData.address,
+                    "gender": this.getData.gender,
+                    "languages": this.getData.languages,
+                    "email": this.getData.email,
+                    "mobile": this.getData.mobile,
+                    "categoryId": this.getData.categoryId,
+                    "startDateTime": this.fromDateTimestamp,
+                    "endDateTime": this.toDateTimestamp,
+                    "isActive": 0,
+                    "images": this.urls
+                };
+                var send_date = {};
+                send_date['title'] = this.getData.title;
+                send_date['description'] = this.getData.description;
+                send_date['price'] = this.getData.price;
+                send_date['latitude'] = this.getData.lattitude;
+                send_date['longitude'] = this.getData.longitude;
+                send_date['address'] = this.getData.address;
+                send_date['gender'] = this.getData.gender;
+                send_date['languages'] = this.getData.languages;
+                send_date['email'] = this.getData.email;
+                send_date['mobile'] = this.getData.contact;
+                send_date['categoryId'] = this.getData.categoryId;
+                send_date['startDateTime'] = this.fromDateTimestamp;
+                send_date['endDateTime'] = this.toDateTimestamp;
+                send_date['isActive'] = 0;
+                send_date['images'] = this.urls;
+                // send_date['transaction'] = "credited";
+                this.usersId = localStorage.getItem("userId");
+                var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + this.usersId + "/advertisements";
+                this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
+                    localStorage.setItem("categoryId", _this.getData.categoryId);
+                    _this.presentToast("Entry created successfully.");
+                    _this.router.navigate(['/home']);
+                    _this.loader.stopLoading();
+                }, function (error) {
+                    _this.loader.stopLoading();
+                    _this.presentToast("Please try again.");
+                });
             }
         }
     };

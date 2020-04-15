@@ -42,7 +42,7 @@
       </ion-col>
       <!-- <ion-col size="2"></ion-col> -->
       <ion-col size="3" fxLayoutAlign="center start">
-        <div style="width:45px;background-color:white; height:55px">
+        <div style="width:45px;background-color:white; height:60px">
           <mat-form-field style="width:35px;color: black; margin-left:5px; height:40px">
             <select matNativeControl required #noweek (change)="selectNoOfWeeksType(noweek.value)" [(ngModel)]="advertisementModel.noofweek">
               <option *ngFor="let type of weeksArray" [value]="type"> {{type}}</option>
