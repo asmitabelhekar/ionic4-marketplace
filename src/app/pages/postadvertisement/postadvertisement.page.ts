@@ -118,9 +118,9 @@ if(this.address == undefined || this.address == null || this.address == ""){
   if(this.languagesArray.length == 0){
     this.presentToast("Please select languages");
   }else{
-    if(this.advertisementModel['gender'] == undefined || this.advertisementModel['gender'] == null || this.advertisementModel['gender'] == ""){
-      this.presentToast("Please select gender");
-    }else{
+    if(this.advertisementModel['gender'] == '0' || this.advertisementModel['gender'] == '1'){
+     
+
       if(this.categoryId == undefined || this.categoryId == null || this.categoryId == ""){
         this.presentToast("Please select category id");
       }else{
@@ -140,7 +140,9 @@ if(this.address == undefined || this.address == null || this.address == ""){
       console.log("data:"+JSON.stringify(advertisemntInfo));
         this.router.navigate(['/nextadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
       }
+    }else{
     
+      this.presentToast("Please select gender");
     }
   }
 }

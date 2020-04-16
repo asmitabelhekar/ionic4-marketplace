@@ -22,17 +22,19 @@
 
 
             <div fxLayout="column" fxLayoutAlign="start start"
-              style="width:100%;color:white;position:absolute; bottom:0">
+              style="width:100%;color:white;position:absolute; bottom:0; background: rgba(0, 0, 0, 0.5);">
               <div fxLayout="row" fxLayoutAlign="start start" class="cl_name_css">
                 <label style="font-size:16px">{{item.extraData.name}}</label>
               </div>
               <div class="sub_div">
-                <ion-row>
+                <ion-row style="margin-top:5px">
                   <ion-col size="8" fxLayoutAlign="start start">
                     <label style="font-size:12px">{{item.extraData.categoryName}}</label>
                   </ion-col>
                   <ion-col size="4" fxLayoutAlign="end start">
-                    <label style="font-size:12px">{{item.extraData.city}} , {{item.extraData.kilometer}}</label>
+                    <div>
+                      <label style="font-size:12px">{{item.extraData.city}} , {{item.extraData.kilometer}}</label>
+                    </div>
                   </ion-col>
                 </ion-row>
 
@@ -83,7 +85,9 @@
   
                   </ion-col>
                   <ion-col size="8" fxLayoutAlign="end start">
-                    <label style="font-size:10px; color:white;padding-right: 11px;"><b>{{item.address}} , 120km</b></label>
+                    <div class="b">
+                      <label style="font-size:10px; color:white;padding-right: 11px;"><b>{{item.address}} , 120km</b></label>
+                    </div>
                   </ion-col>
                 </ion-row>
   
