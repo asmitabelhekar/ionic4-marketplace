@@ -12,9 +12,10 @@ import { Router } from '@angular/router';
 export class ShowfilterdataPage implements OnInit {
 
   categoryArray: any;
+  categoryName: any;
 
   constructor(public loader: LoaderService,
-    public router : Router,
+    public router: Router,
     public apiCall: ApiService
   ) { }
 
@@ -22,6 +23,14 @@ export class ShowfilterdataPage implements OnInit {
     this.getCategory();
   }
 
+  ionViewWillEnter() {
+    this.categoryName = localStorage.getItem("categoryName");
+    if (this.categoryName == undefined || this.categoryName == null || this.categoryName == "") {
+
+    } else {
+
+    }
+  }
 
   getCategory() {
     this.loader.showBlockingLoaderAuth();
@@ -39,8 +48,9 @@ export class ShowfilterdataPage implements OnInit {
     window.history.back();
   }
 
-  applyFilter(id){
-    console.log("get id::"+id);
-    this.router.navigate(['/home', { categoryId : id}]);
+  applyFilter(id, name) {
+    console.log("get id::" + id);
+    localStorage.setItem("categoryName", id);
+    this.router.navigate(['/home', { categoryId: id }]);
   }
 }

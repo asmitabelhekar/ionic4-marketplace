@@ -828,9 +828,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, router, preloader, splashScreen, statusBar) {
+    function AppComponent(platform, router, alertCtrl, preloader, splashScreen, statusBar) {
         this.platform = platform;
         this.router = router;
+        this.alertCtrl = alertCtrl;
         this.preloader = preloader;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
@@ -871,6 +872,56 @@ var AppComponent = /** @class */ (function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
             _this.loginSession();
+            _this.platform.backButton.subscribe(function () {
+                if (_this.router.url === '/home') {
+                    _this.presentAlert();
+                    return;
+                }
+            });
+            _this.platform.backButton.subscribeWithPriority(9999, function () {
+                document.addEventListener('backbutton', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    console.log('hello');
+                }, false);
+            });
+        });
+    };
+    AppComponent.prototype.presentAlert = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            header: '',
+                            message: 'Do you want to exit?',
+                            buttons: [
+                                {
+                                    text: 'No',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function (blah) {
+                                        console.log('Confirm Cancel: blah');
+                                    }
+                                }, {
+                                    text: 'Yes',
+                                    handler: function () {
+                                        console.log('Confirm Okay');
+                                        // this.platform.;
+                                        navigator['app'].exitApp();
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        alert.setAttribute('role', 'alert');
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     AppComponent.prototype.loginSession = function () {
@@ -891,6 +942,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
         { type: _service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__["LoaderService"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] }
@@ -903,6 +955,7 @@ var AppComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"],
             _service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__["LoaderService"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])

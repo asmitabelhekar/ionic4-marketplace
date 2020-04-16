@@ -46,8 +46,15 @@
   // ion-content{
   //   --background: #152a3f !important;   
   // }
-  // ion-card {
+  .card-one {
 
-  //   --background: #152a3f !important;
-  //   color:white;
-  // }
+    --background: #152a3f !important;
+    --color:white;
+    
+  }
+
+  .card-two {
+
+    --background: white !important;
+    --color:black;
+  }

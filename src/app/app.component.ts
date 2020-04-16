@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -44,6 +44,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     public router : Router,
+    public alertCtrl : AlertController,
     public preloader : LoaderService,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
@@ -65,7 +66,49 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.loginSession();
+      
+      this.platform.backButton.subscribe(() => {
+        if (this.router.url === '/home' ) {
+          this.presentAlert()
+          return
+        }
+      });
+
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+        document.addEventListener('backbutton', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log('hello');
+        }, false);
+      });
     });
+  }
+
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: '',
+      message: 'Do you want to exit?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            console.log('Confirm Okay');
+            // this.platform.;
+            navigator['app'].exitApp()
+          }
+        }
+      ]
+    });
+    alert.setAttribute('role', 'alert');
+    await alert.present();
   }
 
   loginSession(){
