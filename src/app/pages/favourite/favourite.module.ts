@@ -8,12 +8,15 @@ import { FavouritePageRoutingModule } from './favourite-routing.module';
 
 import { FavouritePage } from './favourite.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    MaterialModule,
+    FlexLayoutModule,
     FlexLayoutModule,
     FavouritePageRoutingModule
   ],
