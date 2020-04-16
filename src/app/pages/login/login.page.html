@@ -1,72 +1,77 @@
 <div class="MainLoginClass">
 
 
-  <div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center" style="margin-top:20%">
     <div fxLayout="column" fxLayoutAlign="center center">
       <!-- <img class="centerImg" src="../../../assets/applogo.png" style="width:200px;height:120px;margin-top:5%" /> -->
-      <h2>Market Place</h2>
+      <h3 style="color:white">Market Place</h3>
+      <img src="../../../assets/logotransparent.png" style="width:200px; height:200px;"/>
     </div>
-    <div class="LoginFormClass">
 
-      <!-- <form name="entryform" style="width: 100%;" #f="ngForm" novalidate> -->
+    <ion-card style="width:90%; padding-bottom:30px;border-radius: 20px;">
+      <div class="LoginFormClass">
 
-      <div fxLayout="column" fxLayoutAlign="center center" style="width:100%">
-        <mat-form-field style="width:92%; margin-top:15%;margin-left:4%;color:black; margin-right:4%"
-          appearance="fill">
-          <mat-label style="color:black">Phone Number</mat-label>
-          <input matInput type="tel" id="mobile" class="form-control" required minlength="10"
-            maxlength="10" [(ngModel)]="loginModel.mobile" #mobile="ngModel" />
-          <mat-error>
-            <div class="form-group">
-              <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert alert-danger">
-                <div class="LoginError" *ngIf="mobile.errors.required">
-                  Please Enter Phone Number
+        <!-- <form name="entryform" style="width: 100%;" #f="ngForm" novalidate> -->
+  
+        <div fxLayout="column" fxLayoutAlign="center center" style="width:100%">
+          <mat-form-field style="width:92%; margin-top:15%;margin-left:4%;color:black; margin-right:4%"
+            appearance="fill">
+            <mat-label style="color:black">Phone Number</mat-label>
+            <input matInput type="tel" id="mobile" class="form-control" required minlength="10" appearance="outline"
+              maxlength="10" [(ngModel)]="loginModel.mobile" #mobile="ngModel" />
+            <mat-error>
+              <div class="form-group">
+                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+                  <div class="LoginError" *ngIf="mobile.errors.required">
+                    Please Enter Phone Number
+                  </div>
+                  <div class="LoginError" *ngIf="mobile.errors.minlength">
+                    Phone Number must be at least 10 digits long.
+                  </div>
+  
+  
                 </div>
-                <div class="LoginError" *ngIf="mobile.errors.minlength">
-                  Phone Number must be at least 10 digits long.
-                </div>
-
-
               </div>
-            </div>
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field style="width:92%;color:black" appearance="fill">
-          <mat-label style="color:black">Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" id="password" class="form-control"
-            required [(ngModel)]="loginModel.password" #password="ngModel" style="color:black"/>
-          <mat-icon matSuffix (click)="hide = !hide" style="color:black">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error>
-            <div class="form-group">
-              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                <div class="LoginError" *ngIf="password.errors.required">
-                  Please Enter Password
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field style="width:92%;color:black" appearance="fill">
+            <mat-label style="color:black">Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="password" class="form-control"
+              required [(ngModel)]="loginModel.password" #password="ngModel" style="color:black"/>
+            <mat-icon matSuffix (click)="hide = !hide" style="color:black">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error>
+              <div class="form-group">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                  <div class="LoginError" *ngIf="password.errors.required">
+                    Please Enter Password
+                  </div>
+  
+  
+  
                 </div>
-
-
-
               </div>
-            </div>
-          </mat-error>
-        </mat-form-field>
-        <div *ngIf="is_error" class="LoginError">
-          {{message}}
+            </mat-error>
+          </mat-form-field>
+          <div *ngIf="is_error" class="LoginError">
+            {{message}}
+          </div>
         </div>
+  
+  
+  
+  
+  
+        <div style="margin-top:5%">
+          <button [disabled]="mobile.invalid || password.invalid" mat-raised-button class="loginButton" (click)="login(loginModel)">Login</button>
+        </div>
+  
+  
+        <!-- </form> -->
+  
       </div>
-
-
-
-
-
-      <div style="margin-top:5%">
-        <button [disabled]="mobile.invalid || password.invalid" mat-raised-button class="loginButton" (click)="login(loginModel)">Login</button>
-      </div>
-
-
-      <!-- </form> -->
-
-    </div>
+    </ion-card>
+  
 
   </div>
 

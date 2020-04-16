@@ -33,6 +33,7 @@
 
 
 
+
 // ion-menu {
 //     --ion-background-color: #2f4d6b;
 //     --ion-text-color: #152a3f;
@@ -69,10 +70,10 @@
 //   height:55px;
 // }
 
-.mat-form-field-wrapper {
-  padding-bottom: 0.344em;
-  margin-top:10px;
-}
+// .mat-form-field-wrapper {
+//   padding-bottom: 0.344em;
+//   margin-top:10px;
+// }
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
   display: flex;
@@ -82,6 +83,5 @@
   right: 0;
   bottom: 5px;
   height:55px;
- 
   pointer-events: none;
 }
