@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"2\">\n        <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n      </ion-col>\n      <ion-col size=\"10\" class=\"TitleHeader TitleText\">\n        <ion-label style=\"color:white; margin-left:-15px\">Filter</ion-label>\n      </ion-col>\n  \n    </ion-row>\n\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div style=\"width:100%; height:100%\">\n    <div style=\"width:96%;margin-left:2%; margin-right:2%\">\n\n      <div class=\"row\" *ngFor=\"let item of categoryArray\" >\n        <div class=\"column\" style=\"position:relative\">\n          \n        <ion-card style=\"border-radius: 5px;width:100%; height:100%; margin:auto; margin-top:10px\" fxLayoutAlign=\"center center\">\n          \n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"margin-top:20px\">\n          \n            <img src={{item.image}} style=\"border-radius: 5px;width:50px; height:50px\"/>\n            <h5 align=\"center\">{{item.name}}</h5>\n          </div>\n         \n        </ion-card>\n        </div>\n  \n      </div>\n  \n  \n    </div>\n  \n  </div>\n  \n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"2\">\n        <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n      </ion-col>\n      <ion-col size=\"10\" class=\"TitleHeader TitleText\">\n        <ion-label style=\"color:white; margin-left:-15px\">Filter</ion-label>\n      </ion-col>\n  \n    </ion-row>\n\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div style=\"width:100%; height:100%\">\n    <div style=\"width:96%;margin-left:2%; margin-right:2%\">\n\n      <div class=\"row\" *ngFor=\"let item of categoryArray\" >\n        <div class=\"column\" style=\"position:relative\">\n          \n        <ion-card style=\"border-radius: 5px;width:100%; height:100%; margin:auto; margin-top:10px\" (click)=\"applyFilter(item.id)\">\n          <!-- <div >\n            <mat-checkbox slot=\"end\"\n            [(ngModel)]=\"item.isChecked\" \n            (ionChange)=\"checkEvent()\"></mat-checkbox>\n          </div> -->\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"margin-top:20px\">\n          \n            <img src={{item.image}} style=\"border-radius: 5px;width:50px; height:50px\"/>\n            <h5 align=\"center\">{{item.name}}</h5>\n          </div>\n         \n        </ion-card>\n        </div>\n  \n      </div>\n  \n  \n    </div>\n  \n  </div>\n  \n</ion-content>\n");
 
 /***/ }),
 
@@ -71,6 +71,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _showfilterdata_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./showfilterdata-routing.module */ "./src/app/pages/showfilterdata/showfilterdata-routing.module.ts");
 /* harmony import */ var _showfilterdata_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./showfilterdata.page */ "./src/app/pages/showfilterdata/showfilterdata.page.ts");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 
@@ -89,6 +91,7 @@ var ShowfilterdataPageModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatCheckboxModule"],
                 _showfilterdata_routing_module__WEBPACK_IMPORTED_MODULE_5__["ShowfilterdataPageRoutingModule"]
             ],
             declarations: [_showfilterdata_page__WEBPACK_IMPORTED_MODULE_6__["ShowfilterdataPage"]]
@@ -129,14 +132,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 
 var ShowfilterdataPage = /** @class */ (function () {
-    function ShowfilterdataPage(loader, apiCall) {
+    function ShowfilterdataPage(loader, router, apiCall) {
         this.loader = loader;
+        this.router = router;
         this.apiCall = apiCall;
     }
     ShowfilterdataPage.prototype.ngOnInit = function () {
@@ -144,20 +150,25 @@ var ShowfilterdataPage = /** @class */ (function () {
     };
     ShowfilterdataPage.prototype.getCategory = function () {
         var _this = this;
-        this.loader.presentLoading();
+        this.loader.showBlockingLoaderAuth();
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "category/" + 0 + "/sub-category";
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.categoryArray = MyResponse['result']['list'];
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
         });
     };
     ShowfilterdataPage.prototype.goBackword = function () {
         window.history.back();
     };
+    ShowfilterdataPage.prototype.applyFilter = function (id) {
+        console.log("get id::" + id);
+        this.router.navigate(['/home', { categoryId: id }]);
+    };
     ShowfilterdataPage.ctorParameters = function () { return [
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_2__["LoaderService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] }
     ]; };
     ShowfilterdataPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -167,6 +178,7 @@ var ShowfilterdataPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./showfilterdata.page.scss */ "./src/app/pages/showfilterdata/showfilterdata.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_2__["LoaderService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"]])
     ], ShowfilterdataPage);
     return ShowfilterdataPage;

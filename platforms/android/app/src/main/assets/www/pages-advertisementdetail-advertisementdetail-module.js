@@ -187,7 +187,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
     };
     AdvertisementdetailPage.prototype.loadMap = function () {
         var _this = this;
-        this.loader.presentLoading();
+        this.loader.showBlockingLoaderAuth();
         try {
             console.log("lat lng", this.longitude, this.lattitude);
             this.map = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"].create('map_canvas', {
@@ -261,10 +261,10 @@ var AdvertisementdetailPage = /** @class */ (function () {
                 _this.stateName = result[0]['administrativeArea'];
                 _this.countryName = result[0]['countryName'];
                 console.log("address", _this.loc);
-                _this.loader.stopLoading();
+                _this.loader.hideBlockingLoaderAuth();
             })
                 .catch(function (error) {
-                _this.loader.stopLoading();
+                _this.loader.hideBlockingLoaderAuth();
                 _this.address = "Address Not Available!";
                 // this.loader.hideBlockingLoaderAuth();
             });

@@ -52,7 +52,7 @@ export class NextadvertisementPage implements OnInit {
   }
 
   detectEventGallery(event, index) {
-    this.loader.presentLoading();
+    this.loader.showBlockingLoaderAuth();
     console.log(event);
     let files = event.target.files;
     console.log(files);
@@ -94,44 +94,17 @@ export class NextadvertisementPage implements OnInit {
       MyResponse => {
 
         this.urls.push(MyResponse['result']['url'])
-        // for (let i = 0; i < this.urls.length; i++) {
-        //   let checkUrlLength = this.urls.length;
-        //   if (checkUrlLength == 1) {
-        //     this.firstImage = this.urls[0];
-        //   }
-        //   else if (checkUrlLength == 2) 
-        //   {
-        //     this.firstImage = this.urls[0];
-        //     this.secondImage = this.urls[1];
-        //   } else if (checkUrlLength == 3) {
-        //     this.firstImage = this.urls[0];
-        //     this.secondImage = this.urls[1];
-        //     this.thirdImage = this.urls[2];
-        //   } else if (checkUrlLength == 4) {
-        //     this.firstImage = this.urls[0];
-        //     this.secondImage = this.urls[1];
-        //     this.thirdImage = this.urls[2];
-        //     this.fourthImage = this.urls[3];
-        //   } else if (checkUrlLength == 5) {
-        //     this.firstImage = this.urls[0];
-        //     this.secondImage = this.urls[1];
-        //     this.thirdImage = this.urls[2];
-        //     this.fourthImage = this.urls[3];
-        //     this.fifthImage = this.urls[4];
-        //   } else {
-
-        //   }
-        // }
+      
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
           this.imageUrl = 1;
         }
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         this.firstImage = MyResponse['result']['url'];
         console.log("print url resonce:" + this.firstImage);
       }, error => {
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         console.log(error);
 
       }
@@ -153,11 +126,11 @@ export class NextadvertisementPage implements OnInit {
         } else {
           this.imageUrl = 1;
         }
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         this.secondImage = MyResponse['result']['url'];
         console.log("print url secondImage:" + this.secondImage);
       }, error => {
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         console.log(error);
 
       }
@@ -179,11 +152,11 @@ export class NextadvertisementPage implements OnInit {
         } else {
           this.imageUrl = 1;
         }
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         this.thirdImage = MyResponse['result']['url'];
         console.log("print url thirdImage:" + this.thirdImage);
       }, error => {
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         console.log(error);
 
       }
@@ -205,11 +178,11 @@ export class NextadvertisementPage implements OnInit {
         } else {
           this.imageUrl = 1;
         }
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         this.fourthImage = MyResponse['result']['url'];
         console.log("print url fourthImage:" + this.fourthImage);
       }, error => {
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         console.log(error);
 
       }
@@ -231,11 +204,11 @@ export class NextadvertisementPage implements OnInit {
         } else {
           this.imageUrl = 1;
         }
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         this.fifthImage = MyResponse['result']['url'];
         console.log("print url fifthImage:" + this.fifthImage);
       }, error => {
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
         console.log(error);
 
       }

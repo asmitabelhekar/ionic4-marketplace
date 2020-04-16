@@ -177,7 +177,7 @@ var NextadvertisementPage = /** @class */ (function () {
         window.history.back();
     };
     NextadvertisementPage.prototype.detectEventGallery = function (event, index) {
-        this.loader.presentLoading();
+        this.loader.showBlockingLoaderAuth();
         console.log(event);
         var files = event.target.files;
         console.log(files);
@@ -219,44 +219,17 @@ var NextadvertisementPage = /** @class */ (function () {
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
             _this.urls.push(MyResponse['result']['url']);
-            // for (let i = 0; i < this.urls.length; i++) {
-            //   let checkUrlLength = this.urls.length;
-            //   if (checkUrlLength == 1) {
-            //     this.firstImage = this.urls[0];
-            //   }
-            //   else if (checkUrlLength == 2) 
-            //   {
-            //     this.firstImage = this.urls[0];
-            //     this.secondImage = this.urls[1];
-            //   } else if (checkUrlLength == 3) {
-            //     this.firstImage = this.urls[0];
-            //     this.secondImage = this.urls[1];
-            //     this.thirdImage = this.urls[2];
-            //   } else if (checkUrlLength == 4) {
-            //     this.firstImage = this.urls[0];
-            //     this.secondImage = this.urls[1];
-            //     this.thirdImage = this.urls[2];
-            //     this.fourthImage = this.urls[3];
-            //   } else if (checkUrlLength == 5) {
-            //     this.firstImage = this.urls[0];
-            //     this.secondImage = this.urls[1];
-            //     this.thirdImage = this.urls[2];
-            //     this.fourthImage = this.urls[3];
-            //     this.fifthImage = this.urls[4];
-            //   } else {
-            //   }
-            // }
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
             else {
                 _this.imageUrl = 1;
             }
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             _this.firstImage = MyResponse['result']['url'];
             console.log("print url resonce:" + _this.firstImage);
         }, function (error) {
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             console.log(error);
         });
     };
@@ -274,11 +247,11 @@ var NextadvertisementPage = /** @class */ (function () {
             else {
                 _this.imageUrl = 1;
             }
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             _this.secondImage = MyResponse['result']['url'];
             console.log("print url secondImage:" + _this.secondImage);
         }, function (error) {
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             console.log(error);
         });
     };
@@ -296,11 +269,11 @@ var NextadvertisementPage = /** @class */ (function () {
             else {
                 _this.imageUrl = 1;
             }
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             _this.thirdImage = MyResponse['result']['url'];
             console.log("print url thirdImage:" + _this.thirdImage);
         }, function (error) {
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             console.log(error);
         });
     };
@@ -318,11 +291,11 @@ var NextadvertisementPage = /** @class */ (function () {
             else {
                 _this.imageUrl = 1;
             }
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             _this.fourthImage = MyResponse['result']['url'];
             console.log("print url fourthImage:" + _this.fourthImage);
         }, function (error) {
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             console.log(error);
         });
     };
@@ -340,11 +313,11 @@ var NextadvertisementPage = /** @class */ (function () {
             else {
                 _this.imageUrl = 1;
             }
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             _this.fifthImage = MyResponse['result']['url'];
             console.log("print url fifthImage:" + _this.fifthImage);
         }, function (error) {
-            _this.loader.stopLoading();
+            _this.loader.hideBlockingLoaderAuth();
             console.log(error);
         });
     };

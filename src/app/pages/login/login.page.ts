@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
+import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -14,17 +15,19 @@ export class LoginPage implements OnInit {
   hide = true;
   loginModel: any = {};
   constructor(public router: Router,
-    public menuController : MenuController,
-    public apiCall: ApiService) { 
+    public toast : ToastController,
+    public menuController: MenuController,
+    public loader: LoaderService,
+    public apiCall: ApiService) {
 
-      this.menuController.enable(false);
-    }
+    this.menuController.enable(false);
+  }
 
   ngOnInit() {
   }
   login(data) {
 
-
+    this.loader.showBlockingLoaderAuth();
     let send_date = {};
 
 
@@ -34,10 +37,20 @@ export class LoginPage implements OnInit {
     let url = environment.base_url + environment.version + "users/login";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
       localStorage.setItem("userId", MyResponse['result']['id']);
-      localStorage.setItem("loginStatus",'yes');
+      localStorage.setItem("loginStatus", 'yes');
       this.router.navigate(['/home']);
-
+      this.loader.hideBlockingLoaderAuth();
     }, error => {
+      this.presentToast("Please try again");
+      this.loader.hideBlockingLoaderAuth();
     })
+  }
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
   }
 }

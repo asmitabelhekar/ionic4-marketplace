@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { LoaderService } from './service/loaderservice/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  loadingBlock;
   appPages = [
     {
       title: 'Home',
@@ -42,13 +44,23 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     public router : Router,
+    public preloader : LoaderService,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
   }
 
+
+   
+  ngOnInit() {
+    this.preloader.blockingLoaderAuth.subscribe(event => {
+      this.loadingBlock = event;
+    });
+  }
+
   initializeApp() {
+    this.preloader.showBlockingLoaderAuth();
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -63,6 +75,7 @@ export class AppComponent {
     }else{
       this.router.navigate(['/login']);
     }
+    this.preloader.hideBlockingLoaderAuth();
   }
   sideMenuClicked(pages) {
     if (pages == "Log Out") {

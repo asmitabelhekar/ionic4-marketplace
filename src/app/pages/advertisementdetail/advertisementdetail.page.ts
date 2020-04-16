@@ -65,7 +65,7 @@ export class AdvertisementdetailPage implements OnInit {
 
 
   loadMap() {
-    this.loader.presentLoading();
+    this.loader.showBlockingLoaderAuth();
     try {
       console.log("lat lng", this.longitude, this.lattitude);
       this.map = GoogleMaps.create('map_canvas', {
@@ -139,10 +139,10 @@ export class AdvertisementdetailPage implements OnInit {
 
           console.log("address", this.loc);
 
-          this.loader.stopLoading();
+          this.loader.hideBlockingLoaderAuth();
         })
         .catch((error: any) => {
-          this.loader.stopLoading();
+          this.loader.hideBlockingLoaderAuth();
           this.address = "Address Not Available!";
           // this.loader.hideBlockingLoaderAuth();
 

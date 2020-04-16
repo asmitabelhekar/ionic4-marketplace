@@ -18,26 +18,35 @@ export class SecondpageadvertisementPage implements OnInit {
   usersId: any;
   imageUrl = 1;
   urls = [];
+  defaultValue  = "7";
   submitAdvertisementData
   advertisementModel: any = {};
   fromDateTimestamp: number = 0;
   toDateTimestamp: number = 0;
   endDate : any;
+  selectedWeek : any
   finalCalculation : any;
   totalCalculation: any;
   weeksArray = ["1","2","3","4","5"];
   todayDate : any;
+  checkBoostStatus = '1';
 
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public loader : LoaderService,
     public toast : ToastController,
-    public apiCall: ApiService) { }
+    public apiCall: ApiService) { 
+     this.selectedWeek = '1';
+    }
+
+    
   ngOnInit() {
     this.todayDate = new Date();
     this.advertisementModel['noofweek'] = "1";
+    this.selectedWeek = '1';
     this.selectNoOfWeeksType(1);
+    localStorage.setItem("boostStatus",'1');
     this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
     console.log("second advertisement data:" + (this.getData));
   }
@@ -61,17 +70,26 @@ export class SecondpageadvertisementPage implements OnInit {
   // }
 
   selectNoOfWeeksType(data){
+    this.selectedWeek = data;
     this.finalCalculation = 7 + ((data - 1) * 5);
-    this.totalCalculation = this.finalCalculation + 100;
+    this.totalCalculation = this.finalCalculation;
     this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
     console.log("show next date:"+moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
   }
 
   calculateFinal(){
+   this.checkBoostStatus = localStorage.getItem("boostStatus");
+   if(this.checkBoostStatus == '1'){
     this.totalCalculation = this.finalCalculation + 100;
+    localStorage.setItem("boostStatus",'0');
+   }else{
+    this.totalCalculation = this.totalCalculation - 100;
+    localStorage.setItem("boostStatus",'1');
+   }
+   
   }
   submmitAdvertisementData(data){
-    this.loader.presentLoading();
+    this.loader.showBlockingLoaderAuth();
     let startDateTimeStamp = this.toTimestamp(this.todayDate);
     let endDateTimeStamp = this.toTimestamp(this.endDate);
     this.fromDateTimestamp = startDateTimeStamp;
@@ -117,7 +135,7 @@ export class SecondpageadvertisementPage implements OnInit {
                       send_date['startDateTime'] = this.fromDateTimestamp;
                       send_date['endDateTime'] = this.toDateTimestamp;
                       send_date['isActive'] = 0;
-                      send_date['images'] = this.urls;
+                      send_date['images'] = this.getData.images;
                       // send_date['transaction'] = "credited";
         
                       this.usersId = localStorage.getItem("userId");
@@ -125,10 +143,10 @@ export class SecondpageadvertisementPage implements OnInit {
                       this.apiCall.post(url, send_date).subscribe(MyResponse => {
                         localStorage.setItem("categoryId",this.getData.categoryId);
                         this.presentToast("Entry created successfully.")
-                      this.router.navigate(['/home']);
-                      this.loader.stopLoading();
+                      this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
+                      this.loader.showBlockingLoaderAuth();
                       }, error => {
-                        this.loader.stopLoading();
+                        this.loader.hideBlockingLoaderAuth();
                         this.presentToast("Please try again.")
                       })
           }

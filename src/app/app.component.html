@@ -1,4 +1,18 @@
 <ion-app>
+  <div *ngIf="loadingBlock">
+    <div class="loadingBlockAuth-wrapper">
+      <div class="loadingBlock-box">
+  
+       
+        <div class="loaderrr"></div>
+        <div class="text">
+          <!-- <p>Pleaseees Wait...</p> -->
+           &nbsp;&nbsp;Please Wait
+        </div>
+  
+      </div>
+    </div>
+  </div>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-header>

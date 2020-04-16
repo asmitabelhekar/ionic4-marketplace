@@ -23,13 +23,13 @@
     <div fxLayout="column" fxLayoutAlign="center center" style="width:35%; border-right: 1px solid white;">
 
       <label>One Week</label>
-      <label style="margin-top:15px">7$</label>
+      <label style="margin-top:15px">{{defaultValue}}$</label>
 
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" style="width:65%">
 
       <label>Multiple Weeks</label>
-      <label style="margin-top:15px">$7 + (no. of weeks * $5)</label>
+      <label style="margin-top:15px">$7 + ( {{selectedWeek}} * $5)</label>
 
     </div>
   </div>

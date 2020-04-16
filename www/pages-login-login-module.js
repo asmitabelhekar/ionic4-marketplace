@@ -133,6 +133,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+/* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
+
 
 
 
@@ -140,9 +142,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var LoginPage = /** @class */ (function () {
-    function LoginPage(router, menuController, apiCall) {
+    function LoginPage(router, toast, menuController, loader, apiCall) {
         this.router = router;
+        this.toast = toast;
         this.menuController = menuController;
+        this.loader = loader;
         this.apiCall = apiCall;
         this.hide = true;
         this.loginModel = {};
@@ -152,6 +156,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage.prototype.login = function (data) {
         var _this = this;
+        this.loader.showBlockingLoaderAuth();
         var send_date = {};
         send_date['mobile'] = this.loginModel.mobile;
         send_date['password'] = this.loginModel.password;
@@ -160,12 +165,34 @@ var LoginPage = /** @class */ (function () {
             localStorage.setItem("userId", MyResponse['result']['id']);
             localStorage.setItem("loginStatus", 'yes');
             _this.router.navigate(['/home']);
+            _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
+            _this.presentToast("Please try again");
+            _this.loader.hideBlockingLoaderAuth();
+        });
+    };
+    LoginPage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     LoginPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["MenuController"] },
+        { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__["LoaderService"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] }
     ]; };
     LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -175,7 +202,9 @@ var LoginPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login.page.scss */ "./src/app/pages/login/login.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["MenuController"],
+            src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__["LoaderService"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"]])
     ], LoginPage);
     return LoginPage;

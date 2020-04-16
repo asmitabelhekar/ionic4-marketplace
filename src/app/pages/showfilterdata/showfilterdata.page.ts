@@ -24,14 +24,14 @@ export class ShowfilterdataPage implements OnInit {
 
 
   getCategory() {
-    this.loader.presentLoading();
+    this.loader.showBlockingLoaderAuth();
     let url = environment.base_url + environment.version + "category/" + 0 + "/sub-category"
     this.apiCall.get(url).subscribe(MyResponse => {
       this.categoryArray = MyResponse['result']['list'];
-      this.loader.stopLoading();
+      this.loader.hideBlockingLoaderAuth();
     },
       error => {
-        this.loader.stopLoading();
+        this.loader.hideBlockingLoaderAuth();
       })
   }
 

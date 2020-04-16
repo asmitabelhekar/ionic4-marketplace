@@ -21,6 +21,7 @@ export class HomePage {
   categoryArray = [];
   categoryId = 0;
   arrayLength: any;
+  countAdvertisement : any;
   advertisementArray = [];
   dataArray = [
     {
@@ -97,42 +98,43 @@ export class HomePage {
     }
 
     getCategory(){
-      this.loader.presentLoading();
+      this.loader.showBlockingLoaderAuth();
       let url = environment.base_url + environment.version  +"category/" + 0 + "/sub-category"
       this.apiCall.get(url).subscribe(MyResponse => {
        this.categoryArray = MyResponse['result']['list'];
-       this.loader.stopLoading();
+       this.loader.hideBlockingLoaderAuth();
       },
         error => {
-          this.loader.stopLoading();
+          this.loader.hideBlockingLoaderAuth();
         })
     }
 
     getAdvertisement(categoryId){
-      this.loader.presentLoading();
+      this.loader.showBlockingLoaderAuth();
       let url = environment.base_url + environment.version  +"categories/" + categoryId + "/advertisements"
       this.apiCall.get(url).subscribe(MyResponse => {
        this.advertisementArray = MyResponse['result']['list'];
+        this.countAdvertisement = MyResponse['result']['count'];
        console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
-       this.loader.stopLoading();
+       this.loader.hideBlockingLoaderAuth();
 
       },
         error => {
-          this.loader.stopLoading();
+          this.loader.hideBlockingLoaderAuth();
         })
     }
 
     getBannerData(categoryId){
-      this.loader.presentLoading();
+      this.loader.showBlockingLoaderAuth();
       let url = environment.base_url + environment.version  +"category/" + categoryId + "/banners"
       this.apiCall.get(url).subscribe(MyResponse => {
        this.bannerArray = MyResponse['result']['list'];
       //  this.bannerImg = this.bannerArray['image'];
        console.log("banner data:"+JSON.stringify(this.bannerArray));
-       this.loader.stopLoading();
+       this.loader.hideBlockingLoaderAuth();
       },
         error => {
-          this.loader.stopLoading();
+          this.loader.hideBlockingLoaderAuth();
         })
     }
   ionViewWillEnter(){
