@@ -14,6 +14,8 @@ import {
   Marker
 } from "@ionic-native/google-maps";
 import { Platform } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/service/apiservice/api.service';
 
 @Component({
   selector: 'app-advertisementdetail',
@@ -24,8 +26,15 @@ export class AdvertisementdetailPage implements OnInit {
 
   @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: any;
-  lattitude = 18.579343;
-  longitude = 73.9089168;
+  date : any;
+  price: any;
+  title : any;
+  description : any;
+  mobile : any;
+  advertisementId : any;
+  categoryId : any;
+  lattitude = 0;
+  longitude = 0;
   address: any;
   // city: any;
   cityName: any;
@@ -33,10 +42,14 @@ export class AdvertisementdetailPage implements OnInit {
   countryName: any;
   loc: any = {};
   getImage = localStorage.getItem("url");
-
+  getIds : any;
+  advertisementArray = [];
+  userName : any;
+  userCreated : any;
 
   constructor(public activatedRoute: ActivatedRoute,
     public platform : Platform,
+    public apiCall : ApiService,
     public callNumber : CallNumber,
     public googlemaps : GoogleMaps,
     public router : Router,
@@ -47,13 +60,43 @@ export class AdvertisementdetailPage implements OnInit {
 
   ngOnInit() {
 
-    // this.getImage = this.activatedRoute.snapshot.params['imageShow'];
-    // console.log("show image:"+this.getImage);
-    this.loadMap();
+    this.userName = localStorage.getItem("userName");
+    this.userCreated = localStorage.getItem("userCreated");
+    console.log("receive image::"+this.getImage)
+    this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
+    console.log("show id:"+this.getIds.id);
+    console.log("show userCreated:"+this.userCreated);
+
+    this.advertisementId = this.getIds.id;
+    this.categoryId = this.getIds.categoryId;
+    this.getDetailAdvertisement();
+    // this.loadMap();
     // this.platform.ready().then(() => {
     //   this.loadMap();
     // });
   
+  }
+
+  getDetailAdvertisement(){
+
+    this.loader.showBlockingLoaderAuth();
+    let url = environment.base_url + environment.version  +"categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
+    this.apiCall.get(url).subscribe(MyResponse => {
+     this.advertisementArray = MyResponse['result'];
+     this.address = this.advertisementArray['address'];
+     this.description = this.advertisementArray['description'];
+     this.title = this.advertisementArray['title'];
+     this.lattitude = this.advertisementArray['latitude'];
+     this.longitude = this.advertisementArray['longitude'];
+     this.price = this.advertisementArray['price'];
+     this.mobile = this.advertisementArray['mobile'];
+     this.date = this.advertisementArray['modified'];
+     this.loader.hideBlockingLoaderAuth();
+      this.loadMap();
+    },
+      error => {
+        this.loader.hideBlockingLoaderAuth();
+      })
   }
   ionViewWillEnter() {
     // this.getImage = this.activatedRoute.snapshot.params['imageShow'];
@@ -65,7 +108,7 @@ export class AdvertisementdetailPage implements OnInit {
 
 
   loadMap() {
-    this.loader.showBlockingLoaderAuth();
+    // this.loader.showBlockingLoaderAuth();
     try {
       console.log("lat lng", this.longitude, this.lattitude);
       this.map = GoogleMaps.create('map_canvas', {
@@ -158,10 +201,14 @@ export class AdvertisementdetailPage implements OnInit {
 
 
   makeCall(){
-    this.callNumber.callNumber("9527902622", true);
+    this.callNumber.callNumber(this.mobile, true);
   }
 
   sendMessage(){
-    this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }])
+    this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
+  }
+
+  viewProfile(){
+    this.router.navigate(['/profile']);
   }
 }

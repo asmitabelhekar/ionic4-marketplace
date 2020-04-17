@@ -155,7 +155,7 @@ export class HomePage {
     this.router.navigate(['/showfilterdata']);
   }
   checkType(title, id) {
-    
+    this.categoryId = id;
     if (title == "Dance") {
       this.getBannerData(id);
       this.getAdvertisement(id);
@@ -415,9 +415,14 @@ export class HomePage {
 
   
 
-  showAdvertisementDetail(data){
+  showAdvertisementDetail(data, id){
+    let sendId = {
+      "id" : id,
+      "categoryId" : this.categoryId
+    }
 // alert("show data::"+JSON.stringify(data));
-localStorage.setItem("url",data.image);
-this.router.navigate(['/advertisementdetail', { imageShow : JSON.stringify(data.image)}]);
+localStorage.setItem("url",data);
+console.log("send image::"+id);
+this.router.navigate(['/advertisementdetail', { sendId : JSON.stringify(sendId)}]);
   }
 }

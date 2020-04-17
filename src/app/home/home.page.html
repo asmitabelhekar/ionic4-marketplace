@@ -92,8 +92,8 @@
 
       <div *ngIf="countAdvertisement > 0" style="width:98%; margin-left:1%">
 
-        <div class="row" *ngFor="let item of advertisementArray" (click)="showAdvertisementDetail(item)">
-          <div *ngFor="let image of item.images">
+        <div class="row" *ngFor="let item of advertisementArray" >
+          <div *ngFor="let image of item.images" (click)="showAdvertisementDetail(image, item.id)">
             <div class="column" style="position:relative">
               <img src={{image}} style="border-radius: 5px;width:100%; height:100%" />
               <div

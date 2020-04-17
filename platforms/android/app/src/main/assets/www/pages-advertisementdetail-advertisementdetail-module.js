@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n\n  <div class=\"cl_img_div\" fxLayoutAlign=\"center center\">\n    <img src=\"{{getImage}}\" style=\"width:100%; height:100%\" />\n\n    <div fxLayout=\"row\" class=\"cl_header\">\n      <ion-row style=\"width:100%\">\n        <ion-col size=\"2\">\n          <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n        </ion-col>\n\n        <ion-col size=\"8\" align=\"center\">\n        </ion-col>\n\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n          <img src=\"../../../assets/sharewhitee.png\" class=\"cl_share_icon\" />\n\n        </ion-col>\n      </ion-row>\n    </div>\n  </div>\n\n\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:90%; color:black\">\n      <div fxLayout=\"column\" style=\"color:black; font-size:14px; margin-left:4px\">\n        <label>Eicher 1090 36 jeep</label>\n        <label>₹ 6,25,000</label>\n      </div>\n\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:10%;\">\n      <ion-icon fxLayoutAlign=\"end start\" name=\"heart-outline\" style=\"width:23px; height:23px;\"></ion-icon>\n    </div>\n  </div>\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:85%; color:black\">\n      <mat-icon style=\"color:black;font-size:15px\">place</mat-icon>\n      <label style=\"margin-left:-3px\" class=\"cl_gray_label cl_font_14\">FATIMA NAGAR, PUNE </label>\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:15%;\">\n      <label class=\"cl_gray_label cl_font_13\">05 FEB</label>\n    </div>\n  </div>\n  <ion-item-divider style=\"width:100%;margin-top:-15px\">\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n\n    <ion-row>\n      <ion-col size=\"12\">\n        <label class=\"cl_gray_title cl_font_13\"><b>Details</b></label>\n\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_14\">YEAR</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">2009</label>\n      </ion-col>\n    </ion-row>\n\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">KM DRIVEN</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">200,000 KM</label>\n      </ion-col>\n    </ion-row>\n  </div>\n  <ion-item-divider style=\"width:100%;margin-top:-20px; color:black\"></ion-item-divider>\n\n  <div style=\"width:96%;margin-left:2%; margin-top:5px\">\n    <label style=\"font-size:14px; color : rgb(78, 77, 77); margin-left:5px\"><b>Description</b></label>\n  </div>\n  <ion-item-divider style=\"margin-left:-2px; padding-bottom :8px; margin-top:4px\">\n    <label class=\"cl_gray_label cl_font_14\">Want to sell Eicher 1090 Jeep with all documents clear </label>\n  </ion-item-divider>\n\n  <ion-item-divider style=\"padding-bottom:10px\">\n    <div style=\"margin-top:10px\" class=\"cl_margin\" fxLayout=\"row\">\n      <div style=\"width:20%; margin-left:-10px\">\n        <img src=\"../../../assets/defaultprofilepic.png\" fxLayoutAlign=\"start start\" class=\"cl_default_pic\" />\n      </div>\n\n      <div style=\"width:75%\">\n        <label class=\"cl_gray_title cl_font_13\"><b>NITIN JADHAV</b></label><br />\n        <label class=\"cl_gray_label cl_font_14\">Member since Nov 2017</label><br />\n        <label class=\"cl_font_13\" style=\"color : #50b5f2\">SEE PROFILE</label>\n      </div>\n\n      <div fxLayoutAlign=\"center center\">\n\n        <mat-icon class=\"cl_arrow_right\">keyboard_arrow_right</mat-icon>\n      </div>\n\n    </div>\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n    <label class=\"cl_adpost\"><b>Add posted at</b></label>\n  </div>\n  <div id=\"map_canvas\" style=\" margin-bottom:20%;margin-top:10px;\"></div>\n\n\n\n\n\n  <div class=\"cl_call_message_maindiv\" fxLayout=\"row\">\n    <div class=\"cl_message_div\" fxLayout=\"row\" (click)=\"sendMessage()\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <!-- <ion-icon name=\"call\" ></ion-icon> -->\n        <mat-icon class=\"cl_chat_icon\">chat_bubble_outline</mat-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CHAT</label>\n      </div>\n    </div>\n\n    <div style=\"width:50%;\" (click)=\"makeCall()\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <ion-icon name=\"call\" class=\"cl_call_icon\"></ion-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CALL</label>\n      </div>\n    </div>\n  </div>\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n\n  <div class=\"cl_img_div\" fxLayoutAlign=\"center center\">\n    <img src=\"{{getImage}}\" style=\"width:100%; height:100%\" />\n\n    <div fxLayout=\"row\" class=\"cl_header\">\n      <ion-row style=\"width:100%\">\n        <ion-col size=\"2\">\n          <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n        </ion-col>\n\n        <ion-col size=\"8\" align=\"center\">\n        </ion-col>\n\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n          <img src=\"../../../assets/sharewhitee.png\" class=\"cl_share_icon\" />\n\n        </ion-col>\n      </ion-row>\n    </div>\n  </div>\n\n\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:90%; color:black\">\n      <div fxLayout=\"column\" style=\"color:black; font-size:14px; margin-left:4px\">\n        <label>{{title}}</label>\n        <label>₹ {{price}}</label>\n      </div>\n\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:10%;\">\n      <ion-icon fxLayoutAlign=\"end start\" name=\"heart-outline\" style=\"width:23px; height:23px;\"></ion-icon>\n    </div>\n  </div>\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:85%; color:black\">\n      <mat-icon style=\"color:black;font-size:15px\">place</mat-icon>\n      <label style=\"margin-left:-3px\" class=\"cl_gray_label cl_font_14\">{{address}} </label>\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:15%;\">\n      <label class=\"cl_gray_label cl_font_13\">05 FEB</label>\n    </div>\n  </div>\n  <ion-item-divider style=\"width:100%;margin-top:-15px\">\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n\n    <ion-row>\n      <ion-col size=\"12\">\n        <label class=\"cl_gray_title cl_font_13\"><b>Details</b></label>\n\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_14\">YEAR</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">2009</label>\n      </ion-col>\n    </ion-row>\n\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">KM DRIVEN</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">200,000 KM</label>\n      </ion-col>\n    </ion-row>\n  </div>\n  <ion-item-divider style=\"width:100%;margin-top:-20px; color:black\"></ion-item-divider>\n\n  <div style=\"width:96%;margin-left:2%; margin-top:5px\">\n    <label style=\"font-size:14px; color : rgb(78, 77, 77); margin-left:5px\"><b>Description</b></label>\n  </div>\n  <ion-item-divider style=\"margin-left:-2px; padding-bottom :8px; margin-top:4px\">\n    <label class=\"cl_gray_label cl_font_14\">{{description}}</label>\n  </ion-item-divider>\n\n  <ion-item-divider style=\"padding-bottom:10px\">\n    <div style=\"margin-top:10px\" class=\"cl_margin\" fxLayout=\"row\">\n      <div style=\"width:20%; margin-left:-10px\">\n        <img src=\"../../../assets/defaultprofilepic.png\" fxLayoutAlign=\"start start\" class=\"cl_default_pic\" />\n      </div>\n\n      <div style=\"width:75%\">\n        <label class=\"cl_gray_title cl_font_13\"><b>NITIN JADHAV</b></label><br />\n        <label class=\"cl_gray_label cl_font_14\">Member since Nov 2017</label><br />\n        <label class=\"cl_font_13\" style=\"color : #50b5f2\">SEE PROFILE</label>\n      </div>\n\n      <div fxLayoutAlign=\"center center\">\n\n        <mat-icon class=\"cl_arrow_right\">keyboard_arrow_right</mat-icon>\n      </div>\n\n    </div>\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n    <label class=\"cl_adpost\"><b>Add posted at</b></label>\n  </div>\n  <div id=\"map_canvas\" style=\" margin-bottom:20%;margin-top:10px;\"></div>\n\n\n\n\n\n  <div class=\"cl_call_message_maindiv\" fxLayout=\"row\">\n    <div class=\"cl_message_div\" fxLayout=\"row\" (click)=\"sendMessage()\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <!-- <ion-icon name=\"call\" ></ion-icon> -->\n        <mat-icon class=\"cl_chat_icon\">chat_bubble_outline</mat-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CHAT</label>\n      </div>\n    </div>\n\n    <div style=\"width:50%;\" (click)=\"makeCall()\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <ion-icon name=\"call\" class=\"cl_call_icon\"></ion-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CALL</label>\n      </div>\n    </div>\n  </div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -148,6 +148,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
 /* harmony import */ var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/google-maps */ "./node_modules/@ionic-native/google-maps/index.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+
+
 
 
 
@@ -157,26 +161,52 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AdvertisementdetailPage = /** @class */ (function () {
-    function AdvertisementdetailPage(activatedRoute, platform, callNumber, googlemaps, router, nativeGeocoder, loader) {
+    function AdvertisementdetailPage(activatedRoute, platform, apiCall, callNumber, googlemaps, router, nativeGeocoder, loader) {
         this.activatedRoute = activatedRoute;
         this.platform = platform;
+        this.apiCall = apiCall;
         this.callNumber = callNumber;
         this.googlemaps = googlemaps;
         this.router = router;
         this.nativeGeocoder = nativeGeocoder;
         this.loader = loader;
-        this.lattitude = 18.579343;
-        this.longitude = 73.9089168;
+        this.lattitude = 0;
+        this.longitude = 0;
         this.loc = {};
         this.getImage = localStorage.getItem("url");
+        this.advertisementArray = [];
     }
     AdvertisementdetailPage.prototype.ngOnInit = function () {
-        // this.getImage = this.activatedRoute.snapshot.params['imageShow'];
-        // console.log("show image:"+this.getImage);
-        this.loadMap();
+        console.log("receive image::" + this.getImage);
+        this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
+        console.log("show id:" + this.getIds.id);
+        console.log("show categoryId:" + this.getIds.categoryId);
+        this.advertisementId = this.getIds.id;
+        this.categoryId = this.getIds.categoryId;
+        this.getDetailAdvertisement();
+        // this.loadMap();
         // this.platform.ready().then(() => {
         //   this.loadMap();
         // });
+    };
+    AdvertisementdetailPage.prototype.getDetailAdvertisement = function () {
+        var _this = this;
+        this.loader.showBlockingLoaderAuth();
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_8__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_8__["environment"].version + "categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.advertisementArray = MyResponse['result'];
+            _this.address = _this.advertisementArray['address'];
+            _this.description = _this.advertisementArray['description'];
+            _this.title = _this.advertisementArray['title'];
+            _this.lattitude = _this.advertisementArray['latitude'];
+            _this.longitude = _this.advertisementArray['longitude'];
+            _this.price = _this.advertisementArray['price'];
+            _this.mobile = _this.advertisementArray['mobile'];
+            _this.loader.hideBlockingLoaderAuth();
+            _this.loadMap();
+        }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+        });
     };
     AdvertisementdetailPage.prototype.ionViewWillEnter = function () {
         // this.getImage = this.activatedRoute.snapshot.params['imageShow'];
@@ -187,7 +217,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
     };
     AdvertisementdetailPage.prototype.loadMap = function () {
         var _this = this;
-        this.loader.showBlockingLoaderAuth();
+        // this.loader.showBlockingLoaderAuth();
         try {
             console.log("lat lng", this.longitude, this.lattitude);
             this.map = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"].create('map_canvas', {
@@ -275,7 +305,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         }
     };
     AdvertisementdetailPage.prototype.makeCall = function () {
-        this.callNumber.callNumber("9527902622", true);
+        this.callNumber.callNumber(this.mobile, true);
     };
     AdvertisementdetailPage.prototype.sendMessage = function () {
         this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
@@ -283,6 +313,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
     AdvertisementdetailPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"] },
+        { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_9__["ApiService"] },
         { type: _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__["CallNumber"] },
         { type: _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
@@ -301,6 +332,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"],
+            src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_9__["ApiService"],
             _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__["CallNumber"],
             _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
