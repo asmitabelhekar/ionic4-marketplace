@@ -18,8 +18,18 @@
 <ion-content>
   <form #userForm="ngForm" style="width:100%;margin-top:10px">
  
+
+<div fxLayout="row" fxLayoutAlign="  center center" style="width:100%;margin-top:5px">
+  <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px" appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Location" [(ngModel)]="advertisementModel.address" ngx-google-places-autocomplete
+          [options]='options' #placesRef="ngx-places" name="city" required pattern="[a-zA-Z0-9,.  ]+$" 
+          (onAddressChange)="handleAddressChange($event)">
+         
+      </mat-form-field>
+</div>
  
-<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+<!-- <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%; margin-top:10px" appearance="outline">
     <mat-label>Mobile</mat-label>
         <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact" #contact="ngModel"
@@ -32,7 +42,8 @@
             </div>
           </mat-error>
   </mat-form-field>
-</div>
+</div> -->
+
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:5px">
   <mat-form-field style="width:96%" appearance="outline">
@@ -94,7 +105,7 @@
 
 
 <div style="margin-top:5%">
-  <button [disabled]="price.invalid || contact.invalid" mat-raised-button class="nextButton" (click)="next(advertisementModel)">Next</button>
+  <button [disabled]="price.invalid " mat-raised-button class="nextButton" (click)="next(advertisementModel)">Next</button>
 </div>
 </form>
 </ion-content>

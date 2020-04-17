@@ -14,13 +14,13 @@ export class PostadvertisementPage implements OnInit {
 
   selectedRadioGroup : any;
   categoryId: any;
-  address: any;
-  lattitude: any;
-  longitude: any;
-  countryName: any;
-  stateName: any;
-  cityName: any;
-  pincode: any;
+  // address: any;
+  // lattitude: any;
+  // longitude: any;
+  // countryName: any;
+  // stateName: any;
+  // cityName: any;
+  // pincode: any;
   // loc: any = {};
   languagesArray = [];
   myControl = new FormControl();
@@ -112,9 +112,7 @@ export class PostadvertisementPage implements OnInit {
 // category, languages, gender
     // let languageArray = data.languages;
     // this.languagesArray = languageArray.split(',');
-if(this.address == undefined || this.address == null || this.address == ""){
-  this.presentToast("Please enter address");
-}else{
+
   if(this.languagesArray.length == 0){
     this.presentToast("Please select languages");
   }else{
@@ -127,10 +125,8 @@ if(this.address == undefined || this.address == null || this.address == ""){
         let advertisemntInfo = {
           "title": data.title,
           "description": data.description,
+         "contact" : this.advertisementModel['contact'],
          
-          "lattitude": this.lattitude,
-          "longitude": this.longitude,
-          "address": this.address,
           "gender": this.advertisementModel['gender'],
           "languages": this.languagesArray,
           "email": this.advertisementModel['email'],
@@ -139,13 +135,15 @@ if(this.address == undefined || this.address == null || this.address == ""){
         }
       console.log("data:"+JSON.stringify(advertisemntInfo));
         this.router.navigate(['/nextadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
+        // this.router.navigate(['/nextadvertisement']);
+
       }
     }else{
     
       this.presentToast("Please select gender");
     }
   }
-}
+
    
   }
 
@@ -168,42 +166,6 @@ if(this.selectedRadioGroup == 'male'){
       duration: 4000
     });
     toast.present();
-  }
-
-  handleAddressChange(data) {
-
-    console.log("Address Data", data);
-
-    this.lattitude = data.geometry.location.lat();
-    this.longitude = data.geometry.location.lng();
-    console.log("Address Data lattitude one::", this.lattitude);
-    console.log("Address Data longitude one::", this.longitude);
-
-
-    console.log("lat", this.lattitude, this.longitude);
-    let string = "";
-    string = data['formatted_address']
-    let arr = [];
-    let str = "";
-    let ss = [];
-    arr = string.split(",");
-    for (let index = arr.length - 1; index >= 0; index--) {
-      console.log(index, "data ", arr[index]);
-      this.advertisementModel['landmark'] = arr[2];
-      this.advertisementModel['address'] = data.vicinity;
-      this.advertisementModel['location'] = data.name;
-      this.countryName = arr[arr.length - 1] != null ? arr[arr.length - 1] : "";
-      str = arr[arr.length - 2] != null ? arr[arr.length - 2] : "";
-      let statestr = str.split(' ');
-      ss = statestr;
-      this.stateName = ss[1];
-      this.pincode = ss[2];
-      this.cityName = arr[arr.length - 3] != null ? arr[arr.length - 3] : "";
-      this.changeDetectorRef.detectChanges();
-
-    }
-    console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.advertisementModel['landmark'], this.advertisementModel['location']);
-    this.address = this.advertisementModel['landmark'], this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
   }
 
 

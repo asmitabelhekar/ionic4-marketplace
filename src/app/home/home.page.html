@@ -7,7 +7,7 @@
       Home
     </ion-title>
     <ion-icon [matMenuTriggerFor]="menu" name="list"
-      style="position: absolute; right:10px;color:white;width:25px; height:25px; bottom : 17px"></ion-icon>
+      style="position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px"></ion-icon>
     <mat-menu #menu="matMenu">
       <div fxLayout="row" style="margin-left:20px; margin-top:10px">
         <img src="../../assets/indiaflag.png" style="width:25px; height:25px" />
@@ -83,7 +83,7 @@
         <img src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()" />
 
         <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let item of categoryArray"
-          (click)="checkType(item.name, item.id)">
+          (click)="checkType(item.name, item.id)" [ngClass]="(displayCategory == item.id) ? 'even' : 'odd' ">
           <img src="{{item.image}}" style="width:30px;height:30px" />
           <label style="margin-top:5px;font-size:12px">{{item.name}}</label>
         </div>
@@ -104,7 +104,7 @@
                     <label style="font-size:12px"><b>{{item.title}}</b></label>
                   </ion-col>
                   <ion-col size="6" fxLayoutAlign="end end">
-                    <label style="font-size:12px;padding-right:13px"><b>$100</b></label>
+                    <label style="font-size:12px;padding-right:13px"><b>${{item.price}}</b></label>
                   </ion-col>
                 </ion-row>
 

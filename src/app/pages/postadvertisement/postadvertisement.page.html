@@ -56,9 +56,26 @@
 <div fxLayout="row" fxLayoutAlign="center center" style="margin-top:5px">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Select Category</mat-label>
-    <select matNativeControl required #categorytype (change)="selectCategoryType(categorytype.value)" [(ngModel)]="advertisementModel.categoryType">
+    <!-- <select matNativeControl required #categorytype (change)="selectCategoryType(categorytype.value)"  placeholder="Select Category">
       <option *ngFor="let type of categoryArray" [value]="type.id"> {{type.name}}</option>
-    </select>
+    </select> -->
+
+
+    <mat-select 
+    name="type" 
+    (selectionChange)="selectCategoryType(advertisementModel.categoryId)"
+    class="filter-select" 
+    [(ngModel)]="advertisementModel.categoryId" 
+    [compareWith]="equals"
+   
+    #categorySelect="ngModel">
+      <!-- <mat-option disabled="disabled" class="filter-option">
+        <input type="checkbox"(click)="selectAll(checkAll.checked, yearSelect, years)" #checkAll>
+      </mat-option> -->
+      <mat-option *ngFor="let type of categoryArray" [value]="type.id">
+        {{type.name}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 
@@ -120,27 +137,35 @@
   </mat-form-field>
 </div>
 
-
+<div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+  <mat-form-field style="width:96%; margin-top:10px" appearance="outline">
+    <mat-label>Mobile</mat-label>
+        <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="advertisementModel.contact" #contact="ngModel"
+          align="center" required pattern="[0-9]+$">
+          <mat-error>
+            <div class="form-group">
+              <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
+                Mobile Is Requird
+              </div>
+            </div>
+          </mat-error>
+  </mat-form-field>
+</div>
+<!-- 
 <div fxLayout="row" fxLayoutAlign="  center center" style="width:100%;margin-top:5px">
   <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
         <mat-label>Address</mat-label>
         <input matInput placeholder="Location" [(ngModel)]="advertisementModel.address" ngx-google-places-autocomplete
           [options]='options' #placesRef="ngx-places" name="city" required pattern="[a-zA-Z0-9,.  ]+$" 
           (onAddressChange)="handleAddressChange($event)">
-          <!-- <mat-error>
-            <div class="form-group">
-              <div *ngIf="address.invalid && (address.dirty || address.touched)">
-                Address Is Requird
-              </div>
-            </div>
-          </mat-error> -->
+         
       </mat-form-field>
-</div>
+</div> -->
 
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:5px">
     <mat-form-field style="width:96%;" appearance="outline">
-    <mat-label>Languages</mat-label>
+    <mat-label>Languages you support</mat-label>
       <mat-select 
       name="year" 
       (selectionChange)="selectedChanged(selectedLanguages)"
@@ -149,9 +174,6 @@
       [compareWith]="equals"
       multiple 
       #yearSelect="ngModel">
-        <!-- <mat-option disabled="disabled" class="filter-option">
-          <input type="checkbox"(click)="selectAll(checkAll.checked, yearSelect, years)" #checkAll>
-        </mat-option> -->
         <mat-option *ngFor="let year of languageArray" [value]="year.name">
           {{year.name}}
         </mat-option>
@@ -176,7 +198,7 @@
 
 
 
-    <button mat-raised-button class="loginButton" [disabled]="email.invalid || description.invalid || title.invalid"
+    <button mat-raised-button class="loginButton" [disabled]="email.invalid ||  description.invalid || title.invalid"
       (click)="addAdvertisementData(advertisementModel)"><b>Next</b></button>
 
   <!-- </div> -->

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
@@ -26,11 +26,19 @@ export class NextadvertisementPage implements OnInit {
   languagesArray = [];
   imageUrl = 0;
 
-  
+  address: any;
+  lattitude: any;
+  longitude: any;
+  countryName: any;
+  stateName: any;
+  cityName: any;
+  pincode: any;
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public loader: LoaderService,
     public router : Router,
+    public changeDetectorRef : ChangeDetectorRef,
     public toast : ToastController,
     public apiCall: ApiService) { }
 
@@ -236,15 +244,15 @@ export class NextadvertisementPage implements OnInit {
       this.getNextData = {
         "title": this.getData.title,
       "description": this.getData.description,
-      "lattitude": this.getData.lattitude,
-      "longitude": this.getData.longitude,
-      "address": this.getData.address,
+      "lattitude": this.lattitude,
+      "longitude": this.longitude,
+      "address": this.address,
       "gender": this.getData.gender,
       "languages": this.getData.languages,
       "email": this.getData.email,
       "categoryId": this.getData.categoryId,
       "price" : this.advertisementModel['price'],
-      "contact" : this.advertisementModel['contact'],
+      "contact" : this.getData.contact,
       "images" : this.urls
   
       }
@@ -254,4 +262,48 @@ export class NextadvertisementPage implements OnInit {
    
 
   }
+
+
+  // "lattitude": this.lattitude,
+  // "longitude": this.longitude,
+  // "address": this.address,
+
+  handleAddressChange(data) {
+
+    console.log("Address Data", data);
+
+    this.lattitude = data.geometry.location.lat();
+    this.longitude = data.geometry.location.lng();
+    console.log("Address Data lattitude one::", this.lattitude);
+    console.log("Address Data longitude one::", this.longitude);
+
+
+    console.log("lat", this.lattitude, this.longitude);
+    let string = "";
+    string = data['formatted_address']
+    let arr = [];
+    let str = "";
+    let ss = [];
+    arr = string.split(",");
+    for (let index = arr.length - 1; index >= 0; index--) {
+      console.log(index, "data ", arr[index]);
+      this.advertisementModel['landmark'] = arr[2];
+      this.advertisementModel['address'] = data.vicinity;
+      this.advertisementModel['location'] = data.name;
+      this.countryName = arr[arr.length - 1] != null ? arr[arr.length - 1] : "";
+      str = arr[arr.length - 2] != null ? arr[arr.length - 2] : "";
+      let statestr = str.split(' ');
+      ss = statestr;
+      this.stateName = ss[1];
+      this.pincode = ss[2];
+      this.cityName = arr[arr.length - 3] != null ? arr[arr.length - 3] : "";
+      this.changeDetectorRef.detectChanges();
+
+    }
+    console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.advertisementModel['landmark'], this.advertisementModel['location']);
+    this.address = this.advertisementModel['landmark'], this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
+  }
+
+
+
 }

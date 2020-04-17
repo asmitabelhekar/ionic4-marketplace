@@ -15,11 +15,12 @@ import { LoaderService } from '../service/loaderservice/loader.service';
 })
 export class HomePage {
 
+  displayCategory : any = "5";
   bannerArray = [];
   checkString : string;
   bannerImg : any;
   categoryArray = [];
-  categoryId = 0;
+  categoryId = 5;
   arrayLength: any;
   countAdvertisement : any;
   advertisementArray = [];
@@ -141,7 +142,7 @@ export class HomePage {
     this.arrayLength = this.imageArray.length;
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
     if(this.categoryId == undefined){
-      this.categoryId = 0;
+      this.categoryId = 5;
     }
     console.log("get categoryId::"+this.categoryId);
     this.getBannerData(this.categoryId);
@@ -156,6 +157,7 @@ export class HomePage {
   }
   checkType(title, id) {
     this.categoryId = id;
+    this.displayCategory = id;
     if (title == "Dance") {
       this.getBannerData(id);
       this.getAdvertisement(id);

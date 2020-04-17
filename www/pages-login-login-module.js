@@ -164,6 +164,8 @@ var LoginPage = /** @class */ (function () {
         this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
             localStorage.setItem("userId", MyResponse['result']['id']);
             localStorage.setItem("loginStatus", 'yes');
+            localStorage.setItem("userName", MyResponse['result']['name']);
+            localStorage.setItem("userCreated", MyResponse['result']['created']);
             _this.router.navigate(['/home']);
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {

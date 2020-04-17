@@ -108,6 +108,19 @@
       margin-top:8%;
 }
 
+.without-boost {
+
+  background-color: #31897b !important;
+  --color:white;
+  
+}
+
+.with-boost {
+  background-color: #50a46c !important;
+
+  // background-color: #152a3f !important;
+  --color:black;
+}
 
 
 // ::ng-deep {

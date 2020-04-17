@@ -26,6 +26,7 @@ export class SecondpageadvertisementPage implements OnInit {
   endDate : any;
   selectedWeek : any
   finalCalculation : any;
+  bannerImage : any;
   totalCalculation: any;
   weeksArray = ["1","2","3","4","5"];
   todayDate : any;
@@ -48,7 +49,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.selectNoOfWeeksType(1);
     localStorage.setItem("boostStatus",'0');
     this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
-    console.log("second advertisement data:" + (this.getData));
+    this.bannerImage = this.getData.images[0];
   }
 
  
@@ -86,6 +87,7 @@ export class SecondpageadvertisementPage implements OnInit {
   calculateFinal(){
    this.checkBoostStatus = localStorage.getItem("boostStatus");
    if(this.checkBoostStatus == '0'){
+     this.checkBoostStatus = '1';
     this.totalCalculation = this.finalCalculation + 100;
     localStorage.setItem("boostStatus",'1');
     this.postBanner(this.getData.categoryId);
@@ -98,14 +100,14 @@ export class SecondpageadvertisementPage implements OnInit {
   postBanner(id){
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
-    send_date['image'] = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-iJYUo5MgjnggZYrfud2ssQWQ-Xm7RaCtkalMhvpqNglOmG9d&usqp=CAU";
+    send_date['image'] = this.bannerImage;
     send_date['title'] = "Banner";
     send_date['description'] = "New";
     send_date['startDateTime'] = this.fromDateTimestamp;
     send_date['endDateTime'] = this.toDateTimestamp;
     send_date['lat'] = this.getData.lattitude;
     send_date['lng'] = this.getData.longitude;
-    send_date['isActive'] = 0;
+    send_date['isActive'] = 1;
     send_date['city'] = this.getData.address;
 
     let url = environment.base_url + environment.version + "category/" + id + "/banners";
@@ -114,7 +116,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.loader.hideBlockingLoaderAuth();
     }, error => {
       this.loader.hideBlockingLoaderAuth();
-      this.presentToast("Please try again.")
+      // this.presentToast("Please try again.")
     });
 
   }
@@ -143,7 +145,7 @@ export class SecondpageadvertisementPage implements OnInit {
               "categoryId" : this.getData.categoryId,
               "startDateTime" : this.fromDateTimestamp,
               "endDateTime" : this.toDateTimestamp,
-              "isActive" : 0,
+              "isActive" : 1,
               "images" : this.urls
             }
         
@@ -161,7 +163,7 @@ export class SecondpageadvertisementPage implements OnInit {
                       send_date['categoryId'] = this.getData.categoryId;
                       send_date['startDateTime'] = this.fromDateTimestamp;
                       send_date['endDateTime'] = this.toDateTimestamp;
-                      send_date['isActive'] = 0;
+                      send_date['isActive'] = 1;
                       send_date['images'] = this.getData.images;
                       // send_date['transaction'] = "credited";
         
@@ -169,7 +171,7 @@ export class SecondpageadvertisementPage implements OnInit {
                       let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
                       this.apiCall.post(url, send_date).subscribe(MyResponse => {
                         localStorage.setItem("categoryId",this.getData.categoryId);
-                        this.presentToast("Entry created successfully.");
+                        this.presentToast("Advertisement posted successfully.");
                       this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
                       this.loader.showBlockingLoaderAuth();
                       }, error => {

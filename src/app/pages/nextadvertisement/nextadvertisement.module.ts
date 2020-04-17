@@ -10,6 +10,7 @@ import { NextadvertisementPage } from './nextadvertisement.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { MaterialModule } from 'src/app/material.module';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { MaterialModule } from 'src/app/material.module';
     MatInputModule,
     MaterialModule,
     MatSelectModule,
+    GooglePlaceModule,
     NextadvertisementPageRoutingModule
   ],
   declarations: [NextadvertisementPage]
