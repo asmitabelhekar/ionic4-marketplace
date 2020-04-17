@@ -6,6 +6,35 @@
     <ion-title style="color:white; margin-left:-15px">
       Home
     </ion-title>
+    <ion-icon [matMenuTriggerFor] = "menu" name="list" style="position: absolute; right:10px;color:white;width:25px; height:25px; bottom : 17px"></ion-icon>
+<mat-menu #menu = "matMenu">
+  <div fxLayout="row" style="margin-left:10px; margin-top:10px">
+    <img src="../../assets/indiaflag.png" style="width:25px; height:25px" />
+    <label style="margin-top:-10px" mat-menu-item>Hindi</label>
+  </div>
+  <div fxLayout="row"  style="margin-left:10px">
+     <img src="../../assets/flag.png" style="width:25px; height:25px" />
+    <label style="margin-top:-10px" mat-menu-item>English</label>
+  </div>
+  <div fxLayout="row" style="margin-left:10px; margin-top:10px">
+    <img src="../../assets/japanflag.png" style="width:25px; height:25px" />
+    <label style="margin-top:-10px" mat-menu-item>Japanese</label>
+  </div>
+  <div fxLayout="row"  style="margin-left:10px">
+     <img src="../../assets/germanyflag.png" style="width:25px; height:25px" />
+    <label style="margin-top:-10px" mat-menu-item>German</label>
+  </div>
+   
+
+  <!-- <div fxLayout="row" style="margin-top:10px">
+    <label style="margin-top:-10px; width: 80px" mat-menu-item>Hindi</label>
+    <img src="../../assets/indiaflag.png" style="width:25px; height:25px" />
+  </div>
+  <div fxLayout="row">
+    <label style="margin-top:-10px;  width: 80px" mat-menu-item>English</label>
+    <img src="../../assets/flag.png" style="width:25px; height:25px" />
+  </div> -->
+</mat-menu>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +46,6 @@
         class="half-black">
         <ion-slide *ngFor="let item of bannerArray">
           <div class="cl_img_div">
-            <!-- <img src="../../assets/dancetwo.png" class="cl_margin100" /> -->
             <img src="{{item.image}}" class="cl_margin100" />
 
 

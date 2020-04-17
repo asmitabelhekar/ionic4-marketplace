@@ -33,18 +33,19 @@
 
     </div>
   </div>
+  <!-- [(ngModel)]="advertisementModel.noofweek" -->
 
 
   <div style="width:96%; margin-left:2%; color: white; background-color: #31897b; padding:5px; margin-top:8%">
-    <ion-row>
-      <ion-col size="6" fxLayoutAlign="start center">
-        <label fxLayoutAlign="start center">Select Weeks</label>
+    <ion-row style="margin-top:20px">
+      <ion-col size="2" fxLayoutAlign="start center">
+        <!-- <label fxLayoutAlign="start center">Select Weeks</label> -->
       </ion-col>
       <!-- <ion-col size="2"></ion-col> -->
-      <ion-col size="3" fxLayoutAlign="center start">
-        <div style="width:45px;background-color:white; height:60px">
-          <mat-form-field style="width:35px;color: black; margin-left:5px; height:40px">
-            <select matNativeControl required #noweek (change)="selectNoOfWeeksType(noweek.value)" [(ngModel)]="advertisementModel.noofweek">
+      <ion-col size="7" fxLayoutAlign="center start">
+        <div style="width:100%;">
+          <mat-form-field style="width:85%;color: black; margin-left:5px;">
+            <select matNativeControl required #noweek (change)="selectNoOfWeeksType(noweek.value)"  placeholder="Select Weeks">
               <option *ngFor="let type of weeksArray" [value]="type"> {{type}}</option>
             </select>
           </mat-form-field>

@@ -74,6 +74,12 @@ export class SecondpageadvertisementPage implements OnInit {
     this.finalCalculation = 7 + ((data - 1) * 5);
     this.totalCalculation = this.finalCalculation;
     this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
+
+    let startDateTimeStamp = this.toTimestamp(this.todayDate);
+    let endDateTimeStamp = this.toTimestamp(this.endDate);
+    this.fromDateTimestamp = startDateTimeStamp;
+    this.toDateTimestamp = endDateTimeStamp;
+
     console.log("show next date:"+moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
   }
 
@@ -82,26 +88,46 @@ export class SecondpageadvertisementPage implements OnInit {
    if(this.checkBoostStatus == '1'){
     this.totalCalculation = this.finalCalculation + 100;
     localStorage.setItem("boostStatus",'0');
+    this.postBanner(this.getData.categoryId);
    }else{
     this.totalCalculation = this.totalCalculation - 100;
     localStorage.setItem("boostStatus",'1');
    }
-   
   }
+
+  postBanner(id){
+    this.loader.showBlockingLoaderAuth();
+    let send_date = {};
+    send_date['image'] = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-iJYUo5MgjnggZYrfud2ssQWQ-Xm7RaCtkalMhvpqNglOmG9d&usqp=CAU";
+    send_date['title'] = "Banner";
+    send_date['description'] = "New";
+    send_date['startDateTime'] = this.fromDateTimestamp;
+    send_date['endDateTime'] = this.toDateTimestamp;
+    send_date['lat'] = this.getData.lattitude;
+    send_date['lng'] = this.getData.longitude;
+    send_date['isActive'] = 0;
+
+    let url = environment.base_url + environment.version + "category/" + id + "/banners";
+    this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      // this.presentToast(MyResponse);
+    this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.loader.hideBlockingLoaderAuth();
+      this.presentToast("Please try again.")
+    });
+
+  }
+
+
   submmitAdvertisementData(data){
     this.loader.showBlockingLoaderAuth();
-    let startDateTimeStamp = this.toTimestamp(this.todayDate);
-    let endDateTimeStamp = this.toTimestamp(this.endDate);
-    this.fromDateTimestamp = startDateTimeStamp;
-    this.toDateTimestamp = endDateTimeStamp;
-   
+    
         if(this.toDateTimestamp == undefined || this.toDateTimestamp == null || this.toDateTimestamp == NaN){
           this.presentToast("Please select weeks");
         }else{
           if(this.fromDateTimestamp == undefined || this.fromDateTimestamp == null ){
             this.presentToast("Please select weeks");
           }else{
-          
             this.submitAdvertisementData = {
               "title" : this.getData.title,
               "description" : this.getData.description,
@@ -142,17 +168,15 @@ export class SecondpageadvertisementPage implements OnInit {
                       let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
                       this.apiCall.post(url, send_date).subscribe(MyResponse => {
                         localStorage.setItem("categoryId",this.getData.categoryId);
-                        this.presentToast("Entry created successfully.")
+                        this.presentToast("Entry created successfully.");
                       this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
                       this.loader.showBlockingLoaderAuth();
                       }, error => {
                         this.loader.hideBlockingLoaderAuth();
                         this.presentToast("Please try again.")
-                      })
+                      });
           }
         }
-    
-  
   }
 
 

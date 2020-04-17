@@ -85,3 +85,9 @@
   height:55px;
   pointer-events: none;
 }
+
+.mat-form-field-subscript-wrapper {
+  font-size: 75%;
+  /* margin-top: .66667em; */
+  top: calc(100% - 1.79167em);
+}
