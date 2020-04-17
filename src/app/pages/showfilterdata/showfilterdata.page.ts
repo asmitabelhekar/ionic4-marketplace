@@ -3,6 +3,7 @@ import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { Router } from '@angular/router';
+import { NetworkService } from 'src/app/service/network/network.service';
 
 @Component({
   selector: 'app-showfilterdata',
@@ -15,6 +16,7 @@ export class ShowfilterdataPage implements OnInit {
   categoryName: any;
 
   constructor(public loader: LoaderService,
+    public networkServices : NetworkService,
     public router: Router,
     public apiCall: ApiService
   ) { }
@@ -41,6 +43,8 @@ export class ShowfilterdataPage implements OnInit {
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
+        this.networkServices.checkInternetConnection();
+        this.networkServices.onPageLoadCheckInternet();
       })
   }
 

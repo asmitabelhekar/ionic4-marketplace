@@ -16,6 +16,7 @@ import {
 import { Platform } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
+import { NetworkService } from 'src/app/service/network/network.service';
 
 @Component({
   selector: 'app-advertisementdetail',
@@ -50,6 +51,7 @@ export class AdvertisementdetailPage implements OnInit {
   constructor(public activatedRoute: ActivatedRoute,
     public platform : Platform,
     public apiCall : ApiService,
+    public networkService : NetworkService,
     public callNumber : CallNumber,
     public googlemaps : GoogleMaps,
     public router : Router,
@@ -96,6 +98,8 @@ export class AdvertisementdetailPage implements OnInit {
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
+        this.networkService.checkInternetConnection();
+        this.networkService.onPageLoadCheckInternet();
       })
   }
   ionViewWillEnter() {

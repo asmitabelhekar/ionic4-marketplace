@@ -45,6 +45,7 @@ export class LoginPage implements OnInit {
     }, error => {
       this.presentToast("Please try again");
       this.loader.hideBlockingLoaderAuth();
+      
     })
   }
 
