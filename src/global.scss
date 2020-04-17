@@ -10,6 +10,7 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -24,13 +25,6 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
-
-
-.new-background-color{
-    --background: #152a3f;
-}
-
 
 
 
@@ -58,11 +52,6 @@
 // }
 
 
-.mat-form-field-flex {
-  
-  background-color: white !important;
-}
-
 
 // .mat-form-field-outline {
   
@@ -75,6 +64,20 @@
 //   margin-top:10px;
 // }
 
+
+
+
+.new-background-color{
+  --background: #152a3f;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+
+  background-color:  white;
+
+}
+
+
 .mat-form-field-appearance-outline .mat-form-field-outline {
   display: flex;
   position: absolute;
@@ -86,8 +89,28 @@
   pointer-events: none;
 }
 
+
+.mat-form-field-flex {
+  background-color: white !important;
+}
+
+.cl_select  .mat-form-field-flex {
+  
+  background-color: #31897b !important;
+}
+
+
 .mat-form-field-subscript-wrapper {
   font-size: 75%;
   /* margin-top: .66667em; */
   top: calc(100% - 1.79167em);
 }
+
+
+// ::ng-deep {
+
+//   .mat-form-field-flex {
+  
+//     background-color: #31897b !important;
+//   }
+// }

@@ -9,6 +9,7 @@ import { SecondpageadvertisementPageRoutingModule } from './secondpageadvertisem
 import { SecondpageadvertisementPage } from './secondpageadvertisement.page';
 import { MatNativeDateModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     MatDatepickerModule,
     MatButtonModule,
+    MaterialModule,
     SecondpageadvertisementPageRoutingModule
   ],
   declarations: [SecondpageadvertisementPage]

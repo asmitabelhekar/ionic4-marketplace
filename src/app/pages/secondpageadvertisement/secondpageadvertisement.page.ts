@@ -29,7 +29,7 @@ export class SecondpageadvertisementPage implements OnInit {
   totalCalculation: any;
   weeksArray = ["1","2","3","4","5"];
   todayDate : any;
-  checkBoostStatus = '1';
+  checkBoostStatus = '0';
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -46,7 +46,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.advertisementModel['noofweek'] = "1";
     this.selectedWeek = '1';
     this.selectNoOfWeeksType(1);
-    localStorage.setItem("boostStatus",'1');
+    localStorage.setItem("boostStatus",'0');
     this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
     console.log("second advertisement data:" + (this.getData));
   }
@@ -85,12 +85,12 @@ export class SecondpageadvertisementPage implements OnInit {
 
   calculateFinal(){
    this.checkBoostStatus = localStorage.getItem("boostStatus");
-   if(this.checkBoostStatus == '1'){
+   if(this.checkBoostStatus == '0'){
     this.totalCalculation = this.finalCalculation + 100;
-    localStorage.setItem("boostStatus",'0');
+    localStorage.setItem("boostStatus",'1');
     this.postBanner(this.getData.categoryId);
    }else{
-    this.totalCalculation = this.totalCalculation - 100;
+    // this.totalCalculation = this.totalCalculation - 100;
     localStorage.setItem("boostStatus",'1');
    }
   }
@@ -106,6 +106,7 @@ export class SecondpageadvertisementPage implements OnInit {
     send_date['lat'] = this.getData.lattitude;
     send_date['lng'] = this.getData.longitude;
     send_date['isActive'] = 0;
+    send_date['city'] = this.getData.address;
 
     let url = environment.base_url + environment.version + "category/" + id + "/banners";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {

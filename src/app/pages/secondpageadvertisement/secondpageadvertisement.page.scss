@@ -48,9 +48,7 @@
     padding: 5px;
     margin-top:-5px;
   }
-
-
-
+ 
 
 
 .loginButton{
@@ -65,6 +63,8 @@
     padding-bottom: 5px; 
   font-size:18px;
 }
+
+
 
 .cl_bottom_nav_css{
   width:30px;
@@ -85,3 +85,35 @@
   height:30px;
   color:rgb(247, 97, 97);
 }
+
+.cl_matformfield{
+  width:80%;
+  color: white;
+   margin-left:5px;
+   background-color: #31897b;
+}
+
+.cl_div{
+  width:100%;
+  background-color: #31897b;
+   color: white;
+}
+
+.cl_select_margin{
+  width:96%;
+   margin-left:2%; 
+   color: white;
+    background-color: #31897b;
+     padding:5px;
+      margin-top:8%;
+}
+
+
+
+// ::ng-deep {
+
+//   .mat-form-field-flex {
+  
+//     background-color: #31897b !important;
+//   }
+// }

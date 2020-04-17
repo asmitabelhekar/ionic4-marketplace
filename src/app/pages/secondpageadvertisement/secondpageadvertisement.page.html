@@ -33,22 +33,27 @@
 
     </div>
   </div>
-  <!-- [(ngModel)]="advertisementModel.noofweek" -->
 
 
-  <div style="width:96%; margin-left:2%; color: white; background-color: #31897b; padding:5px; margin-top:8%">
+
+
+  <div class="cl_select_margin">
     <ion-row style="margin-top:20px">
-      <ion-col size="2" fxLayoutAlign="start center">
-        <!-- <label fxLayoutAlign="start center">Select Weeks</label> -->
+      <ion-col size="4" fxLayoutAlign="start center">
       </ion-col>
-      <!-- <ion-col size="2"></ion-col> -->
-      <ion-col size="7" fxLayoutAlign="center start">
-        <div style="width:100%;">
-          <mat-form-field style="width:85%;color: black; margin-left:5px;">
-            <select matNativeControl required #noweek (change)="selectNoOfWeeksType(noweek.value)"  placeholder="Select Weeks">
-              <option *ngFor="let type of weeksArray" [value]="type"> {{type}}</option>
+      <ion-col size="5" fxLayoutAlign="center start">
+        <div class="cl_div">
+          <mat-form-field class="cl_matformfield cl_select">
+            <mat-label style="color:white">Select Weeks</mat-label>
+            <select matNativeControl #noweek (change)="selectNoOfWeeksType(noweek.value)" style="color:white">
+              <option *ngFor="let type of weeksArray" [value]="type" style="color:black"> {{type}}</option>
             </select>
           </mat-form-field>
+
+
+
+
+
         </div>
       </ion-col>
       <ion-col size="1" fxLayoutAlign="end center">
@@ -62,7 +67,8 @@
 
 
 
-    <ion-row style="border: 1px solid white; padding:10px; margin-top:20px; margin-left:2%; margin-right:2%" (click)="calculateFinal()">
+    <ion-row style="border: 1px solid white; padding:10px; margin-top:20px; margin-left:2%; margin-right:2%"
+      (click)="calculateFinal()">
       <ion-col size="3">
         <button style="border-radius: 100%; border: 1px solid white; width: 30px; height:30px"></button>
       </ion-col>
@@ -89,7 +95,7 @@
     </ion-row>
   </div>
 
-  
+
 
 
 
@@ -113,14 +119,14 @@
   <button mat-raised-button class="loginButton"
     (click)="submmitAdvertisementData(advertisementModel)"><b>Submit</b></button>
 
-    <div class="cl_bottom_fix">
-      <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
-        <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
-        <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
-        <ion-icon name="add-circle" class="cl_post_css" (click)="postAdvertisement()">
-        </ion-icon>
-        <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
-        <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
-      </div>
+  <div class="cl_bottom_fix">
+    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
+      <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
+      <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
+      <ion-icon name="add-circle" class="cl_post_css" (click)="postAdvertisement()">
+      </ion-icon>
+      <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
+      <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
     </div>
+  </div>
 </ion-content>
