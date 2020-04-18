@@ -995,6 +995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ "./node_modules/@ionic-native/native-geocoder/ngx/index.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
+/* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
+
 
 
 
@@ -1039,6 +1041,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_15__["NativeGeocoder"],
                 _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_16__["Geolocation"],
                 _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__["CallNumber"],
+                _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__["Network"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],

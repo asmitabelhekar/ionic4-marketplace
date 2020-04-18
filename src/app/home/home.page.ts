@@ -16,6 +16,7 @@ import { NetworkService } from '../service/network/network.service';
 })
 export class HomePage {
 
+  noInternet = "0";
   displayCategory : any = "5";
   bannerArray = [];
   checkString : string;
@@ -106,8 +107,10 @@ export class HomePage {
       this.apiCall.get(url).subscribe(MyResponse => {
        this.categoryArray = MyResponse['result']['list'];
        this.loader.hideBlockingLoaderAuth();
+       this.noInternet = '0';
       },
         error => {
+          this.noInternet = '1';
           this.loader.hideBlockingLoaderAuth();
           this.networkServices.checkInternetConnection();
           this.networkServices.onPageLoadCheckInternet();

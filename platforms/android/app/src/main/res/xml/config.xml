@@ -68,6 +68,9 @@
     <feature name="CallNumber">
         <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
     <allow-navigation href="http://localhost/*" />
     <allow-navigation href="https://localhost/*" />
     <allow-navigation href="ionic://*" />
@@ -124,7 +127,4 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="12000" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyD3bs6ZfnPErL1P8sTfqnHwBGiOzC4g0Ts" />
-    <feature name="NetworkStatus">
-        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-    </feature>
 </widget>

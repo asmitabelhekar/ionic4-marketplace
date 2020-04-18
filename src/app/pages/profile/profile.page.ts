@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { NetworkService } from 'src/app/service/network/network.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -17,36 +18,37 @@ export class ProfilePage implements OnInit {
   roleId: any;
   username: any;
   image: any;
+  userId: any;
   lattitude: any;
   longitude: any;
   address: any;
-  profileDetail : any;
-  constructor(public router : Router,
-    public networkServices : NetworkService,
-    public loader : LoaderService,
-    public apiCall : ApiService) { }
+  profileDetail: any;
+  constructor(public router: Router,
+    public networkServices: NetworkService,
+    public activatedRoute: ActivatedRoute,
+    public loader: LoaderService,
+    public apiCall: ApiService) { }
 
   ngOnInit() {
 
-    // this.getProfileInfo();
+    this.getProfileInfo();
+    this.userId = this.activatedRoute.snapshot.params['userId'];
   }
 
 
-  getProfileInfo(){
+  getProfileInfo() {
     this.loader.showBlockingLoaderAuth();
-    let dealerId = localStorage.getItem('dealerId');
-    let url = "http://3.6.135.154:37354/api/v1.0.0/" + "roles/" + 2 + "/users/" + 5;
+    if (this.userId == undefined || this.userId == "" || this.userId == null) {
+      this.userId = localStorage.getItem('userId');
+    } else {
+     
+    }
+    let url = environment.base_url + environment.version + "users/" + this.userId;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.name = this.profileDetail.name;
       this.mobile = this.profileDetail.mobile;
       this.email = this.profileDetail.email;
-      this.roleId = this.profileDetail.roleId;
-      this.username = this.profileDetail.username;
-      this.image = this.profileDetail.image;
-      this.lattitude = this.profileDetail.latitude;
-      this.longitude = this.profileDetail.longitude;
-      this.address = this.profileDetail.address + this.profileDetail.city + " " + this.profileDetail.state + " " + this.profileDetail.country + " " + this.profileDetail.pincode;
       this.loader.hideBlockingLoaderAuth();
     },
       error => {
@@ -55,24 +57,24 @@ export class ProfilePage implements OnInit {
         this.networkServices.onPageLoadCheckInternet();
       })
   }
-  openChatList(){
+  openChatList() {
     this.router.navigate(['/chatlist']);
   }
 
-  postAdvertisement(){
+  postAdvertisement() {
     this.router.navigate(['/postadvertisement']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home']);
   }
 
-  openFavourite(){
+  openFavourite() {
     this.router.navigate(['/favourite']);
   }
 
-  openProfile(){
+  openProfile() {
     this.router.navigate(['/profile']);
   }
 }

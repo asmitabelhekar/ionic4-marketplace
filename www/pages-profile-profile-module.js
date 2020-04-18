@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Profile\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div style=\"height:300px;position: relative; top:0px;background-color: #f1f4f9;\" fxLayoutAlign=\"center center\">\n    <!-- <img src=\"../../../assets/noimage.png\" style=\"width:100%; height:100%;\" /> -->\n    <div style=\"position: absolute; bottom :60px;\" >\n      <div fxLayout=\"column\">\n        <ion-icon name=\"person\" \n          style=\"width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px\">\n        </ion-icon>\n        <label   style=\"margin-top:10px; color: black;font-size: 20px;\">Chaitnya</label>\n      </div>\n\n\n    </div>\n    <div style=\"height:190px;background-color: #f1f4f9; \"></div>\n\n    <!-- <ion-row>\n      <ion-col size=\"3\">\n        <ion-icon name=\"person\" style=\"width:40px; height:40px; border-radius: 100%;margin-left: 15px;color:white;background-color: rgb(168, 158, 158) ; padding:18px\" ></ion-icon>\n      </ion-col>\n\n      <ion-col size=\"9\" style=\"margin-top:23px; padding-left:15px; font-size: 18px\">\n        <label>Chaitnya</label> \n      </ion-col>\n    </ion-row> -->\n\n  </div>\n  <!-- <div style=\"height:350px;position: relative; top:0px;\" >\n    <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%;\" />\n\n  </div> -->\n\n  <ion-card class=\"cl_card_css\">\n    <div style=\"margin-top:10px\">\n\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"person\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">Chaitnya</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"call\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">9527902622</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"mail\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">chaitnya@gmail.com</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"home\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">Chinchwad, pune-19.</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n\n\n\n\n    </div>\n\n\n\n  </ion-card>\n\n\n  <div id=\"map_canvas\" style=\"margin-bottom:5%;\" *ngIf=\"noInternet == '1' \"></div>\n\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_post_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Profile\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div style=\"height:320px;position: relative; top:0px;background-color: #f1f4f9;\" fxLayoutAlign=\"center center\">\n    <!-- <img src=\"../../../assets/noimage.png\" style=\"width:100%; height:100%;\" /> -->\n    <div style=\"position: absolute; bottom :60px;\" >\n      <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n        <ion-icon name=\"person\" \n          style=\"width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px\">\n        </ion-icon>\n        <label   style=\"margin-top:10px; color: black;font-size: 20px;\">{{name}}</label>\n      </div>\n\n\n    </div>\n    <div style=\"height:190px;background-color: #f1f4f9; \"></div>\n\n    <!-- <ion-row>\n      <ion-col size=\"3\">\n        <ion-icon name=\"person\" style=\"width:40px; height:40px; border-radius: 100%;margin-left: 15px;color:white;background-color: rgb(168, 158, 158) ; padding:18px\" ></ion-icon>\n      </ion-col>\n\n      <ion-col size=\"9\" style=\"margin-top:23px; padding-left:15px; font-size: 18px\">\n        <label>Chaitnya</label> \n      </ion-col>\n    </ion-row> -->\n\n  </div>\n  <!-- <div style=\"height:350px;position: relative; top:0px;\" >\n    <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%;\" />\n\n  </div> -->\n\n  <ion-card class=\"cl_card_css\">\n    <div style=\"margin-top:10px\">\n\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"person\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{name}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"call\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{mobile}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"mail\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{email}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <!-- <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"home\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">Chinchwad, pune-19.</ion-label><br />\n        </ion-col>\n      </ion-row> -->\n\n\n\n\n\n    </div>\n\n\n\n  </ion-card>\n\n\n  <div id=\"map_canvas\" style=\"margin-bottom:5%;\" *ngIf=\"noInternet == '1' \"></div>\n\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_post_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n\n\n</ion-content>");
 
 /***/ }),
 
@@ -128,34 +128,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
+/* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
 
 
 
 
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(router, apiCall) {
+    function ProfilePage(router, networkServices, loader, apiCall) {
         this.router = router;
+        this.networkServices = networkServices;
+        this.loader = loader;
         this.apiCall = apiCall;
     }
     ProfilePage.prototype.ngOnInit = function () {
-        // this.getProfileInfo();
+        this.getProfileInfo();
     };
     ProfilePage.prototype.getProfileInfo = function () {
         var _this = this;
-        var dealerId = localStorage.getItem('dealerId');
-        var url = "http://3.6.135.154:37354/api/v1.0.0/" + "roles/" + 2 + "/users/" + 5;
+        this.loader.showBlockingLoaderAuth();
+        var userId = localStorage.getItem('userId');
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "users/" + userId;
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.name = _this.profileDetail.name;
             _this.mobile = _this.profileDetail.mobile;
             _this.email = _this.profileDetail.email;
-            _this.roleId = _this.profileDetail.roleId;
-            _this.username = _this.profileDetail.username;
-            _this.image = _this.profileDetail.image;
-            _this.lattitude = _this.profileDetail.latitude;
-            _this.longitude = _this.profileDetail.longitude;
-            _this.address = _this.profileDetail.address + _this.profileDetail.city + " " + _this.profileDetail.state + " " + _this.profileDetail.country + " " + _this.profileDetail.pincode;
+            // this.roleId = this.profileDetail.roleId;
+            // this.username = this.profileDetail.username;
+            // this.image = this.profileDetail.image;
+            // this.lattitude = this.profileDetail.latitude;
+            // this.longitude = this.profileDetail.longitude;
+            // this.address = this.profileDetail.address + this.profileDetail.city + " " + this.profileDetail.state + " " + this.profileDetail.country + " " + this.profileDetail.pincode;
+            _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+            _this.networkServices.checkInternetConnection();
+            _this.networkServices.onPageLoadCheckInternet();
         });
     };
     ProfilePage.prototype.openChatList = function () {
@@ -176,6 +189,8 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"] },
+        { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] }
     ]; };
     ProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -185,6 +200,8 @@ var ProfilePage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./profile.page.scss */ "./src/app/pages/profile/profile.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"],
+            src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"]])
     ], ProfilePage);
     return ProfilePage;
