@@ -6,8 +6,9 @@
     <ion-title style="color:white; margin-left:-15px">
       Home
     </ion-title>
-    <ion-icon [matMenuTriggerFor]="menu" name="list"
-      style="position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px"></ion-icon>
+    <mat-icon [matMenuTriggerFor]="menu"
+      style="position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px;cursor: pointer;">
+      g_translate</mat-icon>
     <mat-menu #menu="matMenu">
       <div fxLayout="row" style="margin-left:20px; margin-top:10px">
         <img src="../../assets/indiaflag.png" style="width:25px; height:25px" />
@@ -92,23 +93,44 @@
 
       <div *ngIf="countAdvertisement > 0" style="width:98%; margin-left:1%">
 
-        <div class="row" *ngFor="let item of advertisementArray" >
+        <div class="row" *ngFor="let item of advertisementArray">
           <div *ngFor="let image of item.images" (click)="showAdvertisementDetail(image, item.id)">
             <div class="column" style="position:relative">
               <img src={{image}} style="border-radius: 5px;width:100%; height:100%" />
               <div
-                style="position:absolute; bottom:5px;width:95%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;;">
+                style="position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;">
 
-                <ion-row style="color:white">
-                  <ion-col size="6" fxLayoutAlign="start start">
-                    <label style="font-size:12px"><b>{{item.title}}</b></label>
-                  </ion-col>
-                  <ion-col size="6" fxLayoutAlign="end end">
-                    <label style="font-size:12px;padding-right:13px"><b>${{item.price}}</b></label>
-                  </ion-col>
-                </ion-row>
+                <div fxLayout="row" style="width:100%; color:white;padding-top:2px;">
+                  <div fxFlex="50" fxLayoutAlign="start start">
+                    <div class="b">
+                    <label style="font-size:11px;padding-left:5px"><b>{{item.title}}</b></label>
+                    </div>
+                  </div>
 
-                <ion-row style="width:100%; margin-top:-5px">
+                  <div fxFlex="50" fxLayoutAlign="end end">
+                    <label style="font-size:11px;padding-right:5px"><b>{{item.price}}</b></label>
+                  </div>
+
+                </div>
+
+                <div fxLayout="row" style="width:100%; color:white;padding-top:2px; padding-bottom:2px">
+                  <div fxFlex="30" fxLayoutAlign="start start">
+                    <ion-icon style="color:hotpink" name="woman"></ion-icon>
+                    <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
+                  </div>
+
+                  <div fxFlex="70" fxLayoutAlign="end start">
+                    <div class="b" style="margin-top:-5px">
+                      <label style="font-size:10px; color:white;padding-right: 5px;"><b>{{item.address}} ,
+                          120km</b></label>
+                    </div>
+                    <!-- <label style="font-size:10px;padding-right:5px"><b>{{item.address}} , 120km</b></label> -->
+                  </div>
+
+                </div>
+
+
+                <!-- <ion-row style="width:100%; margin-top:-5px">
                   <ion-col size="4">
                     <ion-icon style="color:hotpink" name="woman"></ion-icon>
                     <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
@@ -120,7 +142,7 @@
                           120km</b></label>
                     </div>
                   </ion-col>
-                </ion-row>
+                </ion-row> -->
 
 
               </div>

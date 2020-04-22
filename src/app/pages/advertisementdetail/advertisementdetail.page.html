@@ -118,17 +118,17 @@
 
 
   <div class="cl_call_message_maindiv" fxLayout="row">
-    <div class="cl_message_div" fxLayout="row" (click)="sendMessage()">
+    <div class="cl_message_div" fxLayout="row" (click)="sendMessage()" style="cursor: pointer">
       <div fxFlex="50" fxLayoutAlign="center center">
         <!-- <ion-icon name="call" ></ion-icon> -->
-        <mat-icon class="cl_chat_icon">chat_bubble_outline</mat-icon>
+        <mat-icon class="cl_chat_icon">chat</mat-icon>
       </div>
       <div fxFlex="50" fxLayoutAlign="start center">
         <label class="cl_font_14">CHAT</label>
       </div>
     </div>
 
-    <div style="width:50%;" (click)="makeCall()">
+    <div style="width:50%;" (click)="makeCall()" style="cursor: pointer">
       <div fxFlex="50" fxLayoutAlign="center center">
         <ion-icon name="call" class="cl_call_icon"></ion-icon>
       </div>
