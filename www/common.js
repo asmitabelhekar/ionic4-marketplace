@@ -660,6 +660,151 @@ var ApiService = /** @class */ (function () {
 
 
 
+/***/ }),
+
+/***/ "./src/app/service/network/network.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/service/network/network.service.ts ***!
+  \****************************************************/
+/*! exports provided: NetworkService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NetworkService", function() { return NetworkService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+
+
+
+var NetworkService = /** @class */ (function () {
+    function NetworkService(network, router, toastController, platform, http) {
+        this.network = network;
+        this.router = router;
+        this.toastController = toastController;
+        this.platform = platform;
+        this.http = http;
+        console.log('Hello NetworkConnectivityProvider');
+        this.NetworkStatus = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](false); // Assume Network is offline
+        this.CheckNetworkStatus();
+        this.CreateNetworkObserverSubscriptions();
+    }
+    NetworkService.prototype.checkInternetConnection = function () {
+        var _this = this;
+        this.network.onDisconnect().subscribe(function () {
+            _this.presentToast();
+            // this.navigateInternetPage();
+            // this.dialogs.alert('You are not connected to the internet');
+        });
+        this.network.onConnect().subscribe(function () {
+            // this.presentSuccessToast()
+            // this.dialogs.alert('You are connected to the internet');
+            setTimeout(function () {
+            }, 2000);
+        });
+    };
+    NetworkService.prototype.presentToast = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastController.create({
+                            message: 'You are not connected to the internet',
+                            duration: 2000,
+                            cssClass: 'my-custom-fail-class',
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    NetworkService.prototype.presentSuccessToast = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastController.create({
+                            message: "You are connected to the internet",
+                            cssClass: "my-custom-success-class",
+                            duration: 2000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    NetworkService.prototype.CheckNetworkStatus = function () {
+        if (this.platform.is('cordova')) {
+            if (this.network.type === undefined || this.network.type === null || this.network.type === 'unknown') {
+                this.UpdateNetworkStatus(false);
+            }
+            else {
+                this.UpdateNetworkStatus(true);
+            }
+        }
+        else {
+            this.UpdateNetworkStatus(navigator.onLine);
+        }
+        return this.network.type;
+    };
+    NetworkService.prototype.onPageLoadCheckInternet = function () {
+        this.checkStatus = this.CheckNetworkStatus();
+        if (this.checkStatus == "none" || this.checkStatus == "" || this.checkStatus == undefined || this.checkStatus == null) {
+            this.presentToast();
+            // this.navigateInternetPage();
+        }
+        else {
+            // this.presentSuccessToast()
+        }
+        return this.checkStatus;
+    };
+    NetworkService.prototype.CreateNetworkObserverSubscriptions = function () {
+        var _this = this;
+        this.WatchConnect = this.network.onConnect().subscribe(function (data) { _this.UpdateNetworkStatus(true); }, function (error) { console.log(error); });
+        this.WatchDisconnect = this.network.onDisconnect().subscribe(function (data) { _this.UpdateNetworkStatus(false); }, function (error) { console.log(error); });
+    };
+    NetworkService.prototype.UpdateNetworkStatus = function (IsOnline) {
+        console.log('Network ', (IsOnline == true ? 'Online' : 'Offline'));
+        this.NetworkStatus.next(IsOnline);
+        return IsOnline;
+    };
+    NetworkService.ctorParameters = function () { return [
+        { type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__["Network"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+    ]; };
+    NetworkService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__["Network"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], NetworkService);
+    return NetworkService;
+}());
+
+
+
 /***/ })
 
 }]);

@@ -16,6 +16,7 @@ import {
 import { Platform } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
+import { NetworkService } from 'src/app/service/network/network.service';
 
 @Component({
   selector: 'app-advertisementdetail',
@@ -29,12 +30,14 @@ export class AdvertisementdetailPage implements OnInit {
   date : any;
   price: any;
   title : any;
+  userId : any;
   description : any;
   mobile : any;
   advertisementId : any;
   categoryId : any;
   lattitude = 0;
   longitude = 0;
+  profileDetail : any;
   address: any;
   // city: any;
   cityName: any;
@@ -49,7 +52,9 @@ export class AdvertisementdetailPage implements OnInit {
 
   constructor(public activatedRoute: ActivatedRoute,
     public platform : Platform,
+    public networkServices : NetworkService,
     public apiCall : ApiService,
+    public networkService : NetworkService,
     public callNumber : CallNumber,
     public googlemaps : GoogleMaps,
     public router : Router,
@@ -60,8 +65,8 @@ export class AdvertisementdetailPage implements OnInit {
 
   ngOnInit() {
 
-    this.userName = localStorage.getItem("userName");
-    this.userCreated = localStorage.getItem("userCreated");
+    // this.userName = localStorage.getItem("userName");
+    // this.userCreated = localStorage.getItem("userCreated");
     console.log("receive image::"+this.getImage)
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
     console.log("show id:"+this.getIds.id);
@@ -91,11 +96,15 @@ export class AdvertisementdetailPage implements OnInit {
      this.price = this.advertisementArray['price'];
      this.mobile = this.advertisementArray['mobile'];
      this.date = this.advertisementArray['modified'];
+     this.userId = this.advertisementArray['userId'];
+     this.getProfileDetail();
      this.loader.hideBlockingLoaderAuth();
       this.loadMap();
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
+        this.networkService.checkInternetConnection();
+        this.networkService.onPageLoadCheckInternet();
       })
   }
   ionViewWillEnter() {
@@ -106,6 +115,22 @@ export class AdvertisementdetailPage implements OnInit {
     window.history.back();
   }
 
+  getProfileDetail(){
+    this.loader.showBlockingLoaderAuth();
+    let userId = localStorage.getItem('userId');
+    let url = environment.base_url + environment.version+ "users/" + userId;
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.profileDetail = MyResponse['result'];
+      this.userName = this.profileDetail.name;
+      this.userCreated = this.profileDetail.created;
+           this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+        this.loader.hideBlockingLoaderAuth();
+        this.networkServices.checkInternetConnection();
+        this.networkServices.onPageLoadCheckInternet();
+      })
+  }
 
   loadMap() {
     // this.loader.showBlockingLoaderAuth();
@@ -209,6 +234,6 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
   viewProfile(){
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/profile', { userId : this.userId}]);
   }
 }

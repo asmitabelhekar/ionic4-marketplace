@@ -81,7 +81,7 @@
 
     <div style="width:100%; background-color:white;margin-top:15px; height:100%">
       <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-bottom:10px">
-        <img src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()" />
+        <img *ngIf="noInternet == '0' " src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()" />
 
         <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let item of categoryArray"
           (click)="checkType(item.name, item.id)" [ngClass]="(displayCategory == item.id) ? 'even' : 'odd' ">

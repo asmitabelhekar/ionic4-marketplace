@@ -37,6 +37,9 @@
     },
     "mx.ferreyra.callnumber": {
       "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
   "dependent_plugins": {}

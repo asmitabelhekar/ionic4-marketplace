@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from '../service/apiservice/api.service';
 import { LoaderService } from '../service/loaderservice/loader.service';
+import { NetworkService } from '../service/network/network.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { LoaderService } from '../service/loaderservice/loader.service';
 })
 export class HomePage {
 
+  noInternet = "0";
   displayCategory : any = "5";
   bannerArray = [];
   checkString : string;
@@ -87,6 +89,7 @@ export class HomePage {
   constructor(public dialog : MatDialog,
     public apiCall : ApiService,
     public loader : LoaderService,
+    public networkServices : NetworkService,
     public menuController: MenuController,
     public activatedRoute : ActivatedRoute,
     public router : Router) {
@@ -104,9 +107,13 @@ export class HomePage {
       this.apiCall.get(url).subscribe(MyResponse => {
        this.categoryArray = MyResponse['result']['list'];
        this.loader.hideBlockingLoaderAuth();
+       this.noInternet = '0';
       },
         error => {
+          this.noInternet = '1';
           this.loader.hideBlockingLoaderAuth();
+          this.networkServices.checkInternetConnection();
+          this.networkServices.onPageLoadCheckInternet();
         })
     }
 
@@ -116,12 +123,14 @@ export class HomePage {
       this.apiCall.get(url).subscribe(MyResponse => {
        this.advertisementArray = MyResponse['result']['list'];
         this.countAdvertisement = MyResponse['result']['count'];
-       console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+      //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
        this.loader.hideBlockingLoaderAuth();
 
       },
         error => {
           this.loader.hideBlockingLoaderAuth();
+          this.networkServices.checkInternetConnection();
+          this.networkServices.onPageLoadCheckInternet();
         })
     }
 
@@ -131,11 +140,13 @@ export class HomePage {
       this.apiCall.get(url).subscribe(MyResponse => {
        this.bannerArray = MyResponse['result']['list'];
       //  this.bannerImg = this.bannerArray['image'];
-       console.log("banner data:"+JSON.stringify(this.bannerArray));
+      //  console.log("banner data:"+JSON.stringify(this.bannerArray));
        this.loader.hideBlockingLoaderAuth();
       },
         error => {
           this.loader.hideBlockingLoaderAuth();
+          this.networkServices.checkInternetConnection();
+          this.networkServices.onPageLoadCheckInternet();
         })
     }
   ionViewWillEnter(){

@@ -18,6 +18,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent,
@@ -41,6 +42,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
     NativeGeocoder,
     Geolocation,
     CallNumber,
+    Network,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

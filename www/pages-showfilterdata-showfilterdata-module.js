@@ -133,6 +133,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
+
 
 
 
@@ -140,8 +142,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShowfilterdataPage = /** @class */ (function () {
-    function ShowfilterdataPage(loader, router, apiCall) {
+    function ShowfilterdataPage(loader, networkServices, router, apiCall) {
         this.loader = loader;
+        this.networkServices = networkServices;
         this.router = router;
         this.apiCall = apiCall;
     }
@@ -164,6 +167,8 @@ var ShowfilterdataPage = /** @class */ (function () {
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
+            _this.networkServices.checkInternetConnection();
+            _this.networkServices.onPageLoadCheckInternet();
         });
     };
     ShowfilterdataPage.prototype.goBackword = function () {
@@ -176,6 +181,7 @@ var ShowfilterdataPage = /** @class */ (function () {
     };
     ShowfilterdataPage.ctorParameters = function () { return [
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_2__["LoaderService"] },
+        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_6__["NetworkService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] }
     ]; };
@@ -186,6 +192,7 @@ var ShowfilterdataPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./showfilterdata.page.scss */ "./src/app/pages/showfilterdata/showfilterdata.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_2__["LoaderService"],
+            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_6__["NetworkService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"]])
     ], ShowfilterdataPage);

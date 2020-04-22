@@ -150,6 +150,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
+
 
 
 
@@ -161,10 +163,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AdvertisementdetailPage = /** @class */ (function () {
-    function AdvertisementdetailPage(activatedRoute, platform, apiCall, callNumber, googlemaps, router, nativeGeocoder, loader) {
+    function AdvertisementdetailPage(activatedRoute, platform, apiCall, networkService, callNumber, googlemaps, router, nativeGeocoder, loader) {
         this.activatedRoute = activatedRoute;
         this.platform = platform;
         this.apiCall = apiCall;
+        this.networkService = networkService;
         this.callNumber = callNumber;
         this.googlemaps = googlemaps;
         this.router = router;
@@ -209,6 +212,8 @@ var AdvertisementdetailPage = /** @class */ (function () {
             _this.loadMap();
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
+            _this.networkService.checkInternetConnection();
+            _this.networkService.onPageLoadCheckInternet();
         });
     };
     AdvertisementdetailPage.prototype.ionViewWillEnter = function () {
@@ -320,6 +325,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_9__["ApiService"] },
+        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_10__["NetworkService"] },
         { type: _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__["CallNumber"] },
         { type: _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
@@ -339,6 +345,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_9__["ApiService"],
+            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_10__["NetworkService"],
             _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__["CallNumber"],
             _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],

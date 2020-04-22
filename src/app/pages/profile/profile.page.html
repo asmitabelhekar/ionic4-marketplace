@@ -11,14 +11,14 @@
 
 <ion-content>
 
-  <div style="height:300px;position: relative; top:0px;background-color: #f1f4f9;" fxLayoutAlign="center center">
+  <div style="height:320px;position: relative; top:0px;background-color: #f1f4f9;" fxLayoutAlign="center center">
     <!-- <img src="../../../assets/noimage.png" style="width:100%; height:100%;" /> -->
     <div style="position: absolute; bottom :60px;" >
-      <div fxLayout="column">
+      <div fxLayout="column" fxLayoutAlign="center center">
         <ion-icon name="person" 
           style="width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px">
         </ion-icon>
-        <label   style="margin-top:10px; color: black;font-size: 20px;">Chaitnya</label>
+        <label   style="margin-top:10px; color: black;font-size: 20px;">{{name}}</label>
       </div>
 
 
@@ -50,7 +50,7 @@
           <ion-icon style="height:19px;width:18px; margin:2px" name="person"></ion-icon>
         </ion-col>
         <ion-col size="11">
-          <ion-label class="cl_content_fontsize">Chaitnya</ion-label><br />
+          <ion-label class="cl_content_fontsize">{{name}}</ion-label><br />
         </ion-col>
       </ion-row>
 
@@ -59,7 +59,7 @@
           <ion-icon style="height:19px;width:18px; margin:2px" name="call"></ion-icon>
         </ion-col>
         <ion-col size="11">
-          <ion-label class="cl_content_fontsize">9527902622</ion-label><br />
+          <ion-label class="cl_content_fontsize">{{mobile}}</ion-label><br />
         </ion-col>
       </ion-row>
 
@@ -68,18 +68,18 @@
           <ion-icon style="height:19px;width:18px; margin:2px" name="mail"></ion-icon>
         </ion-col>
         <ion-col size="11">
-          <ion-label class="cl_content_fontsize">chaitnya@gmail.com</ion-label><br />
+          <ion-label class="cl_content_fontsize">{{email}}</ion-label><br />
         </ion-col>
       </ion-row>
 
-      <ion-row style="margin:20px">
+      <!-- <ion-row style="margin:20px">
         <ion-col size="1">
           <ion-icon style="height:19px;width:18px; margin:2px" name="home"></ion-icon>
         </ion-col>
         <ion-col size="11">
           <ion-label class="cl_content_fontsize">Chinchwad, pune-19.</ion-label><br />
         </ion-col>
-      </ion-row>
+      </ion-row> -->
 
 
 
