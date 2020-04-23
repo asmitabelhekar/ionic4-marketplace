@@ -305,5 +305,25 @@ export class NextadvertisementPage implements OnInit {
   }
 
 
+  openChatList(){
+    this.router.navigate(['/chatlist']);
+  }
 
+  postAdvertisement(){
+    this.router.navigate(['/postadvertisement']);
+    // this.router.navigate(['/secondpageadvertisement']);
+  }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
+
+  openFavourite(){
+    this.router.navigate(['/favourite']);
+  }
+
+  openProfile(){
+    this.router.navigate(['/profile']);
+  }
+  
 }

@@ -23,6 +23,7 @@ export class HomePage {
   bannerImg : any;
   categoryArray = [];
   categoryId = 5;
+  categoryName = "Music";
   arrayLength: any;
   countAdvertisement : any;
   advertisementArray = [];
@@ -154,6 +155,26 @@ export class HomePage {
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
     if(this.categoryId == undefined){
       this.categoryId = 5;
+    }else{
+      if(this.categoryId == 1)
+      {
+        this.categoryName = "Dance";
+      }else  if(this.categoryId == 2)
+      {
+        this.categoryName = "Yoga";
+      }else  if(this.categoryId == 3)
+      {
+        this.categoryName = "Meditation";
+      }else  if(this.categoryId == 4)
+      {
+        this.categoryName = "Massage";
+      }else  if(this.categoryId == 5)
+      {
+        this.categoryName = "Music";
+      }else{
+        this.categoryName = "Music";
+      }
+      this.checkType(this.categoryName,this.categoryId);
     }
     console.log("get categoryId::"+this.categoryId);
     this.getBannerData(this.categoryId);
@@ -431,7 +452,8 @@ export class HomePage {
   showAdvertisementDetail(data, id){
     let sendId = {
       "id" : id,
-      "categoryId" : this.categoryId
+      "categoryId" : this.categoryId,
+      "status" : "category"
     }
 // alert("show data::"+JSON.stringify(data));
 localStorage.setItem("url",data);

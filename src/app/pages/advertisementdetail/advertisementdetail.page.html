@@ -127,15 +127,24 @@
         <label class="cl_font_14">CHAT</label>
       </div>
     </div>
-
-    <div style="width:50%;" (click)="makeCall()" style="cursor: pointer">
+    <div class="cl_call_div" fxLayout="row" (click)="makeCall()" style="cursor: pointer">
       <div fxFlex="50" fxLayoutAlign="center center">
-        <ion-icon name="call" class="cl_call_icon"></ion-icon>
+        <!-- <ion-icon name="call" ></ion-icon> -->
+        <mat-icon class="cl_chat_icon">call</mat-icon>
       </div>
       <div fxFlex="50" fxLayoutAlign="start center">
         <label class="cl_font_14">CALL</label>
       </div>
     </div>
+
+    <!-- <div style="width:50%;" fxLayout="row" (click)="makeCall()" style="cursor: pointer">
+      <div fxFlex="50" align="center">
+        <ion-icon name="call"  class="cl_call_icon"></ion-icon>
+      </div>
+      <div fxFlex="50" align="center">
+        <label class="cl_font_14" >CALL</label>
+      </div>
+    </div> -->
   </div>
 
 </ion-content>

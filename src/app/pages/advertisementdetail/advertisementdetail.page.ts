@@ -49,6 +49,7 @@ export class AdvertisementdetailPage implements OnInit {
   advertisementArray = [];
   userName : any;
   userCreated : any;
+  url : any;
 
   constructor(public activatedRoute: ActivatedRoute,
     public platform : Platform,
@@ -64,29 +65,35 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.userId = localStorage.getItem('userId');
     // this.userName = localStorage.getItem("userName");
     // this.userCreated = localStorage.getItem("userCreated");
     console.log("receive image::"+this.getImage)
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
-    console.log("show id:"+this.getIds.id);
-    console.log("show userCreated:"+this.userCreated);
 
-    this.advertisementId = this.getIds.id;
-    this.categoryId = this.getIds.categoryId;
-    this.getDetailAdvertisement();
-    // this.loadMap();
-    // this.platform.ready().then(() => {
-    //   this.loadMap();
-    // });
+    if(this.getIds.status == "users"){
+      console.log("show id:"+this.getIds.id);
+      console.log("show userCreated:"+this.userCreated);
+  
+      this.advertisementId = this.getIds.id;
+      this.url = environment.base_url + environment.version  +"users/" + this.userId + "/advertisements/" + this.advertisementId;
+      this.getDetailAdvertisement();
+    }else{
+      console.log("show id:"+this.getIds.id);
+      console.log("show userCreated:"+this.userCreated);
+  
+      this.advertisementId = this.getIds.id;
+      this.categoryId = this.getIds.categoryId;
+    this.url = environment.base_url + environment.version  +"categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
+      this.getDetailAdvertisement();
+    }
   
   }
 
   getDetailAdvertisement(){
 
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version  +"categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
-    this.apiCall.get(url).subscribe(MyResponse => {
+    this.apiCall.get(this.url).subscribe(MyResponse => {
      this.advertisementArray = MyResponse['result'];
      this.address = this.advertisementArray['address'];
      this.description = this.advertisementArray['description'];
@@ -110,6 +117,7 @@ export class AdvertisementdetailPage implements OnInit {
   ionViewWillEnter() {
     // this.getImage = this.activatedRoute.snapshot.params['imageShow'];
     console.log("show image:" + this.getImage);
+    this.userId = localStorage.getItem('userId');
   }
   goBackword() {
     window.history.back();
@@ -117,8 +125,8 @@ export class AdvertisementdetailPage implements OnInit {
 
   getProfileDetail(){
     this.loader.showBlockingLoaderAuth();
-    let userId = localStorage.getItem('userId');
-    let url = environment.base_url + environment.version+ "users/" + userId;
+    
+    let url = environment.base_url + environment.version+ "users/" + this.userId;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.userName = this.profileDetail.name;

@@ -11,44 +11,93 @@
 
 <ion-content>
 
-  <div *ngIf="arrayLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
+  <ion-segment (ionChange)="segmentChanged($event)" value="myadds">
+    <ion-segment-button value="myadds" style="--background: white;">
+      <ion-label >My Adds</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="bookmarks" style="--background: white;">
+      <ion-label >Bookmarks</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-    <div class="row" *ngFor="let item of imageArray" (click)="showAdvertisementDetail(item)">
-      <div class="column" style="position:relative">
-        <img src={{item.image}} style="border-radius: 5px;width:100%; height:100%"/>
-        <div style="position:absolute; bottom:10px;width:100%">
+ 
+  <div *ngIf="tabTitle == 'myadds' ">
 
-          <ion-row style="color:white">
-            <ion-col size="6" fxLayoutAlign="start start">
-              <label style="font-size:12px"><b>Ad Title</b></label>
-            </ion-col>
-            <ion-col size="6" fxLayoutAlign="end end">
-              <label style="font-size:12px;padding-right:13px"><b>$100</b></label>
-            </ion-col>
-          </ion-row>
+    <div *ngIf="arrayLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
 
-          <ion-row style="width:100%; margin-top:-5px">
-            <ion-col size="3">
-              <ion-icon style="color:hotpink" name="woman"></ion-icon>
-              <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
+    
+      <div class="row" *ngFor="let item of advertisementArray">
+        <div *ngFor="let image of item.images" (click)="showAdvertisementDetail(image, item.id)">
+          <div class="column" style="position:relative">
+            <img src={{image}} style="border-radius: 5px;width:100%; height:100%" />
+            <div
+              style="position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;">
 
-            </ion-col>
-            <ion-col size="9" fxLayoutAlign="end start">
-              <label style="font-size:10px; color:white;padding-right: 11px;"><b>Mumbai , 120km</b></label>
-            </ion-col>
-          </ion-row>
+              <div fxLayout="row" style="width:100%; color:white;padding-top:2px;">
+                <div fxFlex="50" fxLayoutAlign="start start">
+                  <div class="b">
+                  <label style="font-size:11px;padding-left:5px"><b>{{item.title}}</b></label>
+                  </div>
+                </div>
 
+                <div fxFlex="50" fxLayoutAlign="end end">
+                  <label style="font-size:11px;padding-right:5px"><b>{{item.price}}</b></label>
+                </div>
+
+              </div>
+
+              <div fxLayout="row" style="width:100%; color:white;padding-top:2px; padding-bottom:2px">
+                <div fxFlex="30" fxLayoutAlign="start start">
+                  <ion-icon style="color:hotpink" name="woman"></ion-icon>
+                  <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
+                </div>
+
+                <div fxFlex="70" fxLayoutAlign="end start">
+                  <div class="b" style="margin-top:-5px">
+                    <label style="font-size:10px; color:white;padding-right: 5px;"><b>{{item.address}} ,
+                        120km</b></label>
+                  </div>
+                  <!-- <label style="font-size:10px;padding-right:5px"><b>{{item.address}} , 120km</b></label> -->
+                </div>
+
+              </div>
+
+
+              <!-- <ion-row style="width:100%; margin-top:-5px">
+                <ion-col size="4">
+                  <ion-icon style="color:hotpink" name="woman"></ion-icon>
+                  <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
+
+                </ion-col>
+                <ion-col size="8" fxLayoutAlign="end start">
+                  <div class="b">
+                    <label style="font-size:10px; color:white;padding-right: 11px;"><b>{{item.address}} ,
+                        120km</b></label>
+                  </div>
+                </ion-col>
+              </ion-row> -->
+
+
+            </div>
+          </div>
 
         </div>
-      </div>
 
+
+      </div>
+  
+  
+    </div>
+    <img style="width:100%; height:60px; visibility: hidden;" />
+    <div *ngIf="arrayLength == 0 " style="margin-top:20%">
+      <h3 align="center">No records found.</h3>
     </div>
 
 
   </div>
-  <img style="width:100%; height:60px; visibility: hidden;" />
-  <div *ngIf="arrayLength == 0 " style="margin-top:20%">
-    <h3 align="center">No records found.</h3>
+
+  <div *ngIf="tabTitle == 'bookmarks' " style="margin-top:35%">
+    <h4 align="center">No Bookmarks Present.</h4>
   </div>
 
   <div class="cl_bottom_fix">

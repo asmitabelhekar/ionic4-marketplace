@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/service/loaderservice/loader.service';
+import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/service/apiservice/api.service';
 
 @Component({
   selector: 'app-favourite',
@@ -8,7 +11,11 @@ import { Router } from '@angular/router';
 })
 export class FavouritePage implements OnInit {
 
+  categoryId = 0;
   arrayLength : any;
+  tabTitle = "myadds";
+  selectedTab = 0;
+  advertisementArray : any;
   imageArray = [
     {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
@@ -47,12 +54,58 @@ export class FavouritePage implements OnInit {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
     }
   ];
-  constructor(public router : Router) { }
+  constructor(public router : Router,
+    public apiCall : ApiService,
+    public loader : LoaderService) { }
 
   ngOnInit() {
-    this.arrayLength = this.imageArray.length;
+    if(this.tabTitle == "myadds"){
+      this.selectedTab = 0;
+      this.getAdvertisement();
+    }else{
+      this.selectedTab = 1;
+    }
+    // this.arrayLength = this.imageArray.length;
   }
 
+ionViewWillEnter(){
+  if(this.tabTitle == "myadds"){
+    this.selectedTab = 0;
+    this.getAdvertisement();
+  }else{
+    this.selectedTab = 1;
+  }
+}
+
+  segmentChanged(ev: any) {
+    this.tabTitle = ev.detail.value;
+
+    if(this.tabTitle == "myadds"){
+      this.selectedTab = 0;
+      this.getAdvertisement();
+    }else{
+      this.selectedTab = 1;
+    }
+    console.log('Segment changed', ev.detail.value);
+  }
+
+  getAdvertisement(){
+    this.loader.showBlockingLoaderAuth();
+    let userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version  +"users/" + userId + "/advertisements"
+    this.apiCall.get(url).subscribe(MyResponse => {
+     this.advertisementArray = MyResponse['result']['list'];
+      this.arrayLength = MyResponse['result']['count'];
+      // this.arrayLength = 0;
+    //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+     this.loader.hideBlockingLoaderAuth();
+
+    },
+      error => {
+        this.loader.hideBlockingLoaderAuth();
+        
+      })
+  }
 
   openChatList(){
     this.router.navigate(['/chatlist']);
@@ -73,5 +126,17 @@ export class FavouritePage implements OnInit {
 
   openProfile(){
     this.router.navigate(['/profile']);
+  }
+
+  showAdvertisementDetail(data, id){
+    let sendId = {
+      "id" : id,
+      "categoryId" : this.categoryId,
+      "status" : "users"
+    }
+// alert("show data::"+JSON.stringify(data));
+localStorage.setItem("url",data);
+console.log("send image::"+id);
+this.router.navigate(['/advertisementdetail', { sendId : JSON.stringify(sendId)}]);
   }
 }

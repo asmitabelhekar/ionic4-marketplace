@@ -45,6 +45,9 @@ export class ChatlistPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    console.log("show page : Chat List");
+  }
 
   detailChat(name) {
     this.router.navigate(['/detailchat', { name: name }])

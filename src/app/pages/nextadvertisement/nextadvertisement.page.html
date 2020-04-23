@@ -23,7 +23,7 @@
   <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px" appearance="outline">
         <mat-label>Address</mat-label>
         <input matInput placeholder="Location" [(ngModel)]="advertisementModel.address" ngx-google-places-autocomplete
-          [options]='options' #placesRef="ngx-places" name="city" required pattern="[a-zA-Z0-9,.  ]+$" 
+          [options]='options' #placesRef="ngx-places" name="city" required  
           (onAddressChange)="handleAddressChange($event)">
          
       </mat-form-field>
@@ -104,8 +104,19 @@
     <input style="display: none;" id="image_upload5" type="file" (change)="detectEventGallery($event,4)">
 
 
-<div style="margin-top:5%">
+<div style="margin-top:5%; margin-bottom:15%">
   <button [disabled]="price.invalid " mat-raised-button class="nextButton" (click)="next(advertisementModel)">Next</button>
 </div>
 </form>
+
+<div class="cl_bottom_fix">
+  <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
+    <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
+    <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
+    <ion-icon name="add-circle" class="cl_post_css" (click)="postAdvertisement()">
+    </ion-icon>
+    <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
+    <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
+  </div>
+</div>
 </ion-content>

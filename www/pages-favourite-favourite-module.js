@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Favourite\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div *ngIf=\"arrayLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n\n    <div class=\"row\" *ngFor=\"let item of imageArray\" (click)=\"showAdvertisementDetail(item)\">\n      <div class=\"column\" style=\"position:relative\">\n        <img src={{item.image}} style=\"border-radius: 5px;width:100%; height:100%\"/>\n        <div style=\"position:absolute; bottom:10px;width:100%\">\n\n          <ion-row style=\"color:white\">\n            <ion-col size=\"6\" fxLayoutAlign=\"start start\">\n              <label style=\"font-size:12px\"><b>Ad Title</b></label>\n            </ion-col>\n            <ion-col size=\"6\" fxLayoutAlign=\"end end\">\n              <label style=\"font-size:12px;padding-right:13px\"><b>$100</b></label>\n            </ion-col>\n          </ion-row>\n\n          <ion-row style=\"width:100%; margin-top:-5px\">\n            <ion-col size=\"3\">\n              <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n              <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n            </ion-col>\n            <ion-col size=\"9\" fxLayoutAlign=\"end start\">\n              <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>Mumbai , 120km</b></label>\n            </ion-col>\n          </ion-row>\n\n\n        </div>\n      </div>\n\n    </div>\n\n\n  </div>\n  <img style=\"width:100%; height:60px; visibility: hidden;\" />\n  <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n    <h3 align=\"center\">No records found.</h3>\n  </div>\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_post_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Favourite\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-segment (ionChange)=\"segmentChanged($event)\" value=\"myadds\">\n    <ion-segment-button value=\"myadds\" style=\"--background: white;\">\n      <ion-label >My Adds</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"bookmarks\" style=\"--background: white;\">\n      <ion-label >Bookmarks</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n\n \n  <div *ngIf=\"tabTitle == 'myadds' \">\n\n    <div *ngIf=\"arrayLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n\n    \n      <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n        <div *ngFor=\"let image of item.images\" (click)=\"showAdvertisementDetail(image, item.id)\">\n          <div class=\"column\" style=\"position:relative\">\n            <img src={{image}} style=\"border-radius: 5px;width:100%; height:100%\" />\n            <div\n              style=\"position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                <div fxFlex=\"50\" fxLayoutAlign=\"start start\">\n                  <div class=\"b\">\n                  <label style=\"font-size:11px;padding-left:5px\"><b>{{item.title}}</b></label>\n                  </div>\n                </div>\n\n                <div fxFlex=\"50\" fxLayoutAlign=\"end end\">\n                  <label style=\"font-size:11px;padding-right:5px\"><b>{{item.price}}</b></label>\n                </div>\n\n              </div>\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                <div fxFlex=\"30\" fxLayoutAlign=\"start start\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n                </div>\n\n                <div fxFlex=\"70\" fxLayoutAlign=\"end start\">\n                  <div class=\"b\" style=\"margin-top:-5px\">\n                    <label style=\"font-size:10px; color:white;padding-right: 5px;\"><b>{{item.address}} ,\n                        120km</b></label>\n                  </div>\n                  <!-- <label style=\"font-size:10px;padding-right:5px\"><b>{{item.address}} , 120km</b></label> -->\n                </div>\n\n              </div>\n\n\n              <!-- <ion-row style=\"width:100%; margin-top:-5px\">\n                <ion-col size=\"4\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n                </ion-col>\n                <ion-col size=\"8\" fxLayoutAlign=\"end start\">\n                  <div class=\"b\">\n                    <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>{{item.address}} ,\n                        120km</b></label>\n                  </div>\n                </ion-col>\n              </ion-row> -->\n\n\n            </div>\n          </div>\n\n        </div>\n\n\n      </div>\n  \n  \n    </div>\n    <img style=\"width:100%; height:60px; visibility: hidden;\" />\n    <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n      <h3 align=\"center\">No records found.</h3>\n    </div>\n\n\n  </div>\n\n  <div *ngIf=\"tabTitle == 'bookmarks' \" style=\"margin-top:35%\">\n    <h4 align=\"center\">No Bookmarks Present.</h4>\n  </div>\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_post_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -114,7 +114,7 @@ var FavouritePageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".cl_bottom_nav_css {\n  width: 30px;\n  height: 30px;\n  color: gray;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  height: 50px;\n  width: 100%;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 30px;\n  height: 30px;\n  color: #f76161;\n}\n\n.column {\n  float: left;\n  border-radius: 5px;\n  width: 50%;\n  height: 250px;\n  padding-left: 4px;\n  padding-right: 4px;\n  padding-bottom: 8px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9mYXZvdXJpdGUvZmF2b3VyaXRlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvZmF2b3VyaXRlL2Zhdm91cml0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUNBSjs7QURHRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNDLFdBQUE7RUFDQyx1QkFBQTtBQ0FOOztBREdFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0FDQUo7O0FER0E7RUFDRSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFFQSxtQkFBQTtBQ0RGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvZmF2b3VyaXRlL2Zhdm91cml0ZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5jbF9ib3R0b21fbmF2X2Nzc3tcbiAgICB3aWR0aDozMHB4O1xuICAgIGhlaWdodDozMHB4O1xuICAgIGNvbG9yOmdyYXk7XG4gIH1cbiAgXG4gIC5jbF9ib3R0b21fZml4e1xuICAgIHBvc2l0aW9uOiBmaXhlZDsgXG4gICAgYm90dG9tOjBweDtcbiAgICBoZWlnaHQ6NTBweDtcbiAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgfVxuICBcbiAgLmNsX3Bvc3RfY3Nze1xuICAgIHdpZHRoOjMwcHg7XG4gICAgaGVpZ2h0OjMwcHg7XG4gICAgY29sb3I6cmdiKDI0NywgOTcsIDk3KTtcbiAgfVxuXG4uY29sdW1uIHtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IDUwJTtcbiAgaGVpZ2h0OjI1MHB4O1xuICBwYWRkaW5nLWxlZnQ6IDRweDtcbiAgcGFkZGluZy1yaWdodDogNHB4O1xuICAvLyBwYWRkaW5nLXRvcDogNXB4O1xuICBwYWRkaW5nLWJvdHRvbTogOHB4O1xuICAvLyBtYXJnaW4tdG9wOi01cHg7XG59IiwiLmNsX2JvdHRvbV9uYXZfY3NzIHtcbiAgd2lkdGg6IDMwcHg7XG4gIGhlaWdodDogMzBweDtcbiAgY29sb3I6IGdyYXk7XG59XG5cbi5jbF9ib3R0b21fZml4IHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBib3R0b206IDBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogMTAwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2NzcyB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGNvbG9yOiAjZjc2MTYxO1xufVxuXG4uY29sdW1uIHtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IDUwJTtcbiAgaGVpZ2h0OiAyNTBweDtcbiAgcGFkZGluZy1sZWZ0OiA0cHg7XG4gIHBhZGRpbmctcmlnaHQ6IDRweDtcbiAgcGFkZGluZy1ib3R0b206IDhweDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".cl_bottom_nav_css {\n  width: 30px;\n  height: 30px;\n  color: gray;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  height: 50px;\n  width: 100%;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 30px;\n  height: 30px;\n  color: #152a3f;\n}\n\n.column {\n  float: left;\n  border-radius: 5px;\n  width: 50%;\n  height: 120px;\n  padding-left: 4px;\n  padding-right: 4px;\n  padding-bottom: 9px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9mYXZvdXJpdGUvZmF2b3VyaXRlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvZmF2b3VyaXRlL2Zhdm91cml0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUNBSjs7QURHRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNDLFdBQUE7RUFDQyx1QkFBQTtBQ0FOOztBREdFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0FDQUo7O0FESUU7RUFDRSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFFQSxtQkFBQTtBQ0ZKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvZmF2b3VyaXRlL2Zhdm91cml0ZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5jbF9ib3R0b21fbmF2X2Nzc3tcbiAgICB3aWR0aDozMHB4O1xuICAgIGhlaWdodDozMHB4O1xuICAgIGNvbG9yOmdyYXk7XG4gIH1cbiAgXG4gIC5jbF9ib3R0b21fZml4e1xuICAgIHBvc2l0aW9uOiBmaXhlZDsgXG4gICAgYm90dG9tOjBweDtcbiAgICBoZWlnaHQ6NTBweDtcbiAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgfVxuICBcbiAgLmNsX3Bvc3RfY3Nze1xuICAgIHdpZHRoOjMwcHg7XG4gICAgaGVpZ2h0OjMwcHg7XG4gICAgY29sb3I6IzE1MmEzZjtcbiAgICAvLyBjb2xvcjpyZ2IoMjQ3LCA5NywgOTcpO1xuICB9XG5cbiAgLmNvbHVtbiB7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHdpZHRoOiA1MCU7XG4gICAgaGVpZ2h0OjEyMHB4O1xuICAgIHBhZGRpbmctbGVmdDogNHB4O1xuICAgIHBhZGRpbmctcmlnaHQ6IDRweDtcbiAgICAvLyBwYWRkaW5nLXRvcDogNXB4O1xuICAgIHBhZGRpbmctYm90dG9tOiA5cHg7XG4gICAgLy8gbWFyZ2luLXRvcDotNXB4O1xuICB9XG5cbiAgLy8gLnRhYi1vbmUge1xuXG4gIC8vICAgLS1iYWNrZ3JvdW5kOiAjMTUyYTNmICFpbXBvcnRhbnQ7XG4gIC8vICAgLS1jb2xvcjp3aGl0ZTtcbiAgICBcbiAgLy8gfVxuXG4gIC8vIC50YWItdHdvIHtcblxuICAvLyAgIC0tYmFja2dyb3VuZDogd2hpdGUgIWltcG9ydGFudDtcbiAgLy8gICAtLWNvbG9yOiMxNTJhM2Y7XG4gIC8vIH1cbiIsIi5jbF9ib3R0b21fbmF2X2NzcyB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGNvbG9yOiBncmF5O1xufVxuXG4uY2xfYm90dG9tX2ZpeCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDEwMCU7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4uY2xfcG9zdF9jc3Mge1xuICB3aWR0aDogMzBweDtcbiAgaGVpZ2h0OiAzMHB4O1xuICBjb2xvcjogIzE1MmEzZjtcbn1cblxuLmNvbHVtbiB7XG4gIGZsb2F0OiBsZWZ0O1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHdpZHRoOiA1MCU7XG4gIGhlaWdodDogMTIwcHg7XG4gIHBhZGRpbmctbGVmdDogNHB4O1xuICBwYWRkaW5nLXJpZ2h0OiA0cHg7XG4gIHBhZGRpbmctYm90dG9tOiA5cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -131,12 +131,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+
+
+
 
 
 
 var FavouritePage = /** @class */ (function () {
-    function FavouritePage(router) {
+    function FavouritePage(router, apiCall, loader) {
         this.router = router;
+        this.apiCall = apiCall;
+        this.loader = loader;
+        this.categoryId = 0;
+        this.tabTitle = "myadds";
+        this.selectedTab = 0;
         this.imageArray = [
             {
                 "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
@@ -177,7 +188,49 @@ var FavouritePage = /** @class */ (function () {
         ];
     }
     FavouritePage.prototype.ngOnInit = function () {
-        this.arrayLength = this.imageArray.length;
+        if (this.tabTitle == "myadds") {
+            this.selectedTab = 0;
+            this.getAdvertisement();
+        }
+        else {
+            this.selectedTab = 1;
+        }
+        // this.arrayLength = this.imageArray.length;
+    };
+    FavouritePage.prototype.ionViewWillEnter = function () {
+        if (this.tabTitle == "myadds") {
+            this.selectedTab = 0;
+            this.getAdvertisement();
+        }
+        else {
+            this.selectedTab = 1;
+        }
+    };
+    FavouritePage.prototype.segmentChanged = function (ev) {
+        this.tabTitle = ev.detail.value;
+        if (this.tabTitle == "myadds") {
+            this.selectedTab = 0;
+            this.getAdvertisement();
+        }
+        else {
+            this.selectedTab = 1;
+        }
+        console.log('Segment changed', ev.detail.value);
+    };
+    FavouritePage.prototype.getAdvertisement = function () {
+        var _this = this;
+        this.loader.showBlockingLoaderAuth();
+        var userId = localStorage.getItem("userId");
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + userId + "/advertisements";
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.advertisementArray = MyResponse['result']['list'];
+            _this.arrayLength = MyResponse['result']['count'];
+            // this.arrayLength = 0;
+            //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+            _this.loader.hideBlockingLoaderAuth();
+        }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+        });
     };
     FavouritePage.prototype.openChatList = function () {
         this.router.navigate(['/chatlist']);
@@ -195,8 +248,21 @@ var FavouritePage = /** @class */ (function () {
     FavouritePage.prototype.openProfile = function () {
         this.router.navigate(['/profile']);
     };
+    FavouritePage.prototype.showAdvertisementDetail = function (data, id) {
+        var sendId = {
+            "id": id,
+            "categoryId": this.categoryId,
+            "status": "users"
+        };
+        // alert("show data::"+JSON.stringify(data));
+        localStorage.setItem("url", data);
+        console.log("send image::" + id);
+        this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+    };
     FavouritePage.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_5__["ApiService"] },
+        { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"] }
     ]; };
     FavouritePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -204,7 +270,9 @@ var FavouritePage = /** @class */ (function () {
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./favourite.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/favourite/favourite.page.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./favourite.page.scss */ "./src/app/pages/favourite/favourite.page.scss")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_5__["ApiService"],
+            src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
     ], FavouritePage);
     return FavouritePage;
 }());

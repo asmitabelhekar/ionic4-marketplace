@@ -88,3 +88,25 @@
         border: 1px solid rgb(212, 209, 209);
          border-radius:10px;
     }
+
+
+.cl_bottom_nav_css{
+  width:30px;
+  height:30px;
+  color:gray;
+}
+
+.cl_bottom_fix{
+  position: fixed; 
+  bottom:0px;
+  height:50px;
+   width: 100%;
+    background-color: white;
+}
+
+.cl_post_css{
+  width:30px;
+  height:30px;
+  color:#152a3f;
+  // color:rgb(247, 97, 97);
+}

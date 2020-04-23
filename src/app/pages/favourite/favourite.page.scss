@@ -16,17 +16,31 @@
   .cl_post_css{
     width:30px;
     height:30px;
-    color:rgb(247, 97, 97);
+    color:#152a3f;
+    // color:rgb(247, 97, 97);
   }
 
-.column {
-  float: left;
-  border-radius: 5px;
-  width: 50%;
-  height:250px;
-  padding-left: 4px;
-  padding-right: 4px;
-  // padding-top: 5px;
-  padding-bottom: 8px;
-  // margin-top:-5px;
-}
+  .column {
+    float: left;
+    border-radius: 5px;
+    width: 50%;
+    height:120px;
+    padding-left: 4px;
+    padding-right: 4px;
+    // padding-top: 5px;
+    padding-bottom: 9px;
+    // margin-top:-5px;
+  }
+
+  // .tab-one {
+
+  //   --background: #152a3f !important;
+  //   --color:white;
+    
+  // }
+
+  // .tab-two {
+
+  //   --background: white !important;
+  //   --color:#152a3f;
+  // }
