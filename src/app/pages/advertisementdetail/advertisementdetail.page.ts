@@ -50,6 +50,7 @@ export class AdvertisementdetailPage implements OnInit {
   userName : any;
   userCreated : any;
   url : any;
+  getBookmarkObj : any ;
 
   constructor(public activatedRoute: ActivatedRoute,
     public platform : Platform,
