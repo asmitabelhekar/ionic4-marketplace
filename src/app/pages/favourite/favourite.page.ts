@@ -13,6 +13,7 @@ export class FavouritePage implements OnInit {
 
   categoryId = 0;
   arrayLength : any;
+  bookmarkLength : any;
   tabTitle = "myadds";
   selectedTab = 0;
   advertisementArray : any;
@@ -64,6 +65,7 @@ export class FavouritePage implements OnInit {
       this.getAdvertisement();
     }else{
       this.selectedTab = 1;
+      this.getBookmarks();
     }
     // this.arrayLength = this.imageArray.length;
   }
@@ -74,6 +76,7 @@ ionViewWillEnter(){
     this.getAdvertisement();
   }else{
     this.selectedTab = 1;
+    this.getBookmarks();
   }
 }
 
@@ -85,9 +88,30 @@ ionViewWillEnter(){
       this.getAdvertisement();
     }else{
       this.selectedTab = 1;
+      this.getBookmarks();
     }
     console.log('Segment changed', ev.detail.value);
   }
+
+  getBookmarks(){
+
+    this.loader.showBlockingLoaderAuth();
+    let userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version  +"users/" + userId + "/bookmarks"
+    this.apiCall.get(url).subscribe(MyResponse => {
+     this.advertisementArray = MyResponse['result']['list'];
+      this.bookmarkLength = MyResponse['result']['count'];
+      // this.arrayLength = 0;
+    //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+     this.loader.hideBlockingLoaderAuth();
+
+    },
+      error => {
+        this.loader.hideBlockingLoaderAuth();
+        
+      })
+  }
+
 
   getAdvertisement(){
     this.loader.showBlockingLoaderAuth();

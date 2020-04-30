@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/service/apiservice/api.service';
+import { LoaderService } from 'src/app/service/loaderservice/loader.service';
+import { NetworkService } from 'src/app/service/network/network.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detailchat',
@@ -9,120 +14,92 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailchatPage implements OnInit {
 
 
-  chatModel : any = {};
-  chatArray = [
-    {
-      "type":"1",
-      "message" : "Hey there Robert, How can i help you today?",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"2",
-      "message" : "Hey Eugene, I think I left one of the book in my room",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hi how r you??",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hey there Robert, How can i help you today?",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"2",
-      "message" : "Hey Eugene, I think I left one of the book in my room",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hi how r you??",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hey there Robert, How can i help you today?",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"2",
-      "message" : "Hey Eugene, I think I left one of the book in my room",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hi how r you??",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hey there Robert, How can i help you today?",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"2",
-      "message" : "Hey Eugene, I think I left one of the book in my room",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hi how r you??",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hey there Robert, How can i help you today?",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"2",
-      "message" : "Hey Eugene, I think I left one of the book in my room",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hi how r you??",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hey there Robert, How can i help you today?",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"2",
-      "message" : "Hey Eugene, I think I left one of the book in my room",
-      "time" : "2 minutes ago"
-    },
-    {
-      "type":"1",
-      "message" : "Hi how r you??",
-      "time" : "2 minutes ago"
-    }
-  ];
-  name : any;
-  constructor(public activatedRoute : ActivatedRoute) { }
+  detailData: any;
+  chatModel: any = {};
+  chatArray = [];
+  noInternet = "0";
+  msgCount: any;
+  userId: any;
+  name: any;
+  id: any;
+
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    public apiCall: ApiService,
+    public networkServices: NetworkService,
+    public loader: LoaderService,
+    public toast: ToastController
+  ) { }
 
   ngOnInit() {
 
-    this.name = this.activatedRoute.snapshot.params['name'];
+    this.detailData = JSON.parse(this.activatedRoute.snapshot.params['userDetail']);
+    this.name = this.detailData.name;
+    this.id = this.detailData.id;
+    this.getChatMassages();
+
   }
 
+  ionViewWillEnter() {
+    this.getChatMassages();
+  }
 
-  goBackword(){
+  goBackword() {
     window.history.back();
   }
 
-  sendMessage(message){
-    let obj = {
-      "type":"2",
-      "message" : message.message,
-      "time" : "Now"
+  sendMessage() {
+    console.log("show msg :"+this.chatModel['message']);
+    if (this.chatModel['message'] == undefined || this.chatModel['message'] == null || this.chatModel['message'] == "") {
+     
+    } else {
+      this.loader.showBlockingLoaderAuth();
+      let send_date = {};
+
+
+      send_date['message'] = this.chatModel['message'];
+      this.userId = localStorage.getItem("userId");
+      let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id;
+      this.apiCall.post(url, send_date).subscribe(MyResponse => {
+
+        this.getChatMassages();
+        this.chatModel['message'] = "";
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
+      })
     }
 
-    this.chatArray.push(obj);
-    this.chatModel['message']= "" ;
   }
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
+  }
+
+  getChatMassages() {
+    this.loader.showBlockingLoaderAuth();
+    this.userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id;
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.chatArray = MyResponse['result']['list'];
+      this.msgCount = MyResponse['result']['count'];
+      console.log("show users:" + this.chatArray);
+      this.loader.hideBlockingLoaderAuth();
+      this.noInternet = '0';
+    },
+      error => {
+        this.noInternet = '1';
+        this.loader.hideBlockingLoaderAuth();
+        this.networkServices.checkInternetConnection();
+        this.networkServices.onPageLoadCheckInternet();
+      })
+  }
+
+
 }

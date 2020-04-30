@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'advertisementdetail',
     loadChildren: () => import('./pages/advertisementdetail/advertisementdetail.module').then( m => m.AdvertisementdetailPageModule)
   },
+  {
+    path: 'orderhistory',
+    loadChildren: () => import('./pages/orderhistory/orderhistory.module').then( m => m.OrderhistoryPageModule)
+  },
 ];
 
 @NgModule({
