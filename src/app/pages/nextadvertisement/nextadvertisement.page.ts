@@ -96,12 +96,13 @@ export class NextadvertisementPage implements OnInit {
   handleFirstFileInput(files: FileList) {
     if (this.fileToUpload == null || this.fileToUpload == undefined) {
     }
-    let url = "http://3.6.135.154:9000/api/" + "upload-image";
+    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+    // let url = "http://3.6.135.154:9000/api/" + "upload-image";
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result']['url'])
+        this.urls.push(MyResponse['result'][0])
       
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -109,7 +110,7 @@ export class NextadvertisementPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        this.firstImage = MyResponse['result']['url'];
+        this.firstImage = MyResponse['result'][0];
         console.log("print url resonce:" + this.firstImage);
       }, error => {
         this.loader.hideBlockingLoaderAuth();
@@ -122,12 +123,13 @@ export class NextadvertisementPage implements OnInit {
   handleSecondFileInput(files: FileList) {
     if (this.fileToUpload == null || this.fileToUpload == undefined) {
     }
-    let url = "http://3.6.135.154:9000/api/" + "upload-image";
+    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+    // let url = "http://3.6.135.154:9000/api/" + "upload-image";
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result']['url'])
+        this.urls.push(MyResponse['result'][0])
         
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -135,7 +137,7 @@ export class NextadvertisementPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        this.secondImage = MyResponse['result']['url'];
+        this.secondImage = MyResponse['result'][0];
         console.log("print url secondImage:" + this.secondImage);
       }, error => {
         this.loader.hideBlockingLoaderAuth();
@@ -148,12 +150,13 @@ export class NextadvertisementPage implements OnInit {
   handleThirdFileInput(files: FileList) {
     if (this.fileToUpload == null || this.fileToUpload == undefined) {
     }
-    let url = "http://3.6.135.154:9000/api/" + "upload-image";
+    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+    // let url = "http://3.6.135.154:9000/api/" + "upload-image";
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result']['url'])
+        this.urls.push(MyResponse['result'][0])
        
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -161,7 +164,7 @@ export class NextadvertisementPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        this.thirdImage = MyResponse['result']['url'];
+        this.thirdImage = MyResponse['result'][0];
         console.log("print url thirdImage:" + this.thirdImage);
       }, error => {
         this.loader.hideBlockingLoaderAuth();
@@ -174,12 +177,13 @@ export class NextadvertisementPage implements OnInit {
   handleFourthFileInput(files: FileList) {
     if (this.fileToUpload == null || this.fileToUpload == undefined) {
     }
-    let url = "http://3.6.135.154:9000/api/" + "upload-image";
+    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+    // let url = "http://3.6.135.154:9000/api/" + "upload-image";
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result']['url'])
+        this.urls.push(MyResponse['result'][0])
        
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -187,7 +191,7 @@ export class NextadvertisementPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        this.fourthImage = MyResponse['result']['url'];
+        this.fourthImage = MyResponse['result'][0];
         console.log("print url fourthImage:" + this.fourthImage);
       }, error => {
         this.loader.hideBlockingLoaderAuth();
@@ -200,12 +204,13 @@ export class NextadvertisementPage implements OnInit {
   handleFifthFileInput(files: FileList) {
     if (this.fileToUpload == null || this.fileToUpload == undefined) {
     }
-    let url = "http://3.6.135.154:9000/api/" + "upload-image";
+    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+    // let url = "http://3.6.135.154:9000/api/" + "upload-image";
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result']['url'])
+        this.urls.push(MyResponse['result'][0])
         
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -213,7 +218,7 @@ export class NextadvertisementPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        this.fifthImage = MyResponse['result']['url'];
+        this.fifthImage = MyResponse['result'][0];
         console.log("print url fifthImage:" + this.fifthImage);
       }, error => {
         this.loader.hideBlockingLoaderAuth();

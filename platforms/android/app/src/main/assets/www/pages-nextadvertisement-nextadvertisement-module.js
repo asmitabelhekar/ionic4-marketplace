@@ -220,10 +220,11 @@ var NextadvertisementPage = /** @class */ (function () {
         var _this = this;
         if (this.fileToUpload == null || this.fileToUpload == undefined) {
         }
-        var url = "http://3.6.135.154:9000/api/" + "upload-image";
+        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+        // let url = "http://3.6.135.154:9000/api/" + "upload-image";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result']['url']);
+            _this.urls.push(MyResponse['result'][0]);
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
@@ -231,7 +232,7 @@ var NextadvertisementPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
-            _this.firstImage = MyResponse['result']['url'];
+            _this.firstImage = MyResponse['result'][0];
             console.log("print url resonce:" + _this.firstImage);
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
@@ -242,10 +243,11 @@ var NextadvertisementPage = /** @class */ (function () {
         var _this = this;
         if (this.fileToUpload == null || this.fileToUpload == undefined) {
         }
-        var url = "http://3.6.135.154:9000/api/" + "upload-image";
+        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+        // let url = "http://3.6.135.154:9000/api/" + "upload-image";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result']['url']);
+            _this.urls.push(MyResponse['result'][0]);
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
@@ -253,7 +255,7 @@ var NextadvertisementPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
-            _this.secondImage = MyResponse['result']['url'];
+            _this.secondImage = MyResponse['result'][0];
             console.log("print url secondImage:" + _this.secondImage);
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
@@ -264,10 +266,11 @@ var NextadvertisementPage = /** @class */ (function () {
         var _this = this;
         if (this.fileToUpload == null || this.fileToUpload == undefined) {
         }
-        var url = "http://3.6.135.154:9000/api/" + "upload-image";
+        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+        // let url = "http://3.6.135.154:9000/api/" + "upload-image";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result']['url']);
+            _this.urls.push(MyResponse['result'][0]);
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
@@ -275,7 +278,7 @@ var NextadvertisementPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
-            _this.thirdImage = MyResponse['result']['url'];
+            _this.thirdImage = MyResponse['result'][0];
             console.log("print url thirdImage:" + _this.thirdImage);
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
@@ -286,10 +289,11 @@ var NextadvertisementPage = /** @class */ (function () {
         var _this = this;
         if (this.fileToUpload == null || this.fileToUpload == undefined) {
         }
-        var url = "http://3.6.135.154:9000/api/" + "upload-image";
+        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+        // let url = "http://3.6.135.154:9000/api/" + "upload-image";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result']['url']);
+            _this.urls.push(MyResponse['result'][0]);
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
@@ -297,7 +301,7 @@ var NextadvertisementPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
-            _this.fourthImage = MyResponse['result']['url'];
+            _this.fourthImage = MyResponse['result'][0];
             console.log("print url fourthImage:" + _this.fourthImage);
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
@@ -308,10 +312,11 @@ var NextadvertisementPage = /** @class */ (function () {
         var _this = this;
         if (this.fileToUpload == null || this.fileToUpload == undefined) {
         }
-        var url = "http://3.6.135.154:9000/api/" + "upload-image";
+        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+        // let url = "http://3.6.135.154:9000/api/" + "upload-image";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result']['url']);
+            _this.urls.push(MyResponse['result'][0]);
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
@@ -319,7 +324,7 @@ var NextadvertisementPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
-            _this.fifthImage = MyResponse['result']['url'];
+            _this.fifthImage = MyResponse['result'][0];
             console.log("print url fifthImage:" + _this.fifthImage);
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();

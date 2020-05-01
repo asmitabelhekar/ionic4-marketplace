@@ -51,7 +51,7 @@ export class AdvertisementdetailPage implements OnInit {
   userName: any;
   userCreated: any;
   url: any;
-  getBookmarkObj: any;
+  getBookmarkObj: any = {};
   keysObject = [];
  
   constructor(public activatedRoute: ActivatedRoute,
@@ -120,19 +120,24 @@ export class AdvertisementdetailPage implements OnInit {
       this.getDetailAdvertisement();
     }
 
-    let data = localStorage.getItem("BOOKMARK");
+    var jsonString = localStorage.getItem("BOOKMARK");    
+    this.getBookmarkObj = JSON.parse(jsonString);
+    
+    console.log("show retrieved object:"+this.getBookmarkObj);
 
-    this.getBookmarkObj = JSON.parse(data);
-    console.log("getBookmarkObj::" + this.getBookmarkObj);
-    this.keysObject = Object.keys(this.getBookmarkObj);
-    for(let i=0; i< this.keysObject.length; i++){
-      if(this.advertisementId == this.keysObject[i]){
-        this.displayfavourite = "0";
-      }
-      else{
-        this.displayfavourite = "1";
-      }
-    }
+    // let data = localStorage.getItem("BOOKMARK");
+
+    // this.getBookmarkObj = JSON.parse(data);
+    // console.log("getBookmarkObj::" + this.getBookmarkObj);
+    // this.keysObject = Object.keys(this.getBookmarkObj);
+    // for(let i=0; i< this.keysObject.length; i++){
+    //   if(this.advertisementId == this.keysObject[i]){
+    //     this.displayfavourite = "0";
+    //   }
+    //   else{
+    //     this.displayfavourite = "1";
+    //   }
+    // }
   }
 
   goBackword() {
@@ -196,7 +201,7 @@ export class AdvertisementdetailPage implements OnInit {
 
           })
 
-          this.getAddressFromCoords(event['lat'], event['lng']);
+          this.getAddressFromCoords(event[0]['lat'], event[0]['lng']);
         }
       );
     }

@@ -247,13 +247,9 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.ionViewWillEnter = function () {
         this.arrayLength = this.imageArray.length;
-        var checkdata = localStorage.getItem("BOOKMARK");
-        if (checkdata == undefined || checkdata == null || checkdata == "") {
-            console.log("all time check:" + checkdata);
-        }
-        else {
-            console.log("all time:" + localStorage.getItem("BOOKMARK"));
-        }
+        var jsonString = localStorage.getItem("BOOKMARK");
+        this.postBookmarkObj = JSON.parse(jsonString);
+        console.log("show retrieved object:" + this.postBookmarkObj);
         this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
         if (this.categoryId == undefined) {
             this.categoryId = 5;
@@ -562,31 +558,26 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.bookmarkAdvertisement = function (advertisementid) {
         var _this = this;
-        this.getBookmarkObj = localStorage.getItem("BOOKMARK");
-        console.log("check for key:" + this.postBookmarkObj.hasOwnProperty(advertisementid));
         this.checkStatus = this.postBookmarkObj.hasOwnProperty(advertisementid);
+        console.log("check for status:" + this.checkStatus);
         if (this.checkStatus) {
             console.log("before delete:" + (this.postBookmarkObj));
             delete this.postBookmarkObj[advertisementid];
             localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+            this.userId = localStorage.getItem("userId");
+            var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "users/" + this.userId + "/bookmarks/" + advertisementid;
+            this.apiCall.delete(url).subscribe(function (MyResponse) {
+                _this.loader.hideBlockingLoaderAuth();
+            }, function (error) {
+                _this.presentToast("Please try again");
+                _this.loader.hideBlockingLoaderAuth();
+            });
             console.log("after delete:" + (this.postBookmarkObj));
-            this.keysObject = Object.keys(this.postBookmarkObj);
-            console.log("All keys of post bookmark object::" + this.keysObject);
         }
         else {
-            if (this.getBookmarkObj == undefined || this.getBookmarkObj == null || this.getBookmarkObj == "" || this.getBookmarkObj == {}) {
-                this.postBookmarkObj[advertisementid] = true;
-                localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
-                console.log("display object:" + (this.postBookmarkObj));
-            }
-            else {
-                this.postBookmarkObj[advertisementid] = true;
-                localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
-                this.getBookmarkObj = localStorage.getItem("BOOKMARK");
-                console.log("added object:" + JSON.stringify(this.postBookmarkObj));
-            }
-            this.keysObject = Object.keys(this.postBookmarkObj);
-            console.log("All keys of post bookmark object::" + (this.keysObject));
+            this.postBookmarkObj[advertisementid] = true;
+            localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+            console.log("display object:" + (this.postBookmarkObj));
             this.loader.showBlockingLoaderAuth();
             var send_date = {};
             this.advertisementModel['userId'] = localStorage.getItem("userId");
@@ -599,6 +590,7 @@ var HomePage = /** @class */ (function () {
                 _this.loader.hideBlockingLoaderAuth();
             });
         }
+        // }
     };
     HomePage.prototype.presentToast = function (message) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {

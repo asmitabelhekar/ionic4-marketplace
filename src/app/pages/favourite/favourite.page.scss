@@ -44,3 +44,12 @@
   //   --background: white !important;
   //   --color:#152a3f;
   // }
+
+  div.b {
+    white-space: nowrap; 
+    width: 80px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    // border: 1px solid #000000;
+  }
+  

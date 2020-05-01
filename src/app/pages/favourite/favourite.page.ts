@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-favourite',
@@ -16,8 +16,12 @@ export class FavouritePage implements OnInit {
   arrayLength : any;
   bookmarkLength : any;
   tabTitle = "myadds";
+  checkStatus : boolean;
+  advertisementModel : any = {};
   selectedTab = 0;
   advertisementArray : any;
+  userId : any;
+  getBookmarkObj : any = {};
   imageArray = [
     {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
@@ -58,6 +62,7 @@ export class FavouritePage implements OnInit {
   ];
   constructor(public router : Router,
     public apiCall : ApiService,
+    public toast : ToastController,
     public menuController : MenuController,
     public loader : LoaderService) {
       this.menuController.enable(false);
@@ -76,12 +81,70 @@ export class FavouritePage implements OnInit {
 
 ionViewWillEnter(){
   if(this.tabTitle == "myadds"){
+
+    var jsonString = localStorage.getItem("BOOKMARK");    
+    this.getBookmarkObj = JSON.parse(jsonString);
+    
+    console.log("show retrieved object:"+this.getBookmarkObj);
+
     this.selectedTab = 0;
     this.getAdvertisement();
   }else{
     this.selectedTab = 1;
     this.getBookmarks();
   }
+}
+
+bookmarkAdvertisement(advertisementid){
+   
+  this.checkStatus = this.getBookmarkObj.hasOwnProperty(advertisementid);
+  console.log("check for status:"+this.checkStatus);
+  if(this.checkStatus){
+    console.log("before delete:"+(this.getBookmarkObj));
+    delete this.getBookmarkObj[advertisementid];
+    localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
+    this.userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + advertisementid ;
+    this.apiCall.delete(url, ).subscribe(MyResponse => {
+
+      this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.presentToast("Please try again");
+      this.loader.hideBlockingLoaderAuth();
+
+    })
+    console.log("after delete:"+(this.getBookmarkObj));
+  }else{
+    this.getBookmarkObj[advertisementid] = true;
+    localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
+    console.log("display object:"+(this.getBookmarkObj));
+
+    this.loader.showBlockingLoaderAuth();
+    let send_date = {};
+    this.advertisementModel['userId'] = localStorage.getItem("userId");
+
+    send_date['userId'] = this.advertisementModel['userId'];
+    let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+    this.apiCall.post(url, send_date).subscribe(MyResponse => {
+
+      this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.presentToast("Please try again");
+      this.loader.hideBlockingLoaderAuth();
+
+    })
+  }
+
+ 
+}
+
+
+async presentToast(message) {
+  const toast = await this.toast.create({
+    message: message,
+    duration: 4000
+  });
+  toast.present();
 }
 
   segmentChanged(ev: any) {

@@ -18,18 +18,19 @@ import { empty } from 'rxjs';
 export class HomePage {
 
   keysObject = [];
-  getBookmarkObj : any = {};
-  postBookmarkObj : any ={};
-  advertisementModel : any = {};
+  getBookmarkObj: any = {};
+  postBookmarkObj: any = {};
+  advertisementModel: any = {};
   noInternet = "0";
   displayCategory: any = "5";
   bannerArray = [];
   checkString: string;
-  bannerImg: any; 
-  checkStatus : boolean;
+  bannerImg: any;
+  checkStatus: boolean;
   categoryArray = [];
   categoryId = 5;
   categoryName = "Music";
+  userId: any;
   arrayLength: any;
   countAdvertisement: any;
   advertisementArray = [];
@@ -95,7 +96,7 @@ export class HomePage {
   ];
   constructor(public dialog: MatDialog,
     public apiCall: ApiService,
-    public toast : ToastController,
+    public toast: ToastController,
     public loader: LoaderService,
     public networkServices: NetworkService,
     public menuController: MenuController,
@@ -159,12 +160,11 @@ export class HomePage {
   }
   ionViewWillEnter() {
     this.arrayLength = this.imageArray.length;
-    let checkdata = localStorage.getItem("BOOKMARK");
-    if(checkdata == undefined || checkdata == null || checkdata == ""){
-      console.log("all time check:"+checkdata);
-    }else{
-      console.log("all time:"+localStorage.getItem("BOOKMARK"));
-    }
+
+    var jsonString = localStorage.getItem("BOOKMARK");
+    this.postBookmarkObj = JSON.parse(jsonString);
+
+    console.log("show retrieved object:" + this.postBookmarkObj);
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
     if (this.categoryId == undefined) {
       this.categoryId = 5;
@@ -203,7 +203,7 @@ export class HomePage {
     this.router.navigate(['/showfilterdata']);
   }
   checkType(title, id) {
-    console.log("check title id ::"+title + "   " + "id" + id);
+    console.log("check title id ::" + title + "   " + "id" + id);
     this.categoryId = id;
     this.displayCategory = id;
     if (title == "Dance") {
@@ -476,61 +476,57 @@ export class HomePage {
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
 
-  bookmarkAdvertisement(advertisementid){
-   
+  bookmarkAdvertisement(advertisementid) {
 
-    
-    
-    this.getBookmarkObj = localStorage.getItem("BOOKMARK");
-    console.log("check for key:"+this.postBookmarkObj.hasOwnProperty(advertisementid));
     this.checkStatus = this.postBookmarkObj.hasOwnProperty(advertisementid);
-    if(this.checkStatus){
-      console.log("before delete:"+(this.postBookmarkObj));
+    console.log("check for status:" + this.checkStatus);
+    if (this.checkStatus) {
+      console.log("before delete:" + (this.postBookmarkObj));
       delete this.postBookmarkObj[advertisementid];
-      localStorage.setItem("BOOKMARK",JSON.stringify(this.postBookmarkObj));
-      console.log("after delete:"+(this.postBookmarkObj));
+      localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
 
-      this.keysObject = Object.keys(this.postBookmarkObj);
-      console.log("All keys of post bookmark object::"+this.keysObject);
+      this.userId = localStorage.getItem("userId");
+      let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + advertisementid;
+      this.apiCall.delete(url).subscribe(MyResponse => {
 
-
-    }else{
-    
-      if(this.getBookmarkObj == undefined || this.getBookmarkObj == null || this.getBookmarkObj == "" || this.getBookmarkObj == {} ){
-    
-        this.postBookmarkObj[advertisementid] = true;
-        localStorage.setItem("BOOKMARK",JSON.stringify(this.postBookmarkObj));
-        
-        console.log("display object:"+(this.postBookmarkObj));
-      }else{
-        this.postBookmarkObj[advertisementid] = true;
-        localStorage.setItem("BOOKMARK",JSON.stringify(this.postBookmarkObj));
-        this.getBookmarkObj = localStorage.getItem("BOOKMARK");
-        console.log("added object:"+JSON.stringify(this.postBookmarkObj));
-      }
-
-      this.keysObject = Object.keys(this.postBookmarkObj);
-      console.log("All keys of post bookmark object::"+(this.keysObject));
-
-
-      this.loader.showBlockingLoaderAuth();
-      let send_date = {};
-      this.advertisementModel['userId'] = localStorage.getItem("userId");
-  
-      send_date['userId'] = this.advertisementModel['userId'];
-      let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
-      this.apiCall.post(url, send_date).subscribe(MyResponse => {
-  
         this.loader.hideBlockingLoaderAuth();
       }, error => {
         this.presentToast("Please try again");
         this.loader.hideBlockingLoaderAuth();
-  
+
+      })
+
+
+      console.log("after delete:" + (this.postBookmarkObj));
+    } else {
+      this.postBookmarkObj[advertisementid] = true;
+      localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+      console.log("display object:" + (this.postBookmarkObj));
+
+      this.loader.showBlockingLoaderAuth();
+      let send_date = {};
+      this.advertisementModel['userId'] = localStorage.getItem("userId");
+
+      send_date['userId'] = this.advertisementModel['userId'];
+      let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+      this.apiCall.post(url, send_date).subscribe(MyResponse => {
+
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
       })
     }
-   
-    
-   
+
+
+
+
+
+    // }
+
+
+
   }
 
   async presentToast(message) {
