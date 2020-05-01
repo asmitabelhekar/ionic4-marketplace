@@ -32,10 +32,10 @@
     </div>
 
     <div fxLayoutAlign="end start" style="width:10%;">
-      <!-- <ion-icon *ngIf="getBookmarkObj [advertisementId] == true " style="color:hotpink; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
-      <ion-icon *ngIf="getBookmarkObj [advertisementId] != true " style="color:hotpink; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon> -->
+      <ion-icon *ngIf="displayfavourite == '0' " style="color:hotpink; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
+      <ion-icon *ngIf="displayfavourite == '1' " style="color:hotpink; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon>
 
-      <ion-icon fxLayoutAlign="end start" name="heart-outline" style="width:23px; height:23px;"></ion-icon>
+      <!-- <ion-icon fxLayoutAlign="end start" name="heart-outline" style="width:23px; height:23px;"></ion-icon> -->
     </div>
   </div>
 

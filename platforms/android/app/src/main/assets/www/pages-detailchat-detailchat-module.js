@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"2\">\n        <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n      </ion-col>\n      <ion-col size=\"8\" class=\"TitleHeader TitleText\">\n        <ion-label style=\"color:white ; margin-left:-15px\">{{name}}</ion-label>\n      </ion-col>\n     <ion-col size=\"2\">\n       <ion-icon name=\"search\" style=\"color:white; height:20px; width: 20px; margin:10px\"></ion-icon>\n     </ion-col>\n    </ion-row>\n\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  style=\"width:100%;height:100%;\">\n<div style=\"color:black\"> \n<div *ngFor=\"let item of chatArray\"> \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"start center\" *ngIf=\"item.type == '1' \" style=\"width:100%\">\n    <ion-col style=\"margin-left:10px\">\n      <button style=\"border-radius: 50%; width:50px; height:50px; background-color: #9badc0; \"></button>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <div fxLayout=\"column\">\n        <section  style=\"width:auto;min-width:40%; max-width: 70%;margin-top:20px; padding:10px; background-color: #ebeff3\">\n          <label style=\"font-size: 15px;\">{{item.message}}</label>\n        </section>\n       <label style=\"font-size:12px; margin-top:3px\">{{item.time}}</label>\n      </div>\n    </ion-col>\n   \n   \n  </div>\n\n  <div fxLayout=\"column\" fxLayoutAlign=\"end end\"  *ngIf=\"item.type == '2' \">\n    <section  style=\"width:auto;min-width:40%; max-width: 70%;margin-top:20px; margin-right:10px; padding:10px; background-color: #d3e2f1\">\n      <label>{{item.message}}</label>\n    </section>\n    <label style=\"margin-right:10px;font-size:12px; margin-top:3px\">{{item.time}}</label>\n  </div>\n\n</div>\n\n  <div style=\"position: fixed; height:80px; bottom:0;width:100%; margin:auto; margin-bottom:-5px\">\n    <ion-card style=\"width:100%;margin: auto\">\n      <ion-row>\n        <ion-col size=\"9\">\n          <ion-textarea placeholder=\"Reply.\" style=\"color:black\" [(ngModel)]=\"chatModel.message\"></ion-textarea>\n        </ion-col>\n\n        <ion-col size=\"3\" fxLayout=\"column\" fxLayoutAlign=\"center center\" (click)=\"sendMessage(chatModel)\">\n          <ion-row>\n\n            <ion-icon name=\"attach\" style=\"color:rgb(121, 111, 111); width:30px; height:35px; margin-top:-5px; margin-right:5px\"></ion-icon>\n            <ion-icon name=\"send\" style=\"color:rgb(121, 111, 111); width:25px; height:25px\" ></ion-icon>\n          </ion-row>\n        \n        </ion-col>\n      </ion-row>\n    </ion-card>\n  \n  </div>\n</div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-row>\n      <ion-col size=\"2\">\n        <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n      </ion-col>\n      <ion-col size=\"8\" class=\"TitleHeader TitleText\">\n        <ion-label style=\"color:white ; margin-left:-15px\">{{name}}</ion-label>\n      </ion-col>\n     <ion-col size=\"2\">\n       <ion-icon name=\"search\" style=\"color:white; height:20px; width: 20px; margin:10px\"></ion-icon>\n     </ion-col>\n    </ion-row>\n\n\n  </ion-toolbar>\n</ion-header>\n\n<ion-content  style=\"width:100%;height:100%;\">\n<div style=\"color:black\"> \n<div *ngFor=\"let item of chatArray\"> \n<div *ngIf=\"msgCount != '0' \">\n  <div fxLayout=\"row\" fxLayoutAlign=\"start center\" *ngIf=\"item.senderId != userId \" style=\"width:100%\">\n    <ion-col style=\"margin-left:10px\">\n      <button style=\"border-radius: 50%; width:50px; height:50px; background-color: #9badc0; \"></button>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <div fxLayout=\"column\">\n        <section  style=\"width:auto;min-width:40%; max-width: 60%;margin-top:20px; padding:10px; background-color: #ebeff3\">\n          <label style=\"font-size: 15px;\">{{item.message}}</label>\n        </section>\n       <!-- <label style=\"font-size:12px; margin-top:3px\">{{item.modified | date}}</label> -->\n      </div>\n    </ion-col>\n   \n   \n  </div>\n</div>\n \n<div *ngIf=\"msgCount != '0' \">\n  <div fxLayout=\"column\" fxLayoutAlign=\"end end\"  *ngIf=\"item.senderId == userId \">\n    <section  style=\"width:auto;min-width:40%; max-width: 70%;margin-top:20px; margin-right:10px; padding:10px; background-color: #d3e2f1\">\n      <label>{{item.message}}</label>\n    </section>\n    <!-- <label style=\"margin-right:10px;font-size:12px; margin-top:3px\">{{item.modified | date}}</label> -->\n  </div>\n\n</div>\n \n</div>\n\n\n<div *ngIf=\"msgCount == '0' \" fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:100%; margin-top:40%\">\n\n<h1 > No chat present.</h1>\n</div>\n\n\n  <div style=\"position: fixed; height:80px; bottom:0;width:100%; margin:auto; margin-bottom:-5px\">\n    <ion-card style=\"width:100%;margin: auto\">\n      <ion-row>\n        <ion-col size=\"9\">\n          <ion-textarea placeholder=\"Reply.\" style=\"color:black\" [(ngModel)]=\"chatModel.message\"></ion-textarea>\n        </ion-col>\n\n        <ion-col size=\"3\" fxLayout=\"column\" fxLayoutAlign=\"center center\" >\n          <ion-row>\n\n            <ion-icon name=\"attach\" style=\"color:rgb(121, 111, 111); width:30px; height:35px; margin-top:-5px; margin-right:5px\"></ion-icon>\n            <ion-icon name=\"send\" style=\"color:rgb(121, 111, 111); width:25px; height:25px\" (click)=\"sendMessage()\"></ion-icon>\n          </ion-row>\n        \n        </ion-col>\n      </ion-row>\n    </ion-card>\n  \n  </div>\n</div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -127,123 +127,104 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
+/* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
+
+
+
+
 
 
 
 var DetailchatPage = /** @class */ (function () {
-    function DetailchatPage(activatedRoute) {
+    function DetailchatPage(activatedRoute, apiCall, networkServices, loader, toast) {
         this.activatedRoute = activatedRoute;
+        this.apiCall = apiCall;
+        this.networkServices = networkServices;
+        this.loader = loader;
+        this.toast = toast;
         this.chatModel = {};
-        this.chatArray = [
-            {
-                "type": "1",
-                "message": "Hey there Robert, How can i help you today?",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "2",
-                "message": "Hey Eugene, I think I left one of the book in my room",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hi how r you??",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hey there Robert, How can i help you today?",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "2",
-                "message": "Hey Eugene, I think I left one of the book in my room",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hi how r you??",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hey there Robert, How can i help you today?",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "2",
-                "message": "Hey Eugene, I think I left one of the book in my room",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hi how r you??",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hey there Robert, How can i help you today?",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "2",
-                "message": "Hey Eugene, I think I left one of the book in my room",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hi how r you??",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hey there Robert, How can i help you today?",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "2",
-                "message": "Hey Eugene, I think I left one of the book in my room",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hi how r you??",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hey there Robert, How can i help you today?",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "2",
-                "message": "Hey Eugene, I think I left one of the book in my room",
-                "time": "2 minutes ago"
-            },
-            {
-                "type": "1",
-                "message": "Hi how r you??",
-                "time": "2 minutes ago"
-            }
-        ];
+        this.chatArray = [];
+        this.noInternet = "0";
     }
     DetailchatPage.prototype.ngOnInit = function () {
-        this.name = this.activatedRoute.snapshot.params['name'];
+        this.detailData = JSON.parse(this.activatedRoute.snapshot.params['userDetail']);
+        this.name = this.detailData.name;
+        this.id = this.detailData.id;
+        this.getChatMassages();
+    };
+    DetailchatPage.prototype.ionViewWillEnter = function () {
+        this.getChatMassages();
     };
     DetailchatPage.prototype.goBackword = function () {
         window.history.back();
     };
-    DetailchatPage.prototype.sendMessage = function (message) {
-        var obj = {
-            "type": "2",
-            "message": message.message,
-            "time": "Now"
-        };
-        this.chatArray.push(obj);
-        this.chatModel['message'] = "";
+    DetailchatPage.prototype.sendMessage = function () {
+        var _this = this;
+        console.log("show msg :" + this.chatModel['message']);
+        if (this.chatModel['message'] == undefined || this.chatModel['message'] == null || this.chatModel['message'] == "") {
+        }
+        else {
+            this.loader.showBlockingLoaderAuth();
+            var send_date = {};
+            send_date['message'] = this.chatModel['message'];
+            this.userId = localStorage.getItem("userId");
+            var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "sender/" + this.userId + "/receive/" + this.id;
+            this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
+                _this.getChatMassages();
+                _this.chatModel['message'] = "";
+                _this.loader.hideBlockingLoaderAuth();
+            }, function (error) {
+                _this.presentToast("Please try again");
+                _this.loader.hideBlockingLoaderAuth();
+            });
+        }
+    };
+    DetailchatPage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    DetailchatPage.prototype.getChatMassages = function () {
+        var _this = this;
+        this.loader.showBlockingLoaderAuth();
+        this.userId = localStorage.getItem("userId");
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "sender/" + this.userId + "/receive/" + this.id;
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.chatArray = MyResponse['result']['list'];
+            _this.msgCount = MyResponse['result']['count'];
+            console.log("show users:" + _this.chatArray);
+            _this.loader.hideBlockingLoaderAuth();
+            _this.noInternet = '0';
+        }, function (error) {
+            _this.noInternet = '1';
+            _this.loader.hideBlockingLoaderAuth();
+            _this.networkServices.checkInternetConnection();
+            _this.networkServices.onPageLoadCheckInternet();
+        });
     };
     DetailchatPage.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+        { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] },
+        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_6__["NetworkService"] },
+        { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["ToastController"] }
     ]; };
     DetailchatPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -251,7 +232,11 @@ var DetailchatPage = /** @class */ (function () {
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./detailchat.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/detailchat/detailchat.page.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./detailchat.page.scss */ "./src/app/pages/detailchat/detailchat.page.scss")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"],
+            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_6__["NetworkService"],
+            src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["ToastController"]])
     ], DetailchatPage);
     return DetailchatPage;
 }());

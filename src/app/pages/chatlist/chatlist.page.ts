@@ -46,7 +46,7 @@ export class ChatlistPage implements OnInit {
     public apiCall : ApiService,
     public networkServices : NetworkService,
     public menuController : MenuController) { 
-      this.menuController.enable(true);
+      this.menuController.enable(false);
       this.userId = localStorage.getItem("userId");
     }
 
@@ -94,7 +94,7 @@ export class ChatlistPage implements OnInit {
 
   getUsers(){
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version  +"users";
+    let url = environment.base_url + environment.version  +"users/" + this.userId + "/chat-users";
     this.apiCall.get(url).subscribe(MyResponse => {
      this.usersArray = MyResponse['result']['list'];
      console.log("show users:"+this.usersArray);

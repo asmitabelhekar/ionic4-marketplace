@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/service/apiservice/api.service';
 import { NetworkService } from 'src/app/service/network/network.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -27,7 +28,10 @@ export class ProfilePage implements OnInit {
     public networkServices: NetworkService,
     public activatedRoute: ActivatedRoute,
     public loader: LoaderService,
-    public apiCall: ApiService) { }
+    public menuController : MenuController,
+    public apiCall: ApiService) { 
+      this.menuController.enable(false);
+    }
 
   ngOnInit() {
 
@@ -76,5 +80,12 @@ export class ProfilePage implements OnInit {
 
   openProfile() {
     this.router.navigate(['/profile']);
+  }
+
+  logOut(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+    localStorage.setItem("loginStatus", "no");
+
   }
 }

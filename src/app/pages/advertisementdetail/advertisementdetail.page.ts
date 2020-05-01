@@ -27,17 +27,18 @@ export class AdvertisementdetailPage implements OnInit {
 
   @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: any;
-  date : any;
+  date: any;
   price: any;
-  title : any;
-  userId : any;
-  description : any;
-  mobile : any;
-  advertisementId : any;
-  categoryId : any;
+  displayfavourite = "0";
+  title: any;
+  userId: any;
+  description: any;
+  mobile: any;
+  advertisementId: any;
+  categoryId: any;
   lattitude = 0;
   longitude = 0;
-  profileDetail : any;
+  profileDetail: any;
   address: any;
   // city: any;
   cityName: any;
@@ -45,68 +46,54 @@ export class AdvertisementdetailPage implements OnInit {
   countryName: any;
   loc: any = {};
   getImage = localStorage.getItem("url");
-  getIds : any;
+  getIds: any;
   advertisementArray = [];
-  userName : any;
-  userCreated : any;
-  url : any;
-  getBookmarkObj : any ;
-
+  userName: any;
+  userCreated: any;
+  url: any;
+  getBookmarkObj: any;
+  keysObject = [];
+ 
   constructor(public activatedRoute: ActivatedRoute,
-    public platform : Platform,
-    public networkServices : NetworkService,
-    public apiCall : ApiService,
-    public networkService : NetworkService,
-    public callNumber : CallNumber,
-    public googlemaps : GoogleMaps,
-    public router : Router,
-    public nativeGeocoder :  NativeGeocoder,
-    public loader : LoaderService) {
+    public platform: Platform,
+    public networkServices: NetworkService,
+    public apiCall: ApiService,
+    public networkService: NetworkService,
+    public callNumber: CallNumber,
+    public googlemaps: GoogleMaps,
+    public router: Router,
+    public nativeGeocoder: NativeGeocoder,
+    public loader: LoaderService) {
 
   }
+
 
   ngOnInit() {
-    this.userId = localStorage.getItem('userId');
-    // this.userName = localStorage.getItem("userName");
-    // this.userCreated = localStorage.getItem("userCreated");
-    console.log("receive image::"+this.getImage)
-    this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
+    // var data={"id" : 1, "second" : "abcd"};
 
-    if(this.getIds.status == "users"){
-      console.log("show id:"+this.getIds.id);
-      console.log("show userCreated:"+this.userCreated);
-  
-      this.advertisementId = this.getIds.id;
-      this.url = environment.base_url + environment.version  +"users/" + this.userId + "/advertisements/" + this.advertisementId;
-      this.getDetailAdvertisement();
-    }else{
-      console.log("show id:"+this.getIds.id);
-      console.log("show userCreated:"+this.userCreated);
-  
-      this.advertisementId = this.getIds.id;
-      this.categoryId = this.getIds.categoryId;
-    this.url = environment.base_url + environment.version  +"categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
-      this.getDetailAdvertisement();
-    }
-  
+   
+   
+
   }
 
-  getDetailAdvertisement(){
+  getDetailAdvertisement() {
 
     this.loader.showBlockingLoaderAuth();
     this.apiCall.get(this.url).subscribe(MyResponse => {
-     this.advertisementArray = MyResponse['result'];
-     this.address = this.advertisementArray['address'];
-     this.description = this.advertisementArray['description'];
-     this.title = this.advertisementArray['title'];
-     this.lattitude = this.advertisementArray['latitude'];
-     this.longitude = this.advertisementArray['longitude'];
-     this.price = this.advertisementArray['price'];
-     this.mobile = this.advertisementArray['mobile'];
-     this.date = this.advertisementArray['modified'];
-     this.userId = this.advertisementArray['userId'];
-     this.getProfileDetail();
-     this.loader.hideBlockingLoaderAuth();
+      this.advertisementArray = MyResponse['result'];
+      this.advertisementId = this.advertisementArray['id'];
+      this.address = this.advertisementArray['address'];
+      this.description = this.advertisementArray['description'];
+      this.title = this.advertisementArray['title'];
+      this.lattitude = this.advertisementArray['latitude'];
+      this.longitude = this.advertisementArray['longitude'];
+      this.price = this.advertisementArray['price'];
+      this.mobile = this.advertisementArray['mobile'];
+      this.date = this.advertisementArray['modified'];
+      this.userId = this.advertisementArray['userId'];
+      this.categoryId = this.advertisementArray['categoryId'];
+      this.getProfileDetail();
+      this.loader.hideBlockingLoaderAuth();
       this.loadMap();
     },
       error => {
@@ -115,24 +102,54 @@ export class AdvertisementdetailPage implements OnInit {
         this.networkService.onPageLoadCheckInternet();
       })
   }
+
   ionViewWillEnter() {
-    // this.getImage = this.activatedRoute.snapshot.params['imageShow'];
-    console.log("show image:" + this.getImage);
     this.userId = localStorage.getItem('userId');
-  }
-  goBackword() {
-    window.history.back();
+    this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
+
+    if (this.getIds.status == "users") {
+
+      this.advertisementId = this.getIds.id;
+      this.url = environment.base_url + environment.version + "users/" + this.userId + "/advertisements/" + this.advertisementId;
+      this.getDetailAdvertisement();
+    } else {
+
+      this.advertisementId = this.getIds.id;
+      this.categoryId = this.getIds.categoryId;
+      this.url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
+      this.getDetailAdvertisement();
+    }
+
+    let data = localStorage.getItem("BOOKMARK");
+
+    this.getBookmarkObj = JSON.parse(data);
+    console.log("getBookmarkObj::" + this.getBookmarkObj);
+    this.keysObject = Object.keys(this.getBookmarkObj);
+    for(let i=0; i< this.keysObject.length; i++){
+      if(this.advertisementId == this.keysObject[i]){
+        this.displayfavourite = "0";
+      }
+      else{
+        this.displayfavourite = "1";
+      }
+    }
   }
 
-  getProfileDetail(){
+  goBackword() {
+    console.log("back navigation::" + this.categoryId);
+    this.router.navigate(['/home', { categoryId: this.categoryId }]);
+    // window.history.back();
+  }
+
+  getProfileDetail() {
     this.loader.showBlockingLoaderAuth();
-    
-    let url = environment.base_url + environment.version+ "users/" + this.userId;
+
+    let url = environment.base_url + environment.version + "users/" + this.userId;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.userName = this.profileDetail.name;
       this.userCreated = this.profileDetail.created;
-           this.loader.hideBlockingLoaderAuth();
+      this.loader.hideBlockingLoaderAuth();
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
@@ -144,7 +161,6 @@ export class AdvertisementdetailPage implements OnInit {
   loadMap() {
     // this.loader.showBlockingLoaderAuth();
     try {
-      console.log("lat lng", this.longitude, this.lattitude);
       this.map = GoogleMaps.create('map_canvas', {
         camera: {
           target: {
@@ -155,8 +171,7 @@ export class AdvertisementdetailPage implements OnInit {
           tilt: 30
         }
       });
-      console.log("Address Data lattitude two::", this.lattitude);
-      console.log("Address Data longitude two::", this.longitude);
+
       this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
         async (data) => {
           console.log("Click MAP", data);
@@ -181,7 +196,7 @@ export class AdvertisementdetailPage implements OnInit {
 
           })
 
-          this.getAddressFromCoords(event[0]['lat'], event[0]['lng']);
+          this.getAddressFromCoords(event['lat'], event['lng']);
         }
       );
     }
@@ -234,15 +249,18 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
 
-  makeCall(){
+  makeCall() {
     this.callNumber.callNumber(this.mobile, true);
   }
 
-  sendMessage(){
+
+  sendMessage() {
     this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
   }
 
-  viewProfile(){
-    this.router.navigate(['/profile', { userId : this.userId}]);
+
+  viewProfile() {
+    this.router.navigate(['/profile', { userId: this.userId }]);
   }
+  
 }

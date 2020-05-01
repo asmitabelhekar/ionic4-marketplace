@@ -733,11 +733,11 @@ var routes = [
     },
     {
         path: 'chatlist',
-        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
     },
     {
         path: 'detailchat',
-        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
     {
         path: 'postadvertisement',
@@ -770,6 +770,10 @@ var routes = [
     {
         path: 'advertisementdetail',
         loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
+    },
+    {
+        path: 'orderhistory',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-orderhistory-orderhistory-module */ "pages-orderhistory-orderhistory-module").then(__webpack_require__.bind(null, /*! ./pages/orderhistory/orderhistory.module */ "./src/app/pages/orderhistory/orderhistory.module.ts")).then(function (m) { return m.OrderhistoryPageModule; }); }
     },
 ];
 var AppRoutingModule = /** @class */ (function () {

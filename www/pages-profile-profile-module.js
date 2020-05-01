@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Profile\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div style=\"height:320px;position: relative; top:0px;background-color: #f1f4f9;\" fxLayoutAlign=\"center center\">\n    <!-- <img src=\"../../../assets/noimage.png\" style=\"width:100%; height:100%;\" /> -->\n    <div style=\"position: absolute; bottom :60px;\" >\n      <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n        <ion-icon name=\"person\" \n          style=\"width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px\">\n        </ion-icon>\n        <label   style=\"margin-top:10px; color: black;font-size: 20px;\">{{name}}</label>\n      </div>\n\n\n    </div>\n    <div style=\"height:190px;background-color: #f1f4f9; \"></div>\n\n    <!-- <ion-row>\n      <ion-col size=\"3\">\n        <ion-icon name=\"person\" style=\"width:40px; height:40px; border-radius: 100%;margin-left: 15px;color:white;background-color: rgb(168, 158, 158) ; padding:18px\" ></ion-icon>\n      </ion-col>\n\n      <ion-col size=\"9\" style=\"margin-top:23px; padding-left:15px; font-size: 18px\">\n        <label>Chaitnya</label> \n      </ion-col>\n    </ion-row> -->\n\n  </div>\n  <!-- <div style=\"height:350px;position: relative; top:0px;\" >\n    <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%;\" />\n\n  </div> -->\n\n  <ion-card class=\"cl_card_css\">\n    <div style=\"margin-top:10px\">\n\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"person\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{name}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"call\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{mobile}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"mail\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{email}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <!-- <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"home\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">Chinchwad, pune-19.</ion-label><br />\n        </ion-col>\n      </ion-row> -->\n\n\n\n\n\n    </div>\n\n\n\n  </ion-card>\n\n\n  <div id=\"map_canvas\" style=\"margin-bottom:5%;\" *ngIf=\"noInternet == '1' \"></div>\n\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_post_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\" fxLayoutAlign=\"center center\">\n    <!-- <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> -->\n    <label style=\"color:white; font-size:17px; margin-left:10px\">Profle</label>\n    <!-- <ion-title style=\"color:white; margin-left:10px\">\n      Profile\n    </ion-title> -->\n    <label style=\"position: fixed; right:20px;color:white; bottom: 15px;  font-size:18px\" (click)=\"logOut()\">Log Out</label>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div style=\"height:320px;position: relative; top:0px;background-color: #f1f4f9;\" fxLayoutAlign=\"center center\">\n    <!-- <img src=\"../../../assets/noimage.png\" style=\"width:100%; height:100%;\" /> -->\n    <div style=\"position: absolute; bottom :60px;\" >\n      <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n        <ion-icon name=\"person\" \n          style=\"width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px\">\n        </ion-icon>\n        <label   style=\"margin-top:10px; color: black;font-size: 20px;\">{{name}}</label>\n      </div>\n\n\n    </div>\n    <div style=\"height:190px;background-color: #f1f4f9; \"></div>\n\n    <!-- <ion-row>\n      <ion-col size=\"3\">\n        <ion-icon name=\"person\" style=\"width:40px; height:40px; border-radius: 100%;margin-left: 15px;color:white;background-color: rgb(168, 158, 158) ; padding:18px\" ></ion-icon>\n      </ion-col>\n\n      <ion-col size=\"9\" style=\"margin-top:23px; padding-left:15px; font-size: 18px\">\n        <label>Chaitnya</label> \n      </ion-col>\n    </ion-row> -->\n\n  </div>\n  <!-- <div style=\"height:350px;position: relative; top:0px;\" >\n    <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%;\" />\n\n  </div> -->\n\n  <ion-card class=\"cl_card_css\">\n    <div style=\"margin-top:10px\">\n\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"person\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{name}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"call\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{mobile}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"mail\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">{{email}}</ion-label><br />\n        </ion-col>\n      </ion-row>\n\n      <!-- <ion-row style=\"margin:20px\">\n        <ion-col size=\"1\">\n          <ion-icon style=\"height:19px;width:18px; margin:2px\" name=\"home\"></ion-icon>\n        </ion-col>\n        <ion-col size=\"11\">\n          <ion-label class=\"cl_content_fontsize\">Chinchwad, pune-19.</ion-label><br />\n        </ion-col>\n      </ion-row> -->\n\n\n\n\n\n    </div>\n\n\n\n  </ion-card>\n\n\n  <div id=\"map_canvas\" style=\"margin-bottom:5%;\" *ngIf=\"noInternet == '1' \"></div>\n\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_post_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n\n\n</ion-content>");
 
 /***/ }),
 
@@ -131,6 +131,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
 /* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
 
 
 
@@ -139,12 +141,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(router, networkServices, activatedRoute, loader, apiCall) {
+    function ProfilePage(router, networkServices, activatedRoute, loader, menuController, apiCall) {
         this.router = router;
         this.networkServices = networkServices;
         this.activatedRoute = activatedRoute;
         this.loader = loader;
+        this.menuController = menuController;
         this.apiCall = apiCall;
+        this.menuController.enable(false);
     }
     ProfilePage.prototype.ngOnInit = function () {
         this.getProfileInfo();
@@ -187,11 +191,17 @@ var ProfilePage = /** @class */ (function () {
     ProfilePage.prototype.openProfile = function () {
         this.router.navigate(['/profile']);
     };
+    ProfilePage.prototype.logOut = function () {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+        localStorage.setItem("loginStatus", "no");
+    };
     ProfilePage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
         { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["MenuController"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] }
     ]; };
     ProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -204,6 +214,7 @@ var ProfilePage = /** @class */ (function () {
             src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["MenuController"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"]])
     ], ProfilePage);
     return ProfilePage;

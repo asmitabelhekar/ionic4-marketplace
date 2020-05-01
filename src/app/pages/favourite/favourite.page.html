@@ -1,16 +1,18 @@
 <ion-header class="new-background-color">
   <ion-toolbar class="new-background-color">
-    <ion-buttons slot="start" style="color:white">
+    <!-- <ion-buttons slot="start" style="color:white">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title style="color:white; margin-left:-15px">
+    </ion-buttons> -->
+    <label style="color:white; font-size:17px; margin-left:10px">Favourite</label>
+
+    <!-- <ion-title style="color:white; margin-left:10px">
       Favourite
-    </ion-title>
+    </ion-title> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<!-- <ion-item-divider> -->
   <ion-segment (ionChange)="segmentChanged($event)" value="myadds">
     <ion-segment-button value="myadds" style="--background: white;">
       <ion-label >My Adds</ion-label>
@@ -19,6 +21,8 @@
       <ion-label >Bookmarks</ion-label>
     </ion-segment-button>
   </ion-segment>
+<!-- </ion-item-divider> -->
+
 
  
   <div *ngIf="tabTitle == 'myadds' ">
@@ -49,7 +53,7 @@
               <div fxLayout="row" style="width:100%; color:white;padding-top:2px; padding-bottom:2px">
                 <div fxFlex="30" fxLayoutAlign="start start">
                   <ion-icon style="color:hotpink" name="woman"></ion-icon>
-                  <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
+                  <ion-icon style="color:hotpink; margin-left:5px" name="heart-outline"></ion-icon>
                 </div>
 
                 <div fxFlex="70" fxLayoutAlign="end start">
@@ -83,7 +87,7 @@
 
   </div>
 
-  <div *ngIf="tabTitle == 'bookmarks' " style="margin-top:35%">
+  <div *ngIf="tabTitle == 'bookmarks' " >
     <div *ngIf="bookmarkLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
 
     

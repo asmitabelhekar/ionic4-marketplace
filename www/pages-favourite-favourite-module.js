@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Favourite\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-segment (ionChange)=\"segmentChanged($event)\" value=\"myadds\">\n    <ion-segment-button value=\"myadds\" style=\"--background: white;\">\n      <ion-label >My Adds</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"bookmarks\" style=\"--background: white;\">\n      <ion-label >Bookmarks</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n\n \n  <div *ngIf=\"tabTitle == 'myadds' \">\n\n    <div *ngIf=\"arrayLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n\n    \n      <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n        <div *ngFor=\"let image of item.images\" (click)=\"showAdvertisementDetail(image, item.id)\">\n          <div class=\"column\" style=\"position:relative\">\n            <img src={{image}} style=\"border-radius: 5px;width:100%; height:100%\" />\n            <div\n              style=\"position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                <div fxFlex=\"50\" fxLayoutAlign=\"start start\">\n                  <div class=\"b\">\n                  <label style=\"font-size:11px;padding-left:5px\"><b>{{item.title}}</b></label>\n                  </div>\n                </div>\n\n                <div fxFlex=\"50\" fxLayoutAlign=\"end end\">\n                  <label style=\"font-size:11px;padding-right:5px\"><b>{{item.price}}</b></label>\n                </div>\n\n              </div>\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                <div fxFlex=\"30\" fxLayoutAlign=\"start start\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n                </div>\n\n                <div fxFlex=\"70\" fxLayoutAlign=\"end start\">\n                  <div class=\"b\" style=\"margin-top:-5px\">\n                    <label style=\"font-size:10px; color:white;padding-right: 5px;\"><b>{{item.address}} ,\n                        120km</b></label>\n                  </div>\n                  <!-- <label style=\"font-size:10px;padding-right:5px\"><b>{{item.address}} , 120km</b></label> -->\n                </div>\n\n              </div>\n\n\n              <!-- <ion-row style=\"width:100%; margin-top:-5px\">\n                <ion-col size=\"4\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n                </ion-col>\n                <ion-col size=\"8\" fxLayoutAlign=\"end start\">\n                  <div class=\"b\">\n                    <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>{{item.address}} ,\n                        120km</b></label>\n                  </div>\n                </ion-col>\n              </ion-row> -->\n\n\n            </div>\n          </div>\n\n        </div>\n\n\n      </div>\n  \n  \n    </div>\n    <img style=\"width:100%; height:60px; visibility: hidden;\" />\n    <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n      <h3 align=\"center\">No records found.</h3>\n    </div>\n\n\n  </div>\n\n  <div *ngIf=\"tabTitle == 'bookmarks' \" style=\"margin-top:35%\">\n    <h4 align=\"center\">No Bookmarks Present.</h4>\n  </div>\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_post_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <!-- <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> -->\n    <label style=\"color:white; font-size:17px; margin-left:10px\">Favourite</label>\n\n    <!-- <ion-title style=\"color:white; margin-left:10px\">\n      Favourite\n    </ion-title> -->\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<!-- <ion-item-divider> -->\n  <ion-segment (ionChange)=\"segmentChanged($event)\" value=\"myadds\">\n    <ion-segment-button value=\"myadds\" style=\"--background: white;\">\n      <ion-label >My Adds</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"bookmarks\" style=\"--background: white;\">\n      <ion-label >Bookmarks</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n<!-- </ion-item-divider> -->\n\n\n \n  <div *ngIf=\"tabTitle == 'myadds' \">\n\n    <div *ngIf=\"arrayLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n\n    \n      <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n        <div *ngFor=\"let image of item.images\" (click)=\"showAdvertisementDetail(image, item.id)\">\n          <div class=\"column\" style=\"position:relative\">\n            <img src={{image}} style=\"border-radius: 5px;width:100%; height:100%\" />\n            <div\n              style=\"position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                <div fxFlex=\"50\" fxLayoutAlign=\"start start\">\n                  <div class=\"b\">\n                  <label style=\"font-size:11px;padding-left:5px\"><b>{{item.title}}</b></label>\n                  </div>\n                </div>\n\n                <div fxFlex=\"50\" fxLayoutAlign=\"end end\">\n                  <label style=\"font-size:11px;padding-right:5px\"><b>{{item.price}}</b></label>\n                </div>\n\n              </div>\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                <div fxFlex=\"30\" fxLayoutAlign=\"start start\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart-outline\"></ion-icon>\n                </div>\n\n                <div fxFlex=\"70\" fxLayoutAlign=\"end start\">\n                  <div class=\"b\" style=\"margin-top:-5px\">\n                    <label style=\"font-size:10px; color:white;padding-right: 5px;\"><b>{{item.address}} ,\n                        120km</b></label>\n                  </div>\n                  <!-- <label style=\"font-size:10px;padding-right:5px\"><b>{{item.address}} , 120km</b></label> -->\n                </div>\n\n              </div>\n\n\n\n\n            </div>\n          </div>\n\n        </div>\n\n\n      </div>\n  \n  \n    </div>\n    <img style=\"width:100%; height:60px; visibility: hidden;\" />\n    <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n      <h3 align=\"center\">No records found.</h3>\n    </div>\n\n\n  </div>\n\n  <div *ngIf=\"tabTitle == 'bookmarks' \" >\n    <div *ngIf=\"bookmarkLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n\n    \n      <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n        <div *ngFor=\"let image of item.images\" (click)=\"showAdvertisementDetail(image, item.id)\">\n          <div class=\"column\" style=\"position:relative\">\n            <img src={{image}} style=\"border-radius: 5px;width:100%; height:100%\" />\n            <div\n              style=\"position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                <div fxFlex=\"50\" fxLayoutAlign=\"start start\">\n                  <div class=\"b\">\n                  <label style=\"font-size:11px;padding-left:5px\"><b>{{item.title}}</b></label>\n                  </div>\n                </div>\n\n                <div fxFlex=\"50\" fxLayoutAlign=\"end end\">\n                  <label style=\"font-size:11px;padding-right:5px\"><b>{{item.price}}</b></label>\n                </div>\n\n              </div>\n\n              <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                <div fxFlex=\"30\" fxLayoutAlign=\"start start\">\n                  <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                  <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n                </div>\n\n                <div fxFlex=\"70\" fxLayoutAlign=\"end start\">\n                  <div class=\"b\" style=\"margin-top:-5px\">\n                    <label style=\"font-size:10px; color:white;padding-right: 5px;\"><b>{{item.address}} ,\n                        120km</b></label>\n                  </div>\n                  <!-- <label style=\"font-size:10px;padding-right:5px\"><b>{{item.address}} , 120km</b></label> -->\n                </div>\n\n              </div>\n\n\n\n\n            </div>\n          </div>\n\n        </div>\n\n\n      </div>\n  \n  \n    </div>\n    <img style=\"width:100%; height:60px; visibility: hidden;\" />\n    <div *ngIf=\"bookmarkLength == 0 \" style=\"margin-top:20%\">\n      <h3 align=\"center\">No bookmarks found.</h3>\n    </div>\n\n  </div>\n\n  <div class=\"cl_bottom_fix\">\n    <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n      <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <ion-icon name=\"heart\" class=\"cl_post_css\" (click)=\"openFavourite()\"></ion-icon>\n      <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n    </div>\n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -134,6 +134,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
 
 
 
@@ -141,9 +143,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var FavouritePage = /** @class */ (function () {
-    function FavouritePage(router, apiCall, loader) {
+    function FavouritePage(router, apiCall, menuController, loader) {
         this.router = router;
         this.apiCall = apiCall;
+        this.menuController = menuController;
         this.loader = loader;
         this.categoryId = 0;
         this.tabTitle = "myadds";
@@ -186,6 +189,7 @@ var FavouritePage = /** @class */ (function () {
                 "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
             }
         ];
+        this.menuController.enable(false);
     }
     FavouritePage.prototype.ngOnInit = function () {
         if (this.tabTitle == "myadds") {
@@ -194,6 +198,7 @@ var FavouritePage = /** @class */ (function () {
         }
         else {
             this.selectedTab = 1;
+            this.getBookmarks();
         }
         // this.arrayLength = this.imageArray.length;
     };
@@ -204,6 +209,7 @@ var FavouritePage = /** @class */ (function () {
         }
         else {
             this.selectedTab = 1;
+            this.getBookmarks();
         }
     };
     FavouritePage.prototype.segmentChanged = function (ev) {
@@ -214,8 +220,24 @@ var FavouritePage = /** @class */ (function () {
         }
         else {
             this.selectedTab = 1;
+            this.getBookmarks();
         }
         console.log('Segment changed', ev.detail.value);
+    };
+    FavouritePage.prototype.getBookmarks = function () {
+        var _this = this;
+        this.loader.showBlockingLoaderAuth();
+        var userId = localStorage.getItem("userId");
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + userId + "/bookmarks";
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.advertisementArray = MyResponse['result']['list'];
+            _this.bookmarkLength = MyResponse['result']['count'];
+            // this.arrayLength = 0;
+            //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+            _this.loader.hideBlockingLoaderAuth();
+        }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+        });
     };
     FavouritePage.prototype.getAdvertisement = function () {
         var _this = this;
@@ -262,6 +284,7 @@ var FavouritePage = /** @class */ (function () {
     FavouritePage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_5__["ApiService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["MenuController"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"] }
     ]; };
     FavouritePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -272,6 +295,7 @@ var FavouritePage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_5__["ApiService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["MenuController"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
     ], FavouritePage);
     return FavouritePage;

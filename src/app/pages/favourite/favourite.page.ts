@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-favourite',
@@ -57,7 +58,10 @@ export class FavouritePage implements OnInit {
   ];
   constructor(public router : Router,
     public apiCall : ApiService,
-    public loader : LoaderService) { }
+    public menuController : MenuController,
+    public loader : LoaderService) {
+      this.menuController.enable(false);
+     }
 
   ngOnInit() {
     if(this.tabTitle == "myadds"){

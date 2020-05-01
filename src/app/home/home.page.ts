@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { ApiService } from '../service/apiservice/api.service';
 import { LoaderService } from '../service/loaderservice/loader.service';
 import { NetworkService } from '../service/network/network.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -100,7 +101,7 @@ export class HomePage {
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,
     public router: Router) {
-    this.menuController.enable(true);
+    this.menuController.enable(false);
     this.getCategory();
     this.getBannerData(this.categoryId);
     this.getAdvertisement(this.categoryId);
@@ -158,22 +159,35 @@ export class HomePage {
   }
   ionViewWillEnter() {
     this.arrayLength = this.imageArray.length;
+    let checkdata = localStorage.getItem("BOOKMARK");
+    if(checkdata == undefined || checkdata == null || checkdata == ""){
+      console.log("all time check:"+checkdata);
+    }else{
+      console.log("all time:"+localStorage.getItem("BOOKMARK"));
+    }
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
     if (this.categoryId == undefined) {
       this.categoryId = 5;
+      console.log("check ::0");
     } else {
       if (this.categoryId == 1) {
         this.categoryName = "Dance";
+        console.log("check ::1");
       } else if (this.categoryId == 2) {
         this.categoryName = "Yoga";
+        console.log("check ::2");
       } else if (this.categoryId == 3) {
         this.categoryName = "Meditation";
+        console.log("check ::3");
       } else if (this.categoryId == 4) {
         this.categoryName = "Massage";
+        console.log("check ::4");
       } else if (this.categoryId == 5) {
         this.categoryName = "Music";
+        console.log("check ::5");
       } else {
         this.categoryName = "Music";
+        console.log("check ::6");
       }
       this.checkType(this.categoryName, this.categoryId);
     }
@@ -189,6 +203,7 @@ export class HomePage {
     this.router.navigate(['/showfilterdata']);
   }
   checkType(title, id) {
+    console.log("check title id ::"+title + "   " + "id" + id);
     this.categoryId = id;
     this.displayCategory = id;
     if (title == "Dance") {
@@ -472,7 +487,7 @@ export class HomePage {
     if(this.checkStatus){
       console.log("before delete:"+(this.postBookmarkObj));
       delete this.postBookmarkObj[advertisementid];
-      localStorage.setItem("BOOKMARK",this.postBookmarkObj);
+      localStorage.setItem("BOOKMARK",JSON.stringify(this.postBookmarkObj));
       console.log("after delete:"+(this.postBookmarkObj));
 
       this.keysObject = Object.keys(this.postBookmarkObj);
@@ -480,15 +495,16 @@ export class HomePage {
 
 
     }else{
+    
       if(this.getBookmarkObj == undefined || this.getBookmarkObj == null || this.getBookmarkObj == "" || this.getBookmarkObj == {} ){
     
         this.postBookmarkObj[advertisementid] = true;
-        localStorage.setItem("BOOKMARK",this.postBookmarkObj);
+        localStorage.setItem("BOOKMARK",JSON.stringify(this.postBookmarkObj));
         
         console.log("display object:"+(this.postBookmarkObj));
       }else{
         this.postBookmarkObj[advertisementid] = true;
-        localStorage.setItem("BOOKMARK",this.postBookmarkObj);
+        localStorage.setItem("BOOKMARK",JSON.stringify(this.postBookmarkObj));
         this.getBookmarkObj = localStorage.getItem("BOOKMARK");
         console.log("added object:"+JSON.stringify(this.postBookmarkObj));
       }
@@ -497,20 +513,20 @@ export class HomePage {
       console.log("All keys of post bookmark object::"+(this.keysObject));
 
 
-      // this.loader.showBlockingLoaderAuth();
-      // let send_date = {};
-      // this.advertisementModel['userId'] = localStorage.getItem("userId");
+      this.loader.showBlockingLoaderAuth();
+      let send_date = {};
+      this.advertisementModel['userId'] = localStorage.getItem("userId");
   
-      // send_date['userId'] = this.advertisementModel['userId'];
-      // let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
-      // this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      send_date['userId'] = this.advertisementModel['userId'];
+      let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+      this.apiCall.post(url, send_date).subscribe(MyResponse => {
   
-      //   this.loader.hideBlockingLoaderAuth();
-      // }, error => {
-      //   this.presentToast("Please try again");
-      //   this.loader.hideBlockingLoaderAuth();
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
   
-      // })
+      })
     }
    
     

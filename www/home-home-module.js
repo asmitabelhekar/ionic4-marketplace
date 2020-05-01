@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title style=\"color:white; margin-left:-15px\">\n      Home\n    </ion-title>\n    <mat-icon [matMenuTriggerFor]=\"menu\"\n      style=\"position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px;cursor: pointer;\">\n      g_translate</mat-icon>\n    <mat-menu #menu=\"matMenu\">\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:10px\">\n        <img src=\"../../assets/indiaflag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>Hindi</label>\n      </div>\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:3px\">\n        <img src=\"../../assets/flag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>English</label>\n      </div>\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:3px\">\n        <img src=\"../../assets/japanflag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>Japanese</label>\n      </div>\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:3px\">\n        <img src=\"../../assets/germanyflag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>German</label>\n      </div>\n\n\n      <!-- <div fxLayout=\"row\" style=\"margin-top:10px\">\n    <label style=\"margin-top:-10px; width: 80px\" mat-menu-item>Hindi</label>\n    <img src=\"../../assets/indiaflag.png\" style=\"width:25px; height:25px\" />\n  </div>\n  <div fxLayout=\"row\">\n    <label style=\"margin-top:-10px;  width: 80px\" mat-menu-item>English</label>\n    <img src=\"../../assets/flag.png\" style=\"width:25px; height:25px\" />\n  </div> -->\n    </mat-menu>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div style=\"background-color:white\" class=\"cl_margin100\">\n\n    <div>\n      <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\"\n        class=\"half-black\">\n        <ion-slide *ngFor=\"let item of bannerArray\">\n          <div class=\"cl_img_div\">\n            <img src=\"{{item.image}}\" class=\"cl_margin100\" />\n\n\n            <div fxLayout=\"column\" fxLayoutAlign=\"start start\"\n              style=\"width:100%;color:white;position:absolute; bottom:0; background: rgba(0, 0, 0, 0.5);\">\n              <div fxLayout=\"row\" fxLayoutAlign=\"start start\" class=\"cl_name_css\">\n                <label style=\"font-size:16px\">{{item.title}}</label>\n              </div>\n              <div class=\"sub_div\">\n                <ion-row style=\"margin-top:5px\">\n                  <ion-col size=\"8\" fxLayoutAlign=\"start center\">\n                    <label style=\"font-size:12px\">{{item.description}}</label>\n                  </ion-col>\n                  <ion-col size=\"4\" fxLayoutAlign=\"end start\">\n                    <div>\n                      <label style=\"font-size:12px\">{{item.city}} , 120KM</label>\n                    </div>\n                  </ion-col>\n                </ion-row>\n\n              </div>\n\n            </div>\n\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </div>\n    <!-- </div> -->\n\n\n    <div style=\"width:100%; background-color:white;margin-top:15px; height:100%\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-bottom:10px\">\n        <img *ngIf=\"noInternet == '0' \" src=\"../../assets/funnelimg.png\" style=\"width:30px;height:30px\" (click)=\"filter()\" />\n\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" *ngFor=\"let item of categoryArray\"\n          (click)=\"checkType(item.name, item.id)\" [ngClass]=\"(displayCategory == item.id) ? 'even' : 'odd' \">\n          <img src=\"{{item.image}}\" style=\"width:30px;height:30px\" />\n          <label style=\"margin-top:5px;font-size:12px\">{{item.name}}</label>\n        </div>\n      </div>\n\n\n      <div *ngIf=\"countAdvertisement > 0\" style=\"width:98%; margin-left:1%\">\n\n        <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n          <div *ngFor=\"let image of item.images\" (click)=\"showAdvertisementDetail(image, item.id)\">\n            <div class=\"column\" style=\"position:relative\">\n              <img src={{image}} style=\"border-radius: 5px;width:100%; height:100%\" />\n              <div\n                style=\"position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n\n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                  <div fxFlex=\"50\" fxLayoutAlign=\"start start\">\n                    <div class=\"b\">\n                    <label style=\"font-size:11px;padding-left:5px\"><b>{{item.title}}</b></label>\n                    </div>\n                  </div>\n\n                  <div fxFlex=\"50\" fxLayoutAlign=\"end end\">\n                    <label style=\"font-size:11px;padding-right:5px\"><b>{{item.price}}</b></label>\n                  </div>\n\n                </div>\n\n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                  <div fxFlex=\"30\" fxLayoutAlign=\"start start\">\n                    <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                    <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n                  </div>\n\n                  <div fxFlex=\"70\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\" style=\"margin-top:-5px\">\n                      <label style=\"font-size:10px; color:white;padding-right: 5px;\"><b>{{item.address}} ,\n                          120km</b></label>\n                    </div>\n                    <!-- <label style=\"font-size:10px;padding-right:5px\"><b>{{item.address}} , 120km</b></label> -->\n                  </div>\n\n                </div>\n\n\n                <!-- <ion-row style=\"width:100%; margin-top:-5px\">\n                  <ion-col size=\"4\">\n                    <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                    <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n                  </ion-col>\n                  <ion-col size=\"8\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\">\n                      <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>{{item.address}} ,\n                          120km</b></label>\n                    </div>\n                  </ion-col>\n                </ion-row> -->\n\n\n              </div>\n            </div>\n\n          </div>\n\n\n        </div>\n\n\n      </div>\n      <img style=\"width:100%; height:60px; visibility: hidden;\" />\n      <div *ngIf=\"countAdvertisement == 0 \" style=\"margin-top:20%\">\n        <h3 align=\"center\">No records found.</h3>\n      </div>\n\n\n    </div>\n\n    <div class=\"cl_bottom_fix\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n        <ion-icon name=\"home\" class=\"cl_post_css\" (click)=\"home()\"></ion-icon>\n        <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n        <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n        </ion-icon>\n        <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n        <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <!-- <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> -->\n    <label style=\"color:white; font-size:17px; margin-left:10px\">Home</label>\n\n    <!-- <ion-title style=\"color:white; margin-left:10px\">\n      Home\n    </ion-title> -->\n    <mat-icon [matMenuTriggerFor]=\"menu\"\n      style=\"position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px;cursor: pointer;\">\n      g_translate</mat-icon>\n    <mat-menu #menu=\"matMenu\">\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:10px\">\n        <img src=\"../../assets/indiaflag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>Hindi</label>\n      </div>\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:3px\">\n        <img src=\"../../assets/flag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>English</label>\n      </div>\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:3px\">\n        <img src=\"../../assets/japanflag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>Japanese</label>\n      </div>\n      <div fxLayout=\"row\" style=\"margin-left:20px; margin-top:3px\">\n        <img src=\"../../assets/germanyflag.png\" style=\"width:25px; height:25px\" />\n        <label style=\"margin-top:-15px\" mat-menu-item>German</label>\n      </div>\n\n\n      <!-- <div fxLayout=\"row\" style=\"margin-top:10px\">\n    <label style=\"margin-top:-10px; width: 80px\" mat-menu-item>Hindi</label>\n    <img src=\"../../assets/indiaflag.png\" style=\"width:25px; height:25px\" />\n  </div>\n  <div fxLayout=\"row\">\n    <label style=\"margin-top:-10px;  width: 80px\" mat-menu-item>English</label>\n    <img src=\"../../assets/flag.png\" style=\"width:25px; height:25px\" />\n  </div> -->\n    </mat-menu>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <div style=\"background-color:white\" class=\"cl_margin100\">\n\n    <div>\n      <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\"\n        class=\"half-black\">\n        <ion-slide *ngFor=\"let item of bannerArray\">\n          <div class=\"cl_img_div\">\n            <img src=\"{{item.image}}\" class=\"cl_margin100\" />\n\n\n            <div fxLayout=\"column\" fxLayoutAlign=\"start start\"\n              style=\"width:100%;color:white;position:absolute; bottom:0; background: rgba(0, 0, 0, 0.5);\">\n              <div fxLayout=\"row\" fxLayoutAlign=\"start start\" class=\"cl_name_css\">\n                <label style=\"font-size:16px\">{{item.title}}</label>\n              </div>\n              <div class=\"sub_div\">\n                <ion-row style=\"margin-top:5px\">\n                  <ion-col size=\"8\" fxLayoutAlign=\"start center\">\n                    <label style=\"font-size:12px\">{{item.description}}</label>\n                  </ion-col>\n                  <ion-col size=\"4\" fxLayoutAlign=\"end start\">\n                    <div>\n                      <label style=\"font-size:12px\">{{item.city}} , 120KM</label>\n                    </div>\n                  </ion-col>\n                </ion-row>\n\n              </div>\n\n            </div>\n\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </div>\n    <!-- </div> -->\n\n\n    <div style=\"width:100%; background-color:white;margin-top:15px; height:100%\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-bottom:10px\">\n        <img *ngIf=\"noInternet == '0' \" src=\"../../assets/funnelimg.png\" style=\"width:30px;height:30px\" (click)=\"filter()\" />\n\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" *ngFor=\"let item of categoryArray\"\n          (click)=\"checkType(item.name, item.id)\" [ngClass]=\"(displayCategory == item.id) ? 'even' : 'odd' \">\n          <img src=\"{{item.image}}\" style=\"width:30px;height:30px\" />\n          <label style=\"margin-top:5px;font-size:12px\">{{item.name}}</label>\n        </div>\n      </div>\n\n\n      <div *ngIf=\"countAdvertisement > 0\" style=\"width:98%; margin-left:1%\">\n\n        <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n          <div *ngFor=\"let image of item.images\" >\n            <div class=\"column\" style=\"position:relative\">\n              <img src={{image}} style=\"border-radius: 5px;width:100%; height:100%\" (click)=\"showAdvertisementDetail(image, item.id)\"/>\n              <div (click)=\"bookmarkAdvertisement(item.id)\"\n                style=\"position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n\n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                  <div fxFlex=\"50\" fxLayoutAlign=\"start start\">\n                    <div class=\"b\">\n                    <label style=\"font-size:11px;padding-left:5px\"><b>{{item.title}}</b></label>\n                    </div>\n                  </div>\n\n                  <div fxFlex=\"50\" fxLayoutAlign=\"end end\">\n                    <label style=\"font-size:11px;padding-right:5px\"><b>{{item.price}}</b></label>\n                  </div>\n\n                </div>\n\n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                  <div fxFlex=\"30\" fxLayoutAlign=\"start start\" >\n                    <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n\n                      <ion-icon *ngIf=\"postBookmarkObj [item.id] == true \" style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n                      <ion-icon *ngIf=\"postBookmarkObj [item.id] != true \" style=\"color:hotpink; margin-left:5px\" name=\"heart-outline\"></ion-icon>\n\n                    <!-- <ion-icon *ngIf=\"keysObject.length == 0\" style=\"color:hotpink; margin-left:5px\" name=\"heart-outline\"></ion-icon> -->\n                    \n                  </div>\n\n\n                  <div fxFlex=\"70\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\" style=\"margin-top:-5px\">\n                      <label style=\"font-size:10px; color:white;padding-right: 5px;\"><b>{{item.address}} ,\n                          120km</b></label>\n                    </div>\n                    <!-- <label style=\"font-size:10px;padding-right:5px\"><b>{{item.address}} , 120km</b></label> -->\n                  </div>\n\n                </div>\n\n\n                <!-- <ion-row style=\"width:100%; margin-top:-5px\">\n                  <ion-col size=\"4\">\n                    <ion-icon style=\"color:hotpink\" name=\"woman\"></ion-icon>\n                    <ion-icon style=\"color:hotpink; margin-left:5px\" name=\"heart\"></ion-icon>\n\n                  </ion-col>\n                  <ion-col size=\"8\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\">\n                      <label style=\"font-size:10px; color:white;padding-right: 11px;\"><b>{{item.address}} ,\n                          120km</b></label>\n                    </div>\n                  </ion-col>\n                </ion-row> -->\n\n\n              </div>\n            </div>\n\n          </div>\n\n\n        </div>\n\n\n      </div>\n      <img style=\"width:100%; height:60px; visibility: hidden;\" />\n      <div *ngIf=\"countAdvertisement == 0 \" style=\"margin-top:20%\">\n        <h3 align=\"center\">No records found.</h3>\n      </div>\n\n\n    </div>\n\n    <div class=\"cl_bottom_fix\">\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n        <ion-icon name=\"home\" class=\"cl_post_css\" (click)=\"home()\"></ion-icon>\n        <ion-icon name=\"document\" class=\"cl_bottom_nav_css\" (click)=\"openChatList()\"></ion-icon>\n        <ion-icon name=\"add-circle\" class=\"cl_bottom_nav_css\" (click)=\"postAdvertisement()\">\n        </ion-icon>\n        <ion-icon name=\"heart\" class=\"cl_bottom_nav_css\" (click)=\"openFavourite()\"></ion-icon>\n        <ion-icon name=\"person\" class=\"cl_bottom_nav_css\" (click)=\"openProfile()\"></ion-icon>\n      </div>\n    </div>\n\n  </div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -116,14 +116,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(dialog, apiCall, loader, networkServices, menuController, activatedRoute, router) {
+    function HomePage(dialog, apiCall, toast, loader, networkServices, menuController, activatedRoute, router) {
         this.dialog = dialog;
         this.apiCall = apiCall;
+        this.toast = toast;
         this.loader = loader;
         this.networkServices = networkServices;
         this.menuController = menuController;
         this.activatedRoute = activatedRoute;
         this.router = router;
+        this.keysObject = [];
+        this.getBookmarkObj = {};
+        this.postBookmarkObj = {};
+        this.advertisementModel = {};
         this.noInternet = "0";
         this.displayCategory = "5";
         this.bannerArray = [];
@@ -188,7 +193,7 @@ var HomePage = /** @class */ (function () {
                 "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
             }
         ];
-        this.menuController.enable(true);
+        this.menuController.enable(false);
         this.getCategory();
         this.getBannerData(this.categoryId);
         this.getAdvertisement(this.categoryId);
@@ -242,28 +247,42 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.ionViewWillEnter = function () {
         this.arrayLength = this.imageArray.length;
+        var checkdata = localStorage.getItem("BOOKMARK");
+        if (checkdata == undefined || checkdata == null || checkdata == "") {
+            console.log("all time check:" + checkdata);
+        }
+        else {
+            console.log("all time:" + localStorage.getItem("BOOKMARK"));
+        }
         this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
         if (this.categoryId == undefined) {
             this.categoryId = 5;
+            console.log("check ::0");
         }
         else {
             if (this.categoryId == 1) {
                 this.categoryName = "Dance";
+                console.log("check ::1");
             }
             else if (this.categoryId == 2) {
                 this.categoryName = "Yoga";
+                console.log("check ::2");
             }
             else if (this.categoryId == 3) {
                 this.categoryName = "Meditation";
+                console.log("check ::3");
             }
             else if (this.categoryId == 4) {
                 this.categoryName = "Massage";
+                console.log("check ::4");
             }
             else if (this.categoryId == 5) {
                 this.categoryName = "Music";
+                console.log("check ::5");
             }
             else {
                 this.categoryName = "Music";
+                console.log("check ::6");
             }
             this.checkType(this.categoryName, this.categoryId);
         }
@@ -278,6 +297,7 @@ var HomePage = /** @class */ (function () {
         this.router.navigate(['/showfilterdata']);
     };
     HomePage.prototype.checkType = function (title, id) {
+        console.log("check title id ::" + title + "   " + "id" + id);
         this.categoryId = id;
         this.displayCategory = id;
         if (title == "Dance") {
@@ -540,9 +560,67 @@ var HomePage = /** @class */ (function () {
         console.log("send image::" + id);
         this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
     };
+    HomePage.prototype.bookmarkAdvertisement = function (advertisementid) {
+        var _this = this;
+        this.getBookmarkObj = localStorage.getItem("BOOKMARK");
+        console.log("check for key:" + this.postBookmarkObj.hasOwnProperty(advertisementid));
+        this.checkStatus = this.postBookmarkObj.hasOwnProperty(advertisementid);
+        if (this.checkStatus) {
+            console.log("before delete:" + (this.postBookmarkObj));
+            delete this.postBookmarkObj[advertisementid];
+            localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+            console.log("after delete:" + (this.postBookmarkObj));
+            this.keysObject = Object.keys(this.postBookmarkObj);
+            console.log("All keys of post bookmark object::" + this.keysObject);
+        }
+        else {
+            if (this.getBookmarkObj == undefined || this.getBookmarkObj == null || this.getBookmarkObj == "" || this.getBookmarkObj == {}) {
+                this.postBookmarkObj[advertisementid] = true;
+                localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+                console.log("display object:" + (this.postBookmarkObj));
+            }
+            else {
+                this.postBookmarkObj[advertisementid] = true;
+                localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+                this.getBookmarkObj = localStorage.getItem("BOOKMARK");
+                console.log("added object:" + JSON.stringify(this.postBookmarkObj));
+            }
+            this.keysObject = Object.keys(this.postBookmarkObj);
+            console.log("All keys of post bookmark object::" + (this.keysObject));
+            this.loader.showBlockingLoaderAuth();
+            var send_date = {};
+            this.advertisementModel['userId'] = localStorage.getItem("userId");
+            send_date['userId'] = this.advertisementModel['userId'];
+            var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+            this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
+                _this.loader.hideBlockingLoaderAuth();
+            }, function (error) {
+                _this.presentToast("Please try again");
+                _this.loader.hideBlockingLoaderAuth();
+            });
+        }
+    };
+    HomePage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     HomePage.ctorParameters = function () { return [
         { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"] },
         { type: _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_7__["ApiService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
         { type: _service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_8__["LoaderService"] },
         { type: _service_network_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
@@ -557,6 +635,7 @@ var HomePage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"],
             _service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_7__["ApiService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"],
             _service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_8__["LoaderService"],
             _service_network_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
