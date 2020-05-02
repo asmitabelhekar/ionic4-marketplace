@@ -12,6 +12,7 @@ import { MenuController, ToastController } from '@ionic/angular';
 })
 export class FavouritePage implements OnInit {
 
+  bookmarkId : any;
   categoryId = 0;
   arrayLength : any;
   bookmarkLength : any;
@@ -103,17 +104,7 @@ bookmarkAdvertisement(advertisementid){
     console.log("before delete:"+(this.getBookmarkObj));
     delete this.getBookmarkObj[advertisementid];
     localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
-    this.userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + advertisementid ;
-    this.apiCall.delete(url, ).subscribe(MyResponse => {
-
-      this.loader.hideBlockingLoaderAuth();
-    }, error => {
-      this.presentToast("Please try again");
-      this.loader.hideBlockingLoaderAuth();
-
-    })
-    console.log("after delete:"+(this.getBookmarkObj));
+   this.removeBookmark(advertisementid);
   }else{
     this.getBookmarkObj[advertisementid] = true;
     localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
@@ -137,6 +128,45 @@ bookmarkAdvertisement(advertisementid){
 
  
 }
+
+removeBookmark(advertisementId){
+  this.userId = localStorage.getItem("userId");
+  let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks"
+  this.apiCall.get(url).subscribe(MyResponse => {
+   this.advertisementArray = MyResponse['result']['list'];
+   for(let i= 0 ; i< this.advertisementArray.length; i++){
+
+     console.log("show advertisement id:"+advertisementId);
+
+     if(this.advertisementArray[i]['id'] == advertisementId)
+     {
+     console.log("show advertisement bookmark id:"+this.advertisementArray[i]['bookmarkId']);
+
+       this.bookmarkId = this.advertisementArray[i]['bookmarkId'];
+       console.log("check ------ bookmark id:"+this.bookmarkId);
+     
+     }else{
+     console.log("show advertisement bookmark id failure ::"+this.advertisementArray[i]['bookmarkId']);
+
+     }
+   }
+   console.log("show advertisement bookmark id:"+this.bookmarkId);
+
+   let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
+   this.apiCall.delete(url).subscribe(MyResponse => {
+
+     this.loader.hideBlockingLoaderAuth();
+   }, error => {
+     this.presentToast("Please try again");
+     this.loader.hideBlockingLoaderAuth();
+
+   })
+  },
+    error => {
+      
+    })
+}
+
 
 
 async presentToast(message) {

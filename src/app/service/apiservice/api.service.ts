@@ -62,4 +62,21 @@ public delete(url) {
   return this.http.delete(url);
 }
 
+
+
+//PUT
+
+public put(url,data) {
+
+  console.log(url);
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      // 'Authorization':'Token' + " " +auth_token
+    })
+  }
+  return this.http.put(url,data,httpOptions);
+}
+
+
 }

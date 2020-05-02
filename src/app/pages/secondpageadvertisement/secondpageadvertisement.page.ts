@@ -31,6 +31,7 @@ export class SecondpageadvertisementPage implements OnInit {
   weeksArray = ["1","2","3","4","5"];
   todayDate : any;
   checkBoostStatus = '0';
+  updateBoost : any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -72,6 +73,10 @@ export class SecondpageadvertisementPage implements OnInit {
 
   selectNoOfWeeksType(data){
     this.selectedWeek = data;
+   
+    localStorage.setItem("boostStatus",'0');
+    this.checkBoostStatus = localStorage.getItem("boostStatus");
+  
     this.finalCalculation = 7 + ((data - 1) * 5);
     this.totalCalculation = this.finalCalculation;
     this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
@@ -90,7 +95,12 @@ export class SecondpageadvertisementPage implements OnInit {
      this.checkBoostStatus = '1';
     this.totalCalculation = this.finalCalculation + 100;
     localStorage.setItem("boostStatus",'1');
-    this.postBanner(this.getData.categoryId);
+    this.updateBoost = localStorage.getItem("bannerId");
+    if(this.updateBoost == undefined || this.updateBoost == "" || this.updateBoost == null){
+      this.postBanner(this.getData.categoryId);
+    }else{
+    this.updateBanner(this.getData.categoryId);
+    }
    }else{
     // this.totalCalculation = this.totalCalculation - 100;
     localStorage.setItem("boostStatus",'1');
@@ -112,6 +122,8 @@ export class SecondpageadvertisementPage implements OnInit {
 
     let url = environment.base_url + environment.version + "category/" + id + "/banners";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      localStorage.setItem("bannerId",MyResponse['result']['id']);
+
       // this.presentToast(MyResponse);
     this.loader.hideBlockingLoaderAuth();
     }, error => {
@@ -121,7 +133,29 @@ export class SecondpageadvertisementPage implements OnInit {
 
   }
 
+  updateBanner(id){
+    this.loader.showBlockingLoaderAuth();
+    let send_date = {};
+    send_date['image'] = this.bannerImage;
+    send_date['title'] = "Banner";
+    send_date['description'] = "New";
+    send_date['startDateTime'] = this.fromDateTimestamp;
+    send_date['endDateTime'] = this.toDateTimestamp;
+    send_date['lat'] = this.getData.lattitude;
+    send_date['lng'] = this.getData.longitude;
+    send_date['isActive'] = 1;
+    send_date['city'] = this.getData.address;
+    let getBannerId = localStorage.getItem("bannerId");
+    let url = environment.base_url + environment.version + "category/" + id + "/banners/" + getBannerId;
+    this.apiCall.put(url, send_date).subscribe(MyResponse => {
+      // this.presentToast(MyResponse);
+    this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.loader.hideBlockingLoaderAuth();
+      // this.presentToast("Please try again.")
+    });
 
+  }
   submmitAdvertisementData(data){
     this.loader.showBlockingLoaderAuth();
     
@@ -176,7 +210,7 @@ export class SecondpageadvertisementPage implements OnInit {
                       this.loader.showBlockingLoaderAuth();
                       }, error => {
                         this.loader.hideBlockingLoaderAuth();
-                        this.presentToast("Please try again.")
+                        this.presentToast("Please try again.");
                       });
           }
         }

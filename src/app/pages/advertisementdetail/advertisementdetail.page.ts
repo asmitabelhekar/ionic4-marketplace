@@ -13,7 +13,7 @@ import {
   MarkerOptions,
   Marker
 } from "@ionic-native/google-maps";
-import { Platform } from '@ionic/angular';
+import { Platform, IonSlides } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { NetworkService } from 'src/app/service/network/network.service';
@@ -42,6 +42,7 @@ export class AdvertisementdetailPage implements OnInit {
   address: any;
   // city: any;
   cityName: any;
+  advertisementImages = [];
   stateName: any;
   countryName: any;
   loc: any = {};
@@ -68,6 +69,18 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
 
+  slidesDidLoad(slides: IonSlides) {
+    slides.startAutoplay();
+  }
+
+  nextSlide(slides: IonSlides){
+    slides.slideNext();
+  }
+
+  prevSlide(slides: IonSlides){
+    slides.slidePrev();
+  }
+
   ngOnInit() {
     // var data={"id" : 1, "second" : "abcd"};
 
@@ -92,6 +105,7 @@ export class AdvertisementdetailPage implements OnInit {
       this.date = this.advertisementArray['modified'];
       this.userId = this.advertisementArray['userId'];
       this.categoryId = this.advertisementArray['categoryId'];
+      this.advertisementImages = this.advertisementArray['images'];
       this.getProfileDetail();
       this.loader.hideBlockingLoaderAuth();
       this.loadMap();

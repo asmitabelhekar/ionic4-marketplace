@@ -33,6 +33,7 @@ export class HomePage {
   userId: any;
   arrayLength: any;
   countAdvertisement: any;
+  bookmarkId : any;
   advertisementArray = [];
   dataArray = [
     {
@@ -484,17 +485,8 @@ export class HomePage {
       console.log("before delete:" + (this.postBookmarkObj));
       delete this.postBookmarkObj[advertisementid];
       localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
-
-      this.userId = localStorage.getItem("userId");
-      let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + advertisementid;
-      this.apiCall.delete(url).subscribe(MyResponse => {
-
-        this.loader.hideBlockingLoaderAuth();
-      }, error => {
-        this.presentToast("Please try again");
-        this.loader.hideBlockingLoaderAuth();
-
-      })
+      this.removeBookmark(advertisementid);
+     
 
 
       console.log("after delete:" + (this.postBookmarkObj));
@@ -519,15 +511,47 @@ export class HomePage {
       })
     }
 
-
-
-
-
-    // }
-
-
-
   }
+
+  removeBookmark(advertisementId){
+    this.userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks"
+    this.apiCall.get(url).subscribe(MyResponse => {
+     this.advertisementArray = MyResponse['result']['list'];
+     for(let i= 0 ; i< this.advertisementArray.length; i++){
+
+       console.log("show advertisement id:"+advertisementId);
+
+       if(this.advertisementArray[i]['id'] == advertisementId)
+       {
+       console.log("show advertisement bookmark id:"+this.advertisementArray[i]['bookmarkId']);
+
+         this.bookmarkId = this.advertisementArray[i]['bookmarkId'];
+         console.log("check ------ bookmark id:"+this.bookmarkId);
+       
+       }else{
+       console.log("show advertisement bookmark id failure ::"+this.advertisementArray[i]['bookmarkId']);
+
+       }
+     }
+     console.log("show advertisement bookmark id:"+this.bookmarkId);
+
+     let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
+     this.apiCall.delete(url).subscribe(MyResponse => {
+
+       this.loader.hideBlockingLoaderAuth();
+     }, error => {
+       this.presentToast("Please try again");
+       this.loader.hideBlockingLoaderAuth();
+
+     })
+    },
+      error => {
+        
+      })
+  }
+
+  
 
   async presentToast(message) {
     const toast = await this.toast.create({
