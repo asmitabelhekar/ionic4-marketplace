@@ -17829,6 +17829,8 @@ var SecondpageadvertisementPage = /** @class */ (function () {
     // }
     SecondpageadvertisementPage.prototype.selectNoOfWeeksType = function (data) {
         this.selectedWeek = data;
+        localStorage.setItem("boostStatus", '0');
+        this.checkBoostStatus = localStorage.getItem("boostStatus");
         this.finalCalculation = 7 + ((data - 1) * 5);
         this.totalCalculation = this.finalCalculation;
         this.endDate = moment__WEBPACK_IMPORTED_MODULE_5__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
@@ -17844,7 +17846,13 @@ var SecondpageadvertisementPage = /** @class */ (function () {
             this.checkBoostStatus = '1';
             this.totalCalculation = this.finalCalculation + 100;
             localStorage.setItem("boostStatus", '1');
-            this.postBanner(this.getData.categoryId);
+            this.updateBoost = localStorage.getItem("bannerId");
+            if (this.updateBoost == undefined || this.updateBoost == "" || this.updateBoost == null) {
+                this.postBanner(this.getData.categoryId);
+            }
+            else {
+                this.updateBanner(this.getData.categoryId);
+            }
         }
         else {
             // this.totalCalculation = this.totalCalculation - 100;
@@ -17866,6 +17874,30 @@ var SecondpageadvertisementPage = /** @class */ (function () {
         send_date['city'] = this.getData.address;
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "category/" + id + "/banners";
         this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
+            localStorage.setItem("bannerId", MyResponse['result']['id']);
+            // this.presentToast(MyResponse);
+            _this.loader.hideBlockingLoaderAuth();
+        }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+            // this.presentToast("Please try again.")
+        });
+    };
+    SecondpageadvertisementPage.prototype.updateBanner = function (id) {
+        var _this = this;
+        this.loader.showBlockingLoaderAuth();
+        var send_date = {};
+        send_date['image'] = this.bannerImage;
+        send_date['title'] = "Banner";
+        send_date['description'] = "New";
+        send_date['startDateTime'] = this.fromDateTimestamp;
+        send_date['endDateTime'] = this.toDateTimestamp;
+        send_date['lat'] = this.getData.lattitude;
+        send_date['lng'] = this.getData.longitude;
+        send_date['isActive'] = 1;
+        send_date['city'] = this.getData.address;
+        var getBannerId = localStorage.getItem("bannerId");
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "category/" + id + "/banners/" + getBannerId;
+        this.apiCall.put(url, send_date).subscribe(function (MyResponse) {
             // this.presentToast(MyResponse);
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {

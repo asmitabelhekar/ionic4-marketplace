@@ -210,13 +210,26 @@ var PostadvertisementPage = /** @class */ (function () {
     };
     PostadvertisementPage.prototype.ngOnInit = function () {
         this.getCategory();
-        this.languageArray = [
-            { id: 1, name: "English" },
-            { id: 2, name: "Hindi" },
-            { id: 3, name: "Marathi" },
-            { id: 4, name: "Gujrati" },
-            { id: 5, name: "Bangali" }
-        ];
+        this.getLanguages();
+        // this.languageArray = [
+        //   { id: 1, name: "English" },
+        //   { id: 2, name: "Hindi" },
+        //   { id: 3, name: "Marathi" },
+        //   { id: 4, name: "Gujrati" },
+        //   { id: 5, name: "Bangali" }
+        // ]
+    };
+    PostadvertisementPage.prototype.getLanguages = function () {
+        var _this = this;
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "languages";
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.languageArray = MyResponse['result']['list'];
+            // this.loader.hideBlockingLoaderAuth();
+        }, function (error) {
+            // this.loader.hideBlockingLoaderAuth();
+            // this.networkServices.checkInternetConnection();
+            // this.networkServices.onPageLoadCheckInternet();
+        });
     };
     PostadvertisementPage.prototype.getCategory = function () {
         var _this = this;

@@ -113,6 +113,15 @@ div.b {
 }
 
 
+div.check_width {
+  white-space: nowrap; 
+  width: 120px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  // border: 1px solid #000000;
+}
+
+
 .odd {
 
   // background-color: #ffffff !important;

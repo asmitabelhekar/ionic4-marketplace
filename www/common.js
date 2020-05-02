@@ -655,6 +655,16 @@ var ApiService = /** @class */ (function () {
         };
         return this.http.delete(url);
     };
+    //PUT
+    ApiService.prototype.put = function (url, data) {
+        console.log(url);
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        return this.http.put(url, data, httpOptions);
+    };
     ApiService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
     ]; };
