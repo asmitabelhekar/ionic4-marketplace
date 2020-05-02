@@ -11,12 +11,12 @@
     <mat-icon [matMenuTriggerFor]="menu"
       style="position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px;cursor: pointer;">
       g_translate</mat-icon>
-    <mat-menu #menu="matMenu">
-      <div fxLayout="row" style="margin-left:20px; margin-top:10px">
-        <img src="../../assets/indiaflag.png" style="width:25px; height:25px" />
-        <label style="margin-top:-15px" mat-menu-item>Hindi</label>
+    <mat-menu #menu="matMenu" >
+      <div fxLayout="row" style="margin-left:20px; margin-top:10px" *ngFor="let language of Languages">
+        <img src="{{language.image}}" style="width:25px; height:25px" />
+        <label style="margin-top:-10px" mat-menu-item>{{language.name}}</label>
       </div>
-      <div fxLayout="row" style="margin-left:20px; margin-top:3px">
+      <!-- <div fxLayout="row" style="margin-left:20px; margin-top:3px">
         <img src="../../assets/flag.png" style="width:25px; height:25px" />
         <label style="margin-top:-15px" mat-menu-item>English</label>
       </div>
@@ -27,7 +27,7 @@
       <div fxLayout="row" style="margin-left:20px; margin-top:3px">
         <img src="../../assets/germanyflag.png" style="width:25px; height:25px" />
         <label style="margin-top:-15px" mat-menu-item>German</label>
-      </div>
+      </div> -->
 
 
       <!-- <div fxLayout="row" style="margin-top:10px">

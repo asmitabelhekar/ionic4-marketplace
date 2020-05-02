@@ -84,13 +84,28 @@ export class PostadvertisementPage implements OnInit {
   ngOnInit() {
 
     this.getCategory();
-    this.languageArray = [
-      { id: 1, name: "English" },
-      { id: 2, name: "Hindi" },
-      { id: 3, name: "Marathi" },
-      { id: 4, name: "Gujrati" },
-      { id: 5, name: "Bangali" }
-    ]
+    this.getLanguages();
+    // this.languageArray = [
+    //   { id: 1, name: "English" },
+    //   { id: 2, name: "Hindi" },
+    //   { id: 3, name: "Marathi" },
+    //   { id: 4, name: "Gujrati" },
+    //   { id: 5, name: "Bangali" }
+    // ]
+  }
+
+  getLanguages(){
+
+    let url = environment.base_url + environment.version + "languages";
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.languageArray = MyResponse['result']['list'];
+      // this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+        // this.loader.hideBlockingLoaderAuth();
+        // this.networkServices.checkInternetConnection();
+        // this.networkServices.onPageLoadCheckInternet();
+      })
   }
 
   constructor(public router: Router,

@@ -17,6 +17,7 @@ import { empty } from 'rxjs';
 })
 export class HomePage {
 
+  Languages : any;
   keysObject = [];
   getBookmarkObj: any = {};
   postBookmarkObj: any = {};
@@ -105,6 +106,7 @@ export class HomePage {
     public router: Router) {
     this.menuController.enable(false);
     this.getCategory();
+    this.getLanguages();
     this.getBannerData(this.categoryId);
     this.getAdvertisement(this.categoryId);
     // let id = localStorage.get("userId");
@@ -199,6 +201,25 @@ export class HomePage {
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
   }
+
+
+  getLanguages(){
+
+    let url = environment.base_url + environment.version + "languages";
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.Languages = MyResponse['result']['list'];
+      this.loader.hideBlockingLoaderAuth();
+      this.noInternet = '0';
+    },
+      error => {
+        this.noInternet = '1';
+        this.loader.hideBlockingLoaderAuth();
+        this.networkServices.checkInternetConnection();
+        this.networkServices.onPageLoadCheckInternet();
+      })
+  }
+
+
 
   filter() {
     this.router.navigate(['/showfilterdata']);
