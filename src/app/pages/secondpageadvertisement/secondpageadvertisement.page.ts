@@ -22,9 +22,13 @@ export class SecondpageadvertisementPage implements OnInit {
   submitAdvertisementData
   advertisementModel: any = {};
   fromDateTimestamp: number = 0;
+  fromDateTimeAd : number = 0;
   toDateTimestamp: number = 0;
+  toDateTimeAd: number = 0;
   endDate : any;
+  endAdvertisementDate : any;
   selectedWeek : any
+  selectedAdvertisementWeek : any;
   finalCalculation : any;
   bannerImage : any;
   totalCalculation: any;
@@ -53,6 +57,10 @@ export class SecondpageadvertisementPage implements OnInit {
     this.bannerImage = this.getData.images[0];
   }
 
+  ionViewWillEnter(){
+
+    this.selectAdvertisementNoOfWeeksType(1);
+  }
  
 
   goBackword() {
@@ -70,6 +78,18 @@ export class SecondpageadvertisementPage implements OnInit {
   // alert("from date::"+this.fromDateTimestamp+ "to date:" +this.toDateTimestamp);
     
   // }
+
+  selectAdvertisementNoOfWeeksType(type){
+    this.selectedAdvertisementWeek = type;
+    this.endAdvertisementDate = moment(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY');
+
+    let startDateTime = this.toTimestamp(this.todayDate);
+    let endDateTime = this.toTimestamp(this.endAdvertisementDate);
+    this.fromDateTimeAd = startDateTime;
+    this.toDateTimeAd = endDateTime;
+
+    console.log("show next date:"+moment(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY'));
+  }
 
   selectNoOfWeeksType(data){
     this.selectedWeek = data;
@@ -96,14 +116,15 @@ export class SecondpageadvertisementPage implements OnInit {
     this.totalCalculation = this.finalCalculation + 100;
     localStorage.setItem("boostStatus",'1');
     this.updateBoost = localStorage.getItem("bannerId");
-    if(this.updateBoost == undefined || this.updateBoost == "" || this.updateBoost == null){
-      this.postBanner(this.getData.categoryId);
-    }else{
-    this.updateBanner(this.getData.categoryId);
-    }
+    // if(this.updateBoost == undefined || this.updateBoost == "" || this.updateBoost == null){
+    //   this.postBanner(this.getData.categoryId);
+    // }else{
+    // this.updateBanner(this.getData.categoryId);
+    // }
    }else{
-    // this.totalCalculation = this.totalCalculation - 100;
-    localStorage.setItem("boostStatus",'1');
+     this.checkBoostStatus = '0';
+    this.totalCalculation = this.totalCalculation - 100;
+    localStorage.setItem("boostStatus",'0');
    }
   }
 
@@ -157,6 +178,7 @@ export class SecondpageadvertisementPage implements OnInit {
 
   }
   submmitAdvertisementData(data){
+  
     this.loader.showBlockingLoaderAuth();
     
         if(this.toDateTimestamp == undefined || this.toDateTimestamp == null || this.toDateTimestamp == NaN){
@@ -177,8 +199,8 @@ export class SecondpageadvertisementPage implements OnInit {
               "email" : this.getData.email,
               "mobile" : this.getData.mobile,
               "categoryId" : this.getData.categoryId,
-              "startDateTime" : this.fromDateTimestamp,
-              "endDateTime" : this.toDateTimestamp,
+              "startDateTime" : this.fromDateTimeAd,
+              "endDateTime" : this.toDateTimeAd,
               "isActive" : 1,
               "images" : this.urls
             }
@@ -195,8 +217,8 @@ export class SecondpageadvertisementPage implements OnInit {
                       send_date['email'] = this.getData.email;
                       send_date['mobile'] = this.getData.contact;
                       send_date['categoryId'] = this.getData.categoryId;
-                      send_date['startDateTime'] = this.fromDateTimestamp;
-                      send_date['endDateTime'] = this.toDateTimestamp;
+                      send_date['startDateTime'] = this.fromDateTimeAd;
+                      send_date['endDateTime'] = this.toDateTimeAd;
                       send_date['isActive'] = 1;
                       send_date['images'] = this.getData.images;
                       // send_date['transaction'] = "credited";
@@ -206,6 +228,9 @@ export class SecondpageadvertisementPage implements OnInit {
                       this.apiCall.post(url, send_date).subscribe(MyResponse => {
                         localStorage.setItem("categoryId",this.getData.categoryId);
                         this.presentToast("Advertisement posted successfully.");
+                        if(this.checkBoostStatus == '1'){
+                          this.postBanner(this.getData.categoryId);
+                        }
                       this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
                       this.loader.showBlockingLoaderAuth();
                       }, error => {

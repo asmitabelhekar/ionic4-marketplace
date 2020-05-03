@@ -18,18 +18,34 @@
 
   <h5 align="center" style=" margin-top:8%">Select Plan</h5>
   <div fxLayout="row" fxLayoutAlign="center center"
-    style="width:96%; margin-left:2%; color: white; background-color: #50a46c; padding:25px;">
+    style="width:96%; margin-left:2%; color: white; background-color: #50a46c; padding:20px;">
 
-    <div fxLayout="column" fxLayoutAlign="center center" style="width:35%; border-right: 1px solid white;">
+   
 
-      <label>One Week</label>
-      <label style="margin-top:15px">{{defaultValue}}$</label>
+  
+
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:25%; border-right: 1px solid white;">
+
+      <label style="font-size:12px ">One Week</label>
+      <label style="margin-top:5px">{{defaultValue}}$</label>
 
     </div>
-    <div fxLayout="column" fxLayoutAlign="center center" style="width:65%">
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:40%;border-right: 1px solid white;">
 
-      <label>Multiple Weeks</label>
-      <label style="margin-top:15px">$7 + ( {{selectedWeek}} * $5)</label>
+      <label style="font-size:12px ">Multiple Weeks</label>
+      <label style="margin-top:5px">$7 + ( {{selectedWeek}} * $5)</label>
+
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" style="width:35%;">
+
+      <mat-form-field class="cl_matformfield_dropdown cl_select_week" >
+      <label style="color:white;font-size:12px; margin-bottom:10px">Select Weeks</label>
+
+        <select matNativeControl #noweek (change)="selectAdvertisementNoOfWeeksType(noweek.value)" style="color:white;width:40% ">
+          <option *ngFor="let type of weeksArray" [value]="type" style="color:black"> {{type}}</option>
+        </select>
+      </mat-form-field>
 
     </div>
   </div>
@@ -49,11 +65,6 @@
               <option *ngFor="let type of weeksArray" [value]="type" style="color:black"> {{type}}</option>
             </select>
           </mat-form-field>
-
-
-
-
-
         </div>
       </ion-col>
       <ion-col size="1" fxLayoutAlign="end center">
