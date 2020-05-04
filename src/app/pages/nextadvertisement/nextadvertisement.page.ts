@@ -46,6 +46,7 @@ export class NextadvertisementPage implements OnInit {
     public apiCall: ApiService) { }
 
 
+
   languageArray = [
     { id: 1, name: "English" },
     { id: 2, name: "Hindi" },

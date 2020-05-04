@@ -23,7 +23,7 @@ export class PostadvertisementPage implements OnInit {
   advertisementModel: any = {};
   advertisementArray = [];
   advertisementObject = {};
-
+  checkRadioButton : any;
   categoryArray = [
     {
       "categoryName": "abc",
@@ -79,8 +79,8 @@ export class PostadvertisementPage implements OnInit {
     }
   }
 
-  ngOnInit() {
 
+  ionViewWillEnter(){
     this.getCategory();
     this.getLanguages();
     this.postStatus = localStorage.getItem("postStatus");
@@ -95,9 +95,9 @@ export class PostadvertisementPage implements OnInit {
       this.advertisementModel['title']= this.advertisementObject['title'];
       let checkType = this.advertisementObject['gender'];
       if(checkType == 0){
-        this.selectedGender = "male";
+        this.checkRadioButton = "male";
       }else{
-        this.selectedGender = "female";
+        this.checkRadioButton = "female";
       }
       this.advertisementModel['categoryId'] = this.advertisementObject['categoryId'];
       this.advertisementModel['email'] = this.advertisementObject['email'];
@@ -106,12 +106,15 @@ export class PostadvertisementPage implements OnInit {
       this.languagesArray = this.advertisementObject['languages'];
       console.log("languagesArray ::"+this.selectedLanguages);
      
-      // this.advertisementModel['mobile'] = this.advertisementArray['mobile'];
-      // this.advertisementModel['address'] = this.advertisementArray['modified'];
-      // this.advertisementModel['userId']= this.advertisementArray['userId'];
     } else {
 
     }
+
+  }
+
+  ngOnInit() {
+
+   
   
   }
 
@@ -189,13 +192,13 @@ export class PostadvertisementPage implements OnInit {
     this.selectedRadioGroup = event.detail.value;
     if (this.selectedRadioGroup == 'male') {
       this.advertisementModel['gender'] = 0;
-      this.selectedGender = "male";
+      this.checkRadioButton = "male";
     } else if (this.selectedRadioGroup == 'female') {
       this.advertisementModel['gender'] = 1;
-      this.selectedGender = "female";
+      this.checkRadioButton = "female";
     } else {
       this.advertisementModel['gender'] = 1;
-      this.selectedGender = "female";
+      this.checkRadioButton = "female";
     }
   }
 
