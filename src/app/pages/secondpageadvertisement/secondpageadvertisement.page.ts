@@ -36,6 +36,11 @@ export class SecondpageadvertisementPage implements OnInit {
   todayDate : any;
   checkBoostStatus = '0';
   updateBoost : any;
+  postStatus : any;
+  advertisementObject = {};
+  advertisementId : any;
+
+  advertisementStatus : any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -49,6 +54,24 @@ export class SecondpageadvertisementPage implements OnInit {
     
   ngOnInit() {
     this.todayDate = new Date();
+    
+    this.postStatus = localStorage.getItem("postStatus");
+
+    if(this.postStatus == "1")
+    {
+      var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
+      this.advertisementObject = JSON.parse(advertisementDetail);
+      console.log("advertisementObject:" +this.advertisementObject['address']);
+      
+      this.fromDateTimeAd = this.advertisementModel['startDateTime'];
+      this.toDateTimeAd = this.advertisementModel['endDateTime'];
+      this.advertisementId = this.advertisementObject['id'];
+      console.log("advertisement id:"+this.advertisementId);
+      this.advertisementStatus = "update";
+    }else{
+      this.advertisementStatus = "post";
+    }
+
     this.advertisementModel['noofweek'] = "1";
     this.selectedWeek = '1';
     this.selectNoOfWeeksType(1);
@@ -224,19 +247,40 @@ export class SecondpageadvertisementPage implements OnInit {
                       // send_date['transaction'] = "credited";
         
                       this.usersId = localStorage.getItem("userId");
-                      let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
-                      this.apiCall.post(url, send_date).subscribe(MyResponse => {
-                        localStorage.setItem("categoryId",this.getData.categoryId);
-                        this.presentToast("Advertisement posted successfully.");
-                        if(this.checkBoostStatus == '1'){
-                          this.postBanner(this.getData.categoryId);
-                        }
-                      this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
-                      this.loader.showBlockingLoaderAuth();
-                      }, error => {
-                        this.loader.hideBlockingLoaderAuth();
-                        this.presentToast("Please try again.");
-                      });
+
+                      if(this.advertisementStatus == "post"){
+
+                        let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
+                        this.apiCall.post(url, send_date).subscribe(MyResponse => {
+                          localStorage.setItem("categoryId",this.getData.categoryId);
+                          this.presentToast("Advertisement posted successfully.");
+                          if(this.checkBoostStatus == '1'){
+                            this.postBanner(this.getData.categoryId);
+                          }
+                        this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
+                        this.loader.showBlockingLoaderAuth();
+                        }, error => {
+                          this.loader.hideBlockingLoaderAuth();
+                          this.presentToast("Please try again.");
+                        });
+
+                      }else{
+
+                        let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements/" + this.advertisementId;
+                        this.apiCall.put(url, send_date).subscribe(MyResponse => {
+                          localStorage.setItem("categoryId",this.getData.categoryId);
+                          this.presentToast("Advertisement updated successfully.");
+                          if(this.checkBoostStatus == '1'){
+                            this.postBanner(this.getData.categoryId);
+                          }
+                        this.router.navigate(['/home',{ categoryId : this.getData.categoryId}]);
+                        this.loader.showBlockingLoaderAuth();
+                        }, error => {
+                          this.loader.hideBlockingLoaderAuth();
+                          this.presentToast("Please try again.");
+                        });
+                      }
+                     
           }
         }
   }

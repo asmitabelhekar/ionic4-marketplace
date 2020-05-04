@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, NgModel } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { environment } from 'src/environments/environment';
 import { ToastController } from '@ionic/angular';
@@ -12,19 +12,17 @@ import { ToastController } from '@ionic/angular';
 })
 export class PostadvertisementPage implements OnInit {
 
-  selectedRadioGroup : any;
+  selectedGender : any;
+  selectedRadioGroup: any;
   categoryId: any;
-  // address: any;
-  // lattitude: any;
-  // longitude: any;
-  // countryName: any;
-  // stateName: any;
-  // cityName: any;
-  // pincode: any;
-  // loc: any = {};
+  status: any;
+  advertisementId: any;
+  postStatus : any;
   languagesArray = [];
   myControl = new FormControl();
   advertisementModel: any = {};
+  advertisementArray = [];
+  advertisementObject = {};
 
   categoryArray = [
     {
@@ -85,16 +83,39 @@ export class PostadvertisementPage implements OnInit {
 
     this.getCategory();
     this.getLanguages();
-    // this.languageArray = [
-    //   { id: 1, name: "English" },
-    //   { id: 2, name: "Hindi" },
-    //   { id: 3, name: "Marathi" },
-    //   { id: 4, name: "Gujrati" },
-    //   { id: 5, name: "Bangali" }
-    // ]
+    this.postStatus = localStorage.getItem("postStatus");
+    // this.status = this.activatedRoute.snapshot.params['advertisementStatus'];
+
+    if (this.postStatus == "1") {
+      var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
+      this.advertisementObject = JSON.parse(advertisementDetail);
+      console.log("advertisementObject:" +this.advertisementObject['address']);
+
+      this.advertisementModel['description'] = this.advertisementObject['description'];
+      this.advertisementModel['title']= this.advertisementObject['title'];
+      let checkType = this.advertisementObject['gender'];
+      if(checkType == 0){
+        this.selectedGender = "male";
+      }else{
+        this.selectedGender = "female";
+      }
+      this.advertisementModel['categoryId'] = this.advertisementObject['categoryId'];
+      this.advertisementModel['email'] = this.advertisementObject['email'];
+      this.advertisementModel['contact'] = this.advertisementObject['mobile'];
+      this.selectedLanguages = this.advertisementObject['languages'];
+      this.languagesArray = this.advertisementObject['languages'];
+      console.log("languagesArray ::"+this.selectedLanguages);
+     
+      // this.advertisementModel['mobile'] = this.advertisementArray['mobile'];
+      // this.advertisementModel['address'] = this.advertisementArray['modified'];
+      // this.advertisementModel['userId']= this.advertisementArray['userId'];
+    } else {
+
+    }
+  
   }
 
-  getLanguages(){
+  getLanguages() {
 
     let url = environment.base_url + environment.version + "languages";
     this.apiCall.get(url).subscribe(MyResponse => {
@@ -109,70 +130,74 @@ export class PostadvertisementPage implements OnInit {
   }
 
   constructor(public router: Router,
-    public apiCall : ApiService,
-    public toast : ToastController,
+    public apiCall: ApiService,
+    public toast: ToastController,
+    public activatedRoute: ActivatedRoute,
     public changeDetectorRef: ChangeDetectorRef) { }
 
 
   getCategory() {
-    let url = environment.base_url + environment.version  +"category/" + 0 + "/sub-category"
+    let url = environment.base_url + environment.version + "category/" + 0 + "/sub-category"
     this.apiCall.get(url).subscribe(MyResponse => {
-     this.categoryArray = MyResponse['result']['list'];
+      this.categoryArray = MyResponse['result']['list'];
     },
       error => {
-        
+
       })
   }
   addAdvertisementData(data) {
-// category, languages, gender
+    // category, languages, gender
     // let languageArray = data.languages;
     // this.languagesArray = languageArray.split(',');
 
-  if(this.languagesArray.length == 0){
-    this.presentToast("Please select languages");
-  }else{
-    if(this.advertisementModel['gender'] == '0' || this.advertisementModel['gender'] == '1'){
-     
+    if (this.languagesArray.length == 0) {
+      this.presentToast("Please select languages");
+    } else {
+      if (this.advertisementModel['gender'] == '0' || this.advertisementModel['gender'] == '1') {
 
-      if(this.categoryId == undefined || this.categoryId == null || this.categoryId == ""){
-        this.presentToast("Please select category id");
-      }else{
-        let advertisemntInfo = {
-          "title": data.title,
-          "description": data.description,
-         "contact" : this.advertisementModel['contact'],
-         
-          "gender": this.advertisementModel['gender'],
-          "languages": this.languagesArray,
-          "email": this.advertisementModel['email'],
-         
-          "categoryId": this.categoryId
+
+        if (this.categoryId == undefined || this.categoryId == null || this.categoryId == "") {
+          this.presentToast("Please select category id");
+        } else {
+          let advertisemntInfo = {
+            "title": data.title,
+            "description": data.description,
+            "contact": this.advertisementModel['contact'],
+
+            "gender": this.advertisementModel['gender'],
+            "languages": this.languagesArray,
+            "email": this.advertisementModel['email'],
+
+            "categoryId": this.categoryId
+          }
+          console.log("data:" + JSON.stringify(advertisemntInfo));
+          this.router.navigate(['/nextadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
+          // this.router.navigate(['/nextadvertisement']);
+
         }
-      console.log("data:"+JSON.stringify(advertisemntInfo));
-        this.router.navigate(['/nextadvertisement', { advertisementData: JSON.stringify(advertisemntInfo) }]);
-        // this.router.navigate(['/nextadvertisement']);
+      } else {
 
+        this.presentToast("Please select gender");
       }
-    }else{
-    
-      this.presentToast("Please select gender");
     }
-  }
 
-   
+
   }
 
   radioGroupChange(event) {
-console.log("radioGroupChange",event.detail);
-this.selectedRadioGroup = event.detail.value;
-if(this.selectedRadioGroup == 'male'){
-  this.advertisementModel['gender'] = 0;
-}else if(this.selectedRadioGroup == 'female'){
-  this.advertisementModel['gender'] = 1;
-}else{
-  this.advertisementModel['gender'] = 1;
-}
-}
+    console.log("radioGroupChange", event.detail);
+    this.selectedRadioGroup = event.detail.value;
+    if (this.selectedRadioGroup == 'male') {
+      this.advertisementModel['gender'] = 0;
+      this.selectedGender = "male";
+    } else if (this.selectedRadioGroup == 'female') {
+      this.advertisementModel['gender'] = 1;
+      this.selectedGender = "female";
+    } else {
+      this.advertisementModel['gender'] = 1;
+      this.selectedGender = "female";
+    }
+  }
 
 
   async presentToast(message) {
@@ -186,7 +211,7 @@ if(this.selectedRadioGroup == 'male'){
 
   selectCategoryType(data) {
     // alert("check data:"+data);
-    console.log("show id:"+data);
+    console.log("show id:" + data);
     this.categoryId = data;
   }
 
@@ -199,24 +224,24 @@ if(this.selectedRadioGroup == 'male'){
     this.languagesArray = (selectedLanguage);
   }
 
-  openChatList(){
+  openChatList() {
     this.router.navigate(['/chatlist']);
   }
 
-  postAdvertisement(){
+  postAdvertisement() {
     this.router.navigate(['/postadvertisement']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home']);
   }
 
-  openFavourite(){
+  openFavourite() {
     this.router.navigate(['/favourite']);
   }
 
-  openProfile(){
+  openProfile() {
     this.router.navigate(['/profile']);
   }
 }

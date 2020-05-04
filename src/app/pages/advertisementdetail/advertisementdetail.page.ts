@@ -83,10 +83,6 @@ export class AdvertisementdetailPage implements OnInit {
 
   ngOnInit() {
     // var data={"id" : 1, "second" : "abcd"};
-
-   
-   
-
   }
 
   getDetailAdvertisement() {
@@ -106,6 +102,9 @@ export class AdvertisementdetailPage implements OnInit {
       this.userId = this.advertisementArray['userId'];
       this.categoryId = this.advertisementArray['categoryId'];
       this.advertisementImages = this.advertisementArray['images'];
+
+      localStorage.setItem("ADVERTISEMENTDATA",JSON.stringify(this.advertisementArray));
+
       this.getProfileDetail();
       this.loader.hideBlockingLoaderAuth();
       this.loadMap();
@@ -121,6 +120,7 @@ export class AdvertisementdetailPage implements OnInit {
     this.userId = localStorage.getItem('userId');
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
 
+    // this.getIds = JSON.parse(getdata);
     if (this.getIds.status == "users") {
 
       this.advertisementId = this.getIds.id;
@@ -280,6 +280,13 @@ export class AdvertisementdetailPage implements OnInit {
 
   viewProfile() {
     this.router.navigate(['/profile', { userId: this.userId }]);
+  }
+
+  editAdvertisement(){
+    let status = "1";
+    localStorage.setItem("postStatus",status);
+    this.router.navigate(['/postadvertisement']);
+   
   }
   
 }
