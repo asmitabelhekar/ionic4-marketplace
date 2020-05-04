@@ -83,6 +83,7 @@ export class PostadvertisementPage implements OnInit {
   ionViewWillEnter(){
     this.getCategory();
     this.getLanguages();
+    this.advertisementModel['categoryId']= "2";
     this.postStatus = localStorage.getItem("postStatus");
     // this.status = this.activatedRoute.snapshot.params['advertisementStatus'];
 
