@@ -85,7 +85,12 @@ ionViewWillEnter(){
 
     var jsonString = localStorage.getItem("BOOKMARK");    
     this.getBookmarkObj = JSON.parse(jsonString);
-    
+    if(this.getBookmarkObj == null || this.getBookmarkObj =="" || this.getBookmarkObj == undefined){
+      this.getBookmarkObj = {};
+    }else{
+
+    }
+
     console.log("show retrieved object:"+this.getBookmarkObj);
 
     this.selectedTab = 0;

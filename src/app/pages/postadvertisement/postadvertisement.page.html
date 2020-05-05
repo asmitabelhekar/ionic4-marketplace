@@ -65,10 +65,7 @@
     name="type" 
     (selectionChange)="selectCategoryType(advertisementModel.categoryId)"
     class="filter-select" 
-    [(ngModel)]="advertisementModel.categoryId" 
-    [compareWith]="equals"
-   
-    #categorySelect="ngModel">
+    [(value)]="categoryId">
       <!-- <mat-option disabled="disabled" class="filter-option">
         <input type="checkbox"(click)="selectAll(checkAll.checked, yearSelect, years)" #checkAll>
       </mat-option> -->
@@ -170,10 +167,9 @@
       name="year" 
       (selectionChange)="selectedChanged(selectedLanguages)"
       class="filter-select" 
-      [(ngModel)]="selectedLanguages" 
-      [compareWith]="equals"
-      multiple 
-      #yearSelect="ngModel">
+      [(value)]="selectedLanguages" 
+     
+      multiple >
         <mat-option *ngFor="let year of languageArray" [value]="year.name">
           {{year.name}}
         </mat-option>

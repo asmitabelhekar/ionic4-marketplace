@@ -130,13 +130,19 @@ export class AdvertisementdetailPage implements OnInit {
 
       this.advertisementId = this.getIds.id;
       this.categoryId = this.getIds.categoryId;
+      console.log("show categoryId::"+this.categoryId);
       this.url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
       this.getDetailAdvertisement();
     }
 
     var jsonString = localStorage.getItem("BOOKMARK");    
     this.getBookmarkObj = JSON.parse(jsonString);
-    
+    if(this.getBookmarkObj == null || this.getBookmarkObj =="" || this.getBookmarkObj == undefined){
+      this.getBookmarkObj = {};
+    }else{
+
+    }
+
     console.log("show retrieved object:"+this.getBookmarkObj);
 
     // let data = localStorage.getItem("BOOKMARK");

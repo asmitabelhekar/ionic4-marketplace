@@ -14,7 +14,7 @@ export class PostadvertisementPage implements OnInit {
 
   selectedGender : any;
   selectedRadioGroup: any;
-  categoryId: any;
+  categoryId: any = 3;
   status: any;
   advertisementId: any;
   postStatus : any;
@@ -62,9 +62,9 @@ export class PostadvertisementPage implements OnInit {
   //toCheck: boolean =  false;
 
   equals(objOne, objTwo) {
-    if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
-      return objOne.id === objTwo.id;
-    }
+    // if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
+    //   return objTwo.id === objOne.id;
+    // }
   }
 
   selectAll(checkAll, select: NgModel, values) {
@@ -83,7 +83,7 @@ export class PostadvertisementPage implements OnInit {
   ionViewWillEnter(){
     this.getCategory();
     this.getLanguages();
-    this.advertisementModel['categoryId']= "2";
+    // this.advertisementModel['categoryId']= "2";
     this.postStatus = localStorage.getItem("postStatus");
     // this.status = this.activatedRoute.snapshot.params['advertisementStatus'];
 
@@ -100,7 +100,7 @@ export class PostadvertisementPage implements OnInit {
       }else{
         this.checkRadioButton = "female";
       }
-      this.advertisementModel['categoryId'] = this.advertisementObject['categoryId'];
+      this.categoryId = this.advertisementObject['categoryId'];
       this.advertisementModel['email'] = this.advertisementObject['email'];
       this.advertisementModel['contact'] = this.advertisementObject['mobile'];
       this.selectedLanguages = this.advertisementObject['languages'];
@@ -114,9 +114,6 @@ export class PostadvertisementPage implements OnInit {
   }
 
   ngOnInit() {
-
-   
-  
   }
 
   getLanguages() {

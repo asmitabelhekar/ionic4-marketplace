@@ -166,6 +166,11 @@ export class HomePage {
 
     var jsonString = localStorage.getItem("BOOKMARK");
     this.postBookmarkObj = JSON.parse(jsonString);
+    if(this.postBookmarkObj == null || this.postBookmarkObj =="" || this.postBookmarkObj == undefined){
+      this.postBookmarkObj = {};
+    }else{
+
+    }
 
     console.log("show retrieved object:" + this.postBookmarkObj);
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
@@ -469,8 +474,8 @@ export class HomePage {
   postAdvertisement() {
     let status = "0";
     localStorage.setItem("postStatus",status);
-    this.router.navigate(['/postadvertisement']);
-    // this.router.navigate(['/secondpageadvertisement']);
+    // this.router.navigate(['/postadvertisement']);
+    this.router.navigate(['/secondpageadvertisement']);
     // this.router.navigate(['/nextadvertisement']);
   }
 
