@@ -497,7 +497,8 @@ export class HomePage {
     let sendId = {
       "id": id,
       "categoryId": this.categoryId,
-      "status": "category"
+      "status": "category",
+      "adType" : 1
     }
     // alert("show data::"+JSON.stringify(data));
     localStorage.setItem("url", data);

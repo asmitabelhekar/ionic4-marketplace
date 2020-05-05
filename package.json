@@ -36,6 +36,7 @@
     "@material/menu": "^5.1.0",
     "call-number": "^1.0.1",
     "cordova-android": "8.1.0",
+    "cordova-browser": "6.0.0",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-googlemaps": "^2.7.1",
     "cordova-plugin-nativegeocoder": "^3.4.0",
@@ -96,7 +97,8 @@
       "cordova-plugin-network-information": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

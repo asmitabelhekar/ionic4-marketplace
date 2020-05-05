@@ -1,13 +1,16 @@
 <ion-content>
 
-  <div class="cl_img_div" fxLayoutAlign="center center">
-
-    <ion-slides [options]="slideOptions" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)" style="width:100%;margin:auto"
+  <div fxLayoutAlign="start center">
+  <ion-slides [options]="slideOptions" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)" 
     class="half-black">
-    <ion-slide *ngFor="let item of advertisementImages" style="width:100%;margin:auto">
-    <img src="{{item}}" style="width:100%; height:250px; margin:auto" />
+    <ion-slide *ngFor="let item of advertisementImages" >
+      <div style="width:100%;height:250px;position: relative;margin-bottom:5px" >
+        <img src="{{item}}" style="width:100%; height:100%"/>
+      </div>
+
     </ion-slide>
   </ion-slides>
+  
 
     <div fxLayout="row" class="cl_header">
       <ion-row style="width:100%">
@@ -22,19 +25,19 @@
           <img src="../../../assets/sharewhitee.png" class="cl_share_icon" />
 
         </ion-col>
-        <ion-col size="1" fxLayoutAlign="center center" (click)="editAdvertisement()">
+        <ion-col size="1" fxLayoutAlign="center center" (click)="editAdvertisement()" *ngIf="advertisementType == 0 ">
           <mat-icon style="color:white">edit</mat-icon>
         </ion-col>
       </ion-row>
     </div>
 
-    <!-- <div fxLayout="row" fxLayoutAlign="center center" class="cl_middle_arrow" style="width:100%">
+    <div fxLayout="row" fxLayoutAlign="center center" class="cl_middle_arrow" style="width:100%">
      
       <mat-icon class="cl_middle_arrow_left" style="position: fixed; left:10px;" (click)="prevSlide(slider)">keyboard_arrow_left</mat-icon>
       <mat-icon class="cl_middle_arrow_right" style="position: fixed; right:10px;" (click)="nextSlide(slider)">keyboard_arrow_right</mat-icon>
      
      
-    </div> -->
+    </div>
   </div>
 
 

@@ -54,6 +54,7 @@ export class AdvertisementdetailPage implements OnInit {
   url: any;
   getBookmarkObj: any = {};
   keysObject = [];
+  advertisementType : any;
  
   constructor(public activatedRoute: ActivatedRoute,
     public platform: Platform,
@@ -117,9 +118,11 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.loader.showBlockingLoaderAuth();
     this.userId = localStorage.getItem('userId');
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
-
+    this.advertisementType = this.getIds.adType;
+    
     // this.getIds = JSON.parse(getdata);
     if (this.getIds.status == "users") {
 
@@ -158,6 +161,7 @@ export class AdvertisementdetailPage implements OnInit {
     //     this.displayfavourite = "1";
     //   }
     // }
+    this.loader.hideBlockingLoaderAuth();
   }
 
   goBackword() {

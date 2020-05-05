@@ -357,7 +357,8 @@ var FavouritePage = /** @class */ (function () {
         var sendId = {
             "id": id,
             "categoryId": this.categoryId,
-            "status": "users"
+            "status": "users",
+            "adType": 0
         };
         // alert("show data::"+JSON.stringify(data));
         localStorage.setItem("url", data);

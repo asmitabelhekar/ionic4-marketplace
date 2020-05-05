@@ -183,7 +183,7 @@ var NextadvertisementPage = /** @class */ (function () {
             var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
             this.advertisementObject = JSON.parse(advertisementDetail);
             console.log("advertisementObject:" + this.advertisementObject['address']);
-            this.advertisementModel['address'] = this.advertisementObject['address'];
+            this.address = this.advertisementObject['address'];
             this.advertisementModel['price'] = this.advertisementObject['price'];
             this.advertisementModel['images'] = this.advertisementObject['images'];
             this.lattitude = this.advertisementObject['latitude'];
@@ -283,7 +283,8 @@ var NextadvertisementPage = /** @class */ (function () {
         // let url = "http://3.6.135.154:9000/api/" + "upload-image";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls.push(MyResponse['result'][0]);
+            // this.urls.push(MyResponse['result'][0])
+            _this.urls[0] = MyResponse['result'][0];
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }

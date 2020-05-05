@@ -554,8 +554,8 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.postAdvertisement = function () {
         var status = "0";
         localStorage.setItem("postStatus", status);
-        // this.router.navigate(['/postadvertisement']);
-        this.router.navigate(['/secondpageadvertisement']);
+        this.router.navigate(['/postadvertisement']);
+        // this.router.navigate(['/secondpageadvertisement']);
         // this.router.navigate(['/nextadvertisement']);
     };
     HomePage.prototype.home = function () {
@@ -571,7 +571,8 @@ var HomePage = /** @class */ (function () {
         var sendId = {
             "id": id,
             "categoryId": this.categoryId,
-            "status": "category"
+            "status": "category",
+            "adType": 1
         };
         // alert("show data::"+JSON.stringify(data));
         localStorage.setItem("url", data);

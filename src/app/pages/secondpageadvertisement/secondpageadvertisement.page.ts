@@ -39,7 +39,7 @@ export class SecondpageadvertisementPage implements OnInit {
   postStatus: any;
   advertisementObject = {};
   advertisementId: any;
-  selectedNoOfWeek: any;
+  selectedNoOfWeek: any = "1";
   advertisementStatus: any;
   bannerArray : any;
   filterObject : any = {};
