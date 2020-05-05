@@ -39,8 +39,10 @@ export class SecondpageadvertisementPage implements OnInit {
   postStatus: any;
   advertisementObject = {};
   advertisementId: any;
-  selectedNoOfWeek = "3";
+  selectedNoOfWeek: any;
   advertisementStatus: any;
+  bannerArray : any;
+  filterObject : any = {};
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -53,6 +55,10 @@ export class SecondpageadvertisementPage implements OnInit {
 
 
   ngOnInit() {
+
+  }
+
+  ionViewWillEnter() {
     this.todayDate = new Date();
 
     this.postStatus = localStorage.getItem("postStatus");
@@ -62,27 +68,28 @@ export class SecondpageadvertisementPage implements OnInit {
       this.advertisementObject = JSON.parse(advertisementDetail);
       console.log("advertisementObject:" + this.advertisementObject['address']);
 
-      this.fromDateTimeAd = this.advertisementModel['startDateTime'];
-      this.toDateTimeAd = this.advertisementModel['endDateTime'];
-    this.getDate(this.fromDateTimeAd,this.toDateTimeAd);
-
+      // this.fromDateTimeAd = 1588666616;
+      // this.toDateTimeAd = 1591641000;
+      this.fromDateTimeAd = this.advertisementObject['startDateTime'];
+      this.toDateTimeAd = this.advertisementObject['endDateTime'];
+      let display = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
+      console.log("display ----:" + display);
       this.advertisementId = this.advertisementObject['id'];
-      console.log("advertisement id:" + this.advertisementId);
+    
       this.advertisementStatus = "update";
     } else {
       this.advertisementStatus = "post";
+      
+    this.selectAdvertisementNoOfWeeksType(1);
+
     }
 
     this.advertisementModel['noofweek'] = "1";
     this.selectedWeek = '1';
     this.selectNoOfWeeksType(1);
     localStorage.setItem("boostStatus", '0');
-    // this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
-    // this.bannerImage = this.getData.images[0];
-  }
-
-  ionViewWillEnter() {
-    this.selectAdvertisementNoOfWeeksType(1);
+    this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
+    this.bannerImage = this.getData.images[0];
   }
 
 
@@ -102,30 +109,7 @@ export class SecondpageadvertisementPage implements OnInit {
 
   // }
 
-  convert(timestamp) {
-    var date = new Date(                          // Convert to date
-      parseInt(                                   // Convert to integer
-        timestamp.split("(")[1]                   // Take only the part right of the "("
-      )
-    );
-    return [
-      ("0" + date.getDate()).slice(-2),           // Get day and pad it with zeroes
-      ("0" + (date.getMonth() + 1)).slice(-2),      // Get month and pad it with zeroes
-      date.getFullYear()                          // Get full year
-    ].join('/');                                  // Glue the pieces together
-  }
-  //  convert(timestamp) {
-  //   var date = new Date(                          
-  //     parseInt(                                   
-  //       timestamp.split("(")[1]                   
-  //     )
-  //   );
-  //   return [
-  //     ("0" + date.getDate()).slice(-2),           
-  //     ("0" + (date.getMonth()+1)).slice(-2),      
-  //     date.getFullYear()                          
-  //   ].join('/');                                  
-  // }
+
 
   selectAdvertisementNoOfWeeksType(type) {
     this.selectedAdvertisementWeek = type;
@@ -135,13 +119,13 @@ export class SecondpageadvertisementPage implements OnInit {
     let endDateTime = this.toTimestamp(this.endAdvertisementDate);
     this.fromDateTimeAd = startDateTime;
     this.toDateTimeAd = endDateTime;
-    console.log("end date timestamp:"+endDateTime);
+    console.log("end date timestamp:" + startDateTime);
 
-  
+
     console.log("show next date:" + moment(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY'));
   }
 
-  getDate(start , end){
+  getDate(start, end) {
     //get from date
     var ts_ms = start * 1000;
     var date_ob = new Date(ts_ms);
@@ -149,7 +133,7 @@ export class SecondpageadvertisementPage implements OnInit {
     var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
     var date = ("0" + date_ob.getDate()).slice(-2);
     let getStartDate = month + "/" + date + "/" + year;
-    var dateToday = new Date(year, parseInt(month),parseInt(date));
+    var dateToday = new Date(year, parseInt(month), parseInt(date));
 
 
     //get end date
@@ -158,45 +142,45 @@ export class SecondpageadvertisementPage implements OnInit {
     var end_date_ob_year = end_date_ob.getFullYear();
     var end_date_ob_month = ("0" + (end_date_ob.getMonth() + 1)).slice(-2);
     var end_date_ob_date = ("0" + end_date_ob.getDate()).slice(-2);
-    let getEndDate =   end_date_ob_month+ "/" + end_date_ob_date + "/" + end_date_ob_year;
+    let getEndDate = end_date_ob_month + "/" + end_date_ob_date + "/" + end_date_ob_year;
 
-    console.log("show first date: " +getStartDate + "  ,  " + "show second date:" + getEndDate);
+    console.log("show first date: " + getStartDate + "  ,  " + "show second date:" + getEndDate);
 
 
     let weeks = this.calculateNumberOfWeeks(getStartDate, getEndDate);
     console.log("show weeks:" + weeks);
 
-    
+    return weeks;
 
   }
 
-   calculateNumberOfWeeks = function(d1, d2) {
+  calculateNumberOfWeeks = function (d1, d2) {
     var format = "MM/DD/YYYY";
-    if(d1 == '' || d2 == ''){
-        return '';
+    if (d1 == '' || d2 == '') {
+      return '';
     }
     if (moment(d1, format).isValid() && moment(d2, format).isValid()) {
-        d1 = moment(d1, format);
-        d2 = moment(d2, format);
-        
-        this.w = (d1.diff(d2, 'days') / 7).toFixed(1);
-        if(this.w < 1){
-            this.w = this.w;
-        }
-        // this.selectedNoOfWeek = this.w;
-        // var text = "";
-        // if(this.w > 1){
-        //     text = "Weeks.";
-        // }else{
-        //     text = "Week.";
-        // }
-        return this.w ;
+      d1 = moment(d1, format);
+      d2 = moment(d2, format);
+
+      this.w = (d1.diff(d2, 'days') / 7).toFixed(1);
+      if (this.w < 1) {
+        this.w = this.w;
+      }
+      this.selectedNoOfWeek = this.w;
+      // var text = "";
+      // if(this.w > 1){
+      //     text = "Weeks.";
+      // }else{
+      //     text = "Week.";
+      // }
+      return this.w;
     }
-}
+  }
 
   weeksBetween(d1, d2) {
     return Math.round((d2 - d1) / (7 * 24 * 60 * 60 * 1000));
-}
+  }
 
   selectNoOfWeeksType(data) {
     this.selectedWeek = data;
@@ -239,14 +223,16 @@ export class SecondpageadvertisementPage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
     send_date['image'] = this.bannerImage;
-    send_date['title'] = "Banner";
-    send_date['description'] = "New";
+    send_date['title'] = this.getData.title;
+    send_date['description'] = this.getData.description;
     send_date['startDateTime'] = this.fromDateTimestamp;
     send_date['endDateTime'] = this.toDateTimestamp;
     send_date['lat'] = this.getData.lattitude;
     send_date['lng'] = this.getData.longitude;
     send_date['isActive'] = 1;
     send_date['city'] = this.getData.address;
+    send_date['advertisementId'] = this.advertisementId;
+    send_date['userId'] = this.usersId;
 
     let url = environment.base_url + environment.version + "category/" + id + "/banners";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
@@ -261,20 +247,23 @@ export class SecondpageadvertisementPage implements OnInit {
 
   }
 
-  updateBanner(id) {
+  updateBanner(categoryId, bannerId) {
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
     send_date['image'] = this.bannerImage;
-    send_date['title'] = "Banner";
-    send_date['description'] = "New";
+    send_date['title'] = this.getData.title;;
+    send_date['description'] = this.getData.description;
     send_date['startDateTime'] = this.fromDateTimestamp;
     send_date['endDateTime'] = this.toDateTimestamp;
     send_date['lat'] = this.getData.lattitude;
     send_date['lng'] = this.getData.longitude;
     send_date['isActive'] = 1;
     send_date['city'] = this.getData.address;
-    let getBannerId = localStorage.getItem("bannerId");
-    let url = environment.base_url + environment.version + "category/" + id + "/banners/" + getBannerId;
+    send_date['advertisementId'] = this.advertisementId;
+    send_date['userId'] = this.usersId;
+
+    // let getBannerId = localStorage.getItem("bannerId");
+    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners/" + bannerId;
     this.apiCall.put(url, send_date).subscribe(MyResponse => {
       // this.presentToast(MyResponse);
       this.loader.hideBlockingLoaderAuth();
@@ -294,24 +283,7 @@ export class SecondpageadvertisementPage implements OnInit {
       if (this.fromDateTimestamp == undefined || this.fromDateTimestamp == null) {
         this.presentToast("Please select weeks");
       } else {
-        this.submitAdvertisementData = {
-          "title": this.getData.title,
-          "description": this.getData.description,
-          "price": this.getData.price,
-          "lattitude": this.getData.lattitude,
-          "longitude": this.getData.longitude,
-          "address": this.getData.address,
-          "gender": this.getData.gender,
-          "languages": this.getData.languages,
-          "email": this.getData.email,
-          "mobile": this.getData.mobile,
-          "categoryId": this.getData.categoryId,
-          "startDateTime": this.fromDateTimeAd,
-          "endDateTime": this.toDateTimeAd,
-          "isActive": 1,
-          "images": this.urls
-        }
-
+       
         let send_date = {};
         send_date['title'] = this.getData.title;
         send_date['description'] = this.getData.description;
@@ -336,6 +308,7 @@ export class SecondpageadvertisementPage implements OnInit {
 
           let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
           this.apiCall.post(url, send_date).subscribe(MyResponse => {
+            this.advertisementId = MyResponse['result']['id'];
             localStorage.setItem("categoryId", this.getData.categoryId);
             this.presentToast("Advertisement posted successfully.");
             if (this.checkBoostStatus == '1') {
@@ -354,9 +327,10 @@ export class SecondpageadvertisementPage implements OnInit {
           this.apiCall.put(url, send_date).subscribe(MyResponse => {
             localStorage.setItem("categoryId", this.getData.categoryId);
             this.presentToast("Advertisement updated successfully.");
-            if (this.checkBoostStatus == '1') {
-              this.postBanner(this.getData.categoryId);
-            }
+            this.getAllBanner();
+            // if (this.checkBoostStatus == '1') {
+            //   this.postBanner(this.getData.categoryId);
+            // }
             this.router.navigate(['/home', { categoryId: this.getData.categoryId }]);
             this.loader.showBlockingLoaderAuth();
           }, error => {
@@ -367,6 +341,33 @@ export class SecondpageadvertisementPage implements OnInit {
 
       }
     }
+  }
+
+  getAllBanner(){
+    this.loader.showBlockingLoaderAuth();
+   this.filterObject = {};
+   this.filterObject['advertisementId'] = this.advertisementId;
+   this.filterObject['userId'] = this.usersId;
+  
+    let url = environment.base_url + environment.version + "category/" + this.getData.categoryId + "/banners?" + "filters=" + JSON.stringify(this.filterObject);
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.bannerArray = MyResponse['result']['list'];
+      if(MyResponse['result']['count'] > 0){
+        let getBannerId = MyResponse['result']['list'][0]['id'];
+        console.log("update banner API");
+       this.updateBanner(this.getData.categoryId, getBannerId);
+      }else{
+        console.log("post bannee API");
+        this.postBanner(this.getData.categoryId);
+      }
+      //  this.bannerImg = this.bannerArray['image'];
+      //  console.log("banner data:"+JSON.stringify(this.bannerArray));
+      this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+       
+      })
+
   }
 
 

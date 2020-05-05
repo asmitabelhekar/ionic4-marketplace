@@ -166,6 +166,7 @@ var NextadvertisementPage = /** @class */ (function () {
         this.advertisementModel = {};
         this.languagesArray = [];
         this.imageUrl = 0;
+        this.advertisementObject = {};
         this.languageArray = [
             { id: 1, name: "English" },
             { id: 2, name: "Hindi" },
@@ -177,6 +178,64 @@ var NextadvertisementPage = /** @class */ (function () {
     NextadvertisementPage.prototype.ngOnInit = function () {
         this.getData = JSON.parse(this.activatedRoute.snapshot.params['advertisementData']);
         console.log("next advertisement data:" + (this.getData.title));
+        this.postStatus = localStorage.getItem("postStatus");
+        if (this.postStatus == "1") {
+            var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
+            this.advertisementObject = JSON.parse(advertisementDetail);
+            console.log("advertisementObject:" + this.advertisementObject['address']);
+            this.advertisementModel['address'] = this.advertisementObject['address'];
+            this.advertisementModel['price'] = this.advertisementObject['price'];
+            this.advertisementModel['images'] = this.advertisementObject['images'];
+            this.lattitude = this.advertisementObject['latitude'];
+            this.longitude = this.advertisementObject['longitude'];
+            this.urls = [];
+            for (var i = 0; i < this.advertisementModel['images'].length; i++) {
+                if (this.advertisementModel['images'][0] == undefined) {
+                    this.firstImage = "";
+                }
+                else {
+                    this.firstImage = this.advertisementModel['images'][0];
+                    this.urls.push(this.firstImage);
+                }
+                if (this.advertisementModel['images'][1] == undefined) {
+                    this.secondImage = "";
+                }
+                else {
+                    this.secondImage = this.advertisementModel['images'][1];
+                    this.urls.push(this.secondImage);
+                }
+                if (this.advertisementModel['images'][2] == undefined) {
+                    this.thirdImage = "";
+                }
+                else {
+                    this.thirdImage = this.advertisementModel['images'][2];
+                    this.urls.push(this.thirdImage);
+                }
+                if (this.advertisementModel['images'][3] == undefined) {
+                    this.fourthImage = "";
+                }
+                else {
+                    this.fourthImage = this.advertisementModel['images'][3];
+                    this.urls.push(this.fourthImage);
+                }
+                if (this.advertisementModel['images'][4] == undefined) {
+                    this.fifthImage = "";
+                }
+                else {
+                    this.fifthImage = this.advertisementModel['images'][4];
+                    this.urls.push(this.fifthImage);
+                }
+                // this.secondImage = this.advertisementModel['images'][1];
+                // this.thirdImage = this.advertisementModel['images'][2];
+                // this.fourthImage = this.advertisementModel['images'][3];
+                // this.fifthImage = this.advertisementModel['images'][4];
+            }
+            console.log("first image:" + this.firstImage);
+            console.log("secondImage image:" + this.secondImage);
+            console.log("thirdImage image:" + this.thirdImage);
+            console.log("fourthImage image:" + this.fourthImage);
+            console.log("fifthImage image:" + this.fifthImage);
+        }
     };
     NextadvertisementPage.prototype.goBackword = function () {
         window.history.back();

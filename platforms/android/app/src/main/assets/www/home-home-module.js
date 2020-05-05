@@ -250,6 +250,11 @@ var HomePage = /** @class */ (function () {
         this.arrayLength = this.imageArray.length;
         var jsonString = localStorage.getItem("BOOKMARK");
         this.postBookmarkObj = JSON.parse(jsonString);
+        if (this.postBookmarkObj == null || this.postBookmarkObj == "" || this.postBookmarkObj == undefined) {
+            this.postBookmarkObj = {};
+        }
+        else {
+        }
         console.log("show retrieved object:" + this.postBookmarkObj);
         this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
         if (this.categoryId == undefined) {
@@ -547,8 +552,10 @@ var HomePage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     HomePage.prototype.postAdvertisement = function () {
-        this.router.navigate(['/postadvertisement']);
-        // this.router.navigate(['/secondpageadvertisement']);
+        var status = "0";
+        localStorage.setItem("postStatus", status);
+        // this.router.navigate(['/postadvertisement']);
+        this.router.navigate(['/secondpageadvertisement']);
         // this.router.navigate(['/nextadvertisement']);
     };
     HomePage.prototype.home = function () {

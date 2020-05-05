@@ -12,18 +12,18 @@ import { ToastController } from '@ionic/angular';
 })
 export class PostadvertisementPage implements OnInit {
 
-  selectedGender : any;
+  selectedGender: any;
   selectedRadioGroup: any;
-  categoryId: any = 3;
+  categoryId: any;
   status: any;
   advertisementId: any;
-  postStatus : any;
+  postStatus: any;
   languagesArray = [];
   myControl = new FormControl();
   advertisementModel: any = {};
   advertisementArray = [];
   advertisementObject = {};
-  checkRadioButton : any;
+  checkRadioButton: any;
   categoryArray = [
     {
       "categoryName": "abc",
@@ -80,7 +80,7 @@ export class PostadvertisementPage implements OnInit {
   }
 
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getCategory();
     this.getLanguages();
     // this.advertisementModel['categoryId']= "2";
@@ -90,14 +90,14 @@ export class PostadvertisementPage implements OnInit {
     if (this.postStatus == "1") {
       var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
       this.advertisementObject = JSON.parse(advertisementDetail);
-      console.log("advertisementObject:" +this.advertisementObject['address']);
+      console.log("advertisementObject:" + this.advertisementObject['address']);
 
       this.advertisementModel['description'] = this.advertisementObject['description'];
-      this.advertisementModel['title']= this.advertisementObject['title'];
+      this.advertisementModel['title'] = this.advertisementObject['title'];
       let checkType = this.advertisementObject['gender'];
-      if(checkType == 0){
+      if (checkType == 0) {
         this.checkRadioButton = "male";
-      }else{
+      } else {
         this.checkRadioButton = "female";
       }
       this.categoryId = this.advertisementObject['categoryId'];
@@ -105,10 +105,10 @@ export class PostadvertisementPage implements OnInit {
       this.advertisementModel['contact'] = this.advertisementObject['mobile'];
       this.selectedLanguages = this.advertisementObject['languages'];
       this.languagesArray = this.advertisementObject['languages'];
-      console.log("languagesArray ::"+this.selectedLanguages);
-     
-    } else {
+      console.log("languagesArray ::" + this.selectedLanguages);
 
+    } else {
+      this.categoryId = 0;
     }
 
   }

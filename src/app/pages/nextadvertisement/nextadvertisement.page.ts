@@ -63,7 +63,7 @@ export class NextadvertisementPage implements OnInit {
       this.advertisementObject = JSON.parse(advertisementDetail);
       console.log("advertisementObject:" +this.advertisementObject['address']);
 
-      this.advertisementModel['address'] = this.advertisementObject['address'];
+      this.address = this.advertisementObject['address'];
       this.advertisementModel['price'] = this.advertisementObject['price'];
       this.advertisementModel['images'] = this.advertisementObject['images'];
       this.lattitude = this.advertisementObject['latitude'];

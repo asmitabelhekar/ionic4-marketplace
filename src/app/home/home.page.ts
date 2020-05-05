@@ -474,8 +474,8 @@ export class HomePage {
   postAdvertisement() {
     let status = "0";
     localStorage.setItem("postStatus",status);
-    // this.router.navigate(['/postadvertisement']);
-    this.router.navigate(['/secondpageadvertisement']);
+    this.router.navigate(['/postadvertisement']);
+    // this.router.navigate(['/secondpageadvertisement']);
     // this.router.navigate(['/nextadvertisement']);
   }
 
