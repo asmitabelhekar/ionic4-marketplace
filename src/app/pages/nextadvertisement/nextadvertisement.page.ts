@@ -172,7 +172,8 @@ export class NextadvertisementPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result'][0])
+        // this.urls.push(MyResponse['result'][0])
+        this.urls[0]= MyResponse['result'][0];
       
         if (this.urls.length > 4) {
           this.imageUrl = 0;

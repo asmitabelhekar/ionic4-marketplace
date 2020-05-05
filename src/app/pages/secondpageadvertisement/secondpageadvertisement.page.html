@@ -41,10 +41,13 @@
 
       <mat-form-field class="cl_matformfield_dropdown cl_select_week" >
       <label style="color:white;font-size:12px; margin-bottom:10px">Select Weeks</label>
+      <select matNativeControl #week (selectionChange)="selectAdvertisementNoOfWeeksType(week.value)" style="color:white;width:100%" [(value)]="selectedNoOfWeek">
+        <option *ngFor="let check of weeksArray" [value]="check" style="color:white"> {{check}}</option>
+      </select>
 
-        <mat-select matNativeControl #week (selectionChange)="selectAdvertisementNoOfWeeksType(week.value)" style="width:80% " [(value)]="selectedNoOfWeek">
+        <!-- <mat-select matNativeControl #week (selectionChange)="selectAdvertisementNoOfWeeksType(week.value)" style="width:80% " [(value)]="selectedNoOfWeek">
           <mat-option *ngFor="let check of weeksArray" [value]="check" style="color:white"> {{check}}</mat-option>
-        </mat-select>
+        </mat-select> -->
       </mat-form-field>
 
 

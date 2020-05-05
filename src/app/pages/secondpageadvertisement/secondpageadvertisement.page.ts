@@ -60,7 +60,8 @@ export class SecondpageadvertisementPage implements OnInit {
 
   ionViewWillEnter() {
     this.todayDate = new Date();
-
+    this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
+    this.bannerImage = this.getData.images[0];
     this.postStatus = localStorage.getItem("postStatus");
 
     if (this.postStatus == "1") {
@@ -75,7 +76,7 @@ export class SecondpageadvertisementPage implements OnInit {
       let display = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
       console.log("display ----:" + display);
       this.advertisementId = this.advertisementObject['id'];
-    
+    this.getAllBanner();
       this.advertisementStatus = "update";
     } else {
       this.advertisementStatus = "post";
@@ -88,8 +89,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.selectedWeek = '1';
     this.selectNoOfWeeksType(1);
     localStorage.setItem("boostStatus", '0');
-    this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
-    this.bannerImage = this.getData.images[0];
+   
   }
 
 
@@ -236,7 +236,6 @@ export class SecondpageadvertisementPage implements OnInit {
 
     let url = environment.base_url + environment.version + "category/" + id + "/banners";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
-      localStorage.setItem("bannerId", MyResponse['result']['id']);
 
       // this.presentToast(MyResponse);
       this.loader.hideBlockingLoaderAuth();
@@ -247,7 +246,7 @@ export class SecondpageadvertisementPage implements OnInit {
 
   }
 
-  updateBanner(categoryId, bannerId) {
+  updateBanner(categoryId) {
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
     send_date['image'] = this.bannerImage;
@@ -262,8 +261,8 @@ export class SecondpageadvertisementPage implements OnInit {
     send_date['advertisementId'] = this.advertisementId;
     send_date['userId'] = this.usersId;
 
-    // let getBannerId = localStorage.getItem("bannerId");
-    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners/" + bannerId;
+    let getBannerId = localStorage.getItem("bannerId");
+    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners/" + getBannerId;
     this.apiCall.put(url, send_date).subscribe(MyResponse => {
       // this.presentToast(MyResponse);
       this.loader.hideBlockingLoaderAuth();
@@ -327,10 +326,12 @@ export class SecondpageadvertisementPage implements OnInit {
           this.apiCall.put(url, send_date).subscribe(MyResponse => {
             localStorage.setItem("categoryId", this.getData.categoryId);
             this.presentToast("Advertisement updated successfully.");
-            this.getAllBanner();
-            // if (this.checkBoostStatus == '1') {
-            //   this.postBanner(this.getData.categoryId);
-            // }
+            // this.getAllBanner();
+            if (this.checkBoostStatus == '1') {
+              this.updateBanner(this.getData.categoryId);
+            }else{
+              this.postBanner(this.getData.categoryId);
+            }
             this.router.navigate(['/home', { categoryId: this.getData.categoryId }]);
             this.loader.showBlockingLoaderAuth();
           }, error => {
@@ -353,12 +354,16 @@ export class SecondpageadvertisementPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
       if(MyResponse['result']['count'] > 0){
+        this.checkBoostStatus = '1';
         let getBannerId = MyResponse['result']['list'][0]['id'];
-        console.log("update banner API");
-       this.updateBanner(this.getData.categoryId, getBannerId);
+      localStorage.setItem("bannerId", getBannerId);
+
+      //   console.log("update banner API");
+      //  this.updateBanner(this.getData.categoryId, getBannerId);
       }else{
         console.log("post bannee API");
-        this.postBanner(this.getData.categoryId);
+        this.checkBoostStatus = '0';
+        // this.postBanner(this.getData.categoryId);
       }
       //  this.bannerImg = this.bannerArray['image'];
       //  console.log("banner data:"+JSON.stringify(this.bannerArray));
