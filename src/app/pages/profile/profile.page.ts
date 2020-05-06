@@ -12,7 +12,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  noInternet = 1;
   name: any;
   email: any;
   mobile: any;
@@ -43,6 +43,7 @@ export class ProfilePage implements OnInit {
 
   getProfileInfo() {
     this.loader.showBlockingLoaderAuth();
+    this.noInternet = 1;
     if (this.userId == undefined || this.userId == "" || this.userId == null) {
       this.userId = localStorage.getItem('userId');
     } else {
@@ -58,6 +59,7 @@ export class ProfilePage implements OnInit {
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
+        this.noInternet= 0;
         this.networkServices.checkInternetConnection();
         this.networkServices.onPageLoadCheckInternet();
       })

@@ -215,7 +215,6 @@ var AdvertisementdetailPage = /** @class */ (function () {
             _this.advertisementImages = _this.advertisementArray['images'];
             localStorage.setItem("ADVERTISEMENTDATA", JSON.stringify(_this.advertisementArray));
             _this.getProfileDetail();
-            _this.loader.hideBlockingLoaderAuth();
             _this.loadMap();
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
@@ -275,6 +274,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.userName = _this.profileDetail.name;
+            _this.userId = _this.profileDetail.id;
             _this.userCreated = _this.profileDetail.created;
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
@@ -373,7 +373,12 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.callNumber.callNumber(this.mobile, true);
     };
     AdvertisementdetailPage.prototype.sendMessage = function () {
-        this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
+        var userDetail = {
+            "name": this.userName,
+            "id": this.userId
+        };
+        this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
+        // this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
     };
     AdvertisementdetailPage.prototype.viewProfile = function () {
         this.router.navigate(['/profile', { userId: this.userId }]);

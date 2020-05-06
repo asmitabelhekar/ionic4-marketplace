@@ -14,7 +14,7 @@
 <ion-content>
 
 
-  <div style="height:320px;position: relative; top:0px;background-color: #f1f4f9;" fxLayoutAlign="center center">
+  <div style="height:320px;position: relative; top:0px;background-color: #f1f4f9;" fxLayoutAlign="center center" *ngIf="noInternet == 1 ">
     <!-- <img src="../../../assets/noimage.png" style="width:100%; height:100%;" /> -->
     <div style="position: absolute; bottom :60px;" >
       <div fxLayout="column" fxLayoutAlign="center center">
@@ -39,12 +39,9 @@
     </ion-row> -->
 
   </div>
-  <!-- <div style="height:350px;position: relative; top:0px;" >
-    <img src="../../../assets/dancetwo.png" style="width:100%; height:100%;" />
+ 
 
-  </div> -->
-
-  <ion-card class="cl_card_css">
+  <ion-card class="cl_card_css" *ngIf="noInternet == 1 ">
     <div style="margin-top:10px">
 
 
@@ -95,7 +92,7 @@
   </ion-card>
 
 
-  <div id="map_canvas" style="margin-bottom:5%;" *ngIf="noInternet == '1' "></div>
+  <!-- <div id="map_canvas" style="margin-bottom:5%;" *ngIf="noInternet == '1' "></div> -->
 
 
   <div class="cl_bottom_fix">
