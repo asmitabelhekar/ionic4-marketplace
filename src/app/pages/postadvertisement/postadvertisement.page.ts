@@ -108,6 +108,13 @@ export class PostadvertisementPage implements OnInit {
       console.log("languagesArray ::" + this.selectedLanguages);
 
     } else {
+      this.advertisementModel['description'] = "";
+      this.advertisementModel['title'] = "";
+      this.advertisementModel['email'] = "";
+      this.advertisementModel['contact'] = "";
+      this.languagesArray =  [];
+      this.selectedLanguages = [];
+      this.checkRadioButton = "check";
       this.categoryId = 0;
     }
 

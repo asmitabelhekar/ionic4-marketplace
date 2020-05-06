@@ -62,7 +62,7 @@
     <!-- </div> -->
 
 
-    <div style="width:100%; background-color:white;margin-top:15px; height:100%">
+    <div style="width:100%; background-color:white;margin-top:15px; height:auto">
       <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-bottom:10px">
         <img *ngIf="noInternet == '0' " src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()" />
 
@@ -74,7 +74,7 @@
       </div>
 
 
-      <div *ngIf="countAdvertisement > 0" style="width:98%; margin-left:1%">
+      <div *ngIf="countAdvertisement > 0" style="width:98%;margin-left:1%">
 
         <div class="row" *ngFor="let item of advertisementArray">
           <div >

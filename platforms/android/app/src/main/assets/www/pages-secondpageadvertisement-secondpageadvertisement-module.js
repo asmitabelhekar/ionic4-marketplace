@@ -18041,6 +18041,19 @@ var SecondpageadvertisementPage = /** @class */ (function () {
                     this.apiCall.put(url, send_date).subscribe(function (MyResponse) {
                         localStorage.setItem("categoryId", _this.getData.categoryId);
                         _this.presentToast("Advertisement updated successfully.");
+                        var advertisementArray = {
+                            "description": "",
+                            "title": "",
+                            "gender": "5",
+                            "categoryId": "",
+                            "email": "",
+                            "mobile": "",
+                            "languages": [],
+                            "address": "",
+                            "price": "",
+                            "images": []
+                        };
+                        localStorage.setItem("ADVERTISEMENTDATA", JSON.stringify(advertisementArray));
                         // this.getAllBanner();
                         if (_this.checkBoostStatus == '1') {
                             _this.updateBanner(_this.getData.categoryId);
@@ -18048,7 +18061,7 @@ var SecondpageadvertisementPage = /** @class */ (function () {
                         else {
                             _this.postBanner(_this.getData.categoryId);
                         }
-                        _this.router.navigate(['/home', { categoryId: _this.getData.categoryId }]);
+                        _this.router.navigate(['/favourite', { categoryId: _this.getData.categoryId }]);
                         _this.loader.showBlockingLoaderAuth();
                     }, function (error) {
                         _this.loader.hideBlockingLoaderAuth();

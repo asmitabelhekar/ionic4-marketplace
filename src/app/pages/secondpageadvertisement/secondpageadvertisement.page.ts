@@ -326,13 +326,27 @@ export class SecondpageadvertisementPage implements OnInit {
           this.apiCall.put(url, send_date).subscribe(MyResponse => {
             localStorage.setItem("categoryId", this.getData.categoryId);
             this.presentToast("Advertisement updated successfully.");
+            let advertisementArray = {
+              "description" : "",
+              "title" : "",
+              "gender" : "5",
+              "categoryId" : "",
+              "email" : "",
+              "mobile" : "",
+              "languages" : [],
+              "address" : "",
+              "price" : "",
+              "images" : []
+            }
+      localStorage.setItem("ADVERTISEMENTDATA",JSON.stringify(advertisementArray));
+
             // this.getAllBanner();
             if (this.checkBoostStatus == '1') {
               this.updateBanner(this.getData.categoryId);
             }else{
               this.postBanner(this.getData.categoryId);
             }
-            this.router.navigate(['/home', { categoryId: this.getData.categoryId }]);
+            this.router.navigate(['/favourite', { categoryId: this.getData.categoryId }]);
             this.loader.showBlockingLoaderAuth();
           }, error => {
             this.loader.hideBlockingLoaderAuth();

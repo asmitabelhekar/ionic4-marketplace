@@ -70,7 +70,7 @@ export class NextadvertisementPage implements OnInit {
       this.longitude = this.advertisementObject['longitude'];
       
       this.urls = [];
-      for(let i= 0;i < this.advertisementModel['images'].length; i++){
+      // for(let i= 0;i < this.advertisementModel['images'].length; i++){
         if(this.advertisementModel['images'][0] == undefined){
           this.firstImage = "";
         }else{
@@ -114,7 +114,7 @@ export class NextadvertisementPage implements OnInit {
         // this.thirdImage = this.advertisementModel['images'][2];
         // this.fourthImage = this.advertisementModel['images'][3];
         // this.fifthImage = this.advertisementModel['images'][4];
-      }
+      // }
 
       console.log("first image:"+this.firstImage);
       console.log("secondImage image:"+this.secondImage);
