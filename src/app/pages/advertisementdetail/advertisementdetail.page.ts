@@ -107,7 +107,6 @@ export class AdvertisementdetailPage implements OnInit {
       localStorage.setItem("ADVERTISEMENTDATA",JSON.stringify(this.advertisementArray));
 
       this.getProfileDetail();
-      this.loader.hideBlockingLoaderAuth();
       this.loadMap();
     },
       error => {
@@ -177,6 +176,7 @@ export class AdvertisementdetailPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.userName = this.profileDetail.name;
+      this.userId = this.profileDetail.id;
       this.userCreated = this.profileDetail.created;
       this.loader.hideBlockingLoaderAuth();
     },
@@ -284,7 +284,12 @@ export class AdvertisementdetailPage implements OnInit {
 
 
   sendMessage() {
-    this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
+    let userDetail = {
+      "name" : this.userName,
+      "id" : this.userId
+    }
+    this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
+    // this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
   }
 
 

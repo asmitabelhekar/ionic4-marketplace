@@ -34,9 +34,10 @@ export class ProfilePage implements OnInit {
     }
 
   ngOnInit() {
-
-    this.getProfileInfo();
     this.userId = this.activatedRoute.snapshot.params['userId'];
+    console.log("user id:"+this.userId);
+    this.getProfileInfo();
+   
   }
 
 
