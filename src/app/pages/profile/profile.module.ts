@@ -8,6 +8,8 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -15,6 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     FlexLayoutModule,
     IonicModule,
+    MaterialModule,
+    GooglePlaceModule,
     ProfilePageRoutingModule
   ],
   declarations: [ProfilePage]

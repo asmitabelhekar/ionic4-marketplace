@@ -1,15 +1,17 @@
 <ion-header class="new-background-color">
   <ion-toolbar class="new-background-color">
-    <!-- <ion-buttons slot="start" style="color:white">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons> -->
-    <label style="color:white; font-size:17px; margin-left:10px">Home</label>
+  <ion-row>
+    <ion-col size="3" (click)="showPopup()" fxLayoutAlign="start center">
+      <mat-icon style="width:15px;height:18px; color:white;position:fixed;left:10px;cursor: pointer;">room</mat-icon>
+      <label style="color:white;margin-left:35px;font-size:17px;;cursor: pointer;margin-top:6px" >{{cityName}}</label>
 
-    <!-- <ion-title style="color:white; margin-left:10px">
-      Home
-    </ion-title> -->
-    <mat-icon [matMenuTriggerFor]="menu"
-      style="position: absolute; right:20px;color:white;width:25px; height:25px; bottom : 17px;cursor: pointer;">
+    </ion-col>
+    <ion-col size="6" fxLayoutAlign="center center">
+    <label style="color:white; font-size:17px; margin-left:10px">Holy Hub</label>
+    </ion-col>
+    <ion-col size="3">
+      <mat-icon [matMenuTriggerFor]="menu"
+      style="position: fixed; right:25px;color:white;width:15px; height:18px; bottom : 20px;cursor: pointer;">
       g_translate</mat-icon>
     <mat-menu #menu="matMenu" >
       <div fxLayout="row" style="margin-left:20px; margin-top:10px" *ngFor="let language of Languages">
@@ -18,6 +20,10 @@
       </div>
       
     </mat-menu>
+    </ion-col>
+  </ion-row>
+
+   
   </ion-toolbar>
 </ion-header>
 

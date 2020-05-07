@@ -1,15 +1,22 @@
 
+<form #userForm="ngForm" style="width:100%;margin-top:10px">
+ 
 
-  <mat-form-field style="width:100%">
-    <input matInput placeholder="Filter"  [(ngModel)]="popupModel.filterName"
-      name="filter" class="form-control" />
-    
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="  center center" style="width:100%;margin-top:5px">
+    <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px" appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Location" [(ngModel)]="address" ngx-google-places-autocomplete
+        [options]='options' #placesRef="ngx-places" name="city" required  
+        (onAddressChange)="handleAddressChange($event)">
+       
+    </mat-form-field>
+  </div>
+  </form>
 
   <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-left:5%; margin-right:5%; margin-top:10px; width:90%">
-    <button  mat-raised-button (click)="resetFilter()" style="margin-right:5px; margin-left: 5px">RESET</button>
-    <button  mat-raised-button (click)="applyFilter(popupModel)" style="margin-right:5px; margin-left: 5px">APPLY</button>
-    <button  mat-raised-button (click)="closeDialog()" style="margin-left: 5px">CANCEL</button>
+    <button  mat-raised-button (click)="submit()">SUBMIT</button>
+    <!-- <button  mat-raised-button (click)="applyFilter(popupModel)" style="margin-right:5px; margin-left: 5px">APPLY</button> -->
+    <button  mat-raised-button (click)="closeDialog()">CANCEL</button>
 
   </div>
 

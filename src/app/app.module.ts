@@ -19,11 +19,13 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Network } from '@ionic-native/network/ngx';
+import { PopupaddressComponent } from './components/popupaddress/popupaddress.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   declarations: [AppComponent,
-     PopupPage],
-  entryComponents: [PopupPage],
+     PopupPage, PopupaddressComponent],
+  entryComponents: [PopupPage, PopupaddressComponent],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     MatFormFieldModule,
@@ -35,6 +37,7 @@ import { Network } from '@ionic-native/network/ngx';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule, 
+    GooglePlaceModule,
     BrowserAnimationsModule],
   providers: [
     StatusBar,

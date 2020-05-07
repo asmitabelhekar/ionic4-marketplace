@@ -10,6 +10,8 @@ import { PopupPage } from './popup.page';
 import { MaterialModule } from 'src/app/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
+// import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     IonicModule,
     FlexLayoutModule,
     MaterialModule,
+    GooglePlaceModule,
     MatFormFieldModule,
     MatInputModule,
     PopupPageRoutingModule

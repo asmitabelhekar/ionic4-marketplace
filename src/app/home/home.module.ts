@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomePage } from './home.page';
 import { MaterialModule } from '../material.module'
 import { MatDialogModule } from '@angular/material';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { MatDialogModule } from '@angular/material';
     FlexLayoutModule,
     MatDialogModule,
     IonicModule,
+    GooglePlaceModule,
     MaterialModule,
     RouterModule.forChild([
       {

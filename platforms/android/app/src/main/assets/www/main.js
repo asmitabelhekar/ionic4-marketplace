@@ -447,6 +447,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/popupaddress/popupaddress.component.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/popupaddress/popupaddress.component.html ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>\n  popupaddress works!\n</p>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popup/popup.page.html":
 /*!***********************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popup/popup.page.html ***!
@@ -456,7 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n  <mat-form-field style=\"width:100%\">\n    <input matInput placeholder=\"Filter\"  [(ngModel)]=\"popupModel.filterName\"\n      name=\"filter\" class=\"form-control\" />\n    \n  </mat-form-field>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-left:5%; margin-right:5%; margin-top:10px; width:90%\">\n    <button  mat-raised-button (click)=\"resetFilter()\" style=\"margin-right:5px; margin-left: 5px\">RESET</button>\n    <button  mat-raised-button (click)=\"applyFilter(popupModel)\" style=\"margin-right:5px; margin-left: 5px\">APPLY</button>\n    <button  mat-raised-button (click)=\"closeDialog()\" style=\"margin-left: 5px\">CANCEL</button>\n\n  </div>\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<form #userForm=\"ngForm\" style=\"width:100%;margin-top:10px\">\n \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;margin-top:5px\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px\" appearance=\"outline\">\n      <mat-label>Address</mat-label>\n      <input matInput placeholder=\"Location\" [(ngModel)]=\"address\" ngx-google-places-autocomplete\n        [options]='options' #placesRef=\"ngx-places\" name=\"city\" required  \n        (onAddressChange)=\"handleAddressChange($event)\">\n       \n    </mat-form-field>\n  </div>\n  </form>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-left:5%; margin-right:5%; margin-top:10px; width:90%\">\n    <button  mat-raised-button (click)=\"submit()\">SUBMIT</button>\n    <!-- <button  mat-raised-button (click)=\"applyFilter(popupModel)\" style=\"margin-right:5px; margin-left: 5px\">APPLY</button> -->\n    <button  mat-raised-button (click)=\"closeDialog()\">CANCEL</button>\n\n  </div>\n\n\n");
 
 /***/ }),
 
@@ -882,13 +895,13 @@ var AppComponent = /** @class */ (function () {
                     return;
                 }
             });
-            _this.platform.backButton.subscribeWithPriority(9999, function () {
-                document.addEventListener('backbutton', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    console.log('hello');
-                }, false);
-            });
+            // this.platform.backButton.subscribeWithPriority(9999, () => {
+            //   document.addEventListener('backbutton', function (event) {
+            //     event.preventDefault();
+            //     event.stopPropagation();
+            //     console.log('hello');
+            //   }, false);
+            // });
         });
     };
     AppComponent.prototype.presentAlert = function () {
@@ -1000,6 +1013,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
 /* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
+/* harmony import */ var _components_popupaddress_popupaddress_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/popupaddress/popupaddress.component */ "./src/app/components/popupaddress/popupaddress.component.ts");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/bundles/ngx-google-places-autocomplete.umd.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__);
+
+
 
 
 
@@ -1025,8 +1043,8 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"]],
-            entryComponents: [_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"]],
+                _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"], _components_popupaddress_popupaddress_component__WEBPACK_IMPORTED_MODULE_19__["PopupaddressComponent"]],
+            entryComponents: [_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"], _components_popupaddress_popupaddress_component__WEBPACK_IMPORTED_MODULE_19__["PopupaddressComponent"]],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
@@ -1038,6 +1056,7 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
@@ -1053,6 +1072,61 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/popupaddress/popupaddress.component.scss":
+/*!*********************************************************************!*\
+  !*** ./src/app/components/popupaddress/popupaddress.component.scss ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvcG9wdXBhZGRyZXNzL3BvcHVwYWRkcmVzcy5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/components/popupaddress/popupaddress.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/popupaddress/popupaddress.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: PopupaddressComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopupaddressComponent", function() { return PopupaddressComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+var PopupaddressComponent = /** @class */ (function () {
+    function PopupaddressComponent(data, dialogRef) {
+        this.data = data;
+        this.dialogRef = dialogRef;
+    }
+    PopupaddressComponent.prototype.ngOnInit = function () { };
+    PopupaddressComponent.ctorParameters = function () { return [
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] }
+    ]; };
+    PopupaddressComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-popupaddress',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./popupaddress.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/popupaddress/popupaddress.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./popupaddress.component.scss */ "./src/app/components/popupaddress/popupaddress.component.scss")).default]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"]])
+    ], PopupaddressComponent);
+    return PopupaddressComponent;
 }());
 
 
@@ -1085,13 +1159,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/bundles/ngx-google-places-autocomplete.umd.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 var PopupPage = /** @class */ (function () {
-    function PopupPage(dialogRef, data) {
+    function PopupPage(dialogRef, data, changeDetectorRef) {
         this.dialogRef = dialogRef;
         this.data = data;
+        this.changeDetectorRef = changeDetectorRef;
+        this.addressModel = {};
         this.getFilterName = "";
         this.popupModel = {};
     }
@@ -1110,13 +1189,50 @@ var PopupPage = /** @class */ (function () {
     PopupPage.prototype.applyFilter = function (titleName) {
         this.dialogRef.close(titleName);
     };
-    PopupPage.prototype.resetFilter = function () {
-        this.popupModel['filterName'] = "";
+    PopupPage.prototype.submit = function () {
+        this.popupModel['filterName'] = this.cityName;
+        localStorage.setItem("cityName", this.cityName);
+        this.dialogRef.close(this.cityName);
+    };
+    PopupPage.prototype.handleAddressChange = function (data) {
+        console.log("Address Data", data);
+        this.lattitude = data.geometry.location.lat();
+        this.longitude = data.geometry.location.lng();
+        console.log("Address Data lattitude one::", this.lattitude);
+        console.log("Address Data longitude one::", this.longitude);
+        console.log("lat", this.lattitude, this.longitude);
+        var string = "";
+        string = data['formatted_address'];
+        var arr = [];
+        var str = "";
+        var ss = [];
+        arr = string.split(",");
+        for (var index = arr.length - 1; index >= 0; index--) {
+            console.log(index, "data ", arr[index]);
+            this.addressModel['landmark'] = arr[2];
+            this.addressModel['address'] = data.vicinity;
+            this.addressModel['location'] = data.name;
+            this.countryName = arr[arr.length - 1] != null ? arr[arr.length - 1] : "";
+            str = arr[arr.length - 2] != null ? arr[arr.length - 2] : "";
+            var statestr = str.split(' ');
+            ss = statestr;
+            this.stateName = ss[1];
+            this.pincode = ss[2];
+            this.cityName = arr[arr.length - 3] != null ? arr[arr.length - 3] : "";
+            this.changeDetectorRef.detectChanges();
+        }
+        console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.addressModel['landmark'], this.addressModel['location']);
+        this.address = this.addressModel['landmark'], this.addressModel['location'], this.cityName, this.countryName, this.pincode;
     };
     PopupPage.ctorParameters = function () { return [
         { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] },
-        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] }
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("placesRef", { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__["GooglePlaceDirective"])
+    ], PopupPage.prototype, "placesRef", void 0);
     PopupPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-popup',
@@ -1124,7 +1240,7 @@ var PopupPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./popup.page.scss */ "./src/app/pages/popup/popup.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]])
     ], PopupPage);
     return PopupPage;
 }());
