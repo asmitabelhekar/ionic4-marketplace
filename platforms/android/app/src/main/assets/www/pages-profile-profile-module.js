@@ -137,9 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
 /* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
 /* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
-
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
 
 
 
@@ -172,7 +170,8 @@ var ProfilePage = /** @class */ (function () {
         }
         else {
         }
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "users/" + this.userId;
+        var url = "https://api.printful.com/countries";
+        // let url = environment.base_url + environment.version + "users/" + this.userId;
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.name = _this.profileDetail.name;
@@ -212,7 +211,7 @@ var ProfilePage = /** @class */ (function () {
         { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["MenuController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["MenuController"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] }
     ]; };
     ProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -225,7 +224,7 @@ var ProfilePage = /** @class */ (function () {
             src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["MenuController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["MenuController"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"]])
     ], ProfilePage);
     return ProfilePage;

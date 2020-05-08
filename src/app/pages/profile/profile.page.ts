@@ -49,13 +49,15 @@ export class ProfilePage implements OnInit {
     } else {
      
     }
-    let url = environment.base_url + environment.version + "users/" + this.userId;
+    let url = "https://api.printful.com/countries";
+    // let url = environment.base_url + environment.version + "users/" + this.userId;
     this.apiCall.get(url).subscribe(MyResponse => {
-      this.profileDetail = MyResponse['result'];
-      this.name = this.profileDetail.name;
-      this.mobile = this.profileDetail.mobile;
-      this.email = this.profileDetail.email;
-      this.loader.hideBlockingLoaderAuth();
+      console.log("country code:"+MyResponse);
+      // this.profileDetail = MyResponse['result'];
+      // this.name = this.profileDetail.name;
+      // this.mobile = this.profileDetail.mobile;
+      // this.email = this.profileDetail.email;
+      // this.loader.hideBlockingLoaderAuth();
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
