@@ -66,9 +66,6 @@
     (selectionChange)="selectCategoryType(categoryId)"
     class="filter-select" 
     [(value)]="categoryId">
-      <!-- <mat-option disabled="disabled" class="filter-option">
-        <input type="checkbox"(click)="selectAll(checkAll.checked, yearSelect, years)" #checkAll>
-      </mat-option> -->
       <mat-option *ngFor="let type of categoryArray" [value]="type.id">
         {{type.name}}
       </mat-option>
@@ -136,9 +133,19 @@
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:18%; height:80px; margin-right:10px; padding-bottom:2px" appearance="outline">
-    <select matNativeControl #code (change)="selectCountryCode(code.value)" style="color:black; font-size:14px; margin-bottom:-5px">
+    <!-- <select matNativeControl #code (change)="selectCountryCode(code)" style="color:black; font-size:14px; margin-bottom:-5px">
       <option *ngFor="let code of countryCode" [value]="code" style="color:black"> {{code.code}}</option>
-    </select>
+    </select> -->
+
+    <mat-select 
+    name="type" 
+    (selectionChange)="selectCountryCode(selectedCode)"
+    class="filter-select" 
+    [(value)]="selectedCode">
+      <mat-option *ngFor="let code of countryCode" [value]="code.code">
+        {{code.code}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field style="width:74%; margin-top:10px" appearance="outline">

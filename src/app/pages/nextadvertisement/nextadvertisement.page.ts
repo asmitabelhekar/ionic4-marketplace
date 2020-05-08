@@ -329,7 +329,8 @@ export class NextadvertisementPage implements OnInit {
       "categoryId": this.getData.categoryId,
       "price" : this.advertisementModel['price'],
       "contact" : this.getData.contact,
-      "images" : this.urls
+      "images" : this.urls,
+      "countryCode" : this.getData.countryCode
   
       }
   // alert("show data:"+this.getNextData);

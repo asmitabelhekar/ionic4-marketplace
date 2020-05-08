@@ -299,6 +299,7 @@ export class SecondpageadvertisementPage implements OnInit {
         send_date['endDateTime'] = this.toDateTimeAd;
         send_date['isActive'] = 1;
         send_date['images'] = this.getData.images;
+        send_date['countryCode'] = this.getData.countryCode;
         // send_date['transaction'] = "credited";
 
         this.usersId = localStorage.getItem("userId");

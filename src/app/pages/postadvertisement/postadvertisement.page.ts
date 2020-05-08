@@ -12,7 +12,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class PostadvertisementPage implements OnInit {
 
-  selectedCode : any;
+  selectedCode : any = "+91";
   countryCode = [{"code" : "+91","name" : "India"},
   {"code" : "+39","name":"Italy"},
   {"code" : "+81", "name" : "Japan"},
@@ -99,6 +99,7 @@ export class PostadvertisementPage implements OnInit {
 
       this.advertisementModel['description'] = this.advertisementObject['description'];
       this.advertisementModel['title'] = this.advertisementObject['title'];
+      this.selectedCode = this.advertisementObject['countryCode'];
       let checkType = this.advertisementObject['gender'];
       if (checkType == 0) {
         this.checkRadioButton = "male";
@@ -180,7 +181,7 @@ export class PostadvertisementPage implements OnInit {
             "gender": this.advertisementModel['gender'],
             "languages": this.languagesArray,
             "email": this.advertisementModel['email'],
-
+            "countryCode" : this.selectedCode,
             "categoryId": this.categoryId
           }
           console.log("data:" + JSON.stringify(advertisemntInfo));
@@ -214,7 +215,7 @@ export class PostadvertisementPage implements OnInit {
 
   selectCountryCode(data){
   this.selectedCode = data;
-    console.log("countryCode:"+this.selectedCode);
+    console.log("countryCode:"+(this.selectedCode));
   }
 
   async presentToast(message) {
