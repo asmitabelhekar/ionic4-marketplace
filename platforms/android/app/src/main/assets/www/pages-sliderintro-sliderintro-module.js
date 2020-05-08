@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-slides pager=\"false\" style=\"width:100%; height:100%\">\n\n  <ion-slide style=\"width:100%; height:100%\">\n    <div style=\"width:100%; height:100%; \">\n      <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%\">\n    </div>\n  </ion-slide>\n\n  <ion-slide style=\"width:100%; height:100%\">\n    <div style=\"width:100%; height:100%; \">\n      <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%\">\n    </div>\n   </ion-slide>\n\n   <ion-slide style=\"width:100%; height:100%\">\n    <div style=\"width:100%; height:100%; position: relative;\">\n      <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%;\" />\n      <!-- <h3 align=\"center\" (click)=\"login()\" style=\"color:white;position: absolute; bottom:30px;border: 1px solid white;z-index: 1;padding:10px\">Login</h3> -->\n      <div  style=\"position: absolute; bottom:30px; border: 1px solid white;z-index: 1;padding:10px\" fxLayoutAlign=\"center center\" (click)=\"login()\">\n        <label style=\"color:white\" >Login</label>\n        </div>\n    </div>\n \n   </ion-slide>\n</ion-slides>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-slides pager=\"false\" style=\"width:100%; height:100%\">\n\n  <ion-slide style=\"width:100%; height:100%\">\n    <div style=\"width:100%; height:100%\">\n      <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%\">\n    </div>\n  </ion-slide>\n\n  <ion-slide style=\"width:100%; height:100%\">\n    <div style=\"width:100%; height:100%\">\n      <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%\">\n    </div>\n   </ion-slide>\n\n   <ion-slide style=\"width:100%; height:100%\">\n    <div style=\"width:100%; height:100%; position: relative;\"  fxLayoutAlign=\"center center\">\n      <img src=\"../../../assets/dancetwo.png\" style=\"width:100%; height:100%;\" />\n      <!-- <h3 align=\"center\" (click)=\"login()\" style=\"color:white;position: absolute; bottom:30px;border: 1px solid white;z-index: 1;padding:10px\">Login</h3> -->\n      <div  style=\"position: absolute; bottom:50px; border: 1px solid white;z-index: 1;padding-top:10px; padding-bottom:10px; border-radius:10px; padding-left:15px;padding-right:15px\" fxLayoutAlign=\"center center\" (click)=\"login()\">\n        <label style=\"color:white\" >Login</label>\n        </div>\n    </div>\n \n   </ion-slide>\n</ion-slides>");
 
 /***/ }),
 
@@ -140,10 +140,10 @@ var SliderintroPage = /** @class */ (function () {
         this.menuController.enable(false);
     }
     SliderintroPage.prototype.ngOnInit = function () {
-        this.slides.options = {
-            initialSlide: 1,
-            speed: 400
-        };
+        // this.slides.options = {
+        //   initialSlide: 1,
+        //   speed: 400
+        // }
     };
     SliderintroPage.prototype.login = function () {
         this.router.navigate(['/login']);

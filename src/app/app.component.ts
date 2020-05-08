@@ -116,7 +116,8 @@ export class AppComponent {
     if(loginStatus == "yes"){
       this.router.navigate(['/home']);
     }else{
-      this.router.navigate(['/login']);
+      this.router.navigate(['/sliderintro']);
+      // this.router.navigate(['/login']);
     }
     this.preloader.hideBlockingLoaderAuth();
   }

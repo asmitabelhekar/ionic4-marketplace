@@ -469,7 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<form #userForm=\"ngForm\" style=\"width:100%;margin-top:10px\">\n \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;margin-top:5px\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px\" appearance=\"outline\">\n      <mat-label>Address</mat-label>\n      <input matInput placeholder=\"Location\" [(ngModel)]=\"address\" ngx-google-places-autocomplete\n        [options]='options' #placesRef=\"ngx-places\" name=\"city\" required  \n        (onAddressChange)=\"handleAddressChange($event)\">\n       \n    </mat-form-field>\n  </div>\n  </form>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-left:5%; margin-right:5%; margin-top:10px; width:90%\">\n    <button  mat-raised-button (click)=\"submit()\">SUBMIT</button>\n    <!-- <button  mat-raised-button (click)=\"applyFilter(popupModel)\" style=\"margin-right:5px; margin-left: 5px\">APPLY</button> -->\n    <button  mat-raised-button (click)=\"closeDialog()\">CANCEL</button>\n\n  </div>\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<form #userForm=\"ngForm\" style=\"width:100%;margin-top:10px\">\n \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;margin-top:5px\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px\" appearance=\"outline\">\n      <mat-label>City</mat-label>\n      <input matInput placeholder=\"\" [(ngModel)]=\"cityName\" ngx-google-places-autocomplete\n        [options]='options' #placesRef=\"ngx-places\" name=\"city\" required  \n        (onAddressChange)=\"handleAddressChange($event)\">\n        <mat-error>\n          <div class=\"form-group\">\n            <div *ngIf=\"cityName.invalid && (cityName.dirty || cityName.touched)\">\n              City Name Is Requird\n            </div>\n          </div>\n        </mat-error>\n    </mat-form-field>\n  </div>\n  </form>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"margin-top:10px;margin-left:10%; margin-right:10%; width:80%\">\n    <button  mat-raised-button (click)=\"closeDialog()\" style=\"margin-right:15px\">CANCEL</button>\n    <button  mat-raised-button (click)=\"submit()\" class=\"loginButton\" [disabled]=\"cityName.invalid\">SUBMIT</button>\n \n\n  </div>\n\n\n");
 
 /***/ }),
 
@@ -738,6 +738,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
+    // { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
     { path: 'sliderintro', loadChildren: function () { return Promise.all(/*! import() | pages-sliderintro-sliderintro-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~37838796"), __webpack_require__.e("pages-sliderintro-sliderintro-module")]).then(__webpack_require__.bind(null, /*! ./pages/sliderintro/sliderintro.module */ "./src/app/pages/sliderintro/sliderintro.module.ts")).then(function (m) { return m.SliderintroPageModule; }); } },
     { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~37838796"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
@@ -949,6 +950,7 @@ var AppComponent = /** @class */ (function () {
         }
         else {
             this.router.navigate(['/sliderintro']);
+            // this.router.navigate(['/login']);
         }
         this.preloader.hideBlockingLoaderAuth();
     };
@@ -1143,7 +1145,7 @@ var PopupaddressComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3BvcHVwL3BvcHVwLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".loginButton {\n  background-color: #152a3f;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9wb3B1cC9wb3B1cC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3BvcHVwL3BvcHVwLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcG9wdXAvcG9wdXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbi5sb2dpbkJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTUyYTNmO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiBcbiAgfSIsIi5sb2dpbkJ1dHRvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxNTJhM2Y7XG4gIGNvbG9yOiB3aGl0ZTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1162,15 +1164,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/bundles/ngx-google-places-autocomplete.umd.js");
 /* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
 
 
 
 
 var PopupPage = /** @class */ (function () {
-    function PopupPage(dialogRef, data, changeDetectorRef) {
+    function PopupPage(dialogRef, data, changeDetectorRef, toast) {
         this.dialogRef = dialogRef;
         this.data = data;
         this.changeDetectorRef = changeDetectorRef;
+        this.toast = toast;
+        this.cityName = "";
         this.addressModel = {};
         this.getFilterName = "";
         this.popupModel = {};
@@ -1191,9 +1197,31 @@ var PopupPage = /** @class */ (function () {
         this.dialogRef.close(titleName);
     };
     PopupPage.prototype.submit = function () {
-        this.popupModel['filterName'] = this.cityName;
-        localStorage.setItem("cityName", this.cityName);
-        this.dialogRef.close(this.cityName);
+        // this.popupModel['filterName'] = this.cityName;
+        if (this.cityName == "" || this.cityName == undefined) {
+            // this.presentToast("Please enter city name");
+        }
+        else {
+            localStorage.setItem("cityName", this.cityName);
+            this.dialogRef.close(this.cityName);
+        }
+    };
+    PopupPage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     PopupPage.prototype.handleAddressChange = function (data) {
         console.log("Address Data", data);
@@ -1228,7 +1256,8 @@ var PopupPage = /** @class */ (function () {
     PopupPage.ctorParameters = function () { return [
         { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] },
         { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] },
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("placesRef", { static: false }),
@@ -1241,7 +1270,8 @@ var PopupPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./popup.page.scss */ "./src/app/pages/popup/popup.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])
     ], PopupPage);
     return PopupPage;
 }());

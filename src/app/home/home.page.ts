@@ -164,6 +164,12 @@ export class HomePage {
       })
   }
   ionViewWillEnter() {
+    let city = localStorage.getItem("cityname");
+    if(city == "" || city == undefined || city == null){
+      this.cityName = "";
+    }else{
+      this.cityName = city;
+    }
     this.arrayLength = this.imageArray.length;
 
     var jsonString = localStorage.getItem("BOOKMARK");
@@ -378,7 +384,7 @@ export class HomePage {
 
   showPopup() {
     const dialogRef = this.dialog.open(PopupPage, {
-      width: '450px',
+      width: '500px',
       // data: send_data
     });
 
@@ -386,6 +392,7 @@ export class HomePage {
     dialogRef.afterClosed().subscribe(async result => {
       console.log("show city name:"+result);
       this.cityName = result;
+      localStorage.setItem("cityname" ,this.cityName);
     });
   }
 

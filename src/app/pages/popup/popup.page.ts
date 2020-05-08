@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef, ViewChild } from '@angula
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HomePage } from 'src/app/home/home.page';
 import { GooglePlaceModule, GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-popup',
@@ -15,7 +16,7 @@ export class PopupPage implements OnInit {
   longitude: any;
   countryName: any;
   stateName: any;
-  cityName: any;
+  cityName = "";
   pincode: any;
   postStatus : any;
   addressModel : any ={};
@@ -26,7 +27,8 @@ export class PopupPage implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<HomePage>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public changeDetectorRef : ChangeDetectorRef
+    public changeDetectorRef : ChangeDetectorRef,
+    public toast : ToastController
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,15 @@ export class PopupPage implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close();
+   let city =  localStorage.getItem("cityname");
+   if(city== undefined || city == "" || city == null){
+     let cityname = "";
+    localStorage.setItem("cityname",cityname);
+    this.dialogRef.close(city);
+   }else{
+    localStorage.setItem("cityname",city);
+    this.dialogRef.close(city);
+   }
   }
 
 
@@ -49,11 +59,24 @@ export class PopupPage implements OnInit {
   }
 
   submit() {
-    this.popupModel['filterName'] = this.cityName;
-    localStorage.setItem("cityName",this.cityName);
-    this.dialogRef.close(this.cityName);
+    // this.popupModel['filterName'] = this.cityName;
+    if(this.cityName == "" || this.cityName == undefined){
+      // this.presentToast("Please enter city name");
+    }else{
+      localStorage.setItem("cityname",this.cityName);
+      this.dialogRef.close(this.cityName);
+    }
+   
   }
 
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
+  }
   handleAddressChange(data) {
 
     console.log("Address Data", data);

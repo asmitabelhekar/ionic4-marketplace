@@ -12,6 +12,11 @@ import { ToastController } from '@ionic/angular';
 })
 export class PostadvertisementPage implements OnInit {
 
+  selectedCode : any;
+  countryCode = [{"code" : "+91","name" : "India"},
+  {"code" : "+39","name":"Italy"},
+  {"code" : "+81", "name" : "Japan"},
+  {"code" : "+52","name" : "Mexico"}];
   selectedGender: any;
   selectedRadioGroup: any;
   categoryId: any;
@@ -207,6 +212,10 @@ export class PostadvertisementPage implements OnInit {
     }
   }
 
+  selectCountryCode(data){
+  this.selectedCode = data;
+    console.log("countryCode:"+this.selectedCode);
+  }
 
   async presentToast(message) {
     const toast = await this.toast.create({

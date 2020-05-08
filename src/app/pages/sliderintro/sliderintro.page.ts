@@ -9,21 +9,21 @@ import { MenuController } from '@ionic/angular';
 })
 export class SliderintroPage implements OnInit {
 
-   slides = document.querySelector('ion-slides');
-  constructor(public router : Router,
-    public menuController : MenuController) { 
-      this.menuController.enable(false);
-      
-    }
+  slides = document.querySelector('ion-slides');
+  constructor(public router: Router,
+    public menuController: MenuController) {
+    this.menuController.enable(false);
 
-  ngOnInit() {
-    this.slides.options = {
-      initialSlide: 1,
-      speed: 400
-    }
   }
 
-  login(){
-this.router.navigate(['/login']);
+  ngOnInit() {
+    // this.slides.options = {
+    //   initialSlide: 1,
+    //   speed: 400
+    // }
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 }
