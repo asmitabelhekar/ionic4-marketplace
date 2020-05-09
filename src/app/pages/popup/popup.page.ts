@@ -32,11 +32,11 @@ export class PopupPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getFilterName = localStorage.getItem('applyFilter');
-    if(this.getFilterName == undefined || this.getFilterName == "" || this.getFilterName == null){
+    let getCityName = localStorage.getItem('cityname');
+    if(getCityName == "undefined" || getCityName == "" || getCityName == null){
       this.popupModel['filterName'] = "";
     }else{
-      this.popupModel['filterName'] = this.getFilterName;
+     this.cityName = getCityName;
     }
   }
 

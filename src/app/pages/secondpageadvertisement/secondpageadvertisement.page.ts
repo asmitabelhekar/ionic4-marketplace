@@ -113,13 +113,15 @@ export class SecondpageadvertisementPage implements OnInit {
 
   selectAdvertisementNoOfWeeksType(type) {
     this.selectedAdvertisementWeek = type;
+    console.log("show no of week value::"+type);
     this.endAdvertisementDate = moment(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY');
 
     let startDateTime = this.toTimestamp(this.todayDate);
     let endDateTime = this.toTimestamp(this.endAdvertisementDate);
     this.fromDateTimeAd = startDateTime;
     this.toDateTimeAd = endDateTime;
-    console.log("end date timestamp:" + startDateTime);
+    console.log("start date timestamp:" + startDateTime);
+    console.log("end date timestamp:" + endDateTime);
 
 
     console.log("show next date:" + moment(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY'));
@@ -327,19 +329,7 @@ export class SecondpageadvertisementPage implements OnInit {
           this.apiCall.put(url, send_date).subscribe(MyResponse => {
             localStorage.setItem("categoryId", this.getData.categoryId);
             this.presentToast("Advertisement updated successfully.");
-            let advertisementArray = {
-              "description" : "",
-              "title" : "",
-              "gender" : "5",
-              "categoryId" : "",
-              "email" : "",
-              "mobile" : "",
-              "languages" : [],
-              "address" : "",
-              "price" : "",
-              "images" : []
-            }
-      localStorage.setItem("ADVERTISEMENTDATA",JSON.stringify(advertisementArray));
+           
 
             // this.getAllBanner();
             if (this.checkBoostStatus == '1') {

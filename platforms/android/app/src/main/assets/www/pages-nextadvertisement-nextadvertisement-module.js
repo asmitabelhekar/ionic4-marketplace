@@ -183,7 +183,7 @@ var NextadvertisementPage = /** @class */ (function () {
             var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
             this.advertisementObject = JSON.parse(advertisementDetail);
             console.log("advertisementObject:" + this.advertisementObject['address']);
-            this.address = this.advertisementObject['address'];
+            this.advertisementModel['address'] = this.advertisementObject['address'];
             this.advertisementModel['price'] = this.advertisementObject['price'];
             this.advertisementModel['images'] = this.advertisementObject['images'];
             this.lattitude = this.advertisementObject['latitude'];
@@ -429,7 +429,8 @@ var NextadvertisementPage = /** @class */ (function () {
                 "categoryId": this.getData.categoryId,
                 "price": this.advertisementModel['price'],
                 "contact": this.getData.contact,
-                "images": this.urls
+                "images": this.urls,
+                "countryCode": this.getData.countryCode
             };
             // alert("show data:"+this.getNextData);
             this.router.navigate(['/secondpageadvertisement', { FinalObject: JSON.stringify(this.getNextData) }]);

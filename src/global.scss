@@ -84,8 +84,8 @@
   /* top: .25em; */
   left: 0;
   right: 0;
-  bottom: 5px;
-  height:55px;
+  bottom: 0px;
+  // height:55px;
   pointer-events: none;
 }
 
@@ -111,6 +111,12 @@
   top: calc(100% - 1.79167em);
 }
 
+.mat-form-field-appearance-outline .mat-form-field-outline {
+
+ 
+  bottom: 0;
+
+}
 
 // ::ng-deep {
 

@@ -17,7 +17,7 @@ import { empty } from 'rxjs';
 })
 export class HomePage {
 
-  Languages : any;
+  Languages: any;
   keysObject = [];
   getBookmarkObj: any = {};
   postBookmarkObj: any = {};
@@ -34,7 +34,7 @@ export class HomePage {
   userId: any;
   arrayLength: any;
   countAdvertisement: any;
-  bookmarkId : any;
+  bookmarkId: any;
   advertisementArray = [];
   dataArray = [
     {
@@ -53,7 +53,7 @@ export class HomePage {
       "location": "Mumbai, 120km"
     }
   ];
-  cityName : any;
+  cityName = "";
 
   tabsArray = [
     {
@@ -100,7 +100,7 @@ export class HomePage {
   constructor(public dialog: MatDialog,
     public apiCall: ApiService,
     public toast: ToastController,
-    public alertCtrl : AlertController,
+    public alertCtrl: AlertController,
     public loader: LoaderService,
     public networkServices: NetworkService,
     public menuController: MenuController,
@@ -165,18 +165,20 @@ export class HomePage {
   }
   ionViewWillEnter() {
     let city = localStorage.getItem("cityname");
-    if(city == "" || city == undefined || city == null){
+    if (city == "" || city == "undefined" || city == null) {
       this.cityName = "";
-    }else{
+      console.log("city name display undefined:" + city);
+    } else {
       this.cityName = city;
+      console.log("city name display:" + city);
     }
     this.arrayLength = this.imageArray.length;
 
     var jsonString = localStorage.getItem("BOOKMARK");
     this.postBookmarkObj = JSON.parse(jsonString);
-    if(this.postBookmarkObj == null || this.postBookmarkObj =="" || this.postBookmarkObj == undefined){
+    if (this.postBookmarkObj == null || this.postBookmarkObj == "" || this.postBookmarkObj == undefined) {
       this.postBookmarkObj = {};
-    }else{
+    } else {
 
     }
 
@@ -216,7 +218,7 @@ export class HomePage {
   }
 
 
-  getLanguages(){
+  getLanguages() {
 
     let url = environment.base_url + environment.version + "languages";
     this.apiCall.get(url).subscribe(MyResponse => {
@@ -362,7 +364,7 @@ export class HomePage {
           name: 'location',
           placeholder: 'Location'
         }
-      
+
       ],
       buttons: [
         {
@@ -390,9 +392,14 @@ export class HomePage {
 
 
     dialogRef.afterClosed().subscribe(async result => {
-      console.log("show city name:"+result);
+      console.log("show city name:" + result);
       this.cityName = result;
-      localStorage.setItem("cityname" ,this.cityName);
+      if (result == "" || result == "undefined" || result == null) {
+        this.cityName = "";
+      } else {
+        this.cityName = result;
+      }
+      localStorage.setItem("cityname", this.cityName);
     });
   }
 
@@ -402,7 +409,7 @@ export class HomePage {
 
   postAdvertisement() {
     let status = "0";
-    localStorage.setItem("postStatus",status);
+    localStorage.setItem("postStatus", status);
     this.router.navigate(['/postadvertisement']);
     // this.router.navigate(['/secondpageadvertisement']);
     // this.router.navigate(['/nextadvertisement']);
@@ -427,7 +434,7 @@ export class HomePage {
       "id": id,
       "categoryId": this.categoryId,
       "status": "category",
-      "adType" : 1
+      "adType": 1
     }
     // alert("show data::"+JSON.stringify(data));
     localStorage.setItem("url", data);
@@ -444,7 +451,7 @@ export class HomePage {
       delete this.postBookmarkObj[advertisementid];
       localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
       this.removeBookmark(advertisementid);
-     
+
 
 
       console.log("after delete:" + (this.postBookmarkObj));
@@ -471,45 +478,44 @@ export class HomePage {
 
   }
 
-  removeBookmark(advertisementId){
+  removeBookmark(advertisementId) {
     this.userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks"
+    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks"
     this.apiCall.get(url).subscribe(MyResponse => {
-     this.advertisementArray = MyResponse['result']['list'];
-     for(let i= 0 ; i< this.advertisementArray.length; i++){
+      this.advertisementArray = MyResponse['result']['list'];
+      for (let i = 0; i < this.advertisementArray.length; i++) {
 
-       console.log("show advertisement id:"+advertisementId);
+        console.log("show advertisement id:" + advertisementId);
 
-       if(this.advertisementArray[i]['id'] == advertisementId)
-       {
-       console.log("show advertisement bookmark id:"+this.advertisementArray[i]['bookmarkId']);
+        if (this.advertisementArray[i]['id'] == advertisementId) {
+          console.log("show advertisement bookmark id:" + this.advertisementArray[i]['bookmarkId']);
 
-         this.bookmarkId = this.advertisementArray[i]['bookmarkId'];
-         console.log("check ------ bookmark id:"+this.bookmarkId);
-       
-       }else{
-       console.log("show advertisement bookmark id failure ::"+this.advertisementArray[i]['bookmarkId']);
+          this.bookmarkId = this.advertisementArray[i]['bookmarkId'];
+          console.log("check ------ bookmark id:" + this.bookmarkId);
 
-       }
-     }
-     console.log("show advertisement bookmark id:"+this.bookmarkId);
+        } else {
+          console.log("show advertisement bookmark id failure ::" + this.advertisementArray[i]['bookmarkId']);
 
-     let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
-     this.apiCall.delete(url).subscribe(MyResponse => {
+        }
+      }
+      console.log("show advertisement bookmark id:" + this.bookmarkId);
 
-       this.loader.hideBlockingLoaderAuth();
-     }, error => {
-       this.presentToast("Please try again");
-       this.loader.hideBlockingLoaderAuth();
+      let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
+      this.apiCall.delete(url).subscribe(MyResponse => {
 
-     })
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
+      })
     },
       error => {
-        
+
       })
   }
 
-  
+
 
   async presentToast(message) {
     const toast = await this.toast.create({

@@ -12,11 +12,11 @@ import { ToastController } from '@ionic/angular';
 })
 export class PostadvertisementPage implements OnInit {
 
-  selectedCode : any = "+91";
-  countryCode = [{"code" : "+91","name" : "India"},
-  {"code" : "+39","name":"Italy"},
-  {"code" : "+81", "name" : "Japan"},
-  {"code" : "+52","name" : "Mexico"}];
+  selectedCode : any = "91";
+  countryCode = [{"code" : "91","name" : "India"},
+  {"code" : "39","name":"Italy"},
+  {"code" : "81", "name" : "Japan"},
+  {"code" : "52","name" : "Mexico"}];
   selectedGender: any;
   selectedRadioGroup: any;
   categoryId: any;

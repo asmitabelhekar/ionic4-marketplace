@@ -17877,12 +17877,14 @@ var SecondpageadvertisementPage = /** @class */ (function () {
     // }
     SecondpageadvertisementPage.prototype.selectAdvertisementNoOfWeeksType = function (type) {
         this.selectedAdvertisementWeek = type;
+        console.log("show no of week value::" + type);
         this.endAdvertisementDate = moment__WEBPACK_IMPORTED_MODULE_5__(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY');
         var startDateTime = this.toTimestamp(this.todayDate);
         var endDateTime = this.toTimestamp(this.endAdvertisementDate);
         this.fromDateTimeAd = startDateTime;
         this.toDateTimeAd = endDateTime;
-        console.log("end date timestamp:" + startDateTime);
+        console.log("start date timestamp:" + startDateTime);
+        console.log("end date timestamp:" + endDateTime);
         console.log("show next date:" + moment__WEBPACK_IMPORTED_MODULE_5__(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY'));
     };
     SecondpageadvertisementPage.prototype.getDate = function (start, end) {
@@ -18018,6 +18020,7 @@ var SecondpageadvertisementPage = /** @class */ (function () {
                 send_date['endDateTime'] = this.toDateTimeAd;
                 send_date['isActive'] = 1;
                 send_date['images'] = this.getData.images;
+                send_date['countryCode'] = this.getData.countryCode;
                 // send_date['transaction'] = "credited";
                 this.usersId = localStorage.getItem("userId");
                 if (this.advertisementStatus == "post") {
@@ -18041,19 +18044,6 @@ var SecondpageadvertisementPage = /** @class */ (function () {
                     this.apiCall.put(url, send_date).subscribe(function (MyResponse) {
                         localStorage.setItem("categoryId", _this.getData.categoryId);
                         _this.presentToast("Advertisement updated successfully.");
-                        var advertisementArray = {
-                            "description": "",
-                            "title": "",
-                            "gender": "5",
-                            "categoryId": "",
-                            "email": "",
-                            "mobile": "",
-                            "languages": [],
-                            "address": "",
-                            "price": "",
-                            "images": []
-                        };
-                        localStorage.setItem("ADVERTISEMENTDATA", JSON.stringify(advertisementArray));
                         // this.getAllBanner();
                         if (_this.checkBoostStatus == '1') {
                             _this.updateBanner(_this.getData.categoryId);
