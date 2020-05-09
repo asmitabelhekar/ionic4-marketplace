@@ -136,7 +136,7 @@ bookmarkAdvertisement(advertisementid){
 
 removeBookmark(advertisementId){
   this.userId = localStorage.getItem("userId");
-  let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks"
+  let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks?"  + "size=" + 1000;
   this.apiCall.get(url).subscribe(MyResponse => {
    this.getBookMarkArray = MyResponse['result']['list'];
    for(let i= 0 ; i< this.getBookMarkArray.length; i++){
@@ -199,7 +199,7 @@ async presentToast(message) {
 
     this.loader.showBlockingLoaderAuth();
     let userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version  +"users/" + userId + "/bookmarks"
+    let url = environment.base_url + environment.version  +"users/" + userId + "/bookmarks?"+ "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
      this.advertisementArray = MyResponse['result']['list'];
       this.bookmarkLength = MyResponse['result']['count'];
@@ -218,7 +218,7 @@ async presentToast(message) {
   getAdvertisement(){
     this.loader.showBlockingLoaderAuth();
     let userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version  +"users/" + userId + "/advertisements"
+    let url = environment.base_url + environment.version  +"users/" + userId + "/advertisements?"  + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
      this.advertisementArray = MyResponse['result']['list'];
       this.arrayLength = MyResponse['result']['count'];

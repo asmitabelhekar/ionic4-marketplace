@@ -27,7 +27,7 @@ export class SecondpageadvertisementPage implements OnInit {
   toDateTimeAd: number = 0;
   endDate: any;
   endAdvertisementDate: any;
-  selectedWeek: any
+  selectedWeek: any = "1";
   selectedAdvertisementWeek: any;
   finalCalculation: any;
   bannerImage: any;
@@ -43,7 +43,7 @@ export class SecondpageadvertisementPage implements OnInit {
   advertisementStatus: any;
   bannerArray: any;
   filterObject: any = {};
-  updatedWeeks: any;
+  updatedWeeks: any = "1";
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -68,14 +68,15 @@ export class SecondpageadvertisementPage implements OnInit {
     if (this.postStatus == "1") {
       var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
       this.advertisementObject = JSON.parse(advertisementDetail);
+      this.advertisementId = this.advertisementObject['id'];
+      this.getAllBanner();
       console.log("advertisementObject:" + this.advertisementObject['address']);
 
       this.fromDateTimeAd = this.advertisementObject['startDateTime'];
       this.toDateTimeAd = this.advertisementObject['endDateTime'];
       this.updatedWeeks = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
       console.log("display ----:" + this.updatedWeeks);
-      this.advertisementId = this.advertisementObject['id'];
-      this.getAllBanner();
+    
       this.advertisementStatus = "update";
     } else {
       this.advertisementStatus = "post";
@@ -156,6 +157,54 @@ export class SecondpageadvertisementPage implements OnInit {
 
   }
 
+
+  getBannerDate(start, end) {
+    //get from date
+    var ts_ms = start * 1000;
+    var date_ob = new Date(ts_ms);
+    var year = date_ob.getFullYear();
+    var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    var date = ("0" + date_ob.getDate()).slice(-2);
+    let getStartDate = month + "/" + date + "/" + year;
+    var dateToday = new Date(year, parseInt(month), parseInt(date));
+
+
+    //get end date
+    var end_date_ob_ts_ms = end * 1000;
+    var end_date_ob = new Date(end_date_ob_ts_ms);
+    var end_date_ob_year = end_date_ob.getFullYear();
+    var end_date_ob_month = ("0" + (end_date_ob.getMonth() + 1)).slice(-2);
+    var end_date_ob_date = ("0" + end_date_ob.getDate()).slice(-2);
+    let getEndDate = end_date_ob_month + "/" + end_date_ob_date + "/" + end_date_ob_year;
+
+    console.log("show first date: " + getStartDate + "  ,  " + "show second date:" + getEndDate);
+
+
+    let weeks = this.calculateBannerNumberOfWeeks(getStartDate, getEndDate);
+    console.log("show weeks:" + weeks);
+
+    return Math.abs(weeks);
+
+  }
+
+  calculateBannerNumberOfWeeks = function (d1, d2) {
+    var format = "MM/DD/YYYY";
+    if (d1 == '' || d2 == '') {
+      return '';
+    }
+    if (moment(d1, format).isValid() && moment(d2, format).isValid()) {
+      d1 = moment(d1, format);
+      d2 = moment(d2, format);
+
+      this.w = (d1.diff(d2, 'days') / 7).toFixed(1);
+      if (this.w < 1) {
+        this.w = this.w;
+      }
+      // this.selectedNoOfWeek = this.w;
+     
+      return this.w;
+    }
+  }
   calculateNumberOfWeeks = function (d1, d2) {
     var format = "MM/DD/YYYY";
     if (d1 == '' || d2 == '') {
@@ -356,7 +405,11 @@ export class SecondpageadvertisementPage implements OnInit {
       if (MyResponse['result']['count'] > 0) {
         this.checkBoostStatus = '1';
         let getBannerId = MyResponse['result']['list'][0]['id'];
+        this.fromDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
+        this.toDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
         localStorage.setItem("bannerId", getBannerId);
+        this.selectedWeek = this.getBannerDate(this.fromDateTimestamp, this.toDateTimestamp);
+        console.log("selected banner week show:"+this.selectedWeek);
         //   console.log("update banner API");
         //  this.updateBanner(this.getData.categoryId, getBannerId);
       } else {

@@ -263,8 +263,13 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.loader.hideBlockingLoaderAuth();
     };
     AdvertisementdetailPage.prototype.goBackword = function () {
-        console.log("back navigation::" + this.categoryId);
-        this.router.navigate(['/home', { categoryId: this.categoryId }]);
+        if (this.advertisementType == '0') {
+            this.router.navigate(['/favourite']);
+        }
+        else {
+            this.router.navigate(['/home', { categoryId: this.categoryId }]);
+        }
+        // console.log("back navigation::" + this.categoryId);
         // window.history.back();
     };
     AdvertisementdetailPage.prototype.getProfileDetail = function () {

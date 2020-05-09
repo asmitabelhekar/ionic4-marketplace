@@ -322,7 +322,7 @@ export class NextadvertisementPage implements OnInit {
       "description": this.getData.description,
       "lattitude": this.lattitude,
       "longitude": this.longitude,
-      "address": this.address,
+      "address": this.advertisementModel['address'],
       "gender": this.getData.gender,
       "languages": this.getData.languages,
       "email": this.getData.email,

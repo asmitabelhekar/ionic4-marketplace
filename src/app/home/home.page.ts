@@ -133,7 +133,7 @@ export class HomePage {
 
   getAdvertisement(categoryId) {
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements"
+    let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?"  + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.advertisementArray = MyResponse['result']['list'];
       this.countAdvertisement = MyResponse['result']['count'];
@@ -150,7 +150,7 @@ export class HomePage {
 
   getBannerData(categoryId) {
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners"
+    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners?"  + "size=" + 1000
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
       //  this.bannerImg = this.bannerArray['image'];
