@@ -164,8 +164,14 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
   goBackword() {
-    console.log("back navigation::" + this.categoryId);
+    if(this.advertisementType == '0'){
+    this.router.navigate(['/favourite']);
+    }
+    else{
     this.router.navigate(['/home', { categoryId: this.categoryId }]);
+
+    }
+    // console.log("back navigation::" + this.categoryId);
     // window.history.back();
   }
 

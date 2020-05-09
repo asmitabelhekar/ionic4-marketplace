@@ -3,7 +3,7 @@
   <ion-row>
     <ion-col size="3" (click)="showPopup()" fxLayoutAlign="start center">
       <mat-icon style="font-size:22px;color:white;position:fixed;left:10px;cursor: pointer;">room</mat-icon>
-      <label style="color:white;margin-left:35px;font-size:15px;;cursor: pointer;margin-top:6px" >{{cityName}}</label>
+      <label style="color:white;margin-left:30px;font-size:15px;;cursor: pointer;margin-top:0px" >{{cityName}}</label>
 
     </ion-col>
     <ion-col size="6" fxLayoutAlign="center center">
@@ -51,7 +51,7 @@
                     </div>
                   </ion-col>
                   <ion-col size="4" fxLayoutAlign="end start">
-                    <div class="b">
+                    <div class="show_width">
                       <label style="font-size:10px">{{item.city}} , 120KM</label>
                     </div>
                   </ion-col>
@@ -97,7 +97,7 @@
                   </div>
 
                   <div fxFlex="50" fxLayoutAlign="end end">
-                    <label style="font-size:11px;padding-right:5px"><b>{{item.price}}</b></label>
+                    <label style="font-size:11px;padding-right:4px"><b>{{item.price}}</b></label>
                   </div>
 
                 </div>
@@ -112,11 +112,13 @@
                     <!-- <ion-icon *ngIf="keysObject.length == 0" style="color:hotpink; margin-left:5px" name="heart-outline"></ion-icon> -->
                     
                   </div>
+                  <div fxFlex="20">
 
+                  </div>
 
-                  <div fxFlex="70" fxLayoutAlign="end start">
+                  <div fxFlex="50" fxLayoutAlign="end end">
                     <div class="b" style="margin-top:-5px">
-                      <label style="font-size:10px; color:white;padding-right: 5px;"><b>{{item.address}} ,
+                      <label style="font-size:10px; color:white;"><b>{{item.address}} ,
                           120km</b></label>
                     </div>
                     <!-- <label style="font-size:10px;padding-right:5px"><b>{{item.address}} , 120km</b></label> -->

@@ -11,7 +11,7 @@ import { MenuController, ToastController } from '@ionic/angular';
   styleUrls: ['./favourite.page.scss'],
 })
 export class FavouritePage implements OnInit {
-
+  getBookMarkArray : any;
   bookmarkId : any;
   categoryId = 0;
   arrayLength : any;
@@ -115,7 +115,7 @@ bookmarkAdvertisement(advertisementid){
     localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
     console.log("display object:"+(this.getBookmarkObj));
 
-    this.loader.showBlockingLoaderAuth();
+    // this.loader.showBlockingLoaderAuth();
     let send_date = {};
     this.advertisementModel['userId'] = localStorage.getItem("userId");
 
@@ -123,7 +123,7 @@ bookmarkAdvertisement(advertisementid){
     let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
 
-      this.loader.hideBlockingLoaderAuth();
+      // this.loader.hideBlockingLoaderAuth();
     }, error => {
       this.presentToast("Please try again");
       this.loader.hideBlockingLoaderAuth();
@@ -138,20 +138,20 @@ removeBookmark(advertisementId){
   this.userId = localStorage.getItem("userId");
   let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks"
   this.apiCall.get(url).subscribe(MyResponse => {
-   this.advertisementArray = MyResponse['result']['list'];
-   for(let i= 0 ; i< this.advertisementArray.length; i++){
+   this.getBookMarkArray = MyResponse['result']['list'];
+   for(let i= 0 ; i< this.getBookMarkArray.length; i++){
 
      console.log("show advertisement id:"+advertisementId);
 
-     if(this.advertisementArray[i]['id'] == advertisementId)
+     if(this.getBookMarkArray[i]['id'] == advertisementId)
      {
-     console.log("show advertisement bookmark id:"+this.advertisementArray[i]['bookmarkId']);
+     console.log("show advertisement bookmark id:"+this.getBookMarkArray[i]['bookmarkId']);
 
-       this.bookmarkId = this.advertisementArray[i]['bookmarkId'];
+       this.bookmarkId = this.getBookMarkArray[i]['bookmarkId'];
        console.log("check ------ bookmark id:"+this.bookmarkId);
      
      }else{
-     console.log("show advertisement bookmark id failure ::"+this.advertisementArray[i]['bookmarkId']);
+     console.log("show advertisement bookmark id failure ::"+this.getBookMarkArray[i]['bookmarkId']);
 
      }
    }

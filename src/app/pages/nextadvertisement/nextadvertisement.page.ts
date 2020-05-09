@@ -200,8 +200,8 @@ export class NextadvertisementPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result'][0])
-        
+        // this.urls.push(MyResponse['result'][0])
+        this.urls[1]= MyResponse['result'][0];
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
@@ -226,8 +226,8 @@ export class NextadvertisementPage implements OnInit {
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
-
-        this.urls.push(MyResponse['result'][0])
+        this.urls[2]= MyResponse['result'][0];
+        // this.urls.push(MyResponse['result'][0])
        
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -254,8 +254,8 @@ export class NextadvertisementPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result'][0])
-       
+        // this.urls.push(MyResponse['result'][0])
+        this.urls[3]= MyResponse['result'][0];
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
@@ -281,8 +281,8 @@ export class NextadvertisementPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls.push(MyResponse['result'][0])
-        
+        // this.urls.push(MyResponse['result'][0])
+        this.urls[4]= MyResponse['result'][0];
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {

@@ -41,8 +41,9 @@ export class SecondpageadvertisementPage implements OnInit {
   advertisementId: any;
   selectedNoOfWeek: any = "1";
   advertisementStatus: any;
-  bannerArray : any;
-  filterObject : any = {};
+  bannerArray: any;
+  filterObject: any = {};
+  updatedWeeks: any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -69,19 +70,17 @@ export class SecondpageadvertisementPage implements OnInit {
       this.advertisementObject = JSON.parse(advertisementDetail);
       console.log("advertisementObject:" + this.advertisementObject['address']);
 
-      // this.fromDateTimeAd = 1588666616;
-      // this.toDateTimeAd = 1591641000;
       this.fromDateTimeAd = this.advertisementObject['startDateTime'];
       this.toDateTimeAd = this.advertisementObject['endDateTime'];
-      let display = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
-      console.log("display ----:" + display);
+      this.updatedWeeks = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
+      console.log("display ----:" + this.updatedWeeks);
       this.advertisementId = this.advertisementObject['id'];
-    this.getAllBanner();
+      this.getAllBanner();
       this.advertisementStatus = "update";
     } else {
       this.advertisementStatus = "post";
-      
-    this.selectAdvertisementNoOfWeeksType(1);
+
+      this.selectAdvertisementNoOfWeeksType(1);
 
     }
 
@@ -89,7 +88,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.selectedWeek = '1';
     this.selectNoOfWeeksType(1);
     localStorage.setItem("boostStatus", '0');
-   
+
   }
 
 
@@ -113,7 +112,8 @@ export class SecondpageadvertisementPage implements OnInit {
 
   selectAdvertisementNoOfWeeksType(type) {
     this.selectedAdvertisementWeek = type;
-    console.log("show no of week value::"+type);
+    this.todayDate = new Date();
+    console.log("show no of week value::" + type);
     this.endAdvertisementDate = moment(this.todayDate).add(type, 'weeks').format('MM/DD/YYYY');
 
     let startDateTime = this.toTimestamp(this.todayDate);
@@ -152,7 +152,7 @@ export class SecondpageadvertisementPage implements OnInit {
     let weeks = this.calculateNumberOfWeeks(getStartDate, getEndDate);
     console.log("show weeks:" + weeks);
 
-    return weeks;
+    return Math.abs(weeks);
 
   }
 
@@ -170,12 +170,7 @@ export class SecondpageadvertisementPage implements OnInit {
         this.w = this.w;
       }
       this.selectedNoOfWeek = this.w;
-      // var text = "";
-      // if(this.w > 1){
-      //     text = "Weeks.";
-      // }else{
-      //     text = "Week.";
-      // }
+     
       return this.w;
     }
   }
@@ -252,7 +247,7 @@ export class SecondpageadvertisementPage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
     send_date['image'] = this.bannerImage;
-    send_date['title'] = this.getData.title;;
+    send_date['title'] = this.getData.title;
     send_date['description'] = this.getData.description;
     send_date['startDateTime'] = this.fromDateTimestamp;
     send_date['endDateTime'] = this.toDateTimestamp;
@@ -284,7 +279,7 @@ export class SecondpageadvertisementPage implements OnInit {
       if (this.fromDateTimestamp == undefined || this.fromDateTimestamp == null) {
         this.presentToast("Please select weeks");
       } else {
-       
+
         let send_date = {};
         send_date['title'] = this.getData.title;
         send_date['description'] = this.getData.description;
@@ -329,12 +324,12 @@ export class SecondpageadvertisementPage implements OnInit {
           this.apiCall.put(url, send_date).subscribe(MyResponse => {
             localStorage.setItem("categoryId", this.getData.categoryId);
             this.presentToast("Advertisement updated successfully.");
-           
+
 
             // this.getAllBanner();
             if (this.checkBoostStatus == '1') {
               this.updateBanner(this.getData.categoryId);
-            }else{
+            } else {
               this.postBanner(this.getData.categoryId);
             }
             this.router.navigate(['/favourite', { categoryId: this.getData.categoryId }]);
@@ -349,23 +344,22 @@ export class SecondpageadvertisementPage implements OnInit {
     }
   }
 
-  getAllBanner(){
+  getAllBanner() {
     this.loader.showBlockingLoaderAuth();
-   this.filterObject = {};
-   this.filterObject['advertisementId'] = this.advertisementId;
-   this.filterObject['userId'] = this.usersId;
-  
+    this.filterObject = {};
+    this.filterObject['advertisementId'] = this.advertisementId;
+    this.filterObject['userId'] = this.usersId;
+
     let url = environment.base_url + environment.version + "category/" + this.getData.categoryId + "/banners?" + "filters=" + JSON.stringify(this.filterObject);
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
-      if(MyResponse['result']['count'] > 0){
+      if (MyResponse['result']['count'] > 0) {
         this.checkBoostStatus = '1';
         let getBannerId = MyResponse['result']['list'][0]['id'];
-      localStorage.setItem("bannerId", getBannerId);
-
-      //   console.log("update banner API");
-      //  this.updateBanner(this.getData.categoryId, getBannerId);
-      }else{
+        localStorage.setItem("bannerId", getBannerId);
+        //   console.log("update banner API");
+        //  this.updateBanner(this.getData.categoryId, getBannerId);
+      } else {
         console.log("post bannee API");
         this.checkBoostStatus = '0';
         // this.postBanner(this.getData.categoryId);
@@ -375,7 +369,7 @@ export class SecondpageadvertisementPage implements OnInit {
       this.loader.hideBlockingLoaderAuth();
     },
       error => {
-       
+
       })
 
   }

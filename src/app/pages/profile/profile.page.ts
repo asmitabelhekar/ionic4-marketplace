@@ -102,4 +102,7 @@ export class ProfilePage implements OnInit {
     this.router.navigate(['/login']);
     localStorage.setItem("loginStatus", "no");
   }
+  goBackword(){
+    window.history.back();
+  }
 }
