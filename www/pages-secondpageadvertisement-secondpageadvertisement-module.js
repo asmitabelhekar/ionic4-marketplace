@@ -17804,11 +17804,13 @@ var SecondpageadvertisementPage = /** @class */ (function () {
         this.fromDateTimeAd = 0;
         this.toDateTimestamp = 0;
         this.toDateTimeAd = 0;
+        this.selectedWeek = "1";
         this.weeksArray = ["1", "2", "3", "4", "5"];
         this.checkBoostStatus = '0';
         this.advertisementObject = {};
         this.selectedNoOfWeek = "1";
         this.filterObject = {};
+        this.updatedWeeks = "1";
         this.calculateBannerNumberOfWeeks = function (d1, d2) {
             var format = "MM/DD/YYYY";
             if (d1 == '' || d2 == '') {

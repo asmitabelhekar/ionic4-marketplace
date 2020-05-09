@@ -33,14 +33,24 @@
      
       </ion-row>
     </div>
+    <ion-row class="cl_middle_arrow" style="width:100%">
+      <ion-col size="2" fxLayoutAlign="center center">
+      <mat-icon  class="cl_middle_arrow_left" (click)="prevSlide(slider)">keyboard_arrow_left</mat-icon>
+        </ion-col>
 
-    <div fxLayout="row" fxLayoutAlign="center center" class="cl_middle_arrow" style="width:100%">
+        <ion-col size="8">
+        </ion-col>
+
+        <ion-col size="2" fxLayoutAlign="center center">
+      <mat-icon  class="cl_middle_arrow_right"  (click)="nextSlide(slider)">keyboard_arrow_right</mat-icon>
+        </ion-col>
+    </ion-row>
+
+    <!-- <div fxLayout="row"  class="cl_middle_arrow" style="width:100%">
      
-      <mat-icon class="cl_middle_arrow_left" style="position: fixed; left:10px;" (click)="prevSlide(slider)">keyboard_arrow_left</mat-icon>
-      <mat-icon class="cl_middle_arrow_right" style="position: fixed; right:10px;" (click)="nextSlide(slider)">keyboard_arrow_right</mat-icon>
      
      
-    </div>
+    </div> -->
   </div>
 
 

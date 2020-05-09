@@ -253,7 +253,7 @@ var FavouritePage = /** @class */ (function () {
     FavouritePage.prototype.removeBookmark = function (advertisementId) {
         var _this = this;
         this.userId = localStorage.getItem("userId");
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + this.userId + "/bookmarks";
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000;
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.getBookMarkArray = MyResponse['result']['list'];
             for (var i = 0; i < _this.getBookMarkArray.length; i++) {
@@ -311,7 +311,7 @@ var FavouritePage = /** @class */ (function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
         var userId = localStorage.getItem("userId");
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + userId + "/bookmarks";
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + userId + "/bookmarks?" + "size=" + 1000;
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.advertisementArray = MyResponse['result']['list'];
             _this.bookmarkLength = MyResponse['result']['count'];
@@ -326,7 +326,7 @@ var FavouritePage = /** @class */ (function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
         var userId = localStorage.getItem("userId");
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + userId + "/advertisements";
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "users/" + userId + "/advertisements?" + "size=" + 1000;
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.advertisementArray = MyResponse['result']['list'];
             _this.arrayLength = MyResponse['result']['count'];
