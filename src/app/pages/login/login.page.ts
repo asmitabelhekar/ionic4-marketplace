@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
       localStorage.setItem("userId", MyResponse['result']['id']);
       localStorage.setItem("loginStatus", 'yes');
+      localStorage.setItem("userRole", MyResponse['result']['userRole']);
       localStorage.setItem("userName",MyResponse['result']['name']);
       localStorage.setItem("userCreated",MyResponse['result']['created']);
       this.router.navigate(['/home']);

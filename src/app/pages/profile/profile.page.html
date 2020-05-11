@@ -26,6 +26,10 @@
           style="width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px">
         </ion-icon>
         <label   style="margin-top:10px; color: black;font-size: 20px;">{{name}}</label>
+        <!-- <div fxLayout="row" (click)="updateProfile()" fxLayoutAlign="center center">
+          <label   style="margin-top:10px; color: black;font-size: 20px;">{{name}}</label>
+          <mat-icon class="cl_edit_css">edit</mat-icon>
+        </div> -->
       </div>
 
 
@@ -54,8 +58,11 @@
         <ion-col size="1">
           <ion-icon style="height:19px;width:18px; margin:2px" name="person"></ion-icon>
         </ion-col>
-        <ion-col size="11">
+        <ion-col size="10">
           <ion-label class="cl_content_fontsize">{{name}}</ion-label><br />
+        </ion-col>
+        <ion-col size="1" (click)="updateProfile()">
+          <mat-icon class="cl_edit_css">edit</mat-icon>
         </ion-col>
       </ion-row>
 

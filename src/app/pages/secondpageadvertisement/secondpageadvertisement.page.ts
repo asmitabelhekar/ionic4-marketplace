@@ -310,11 +310,10 @@ export class SecondpageadvertisementPage implements OnInit {
     let getBannerId = localStorage.getItem("bannerId");
     let url = environment.base_url + environment.version + "category/" + categoryId + "/banners/" + getBannerId;
     this.apiCall.put(url, send_date).subscribe(MyResponse => {
-      // this.presentToast(MyResponse);
+    
       this.loader.hideBlockingLoaderAuth();
     }, error => {
       this.loader.hideBlockingLoaderAuth();
-      // this.presentToast("Please try again.")
     });
 
   }

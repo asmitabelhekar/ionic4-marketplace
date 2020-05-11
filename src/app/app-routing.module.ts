@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'orderhistory',
     loadChildren: () => import('./pages/orderhistory/orderhistory.module').then( m => m.OrderhistoryPageModule)
+  },
+  {
+    path: 'updateprofile',
+    loadChildren: () => import('./pages/updateprofile/updateprofile.module').then( m => m.UpdateprofilePageModule)
   }
 ];
 

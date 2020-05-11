@@ -40,6 +40,9 @@ export class ProfilePage implements OnInit {
     // this.getCountryCode();
   }
 
+  ionViewWillEnter(){
+    this.getProfileInfo();
+  }
   getCountryCode() {
     let url = "https://www.universal-tutorial.com/api/countries";
     this.apiCall.get(url).subscribe(MyResponse => {
@@ -104,5 +107,14 @@ export class ProfilePage implements OnInit {
   }
   goBackword(){
     window.history.back();
+  }
+
+  updateProfile(){
+    let profileData = {
+      "name" : this.name,
+      "email" : this.email,
+      "mobile" : this.mobile
+    }
+    this.router.navigate(['/updateprofile', { profileData : JSON.stringify(this.profileDetail)}]);
   }
 }
