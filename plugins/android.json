@@ -40,7 +40,15 @@
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    }
+  }
 }

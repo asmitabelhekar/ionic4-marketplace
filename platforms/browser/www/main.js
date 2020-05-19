@@ -447,6 +447,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/popupaddress/popupaddress.component.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/popupaddress/popupaddress.component.html ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>\n  popupaddress works!\n</p>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popup/popup.page.html":
 /*!***********************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popup/popup.page.html ***!
@@ -456,7 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n  <mat-form-field style=\"width:100%\">\n    <input matInput placeholder=\"Filter\"  [(ngModel)]=\"popupModel.filterName\"\n      name=\"filter\" class=\"form-control\" />\n    \n  </mat-form-field>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-left:5%; margin-right:5%; margin-top:10px; width:90%\">\n    <button  mat-raised-button (click)=\"resetFilter()\" style=\"margin-right:5px; margin-left: 5px\">RESET</button>\n    <button  mat-raised-button (click)=\"applyFilter(popupModel)\" style=\"margin-right:5px; margin-left: 5px\">APPLY</button>\n    <button  mat-raised-button (click)=\"closeDialog()\" style=\"margin-left: 5px\">CANCEL</button>\n\n  </div>\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<form #userForm=\"ngForm\" style=\"width:100%;margin-top:10px\">\n \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;margin-top:5px\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px\" appearance=\"outline\">\n      <mat-label>City</mat-label>\n      <input matInput placeholder=\"\" [(ngModel)]=\"cityName\" ngx-google-places-autocomplete\n        [options]='options' #placesRef=\"ngx-places\" name=\"city\" required  \n        (onAddressChange)=\"handleAddressChange($event)\">\n        <mat-error>\n          <div class=\"form-group\">\n            <div *ngIf=\"cityName.invalid && (cityName.dirty || cityName.touched)\">\n              City Name Is Requird\n            </div>\n          </div>\n        </mat-error>\n    </mat-form-field>\n  </div>\n  </form>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"margin-top:10px;margin-left:10%; margin-right:10%; width:80%\">\n    <button  mat-raised-button (click)=\"closeDialog()\" style=\"margin-right:15px;font-size:13px\">CANCEL</button>\n    <button  mat-raised-button (click)=\"submit()\" class=\"loginButton\" style=\"font-size:13px\" [disabled]=\"cityName.invalid\">SUBMIT</button>\n \n\n  </div>\n\n\n");
 
 /***/ }),
 
@@ -726,55 +739,61 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
+    // { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
+    // { path: 'sliderintro', loadChildren: () => import('./pages/sliderintro/sliderintro.module').then( m => m.SliderintroPageModule)},
+    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
     {
         path: 'popup',
-        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
     },
     {
         path: 'chatlist',
-        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
     },
     {
         path: 'detailchat',
-        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
     {
         path: 'postadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
     },
     {
         path: 'showfilterdata',
-        loadChildren: function () { return Promise.all(/*! import() | pages-showfilterdata-showfilterdata-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-showfilterdata-showfilterdata-module")]).then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-showfilterdata-showfilterdata-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-showfilterdata-showfilterdata-module")]).then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
     },
     {
         path: 'nextadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
     },
     {
         path: 'secondpageadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
     },
     {
         path: 'home',
-        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
     },
     {
         path: 'favourite',
-        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
     },
     {
         path: 'profile',
-        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
     },
     {
         path: 'advertisementdetail',
-        loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~c9be0c73"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
     },
     {
         path: 'orderhistory',
         loadChildren: function () { return __webpack_require__.e(/*! import() | pages-orderhistory-orderhistory-module */ "pages-orderhistory-orderhistory-module").then(__webpack_require__.bind(null, /*! ./pages/orderhistory/orderhistory.module */ "./src/app/pages/orderhistory/orderhistory.module.ts")).then(function (m) { return m.OrderhistoryPageModule; }); }
     },
+    {
+        path: 'updateprofile',
+        loadChildren: function () { return Promise.all(/*! import() | pages-updateprofile-updateprofile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-updateprofile-updateprofile-module")]).then(__webpack_require__.bind(null, /*! ./pages/updateprofile/updateprofile.module */ "./src/app/pages/updateprofile/updateprofile.module.ts")).then(function (m) { return m.UpdateprofilePageModule; }); }
+    }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -882,13 +901,13 @@ var AppComponent = /** @class */ (function () {
                     return;
                 }
             });
-            _this.platform.backButton.subscribeWithPriority(9999, function () {
-                document.addEventListener('backbutton', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    console.log('hello');
-                }, false);
-            });
+            // this.platform.backButton.subscribeWithPriority(9999, () => {
+            //   document.addEventListener('backbutton', function (event) {
+            //     event.preventDefault();
+            //     event.stopPropagation();
+            //     console.log('hello');
+            //   }, false);
+            // });
         });
     };
     AppComponent.prototype.presentAlert = function () {
@@ -934,6 +953,7 @@ var AppComponent = /** @class */ (function () {
             this.router.navigate(['/home']);
         }
         else {
+            // this.router.navigate(['/sliderintro']);
             this.router.navigate(['/login']);
         }
         this.preloader.hideBlockingLoaderAuth();
@@ -1000,6 +1020,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
 /* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
+/* harmony import */ var _components_popupaddress_popupaddress_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/popupaddress/popupaddress.component */ "./src/app/components/popupaddress/popupaddress.component.ts");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/bundles/ngx-google-places-autocomplete.umd.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__);
+
+
 
 
 
@@ -1025,8 +1050,8 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"]],
-            entryComponents: [_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"]],
+                _pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"], _components_popupaddress_popupaddress_component__WEBPACK_IMPORTED_MODULE_19__["PopupaddressComponent"]],
+            entryComponents: [_pages_popup_popup_page__WEBPACK_IMPORTED_MODULE_11__["PopupPage"], _components_popupaddress_popupaddress_component__WEBPACK_IMPORTED_MODULE_19__["PopupaddressComponent"]],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
@@ -1038,6 +1063,7 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
@@ -1059,6 +1085,61 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/popupaddress/popupaddress.component.scss":
+/*!*********************************************************************!*\
+  !*** ./src/app/components/popupaddress/popupaddress.component.scss ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvcG9wdXBhZGRyZXNzL3BvcHVwYWRkcmVzcy5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/components/popupaddress/popupaddress.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/popupaddress/popupaddress.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: PopupaddressComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopupaddressComponent", function() { return PopupaddressComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+var PopupaddressComponent = /** @class */ (function () {
+    function PopupaddressComponent(data, dialogRef) {
+        this.data = data;
+        this.dialogRef = dialogRef;
+    }
+    PopupaddressComponent.prototype.ngOnInit = function () { };
+    PopupaddressComponent.ctorParameters = function () { return [
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] }
+    ]; };
+    PopupaddressComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-popupaddress',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./popupaddress.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/popupaddress/popupaddress.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./popupaddress.component.scss */ "./src/app/components/popupaddress/popupaddress.component.scss")).default]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"]])
+    ], PopupaddressComponent);
+    return PopupaddressComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/popup/popup.page.scss":
 /*!*********************************************!*\
   !*** ./src/app/pages/popup/popup.page.scss ***!
@@ -1068,7 +1149,7 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3BvcHVwL3BvcHVwLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".loginButton {\n  background-color: #152a3f;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9wb3B1cC9wb3B1cC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3BvcHVwL3BvcHVwLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcG9wdXAvcG9wdXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbi5sb2dpbkJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTUyYTNmO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiBcbiAgfSIsIi5sb2dpbkJ1dHRvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxNTJhM2Y7XG4gIGNvbG9yOiB3aGl0ZTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1085,38 +1166,116 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/bundles/ngx-google-places-autocomplete.umd.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+
+
 
 
 
 var PopupPage = /** @class */ (function () {
-    function PopupPage(dialogRef, data) {
+    function PopupPage(dialogRef, data, changeDetectorRef, toast) {
         this.dialogRef = dialogRef;
         this.data = data;
+        this.changeDetectorRef = changeDetectorRef;
+        this.toast = toast;
+        this.cityName = "";
+        this.addressModel = {};
         this.getFilterName = "";
         this.popupModel = {};
     }
     PopupPage.prototype.ngOnInit = function () {
-        this.getFilterName = localStorage.getItem('applyFilter');
-        if (this.getFilterName == undefined || this.getFilterName == "" || this.getFilterName == null) {
+        var getCityName = localStorage.getItem('cityname');
+        if (getCityName == "undefined" || getCityName == "" || getCityName == null) {
             this.popupModel['filterName'] = "";
         }
         else {
-            this.popupModel['filterName'] = this.getFilterName;
+            this.cityName = getCityName;
         }
     };
     PopupPage.prototype.closeDialog = function () {
-        this.dialogRef.close();
+        var city = localStorage.getItem("cityname");
+        if (city == undefined || city == "" || city == null) {
+            var cityname = "";
+            localStorage.setItem("cityname", cityname);
+            this.dialogRef.close(city);
+        }
+        else {
+            localStorage.setItem("cityname", city);
+            this.dialogRef.close(city);
+        }
     };
     PopupPage.prototype.applyFilter = function (titleName) {
         this.dialogRef.close(titleName);
     };
-    PopupPage.prototype.resetFilter = function () {
-        this.popupModel['filterName'] = "";
+    PopupPage.prototype.submit = function () {
+        // this.popupModel['filterName'] = this.cityName;
+        if (this.cityName == "" || this.cityName == undefined) {
+            // this.presentToast("Please enter city name");
+        }
+        else {
+            localStorage.setItem("cityname", this.cityName);
+            this.dialogRef.close(this.cityName);
+        }
+    };
+    PopupPage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    PopupPage.prototype.handleAddressChange = function (data) {
+        console.log("Address Data", data);
+        this.lattitude = data.geometry.location.lat();
+        this.longitude = data.geometry.location.lng();
+        console.log("Address Data lattitude one::", this.lattitude);
+        console.log("Address Data longitude one::", this.longitude);
+        console.log("lat", this.lattitude, this.longitude);
+        var string = "";
+        string = data['formatted_address'];
+        var arr = [];
+        var str = "";
+        var ss = [];
+        arr = string.split(",");
+        for (var index = arr.length - 1; index >= 0; index--) {
+            console.log(index, "data ", arr[index]);
+            this.addressModel['landmark'] = arr[2];
+            this.addressModel['address'] = data.vicinity;
+            this.addressModel['location'] = data.name;
+            this.countryName = arr[arr.length - 1] != null ? arr[arr.length - 1] : "";
+            str = arr[arr.length - 2] != null ? arr[arr.length - 2] : "";
+            var statestr = str.split(' ');
+            ss = statestr;
+            this.stateName = ss[1];
+            this.pincode = ss[2];
+            this.cityName = arr[arr.length - 3] != null ? arr[arr.length - 3] : "";
+            this.changeDetectorRef.detectChanges();
+        }
+        console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.addressModel['landmark'], this.addressModel['location']);
+        this.address = this.addressModel['landmark'], this.addressModel['location'], this.cityName, this.countryName, this.pincode;
     };
     PopupPage.ctorParameters = function () { return [
         { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] },
-        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] }
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("placesRef", { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_3__["GooglePlaceDirective"])
+    ], PopupPage.prototype, "placesRef", void 0);
     PopupPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-popup',
@@ -1124,7 +1283,8 @@ var PopupPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./popup.page.scss */ "./src/app/pages/popup/popup.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])
     ], PopupPage);
     return PopupPage;
 }());

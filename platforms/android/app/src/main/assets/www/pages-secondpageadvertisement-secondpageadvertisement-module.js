@@ -18017,11 +18017,9 @@ var SecondpageadvertisementPage = /** @class */ (function () {
         var getBannerId = localStorage.getItem("bannerId");
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].version + "category/" + categoryId + "/banners/" + getBannerId;
         this.apiCall.put(url, send_date).subscribe(function (MyResponse) {
-            // this.presentToast(MyResponse);
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
-            // this.presentToast("Please try again.")
         });
     };
     SecondpageadvertisementPage.prototype.submmitAdvertisementData = function (data) {

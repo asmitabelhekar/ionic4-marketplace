@@ -114,6 +114,10 @@
             {
               "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -190,6 +194,10 @@
             {
               "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
               "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+              "count": 1
             }
           ],
           "/manifest/application": [
@@ -203,6 +211,10 @@
             },
             {
               "xml": "<uses-library android:name=\"org.apache.http.legacy\" android:required=\"false\" />",
+              "count": 1
+            },
+            {
+              "xml": "<provider android:authorities=\"${applicationId}.sharing.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"nl.xservices.plugins.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/sharing_paths\" /></provider>",
               "count": 1
             }
           ],
@@ -233,6 +245,12 @@
             },
             {
               "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
+              "count": 1
+            }
+          ],
+          "/*/application": [
+            {
+              "xml": "<receiver android:enabled=\"true\" android:name=\"nl.xservices.plugins.ShareChooserPendingIntent\"><intent-filter><action android:name=\"android.intent.action.SEND\" /></intent-filter></receiver>",
               "count": 1
             }
           ]
@@ -273,6 +291,13 @@
       "PACKAGE_NAME": "io.ionic.marketplace"
     },
     "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
       "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
@@ -593,6 +618,20 @@
       "clobbers": [
         "Connection"
       ]
+    },
+    {
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-x-socialsharing.SocialSharing",
+      "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+      "pluginId": "cordova-plugin-x-socialsharing",
+      "clobbers": [
+        "window.plugins.socialsharing"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -606,6 +645,8 @@
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "2.7.1",
     "mx.ferreyra.callnumber": "0.0.2",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-network-information": "2.0.2",
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-x-socialsharing": "5.6.5"
   }
 }

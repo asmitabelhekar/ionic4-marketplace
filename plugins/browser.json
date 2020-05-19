@@ -39,7 +39,14 @@
     },
     "mx.ferreyra.callnumber": {
       "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    }
+  }
 }

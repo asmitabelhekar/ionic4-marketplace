@@ -21,6 +21,8 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { PopupaddressComponent } from './components/popupaddress/popupaddress.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent,
@@ -46,7 +48,9 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     Geolocation,
     CallNumber,
     Network,
+    Deeplinks,
     SplashScreen,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

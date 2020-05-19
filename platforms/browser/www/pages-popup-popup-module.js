@@ -60,6 +60,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_material_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/material.module */ "./src/app/material.module.ts");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/bundles/ngx-google-places-autocomplete.umd.js");
+/* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -69,6 +71,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 var PopupPageModule = /** @class */ (function () {
     function PopupPageModule() {
@@ -81,6 +85,7 @@ var PopupPageModule = /** @class */ (function () {
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__["FlexLayoutModule"],
                 src_app_material_module__WEBPACK_IMPORTED_MODULE_7__["MaterialModule"],
+                ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__["GooglePlaceModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatInputModule"],
                 _popup_routing_module__WEBPACK_IMPORTED_MODULE_5__["PopupPageRoutingModule"]
