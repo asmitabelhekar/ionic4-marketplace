@@ -9,6 +9,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { HomePage } from './home/home.page';
 import { AdvertisementdetailPage } from './pages/advertisementdetail/advertisementdetail.page';
 import { NgZone } from '@angular/core';
+import { ChatlistPage } from './pages/chatlist/chatlist.page';
 
 @Component({
   selector: 'app-root',
@@ -86,21 +87,24 @@ export class AppComponent {
 
 
       this.deeplinks.route( {
-        '/home': HomePage,
-        '/advertisementdetail': AdvertisementdetailPage,
-        '/advertisementdetail/:id': 53
+      "/" : {}
       }).subscribe((match) => {
 
-        let sendId = {
-          "id": 53,
-          "categoryId": 5,
-          "status": "category",
-          "adType": 1
-        }
-      
-        this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+      // alert("show success id:"+JSON.stringify(match));
+      // alert("show success categoryId:"+(match.$link.id));
+      // alert("show success categoryId:"+(match.$link.queryString.categoryId));
+      let sendId = {
+        "id": match.$args.id,
+        "categoryId": match.$args.categoryId,
+        "status": "category",
+        "adType": 1
+      }
+     
+      this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+
         console.log('Successfully routed', match);
       }, (nomatch) => {
+        // alert("show failure:"+JSON.stringify(nomatch));
         console.log('Unmatched Route', nomatch);
       });
 
@@ -146,6 +150,7 @@ export class AppComponent {
   loginSession(){
     let loginStatus = localStorage.getItem("loginStatus");
     if(loginStatus == "yes"){
+    
       this.router.navigate(['/home']);
     }else{
       // this.router.navigate(['/sliderintro']);
