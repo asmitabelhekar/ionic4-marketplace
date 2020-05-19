@@ -118,6 +118,14 @@
             {
               "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"IonicDeeplinkPlugin\"><param name=\"android-package\" value=\"io.ionic.links.IonicDeeplink\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Base64\"><param name=\"android-package\" value=\"com.badrit.Base64.Base64Plugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -253,6 +261,16 @@
               "xml": "<receiver android:enabled=\"true\" android:name=\"nl.xservices.plugins.ShareChooserPendingIntent\"><intent-filter><action android:name=\"android.intent.action.SEND\" /></intent-filter></receiver>",
               "count": 1
             }
+          ],
+          "/manifest/application/activity": [
+            {
+              "xml": "<intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:scheme=\"demoapp\" /></intent-filter>",
+              "count": 1
+            },
+            {
+              "xml": "<intent-filter android:autoVerify=\"true\"><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:host=\"demoapp.com\" android:pathPrefix=\"/\" android:scheme=\"https\" /><data android:host=\" \" android:pathPrefix=\"/\" android:scheme=\" \" /><data android:host=\" \" android:pathPrefix=\"/\" android:scheme=\" \" /><data android:host=\" \" android:pathPrefix=\"/\" android:scheme=\" \" /><data android:host=\" \" android:pathPrefix=\"/\" android:scheme=\" \" /></intent-filter>",
+              "count": 1
+            }
           ]
         }
       }
@@ -298,6 +316,28 @@
     },
     "cordova-plugin-x-socialsharing": {
       "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "ionic-plugin-deeplinks": {
+      "URL_SCHEME": "demoapp",
+      "DEEPLINK_SCHEME": "https",
+      "DEEPLINK_HOST": "demoapp.com",
+      "ANDROID_PATH_PREFIX": "/",
+      "ANDROID_2_PATH_PREFIX": "/",
+      "ANDROID_3_PATH_PREFIX": "/",
+      "ANDROID_4_PATH_PREFIX": "/",
+      "ANDROID_5_PATH_PREFIX": "/",
+      "DEEPLINK_2_SCHEME": " ",
+      "DEEPLINK_2_HOST": " ",
+      "DEEPLINK_3_SCHEME": " ",
+      "DEEPLINK_3_HOST": " ",
+      "DEEPLINK_4_SCHEME": " ",
+      "DEEPLINK_4_HOST": " ",
+      "DEEPLINK_5_SCHEME": " ",
+      "DEEPLINK_5_HOST": " ",
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "com-badrit-base64": {
       "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
@@ -632,6 +672,23 @@
       "clobbers": [
         "window.plugins.socialsharing"
       ]
+    },
+    {
+      "id": "ionic-plugin-deeplinks.deeplink",
+      "file": "plugins/ionic-plugin-deeplinks/www/deeplink.js",
+      "pluginId": "ionic-plugin-deeplinks",
+      "clobbers": [
+        "IonicDeeplink"
+      ],
+      "runs": true
+    },
+    {
+      "id": "com-badrit-base64.Base64",
+      "file": "plugins/com-badrit-base64/www/Base64.js",
+      "pluginId": "com-badrit-base64",
+      "clobbers": [
+        "navigator.Base64"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -647,6 +704,8 @@
     "mx.ferreyra.callnumber": "0.0.2",
     "cordova-plugin-network-information": "2.0.2",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-x-socialsharing": "5.6.5"
+    "cordova-plugin-x-socialsharing": "5.6.5",
+    "ionic-plugin-deeplinks": "1.0.20",
+    "com-badrit-base64": "0.2.0"
   }
 }

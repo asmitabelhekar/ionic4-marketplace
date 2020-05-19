@@ -92,10 +92,14 @@
   "ionic-plugin-deeplinks": {
     "source": {
       "type": "registry",
-      "id": "ionic-plugin-deeplinks"
+      "id": "ionic-plugin-deeplinks@^1.0.20"
     },
     "is_top_level": true,
-    "variables": {}
+    "variables": {
+      "URL_SCHEME": "marketplaceapp",
+      "DEEPLINK_SCHEME": "https",
+      "DEEPLINK_HOST": "marketplace.arraypointer.com"
+    }
   },
   "cordova-plugin-x-socialsharing": {
     "source": {
@@ -113,6 +117,14 @@
       "id": "es6-promise-plugin@^4.1.0"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "com-badrit-base64": {
+    "source": {
+      "type": "registry",
+      "id": "com-badrit-base64"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

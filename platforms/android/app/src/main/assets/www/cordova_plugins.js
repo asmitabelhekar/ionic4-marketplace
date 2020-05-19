@@ -329,6 +329,23 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.plugins.socialsharing"
       ]
+    },
+    {
+      "id": "ionic-plugin-deeplinks.deeplink",
+      "file": "plugins/ionic-plugin-deeplinks/www/deeplink.js",
+      "pluginId": "ionic-plugin-deeplinks",
+      "clobbers": [
+        "IonicDeeplink"
+      ],
+      "runs": true
+    },
+    {
+      "id": "com-badrit-base64.Base64",
+      "file": "plugins/com-badrit-base64/www/Base64.js",
+      "pluginId": "com-badrit-base64",
+      "clobbers": [
+        "navigator.Base64"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -344,6 +361,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "mx.ferreyra.callnumber": "0.0.2",
     "cordova-plugin-network-information": "2.0.2",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-x-socialsharing": "5.6.5"
+    "cordova-plugin-x-socialsharing": "5.6.5",
+    "ionic-plugin-deeplinks": "1.0.20",
+    "com-badrit-base64": "0.2.0"
   };
 });

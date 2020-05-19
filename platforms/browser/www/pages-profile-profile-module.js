@@ -164,6 +164,9 @@ var ProfilePage = /** @class */ (function () {
         this.getProfileInfo();
         // this.getCountryCode();
     };
+    ProfilePage.prototype.ionViewWillEnter = function () {
+        this.getProfileInfo();
+    };
     ProfilePage.prototype.getCountryCode = function () {
         var _this = this;
         var url = "https://www.universal-tutorial.com/api/countries";
@@ -228,7 +231,7 @@ var ProfilePage = /** @class */ (function () {
             "email": this.email,
             "mobile": this.mobile
         };
-        this.router.navigate(['/updateprofile', { profileData: JSON.stringify(profileData) }]);
+        this.router.navigate(['/updateprofile', { profileData: JSON.stringify(this.profileDetail) }]);
     };
     ProfilePage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },

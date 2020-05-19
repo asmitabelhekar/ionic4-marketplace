@@ -14,6 +14,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
     MatIconModule,
     AdvertisementdetailPageRoutingModule
   ],
-  providers : [NativeGeocoder, GoogleMaps, Geolocation, CallNumber],
+  providers : [NativeGeocoder, GoogleMaps, Geolocation, CallNumber, Base64],
   declarations: [AdvertisementdetailPage]
 })
 export class AdvertisementdetailPageModule {}

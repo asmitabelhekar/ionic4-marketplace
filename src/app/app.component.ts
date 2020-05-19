@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-
-import { Platform, AlertController } from '@ionic/angular';
+import { Component , ViewChild} from '@angular/core';
+import {App, Nav} from 'ionic-angular';
+import { Platform, AlertController, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { LoaderService } from './service/loaderservice/loader.service';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { HomePage } from './home/home.page';
 import { AdvertisementdetailPage } from './pages/advertisementdetail/advertisementdetail.page';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { AdvertisementdetailPage } from './pages/advertisementdetail/advertiseme
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-
+  
+  @ViewChild(NavController, {static :false}) navChild:NavController;
   loadingBlock;
   appPages = [
     {
@@ -47,11 +49,13 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     public router : Router,
+    public navController: NavController,
     public alertCtrl : AlertController,
     public preloader : LoaderService,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public deeplinks : Deeplinks
+    public deeplinks : Deeplinks,
+    public zone : NgZone
   ) {
     this.initializeApp();
   }
@@ -63,6 +67,7 @@ export class AppComponent {
       this.loadingBlock = event;
     });
   }
+  
 
   initializeApp() {
     this.preloader.showBlockingLoaderAuth();
@@ -78,19 +83,28 @@ export class AppComponent {
         }
       });
 
-      this.deeplinks.route({
+
+
+      this.deeplinks.route( {
         '/home': HomePage,
-        '/universal-links-test': AdvertisementdetailPage,
-        '/advertisement/:advertisementId': AdvertisementdetailPage
-      }).subscribe(match => {
-        // match.$route - the route we matched, which is the matched entry from the arguments to route()
-        // match.$args - the args passed in the link
-        // match.$link - the full link data
-        console.log('Successfully matched route', match);
-      }, nomatch => {
-        // nomatch.$link - the full link data
-        console.error('Got a deeplink that didn\'t match', nomatch);
+        '/advertisementdetail': AdvertisementdetailPage,
+        '/advertisementdetail/:id': 53
+      }).subscribe((match) => {
+
+        let sendId = {
+          "id": 53,
+          "categoryId": 5,
+          "status": "category",
+          "adType": 1
+        }
+      
+        this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+        console.log('Successfully routed', match);
+      }, (nomatch) => {
+        console.log('Unmatched Route', nomatch);
       });
+
+     
 
       // this.platform.backButton.subscribeWithPriority(9999, () => {
       //   document.addEventListener('backbutton', function (event) {

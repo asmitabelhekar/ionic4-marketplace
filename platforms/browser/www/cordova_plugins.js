@@ -415,6 +415,29 @@ module.exports = [
         "clobbers": [
             "window.plugins.socialsharing"
         ]
+    },
+    {
+        "file": "plugins/ionic-plugin-deeplinks/www/deeplink.js",
+        "id": "ionic-plugin-deeplinks.deeplink",
+        "pluginId": "ionic-plugin-deeplinks",
+        "clobbers": [
+            "IonicDeeplink"
+        ],
+        "runs": true
+    },
+    {
+        "file": "plugins/ionic-plugin-deeplinks/src/browser/DeeplinkProxy.js",
+        "id": "ionic-plugin-deeplinks.IonicDeeplinkProxy",
+        "pluginId": "ionic-plugin-deeplinks",
+        "runs": true
+    },
+    {
+        "file": "plugins/com-badrit-base64/www/Base64.js",
+        "id": "com-badrit-base64.Base64",
+        "pluginId": "com-badrit-base64",
+        "clobbers": [
+            "navigator.Base64"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -432,7 +455,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.3",
     "mx.ferreyra.callnumber": "0.0.2",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-x-socialsharing": "5.6.5"
+    "cordova-plugin-x-socialsharing": "5.6.5",
+    "ionic-plugin-deeplinks": "1.0.20",
+    "com-badrit-base64": "0.2.0"
 }
 // BOTTOM OF METADATA
 });

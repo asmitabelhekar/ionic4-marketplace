@@ -42,6 +42,15 @@
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "ionic-plugin-deeplinks": {
+      "URL_SCHEME": "demoapp",
+      "DEEPLINK_SCHEME": "https",
+      "DEEPLINK_HOST": "demoapp.com",
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "com-badrit-base64": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
   "dependent_plugins": {
