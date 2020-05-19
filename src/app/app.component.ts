@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { LoaderService } from './service/loaderservice/loader.service';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { HomePage } from './home/home.page';
+import { AdvertisementdetailPage } from './pages/advertisementdetail/advertisementdetail.page';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +50,8 @@ export class AppComponent {
     public alertCtrl : AlertController,
     public preloader : LoaderService,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public deeplinks : Deeplinks
   ) {
     this.initializeApp();
   }
@@ -72,6 +76,20 @@ export class AppComponent {
           this.presentAlert()
           return
         }
+      });
+
+      this.deeplinks.route({
+        '/home': HomePage,
+        '/universal-links-test': AdvertisementdetailPage,
+        '/advertisement/:advertisementId': AdvertisementdetailPage
+      }).subscribe(match => {
+        // match.$route - the route we matched, which is the matched entry from the arguments to route()
+        // match.$args - the args passed in the link
+        // match.$link - the full link data
+        console.log('Successfully matched route', match);
+      }, nomatch => {
+        // nomatch.$link - the full link data
+        console.error('Got a deeplink that didn\'t match', nomatch);
       });
 
       // this.platform.backButton.subscribeWithPriority(9999, () => {
