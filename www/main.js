@@ -793,6 +793,10 @@ var routes = [
     {
         path: 'updateprofile',
         loadChildren: function () { return Promise.all(/*! import() | pages-updateprofile-updateprofile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-updateprofile-updateprofile-module")]).then(__webpack_require__.bind(null, /*! ./pages/updateprofile/updateprofile.module */ "./src/app/pages/updateprofile/updateprofile.module.ts")).then(function (m) { return m.UpdateprofilePageModule; }); }
+    },
+    {
+        path: 'checkinternet',
+        loadChildren: function () { return Promise.all(/*! import() | pages-checkinternet-checkinternet-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-checkinternet-checkinternet-module")]).then(__webpack_require__.bind(null, /*! ./pages/checkinternet/checkinternet.module */ "./src/app/pages/checkinternet/checkinternet.module.ts")).then(function (m) { return m.CheckinternetPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

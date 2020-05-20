@@ -573,7 +573,8 @@ var NetworkService = /** @class */ (function () {
     NetworkService.prototype.checkInternetConnection = function () {
         var _this = this;
         this.network.onDisconnect().subscribe(function () {
-            _this.presentToast();
+            // this.presentToast()
+            _this.router.navigate(['/checkinternet']);
             // this.navigateInternetPage();
             // this.dialogs.alert('You are not connected to the internet');
         });
@@ -637,7 +638,8 @@ var NetworkService = /** @class */ (function () {
     NetworkService.prototype.onPageLoadCheckInternet = function () {
         this.checkStatus = this.CheckNetworkStatus();
         if (this.checkStatus == "none" || this.checkStatus == "" || this.checkStatus == undefined || this.checkStatus == null) {
-            this.presentToast();
+            // this.presentToast();
+            this.router.navigate(['/checkinternet']);
             // this.navigateInternetPage();
         }
         else {

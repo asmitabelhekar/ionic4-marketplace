@@ -29,7 +29,8 @@ export class NetworkService {
 
   checkInternetConnection() {
     this.network.onDisconnect().subscribe(() => {
-      this.presentToast()
+      // this.presentToast()
+      this.router.navigate(['/checkinternet']);
       // this.navigateInternetPage();
       // this.dialogs.alert('You are not connected to the internet');
     });
@@ -77,7 +78,8 @@ export class NetworkService {
 
     this.checkStatus = this.CheckNetworkStatus();
     if (this.checkStatus == "none" || this.checkStatus == "" || this.checkStatus == undefined || this.checkStatus == null) {
-      this.presentToast();
+      // this.presentToast();
+      this.router.navigate(['/checkinternet']);
       // this.navigateInternetPage();
     }
     else {
