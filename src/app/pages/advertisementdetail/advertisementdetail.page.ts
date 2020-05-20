@@ -58,9 +58,9 @@ export class AdvertisementdetailPage implements OnInit {
   keysObject = [];
   advertisementType: any;
   getBase64Image: any;
-  getpathofimage : any;
+  getpathofimage: any;
 
-  image : any;
+  image: any;
   public sendTo: any;
   public subject: string = 'Message from Marketplace App';
   public message: string = 'Marketplace App .';
@@ -123,17 +123,17 @@ export class AdvertisementdetailPage implements OnInit {
       this.userId = this.advertisementArray['userId'];
       this.categoryId = this.advertisementArray['categoryId'];
       this.advertisementImages = this.advertisementArray['images'];
-      console.log("show first image of advertisement:"+this.advertisementImages[0]);
+      console.log("show first image of advertisement:" + this.advertisementImages[0]);
       let getFirstImage = this.advertisementImages[0];
       localStorage.setItem("ADVERTISEMENTDATA", JSON.stringify(this.advertisementArray));
       this.getpathofimage = 'https://cors-anywhere.herokuapp.com/' + getFirstImage;
       let checkBase64 = this.convertToDataURLviaCanvas(this.getpathofimage, "image/jpeg").then((base64) =>
 
-      console.log(this.getBase64Image = base64)
-      
-    )
-    this.image = this.getBase64Image;
-    console.log("show final base64Image:" + this.getBase64Image)
+        console.log(this.getBase64Image = base64)
+
+      )
+      this.image = this.getBase64Image;
+      console.log("show final base64Image:" + this.getBase64Image)
       this.getProfileDetail();
       this.loadMap();
     },
@@ -145,6 +145,17 @@ export class AdvertisementdetailPage implements OnInit {
   }
 
   ionViewWillEnter() {
+
+    var str = "http://d3lgrseqpnv6xt.cloudfront.net/1588945760313.jpg";
+    var dotIndex = str.lastIndexOf('.');
+    var ext = str.substring(dotIndex);
+    console.log("show first image:" + ext)
+
+    var strsecond = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdjfVsLj-pxifXgB8LHVc1WrC5bF6ivv3kEMzE83oeNzG4ut90&usqp=CAU";
+    var dotSecondIndex = strsecond.lastIndexOf('.');
+    var extSecond = strsecond.substring(dotSecondIndex);
+    console.log("show second image:" + extSecond)
+
     this.loader.showBlockingLoaderAuth();
     this.userId = localStorage.getItem('userId');
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
@@ -251,17 +262,38 @@ export class AdvertisementdetailPage implements OnInit {
 
   sharePicker(image) {
 
+    var str = image;
+    var dotIndex = str.lastIndexOf('.');
+    var ext = str.substring(dotIndex);
+    console.log("show first image:" + ext)
+    if(ext == ".jpg"){
+      console.log("match image");
+      this.image = image;
+    }
+    else{
+      console.log("not match image");
 
-    console.log("share image:"+this.image);
+    }
     this.platform.ready()
       .then(() => {
-       
-        this.socialSharing.share("https://marketplace.arraypointer.com/?id=" + this.advertisementId + "&categoryId=" + this.categoryId,this.image)
-          .then(() => {
+        this.socialSharing.share("", "", this.image, "https://marketplace.arraypointer.com/?id=" + this.advertisementId + "&categoryId=" + this.categoryId)
+          .then((data) => {
+            console.log('Shared via SharePicker');
           })
-          .catch(() => {
+          .catch((err) => {
+            console.log('Was not shared via SharePicker');
           });
       });
+    console.log("share image:" + this.image);
+    // this.platform.ready()
+    //   .then(() => {
+
+    //     this.socialSharing.share("https://marketplace.arraypointer.com/?id=" + this.advertisementId + "&categoryId=" + this.categoryId,this.image)
+    //       .then(() => {
+    //       })
+    //       .catch(() => {
+    //       });
+    //   });
   }
 
   convertToDataURLviaCanvas(url, outputFormat) {

@@ -255,6 +255,14 @@ var AdvertisementdetailPage = /** @class */ (function () {
         });
     };
     AdvertisementdetailPage.prototype.ionViewWillEnter = function () {
+        var str = "http://d3lgrseqpnv6xt.cloudfront.net/1588945760313.jpg";
+        var dotIndex = str.lastIndexOf('.');
+        var ext = str.substring(dotIndex);
+        console.log("show first image:" + ext);
+        var strsecond = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdjfVsLj-pxifXgB8LHVc1WrC5bF6ivv3kEMzE83oeNzG4ut90&usqp=CAU";
+        var dotSecondIndex = strsecond.lastIndexOf('.');
+        var extSecond = strsecond.substring(dotSecondIndex);
+        console.log("show second image:" + extSecond);
         this.loader.showBlockingLoaderAuth();
         this.userId = localStorage.getItem('userId');
         this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
@@ -360,15 +368,36 @@ var AdvertisementdetailPage = /** @class */ (function () {
     };
     AdvertisementdetailPage.prototype.sharePicker = function (image) {
         var _this = this;
-        console.log("share image:" + this.image);
+        var str = image;
+        var dotIndex = str.lastIndexOf('.');
+        var ext = str.substring(dotIndex);
+        console.log("show first image:" + ext);
+        if (ext == ".jpg") {
+            console.log("match image");
+            this.image = image;
+        }
+        else {
+            console.log("not match image");
+        }
         this.platform.ready()
             .then(function () {
-            _this.socialSharing.share("https://marketplace.arraypointer.com/?id=" + _this.advertisementId + "&categoryId=" + _this.categoryId, _this.image)
-                .then(function () {
+            _this.socialSharing.share("", "", _this.image, "https://marketplace.arraypointer.com/?id=" + _this.advertisementId + "&categoryId=" + _this.categoryId)
+                .then(function (data) {
+                console.log('Shared via SharePicker');
             })
-                .catch(function () {
+                .catch(function (err) {
+                console.log('Was not shared via SharePicker');
             });
         });
+        console.log("share image:" + this.image);
+        // this.platform.ready()
+        //   .then(() => {
+        //     this.socialSharing.share("https://marketplace.arraypointer.com/?id=" + this.advertisementId + "&categoryId=" + this.categoryId,this.image)
+        //       .then(() => {
+        //       })
+        //       .catch(() => {
+        //       });
+        //   });
     };
     AdvertisementdetailPage.prototype.convertToDataURLviaCanvas = function (url, outputFormat) {
         var _this = this;
