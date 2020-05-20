@@ -23,6 +23,10 @@ import { PopupaddressComponent } from './components/popupaddress/popupaddress.co
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent,
@@ -49,6 +53,10 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     CallNumber,
     Network,
     Deeplinks,
+    FileChooser,
+    FilePath,
+    Base64,
+    File,
     SplashScreen,
     SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

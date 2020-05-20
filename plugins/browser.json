@@ -51,6 +51,15 @@
     },
     "com-badrit-base64": {
       "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-filechooser": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.ionic.marketplace"
     }
   },
   "dependent_plugins": {

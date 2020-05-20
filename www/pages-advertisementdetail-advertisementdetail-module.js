@@ -1,42 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-advertisementdetail-advertisementdetail-module"],{
 
-/***/ "./node_modules/@ionic-native/base64/ngx/index.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@ionic-native/base64/ngx/index.js ***!
-  \********************************************************/
-/*! exports provided: Base64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Base64", function() { return Base64; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_native_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/core */ "./node_modules/@ionic-native/core/index.js");
-
-
-
-var Base64 = /** @class */ (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Base64, _super);
-    function Base64() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Base64.prototype.encodeFile = function (filePath) { return Object(_ionic_native_core__WEBPACK_IMPORTED_MODULE_2__["cordova"])(this, "encodeFile", {}, arguments); };
-    Base64.pluginName = "Base64";
-    Base64.plugin = "com-badrit-base64";
-    Base64.pluginRef = "plugins.Base64";
-    Base64.repo = "https://github.com/hazemhagrass/phonegap-base64";
-    Base64.platforms = ["Android", "iOS"];
-    Base64 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
-    ], Base64);
-    return Base64;
-}(_ionic_native_core__WEBPACK_IMPORTED_MODULE_2__["IonicNativePlugin"]));
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvQGlvbmljLW5hdGl2ZS9wbHVnaW5zL2Jhc2U2NC9uZ3gvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDM0MsT0FBTyw4QkFBc0MsTUFBTSxvQkFBb0IsQ0FBQzs7SUFpQzVDLDBCQUFpQjs7OztJQU8zQywyQkFBVSxhQUFDLFFBQWdCOzs7Ozs7SUFQaEIsTUFBTTtRQURsQixVQUFVLEVBQUU7T0FDQSxNQUFNO2lCQWxDbkI7RUFrQzRCLGlCQUFpQjtTQUFoQyxNQUFNIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgQ29yZG92YSwgSW9uaWNOYXRpdmVQbHVnaW4sIFBsdWdpbiB9IGZyb20gJ0Bpb25pYy1uYXRpdmUvY29yZSc7XG5cbi8qKlxuICogQGJldGFcbiAqIEBuYW1lIEJhc2U2NFxuICogQGRlc2NyaXB0aW9uXG4gKiBUaGlzIFBsdWdpbiBpcyB1c2VkIHRvIGVuY29kZSBiYXNlNjQgb2YgYW55IGZpbGUsIGl0IHVzZXMganMgY29kZSBmb3IgaU9TLCBidXQgaW4gY2FzZSBvZiBhbmRyb2lkIGl0IHVzZXMgbmF0aXZlIGNvZGUgdG8gaGFuZGxlIGFuZHJvaWQgdmVyc2lvbnMgbG93ZXIgdGhhbiB2LjNcbiAqXG4gKiBAdXNhZ2VcbiAqIGBgYHR5cGVzY3JpcHRcbiAqIGltcG9ydCB7IEJhc2U2NCB9IGZyb20gJ0Bpb25pYy1uYXRpdmUvYmFzZTY0L25neCc7XG4gKlxuICogY29uc3RydWN0b3IocHJpdmF0ZSBiYXNlNjQ6IEJhc2U2NCkgeyB9XG4gKlxuICogLi4uXG4gKlxuICogbGV0IGZpbGVQYXRoOiBzdHJpbmcgPSAnZmlsZTovLy8uLi4nO1xuICogdGhpcy5iYXNlNjQuZW5jb2RlRmlsZShmaWxlUGF0aCkudGhlbigoYmFzZTY0RmlsZTogc3RyaW5nKSA9PiB7XG4gKiAgIGNvbnNvbGUubG9nKGJhc2U2NEZpbGUpO1xuICogfSwgKGVycikgPT4ge1xuICogICBjb25zb2xlLmxvZyhlcnIpO1xuICogfSk7XG4gKlxuICogYGBgXG4gKi9cbkBQbHVnaW4oe1xuICBwbHVnaW5OYW1lOiAnQmFzZTY0JyxcbiAgcGx1Z2luOiAnY29tLWJhZHJpdC1iYXNlNjQnLFxuICBwbHVnaW5SZWY6ICdwbHVnaW5zLkJhc2U2NCcsXG4gIHJlcG86ICdodHRwczovL2dpdGh1Yi5jb20vaGF6ZW1oYWdyYXNzL3Bob25lZ2FwLWJhc2U2NCcsXG4gIHBsYXRmb3JtczogWydBbmRyb2lkJywgJ2lPUyddLFxufSlcbkBJbmplY3RhYmxlKClcbmV4cG9ydCBjbGFzcyBCYXNlNjQgZXh0ZW5kcyBJb25pY05hdGl2ZVBsdWdpbiB7XG4gIC8qKlxuICAgKiBUaGlzIGZ1bmN0aW9uIGVuY29kZXMgYmFzZTY0IG9mIGFueSBmaWxlXG4gICAqIEBwYXJhbSB7c3RyaW5nfSBmaWxlUGF0aCBBYnNvbHV0ZSBmaWxlIHBhdGhcbiAgICogQHJldHVybiB7UHJvbWlzZTxzdHJpbmc+fSBSZXR1cm5zIGEgcHJvbWlzZSB0aGF0IHJlc29sdmVzIHdoZW4gdGhlIGZpbGUgaXMgc3VjY2Vzc2Z1bGx5IGVuY29kZWRcbiAgICovXG4gIEBDb3Jkb3ZhKClcbiAgZW5jb2RlRmlsZShmaWxlUGF0aDogc3RyaW5nKTogUHJvbWlzZTxzdHJpbmc+IHtcbiAgICByZXR1cm47XG4gIH1cbn1cbiJdfQ==
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/advertisementdetail/advertisementdetail.page.html":
 /*!***************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/advertisementdetail/advertisementdetail.page.html ***!
@@ -187,11 +150,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
 /* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/ngx/index.js");
 /* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/ngx/index.js");
-/* harmony import */ var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/google-maps */ "./node_modules/@ionic-native/google-maps/index.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
-/* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
+/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/ngx/index.js");
+/* harmony import */ var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/google-maps */ "./node_modules/@ionic-native/google-maps/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/service/apiservice/api.service */ "./src/app/service/apiservice/api.service.ts");
+/* harmony import */ var src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/service/network/network.service */ "./src/app/service/network/network.service.ts");
+/* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+
+
+
 
 
 
@@ -206,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AdvertisementdetailPage = /** @class */ (function () {
-    function AdvertisementdetailPage(activatedRoute, platform, networkServices, apiCall, networkService, callNumber, googlemaps, router, base64, actionSheetCtrl, socialSharing, nativeGeocoder, loader) {
+    function AdvertisementdetailPage(activatedRoute, platform, networkServices, apiCall, networkService, callNumber, googlemaps, router, fileChooser, base64, file, actionSheetCtrl, socialSharing, nativeGeocoder, filePath, loader) {
         this.activatedRoute = activatedRoute;
         this.platform = platform;
         this.networkServices = networkServices;
@@ -215,10 +184,13 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.callNumber = callNumber;
         this.googlemaps = googlemaps;
         this.router = router;
+        this.fileChooser = fileChooser;
         this.base64 = base64;
+        this.file = file;
         this.actionSheetCtrl = actionSheetCtrl;
         this.socialSharing = socialSharing;
         this.nativeGeocoder = nativeGeocoder;
+        this.filePath = filePath;
         this.loader = loader;
         this.displayfavourite = "0";
         this.lattitude = 0;
@@ -282,14 +254,14 @@ var AdvertisementdetailPage = /** @class */ (function () {
         // this.getIds = JSON.parse(getdata);
         if (this.getIds.status == "users") {
             this.advertisementId = this.getIds.id;
-            this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].version + "users/" + this.userId + "/advertisements/" + this.advertisementId;
+            this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].version + "users/" + this.userId + "/advertisements/" + this.advertisementId;
             this.getDetailAdvertisement();
         }
         else {
             this.advertisementId = this.getIds.id;
             this.categoryId = this.getIds.categoryId;
             console.log("show categoryId::" + this.categoryId);
-            this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].version + "categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
+            this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].version + "categories/" + this.categoryId + "/advertisements/" + this.advertisementId;
             this.getDetailAdvertisement();
         }
         var jsonString = localStorage.getItem("BOOKMARK");
@@ -313,14 +285,6 @@ var AdvertisementdetailPage = /** @class */ (function () {
         //   }
         // }
         this.loader.hideBlockingLoaderAuth();
-    };
-    AdvertisementdetailPage.prototype.getBase64 = function (path) {
-        var filePath = path;
-        this.base64.encodeFile(filePath).then(function (base64File) {
-            return base64File;
-        }, function (err) {
-            console.log(err);
-        });
     };
     AdvertisementdetailPage.prototype.presentActionSheet = function (image) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -381,32 +345,50 @@ var AdvertisementdetailPage = /** @class */ (function () {
             });
         });
     };
-    AdvertisementdetailPage.prototype.getBase64Image = function (img) {
-        var filePath = img;
-        this.base64.encodeFile(filePath).then(function (base64File) {
-            console.log("show file:" + base64File);
-            return base64File;
-        }, function (err) {
-            console.log(err);
-        });
-    };
     AdvertisementdetailPage.prototype.sharePicker = function (image) {
         var _this = this;
-        var filePath = image;
-        this.base64.encodeFile(filePath).then(function (base64File) {
-            console.log("show file:" + base64File);
-            return base64File;
-        }, function (err) {
-            console.log(err);
+        this.getDataUrl(image);
+        var checkBase64 = this.convertToDataURLviaCanvas(image, "image/jpeg").then(function (base64) {
+            return console.log(_this.getBase64Image = base64);
         });
+        this.image = this.getBase64Image;
         this.platform.ready()
             .then(function () {
-            _this.socialSharing.share("marketplaceapp://marketplace.arraypointer.com/?id=" + _this.advertisementId + "&categoryId=" + _this.categoryId, _this.message, _this.image)
+            _this.socialSharing.share("http://marketplace.arraypointer.com/?id=" + _this.advertisementId + "&categoryId=" + _this.categoryId, _this.message, _this.image)
                 .then(function () {
             })
                 .catch(function () {
             });
         });
+    };
+    AdvertisementdetailPage.prototype.convertToDataURLviaCanvas = function (url, outputFormat) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.img = new Image();
+            _this.img.crossOrigin = 'Anonymous';
+            _this.img.onload = function () {
+                var canvas = document.createElement('CANVAS'), ctx = canvas.getContext('2d'), dataURL;
+                canvas.height = _this.img.height;
+                canvas.width = _this.img.width;
+                ctx.drawImage(_this.img, 0, 0);
+                dataURL = canvas.toDataURL(outputFormat);
+                resolve(dataURL);
+                canvas = null;
+            };
+            _this.img.src = url;
+        });
+    };
+    AdvertisementdetailPage.prototype.getDataUrl = function (img) {
+        console.log("show img in getdata function:" + img);
+        // this.fileChooser.open().then((fileUri) => {
+        //   console.log("show image uri:"+fileUri);
+        //   this.filePath.resolveNativePath(fileUri).then((filePath) =>
+        //   this.base64.encodeFile("filePath").then((base64String) => {
+        //     alert("base64String:" + base64String);
+        //   })
+        // )
+        //   .catch(err => console.log(err));
+        // })
     };
     AdvertisementdetailPage.prototype.goBackword = function () {
         if (this.advertisementType == '0') {
@@ -415,13 +397,11 @@ var AdvertisementdetailPage = /** @class */ (function () {
         else {
             this.router.navigate(['/home', { categoryId: this.categoryId }]);
         }
-        // console.log("back navigation::" + this.categoryId);
-        // window.history.back();
     };
     AdvertisementdetailPage.prototype.getProfileDetail = function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].version + "users/" + this.userId;
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].version + "users/" + this.userId;
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.userName = _this.profileDetail.name;
@@ -438,7 +418,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         var _this = this;
         // this.loader.showBlockingLoaderAuth();
         try {
-            this.map = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_8__["GoogleMaps"].create('map_canvas', {
+            this.map = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_9__["GoogleMaps"].create('map_canvas', {
                 camera: {
                     target: {
                         lat: this.lattitude,
@@ -448,7 +428,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
                     tilt: 30
                 }
             });
-            this.map.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_8__["GoogleMapsEvent"].MAP_READY).subscribe(function (data) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            this.map.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_9__["GoogleMapsEvent"].MAP_READY).subscribe(function (data) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
                 var marker;
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                     switch (_a.label) {
@@ -541,17 +521,20 @@ var AdvertisementdetailPage = /** @class */ (function () {
     };
     AdvertisementdetailPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__["Platform"] },
-        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_12__["NetworkService"] },
-        { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_11__["ApiService"] },
-        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_12__["NetworkService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["Platform"] },
+        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_13__["NetworkService"] },
+        { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_12__["ApiService"] },
+        { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_13__["NetworkService"] },
         { type: _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__["CallNumber"] },
-        { type: _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_8__["GoogleMaps"] },
+        { type: _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_9__["GoogleMaps"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_14__["FileChooser"] },
         { type: _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_7__["Base64"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__["ActionSheetController"] },
+        { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_15__["File"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ActionSheetController"] },
         { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"] },
         { type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__["NativeGeocoder"] },
+        { type: _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_8__["FilePath"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -565,17 +548,20 @@ var AdvertisementdetailPage = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./advertisementdetail.page.scss */ "./src/app/pages/advertisementdetail/advertisementdetail.page.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_9__["Platform"],
-            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_12__["NetworkService"],
-            src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_11__["ApiService"],
-            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_12__["NetworkService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["Platform"],
+            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_13__["NetworkService"],
+            src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_12__["ApiService"],
+            src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_13__["NetworkService"],
             _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_5__["CallNumber"],
-            _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_8__["GoogleMaps"],
+            _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_9__["GoogleMaps"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_14__["FileChooser"],
             _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_7__["Base64"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_9__["ActionSheetController"],
+            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_15__["File"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ActionSheetController"],
             _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"],
             _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__["NativeGeocoder"],
+            _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_8__["FilePath"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
     ], AdvertisementdetailPage);
     return AdvertisementdetailPage;
