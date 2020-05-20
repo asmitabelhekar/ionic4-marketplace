@@ -96,7 +96,7 @@
     },
     "is_top_level": true,
     "variables": {
-      "URL_SCHEME": "marketplaceapp",
+      "URL_SCHEME": "marketplace",
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "marketplace.arraypointer.com"
     }

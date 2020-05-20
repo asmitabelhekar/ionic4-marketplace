@@ -118,7 +118,7 @@
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
       },
       "ionic-plugin-deeplinks": {
-        "URL_SCHEME": "marketplaceapp",
+        "URL_SCHEME": "marketplace",
         "DEEPLINK_SCHEME": "https",
         "DEEPLINK_HOST": "marketplace.arraypointer.com"
       },
