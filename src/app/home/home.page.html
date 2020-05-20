@@ -160,17 +160,37 @@
 
     </div>
 
-    <div class="cl_bottom_fix">
-      <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
-        <ion-icon name="home" class="cl_post_css" (click)="home()"></ion-icon>
-        <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
-        <ion-icon name="add-circle" class="cl_bottom_nav_css" (click)="postAdvertisement()">
-        </ion-icon>
-        <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
-        <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
+    
+      <div fxLayout="row" class="cl_bottom_fix" style="margin-top:10px;width:100%">
+        <div fxLayout="column" fxLayoutAlign="center center" class="cl_post_css" style="width:20%" (click)="home()">
+          <!-- <ion-icon name="home"  class="cl_icon"></ion-icon> -->
+          <mat-icon  fxLayoutAlign="center center" class="cl_icon">home</mat-icon>
+          <label fxLayoutAlign="center center" class="cl_text_font">HOME</label>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css" (click)="openChatList()">
+          <!-- <ion-icon name="chatbubbles" class="cl_icon" ></ion-icon> -->
+          <mat-icon fxLayoutAlign="center center" class="cl_icon"> chat_bubble_outline</mat-icon>
+          <label fxLayoutAlign="center center" class="cl_text_font">CHATS</label>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css"  (click)="postAdvertisement()">
+          <!-- <ion-icon name="add-circle" class="cl_icon">
+          </ion-icon> -->
+          <mat-icon fxLayoutAlign="center center" class="cl_icon">add_circle_outline</mat-icon>
+          <label fxLayoutAlign="center center" class="cl_text_font">SELL</label>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css" (click)="openFavourite()">
+          <!-- <ion-icon name="paper" class="cl_icon" ></ion-icon> -->
+          <mat-icon fxLayoutAlign="center center" class="cl_icon" >library_books</mat-icon>
+          <label fxLayoutAlign="center center" class="cl_text_font">MY ADS</label>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css" (click)="openProfile()">
+          <!-- <ion-icon name="person" class="cl_icon" ></ion-icon> -->
+          <mat-icon  fxLayoutAlign="center center" class="cl_icon">person</mat-icon>
+          <label fxLayoutAlign="center center" class="cl_text_font">ACCOUNT</label>
+        </div>
+       
       </div>
     </div>
 
-  </div>
 
 </ion-content>

@@ -18,7 +18,11 @@ export class SecondpageadvertisementPage implements OnInit {
   usersId: any;
   imageUrl = 1;
   urls = [];
-  defaultValue = "7";
+  defaultAdvertisementWeekPrice = "7";
+  furtherAdvertisementWeeksPrice : any;
+
+  defaultBannerWeekPrice = "7";
+  furtherBannerWeeksPrice : any;
   submitAdvertisementData
   advertisementModel: any = {};
   fromDateTimestamp: number = 0;
@@ -44,7 +48,7 @@ export class SecondpageadvertisementPage implements OnInit {
   bannerArray: any;
   filterObject: any = {};
   updatedWeeks: any = "1";
-
+  pricingArray = [];
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
@@ -60,6 +64,7 @@ export class SecondpageadvertisementPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.getPricing();
     this.todayDate = new Date();
     this.getData = JSON.parse(this.activatedRoute.snapshot.params['FinalObject']);
     this.bannerImage = this.getData.images[0];
@@ -92,6 +97,29 @@ export class SecondpageadvertisementPage implements OnInit {
 
   }
 
+  getPricing(){
+    let url = environment.base_url + environment.version + "subscriptions" ;
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.pricingArray = MyResponse['result']['list'];
+      for(let i=0; i< this.pricingArray.length; i++){
+        if(this.pricingArray[i]['name'] == "advertisement" || this.pricingArray[i]['name'] == "Advertisement"){
+          this.defaultAdvertisementWeekPrice = this.pricingArray[i]['firstWeekPrice'];
+          this.furtherAdvertisementWeeksPrice = this.pricingArray[i]['furtherOnwardsPrice'];
+        }else if(this.pricingArray[i]['name'] == "banner" || this.pricingArray[i]['name'] == "Banner"){
+          this.defaultBannerWeekPrice = this.pricingArray[i]['firstWeekPrice'];
+          this.furtherBannerWeeksPrice = this.pricingArray[i]['furtherOnwardsPrice'];
+        }
+        else{
+          this.defaultAdvertisementWeekPrice = this.pricingArray[i]['firstWeekPrice'];
+          this.furtherAdvertisementWeeksPrice = this.pricingArray[i]['furtherOnwardsPrice'];
+        }
+      }
+      this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+
+      })
+  }
 
   goBackword() {
     window.history.back();

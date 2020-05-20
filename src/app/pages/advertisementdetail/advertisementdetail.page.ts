@@ -146,16 +146,6 @@ export class AdvertisementdetailPage implements OnInit {
 
   ionViewWillEnter() {
 
-    var str = "http://d3lgrseqpnv6xt.cloudfront.net/1588945760313.jpg";
-    var dotIndex = str.lastIndexOf('.');
-    var ext = str.substring(dotIndex);
-    console.log("show first image:" + ext)
-
-    var strsecond = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdjfVsLj-pxifXgB8LHVc1WrC5bF6ivv3kEMzE83oeNzG4ut90&usqp=CAU";
-    var dotSecondIndex = strsecond.lastIndexOf('.');
-    var extSecond = strsecond.substring(dotSecondIndex);
-    console.log("show second image:" + extSecond)
-
     this.loader.showBlockingLoaderAuth();
     this.userId = localStorage.getItem('userId');
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
@@ -266,7 +256,7 @@ export class AdvertisementdetailPage implements OnInit {
     var dotIndex = str.lastIndexOf('.');
     var ext = str.substring(dotIndex);
     console.log("show first image:" + ext)
-    if(ext == ".jpg"){
+    if(ext == ".jpg" || ext == ".png"){
       console.log("match image");
       this.image = image;
     }
