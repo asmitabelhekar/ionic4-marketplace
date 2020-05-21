@@ -1,27 +1,26 @@
 {
-  "_from": "ionic-plugin-deeplinks",
+  "_from": "ionic-plugin-deeplinks@^1.0.20",
   "_id": "ionic-plugin-deeplinks@1.0.20",
   "_inBundle": false,
   "_integrity": "sha512-DCqg7GR15b9Gzttoo/Cv9a2FGwrR6WM5GdO7XuX5sF291dTZGW92gq9UmTu2z4ogJ0sQhUy8VDdBltIjBNK5bQ==",
   "_location": "/ionic-plugin-deeplinks",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "ionic-plugin-deeplinks",
+    "raw": "ionic-plugin-deeplinks@^1.0.20",
     "name": "ionic-plugin-deeplinks",
     "escapedName": "ionic-plugin-deeplinks",
-    "rawSpec": "",
+    "rawSpec": "^1.0.20",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^1.0.20"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/ionic-plugin-deeplinks/-/ionic-plugin-deeplinks-1.0.20.tgz",
   "_shasum": "ac5f4f24f81ba6a77e721680bdbd68f0e22a109f",
-  "_spec": "ionic-plugin-deeplinks",
+  "_spec": "ionic-plugin-deeplinks@^1.0.20",
   "_where": "/home/dhananjayraut/Desktop/ionic4-marketplace",
   "author": {
     "name": "Max Lynch",

@@ -3,7 +3,7 @@
   "display": "standalone",
   "name": "Holy Hub",
   "short_name": "Holy Hub",
-  "version": "io.ionic.marketplace",
+  "version": "com.holyhub.v1",
   "description": "An awesome Ionic/Cordova app.",
   "author": "Ionic Framework Team",
   "icons": [],

@@ -10,6 +10,9 @@ import { HomePage } from './home/home.page';
 import { AdvertisementdetailPage } from './pages/advertisementdetail/advertisementdetail.page';
 import { NgZone } from '@angular/core';
 import { ChatlistPage } from './pages/chatlist/chatlist.page';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -56,7 +59,10 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public deeplinks : Deeplinks,
-    public zone : NgZone
+    public zone : NgZone,
+    public storage : Storage,
+    public fcm : FCM,
+    public localNotifications : LocalNotifications
   ) {
     this.initializeApp();
   }
@@ -77,6 +83,17 @@ export class AppComponent {
       this.splashScreen.hide();
       this.loginSession();
       
+      this.fcmNotification();
+
+      this.localNotifications.on('click').subscribe(notification => {
+        console.log('Notification str: ' + JSON.stringify(notification))
+        // console.log('Notification parse: ' + JSON.parse(notification))
+        
+        let json = notification.data
+
+     
+      })
+
       this.platform.backButton.subscribe(() => {
         if (this.router.url === '/home' ) {
           this.presentAlert()
@@ -120,6 +137,51 @@ export class AppComponent {
     });
   }
 
+
+  fcmNotification() {
+    this.fcm.getToken().then(token => {
+      console.log("TOKEN: " + token)
+      this.storage.set('token',token).then(()=>{
+
+      })
+      // alert(token);
+    });
+
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log(token);
+    });
+
+    this.fcm.onNotification().subscribe(data => {
+      if (data.wasTapped) {
+        console.log("Received in background");
+        // alert("Received in BG: " + JSON.stringify(data))
+      } else {
+        console.log("Received in foreground");
+        
+        // alert("Received in foreground: " + JSON.stringify(data))
+        this.localNotifications.schedule({
+          id: 1,
+          title: data.title,
+          text: data.body,
+          foreground: true,
+          sound: "default",
+          trigger: { at: new Date() },
+          icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+          actions: "FCM_PLUGIN_ACTIVITY",
+          data: {
+            mydata: data,
+            type: ""
+          }
+          // sound: default
+          // trigger: { every: { hour: 9, minute: 30 } }
+        });
+        // this.localNotifications.getAll().then((res: ILocalNotification[]) => {
+        //   console.log('Get All: ' + JSON.stringify(res));
+        // })
+      };
+    });
+  }
+  
 
   async presentAlert() {
     const alert = await this.alertCtrl.create({

@@ -1,28 +1,23 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[40],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-modal-ios.entry.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-modal-ios.entry.js ***!
-  \**********************************************************************/
-/*! exports provided: ion_modal */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-nav_2.entry.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-nav_2.entry.js ***!
+  \******************************************************************/
+/*! exports provided: ion_nav, ion_nav_link */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_modal", function() { return Modal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_nav", function() { return Nav; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_nav_link", function() { return NavLink; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm-es5/core-0a8d4d2e.js");
-/* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
-/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-46f4a262.js");
-/* harmony import */ var _animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animation-56279521.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-56279521.js");
-/* harmony import */ var _cubic_bezier_1d592096_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cubic-bezier-1d592096.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-1d592096.js");
-/* harmony import */ var _index_c38df685_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index-c38df685.js */ "./node_modules/@ionic/core/dist/esm-es5/index-c38df685.js");
-/* harmony import */ var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./constants-3c3e1099.js */ "./node_modules/@ionic/core/dist/esm-es5/constants-3c3e1099.js");
-/* harmony import */ var _hardware_back_button_1ed0083a_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hardware-back-button-1ed0083a.js */ "./node_modules/@ionic/core/dist/esm-es5/hardware-back-button-1ed0083a.js");
-/* harmony import */ var _overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./overlays-e336664a.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-e336664a.js");
-/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js");
-/* harmony import */ var _framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./framework-delegate-c2e2e1f4.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-c2e2e1f4.js");
-/* harmony import */ var _index_4e2fa3c6_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./index-4e2fa3c6.js */ "./node_modules/@ionic/core/dist/esm-es5/index-4e2fa3c6.js");
+/* harmony import */ var _index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-e23c3ffd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-e23c3ffd.js");
+/* harmony import */ var _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ionic-global-fbc9a2ac.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-fbc9a2ac.js");
+/* harmony import */ var _helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-5c745fbd.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-5c745fbd.js");
+/* harmony import */ var _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-b60886e1.js */ "./node_modules/@ionic/core/dist/esm-es5/index-b60886e1.js");
+/* harmony import */ var _cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cubic-bezier-685f606a.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-685f606a.js");
+/* harmony import */ var _framework_delegate_d1eb6504_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./framework-delegate-d1eb6504.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-d1eb6504.js");
 
 
 
@@ -30,412 +25,933 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-// Defaults for the card swipe animation
-var SwipeToCloseDefaults = {
-    MIN_PRESENTING_SCALE: 0.93,
-};
-var createSwipeToCloseGesture = function (el, animation, onDismiss) {
-    var height = el.offsetHeight;
-    var isOpen = false;
-    var canStart = function (detail) {
-        var target = detail.event.target;
-        if (target === null ||
-            !target.closest) {
-            return true;
-        }
-        var content = target.closest('ion-content');
-        if (content === null) {
-            return true;
-        }
-        // Target is in the content so we don't start the gesture.
-        // We could be more nuanced here and allow it for content that
-        // does not need to scroll.
-        return false;
-    };
-    var onStart = function () {
-        animation.progressStart(true, (isOpen) ? 1 : 0);
-    };
-    var onMove = function (detail) {
-        var step = detail.deltaY / height;
-        if (step < 0) {
-            return;
-        }
-        animation.progressStep(step);
-    };
-    var onEnd = function (detail) {
-        var velocity = detail.velocityY;
-        var step = detail.deltaY / height;
-        if (step < 0) {
-            return;
-        }
-        var threshold = (detail.deltaY + velocity * 1000) / height;
-        var shouldComplete = threshold >= 0.5;
-        var newStepValue = (shouldComplete) ? -0.001 : 0.001;
-        if (!shouldComplete) {
-            animation.easing('cubic-bezier(1, 0, 0.68, 0.28)');
-            newStepValue += Object(_cubic_bezier_1d592096_js__WEBPACK_IMPORTED_MODULE_5__["g"])([0, 0], [1, 0], [0.68, 0.28], [1, 1], step)[0];
-        }
-        else {
-            animation.easing('cubic-bezier(0.32, 0.72, 0, 1)');
-            newStepValue += Object(_cubic_bezier_1d592096_js__WEBPACK_IMPORTED_MODULE_5__["g"])([0, 0], [0.32, 0.72], [0, 1], [1, 1], step)[0];
-        }
-        var duration = (shouldComplete) ? computeDuration(step * height, velocity) : computeDuration((1 - step) * height, velocity);
-        isOpen = shouldComplete;
-        gesture.enable(false);
-        animation
-            .onFinish(function () {
-            if (!shouldComplete) {
-                gesture.enable(true);
-            }
-        })
-            .progressEnd((shouldComplete) ? 1 : 0, newStepValue, duration);
-        if (shouldComplete) {
-            onDismiss();
-        }
-    };
-    var gesture = Object(_index_c38df685_js__WEBPACK_IMPORTED_MODULE_6__["createGesture"])({
-        el: el,
-        gestureName: 'modalSwipeToClose',
-        gesturePriority: 40,
-        direction: 'y',
-        threshold: 10,
-        canStart: canStart,
-        onStart: onStart,
-        onMove: onMove,
-        onEnd: onEnd
-    });
-    return gesture;
-};
-var computeDuration = function (remaining, velocity) {
-    return Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_3__["c"])(400, remaining / Math.abs(velocity * 1.1), 500);
-};
-/**
- * iOS Modal Enter Animation for the Card presentation style
- */
-var iosEnterAnimation = function (baseEl, presentingEl) {
-    // The top translate Y for the presenting element
-    var backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 0.01, 'var(--backdrop-opacity)');
-    var wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-        .addElement(baseEl.querySelector('.modal-wrapper'))
-        .beforeStyles({ 'opacity': 1 })
-        .fromTo('transform', 'translateY(100%)', 'translateY(0%)');
-    var baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-        .addElement(baseEl)
-        .easing('cubic-bezier(0.32,0.72,0,1)')
-        .duration(500)
-        .beforeAddClass('show-modal')
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-    if (presentingEl) {
-        var modalTransform = (presentingEl.tagName === 'ION-MODAL' && presentingEl.presentingElement !== undefined) ? '-10px' : 'max(30px, var(--ion-safe-area-top))';
-        var bodyEl_1 = document.body;
-        var toPresentingScale = SwipeToCloseDefaults.MIN_PRESENTING_SCALE;
-        var finalTransform = "translateY(" + modalTransform + ") scale(" + toPresentingScale + ")";
-        var presentingAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-            .beforeStyles({
-            'transform': 'translateY(0)',
-            'transform-origin': 'top center',
-            'overflow': 'hidden'
-        })
-            .afterStyles({
-            'transform': finalTransform
-        })
-            .beforeAddWrite(function () { return bodyEl_1.style.setProperty('background-color', 'black'); })
-            .addElement(presentingEl)
-            .keyframes([
-            { offset: 0, filter: 'contrast(1)', transform: 'translateY(0px) scale(1)', borderRadius: '0px' },
-            { offset: 1, filter: 'contrast(0.85)', transform: finalTransform, borderRadius: '10px 10px 0 0' }
-        ]);
-        baseAnimation.addAnimation(presentingAnimation);
+var VIEW_STATE_NEW = 1;
+var VIEW_STATE_ATTACHED = 2;
+var VIEW_STATE_DESTROYED = 3;
+var ViewController = /** @class */ (function () {
+    function ViewController(component, params) {
+        this.component = component;
+        this.params = params;
+        this.state = VIEW_STATE_NEW;
     }
-    return baseAnimation;
-};
-/**
- * iOS Modal Leave Animation
- */
-var iosLeaveAnimation = function (baseEl, presentingEl, duration) {
-    if (duration === void 0) { duration = 500; }
-    var backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 'var(--backdrop-opacity)', 0.0);
-    var wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-        .addElement(baseEl.querySelector('.modal-wrapper'))
-        .beforeStyles({ 'opacity': 1 })
-        .fromTo('transform', 'translateY(0%)', 'translateY(100%)');
-    var baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-        .addElement(baseEl)
-        .easing('cubic-bezier(0.32,0.72,0,1)')
-        .duration(duration)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-    if (presentingEl) {
-        var modalTransform = (presentingEl.tagName === 'ION-MODAL' && presentingEl.presentingElement !== undefined) ? '-10px' : 'max(30px, var(--ion-safe-area-top))';
-        var bodyEl_2 = document.body;
-        var currentPresentingScale = SwipeToCloseDefaults.MIN_PRESENTING_SCALE;
-        var presentingAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
-            .addElement(presentingEl)
-            .beforeClearStyles(['transform'])
-            .afterClearStyles(['transform'])
-            .onFinish(function (currentStep) {
-            // only reset background color if this is the last card-style modal
-            if (currentStep !== 1) {
-                return;
-            }
-            presentingEl.style.setProperty('overflow', '');
-            var numModals = Array.from(bodyEl_2.querySelectorAll('ion-modal')).filter(function (m) { return m.presentingElement !== undefined; }).length;
-            if (numModals <= 1) {
-                bodyEl_2.style.setProperty('background-color', '');
-            }
-        })
-            .keyframes([
-            { offset: 0, filter: 'contrast(0.85)', transform: "translateY(" + modalTransform + ") scale(" + currentPresentingScale + ")", borderRadius: '10px 10px 0 0' },
-            { offset: 1, filter: 'contrast(1)', transform: 'translateY(0px) scale(1)', borderRadius: '0px' }
-        ]);
-        baseAnimation.addAnimation(presentingAnimation);
-    }
-    return baseAnimation;
-};
-/**
- * Md Modal Enter Animation
- */
-var mdEnterAnimation = function (baseEl) {
-    var baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
-    var backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
-    var wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
-    backdropAnimation
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 0.01, 'var(--backdrop-opacity)');
-    wrapperAnimation
-        .addElement(baseEl.querySelector('.modal-wrapper'))
-        .keyframes([
-        { offset: 0, opacity: 0.01, transform: 'translateY(40px)' },
-        { offset: 1, opacity: 1, transform: 'translateY(0px)' }
-    ]);
-    return baseAnimation
-        .addElement(baseEl)
-        .easing('cubic-bezier(0.36,0.66,0.04,1)')
-        .duration(280)
-        .beforeAddClass('show-modal')
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-};
-/**
- * Md Modal Leave Animation
- */
-var mdLeaveAnimation = function (baseEl) {
-    var baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
-    var backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
-    var wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_4__["c"])();
-    var wrapperEl = baseEl.querySelector('.modal-wrapper');
-    backdropAnimation
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 'var(--backdrop-opacity)', 0.0);
-    wrapperAnimation
-        .addElement(wrapperEl)
-        .keyframes([
-        { offset: 0, opacity: 0.99, transform: 'translateY(0px)' },
-        { offset: 1, opacity: 0, transform: 'translateY(40px)' }
-    ]);
-    return baseAnimation
-        .addElement(baseEl)
-        .easing('cubic-bezier(0.47,0,0.745,0.715)')
-        .duration(200)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-};
-var Modal = /** @class */ (function () {
-    function class_1(hostRef) {
-        var _this = this;
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        // Whether or not modal is being dismissed via gesture
-        this.gestureAnimationDismissing = false;
-        this.presented = false;
-        this.mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this);
-        /**
-         * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
-         */
-        this.keyboardClose = true;
-        /**
-         * If `true`, the modal will be dismissed when the backdrop is clicked.
-         */
-        this.backdropDismiss = true;
-        /**
-         * If `true`, a backdrop will be displayed behind the modal.
-         */
-        this.showBackdrop = true;
-        /**
-         * If `true`, the modal will animate.
-         */
-        this.animated = true;
-        /**
-         * If `true`, the modal can be swiped to dismiss. Only applies in iOS mode.
-         */
-        this.swipeToClose = false;
-        this.onBackdropTap = function () {
-            _this.dismiss(undefined, _overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["B"]);
-        };
-        this.onDismiss = function (ev) {
-            ev.stopPropagation();
-            ev.preventDefault();
-            _this.dismiss();
-        };
-        this.onLifecycle = function (modalEvent) {
-            var el = _this.usersElement;
-            var name = LIFECYCLE_MAP[modalEvent.type];
-            if (el && name) {
-                var ev = new CustomEvent(name, {
-                    bubbles: false,
-                    cancelable: false,
-                    detail: modalEvent.detail
-                });
-                el.dispatchEvent(ev);
-            }
-        };
-        Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["d"])(this.el);
-        this.didPresent = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionModalDidPresent", 7);
-        this.willPresent = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionModalWillPresent", 7);
-        this.willDismiss = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionModalWillDismiss", 7);
-        this.didDismiss = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionModalDidDismiss", 7);
-    }
-    /**
-     * Present the modal overlay after it has been created.
-     */
-    class_1.prototype.present = function () {
+    ViewController.prototype.init = function (container) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var container, componentProps, _a, mode, animationBuilder, ani;
-            var _this = this;
+            var component, _a;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        if (this.presented) {
-                            return [2 /*return*/];
-                        }
-                        container = this.el.querySelector(".modal-wrapper");
-                        if (!container) {
-                            throw new Error('container is undefined');
-                        }
-                        componentProps = Object.assign(Object.assign({}, this.componentProps), { modal: this.el });
+                        this.state = VIEW_STATE_ATTACHED;
+                        if (!!this.element) return [3 /*break*/, 2];
+                        component = this.component;
                         _a = this;
-                        return [4 /*yield*/, Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_11__["a"])(this.delegate, container, this.component, ['ion-page'], componentProps)];
+                        return [4 /*yield*/, Object(_framework_delegate_d1eb6504_js__WEBPACK_IMPORTED_MODULE_6__["a"])(this.delegate, container, component, ['ion-page', 'ion-page-invisible'], this.params)];
                     case 1:
-                        _a.usersElement = _b.sent();
-                        return [4 /*yield*/, Object(_index_4e2fa3c6_js__WEBPACK_IMPORTED_MODULE_12__["d"])(this.usersElement)];
-                    case 2:
-                        _b.sent();
-                        return [4 /*yield*/, Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["e"])(this, 'modalEnter', iosEnterAnimation, mdEnterAnimation, this.presentingElement)];
-                    case 3:
-                        _b.sent();
-                        mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this);
-                        if (this.swipeToClose && mode === 'ios') {
-                            animationBuilder = this.leaveAnimation || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('modalLeave', iosLeaveAnimation);
-                            ani = this.animation = animationBuilder(this.el, this.presentingElement);
-                            this.gesture = createSwipeToCloseGesture(this.el, ani, function () {
-                                /**
-                                 * While the gesture animation is finishing
-                                 * it is possible for a user to tap the backdrop.
-                                 * This would result in the dismiss animation
-                                 * being played again. Typically this is avoided
-                                 * by setting `presented = false` on the overlay
-                                 * component; however, we cannot do that here as
-                                 * that would prevent the element from being
-                                 * removed from the DOM.
-                                 */
-                                _this.gestureAnimationDismissing = true;
-                                _this.animation.onFinish(function () { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, function () {
-                                    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                                        switch (_a.label) {
-                                            case 0: return [4 /*yield*/, this.dismiss(undefined, 'gesture')];
-                                            case 1:
-                                                _a.sent();
-                                                this.gestureAnimationDismissing = false;
-                                                return [2 /*return*/];
-                                        }
-                                    });
-                                }); });
-                            });
-                            this.gesture.enable(true);
-                        }
+                        _a.element = _b.sent();
+                        _b.label = 2;
+                    case 2: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * DOM WRITE
+     */
+    ViewController.prototype._destroy = function () {
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(this.state !== VIEW_STATE_DESTROYED, 'view state must be ATTACHED');
+        var element = this.element;
+        if (element) {
+            if (this.delegate) {
+                this.delegate.removeViewFromDom(element.parentElement, element);
+            }
+            else {
+                element.remove();
+            }
+        }
+        this.nav = undefined;
+        this.state = VIEW_STATE_DESTROYED;
+    };
+    return ViewController;
+}());
+var matches = function (view, id, params) {
+    if (!view) {
+        return false;
+    }
+    if (view.component !== id) {
+        return false;
+    }
+    var currentParams = view.params;
+    if (currentParams === params) {
+        return true;
+    }
+    if (!currentParams && !params) {
+        return true;
+    }
+    if (!currentParams || !params) {
+        return false;
+    }
+    var keysA = Object.keys(currentParams);
+    var keysB = Object.keys(params);
+    if (keysA.length !== keysB.length) {
+        return false;
+    }
+    // Test for A's keys different from B.
+    for (var _i = 0, keysA_1 = keysA; _i < keysA_1.length; _i++) {
+        var key = keysA_1[_i];
+        if (currentParams[key] !== params[key]) {
+            return false;
+        }
+    }
+    return true;
+};
+var convertToView = function (page, params) {
+    if (!page) {
+        return null;
+    }
+    if (page instanceof ViewController) {
+        return page;
+    }
+    return new ViewController(page, params);
+};
+var convertToViews = function (pages) {
+    return pages.map(function (page) {
+        if (page instanceof ViewController) {
+            return page;
+        }
+        if ('page' in page) {
+            return convertToView(page.page, page.params);
+        }
+        return convertToView(page, undefined);
+    }).filter(function (v) { return v !== null; });
+};
+var navCss = ":host{left:0;right:0;top:0;bottom:0;position:absolute;contain:layout size style;overflow:hidden;z-index:0}";
+var Nav = /** @class */ (function () {
+    function class_1(hostRef) {
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        this.transInstr = [];
+        this.animationEnabled = true;
+        this.useRouter = false;
+        this.isTransitioning = false;
+        this.destroyed = false;
+        this.views = [];
+        /**
+         * If `true`, the nav should animate the transition of components.
+         */
+        this.animated = true;
+        this.ionNavWillLoad = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionNavWillLoad", 7);
+        this.ionNavWillChange = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionNavWillChange", 3);
+        this.ionNavDidChange = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionNavDidChange", 3);
+    }
+    class_1.prototype.swipeGestureChanged = function () {
+        if (this.gesture) {
+            this.gesture.enable(this.swipeGesture === true);
+        }
+    };
+    class_1.prototype.rootChanged = function () {
+        if (this.root !== undefined) {
+            if (!this.useRouter) {
+                this.setRoot(this.root, this.rootParams);
+            }
+        }
+    };
+    class_1.prototype.componentWillLoad = function () {
+        this.useRouter =
+            !!document.querySelector('ion-router') &&
+                !this.el.closest('[no-router]');
+        if (this.swipeGesture === undefined) {
+            var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+            this.swipeGesture = _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].getBoolean('swipeBackEnabled', mode === 'ios');
+        }
+        this.ionNavWillLoad.emit();
+    };
+    class_1.prototype.componentDidLoad = function () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var _a;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        this.rootChanged();
+                        _a = this;
+                        return [4 /*yield*/, __webpack_require__.e(/*! import() | swipe-back-7b4b8b66-js */ "swipe-back-7b4b8b66-js").then(__webpack_require__.bind(null, /*! ./swipe-back-7b4b8b66.js */ "./node_modules/@ionic/core/dist/esm-es5/swipe-back-7b4b8b66.js"))];
+                    case 1:
+                        _a.gesture = (_b.sent()).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+                        this.swipeGestureChanged();
                         return [2 /*return*/];
                 }
             });
         });
     };
+    class_1.prototype.componentDidUnload = function () {
+        for (var _i = 0, _a = this.views; _i < _a.length; _i++) {
+            var view = _a[_i];
+            Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
+            view._destroy();
+        }
+        if (this.gesture) {
+            this.gesture.destroy();
+            this.gesture = undefined;
+        }
+        // release swipe back gesture and transition
+        this.transInstr.length = this.views.length = 0;
+        this.destroyed = true;
+    };
     /**
-     * Dismiss the modal overlay after it has been presented.
+     * Push a new component onto the current navigation stack. Pass any additional
+     * information along as an object. This additional information is accessible
+     * through NavParams.
      *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the modal. For example, 'cancel' or 'backdrop'.
+     * @param component The component to push onto the navigation stack.
+     * @param componentProps Any properties of the component.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
      */
-    class_1.prototype.dismiss = function (data, role) {
+    class_1.prototype.push = function (component, componentProps, opts, done) {
+        return this.queueTrns({
+            insertStart: -1,
+            insertViews: [{ page: component, params: componentProps }],
+            opts: opts
+        }, done);
+    };
+    /**
+     * Inserts a component into the navigation stack at the specified index.
+     * This is useful to add a component at any point in the navigation stack.
+     *
+     * @param insertIndex The index to insert the component at in the stack.
+     * @param component The component to insert into the navigation stack.
+     * @param componentProps Any properties of the component.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.insert = function (insertIndex, component, componentProps, opts, done) {
+        return this.queueTrns({
+            insertStart: insertIndex,
+            insertViews: [{ page: component, params: componentProps }],
+            opts: opts
+        }, done);
+    };
+    /**
+     * Inserts an array of components into the navigation stack at the specified index.
+     * The last component in the array will become instantiated as a view, and animate
+     * in to become the active view.
+     *
+     * @param insertIndex The index to insert the components at in the stack.
+     * @param insertComponents The components to insert into the navigation stack.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.insertPages = function (insertIndex, insertComponents, opts, done) {
+        return this.queueTrns({
+            insertStart: insertIndex,
+            insertViews: insertComponents,
+            opts: opts
+        }, done);
+    };
+    /**
+     * Pop a component off of the navigation stack. Navigates back from the current
+     * component.
+     *
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.pop = function (opts, done) {
+        return this.queueTrns({
+            removeStart: -1,
+            removeCount: 1,
+            opts: opts
+        }, done);
+    };
+    /**
+     * Pop to a specific index in the navigation stack.
+     *
+     * @param indexOrViewCtrl The index or view controller to pop to.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.popTo = function (indexOrViewCtrl, opts, done) {
+        var tiConfig = {
+            removeStart: -1,
+            removeCount: -1,
+            opts: opts
+        };
+        if (typeof indexOrViewCtrl === 'object' && indexOrViewCtrl.component) {
+            tiConfig.removeView = indexOrViewCtrl;
+            tiConfig.removeStart = 1;
+        }
+        else if (typeof indexOrViewCtrl === 'number') {
+            tiConfig.removeStart = indexOrViewCtrl + 1;
+        }
+        return this.queueTrns(tiConfig, done);
+    };
+    /**
+     * Navigate back to the root of the stack, no matter how far back that is.
+     *
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.popToRoot = function (opts, done) {
+        return this.queueTrns({
+            removeStart: 1,
+            removeCount: -1,
+            opts: opts
+        }, done);
+    };
+    /**
+     * Removes a component from the navigation stack at the specified index.
+     *
+     * @param startIndex The number to begin removal at.
+     * @param removeCount The number of components to remove.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.removeIndex = function (startIndex, removeCount, opts, done) {
+        if (removeCount === void 0) { removeCount = 1; }
+        return this.queueTrns({
+            removeStart: startIndex,
+            removeCount: removeCount,
+            opts: opts
+        }, done);
+    };
+    /**
+     * Set the root for the current navigation stack to a component.
+     *
+     * @param component The component to set as the root of the navigation stack.
+     * @param componentProps Any properties of the component.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.setRoot = function (component, componentProps, opts, done) {
+        return this.setPages([{ page: component, params: componentProps }], opts, done);
+    };
+    /**
+     * Set the views of the current navigation stack and navigate to the last view.
+     * By default animations are disabled, but they can be enabled by passing options
+     * to the navigation controller. Navigation parameters can also be passed to the
+     * individual pages in the array.
+     *
+     * @param views The list of views to set as the navigation stack.
+     * @param opts The navigation options.
+     * @param done The transition complete function.
+     */
+    class_1.prototype.setPages = function (views, opts, done) {
+        if (opts == null) {
+            opts = {};
+        }
+        // if animation wasn't set to true then default it to NOT animate
+        if (opts.animated !== true) {
+            opts.animated = false;
+        }
+        return this.queueTrns({
+            insertStart: 0,
+            insertViews: views,
+            removeStart: 0,
+            removeCount: -1,
+            opts: opts
+        }, done);
+    };
+    /** @internal */
+    class_1.prototype.setRouteId = function (id, params, direction) {
+        var _this = this;
+        var active = this.getActiveSync();
+        if (matches(active, id, params)) {
+            return Promise.resolve({
+                changed: false,
+                element: active.element
+            });
+        }
+        var resolve;
+        var promise = new Promise(function (r) { return (resolve = r); });
+        var finish;
+        var commonOpts = {
+            updateURL: false,
+            viewIsReady: function (enteringEl) {
+                var mark;
+                var p = new Promise(function (r) { return (mark = r); });
+                resolve({
+                    changed: true,
+                    element: enteringEl,
+                    markVisible: function () { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, function () {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    mark();
+                                    return [4 /*yield*/, finish];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); }
+                });
+                return p;
+            }
+        };
+        if (direction === 'root') {
+            finish = this.setRoot(id, params, commonOpts);
+        }
+        else {
+            var viewController = this.views.find(function (v) { return matches(v, id, params); });
+            if (viewController) {
+                finish = this.popTo(viewController, Object.assign(Object.assign({}, commonOpts), { direction: 'back' }));
+            }
+            else if (direction === 'forward') {
+                finish = this.push(id, params, commonOpts);
+            }
+            else if (direction === 'back') {
+                finish = this.setRoot(id, params, Object.assign(Object.assign({}, commonOpts), { direction: 'back', animated: true }));
+            }
+        }
+        return promise;
+    };
+    /** @internal */
+    class_1.prototype.getRouteId = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var enteringAnimation, dismissed;
+            var active;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (this.gestureAnimationDismissing && role !== 'gesture') {
-                            return [2 /*return*/, false];
+                active = this.getActiveSync();
+                return [2 /*return*/, active
+                        ? {
+                            id: active.element.tagName,
+                            params: active.params,
+                            element: active.element
                         }
-                        enteringAnimation = _overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["h"].get(this) || [];
-                        return [4 /*yield*/, Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["f"])(this, data, role, 'modalLeave', iosLeaveAnimation, mdLeaveAnimation, this.presentingElement)];
-                    case 1:
-                        dismissed = _a.sent();
-                        if (!dismissed) return [3 /*break*/, 3];
-                        return [4 /*yield*/, Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_11__["d"])(this.delegate, this.usersElement)];
-                    case 2:
-                        _a.sent();
-                        if (this.animation) {
-                            this.animation.destroy();
-                        }
-                        enteringAnimation.forEach(function (ani) { return ani.destroy(); });
-                        _a.label = 3;
-                    case 3:
-                        this.animation = undefined;
-                        return [2 /*return*/, dismissed];
-                }
+                        : undefined];
             });
         });
     };
     /**
-     * Returns a promise that resolves when the modal did dismiss.
+     * Get the active view.
      */
-    class_1.prototype.onDidDismiss = function () {
-        return Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["g"])(this.el, 'ionModalDidDismiss');
+    class_1.prototype.getActive = function () {
+        return Promise.resolve(this.getActiveSync());
     };
     /**
-     * Returns a promise that resolves when the modal will dismiss.
+     * Get the view at the specified index.
+     *
+     * @param index The index of the view.
      */
-    class_1.prototype.onWillDismiss = function () {
-        return Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_9__["g"])(this.el, 'ionModalWillDismiss');
+    class_1.prototype.getByIndex = function (index) {
+        return Promise.resolve(this.views[index]);
+    };
+    /**
+     * Returns `true` if the current view can go back.
+     *
+     * @param view The view to check.
+     */
+    class_1.prototype.canGoBack = function (view) {
+        return Promise.resolve(this.canGoBackSync(view));
+    };
+    /**
+     * Get the previous view.
+     *
+     * @param view The view to get.
+     */
+    class_1.prototype.getPrevious = function (view) {
+        return Promise.resolve(this.getPreviousSync(view));
+    };
+    class_1.prototype.getLength = function () {
+        return this.views.length;
+    };
+    class_1.prototype.getActiveSync = function () {
+        return this.views[this.views.length - 1];
+    };
+    class_1.prototype.canGoBackSync = function (view) {
+        if (view === void 0) { view = this.getActiveSync(); }
+        return !!(view && this.getPreviousSync(view));
+    };
+    class_1.prototype.getPreviousSync = function (view) {
+        if (view === void 0) { view = this.getActiveSync(); }
+        if (!view) {
+            return undefined;
+        }
+        var views = this.views;
+        var index = views.indexOf(view);
+        return index > 0 ? views[index - 1] : undefined;
+    };
+    // _queueTrns() adds a navigation stack change to the queue and schedules it to run:
+    // 1. _nextTrns(): consumes the next transition in the queue
+    // 2. _viewInit(): initializes enteringView if required
+    // 3. _viewTest(): ensures canLeave/canEnter Returns `true`, so the operation can continue
+    // 4. _postViewInit(): add/remove the views from the navigation stack
+    // 5. _transitionInit(): initializes the visual transition if required and schedules it to run
+    // 6. _viewAttachToDOM(): attaches the enteringView to the DOM
+    // 7. _transitionStart(): called once the transition actually starts, it initializes the Animation underneath.
+    // 8. _transitionFinish(): called once the transition finishes
+    // 9. _cleanup(): syncs the navigation internal state with the DOM. For example it removes the pages from the DOM or hides/show them.
+    class_1.prototype.queueTrns = function (ti, done) {
+        if (this.isTransitioning && ti.opts != null && ti.opts.skipIfBusy) {
+            return Promise.resolve(false);
+        }
+        var promise = new Promise(function (resolve, reject) {
+            ti.resolve = resolve;
+            ti.reject = reject;
+        });
+        ti.done = done;
+        // Normalize empty
+        if (ti.insertViews && ti.insertViews.length === 0) {
+            ti.insertViews = undefined;
+        }
+        // Enqueue transition instruction
+        this.transInstr.push(ti);
+        // if there isn't a transition already happening
+        // then this will kick off this transition
+        this.nextTrns();
+        return promise;
+    };
+    class_1.prototype.success = function (result, ti) {
+        if (this.destroyed) {
+            this.fireError('nav controller was destroyed', ti);
+            return;
+        }
+        if (ti.done) {
+            ti.done(result.hasCompleted, result.requiresTransition, result.enteringView, result.leavingView, result.direction);
+        }
+        ti.resolve(result.hasCompleted);
+        if (ti.opts.updateURL !== false && this.useRouter) {
+            var router = document.querySelector('ion-router');
+            if (router) {
+                var direction = result.direction === 'back' ? 'back' : 'forward';
+                router.navChanged(direction);
+            }
+        }
+    };
+    class_1.prototype.failed = function (rejectReason, ti) {
+        if (this.destroyed) {
+            this.fireError('nav controller was destroyed', ti);
+            return;
+        }
+        this.transInstr.length = 0;
+        this.fireError(rejectReason, ti);
+    };
+    class_1.prototype.fireError = function (rejectReason, ti) {
+        if (ti.done) {
+            ti.done(false, false, rejectReason);
+        }
+        if (ti.reject && !this.destroyed) {
+            ti.reject(rejectReason);
+        }
+        else {
+            ti.resolve(false);
+        }
+    };
+    class_1.prototype.nextTrns = function () {
+        // this is the framework's bread 'n butta function
+        // only one transition is allowed at any given time
+        if (this.isTransitioning) {
+            return false;
+        }
+        // there is no transition happening right now
+        // get the next instruction
+        var ti = this.transInstr.shift();
+        if (!ti) {
+            return false;
+        }
+        this.runTransition(ti);
+        return true;
+    };
+    class_1.prototype.runTransition = function (ti) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var leavingView, enteringView, requiresTransition, result, _a, rejectReason_1;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 6, , 7]);
+                        // set that this nav is actively transitioning
+                        this.ionNavWillChange.emit();
+                        this.isTransitioning = true;
+                        this.prepareTI(ti);
+                        leavingView = this.getActiveSync();
+                        enteringView = this.getEnteringView(ti, leavingView);
+                        if (!leavingView && !enteringView) {
+                            throw new Error('no views in the stack to be removed');
+                        }
+                        if (!(enteringView && enteringView.state === VIEW_STATE_NEW)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, enteringView.init(this.el)];
+                    case 1:
+                        _b.sent();
+                        _b.label = 2;
+                    case 2:
+                        this.postViewInit(enteringView, leavingView, ti);
+                        requiresTransition = (ti.enteringRequiresTransition || ti.leavingRequiresTransition) &&
+                            enteringView !== leavingView;
+                        if (!requiresTransition) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.transition(enteringView, leavingView, ti)];
+                    case 3:
+                        _a = _b.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        _a = {
+                            // transition is not required, so we are already done!
+                            // they're inserting/removing the views somewhere in the middle or
+                            // beginning, so visually nothing needs to animate/transition
+                            // resolve immediately because there's no animation that's happening
+                            hasCompleted: true,
+                            requiresTransition: false
+                        };
+                        _b.label = 5;
+                    case 5:
+                        result = _a;
+                        this.success(result, ti);
+                        this.ionNavDidChange.emit();
+                        return [3 /*break*/, 7];
+                    case 6:
+                        rejectReason_1 = _b.sent();
+                        this.failed(rejectReason_1, ti);
+                        return [3 /*break*/, 7];
+                    case 7:
+                        this.isTransitioning = false;
+                        this.nextTrns();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    class_1.prototype.prepareTI = function (ti) {
+        var viewsLength = this.views.length;
+        ti.opts = ti.opts || {};
+        if (ti.opts.delegate === undefined) {
+            ti.opts.delegate = this.delegate;
+        }
+        if (ti.removeView !== undefined) {
+            Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(ti.removeStart !== undefined, 'removeView needs removeStart');
+            Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(ti.removeCount !== undefined, 'removeView needs removeCount');
+            var index = this.views.indexOf(ti.removeView);
+            if (index < 0) {
+                throw new Error('removeView was not found');
+            }
+            ti.removeStart += index;
+        }
+        if (ti.removeStart !== undefined) {
+            if (ti.removeStart < 0) {
+                ti.removeStart = viewsLength - 1;
+            }
+            if (ti.removeCount < 0) {
+                ti.removeCount = viewsLength - ti.removeStart;
+            }
+            ti.leavingRequiresTransition =
+                ti.removeCount > 0 && ti.removeStart + ti.removeCount === viewsLength;
+        }
+        if (ti.insertViews) {
+            // allow -1 to be passed in to auto push it on the end
+            // and clean up the index if it's larger then the size of the stack
+            if (ti.insertStart < 0 || ti.insertStart > viewsLength) {
+                ti.insertStart = viewsLength;
+            }
+            ti.enteringRequiresTransition = ti.insertStart === viewsLength;
+        }
+        var insertViews = ti.insertViews;
+        if (!insertViews) {
+            return;
+        }
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(insertViews.length > 0, 'length can not be zero');
+        var viewControllers = convertToViews(insertViews);
+        if (viewControllers.length === 0) {
+            throw new Error('invalid views to insert');
+        }
+        // Check all the inserted view are correct
+        for (var _i = 0, viewControllers_1 = viewControllers; _i < viewControllers_1.length; _i++) {
+            var view = viewControllers_1[_i];
+            view.delegate = ti.opts.delegate;
+            var nav = view.nav;
+            if (nav && nav !== this) {
+                throw new Error('inserted view was already inserted');
+            }
+            if (view.state === VIEW_STATE_DESTROYED) {
+                throw new Error('inserted view was already destroyed');
+            }
+        }
+        ti.insertViews = viewControllers;
+    };
+    class_1.prototype.getEnteringView = function (ti, leavingView) {
+        var insertViews = ti.insertViews;
+        if (insertViews !== undefined) {
+            // grab the very last view of the views to be inserted
+            // and initialize it as the new entering view
+            return insertViews[insertViews.length - 1];
+        }
+        var removeStart = ti.removeStart;
+        if (removeStart !== undefined) {
+            var views = this.views;
+            var removeEnd = removeStart + ti.removeCount;
+            for (var i = views.length - 1; i >= 0; i--) {
+                var view = views[i];
+                if ((i < removeStart || i >= removeEnd) && view !== leavingView) {
+                    return view;
+                }
+            }
+        }
+        return undefined;
+    };
+    class_1.prototype.postViewInit = function (enteringView, leavingView, ti) {
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(leavingView || enteringView, 'Both leavingView and enteringView are null');
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(ti.resolve, 'resolve must be valid');
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(ti.reject, 'reject must be valid');
+        var opts = ti.opts;
+        var insertViews = ti.insertViews;
+        var removeStart = ti.removeStart;
+        var removeCount = ti.removeCount;
+        var destroyQueue;
+        // there are views to remove
+        if (removeStart !== undefined && removeCount !== undefined) {
+            Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(removeStart >= 0, 'removeStart can not be negative');
+            Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(removeCount >= 0, 'removeCount can not be negative');
+            destroyQueue = [];
+            for (var i = 0; i < removeCount; i++) {
+                var view = this.views[i + removeStart];
+                if (view && view !== enteringView && view !== leavingView) {
+                    destroyQueue.push(view);
+                }
+            }
+            // default the direction to "back"
+            opts.direction = opts.direction || 'back';
+        }
+        var finalBalance = this.views.length +
+            (insertViews !== undefined ? insertViews.length : 0) -
+            (removeCount !== undefined ? removeCount : 0);
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(finalBalance >= 0, 'final balance can not be negative');
+        if (finalBalance === 0) {
+            console.warn("You can't remove all the pages in the navigation stack. nav.pop() is probably called too many times.", this, this.el);
+            throw new Error('navigation stack needs at least one root page');
+        }
+        // At this point the transition can not be rejected, any throw should be an error
+        // there are views to insert
+        if (insertViews) {
+            // add the views to the
+            var insertIndex = ti.insertStart;
+            for (var _i = 0, insertViews_1 = insertViews; _i < insertViews_1.length; _i++) {
+                var view = insertViews_1[_i];
+                this.insertViewAt(view, insertIndex);
+                insertIndex++;
+            }
+            if (ti.enteringRequiresTransition) {
+                // default to forward if not already set
+                opts.direction = opts.direction || 'forward';
+            }
+        }
+        // if the views to be removed are in the beginning or middle
+        // and there is not a view that needs to visually transition out
+        // then just destroy them and don't transition anything
+        // batch all of lifecycles together
+        // let's make sure, callbacks are zoned
+        if (destroyQueue && destroyQueue.length > 0) {
+            for (var _a = 0, destroyQueue_1 = destroyQueue; _a < destroyQueue_1.length; _a++) {
+                var view = destroyQueue_1[_a];
+                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["b"]);
+                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["c"]);
+                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
+            }
+            // once all lifecycle events has been delivered, we can safely detroy the views
+            for (var _b = 0, destroyQueue_2 = destroyQueue; _b < destroyQueue_2.length; _b++) {
+                var view = destroyQueue_2[_b];
+                this.destroyView(view);
+            }
+        }
+    };
+    class_1.prototype.transition = function (enteringView, leavingView, ti) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
+            var opts, progressCallback, mode, enteringEl, leavingEl, animationOpts, hasCompleted;
+            var _this = this;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        opts = ti.opts;
+                        progressCallback = opts.progressAnimation
+                            ? function (ani) { return _this.sbAni = ani; }
+                            : undefined;
+                        mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+                        enteringEl = enteringView.element;
+                        leavingEl = leavingView && leavingView.element;
+                        animationOpts = Object.assign({ mode: mode, showGoBack: this.canGoBackSync(enteringView), baseEl: this.el, animationBuilder: this.animation || opts.animationBuilder || _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('navAnimation'), progressCallback: progressCallback, animated: this.animated && _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].getBoolean('animated', true), enteringEl: enteringEl,
+                            leavingEl: leavingEl }, opts);
+                        return [4 /*yield*/, Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["t"])(animationOpts)];
+                    case 1:
+                        hasCompleted = (_a.sent()).hasCompleted;
+                        return [2 /*return*/, this.transitionFinish(hasCompleted, enteringView, leavingView, opts)];
+                }
+            });
+        });
+    };
+    class_1.prototype.transitionFinish = function (hasCompleted, enteringView, leavingView, opts) {
+        var cleanupView = hasCompleted ? enteringView : leavingView;
+        if (cleanupView) {
+            this.cleanup(cleanupView);
+        }
+        return {
+            hasCompleted: hasCompleted,
+            requiresTransition: true,
+            enteringView: enteringView,
+            leavingView: leavingView,
+            direction: opts.direction
+        };
+    };
+    class_1.prototype.insertViewAt = function (view, index) {
+        var views = this.views;
+        var existingIndex = views.indexOf(view);
+        if (existingIndex > -1) {
+            // this view is already in the stack!!
+            // move it to its new location
+            Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(view.nav === this, 'view is not part of the nav');
+            views.splice(index, 0, views.splice(existingIndex, 1)[0]);
+        }
+        else {
+            Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(!view.nav, 'nav is used');
+            // this is a new view to add to the stack
+            // create the new entering view
+            view.nav = this;
+            // insert the entering view into the correct index in the stack
+            views.splice(index, 0, view);
+        }
+    };
+    class_1.prototype.removeView = function (view) {
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(view.state === VIEW_STATE_ATTACHED || view.state === VIEW_STATE_DESTROYED, 'view state should be loaded or destroyed');
+        var views = this.views;
+        var index = views.indexOf(view);
+        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(index > -1, 'view must be part of the stack');
+        if (index >= 0) {
+            views.splice(index, 1);
+        }
+    };
+    class_1.prototype.destroyView = function (view) {
+        view._destroy();
+        this.removeView(view);
+    };
+    /**
+     * DOM WRITE
+     */
+    class_1.prototype.cleanup = function (activeView) {
+        // ok, cleanup time!! Destroy all of the views that are
+        // INACTIVE and come after the active view
+        // only do this if the views exist, though
+        if (this.destroyed) {
+            return;
+        }
+        var views = this.views;
+        var activeViewIndex = views.indexOf(activeView);
+        for (var i = views.length - 1; i >= 0; i--) {
+            var view = views[i];
+            var element = view.element;
+            if (i > activeViewIndex) {
+                // this view comes after the active view
+                // let's unload it
+                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
+                this.destroyView(view);
+            }
+            else if (i < activeViewIndex) {
+                // this view comes before the active view
+                // and it is not a portal then ensure it is hidden
+                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["s"])(element, true);
+            }
+        }
+    };
+    class_1.prototype.canStart = function () {
+        return (!!this.swipeGesture &&
+            !this.isTransitioning &&
+            this.transInstr.length === 0 &&
+            this.animationEnabled &&
+            this.canGoBackSync());
+    };
+    class_1.prototype.onStart = function () {
+        this.queueTrns({
+            removeStart: -1,
+            removeCount: 1,
+            opts: {
+                direction: 'back',
+                progressAnimation: true
+            }
+        }, undefined);
+    };
+    class_1.prototype.onMove = function (stepValue) {
+        if (this.sbAni) {
+            this.sbAni.progressStep(stepValue);
+        }
+    };
+    class_1.prototype.onEnd = function (shouldComplete, stepValue, dur) {
+        var _this = this;
+        if (this.sbAni) {
+            this.animationEnabled = false;
+            this.sbAni.onFinish(function () {
+                _this.animationEnabled = true;
+            }, { oneTimeCallback: true });
+            // Account for rounding errors in JS
+            var newStepValue = (shouldComplete) ? -0.001 : 0.001;
+            /**
+             * Animation will be reversed here, so need to
+             * reverse the easing curve as well
+             *
+             * Additionally, we need to account for the time relative
+             * to the new easing curve, as `stepValue` is going to be given
+             * in terms of a linear curve.
+             */
+            if (!shouldComplete) {
+                this.sbAni.easing('cubic-bezier(1, 0, 0.68, 0.28)');
+                newStepValue += Object(_cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_5__["g"])([0, 0], [1, 0], [0.68, 0.28], [1, 1], stepValue)[0];
+            }
+            else {
+                newStepValue += Object(_cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_5__["g"])([0, 0], [0.32, 0.72], [0, 1], [1, 1], stepValue)[0];
+            }
+            this.sbAni.progressEnd(shouldComplete ? 1 : 0, newStepValue, dur);
+        }
     };
     class_1.prototype.render = function () {
-        var _a;
-        var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this);
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["H"], { "no-router": true, "aria-modal": "true", class: Object.assign((_a = {}, _a[mode] = true, _a["modal-card"] = this.presentingElement !== undefined && mode === 'ios', _a), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_10__["g"])(this.cssClass)), style: {
-                zIndex: "" + (20000 + this.overlayIndex),
-            }, onIonBackdropTap: this.onBackdropTap, onIonDismiss: this.onDismiss, onIonModalDidPresent: this.onLifecycle, onIonModalWillPresent: this.onLifecycle, onIonModalWillDismiss: this.onLifecycle, onIonModalDidDismiss: this.onLifecycle }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { visible: this.showBackdrop, tappable: this.backdropDismiss }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { role: "dialog", class: "modal-wrapper" })));
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null));
     };
     Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(class_1, "style", {
-        get: function () { return ".sc-ion-modal-ios-h{--width:100%;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--overflow:hidden;--border-radius:0;--border-width:0;--border-style:none;--border-color:transparent;--background:var(--ion-background-color,#fff);--box-shadow:none;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;contain:strict}.overlay-hidden.sc-ion-modal-ios-h{display:none}.modal-wrapper.sc-ion-modal-ios{border-radius:var(--border-radius);width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:var(--overflow);z-index:10}\@media only screen and (min-width:768px) and (min-height:600px){.sc-ion-modal-ios-h{--width:600px;--height:500px;--ion-safe-area-top:0px;--ion-safe-area-bottom:0px;--ion-safe-area-right:0px;--ion-safe-area-left:0px}}\@media only screen and (min-width:768px) and (min-height:768px){.sc-ion-modal-ios-h{--width:600px;--height:600px}}.sc-ion-modal-ios-h{--backdrop-opacity:var(--ion-backdrop-opacity,0.4)}\@media only screen and (min-width:768px) and (min-height:600px){.sc-ion-modal-ios-h{--border-radius:10px}}.modal-wrapper.sc-ion-modal-ios{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}.modal-card.sc-ion-modal-ios-h{--backdrop-opacity:0;--width:100%;-ms-flex-align:end;align-items:flex-end}.modal-card.sc-ion-modal-ios-h .modal-wrapper.sc-ion-modal-ios{height:calc(100% - max(30px, var(--ion-safe-area-top)) - 10px)}.modal-card.sc-ion-modal-ios-h .modal-wrapper.sc-ion-modal-ios, [dir=rtl].modal-card.sc-ion-modal-ios-h .modal-wrapper.sc-ion-modal-ios, [dir=rtl] .modal-card.sc-ion-modal-ios-h .modal-wrapper.sc-ion-modal-ios, [dir=rtl].sc-ion-modal-ios-h -no-combinator.modal-card.sc-ion-modal-ios-h .modal-wrapper.sc-ion-modal-ios, [dir=rtl] .sc-ion-modal-ios-h -no-combinator.modal-card.sc-ion-modal-ios-h .modal-wrapper.sc-ion-modal-ios{border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-right-radius:0;border-bottom-left-radius:0}"; },
+    Object.defineProperty(class_1, "watchers", {
+        get: function () {
+            return {
+                "swipeGesture": ["swipeGestureChanged"],
+                "root": ["rootChanged"]
+            };
+        },
         enumerable: true,
         configurable: true
     });
     return class_1;
 }());
-var LIFECYCLE_MAP = {
-    'ionModalDidPresent': 'ionViewDidEnter',
-    'ionModalWillPresent': 'ionViewWillEnter',
-    'ionModalWillDismiss': 'ionViewWillLeave',
-    'ionModalDidDismiss': 'ionViewDidLeave',
+Nav.style = navCss;
+var navLink = function (el, routerDirection, component, componentProps) {
+    var nav = el.closest('ion-nav');
+    if (nav) {
+        if (routerDirection === 'forward') {
+            if (component !== undefined) {
+                return nav.push(component, componentProps, { skipIfBusy: true });
+            }
+        }
+        else if (routerDirection === 'root') {
+            if (component !== undefined) {
+                return nav.setRoot(component, componentProps, { skipIfBusy: true });
+            }
+        }
+        else if (routerDirection === 'back') {
+            return nav.pop({ skipIfBusy: true });
+        }
+    }
+    return Promise.resolve(false);
 };
+var NavLink = /** @class */ (function () {
+    function NavLink(hostRef) {
+        var _this = this;
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        /**
+         * The transition direction when navigating to another page.
+         */
+        this.routerDirection = 'forward';
+        this.onClick = function () {
+            return navLink(_this.el, _this.routerDirection, _this.component, _this.componentProps);
+        };
+    }
+    NavLink.prototype.render = function () {
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick }));
+    };
+    Object.defineProperty(NavLink.prototype, "el", {
+        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        enumerable: true,
+        configurable: true
+    });
+    return NavLink;
+}());
 
 
 

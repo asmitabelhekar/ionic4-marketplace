@@ -535,6 +535,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
         "cordova"
       ],
       "runs": true
+    },
+    {
+      "id": "call-number.CallNumber",
+      "file": "plugins/call-number/www/CallNumber.js",
+      "pluginId": "call-number",
+      "clobbers": [
+        "call"
+      ]
+    },
+    {
+      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+      "clobbers": [
+        "FCMPlugin"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -555,6 +571,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com-badrit-base64": "0.2.0",
     "cordova-plugin-filepath": "1.5.8",
     "cordova-plugin-filechooser": "1.2.0",
-    "cordova-plugin-file": "6.0.2"
+    "cordova-plugin-file": "6.0.2",
+    "cordova-plugin-add-swift-support": "2.0.2",
+    "call-number": "0.0.2",
+    "cordova-plugin-fcm-with-dependecy-updated": "6.3.1",
+    "cordova-plugin-androidx": "1.0.2",
+    "cordova-plugin-androidx-adapter": "1.1.1"
   };
 });

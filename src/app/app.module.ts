@@ -27,6 +27,9 @@ import { FilePath } from '@ionic-native/file-path/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent,
@@ -44,7 +47,10 @@ import { File } from '@ionic-native/file/ngx';
     AppRoutingModule,
     HttpClientModule, 
     GooglePlaceModule,
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    IonicStorageModule.forRoot()
+  ],
+    
   providers: [
     StatusBar,
     GoogleMaps,
@@ -55,6 +61,8 @@ import { File } from '@ionic-native/file/ngx';
     Deeplinks,
     FileChooser,
     FilePath,
+    FCM,
+    LocalNotifications,
     Base64,
     File,
     SplashScreen,

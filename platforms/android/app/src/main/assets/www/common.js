@@ -1,193 +1,189 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/haptic-c8f1473e.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/haptic-c8f1473e.js ***!
-  \******************************************************************/
-/*! exports provided: a, b, c, h */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-d1eb6504.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/framework-delegate-d1eb6504.js ***!
+  \******************************************************************************/
+/*! exports provided: a, d */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hapticSelectionStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hapticSelectionChanged; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hapticSelectionEnd; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return attachComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return detachComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+var attachComponent = function (delegate, container, component, cssClasses, componentProps) { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function () {
+    var el;
+    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (delegate) {
+                    return [2 /*return*/, delegate.attachViewToDom(container, component, componentProps, cssClasses)];
+                }
+                if (typeof component !== 'string' && !(component instanceof HTMLElement)) {
+                    throw new Error('framework delegate is missing');
+                }
+                el = (typeof component === 'string')
+                    ? container.ownerDocument && container.ownerDocument.createElement(component)
+                    : component;
+                if (cssClasses) {
+                    cssClasses.forEach(function (c) { return el.classList.add(c); });
+                }
+                if (componentProps) {
+                    Object.assign(el, componentProps);
+                }
+                container.appendChild(el);
+                if (!el.componentOnReady) return [3 /*break*/, 2];
+                return [4 /*yield*/, el.componentOnReady()];
+            case 1:
+                _a.sent();
+                _a.label = 2;
+            case 2: return [2 /*return*/, el];
+        }
+    });
+}); };
+var detachComponent = function (delegate, element) {
+    if (element) {
+        if (delegate) {
+            var container = element.parentElement;
+            return delegate.removeViewFromDom(container, element);
+        }
+        element.remove();
+    }
+    return Promise.resolve();
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@ionic/core/dist/esm-es5/haptic-da73c8fd.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/haptic-da73c8fd.js ***!
+  \******************************************************************/
+/*! exports provided: a, b, c, d, h */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hapticImpact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hapticSelectionStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hapticSelectionChanged; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hapticSelectionEnd; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hapticSelection; });
-/**
- * Check to see if the Haptic Plugin is available
- * @return Returns `true` or false if the plugin is available
- */
+var HapticEngine = {
+    getEngine: function () {
+        var win = window;
+        return (win.TapticEngine) || (win.Capacitor && win.Capacitor.isPluginAvailable('Haptics') && win.Capacitor.Plugins.Haptics);
+    },
+    available: function () {
+        return !!this.getEngine();
+    },
+    isCordova: function () {
+        return !!window.TapticEngine;
+    },
+    isCapacitor: function () {
+        var win = window;
+        return !!win.Capacitor;
+    },
+    impact: function (options) {
+        var engine = this.getEngine();
+        if (!engine) {
+            return;
+        }
+        var style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
+        engine.impact({ style: style });
+    },
+    notification: function (options) {
+        var engine = this.getEngine();
+        if (!engine) {
+            return;
+        }
+        var style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
+        engine.notification({ style: style });
+    },
+    selection: function () {
+        this.impact({ style: 'light' });
+    },
+    selectionStart: function () {
+        var engine = this.getEngine();
+        if (!engine) {
+            return;
+        }
+        if (this.isCapacitor()) {
+            engine.selectionStart();
+        }
+        else {
+            engine.gestureSelectionStart();
+        }
+    },
+    selectionChanged: function () {
+        var engine = this.getEngine();
+        if (!engine) {
+            return;
+        }
+        if (this.isCapacitor()) {
+            engine.selectionChanged();
+        }
+        else {
+            engine.gestureSelectionChanged();
+        }
+    },
+    selectionEnd: function () {
+        var engine = this.getEngine();
+        if (!engine) {
+            return;
+        }
+        if (this.isCapacitor()) {
+            engine.selectionChanged();
+        }
+        else {
+            engine.gestureSelectionChanged();
+        }
+    }
+};
 /**
  * Trigger a selection changed haptic event. Good for one-time events
  * (not for gestures)
  */
 var hapticSelection = function () {
-    var engine = window.TapticEngine;
-    if (engine) {
-        engine.selection();
-    }
+    HapticEngine.selection();
 };
 /**
  * Tell the haptic engine that a gesture for a selection change is starting.
  */
 var hapticSelectionStart = function () {
-    var engine = window.TapticEngine;
-    if (engine) {
-        engine.gestureSelectionStart();
-    }
+    HapticEngine.selectionStart();
 };
 /**
  * Tell the haptic engine that a selection changed during a gesture.
  */
 var hapticSelectionChanged = function () {
-    var engine = window.TapticEngine;
-    if (engine) {
-        engine.gestureSelectionChanged();
-    }
+    HapticEngine.selectionChanged();
 };
 /**
  * Tell the haptic engine we are done with a gesture. This needs to be
  * called lest resources are not properly recycled.
  */
 var hapticSelectionEnd = function () {
-    var engine = window.TapticEngine;
-    if (engine) {
-        engine.gestureSelectionEnd();
-    }
+    HapticEngine.selectionEnd();
+};
+/**
+ * Use this to indicate success/failure/warning to the user.
+ * options should be of the type `{ style: 'light' }` (or `medium`/`heavy`)
+ */
+var hapticImpact = function (options) {
+    HapticEngine.impact(options);
 };
 
 
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/index-3476b023.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/index-3476b023.js ***!
-  \*****************************************************************/
-/*! exports provided: s */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return sanitizeDOMString; });
-/**
- * Does a simple sanitization of all elements
- * in an untrusted string
- */
-var sanitizeDOMString = function (untrustedString) {
-    try {
-        if (typeof untrustedString !== 'string' || untrustedString === '') {
-            return untrustedString;
-        }
-        /**
-         * Create a document fragment
-         * separate from the main DOM,
-         * create a div to do our work in
-         */
-        var documentFragment_1 = document.createDocumentFragment();
-        var workingDiv = document.createElement('div');
-        documentFragment_1.appendChild(workingDiv);
-        workingDiv.innerHTML = untrustedString;
-        /**
-         * Remove any elements
-         * that are blocked
-         */
-        blockedTags.forEach(function (blockedTag) {
-            var getElementsToRemove = documentFragment_1.querySelectorAll(blockedTag);
-            for (var elementIndex = getElementsToRemove.length - 1; elementIndex >= 0; elementIndex--) {
-                var element = getElementsToRemove[elementIndex];
-                if (element.parentNode) {
-                    element.parentNode.removeChild(element);
-                }
-                else {
-                    documentFragment_1.removeChild(element);
-                }
-                /**
-                 * We still need to sanitize
-                 * the children of this element
-                 * as they are left behind
-                 */
-                var childElements = getElementChildren(element);
-                /* tslint:disable-next-line */
-                for (var childIndex = 0; childIndex < childElements.length; childIndex++) {
-                    sanitizeElement(childElements[childIndex]);
-                }
-            }
-        });
-        /**
-         * Go through remaining elements and remove
-         * non-allowed attribs
-         */
-        // IE does not support .children on document fragments, only .childNodes
-        var dfChildren = getElementChildren(documentFragment_1);
-        /* tslint:disable-next-line */
-        for (var childIndex = 0; childIndex < dfChildren.length; childIndex++) {
-            sanitizeElement(dfChildren[childIndex]);
-        }
-        // Append document fragment to div
-        var fragmentDiv = document.createElement('div');
-        fragmentDiv.appendChild(documentFragment_1);
-        // First child is always the div we did our work in
-        var getInnerDiv = fragmentDiv.querySelector('div');
-        return (getInnerDiv !== null) ? getInnerDiv.innerHTML : fragmentDiv.innerHTML;
-    }
-    catch (err) {
-        console.error(err);
-        return '';
-    }
-};
-/**
- * Clean up current element based on allowed attributes
- * and then recursively dig down into any child elements to
- * clean those up as well
- */
-var sanitizeElement = function (element) {
-    // IE uses childNodes, so ignore nodes that are not elements
-    if (element.nodeType && element.nodeType !== 1) {
-        return;
-    }
-    for (var i = element.attributes.length - 1; i >= 0; i--) {
-        var attribute = element.attributes.item(i);
-        var attributeName = attribute.name;
-        // remove non-allowed attribs
-        if (!allowedAttributes.includes(attributeName.toLowerCase())) {
-            element.removeAttribute(attributeName);
-            continue;
-        }
-        // clean up any allowed attribs
-        // that attempt to do any JS funny-business
-        var attributeValue = attribute.value;
-        /* tslint:disable-next-line */
-        if (attributeValue != null && attributeValue.toLowerCase().includes('javascript:')) {
-            element.removeAttribute(attributeName);
-        }
-    }
-    /**
-     * Sanitize any nested children
-     */
-    var childElements = getElementChildren(element);
-    /* tslint:disable-next-line */
-    for (var i = 0; i < childElements.length; i++) {
-        sanitizeElement(childElements[i]);
-    }
-};
-/**
- * IE doesn't always support .children
- * so we revert to .childNodes instead
- */
-var getElementChildren = function (el) {
-    return (el.children != null) ? el.children : el.childNodes;
-};
-var allowedAttributes = ['class', 'id', 'href', 'src', 'name', 'slot'];
-var blockedTags = ['script', 'style', 'iframe', 'meta', 'link', 'object', 'embed'];
-
-
-
-/***/ }),
-
-/***/ "./node_modules/@ionic/core/dist/esm-es5/spinner-configs-28520d80.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/spinner-configs-c78e170e.js":
 /*!***************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/spinner-configs-28520d80.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/spinner-configs-c78e170e.js ***!
   \***************************************************************************/
 /*! exports provided: S */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -308,9 +304,9 @@ var SPINNERS = spinners;
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/theme-c2dc54d9.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/theme-c2dc54d9.js ***!
   \*****************************************************************/
 /*! exports provided: c, g, h, o */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

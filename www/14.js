@@ -1,37 +1,40 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[14],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-button_2-ios.entry.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-button_2-ios.entry.js ***!
-  \*************************************************************************/
-/*! exports provided: ion_button, ion_icon */
+/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-card_5-ios.entry.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-card_5-ios.entry.js ***!
+  \***********************************************************************/
+/*! exports provided: ion_card, ion_card_content, ion_card_header, ion_card_subtitle, ion_card_title */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_button", function() { return Button; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_icon", function() { return Icon; });
-/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm-es5/core-0a8d4d2e.js");
-/* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm-es5/config-3c7f3790.js");
-/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-46f4a262.js");
-/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-18cbe2cc.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_card", function() { return Card; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_card_content", function() { return CardContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_card_header", function() { return CardHeader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_card_subtitle", function() { return CardSubtitle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_card_title", function() { return CardTitle; });
+/* harmony import */ var _index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-e23c3ffd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-e23c3ffd.js");
+/* harmony import */ var _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-fbc9a2ac.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-fbc9a2ac.js");
+/* harmony import */ var _theme_c2dc54d9_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme-c2dc54d9.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-c2dc54d9.js");
 
 
 
-
-var Button = /** @class */ (function () {
-    function Button(hostRef) {
-        var _this = this;
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.inItem = false;
-        this.inListHeader = false;
-        this.inToolbar = false;
+var cardIosCss = ":host{--ion-safe-area-left:0px;--ion-safe-area-right:0px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:block;position:relative;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);overflow:hidden}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.card-disabled){cursor:default;opacity:0.3;pointer-events:none}.card-native{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;width:100%;min-height:var(--min-height);-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:inherit}.card-native::-moz-focus-inner{border:0}button,a{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none}ion-ripple-effect{color:var(--ripple-color)}:host{--background:var(--ion-item-background, var(--ion-background-color, #fff));--color:var(--ion-color-step-600, #666666);margin-left:16px;margin-right:16px;margin-top:24px;margin-bottom:24px;border-radius:8px;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-transition:-webkit-transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1);transition:-webkit-transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1);transition:transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1);transition:transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1), -webkit-transform 500ms cubic-bezier(0.12, 0.72, 0.29, 1);font-size:14px;-webkit-box-shadow:0 4px 16px rgba(0, 0, 0, 0.12);box-shadow:0 4px 16px rgba(0, 0, 0, 0.12)}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{margin-left:unset;margin-right:unset;-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:16px;margin-inline-end:16px}}:host(.ion-activated){-webkit-transform:scale3d(0.97, 0.97, 1);transform:scale3d(0.97, 0.97, 1)}";
+var cardMdCss = ":host{--ion-safe-area-left:0px;--ion-safe-area-right:0px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:block;position:relative;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);overflow:hidden}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.card-disabled){cursor:default;opacity:0.3;pointer-events:none}.card-native{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;width:100%;min-height:var(--min-height);-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:inherit}.card-native::-moz-focus-inner{border:0}button,a{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none}ion-ripple-effect{color:var(--ripple-color)}:host{--background:var(--ion-item-background, var(--ion-background-color, #fff));--color:var(--ion-color-step-550, #737373);margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px;border-radius:4px;font-size:14px;-webkit-box-shadow:0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);box-shadow:0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12)}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{margin-left:unset;margin-right:unset;-webkit-margin-start:10px;margin-inline-start:10px;-webkit-margin-end:10px;margin-inline-end:10px}}";
+var Card = /** @class */ (function () {
+    function Card(hostRef) {
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
-         * The type of button.
+         * If `true`, a button tag will be rendered and the card will be tappable.
          */
-        this.buttonType = 'button';
+        this.button = false;
         /**
-         * If `true`, the user cannot interact with the button.
+         * The type of the button. Only used when an `onclick` or `button` property is present.
+         */
+        this.type = 'button';
+        /**
+         * If `true`, the user cannot interact with the card.
          */
         this.disabled = false;
         /**
@@ -39,358 +42,117 @@ var Button = /** @class */ (function () {
          * another page using `href`.
          */
         this.routerDirection = 'forward';
-        /**
-         * If `true`, activates a button with a heavier font weight.
-         */
-        this.strong = false;
-        /**
-         * The type of the button.
-         */
-        this.type = 'button';
-        this.handleClick = function (ev) {
-            if (_this.type === 'button') {
-                Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection);
-            }
-            else if (Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["h"])(_this.el)) {
-                // this button wants to specifically submit a form
-                // climb up the dom to see if we're in a <form>
-                // and if so, then use JS to submit it
-                var form = _this.el.closest('form');
-                if (form) {
-                    ev.preventDefault();
-                    var fakeButton = document.createElement('button');
-                    fakeButton.type = _this.type;
-                    fakeButton.style.display = 'none';
-                    form.appendChild(fakeButton);
-                    fakeButton.click();
-                    fakeButton.remove();
-                }
-            }
-        };
-        this.onFocus = function () {
-            _this.ionFocus.emit();
-        };
-        this.onBlur = function () {
-            _this.ionBlur.emit();
-        };
-        this.ionFocus = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionBlur", 7);
     }
-    Button.prototype.componentWillLoad = function () {
-        this.inToolbar = !!this.el.closest('ion-buttons');
-        this.inListHeader = !!this.el.closest('ion-list-header');
-        this.inItem = !!this.el.closest('ion-item') || !!this.el.closest('ion-item-divider');
+    Card.prototype.isClickable = function () {
+        return (this.href !== undefined || this.button);
     };
-    Object.defineProperty(Button.prototype, "hasIconOnly", {
-        get: function () {
-            return !!this.el.querySelector('ion-icon[slot="icon-only"]');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Button.prototype, "rippleType", {
-        get: function () {
-            var hasClearFill = this.fill === undefined || this.fill === 'clear';
-            // If the button is in a toolbar, has a clear fill (which is the default)
-            // and only has an icon we use the unbounded "circular" ripple effect
-            if (hasClearFill && this.hasIconOnly && this.inToolbar) {
-                return 'unbounded';
-            }
-            return 'bounded';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Button.prototype.render = function () {
-        var _a;
-        var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        var _b = this, buttonType = _b.buttonType, type = _b.type, disabled = _b.disabled, rel = _b.rel, target = _b.target, size = _b.size, href = _b.href, color = _b.color, expand = _b.expand, hasIconOnly = _b.hasIconOnly, shape = _b.shape, strong = _b.strong;
-        var finalSize = size === undefined && this.inItem ? 'small' : size;
-        var TagType = href === undefined ? 'button' : 'a';
+    Card.prototype.renderCard = function (mode) {
+        var clickable = this.isClickable();
+        if (!clickable) {
+            return [
+                Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)
+            ];
+        }
+        var _a = this, href = _a.href, routerDirection = _a.routerDirection;
+        var TagType = clickable ? (href === undefined ? 'button' : 'a') : 'div';
         var attrs = (TagType === 'button')
-            ? { type: type }
+            ? { type: this.type }
             : {
                 download: this.download,
-                href: href,
-                rel: rel,
-                target: target
+                href: this.href,
+                rel: this.rel,
+                target: this.target
             };
-        var fill = this.fill;
-        if (fill === undefined) {
-            fill = this.inToolbar || this.inListHeader ? 'clear' : 'solid';
-        }
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.handleClick, "aria-disabled": disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_a = {}, _a[mode] = true, _a[buttonType] = true, _a[buttonType + "-" + expand] = expand !== undefined, _a[buttonType + "-" + finalSize] = finalSize !== undefined, _a[buttonType + "-" + shape] = shape !== undefined, _a[buttonType + "-" + fill] = true, _a[buttonType + "-strong"] = strong, _a['in-toolbar'] = Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toolbar', this.el), _a['in-toolbar-color'] = Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toolbar[color]', this.el), _a['button-has-icon-only'] = hasIconOnly, _a['button-disabled'] = disabled, _a['ion-activatable'] = true, _a['ion-focusable'] = true, _a)) }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, { class: "button-native", disabled: disabled, onFocus: this.onFocus, onBlur: this.onBlur, part: "button" }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "button-inner", part: "button-inner" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "icon-only" }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "start" }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", { name: "end" })), mode === 'md' && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", { type: this.rippleType }))));
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, { class: "card-native", disabled: this.disabled, onClick: function (ev) { return Object(_theme_c2dc54d9_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, routerDirection); } }), Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), clickable && mode === 'md' && Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
     };
-    Object.defineProperty(Button.prototype, "el", {
-        get: function () { return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Button, "style", {
-        get: function () { return ":host{--overflow:hidden;--ripple-color:currentColor;--border-width:initial;--border-color:initial;--border-style:initial;--color-activated:var(--color);--color-focused:var(--color);--color-hover:var(--color);--box-shadow:none;display:inline-block;width:auto;color:var(--color);font-family:var(--ion-font-family,inherit);text-align:center;text-decoration:none;text-overflow:ellipsis;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;vertical-align:-webkit-baseline-middle;pointer-events:auto;-webkit-font-kerning:none;font-kerning:none}:host(.button-disabled){cursor:default;opacity:.5;pointer-events:none}:host(.button-solid){--background:var(--ion-color-primary,#3880ff);--color:var(--ion-color-primary-contrast,#fff)}:host(.button-outline){--border-color:var(--ion-color-primary,#3880ff)}:host(.button-clear),:host(.button-outline){--background:transparent;--color:var(--ion-color-primary,#3880ff)}:host(.button-clear){--border-width:0}:host(.button-block){display:block}:host(.button-block) .button-native{margin-left:0;margin-right:0;display:block;width:100%;clear:both;contain:content}:host(.button-block) .button-native:after{clear:both}:host(.button-full){display:block}:host(.button-full) .button-native{margin-left:0;margin-right:0;display:block;width:100%;contain:content}:host(.button-full:not(.button-round)) .button-native{border-radius:0;border-right-width:0;border-left-width:0}.button-native{border-radius:var(--border-radius);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;position:relative;width:100%;height:100%;-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:var(--background);line-height:1;-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);contain:layout style;cursor:pointer;opacity:var(--opacity);overflow:var(--overflow);overflow:hidden;z-index:0;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-native::-moz-focus-inner{border:0}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}::slotted(ion-icon){font-size:1.4em;pointer-events:none}::slotted(ion-icon[slot=start]){margin-left:-.3em;margin-right:.3em;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted(ion-icon[slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:-.3em;margin-inline-start:-.3em;-webkit-margin-end:.3em;margin-inline-end:.3em}}::slotted(ion-icon[slot=end]){margin-left:.3em;margin-right:-.2em;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted(ion-icon[slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:.3em;margin-inline-start:.3em;-webkit-margin-end:-.2em;margin-inline-end:-.2em}}::slotted(ion-icon[slot=icon-only]){font-size:1.8em}ion-ripple-effect{color:var(--ripple-color)}.button-native:after{left:0;right:0;top:0;bottom:0;position:absolute;content:\"\";opacity:0}:host(.ion-activated){color:var(--color-activated)}:host(.ion-activated) .button-native:after{background:var(--background-activated);opacity:var(--background-activated-opacity)}:host(.ion-focused){color:var(--color-focused)}:host(.ion-focused) .button-native:after{background:var(--background-focused);opacity:var(--background-focused-opacity)}\@media (any-hover:hover){:host(:hover){color:var(--color-hover)}:host(:hover) .button-native:after{background:var(--background-hover);opacity:var(--background-hover-opacity)}}:host(.button-solid.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.button-outline.ion-color) .button-native{border-color:var(--ion-color-base)}:host(.button-clear.ion-color) .button-native,:host(.button-outline.ion-color) .button-native{background:transparent;color:var(--ion-color-base)}:host(.in-toolbar:not(.ion-color):not(.in-toolbar-color)) .button-native{color:var(--ion-toolbar-color,var(--color))}:host(.button-outline.in-toolbar:not(.ion-color):not(.in-toolbar-color)) .button-native{border-color:var(--ion-toolbar-color,var(--color,var(--border-color)))}:host(.button-solid.in-toolbar:not(.ion-color):not(.in-toolbar-color)) .button-native{background:var(--ion-toolbar-color,var(--background));color:var(--ion-toolbar-background,var(--color))}:host{--border-radius:10px;--padding-top:0;--padding-bottom:0;--padding-start:1em;--padding-end:1em;--transition:background-color,opacity 100ms linear;margin-left:2px;margin-right:2px;margin-top:4px;margin-bottom:4px;height:2.8em;font-size:16px;font-weight:500;letter-spacing:-.03em}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{margin-left:unset;margin-right:unset;-webkit-margin-start:2px;margin-inline-start:2px;-webkit-margin-end:2px;margin-inline-end:2px}}:host(.button-solid){--background-activated:var(--ion-color-primary-shade,#3171e0);--background-focused:var(--ion-color-primary-shade,#3171e0);--background-hover:var(--ion-color-primary-tint,#4c8dff);--background-activated-opacity:1;--background-focused-opacity:1;--background-hover-opacity:1}:host(.button-outline){--border-radius:10px;--border-width:1px;--border-style:solid;--background-activated:var(--ion-color-primary,#3880ff);--background-focused-opacity:.1;--color-activated:var(--ion-color-primary-contrast,#fff)}:host(.button-clear),:host(.button-outline){--background-focused:var(--ion-color-primary,#3880ff);--background-hover:transparent}:host(.button-clear){--background-activated:transparent;--background-focused-opacity:.1;font-size:17px;font-weight:400;letter-spacing:0}:host(.button-large){--border-radius:12px;--padding-top:0;--padding-start:1em;--padding-end:1em;--padding-bottom:0;height:2.8em;font-size:20px}:host(.button-small){--border-radius:6px;--padding-top:0;--padding-start:0.9em;--padding-end:0.9em;--padding-bottom:0;height:2.1em;font-size:13px}:host(.button-round){--border-radius:64px;--padding-top:0;--padding-start:26px;--padding-end:26px;--padding-bottom:0}:host(.button-strong){font-weight:600}:host(.button-clear.ion-activated){opacity:.4}:host(.button-outline.ion-activated.ion-color) .button-native{color:var(--ion-color-contrast)}:host(.button-outline.ion-activated.ion-color) .button-native:after{background:var(--ion-color-base)}:host(.button-solid.ion-color.ion-activated) .button-native:after{background:var(--ion-color-shade)}:host(.button-clear.ion-focused.ion-color) .button-native,:host(.button-outline.ion-focused.ion-color) .button-native{color:var(--ion-color-base)}:host(.button-clear.ion-focused.ion-color) .button-native:after,:host(.button-outline.ion-focused.ion-color) .button-native:after{background:var(--ion-color-base)}:host(.button-solid.ion-color.ion-focused) .button-native:after{background:var(--ion-color-shade)}\@media (any-hover:hover){:host(.button-clear:hover),:host(.button-outline:hover){opacity:.6}:host(.button-clear.ion-color:hover) .button-native,:host(.button-outline.ion-color:hover) .button-native{color:var(--ion-color-base)}:host(.button-clear.ion-color:hover) .button-native:after,:host(.button-outline.ion-color:hover) .button-native:after{background:transparent}:host(.button-solid.ion-color:hover) .button-native:after{background:var(--ion-color-tint)}:host(:hover.button-solid.in-toolbar:not(.ion-color):not(.in-toolbar-color)) .button-native:after{background:#fff;opacity:.1}}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return Button;
+    Card.prototype.render = function () {
+        var _a;
+        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: Object.assign(Object.assign((_a = {}, _a[mode] = true, _a), Object(_theme_c2dc54d9_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), { 'card-disabled': this.disabled, 'ion-activatable': this.isClickable() }) }, this.renderCard(mode)));
+    };
+    return Card;
 }());
-var CACHED_MAP;
-var getIconMap = function () {
-    if (!CACHED_MAP) {
-        var win = window;
-        win.Ionicons = win.Ionicons || {};
-        CACHED_MAP = win.Ionicons.map = win.Ionicons.map || new Map();
-    }
-    return CACHED_MAP;
+Card.style = {
+    /*STENCIL:MODE:ios*/ ios: cardIosCss,
+    /*STENCIL:MODE:md*/ md: cardMdCss
 };
-var getUrl = function (i) {
-    var url = getSrc(i.src);
-    if (url) {
-        return url;
+var cardContentIosCss = "ion-card-content{display:block;position:relative}.card-content-ios{padding-left:20px;padding-right:20px;padding-top:20px;padding-bottom:20px;font-size:16px;line-height:1.4}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.card-content-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:20px;padding-inline-start:20px;-webkit-padding-end:20px;padding-inline-end:20px}}.card-content-ios h1{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:24px;font-weight:normal}.card-content-ios h2{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:16px;font-weight:normal}.card-content-ios h3,.card-content-ios h4,.card-content-ios h5,.card-content-ios h6{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:14px;font-weight:normal}.card-content-ios p{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:14px}ion-card-header+.card-content-ios{padding-top:0}";
+var cardContentMdCss = "ion-card-content{display:block;position:relative}.card-content-md{padding-left:16px;padding-right:16px;padding-top:13px;padding-bottom:13px;font-size:14px;line-height:1.5}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.card-content-md{padding-left:unset;padding-right:unset;-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px}}.card-content-md h1{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:24px;font-weight:normal}.card-content-md h2{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:16px;font-weight:normal}.card-content-md h3,.card-content-md h4,.card-content-md h5,.card-content-md h6{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:14px;font-weight:normal}.card-content-md p{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:14px;font-weight:normal;line-height:1.5}ion-card-header+.card-content-md{padding-top:0}";
+var CardContent = /** @class */ (function () {
+    function CardContent(hostRef) {
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
     }
-    url = getName(i.name, i.icon, i.mode, i.ios, i.md);
-    if (url) {
-        return getNamedUrl(url);
-    }
-    if (i.icon) {
-        url = getSrc(i.icon);
-        if (url) {
-            return url;
-        }
-        url = getSrc(i.icon[i.mode]);
-        if (url) {
-            return url;
-        }
-    }
-    return null;
-};
-var getNamedUrl = function (iconName) {
-    var url = getIconMap().get(iconName);
-    if (url) {
-        return url;
-    }
-    return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["i"])("svg/" + iconName + ".svg");
-};
-var getName = function (iconName, icon, mode, ios, md) {
-    // default to "md" if somehow the mode wasn't set
-    mode = (mode && toLower(mode)) === 'ios' ? 'ios' : 'md';
-    // if an icon was passed in using the ios or md attributes
-    // set the iconName to whatever was passed in
-    if (ios && mode === 'ios') {
-        iconName = toLower(ios);
-    }
-    else if (md && mode === 'md') {
-        iconName = toLower(md);
-    }
-    else {
-        if (!iconName && icon && !isSrc(icon)) {
-            iconName = icon;
-        }
-        if (isStr(iconName)) {
-            iconName = toLower(iconName);
-        }
-    }
-    if (!isStr(iconName) || iconName.trim() === '') {
-        return null;
-    }
-    // only allow alpha characters and dash
-    var invalidChars = iconName.replace(/[a-z]|-|\d/gi, '');
-    if (invalidChars !== '') {
-        return null;
-    }
-    return iconName;
-};
-var getSrc = function (src) {
-    if (isStr(src)) {
-        src = src.trim();
-        if (isSrc(src)) {
-            return src;
-        }
-    }
-    return null;
-};
-var isSrc = function (str) { return str.length > 0 && /(\/|\.)/.test(str); };
-var isStr = function (val) { return typeof val === 'string'; };
-var toLower = function (val) { return val.toLowerCase(); };
-var validateContent = function (svgContent) {
-    if (svgContent) {
-        var div = document.createElement('div');
-        div.innerHTML = svgContent;
-        // setup this way to ensure it works on our buddy IE
-        for (var i = div.childNodes.length - 1; i >= 0; i--) {
-            if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
-                div.removeChild(div.childNodes[i]);
-            }
-        }
-        // must only have 1 root element
-        var svgElm = div.firstElementChild;
-        if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
-            var svgClass = svgElm.getAttribute('class') || '';
-            svgElm.setAttribute('class', (svgClass + ' s-ion-icon').trim());
-            // root element must be an svg
-            // lets double check we've got valid elements
-            // do not allow scripts
-            if (isValid(svgElm)) {
-                return div.innerHTML;
-            }
-        }
-    }
-    return '';
-};
-var isValid = function (elm) {
-    if (elm.nodeType === 1) {
-        if (elm.nodeName.toLowerCase() === 'script') {
-            return false;
-        }
-        for (var i = 0; i < elm.attributes.length; i++) {
-            var val = elm.attributes[i].value;
-            if (isStr(val) && val.toLowerCase().indexOf('on') === 0) {
-                return false;
-            }
-        }
-        for (var i = 0; i < elm.childNodes.length; i++) {
-            if (!isValid(elm.childNodes[i])) {
-                return false;
-            }
-        }
-    }
-    return true;
-};
-var ioniconContent = new Map();
-var requests = new Map();
-var getSvgContent = function (url) {
-    // see if we already have a request for this url
-    var req = requests.get(url);
-    if (!req) {
-        // we don't already have a request
-        req = fetch(url).then(function (rsp) {
-            if (rsp.ok) {
-                return rsp.text().then(function (svgContent) {
-                    ioniconContent.set(url, validateContent(svgContent));
-                });
-            }
-            ioniconContent.set(url, '');
-        });
-        // cache for the same requests
-        requests.set(url, req);
-    }
-    return req;
-};
-var Icon = /** @class */ (function () {
-    function Icon(hostRef) {
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.isVisible = false;
-        /**
-         * The mode determines which platform styles to use.
-         */
-        this.mode = getIonMode();
-        /**
-         * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
-         * Default, `false`.
-         */
-        this.lazy = false;
-    }
-    Icon.prototype.connectedCallback = function () {
-        var _this = this;
-        // purposely do not return the promise here because loading
-        // the svg file should not hold up loading the app
-        // only load the svg if it's visible
-        this.waitUntilVisible(this.el, '50px', function () {
-            _this.isVisible = true;
-            _this.loadIcon();
-        });
+    CardContent.prototype.render = function () {
+        var _a;
+        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: (_a = {},
+                _a[mode] = true,
+                // Used internally for styling
+                _a["card-content-" + mode] = true,
+                _a) }));
     };
-    Icon.prototype.disconnectedCallback = function () {
-        if (this.io) {
-            this.io.disconnect();
-            this.io = undefined;
-        }
-    };
-    Icon.prototype.waitUntilVisible = function (el, rootMargin, cb) {
-        var _this = this;
-        if (this.lazy && typeof window !== 'undefined' && window.IntersectionObserver) {
-            var io_1 = this.io = new window.IntersectionObserver(function (data) {
-                if (data[0].isIntersecting) {
-                    io_1.disconnect();
-                    _this.io = undefined;
-                    cb();
-                }
-            }, { rootMargin: rootMargin });
-            io_1.observe(el);
-        }
-        else {
-            // browser doesn't support IntersectionObserver
-            // so just fallback to always show it
-            cb();
-        }
-    };
-    Icon.prototype.loadIcon = function () {
-        var _this = this;
-        if (this.isVisible) {
-            var url_1 = getUrl(this);
-            if (url_1) {
-                if (ioniconContent.has(url_1)) {
-                    // sync if it's already loaded
-                    this.svgContent = ioniconContent.get(url_1);
-                }
-                else {
-                    // async if it hasn't been loaded
-                    getSvgContent(url_1).then(function () { return _this.svgContent = ioniconContent.get(url_1); });
-                }
-            }
-        }
-        if (!this.ariaLabel) {
-            var label = getName(this.name, this.icon, this.mode, this.ios, this.md);
-            // user did not provide a label
-            // come up with the label based on the icon name
-            if (label) {
-                this.ariaLabel = label.replace(/\-/g, ' ');
-            }
-        }
-    };
-    Icon.prototype.render = function () {
-        var _a, _b;
-        var mode = this.mode || 'md';
-        var flipRtl = this.flipRtl || (this.ariaLabel && (this.ariaLabel.indexOf('arrow') > -1 || this.ariaLabel.indexOf('chevron') > -1) && this.flipRtl !== false);
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "img", class: Object.assign(Object.assign((_a = {}, _a[mode] = true, _a), createColorClasses(this.color)), (_b = {}, _b["icon-" + this.size] = !!this.size, _b['flip-rtl'] = !!flipRtl && this.el.ownerDocument.dir === 'rtl', _b)) }, ((this.svgContent)
-            ? Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "icon-inner", innerHTML: this.svgContent })
-            : Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "icon-inner" }))));
-    };
-    Object.defineProperty(Icon, "assetsDirs", {
-        get: function () { return ["svg"]; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Icon.prototype, "el", {
-        get: function () { return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Icon, "watchers", {
-        get: function () {
-            return {
-                "name": ["loadIcon"],
-                "src": ["loadIcon"],
-                "icon": ["loadIcon"]
-            };
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Icon, "style", {
-        get: function () { return ":host{display:inline-block;width:1em;height:1em;contain:strict;fill:currentColor;-webkit-box-sizing:content-box!important;box-sizing:content-box!important}:host .ionicon{stroke:currentColor}.ionicon-fill-none{fill:none}.ionicon-stroke-width{stroke-width:32px;stroke-width:var(--ionicon-stroke-width,32px)}.icon-inner,.ionicon,svg{display:block;height:100%;width:100%}:host(.flip-rtl) .icon-inner{-webkit-transform:scaleX(-1);transform:scaleX(-1)}:host(.icon-small){font-size:18px!important}:host(.icon-large){font-size:32px!important}:host(.ion-color){color:var(--ion-color-base)!important}:host(.ion-color-primary){--ion-color-base:var(--ion-color-primary,#3880ff)}:host(.ion-color-secondary){--ion-color-base:var(--ion-color-secondary,#0cd1e8)}:host(.ion-color-tertiary){--ion-color-base:var(--ion-color-tertiary,#f4a942)}:host(.ion-color-success){--ion-color-base:var(--ion-color-success,#10dc60)}:host(.ion-color-warning){--ion-color-base:var(--ion-color-warning,#ffce00)}:host(.ion-color-danger){--ion-color-base:var(--ion-color-danger,#f14141)}:host(.ion-color-light){--ion-color-base:var(--ion-color-light,#f4f5f8)}:host(.ion-color-medium){--ion-color-base:var(--ion-color-medium,#989aa2)}:host(.ion-color-dark){--ion-color-base:var(--ion-color-dark,#222428)}"; },
-        enumerable: true,
-        configurable: true
-    });
-    return Icon;
+    return CardContent;
 }());
-var getIonMode = function () { return (document.documentElement.getAttribute('mode')) || 'md'; };
-var createColorClasses = function (color) {
-    var _a;
-    return (color) ? (_a = {
-            'ion-color': true
-        },
-        _a["ion-color-" + color] = true,
-        _a) : null;
+CardContent.style = {
+    /*STENCIL:MODE:ios*/ ios: cardContentIosCss,
+    /*STENCIL:MODE:md*/ md: cardContentMdCss
+};
+var cardHeaderIosCss = ":host{--background:transparent;--color:inherit;display:block;position:relative;background:var(--background);color:var(--color)}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}:host{padding-left:20px;padding-right:20px;padding-top:20px;padding-bottom:16px}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:20px;padding-inline-start:20px;-webkit-padding-end:20px;padding-inline-end:20px}}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){:host(.card-header-translucent){background-color:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.9);-webkit-backdrop-filter:saturate(180%) blur(30px);backdrop-filter:saturate(180%) blur(30px)}}";
+var cardHeaderMdCss = ":host{--background:transparent;--color:inherit;display:block;position:relative;background:var(--background);color:var(--color)}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}:host{padding-left:16px;padding-right:16px;padding-top:16px;padding-bottom:16px}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px}}::slotted(ion-card-title:not(:first-child)),::slotted(ion-card-subtitle:not(:first-child)){margin-top:8px}";
+var CardHeader = /** @class */ (function () {
+    function CardHeader(hostRef) {
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        /**
+         * If `true`, the card header will be translucent.
+         * Only applies when the mode is `"ios"` and the device supports
+         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+        this.translucent = false;
+    }
+    CardHeader.prototype.render = function () {
+        var _a;
+        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: Object.assign(Object.assign({}, Object(_theme_c2dc54d9_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_a = { 'card-header-translucent': this.translucent, 'ion-inherit-color': true }, _a[mode] = true, _a)) }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+    };
+    return CardHeader;
+}());
+CardHeader.style = {
+    /*STENCIL:MODE:ios*/ ios: cardHeaderIosCss,
+    /*STENCIL:MODE:md*/ md: cardHeaderMdCss
+};
+var cardSubtitleIosCss = ":host{display:block;position:relative;color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-600, #666666);margin-left:0;margin-right:0;margin-top:0;margin-bottom:4px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-size:12px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase}";
+var cardSubtitleMdCss = ":host{display:block;position:relative;color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-550, #737373);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-size:14px;font-weight:500}";
+var CardSubtitle = /** @class */ (function () {
+    function CardSubtitle(hostRef) {
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    }
+    CardSubtitle.prototype.render = function () {
+        var _a;
+        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "heading", "aria-level": "3", class: Object.assign(Object.assign({}, Object(_theme_c2dc54d9_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_a = { 'ion-inherit-color': true }, _a[mode] = true, _a)) }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+    };
+    return CardSubtitle;
+}());
+CardSubtitle.style = {
+    /*STENCIL:MODE:ios*/ ios: cardSubtitleIosCss,
+    /*STENCIL:MODE:md*/ md: cardSubtitleMdCss
+};
+var cardTitleIosCss = ":host{display:block;position:relative;color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-text-color, #000);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-size:28px;font-weight:700;line-height:1.2}";
+var cardTitleMdCss = ":host{display:block;position:relative;color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-850, #262626);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-size:20px;font-weight:500;line-height:1.2}";
+var CardTitle = /** @class */ (function () {
+    function CardTitle(hostRef) {
+        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    }
+    CardTitle.prototype.render = function () {
+        var _a;
+        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "heading", "aria-level": "2", class: Object.assign(Object.assign({}, Object(_theme_c2dc54d9_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_a = { 'ion-inherit-color': true }, _a[mode] = true, _a)) }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+    };
+    return CardTitle;
+}());
+CardTitle.style = {
+    /*STENCIL:MODE:ios*/ ios: cardTitleIosCss,
+    /*STENCIL:MODE:md*/ md: cardTitleMdCss
 };
 
 
