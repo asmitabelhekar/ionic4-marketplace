@@ -34,7 +34,7 @@ ion-content ion-toolbar {
   float: left;
   border-radius: 5px;
   width: 50%;
-  height:120px;
+  height:150px;
   padding-left: 4px;
   padding-right: 4px;
   // padding-top: 5px;
@@ -144,9 +144,19 @@ div.b {
 }
 
 
+label.categoty-width{
+  white-space: nowrap; 
+  width: 75px; 
+  text-align: center;
+  margin-top:5px;
+  font-size:11px;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
 div.check_width {
   white-space: nowrap; 
-  width: 120px; 
+  width: 130px; 
   overflow: hidden;
   text-overflow: ellipsis; 
   // border: 1px solid #000000;
@@ -157,12 +167,13 @@ div.check_width {
 
   // background-color: #ffffff !important;
   color:black;
+  // width:17%;
   
 }
 
 .even {
   // background-color: gray !important;
-
+  // width:17%;
   // background-color: #152a3f !important;
   color:#f168cb;
 }

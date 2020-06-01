@@ -61,7 +61,12 @@ const routes: Routes = [
   {
     path: 'checkinternet',
     loadChildren: () => import('./pages/checkinternet/checkinternet.module').then( m => m.CheckinternetPageModule)
+  },
+  {
+    path: 'notificationlist',
+    loadChildren: () => import('./pages/notificationlist/notificationlist.module').then( m => m.NotificationlistPageModule)
   }
+ 
 ];
 
 @NgModule({

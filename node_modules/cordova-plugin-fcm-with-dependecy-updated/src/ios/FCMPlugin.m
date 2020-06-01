@@ -110,9 +110,24 @@ static FCMPlugin *fcmPluginInstance;
 }
 
 - (void)requestPushPermission:(CDVInvokedUrlCommand *)command {
-    NSLog(@"requestPushPermission");
     [self.commandDelegate runInBackground:^{
-        [AppDelegate requestPushPermission];
+        NSNumber* ios9SupportTimeout = [command argumentAtIndex:0 withDefault:[NSNumber numberWithFloat:10]];
+        NSNumber* ios9SupportInterval = [command argumentAtIndex:1 withDefault:[NSNumber numberWithFloat:0.3]];
+        NSLog(@"requestPushPermission { ios9SupportTimeout:%@ ios9SupportInterval:%@ }", ios9SupportTimeout, ios9SupportInterval);
+        id objects[] = { ios9SupportTimeout, ios9SupportInterval };
+        id keys[] = { @"ios9SupportTimeout", @"ios9SupportInterval" };
+        NSDictionary* options = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:2];
+        [AppDelegate requestPushPermission:^(BOOL pushPermission, NSError* _Nullable error) {
+            if(error != nil){
+                NSLog(@"push permission request error: %@", error);
+                __block CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error description]];
+                [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
+                return;
+            }
+            NSLog(@"push permission request result: %@", pushPermission ? @"Yes" : @"No");
+            __block CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:pushPermission];
+            [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
+        } withOptions:options];
     }];
 }
 

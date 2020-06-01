@@ -17,6 +17,7 @@ import { empty } from 'rxjs';
 })
 export class HomePage {
 
+  parentArray = [];
   Languages: any;
   keysObject = [];
   getBookmarkObj: any = {};
@@ -119,7 +120,14 @@ export class HomePage {
     this.loader.showBlockingLoaderAuth();
     let url = environment.base_url + environment.version + "category/" + 0 + "/sub-category"
     this.apiCall.get(url).subscribe(MyResponse => {
-      this.categoryArray = MyResponse['result']['list'];
+      this.parentArray = MyResponse['result']['list'];
+      for(let i=0; i< this.parentArray.length; i++){
+        if(this.parentArray[i]['name'] == "Parent Category"){
+
+        }else{
+          this.categoryArray.push(this.parentArray[i]);
+        }
+      }
       this.loader.hideBlockingLoaderAuth();
       this.noInternet = '0';
     },
@@ -136,6 +144,9 @@ export class HomePage {
     let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?"  + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.advertisementArray = MyResponse['result']['list'];
+
+   
+
       this.countAdvertisement = MyResponse['result']['count'];
       //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
       this.loader.hideBlockingLoaderAuth();
@@ -525,4 +536,8 @@ export class HomePage {
     toast.present();
   }
 
+
+  notifications(){
+    this.router.navigate(['/notificationlist'])
+  }
 }

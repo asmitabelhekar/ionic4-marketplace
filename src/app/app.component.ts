@@ -1,5 +1,5 @@
-import { Component , ViewChild} from '@angular/core';
-import {App, Nav} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { App, Nav } from 'ionic-angular';
 import { Platform, AlertController, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -12,7 +12,7 @@ import { NgZone } from '@angular/core';
 import { ChatlistPage } from './pages/chatlist/chatlist.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { Storage } from '@ionic/storage';
+// import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +20,9 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  
-  @ViewChild(NavController, {static :false}) navChild:NavController;
+  rootPage: string;
+  @ViewChild('myNav', { static: false }) navCtrl: NavController;
+  @ViewChild(NavController, { static: false }) navChild: NavController;
   loadingBlock;
   appPages = [
     {
@@ -52,29 +53,28 @@ export class AppComponent {
   ];
   constructor(
     private platform: Platform,
-    public router : Router,
+    public router: Router,
     public navController: NavController,
-    public alertCtrl : AlertController,
-    public preloader : LoaderService,
+    public alertCtrl: AlertController,
+    public preloader: LoaderService,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public deeplinks : Deeplinks,
-    public zone : NgZone,
-    public storage : Storage,
-    public fcm : FCM,
-    public localNotifications : LocalNotifications
+    public deeplinks: Deeplinks,
+    public zone: NgZone,
+    public fcm: FCM,
+    public localNotifications: LocalNotifications
   ) {
     this.initializeApp();
   }
 
 
-   
+
   ngOnInit() {
     this.preloader.blockingLoaderAuth.subscribe(event => {
       this.loadingBlock = event;
     });
   }
-  
+
 
   initializeApp() {
     this.preloader.showBlockingLoaderAuth();
@@ -82,50 +82,44 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.loginSession();
-      
+      this.fcm.subscribeToTopic('people');
       this.fcmNotification();
 
-      this.localNotifications.on('click').subscribe(notification => {
-        console.log('Notification str: ' + JSON.stringify(notification))
-        // console.log('Notification parse: ' + JSON.parse(notification))
-        
-        let json = notification.data
+      // this.localNotifications.on('click').subscribe(notification => {
+      //   console.log('Notification str: ' + JSON.stringify(notification))
+      //   this.router.navigate(['/notification']);
+      //   let json = notification.data
 
-     
-      })
+
+      // })
 
       this.platform.backButton.subscribe(() => {
-        if (this.router.url === '/home' ) {
+        if (this.router.url === '/home') {
           this.presentAlert()
           return
         }
       });
 
 
-
-      this.deeplinks.route( {
-      "/" : {}
+      //share deep linking
+      this.deeplinks.route({
+        "/": {}
       }).subscribe((match) => {
+        let sendId = {
+          "id": match.$args.id,
+          "categoryId": match.$args.categoryId,
+          "status": "category",
+          "adType": 1
+        }
 
-      // alert("show success id:"+JSON.stringify(match));
-      // alert("show success categoryId:"+(match.$link.id));
-      // alert("show success categoryId:"+(match.$link.queryString.categoryId));
-      let sendId = {
-        "id": match.$args.id,
-        "categoryId": match.$args.categoryId,
-        "status": "category",
-        "adType": 1
-      }
-     
-      this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+        this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
 
         console.log('Successfully routed', match);
       }, (nomatch) => {
-        // alert("show failure:"+JSON.stringify(nomatch));
         console.log('Unmatched Route', nomatch);
       });
 
-     
+
 
       // this.platform.backButton.subscribeWithPriority(9999, () => {
       //   document.addEventListener('backbutton', function (event) {
@@ -141,47 +135,24 @@ export class AppComponent {
   fcmNotification() {
     this.fcm.getToken().then(token => {
       console.log("TOKEN: " + token)
-      this.storage.set('token',token).then(()=>{
-
-      })
-      // alert(token);
+      // alert("show token:"+token);
     });
 
     this.fcm.onTokenRefresh().subscribe(token => {
       console.log(token);
     });
-
     this.fcm.onNotification().subscribe(data => {
+      console.log("show notification data:" + data);
       if (data.wasTapped) {
+        this.router.navigate(['notificationlist']);
         console.log("Received in background");
-        // alert("Received in BG: " + JSON.stringify(data))
       } else {
         console.log("Received in foreground");
-        
-        // alert("Received in foreground: " + JSON.stringify(data))
-        this.localNotifications.schedule({
-          id: 1,
-          title: data.title,
-          text: data.body,
-          foreground: true,
-          sound: "default",
-          trigger: { at: new Date() },
-          icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
-          actions: "FCM_PLUGIN_ACTIVITY",
-          data: {
-            mydata: data,
-            type: ""
-          }
-          // sound: default
-          // trigger: { every: { hour: 9, minute: 30 } }
-        });
-        // this.localNotifications.getAll().then((res: ILocalNotification[]) => {
-        //   console.log('Get All: ' + JSON.stringify(res));
-        // })
+
       };
     });
   }
-  
+
 
   async presentAlert() {
     const alert = await this.alertCtrl.create({
@@ -209,13 +180,11 @@ export class AppComponent {
     await alert.present();
   }
 
-  loginSession(){
+  loginSession() {
     let loginStatus = localStorage.getItem("loginStatus");
-    if(loginStatus == "yes"){
-    
+    if (loginStatus == "yes") {
       this.router.navigate(['/home']);
-    }else{
-      // this.router.navigate(['/sliderintro']);
+    } else {
       this.router.navigate(['/login']);
     }
     this.preloader.hideBlockingLoaderAuth();
@@ -226,3 +195,22 @@ export class AppComponent {
     }
   }
 }
+
+
+ // this.localNotifications.schedule({
+        //   id: 1,
+        //   title: data.title,
+        //   text: data.body,
+        //   foreground: true,
+        //   sound: "default",
+        //   trigger: { at: new Date() },
+        //   icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+        //   actions: "FCM_PLUGIN_ACTIVITY",
+        //   data: {
+        //     landing_page: "notificationlist",
+        //     price: "5000"
+        //   }
+        // });
+
+
+        // AIzaSyDZTo3RezTgFPhJOaUEMYMFCAv0RJxjYfQ

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormControl, NgModel } from '@angular/forms';
+import { FormControl, NgModel, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { environment } from 'src/environments/environment';
@@ -12,6 +12,8 @@ import { ToastController } from '@ionic/angular';
 })
 export class PostadvertisementPage implements OnInit {
 
+ 
+  
   selectedCode : any = "91";
   countryCode = [{"code" : "91","name" : "India"},
   {"code" : "39","name":"Italy"},
