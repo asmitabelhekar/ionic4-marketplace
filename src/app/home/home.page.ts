@@ -90,6 +90,9 @@ export class HomePage {
     if (this.categoryId == undefined) {
       this.categoryId = 5;
       console.log("check ::0");
+      this.advertisementArray = [];
+      this.currentPage = 0;
+      this.getAdvertisement(this.categoryId);
     } else {
       if (this.categoryId == 1) {
         this.categoryName = "Dance";
@@ -114,9 +117,7 @@ export class HomePage {
     }
     console.log("get categoryId::" + this.categoryId);
     this.getBannerData(this.categoryId);
-    this.advertisementArray = [];
-    this.currentPage = 0;
-    this.getAdvertisement(this.categoryId);
+   
   }
 
   getCategory() {
@@ -326,7 +327,6 @@ export class HomePage {
   }
 
   bookmarkAdvertisement(advertisementid) {
-
     this.checkStatus = this.postBookmarkObj.hasOwnProperty(advertisementid);
     console.log("check for status:" + this.checkStatus);
     if (this.checkStatus) {
