@@ -142,14 +142,14 @@ export class HomePage {
 
   getAdvertisement(categoryId) {
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
+    let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=1";
     this.apiCall.get(url).subscribe(MyResponse => {
 
       
 
       this.advertisementArray = this.advertisementArray.concat(MyResponse['result']['list']);
       this.countAdvertisement = MyResponse['result']['count'];
-      this.lastPage = Math.ceil(this.countAdvertisement / 10);
+      this.lastPage = Math.ceil(this.countAdvertisement / 1);
       console.log("show total count:"+this.lastPage);
       this.loader.hideBlockingLoaderAuth();
     },
