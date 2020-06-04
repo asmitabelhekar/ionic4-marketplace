@@ -17,13 +17,29 @@
         </mat-error>
     </mat-form-field>
   </div>
+
+  <!-- <div fxLayout="row" fxLayoutAlign="center center" style="margin-top:25px;" fxFlex="100">
+    <div fxFlex="45">
+      <button mat-raised-button (click)="closeDialog()" class="button-cancel" style="font-size:13px; width:70%"
+      >CANCEL</button>
+    </div>
+    <div fxFlex="45" >
+      
+    <button color="primary" mat-raised-button (click)="submit()" class="button-content" style="font-size:13px; width:70%"
+    [disabled]="cityName.invalid">SUBMIT</button>
+    </div>
+   
+
+  </div> -->
   </form>
 
-  <div fxLayout="row" fxLayoutAlign="center center" style="margin-top:10px;margin-left:10%; margin-right:10%; width:80%">
-    <button  mat-raised-button (click)="closeDialog()" style="margin-right:15px;font-size:13px">CANCEL</button>
-    <button  mat-raised-button (click)="submit()" class="loginButton" style="font-size:13px" [disabled]="cityName.invalid">SUBMIT</button>
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin-top:10px;width:100%">
+    <button fxFlex="45" mat-raised-button (click)="closeDialog()" style="margin-right:15px;font-size:13px">CANCEL</button>
+    <button fxFlex="45" mat-raised-button (click)="submit()" class="loginButton" style="font-size:13px" [disabled]="cityName.invalid">SUBMIT</button>
  
 
   </div>
+
+
 
 

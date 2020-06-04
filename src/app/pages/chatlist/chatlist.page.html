@@ -1,13 +1,8 @@
 <ion-header class="new-background-color">
   <ion-toolbar class="new-background-color">
-    <!-- <ion-buttons slot="start" style="color:white">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons> -->
+
     <label style="color:white; font-size:17px; margin-left:10px">Chat</label>
 
-    <!-- <ion-title style="color:white ; margin-left:10px">
-      Chats
-    </ion-title> -->
   </ion-toolbar>
 </ion-header>
 
@@ -18,24 +13,25 @@
 
         <ion-row (click)="detailChat(item.name, item.id)" style="margin-left:10px; width:100%">
           <ion-col size="2">
-            <img src="../../../assets/defaultprofilepicimg.png"
+            <img src="../../../assets/agent.png"
               style="border-radius: 50%;width:55px; height:55px; border:1px solid rgb(240, 234, 234)" />
           </ion-col>
           <ion-col size="10" style="margin-top:5px;">
             <ion-item style="margin-left:-10px">
-              <div fxLayout="column" >
-                <label style="color:black; font-size:12px;">Name</label>
+              <div fxLayout="column">
                 <label style="color:black;font-size:17px;">{{item.name}}</label>
+                <label style="color:black; font-size:12px;">Helli</label>
+
               </div>
-              
-  
+
+
             </ion-item>
-  
-  
+
+
           </ion-col>
         </ion-row>
       </div>
-     
+
 
     </div>
     <div class="cl_bottom_fix">

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Second</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Congratulation!</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n      You get price from our sponsor:\n      <h2>{{price}}</h2>\n    </ion-card-content>\n  </ion-card>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Notifications</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Congratulation!</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n      You get price from our sponsor:\n      <h2>{{price}}</h2>\n    </ion-card-content>\n  </ion-card>\n</ion-content>");
 
 /***/ }),
 
