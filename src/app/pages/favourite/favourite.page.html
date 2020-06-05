@@ -13,148 +13,158 @@
 
 <ion-content>
 <ion-item-divider>
-  <ion-segment (ionChange)="segmentChanged($event)" value="myadds">
-    <ion-segment-button value="myadds" style="--background: white;">
+  <ion-segment (ionChange)="segmentChanged($event)" value="myadds" [(ngModel)]="segment">
+    <ion-segment-button value="0" style="--background: white;">
       <ion-label >My Adds</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="bookmarks" style="--background: white;">
+    <ion-segment-button value="1" style="--background: white;">
       <ion-label >Bookmarks</ion-label>
     </ion-segment-button>
   </ion-segment>
 </ion-item-divider>
 
+<ion-slides #slides pager="false" [options]="sliderOptions" (ionSlideDidChange)="slideChanged(slides)" (ionSlidesDidLoad)="slideChanged(slides)">
+
+  <ion-slide style="height:100%;width:100%">
+    <div  *ngIf="tabTitle == '0' ">
+
+      <div *ngIf="arrayLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
+  
+      
+        <div class="row" *ngFor="let item of advertisementArray">
+          <div  >
+            <div class="column" style="position:relative">
+              <img src={{item.images[0]}} style="border-radius: 5px;width:100%; height:100%" (click)="showAdvertisementDetail(image, item.id)"/>
+            
+              <div style="position:absolute;top:7px;right:8px;width:30px;height:30px;"
+              (click)="bookmarkAdvertisement(item.id)">
+              <ion-icon *ngIf="getBookmarkObj [item.id] == true "
+                style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart"></ion-icon>
+              <ion-icon *ngIf="getBookmarkObj [item.id] != true "
+                style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart-outline"></ion-icon>
+            </div>
+            
+                <div fxLayoutAlign="end end" fxLayout="column" (click)="showAdvertisementDetail(item.categoryId, item.id)"
+                style="position:absolute;background-image: linear-gradient(to bottom, transparent 15%, rgb(0, 0, 0,1)) ;bottom:8px;width:96%;  border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;">
+  
+  
+  
+                <div fxLayout="row" style="width:100%; color:white;padding-top:2px;">
+                  <div fxFlex="100" fxLayoutAlign="start start">
+                    <div class="b">
+                    <label style="font-size:11px;padding-left:5px">{{item.title}}</label>
+                    </div>
+                  </div>
+  
+  
+                </div>
+  
+                <div fxLayout="row" style="width:100%; color:white; padding-bottom:2px">
+                  <div fxFlex="30" fxLayoutAlign="start center">
+                    <label style="font-size:10px;padding-left:5px;font-weight:normal">₹ {{item.price | number}}</label>
+  
+                  </div>
+                  <div fxFlex="20">
+  
+                  </div>
+  
+                  <div fxFlex="50" fxLayoutAlign="end start">
+                    <div class="b" style="margin-top:-5px">
+                      <label style="font-size:10px; color:white;padding-right: 5px;">{{item.address}}</label>
+                    </div>
+                  </div>
+  
+                </div>
+  
+               
+  
+  
+              </div>
+            </div>
+  
+          </div>
+  
+  
+        </div>
+    
+    
+      </div>
+      <img style="width:100%; height:60px; visibility: hidden;" />
+      <div *ngIf="arrayLength == 0 " style="margin-top:20%">
+        <h3 align="center">No records found.</h3>
+      </div>
+  
+  
+    </div></ion-slide>
+
+
+  <ion-slide style="height:100%;width:100%" >
+  
+    <div  *ngIf="tabTitle == '1' " style="width:100%">
+      <div *ngIf="bookmarkLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
+  
+      
+        <div class="row" *ngFor="let item of advertisementArray">
+          <div (click)="showAdvertisementDetail(image, item.id)">
+            <div class="column" style="position:relative">
+              <img src={{item.images[0]}} style="border-radius: 5px;width:100%; height:100%" />
+              <div
+                style="position:absolute; bottom:8px;width:96%;background-image: linear-gradient(to bottom, transparent 15%, rgb(0, 0, 0,1)) ;; border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;">
+  
+                <div fxLayout="row" style="width:100%; color:white;padding-top:2px;">
+                  <div fxFlex="100" fxLayoutAlign="start start">
+                    <div class="b">
+                    <label style="font-size:11px;padding-left:5px">{{item.title}}</label>
+                    </div>
+                  </div>
+  
+  
+                </div>
+  
+                <div fxLayout="row" style="width:100%; color:white;padding-top:2px; padding-bottom:2px">
+                  <div fxFlex="30" fxLayoutAlign="start center">
+                    <label style="font-size:11px;padding-left:5px">{{item.price}}</label>
+                    
+                  </div>
+                  <div fxFlex="20">
+  
+                  </div>
+  
+  
+                  <div fxFlex="50" fxLayoutAlign="end start">
+                    <div class="b" style="margin-top:-5px">
+                      <label style="font-size:10px; color:white;padding-right: 5px;">{{item.address}}
+                          </label>
+                    </div>
+                  </div>
+  
+                </div>
+  
+  
+  
+  
+              </div>
+            </div>
+  
+          </div>
+  
+  
+        </div>
+    
+    
+      </div>
+      <img style="width:100%; height:60px; visibility: hidden;" />
+      <div *ngIf="bookmarkLength == 0 " style="margin-top:20%">
+        <h3 align="center">No bookmarks found.</h3>
+      </div>
+  
+    </div>
+  </ion-slide>
+</ion-slides>
+ 
+ 
 
  
-  <div *ngIf="tabTitle == 'myadds' ">
-
-    <div *ngIf="arrayLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
-
-    
-      <div class="row" *ngFor="let item of advertisementArray">
-        <div  >
-          <div class="column" style="position:relative">
-            <img src={{item.images[0]}} style="border-radius: 5px;width:100%; height:100%" (click)="showAdvertisementDetail(image, item.id)"/>
-            <div  (click)="bookmarkAdvertisement(item.id)"
-              style="position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;">
-
-              <div fxLayout="row" style="width:100%; color:white;padding-top:2px;">
-                <div fxFlex="50" fxLayoutAlign="start start">
-                  <div class="b">
-                  <label style="font-size:11px;padding-left:5px"><b>{{item.title}}</b></label>
-                  </div>
-                </div>
-
-                <div fxFlex="50" fxLayoutAlign="end end">
-                  <label style="font-size:11px;padding-right:5px"><b>{{item.price}}</b></label>
-                </div>
-
-              </div>
-
-              <div fxLayout="row" style="width:100%; color:white;padding-top:2px; padding-bottom:2px">
-                <div fxFlex="30" fxLayoutAlign="start start">
-                  <ion-icon style="color:hotpink" name="woman"></ion-icon>
-                  <ion-icon *ngIf="getBookmarkObj [item.id] == true " style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
-                  <ion-icon *ngIf="getBookmarkObj [item.id] != true " style="color:hotpink; margin-left:5px" name="heart-outline"></ion-icon>
-
-                </div>
-                <div fxFlex="20">
-
-                </div>
-
-                <div fxFlex="50" fxLayoutAlign="end start">
-                  <div class="b" style="margin-top:-5px">
-                    <label style="font-size:10px; color:white;padding-right: 5px;"><b>{{item.address}} ,
-                        120km</b></label>
-                  </div>
-                  <!-- <label style="font-size:10px;padding-right:5px"><b>{{item.address}} , 120km</b></label> -->
-                </div>
-
-              </div>
-
-
-
-
-            </div>
-          </div>
-
-        </div>
-
-
-      </div>
-  
-  
-    </div>
-    <img style="width:100%; height:60px; visibility: hidden;" />
-    <div *ngIf="arrayLength == 0 " style="margin-top:20%">
-      <h3 align="center">No records found.</h3>
-    </div>
-
-
-  </div>
-
-  <div *ngIf="tabTitle == 'bookmarks' " >
-    <div *ngIf="bookmarkLength > 0" style="width:98%; margin-left:1%; margin-top:10px">
-
-    
-      <div class="row" *ngFor="let item of advertisementArray">
-        <div (click)="showAdvertisementDetail(image, item.id)">
-          <div class="column" style="position:relative">
-            <img src={{item.images[0]}} style="border-radius: 5px;width:100%; height:100%" />
-            <div
-              style="position:absolute; bottom:8px;width:96%; background: rgba(0, 0, 0, 0.5); border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;">
-
-              <div fxLayout="row" style="width:100%; color:white;padding-top:2px;">
-                <div fxFlex="50" fxLayoutAlign="start start">
-                  <div class="b">
-                  <label style="font-size:11px;padding-left:5px">{{item.title}}</label>
-                  </div>
-                </div>
-
-                <div fxFlex="50" fxLayoutAlign="end end">
-                  <label style="font-size:11px;padding-right:5px">{{item.price}}</label>
-                </div>
-
-              </div>
-
-              <div fxLayout="row" style="width:100%; color:white;padding-top:2px; padding-bottom:2px">
-                <div fxFlex="30" fxLayoutAlign="start start">
-                  <ion-icon style="color:hotpink" name="woman"></ion-icon>
-                  <ion-icon style="color:hotpink; margin-left:5px" name="heart"></ion-icon>
-                </div>
-                <div fxFlex="20">
-
-                </div>
-
-
-                <div fxFlex="50" fxLayoutAlign="end start">
-                  <div class="b" style="margin-top:-5px">
-                    <label style="font-size:10px; color:white;padding-right: 5px;">{{item.address}}
-                        </label>
-                  </div>
-                  <!-- <label style="font-size:10px;padding-right:5px"><b>{{item.address}} , 120km</b></label> -->
-                </div>
-
-              </div>
-
-
-
-
-            </div>
-          </div>
-
-        </div>
-
-
-      </div>
-  
-  
-    </div>
-    <img style="width:100%; height:60px; visibility: hidden;" />
-    <div *ngIf="bookmarkLength == 0 " style="margin-top:20%">
-      <h3 align="center">No bookmarks found.</h3>
-    </div>
-
-  </div>
 
 
   <div class="cl_bottom_fix" fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
@@ -195,14 +205,4 @@
 
   </div>
 
-  <!-- <div class="cl_bottom_fix">
-    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
-      <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
-      <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
-      <ion-icon name="add-circle" class="cl_bottom_nav_css" (click)="postAdvertisement()">
-      </ion-icon>
-      <ion-icon name="heart" class="cl_post_css" (click)="openFavourite()"></ion-icon>
-      <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
-    </div>
-  </div> -->
 </ion-content>

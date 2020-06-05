@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
-import { MenuController, ToastController } from '@ionic/angular';
+import { MenuController, ToastController, IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-favourite',
@@ -11,18 +11,18 @@ import { MenuController, ToastController } from '@ionic/angular';
   styleUrls: ['./favourite.page.scss'],
 })
 export class FavouritePage implements OnInit {
-  getBookMarkArray : any;
-  bookmarkId : any;
+  getBookMarkArray: any;
+  bookmarkId: any;
   categoryId = 0;
-  arrayLength : any;
-  bookmarkLength : any;
-  tabTitle = "myadds";
-  checkStatus : boolean;
-  advertisementModel : any = {};
+  arrayLength: any;
+  bookmarkLength: any;
+  tabTitle = "0";
+  checkStatus: boolean;
+  advertisementModel: any = {};
   selectedTab = 0;
-  advertisementArray : any;
-  userId : any;
-  getBookmarkObj : any = {};
+  advertisementArray: any;
+  userId: any;
+  getBookmarkObj: any = {};
   imageArray = [
     {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
@@ -43,7 +43,7 @@ export class FavouritePage implements OnInit {
       "image": "https://i.pinimg.com/564x/54/c9/9b/54c99b01a6e6574724eda35b4ced31a8.jpg"
     },
     {
-      "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPbANJ346aMhq6fHmxibMF3nWG4PZ-RYurGwBLXz0J-I2h26s8&usqp=CAU"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPbANJ346aMhq6fHmxibMF3nWG4PZ-RYurGwBLXz0J-I2h26s8&usqp=CAU"
     },
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRToTUk2HOJ-99u3Mv4qRCO6V3lq5AC6-J7KVA4mRBOh_2moumu&usqp=CAU"
@@ -61,209 +61,231 @@ export class FavouritePage implements OnInit {
       "image": "http://fish.socialflix.in/wp-content/uploads/2020/02/orange-mercedes-benz-g63-164654.jpg"
     }
   ];
-  constructor(public router : Router,
-    public apiCall : ApiService,
-    public toast : ToastController,
-    public menuController : MenuController,
-    public loader : LoaderService) {
-      this.menuController.enable(false);
-     }
+  segment = 0;
+  sliderOptions = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    speed: 400
+  };
+
+  selectedSlide: any;
+
+
+  constructor(public router: Router,
+    public apiCall: ApiService,
+    public toast: ToastController,
+    public menuController: MenuController,
+    public loader: LoaderService) {
+    this.menuController.enable(false);
+  }
 
   ngOnInit() {
-    if(this.tabTitle == "myadds"){
+    if (this.tabTitle == "0") {
       this.selectedTab = 0;
       this.getAdvertisement();
-    }else{
+    } else {
       this.selectedTab = 1;
       this.getBookmarks();
     }
     // this.arrayLength = this.imageArray.length;
   }
 
-ionViewWillEnter(){
-  if(this.tabTitle == "myadds"){
+  ionViewWillEnter() {
+    if (this.tabTitle == "0") {
 
-    var jsonString = localStorage.getItem("BOOKMARK");    
-    this.getBookmarkObj = JSON.parse(jsonString);
-    if(this.getBookmarkObj == null || this.getBookmarkObj =="" || this.getBookmarkObj == undefined){
-      this.getBookmarkObj = {};
-    }else{
+      var jsonString = localStorage.getItem("BOOKMARK");
+      this.getBookmarkObj = JSON.parse(jsonString);
+      if (this.getBookmarkObj == null || this.getBookmarkObj == "" || this.getBookmarkObj == undefined) {
+        this.getBookmarkObj = {};
+      } else {
 
-    }
+      }
 
-    console.log("show retrieved object:"+this.getBookmarkObj);
+      console.log("show retrieved object:" + this.getBookmarkObj);
 
-    this.selectedTab = 0;
-    this.getAdvertisement();
-  }else{
-    this.selectedTab = 1;
-    this.getBookmarks();
-  }
-}
-
-bookmarkAdvertisement(advertisementid){
-   
-  this.checkStatus = this.getBookmarkObj.hasOwnProperty(advertisementid);
-  console.log("check for status:"+this.checkStatus);
-  if(this.checkStatus){
-    console.log("before delete:"+(this.getBookmarkObj));
-    delete this.getBookmarkObj[advertisementid];
-    localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
-   this.removeBookmark(advertisementid);
-  }else{
-    this.getBookmarkObj[advertisementid] = true;
-    localStorage.setItem("BOOKMARK",JSON.stringify(this.getBookmarkObj));
-    console.log("display object:"+(this.getBookmarkObj));
-
-    // this.loader.showBlockingLoaderAuth();
-    let send_date = {};
-    this.advertisementModel['userId'] = localStorage.getItem("userId");
-
-    send_date['userId'] = this.advertisementModel['userId'];
-    let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
-    this.apiCall.post(url, send_date).subscribe(MyResponse => {
-
-      // this.loader.hideBlockingLoaderAuth();
-    }, error => {
-      this.presentToast("Please try again");
-      this.loader.hideBlockingLoaderAuth();
-
-    })
-  }
-
- 
-}
-
-removeBookmark(advertisementId){
-  this.userId = localStorage.getItem("userId");
-  let url = environment.base_url + environment.version  +"users/" + this.userId + "/bookmarks?"  + "size=" + 1000;
-  this.apiCall.get(url).subscribe(MyResponse => {
-   this.getBookMarkArray = MyResponse['result']['list'];
-   for(let i= 0 ; i< this.getBookMarkArray.length; i++){
-
-     console.log("show advertisement id:"+advertisementId);
-
-     if(this.getBookMarkArray[i]['id'] == advertisementId)
-     {
-     console.log("show advertisement bookmark id:"+this.getBookMarkArray[i]['bookmarkId']);
-
-       this.bookmarkId = this.getBookMarkArray[i]['bookmarkId'];
-       console.log("check ------ bookmark id:"+this.bookmarkId);
-     
-     }else{
-     console.log("show advertisement bookmark id failure ::"+this.getBookMarkArray[i]['bookmarkId']);
-
-     }
-   }
-   console.log("show advertisement bookmark id:"+this.bookmarkId);
-
-   let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
-   this.apiCall.delete(url).subscribe(MyResponse => {
-
-     this.loader.hideBlockingLoaderAuth();
-   }, error => {
-     this.presentToast("Please try again");
-     this.loader.hideBlockingLoaderAuth();
-
-   })
-  },
-    error => {
-      
-    })
-}
-
-
-
-async presentToast(message) {
-  const toast = await this.toast.create({
-    message: message,
-    duration: 4000
-  });
-  toast.present();
-}
-
-  segmentChanged(ev: any) {
-    this.tabTitle = ev.detail.value;
-
-    if(this.tabTitle == "myadds"){
       this.selectedTab = 0;
       this.getAdvertisement();
-    }else{
+    } else {
+      this.selectedTab = 1;
+      this.getBookmarks();
+    }
+  }
+
+  bookmarkAdvertisement(advertisementid) {
+
+    this.checkStatus = this.getBookmarkObj.hasOwnProperty(advertisementid);
+    console.log("check for status:" + this.checkStatus);
+    if (this.checkStatus) {
+      console.log("before delete:" + (this.getBookmarkObj));
+      delete this.getBookmarkObj[advertisementid];
+      localStorage.setItem("BOOKMARK", JSON.stringify(this.getBookmarkObj));
+      this.removeBookmark(advertisementid);
+    } else {
+      this.getBookmarkObj[advertisementid] = true;
+      localStorage.setItem("BOOKMARK", JSON.stringify(this.getBookmarkObj));
+      console.log("display object:" + (this.getBookmarkObj));
+
+      // this.loader.showBlockingLoaderAuth();
+      let send_date = {};
+      this.advertisementModel['userId'] = localStorage.getItem("userId");
+
+      send_date['userId'] = this.advertisementModel['userId'];
+      let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+      this.apiCall.post(url, send_date).subscribe(MyResponse => {
+
+        // this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
+      })
+    }
+
+
+  }
+
+  removeBookmark(advertisementId) {
+    this.userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000;
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.getBookMarkArray = MyResponse['result']['list'];
+      for (let i = 0; i < this.getBookMarkArray.length; i++) {
+
+        console.log("show advertisement id:" + advertisementId);
+
+        if (this.getBookMarkArray[i]['id'] == advertisementId) {
+          console.log("show advertisement bookmark id:" + this.getBookMarkArray[i]['bookmarkId']);
+
+          this.bookmarkId = this.getBookMarkArray[i]['bookmarkId'];
+          console.log("check ------ bookmark id:" + this.bookmarkId);
+
+        } else {
+          console.log("show advertisement bookmark id failure ::" + this.getBookMarkArray[i]['bookmarkId']);
+
+        }
+      }
+      console.log("show advertisement bookmark id:" + this.bookmarkId);
+
+      let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
+      this.apiCall.delete(url).subscribe(MyResponse => {
+
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
+      })
+    },
+      error => {
+
+      })
+  }
+
+
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
+  }
+
+  async segmentChanged(ev: any) {
+
+    await this.selectedSlide.slideTo(this.segment);
+
+    this.tabTitle = ev.detail.value;
+
+    if (this.tabTitle == "0") {
+      this.selectedTab = 0;
+      this.getAdvertisement();
+    } else {
       this.selectedTab = 1;
       this.getBookmarks();
     }
     console.log('Segment changed', ev.detail.value);
   }
 
-  getBookmarks(){
+  async slideChanged(slides: IonSlides) {
+    this.loader.showBlockingLoaderAuth();
+    this.selectedSlide = slides;
+    slides.getActiveIndex().then(selectedIndex => {
+      this.segment = selectedIndex;
+      console.log("show index:"+this.segment);
+    })
+    this.loader.hideBlockingLoaderAuth();
+  }
+
+  getBookmarks() {
 
     this.loader.showBlockingLoaderAuth();
     let userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version  +"users/" + userId + "/bookmarks?"+ "size=" + 1000;
+    let url = environment.base_url + environment.version + "users/" + userId + "/bookmarks?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
-     this.advertisementArray = MyResponse['result']['list'];
+      this.advertisementArray = MyResponse['result']['list'];
       this.bookmarkLength = MyResponse['result']['count'];
       // this.arrayLength = 0;
-    //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
-     this.loader.hideBlockingLoaderAuth();
+      //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+      this.loader.hideBlockingLoaderAuth();
 
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
-        
+
       })
   }
 
 
-  getAdvertisement(){
+  getAdvertisement() {
     this.loader.showBlockingLoaderAuth();
     let userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version  +"users/" + userId + "/advertisements?"  + "size=" + 1000;
+    let url = environment.base_url + environment.version + "users/" + userId + "/advertisements?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
-     this.advertisementArray = MyResponse['result']['list'];
+      this.advertisementArray = MyResponse['result']['list'];
       this.arrayLength = MyResponse['result']['count'];
       // this.arrayLength = 0;
-    //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
-     this.loader.hideBlockingLoaderAuth();
+      //  console.log("advertisement data::"+JSON.stringify(this.advertisementArray));
+      this.loader.hideBlockingLoaderAuth();
 
     },
       error => {
         this.loader.hideBlockingLoaderAuth();
-        
+
       })
   }
 
-  openChatList(){
+  openChatList() {
     this.router.navigate(['/chatlist']);
   }
 
-  postAdvertisement(){
+  postAdvertisement() {
     this.router.navigate(['/postadvertisement']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home']);
   }
 
-  openFavourite(){
+  openFavourite() {
     this.router.navigate(['/favourite']);
   }
 
-  openProfile(){
+  openProfile() {
     this.router.navigate(['/profile']);
   }
 
-  showAdvertisementDetail(data, id){
+  showAdvertisementDetail(data, id) {
     let sendId = {
-      "id" : id,
-      "categoryId" : this.categoryId,
-      "status" : "users",
-      "adType" : 0
+      "id": id,
+      "categoryId": this.categoryId,
+      "status": "users",
+      "adType": 0
     }
-// alert("show data::"+JSON.stringify(data));
-localStorage.setItem("url",data);
-console.log("send image::"+id);
-this.router.navigate(['/advertisementdetail', { sendId : JSON.stringify(sendId)}]);
+    // alert("show data::"+JSON.stringify(data));
+    localStorage.setItem("url", data);
+    console.log("send image::" + id);
+    this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
 }
