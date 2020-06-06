@@ -15,7 +15,7 @@
   </ion-toolbar>
 </ion-header>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-<ion-content>
+<ion-content >
  
   <form #userForm="ngForm" style="width:100%">
  
@@ -56,11 +56,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" style="margin-top:5px">
   <mat-form-field style="width:96%" appearance="outline">
     <mat-label>Select Category</mat-label>
-    <!-- <select matNativeControl required #categorytype (change)="selectCategoryType(categorytype.value)"  placeholder="Select Category">
-      <option *ngFor="let type of categoryArray" [value]="type.id"> {{type.name}}</option>
-    </select> -->
-
-
+   
     <mat-select 
     name="type" 
     (selectionChange)="selectCategoryType(categoryId)"
@@ -99,15 +95,7 @@
     </div>
   </ion-radio-group>
 
-    <!-- <ion-item>
-      <ion-label>Male</ion-label>
-      <ion-radio slot="start" value="male"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Female</ion-label>
-      <ion-radio slot="start" value="female"></ion-radio>
-    </ion-item> -->
+  
   </ion-col>
 </ion-row>
 
@@ -133,10 +121,7 @@
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:20%; height:82px; margin-right:10px; " appearance="outline">
-    <!-- <select matNativeControl #code (change)="selectCountryCode(code)" style="color:black; font-size:14px; margin-bottom:-5px">
-      <option *ngFor="let code of countryCode" [value]="code" style="color:black"> {{code.code}}</option>
-    </select> -->
-
+  
     <mat-select 
     name="type" 
     (selectionChange)="selectCountryCode(selectedCode)"
@@ -161,16 +146,7 @@
           </mat-error>
   </mat-form-field>
 </div>
-<!-- 
-<div fxLayout="row" fxLayoutAlign="  center center" style="width:100%;margin-top:5px">
-  <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
-        <mat-label>Address</mat-label>
-        <input matInput placeholder="Location" [(ngModel)]="advertisementModel.address" ngx-google-places-autocomplete
-          [options]='options' #placesRef="ngx-places" name="city" required pattern="[a-zA-Z0-9,.  ]+$" 
-          (onAddressChange)="handleAddressChange($event)">
-         
-      </mat-form-field>
-</div> -->
+
 
 
 <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:5px">
@@ -190,28 +166,10 @@
   </mat-form-field>
 </div>
 
-<!-- <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-bottom:15%">
-  <mat-form-field style="width:96%" appearance="outline">
-    <mat-label>Languages you know</mat-label>
-        <input matInput class="form-control" type="text" name="languages" [(ngModel)]="advertisementModel.languages" #languages="ngModel"
-          align="center" required pattern="[a-zA-Z0-9,.  ]+$">
-          <mat-error>
-            <div class="form-group">
-              <div *ngIf="languages.invalid && (languages.dirty || languages.touched)">
-                Languages Is Requird
-              </div>
-            </div>
-          </mat-error>
-  </mat-form-field>
-</div> -->
-
 
 
     <button mat-raised-button class="loginButton" [disabled]="email.invalid ||  description.invalid || title.invalid"
       (click)="addAdvertisementData(advertisementModel)"><b>Next</b></button>
-
-  <!-- </div> -->
-
 
 <div class="cl_bottom_fix" fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
       
@@ -251,15 +209,4 @@
 
 </div>
 
-
-  <!-- <div class="cl_bottom_fix">
-    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
-      <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
-      <ion-icon name="document" class="cl_bottom_nav_css" (click)="openChatList()"></ion-icon>
-      <ion-icon name="add-circle" class="cl_post_css" (click)="postAdvertisement()">
-      </ion-icon>
-      <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
-      <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
-    </div>
-  </div> -->
 </ion-content>
