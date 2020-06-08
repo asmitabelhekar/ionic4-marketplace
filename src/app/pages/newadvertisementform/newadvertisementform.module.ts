@@ -9,6 +9,7 @@ import { NewadvertisementformPageRoutingModule } from './newadvertisementform-ro
 import { NewadvertisementformPage } from './newadvertisementform.page';
 import { MatStepperModule } from '@angular/material';
 import { MaterialModule } from 'src/app/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MaterialModule } from 'src/app/material.module';
     IonicModule,
     MatStepperModule,
     MaterialModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     NewadvertisementformPageRoutingModule
   ],

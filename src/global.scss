@@ -136,20 +136,38 @@ ion-segment-button {
 }
 
 
-.mat-step-header .mat-step-icon-selected {
-  background-color: var(--ion-color-secondary);
+ .mat-step-header .mat-step-icon-state-done, 
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #fe4f14 !important;
+    color: #ffffff !important;
 }
 
-// ::ng-deep {
-//   .mat-focused .mat-form-field-label {
-//     color: green;
-//   }
 
-//   .mat-form-field-underline {
-//     background-color: green;
-//   }
+.mat-step-header .mat-step-icon-selected
+ {
+    background-color: #fe8860 !important;
+    color: #ffffff !important;
+}
 
-//   .mat-form-field-ripple {
-//     background-color: green;
-//   }
-// }
+.mat-step-icon .mat-icon {
+  font-size: 13px !important;
+  height: 16px;
+  width: 16px;
+}
+
+.mat-step-icon .mat-icon, .mat-step-icon-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 13px;
+  transform: translate(-50%,-50%);
+}
+
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
