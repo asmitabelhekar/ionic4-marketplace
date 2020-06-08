@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
-
+import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-newadvertisementform',
@@ -10,12 +11,16 @@ import { LoaderService } from 'src/app/service/loaderservice/loader.service';
   styleUrls: ['./newadvertisementform.page.scss'],
 })
 export class NewadvertisementformPage implements OnInit {
-  fileToUpload : any;
+  fileToUpload: any;
+
+
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup : FormGroup;
-  fourthFormGroup : FormGroup;
+  thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
+  fifthFormGroup: FormGroup;
+
   firstImage = "";
   secondImage = "";
   thirdImage = "";
@@ -23,15 +28,72 @@ export class NewadvertisementformPage implements OnInit {
   fifthImage = "";
   urls = [];
   imageUrl = 0;
+  categoryId: any;
+  subCategoryId : any;
+  categoryArray: any = [];
+  subCategoryArray: any;
+  languagesArray = [];
+  languageArray: any[];
+  adModel: any = {};
 
-  
+  //weeks selection
+  weeksArray = [];
+  adWeek: any;
+  bannerWeek: any;
+  finalCalculation: any;
+  totalCalculation: any;
+  fromDateTimestamp: number = 0;
+  fromDateTimeAd: number = 0;
+  toDateTimestamp: number = 0;
+  toDateTimeAd: number = 0;
+  endDate: any;
+  todayDate: any;
+  endAdvertisementDate: any;
+
+
+  //Tags
+  tagsArray = [
+    {
+      "id": "0",
+      "name": "Drop-in class"
+    },
+    {
+      "id": "1",
+      "name": "Training"
+    },
+    {
+      "id": "2",
+      "name": "Workshop / Retreat"
+    },
+    {
+      "id": "3",
+      "name": "Festival"
+    },
+    {
+      "id": "4",
+      "name": "Equipment"
+    }
+  ];
+
+
   constructor(
     private formBuilder: FormBuilder,
     public loader: LoaderService,
-    public apiCall : ApiService) {}
+    public apiCall: ApiService) { }
 
 
   ngOnInit() {
+    this.getCategory();
+    this.getLanguages();
+    this.todayDate = new Date();
+
+    for (let p = 0; p <= 52; p++) {
+      this.weeksArray.push(p);
+
+    }
+    console.log("show weeks array:" + this.weeksArray);
+
+
     this.firstFormGroup = this.formBuilder.group({
       titleCtrl: ['', Validators.required],
       descriptionCtrl: ['', Validators.required],
@@ -44,23 +106,155 @@ export class NewadvertisementformPage implements OnInit {
     });
 
     this.thirdFormGroup = this.formBuilder.group({
-      thirdCtrl: ['', Validators.required]
+
+      // thirdCtrl: ['', Validators.required]
+
     });
     this.fourthFormGroup = this.formBuilder.group({
-      // thirdCtrl: ['', Validators.required]
+      categoryId: ['', Validators.required],
+      subCategoryId: ['', Validators.required],
+      selectedTags: ['', Validators.required],
+      selectedLanguages: ['', Validators.required],
+    });
+
+    this.fifthFormGroup = this.formBuilder.group({
+      adWeek: ['', Validators.required],
+      bannerWeek: ['', Validators.required]
     });
   }
 
-  checkData(data){
-    console.log("check data:"+data);
+  checkData(data) {
+    console.log("check data:" + data);
   }
 
-  form1(){
+  form1() {
     console.log(this.firstFormGroup.value);
   }
 
-  form2(){
+  form2() {
     console.log(this.secondFormGroup.value);
+  }
+
+  form3() {
+    console.log(this.thirdFormGroup.value);
+  }
+
+  form4(){
+    console.log(this.fourthFormGroup.value);
+  }
+
+  form5(){
+    console.log(this.fifthFormGroup.value);
+  }
+
+  selectCategoryType(data) {
+    // alert("check data:"+data);
+    console.log("show id:" + data);
+    this.categoryId = data;
+    this.getSubCategory(this.categoryId);
+  }
+
+  selectSubCategoryType(data) {
+    
+    console.log("show id:" + data);
+    this.subCategoryId = data;
+  }
+
+  selectedTags(data) {
+    console.log("show selected tags:" + data);
+  }
+
+  getCategory() {
+    let url = environment.base_url + environment.version + "category/" + 0 + "/sub-category"
+    this.apiCall.get(url).subscribe(MyResponse => {
+      let dataArray = MyResponse['result']['list'];
+      for (let i = 0; i < dataArray.length; i++) {
+        if (dataArray[i]['name'] == "Parent Category") {
+
+        } else {
+          this.categoryArray.push(dataArray[i]);
+        }
+      }
+      console.log("show category:" + this.categoryArray);
+    },
+      error => {
+
+      })
+  }
+
+
+  getSubCategory(categoryId) {
+    let url = environment.base_url + environment.version + "category/" + categoryId + "/sub-category"
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.subCategoryArray = MyResponse['result']['list'];
+      console.log("show sub category " + this.subCategoryArray);
+    },
+      error => {
+
+      })
+  }
+
+
+  selectedChanged(selectedLanguage) {
+    // alert("selectedLanguage:"+JSON.stringify(selectedLanguage));
+    this.languagesArray = (selectedLanguage);
+  }
+
+  getLanguages() {
+
+    let url = environment.base_url + environment.version + "languages";
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.languageArray = MyResponse['result']['list'];
+      // this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+        // this.loader.hideBlockingLoaderAuth();
+        // this.networkServices.checkInternetConnection();
+        // this.networkServices.onPageLoadCheckInternet();
+      })
+  }
+
+
+  selectBannerWeek(data) {
+    this.bannerWeek = data;
+
+    // localStorage.setItem("boostStatus", '0');
+    // this.checkBoostStatus = localStorage.getItem("boostStatus");
+
+    this.finalCalculation = 7 + ((data - 1) * 5);
+    this.totalCalculation = this.finalCalculation;
+    this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
+
+    let startDateTimeStamp = this.toTimestamp(this.todayDate);
+    let endDateTimeStamp = this.toTimestamp(this.endDate);
+    this.fromDateTimestamp = startDateTimeStamp;
+    this.toDateTimestamp = endDateTimeStamp;
+    console.log("show banner timestamp:" + startDateTimeStamp)
+    console.log("show banner date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
+
+  }
+
+  toTimestamp(strDate) {
+    var datum = Date.parse(strDate);
+    return datum / 1000;
+  }
+
+  selectAdWeek(data) {
+
+    this.adWeek = data;
+    this.todayDate = new Date();
+    console.log("show no of week value::" + data);
+    this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
+
+    let startDateTime = this.toTimestamp(this.todayDate);
+    let endDateTime = this.toTimestamp(this.endAdvertisementDate);
+    this.fromDateTimeAd = startDateTime;
+    this.toDateTimeAd = endDateTime;
+    console.log("start date timestamp:" + startDateTime);
+    console.log("end date timestamp:" + endDateTime);
+
+
+    console.log("show next date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
   }
 
   detectEventGallery(event, index) {
@@ -76,20 +270,20 @@ export class NewadvertisementformPage implements OnInit {
         this.fileToUpload = file;
         reader.readAsDataURL(this.fileToUpload);
       }
-      if(index == 0){
+      if (index == 0) {
         this.handleFirstFileInput(this.fileToUpload);
-      }else if(index == 1){
-        this.handleSecondFileInput(this.fileToUpload); 
-      }else if(index == 2){
+      } else if (index == 1) {
+        this.handleSecondFileInput(this.fileToUpload);
+      } else if (index == 2) {
         this.handleThirdFileInput(this.fileToUpload);
-      }else if(index == 3){
+      } else if (index == 3) {
         this.handleFourthFileInput(this.fileToUpload);
-      }else if(index == 4){
+      } else if (index == 4) {
         this.handleFifthFileInput(this.fileToUpload);
-      }else{
-       
+      } else {
+
       }
-    
+
 
     }
     console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
@@ -105,8 +299,8 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls[0]= MyResponse['result'][0];
-      
+        this.urls[0] = MyResponse['result'][0];
+
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
@@ -131,7 +325,7 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls[1]= MyResponse['result'][0];
+        this.urls[1] = MyResponse['result'][0];
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
@@ -155,8 +349,8 @@ export class NewadvertisementformPage implements OnInit {
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
-        this.urls[2]= MyResponse['result'][0];
-       
+        this.urls[2] = MyResponse['result'][0];
+
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
@@ -181,7 +375,7 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls[3]= MyResponse['result'][0];
+        this.urls[3] = MyResponse['result'][0];
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {
@@ -206,7 +400,7 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls[4]= MyResponse['result'][0];
+        this.urls[4] = MyResponse['result'][0];
         if (this.urls.length > 4) {
           this.imageUrl = 0;
         } else {

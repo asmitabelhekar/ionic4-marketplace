@@ -32,11 +32,11 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup" fxLayout="column" (ngSubmit)="form2()">
+      <form [formGroup]="secondFormGroup" fxLayout="column" (ngSubmit)="form2()" #formtwo="ngForm">
         <ng-template matStepLabel>Contact Details</ng-template>
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="emailCtrl" required >
+          <input matInput type="email" formControlName="emailCtrl" required pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -55,12 +55,11 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup" (ngSubmit)="form3()" #formthree="ngForm">
         <ng-template matStepLabel>Images Upload</ng-template>
        
 
 <h5 style="margin-top:15px; margin-left:10px">Upload images</h5>
-<!-- <label style="margin-top:20px; margin-left:10px; color:black"><b>Upload Images</b></label> -->
 <div class="cl_image_div" fxLayout="row">
 <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload1').click()">
   <ion-icon *ngIf="firstImage == '' " name="camera" class="cl_images"></ion-icon>
@@ -110,22 +109,110 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="fourthFormGroup">
-      <form [formGroup]="fourthFormGroup">
+      <form [formGroup]="fourthFormGroup"  (ngSubmit)="form4()" #formfour="ngForm">
         <ng-template matStepLabel>Title</ng-template>
        
+        <mat-form-field appearance="outline" style="width:100%">
+          <mat-label>Select Category</mat-label>
+         
+          <mat-select 
+          name="type" formControlName="categoryId" 
+          (selectionChange)="selectCategoryType(categoryId)"
+          class="filter-select" 
+          [(value)]="categoryId">
+            <mat-option *ngFor="let type of categoryArray" [value]="type.id">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width:100%">
+          <mat-label>Select Sub Category</mat-label>
+         
+          <mat-select 
+          name="type" formControlName="subCategoryId" 
+          (selectionChange)="selectSubCategoryType(subCategoryId)"
+          class="filter-select" 
+          [(value)]="subCategoryId">
+            <mat-option *ngFor="let type of subCategoryArray" [value]="type.id">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="width:100%;" appearance="outline">
+          <mat-label>Tags</mat-label>
+            <mat-select 
+            name="tag" formControlName="selectedTags" 
+            (selectionChange)="selectedTags(selectedTags)"
+            class="filter-select" 
+            [(value)]="selectedTags" 
+           
+            multiple >
+              <mat-option *ngFor="let tag of tagsArray" [value]="tag.name">
+                {{tag.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field style="width:100%;" appearance="outline">
+          <mat-label>Languages you support</mat-label>
+            <mat-select 
+            name="year"  formControlName="selectedLanguages" 
+            (selectionChange)="selectedChanged(selectedLanguages)"
+            class="filter-select" 
+            [(value)]="selectedLanguages" 
+           
+            multiple >
+              <mat-option *ngFor="let year of languageArray" [value]="year.name">
+                {{year.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step>
+    <mat-step [stepControl]="fifthFormGroup">
+      <form [formGroup]="fifthFormGroup"  (ngSubmit)="form5()" #formfive="ngForm">
       <ng-template matStepLabel>Payment</ng-template>
-      <p>You are now done.</p>
+      <p>How many weeks you have to post Advertisement</p>
+      <mat-form-field appearance="outline" style="width:100%">
+        <mat-label>Select Weeks</mat-label>
+       
+        <mat-select 
+        name="type" formControlName="adWeek" 
+        (selectionChange)="selectAdWeek(adWeek)"
+        class="filter-select" 
+        [(value)]="adWeek">
+          <mat-option *ngFor="let type of weeksArray" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>How many weeks you have to post Banner</p>
+      <mat-form-field appearance="outline" style="width:100%">
+        <mat-label>Select Weeks</mat-label>
+       
+        <mat-select 
+        name="type"  formControlName="bannerWeek" 
+        (selectionChange)="selectBannerWeek(bannerWeek)"
+        class="filter-select" 
+        [(value)]="bannerWeek">
+          <mat-option *ngFor="let type of weeksArray" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();formfive.ngSubmit.emit()">Submit</button>
       </div>
+      </form>
     </mat-step>
   </mat-vertical-stepper>
 </ion-content>

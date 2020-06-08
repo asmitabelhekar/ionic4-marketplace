@@ -551,6 +551,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "FCMPlugin"
       ]
+    },
+    {
+      "id": "cordova-plugin-googleplus.GooglePlus",
+      "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
+      "pluginId": "cordova-plugin-googleplus",
+      "clobbers": [
+        "window.plugins.googleplus"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -576,6 +584,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "call-number": "0.0.2",
     "cordova-plugin-fcm-with-dependecy-updated": "6.3.1",
     "cordova-plugin-androidx": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.1"
+    "cordova-plugin-androidx-adapter": "1.1.1",
+    "cordova-plugin-googleplus": "8.5.0"
   };
 });
