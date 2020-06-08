@@ -134,3 +134,22 @@ ion-segment-button {
  
   --color-checked: #152a3f;
 }
+
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: var(--ion-color-secondary);
+}
+
+// ::ng-deep {
+//   .mat-focused .mat-form-field-label {
+//     color: green;
+//   }
+
+//   .mat-form-field-underline {
+//     background-color: green;
+//   }
+
+//   .mat-form-field-ripple {
+//     background-color: green;
+//   }
+// }

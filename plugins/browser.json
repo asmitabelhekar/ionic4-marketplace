@@ -12,6 +12,10 @@
     },
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "cordova-plugin-googleplus": {
+      "WEB_APPLICATION_CLIENT_ID": "960549587607-us54fd3j88ekd76184v6oovisfqth0ut.apps.googleusercontent.com",
+      "PACKAGE_NAME": "com.holyhub.v1"
     }
   },
   "dependent_plugins": {}

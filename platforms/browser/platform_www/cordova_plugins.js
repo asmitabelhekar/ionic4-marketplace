@@ -641,6 +641,22 @@ module.exports = [
         "clobbers": [
             "FCMPlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
+        "id": "cordova-plugin-googleplus.GooglePlus",
+        "pluginId": "cordova-plugin-googleplus",
+        "clobbers": [
+            "window.plugins.googleplus"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-googleplus/src/browser/GooglePlusProxy.js",
+        "id": "cordova-plugin-googleplus.GooglePlusProxy",
+        "pluginId": "cordova-plugin-googleplus",
+        "clobbers": [
+            "GooglePlus"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -667,7 +683,8 @@ module.exports.metadata =
     "call-number": "0.0.2",
     "cordova-plugin-fcm-with-dependecy-updated": "6.3.1",
     "cordova-plugin-androidx": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.1"
+    "cordova-plugin-androidx-adapter": "1.1.1",
+    "cordova-plugin-googleplus": "8.5.0"
 }
 // BOTTOM OF METADATA
 });

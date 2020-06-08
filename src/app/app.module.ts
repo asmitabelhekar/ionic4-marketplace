@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule, MatDialogModule, MatStepperModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopupPage } from './pages/popup/popup.page';
 import { FilterpopupComponent } from './filterpopup/filterpopup.component';
@@ -30,6 +30,9 @@ import { File } from '@ionic-native/file/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+
+
 
 @NgModule({
   declarations: [AppComponent,
@@ -46,6 +49,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule, 
+    MatStepperModule,
     GooglePlaceModule,
     BrowserAnimationsModule,
     IonicStorageModule.forRoot()
@@ -67,6 +71,7 @@ import { IonicStorageModule } from '@ionic/storage';
     File,
     SplashScreen,
     SocialSharing,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { MenuController, ToastController } from '@ionic/angular';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginPage implements OnInit {
     public toast : ToastController,
     public menuController: MenuController,
     public loader: LoaderService,
+    private googlePlus : GooglePlus,
     public apiCall: ApiService) {
 
     this.menuController.enable(false);
@@ -56,5 +58,11 @@ export class LoginPage implements OnInit {
       duration: 4000
     });
     toast.present();
+  }
+
+  loginWithGmail(){
+    this.googlePlus.login({})
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
   }
 }

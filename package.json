@@ -35,6 +35,7 @@
     "@ionic-native/file-path": "^5.26.0",
     "@ionic-native/geolocation": "^5.23.0",
     "@ionic-native/google-maps": "^5.0.0-beta.27",
+    "@ionic-native/google-plus": "^5.26.0",
     "@ionic-native/local-notifications": "^5.26.0",
     "@ionic-native/native-geocoder": "^5.23.0",
     "@ionic-native/network": "^5.24.0",
@@ -56,6 +57,7 @@
     "cordova-plugin-filepath": "^1.5.8",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-googlemaps": "^2.7.1",
+    "cordova-plugin-googleplus": "^8.5.0",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-plugin-nativegeocoder": "^3.4.0",
     "cordova-plugin-network-information": "^2.0.2",
@@ -142,7 +144,11 @@
         "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher"
       },
       "cordova-plugin-androidx": {},
-      "cordova-plugin-androidx-adapter": {}
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "960549587607-us54fd3j88ekd76184v6oovisfqth0ut.apps.googleusercontent.com",
+        "WEB_APPLICATION_CLIENT_ID": "960549587607-us54fd3j88ekd76184v6oovisfqth0ut.apps.googleusercontent.com"
+      }
     },
     "platforms": [
       "android",

@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<form #userForm=\"ngForm\" style=\"width:100%;margin-top:10px\">\n \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;margin-top:5px\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px\" appearance=\"outline\">\n      <mat-label>City</mat-label>\n      <input matInput placeholder=\"\" [(ngModel)]=\"cityName\" ngx-google-places-autocomplete\n        [options]='options' #placesRef=\"ngx-places\" name=\"city\" required  \n        (onAddressChange)=\"handleAddressChange($event)\">\n        <mat-error>\n          <div class=\"form-group\">\n            <div *ngIf=\"cityName.invalid && (cityName.dirty || cityName.touched)\">\n              City Name Is Requird\n            </div>\n          </div>\n        </mat-error>\n    </mat-form-field>\n  </div>\n  </form>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"margin-top:10px;margin-left:10%; margin-right:10%; width:80%\">\n    <button  mat-raised-button (click)=\"closeDialog()\" style=\"margin-right:15px;font-size:13px\">CANCEL</button>\n    <button  mat-raised-button (click)=\"submit()\" class=\"loginButton\" style=\"font-size:13px\" [disabled]=\"cityName.invalid\">SUBMIT</button>\n \n\n  </div>\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<form #userForm=\"ngForm\" style=\"width:100%;margin-top:10px\">\n \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"  center center\" style=\"width:100%;margin-top:5px\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;margin-top:10px\" appearance=\"outline\">\n      <mat-label>City</mat-label>\n      <input matInput placeholder=\"\" [(ngModel)]=\"cityName\" ngx-google-places-autocomplete\n        [options]='options' #placesRef=\"ngx-places\" name=\"city\" required  \n        (onAddressChange)=\"handleAddressChange($event)\">\n        <mat-error>\n          <div class=\"form-group\">\n            <div *ngIf=\"cityName.invalid && (cityName.dirty || cityName.touched)\">\n              City Name Is Requird\n            </div>\n          </div>\n        </mat-error>\n    </mat-form-field>\n  </div>\n\n  <!-- <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"margin-top:25px;\" fxFlex=\"100\">\n    <div fxFlex=\"45\">\n      <button mat-raised-button (click)=\"closeDialog()\" class=\"button-cancel\" style=\"font-size:13px; width:70%\"\n      >CANCEL</button>\n    </div>\n    <div fxFlex=\"45\" >\n      \n    <button color=\"primary\" mat-raised-button (click)=\"submit()\" class=\"button-content\" style=\"font-size:13px; width:70%\"\n    [disabled]=\"cityName.invalid\">SUBMIT</button>\n    </div>\n   \n\n  </div> -->\n  </form>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"margin-top:10px;width:100%\">\n    <button fxFlex=\"45\" mat-raised-button (click)=\"closeDialog()\" style=\"margin-right:15px;font-size:13px\">CANCEL</button>\n    <button fxFlex=\"45\" mat-raised-button (click)=\"submit()\" class=\"loginButton\" style=\"font-size:13px\" [disabled]=\"cityName.invalid\">SUBMIT</button>\n \n\n  </div>\n\n\n\n\n");
 
 /***/ }),
 
@@ -796,6 +796,10 @@ var routes = [
     {
         path: 'checkinternet',
         loadChildren: function () { return Promise.all(/*! import() | pages-checkinternet-checkinternet-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-checkinternet-checkinternet-module")]).then(__webpack_require__.bind(null, /*! ./pages/checkinternet/checkinternet.module */ "./src/app/pages/checkinternet/checkinternet.module.ts")).then(function (m) { return m.CheckinternetPageModule; }); }
+    },
+    {
+        path: 'notificationlist',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-notificationlist-notificationlist-module */ "pages-notificationlist-notificationlist-module").then(__webpack_require__.bind(null, /*! ./pages/notificationlist/notificationlist.module */ "./src/app/pages/notificationlist/notificationlist.module.ts")).then(function (m) { return m.NotificationlistPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -849,7 +853,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/deeplinks/ngx */ "./node_modules/@ionic-native/deeplinks/ngx/index.js");
 /* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 
 
 
@@ -861,9 +864,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import { Storage } from '@ionic/storage';
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, router, navController, alertCtrl, preloader, splashScreen, statusBar, deeplinks, zone, storage, fcm, localNotifications) {
+    function AppComponent(platform, router, navController, alertCtrl, preloader, splashScreen, statusBar, deeplinks, zone, fcm, localNotifications) {
         this.platform = platform;
         this.router = router;
         this.navController = navController;
@@ -873,7 +876,6 @@ var AppComponent = /** @class */ (function () {
         this.statusBar = statusBar;
         this.deeplinks = deeplinks;
         this.zone = zone;
-        this.storage = storage;
         this.fcm = fcm;
         this.localNotifications = localNotifications;
         this.appPages = [
@@ -913,24 +915,23 @@ var AppComponent = /** @class */ (function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
             _this.loginSession();
+            _this.fcm.subscribeToTopic('people');
             _this.fcmNotification();
-            _this.localNotifications.on('click').subscribe(function (notification) {
-                console.log('Notification str: ' + JSON.stringify(notification));
-                // console.log('Notification parse: ' + JSON.parse(notification))
-                var json = notification.data;
-            });
+            // this.localNotifications.on('click').subscribe(notification => {
+            //   console.log('Notification str: ' + JSON.stringify(notification))
+            //   this.router.navigate(['/notification']);
+            //   let json = notification.data
+            // })
             _this.platform.backButton.subscribe(function () {
                 if (_this.router.url === '/home') {
                     _this.presentAlert();
                     return;
                 }
             });
+            //share deep linking
             _this.deeplinks.route({
                 "/": {}
             }).subscribe(function (match) {
-                // alert("show success id:"+JSON.stringify(match));
-                // alert("show success categoryId:"+(match.$link.id));
-                // alert("show success categoryId:"+(match.$link.queryString.categoryId));
                 var sendId = {
                     "id": match.$args.id,
                     "categoryId": match.$args.categoryId,
@@ -940,7 +941,6 @@ var AppComponent = /** @class */ (function () {
                 _this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
                 console.log('Successfully routed', match);
             }, function (nomatch) {
-                // alert("show failure:"+JSON.stringify(nomatch));
                 console.log('Unmatched Route', nomatch);
             });
             // this.platform.backButton.subscribeWithPriority(9999, () => {
@@ -956,40 +956,19 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.fcm.getToken().then(function (token) {
             console.log("TOKEN: " + token);
-            _this.storage.set('token', token).then(function () {
-            });
-            // alert(token);
+            // alert("show token:"+token);
         });
         this.fcm.onTokenRefresh().subscribe(function (token) {
             console.log(token);
         });
         this.fcm.onNotification().subscribe(function (data) {
+            console.log("show notification data:" + data);
             if (data.wasTapped) {
+                _this.router.navigate(['notificationlist']);
                 console.log("Received in background");
-                // alert("Received in BG: " + JSON.stringify(data))
             }
             else {
                 console.log("Received in foreground");
-                // alert("Received in foreground: " + JSON.stringify(data))
-                _this.localNotifications.schedule({
-                    id: 1,
-                    title: data.title,
-                    text: data.body,
-                    foreground: true,
-                    sound: "default",
-                    trigger: { at: new Date() },
-                    icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
-                    actions: "FCM_PLUGIN_ACTIVITY",
-                    data: {
-                        mydata: data,
-                        type: ""
-                    }
-                    // sound: default
-                    // trigger: { every: { hour: 9, minute: 30 } }
-                });
-                // this.localNotifications.getAll().then((res: ILocalNotification[]) => {
-                //   console.log('Get All: ' + JSON.stringify(res));
-                // })
             }
             ;
         });
@@ -1037,7 +1016,6 @@ var AppComponent = /** @class */ (function () {
             this.router.navigate(['/home']);
         }
         else {
-            // this.router.navigate(['/sliderintro']);
             this.router.navigate(['/login']);
         }
         this.preloader.hideBlockingLoaderAuth();
@@ -1057,10 +1035,13 @@ var AppComponent = /** @class */ (function () {
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
         { type: _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_7__["Deeplinks"] },
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
-        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["Storage"] },
         { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_9__["FCM"] },
         { type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_8__["LocalNotifications"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('myNav', { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"])
+    ], AppComponent.prototype, "navCtrl", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], { static: false }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"])
@@ -1080,13 +1061,27 @@ var AppComponent = /** @class */ (function () {
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
             _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_7__["Deeplinks"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["Storage"],
             _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_9__["FCM"],
             _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_8__["LocalNotifications"]])
     ], AppComponent);
     return AppComponent;
 }());
 
+// this.localNotifications.schedule({
+//   id: 1,
+//   title: data.title,
+//   text: data.body,
+//   foreground: true,
+//   sound: "default",
+//   trigger: { at: new Date() },
+//   icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+//   actions: "FCM_PLUGIN_ACTIVITY",
+//   data: {
+//     landing_page: "notificationlist",
+//     price: "5000"
+//   }
+// });
+// AIzaSyDZTo3RezTgFPhJOaUEMYMFCAv0RJxjYfQ
 
 
 /***/ }),
@@ -1129,6 +1124,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
 /* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/ngx/index.js");
 /* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+/* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+
+
+
 
 
 
@@ -1176,7 +1177,9 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
                 ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
+                _ionic_storage__WEBPACK_IMPORTED_MODULE_29__["IonicStorageModule"].forRoot()
+            ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_14__["GoogleMaps"],
@@ -1187,6 +1190,8 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_21__["Deeplinks"],
                 _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_24__["FileChooser"],
                 _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_23__["FilePath"],
+                _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_27__["FCM"],
+                _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_28__["LocalNotifications"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_25__["Base64"],
                 _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_26__["File"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],

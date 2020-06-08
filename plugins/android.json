@@ -12,6 +12,10 @@
     },
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "cordova-plugin-googleplus": {
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "PACKAGE_NAME": "com.holyhub.v1"
     }
   },
   "dependent_plugins": {
