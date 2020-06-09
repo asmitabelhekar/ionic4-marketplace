@@ -10,7 +10,7 @@
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
   </button> -->
   <mat-vertical-stepper [linear]="true" #stepper>
-    <!-- <mat-step [stepControl]="firstFormGroup">
+    <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" fxLayout="column" (ngSubmit)="form1()" #formone="ngForm">
         <ng-template matStepLabel>Advertisement Detail</ng-template>
         <mat-form-field appearance="outline" class="margin-top-css">
@@ -33,8 +33,8 @@
           <button mat-button matStepperNext class="buttonClass">Next</button>
         </div>
       </form>
-    </mat-step> -->
-    <!-- <mat-step [stepControl]="secondFormGroup">
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup" fxLayout="column" (ngSubmit)="form2()" #formtwo="ngForm">
         <ng-template matStepLabel>Contact Details</ng-template>
         <mat-form-field appearance="outline" class="margin-top-css">
@@ -42,27 +42,77 @@
           <input matInput type="email" class="text-font-size" formControlName="emailCtrl" required pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="margin-top-css">
+        <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+          <mat-form-field class="margin-top-css" style="width:20%; height:82px; margin-right:10px; " appearance="outline">
+            <mat-label class="floating-label-css">Select Code</mat-label>
+            <mat-select 
+            name="type" formControlName="countryCodeCtrl" 
+            (selectionChange)="selectCountryCode(selectedCode)"
+            class="filter-select" 
+            [(value)]="selectedCode">
+              <mat-option *ngFor="let code of countryCode" [value]="code.code">
+                +{{code.code}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        <mat-form-field appearance="outline" class="margin-top-css" style="width:80%; height:82px; margin-right:10px; ">
           <mat-label class="floating-label-css">Mobile</mat-label>
           <input matInput type="tel" minlength="10" class="text-font-size" maxlength="10" formControlName="mobileCtrl" required>
         </mat-form-field>
 
+        </div>
+
+
+<ion-row style="border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px">
+  <ion-col size="4" fxLayoutAlign="start center">
+<label fxLayoutAlign="start center">Gender</label>
+
+  </ion-col>
+
+  <ion-col size="8" fxLayoutAlign="center center">
+    <ion-radio-group (ionChange)="radioGroupChange($event)" formControlName="checkRadioButton">
+
+    <div fxLayout="row">
+        <div style="margin-right:20px" fxLayoutAlign="center center">
+          <ion-radio  value="male" ></ion-radio>
+          <ion-label fxLayoutAlign="center center" style="margin-left:10px">Male</ion-label>
+        </div>
+  
+        <div fxLayoutAlign="center center">
+          <ion-radio  value="female"></ion-radio>
+        <ion-label style="margin-left:10px">Female</ion-label>
+        
+      </div>
+     
+    </div>
+  </ion-radio-group>
+
+  
+  </ion-col>
+</ion-row>
+
+        <label class="floating-label-css" style="color:gray;margin:3px;">Just start typing you get autocomplete result for address</label>
         <mat-form-field appearance="outline" class="margin-top-css">
           <mat-label class="floating-label-css">Address</mat-label>
-          <textarea matInput type="text" class="text-font-size" formControlName="addressCtrl" required></textarea>
+           <input matInput  class="text-font-size" formControlName="addressCtrl"  ngx-google-places-autocomplete
+           #placesRef="ngx-places" name="city" required  
+          (onAddressChange)="handleAddressChange($event)">
         </mat-form-field>
+       
         <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
-          <button mat-button class="buttonClass" matStepperPrevious>Back</button>
+          <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
           <button mat-button class="buttonClass" matStepperNext>Next</button>
         </div>
       </form>
-    </mat-step> -->
-    <!-- <mat-step [stepControl]="thirdFormGroup">
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup" fxLayout="column" (ngSubmit)="form3()" #formthree="ngForm">
         <ng-template matStepLabel>Images Upload</ng-template>
+  <label  class="desc-text" style="color:gray;margin-top:5px;">We recommend loading these images with aspect ratio 2:1</label>
        
 
-<div class="cl_image_div" fxLayout="row">
+<div class="cl_image_div" style="margin-top:20px;" fxLayout="row">
 <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload1').click()">
   <ion-icon *ngIf="firstImage == '' " name="camera" class="cl_images"></ion-icon>
   <label class="floating-label-css" *ngIf="firstImage == '' " align="center">Upload Image</label>
@@ -105,14 +155,14 @@
 
     
         <div fxFlex="100" fxLayoutGap="15px" style="margin-top:20px;" fxLayoutAlign="start start">
-          <button mat-button class="buttonClass" matStepperPrevious>Back</button>
+          <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
           <button mat-button  class="buttonClass" matStepperNext>Next</button>
         </div>
       </form>
-    </mat-step> -->
-    <!-- <mat-step [stepControl]="fourthFormGroup" >
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" >
       <form [formGroup]="fourthFormGroup" fxLayout="column" (ngSubmit)="form4()" #formfour="ngForm">
-        <ng-template matStepLabel>Title</ng-template>
+        <ng-template matStepLabel>Filter Detail</ng-template>
        
         <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
           <mat-label class="floating-label-css">Select Category</mat-label>
@@ -173,11 +223,11 @@
             </mat-select>
         </mat-form-field>
         <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
-          <button mat-button class="buttonClass" matStepperPrevious>Back</button>
+          <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
           <button mat-button class="buttonClass" matStepperNext>Next</button>
         </div>
       </form>
-    </mat-step> -->
+    </mat-step>
     <mat-step [stepControl]="fifthFormGroup">
       <form [formGroup]="fifthFormGroup" fxLayout="column" (ngSubmit)="form5()" #formfive="ngForm">
       <ng-template matStepLabel>Payment</ng-template>
@@ -222,26 +272,64 @@
           <th align="center" class="table-text-size">Multiple Week</th>
           <th align="center" class="table-text-size">Total</th>
           <tr *ngIf="bannerWeek != '' ">
-            <td align="start" class="table-text-size">Banner</td>
+            <td align="start" class="table-title-text-size">Banner</td>
             <td align="center" class="table-text-size">$7</td>
-            <td align="center" class="table-text-size">$7 + ( {{bannerWeek}} * $5 )</td>
+            <td align="center" class="table-text-size">$7 + ({{bannerWeek}} * $5)</td>
             <td align="center" class="table-text-size">${{finalCalculation}}</td>
           </tr>
           <tr *ngIf="adWeek != '' " >
-            <td align="start" class="table-text-size">Advertisement</td>
+            <td align="start" class="table-title-text-size">Advertisement</td>
             <td align="center" class="table-text-size">$7</td>
-            <td align="center" class="table-text-size">$7 + ( {{adWeek}} * $5 )</td>
+            <td align="center" class="table-text-size">$7 + ({{adWeek}} * $5)</td>
             <td align="center" class="table-text-size">${{finalAdCalculation}}</td>
           </tr>
         </table>
       </div>
 
       <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="start start">
-        <button mat-button class="buttonClass" matStepperPrevious>Back</button>
-        <button mat-button  class="buttonClass" type="button" (click)="stepper.reset()">Reset</button>
-        <button mat-button class="buttonClass" (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();formfive.ngSubmit.emit()">Submit</button>
+        <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
+        <button mat-button  class="buttonBackClass" type="button" (click)="stepper.reset()">Reset</button>
+        <button mat-button class="buttonClass" (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();">Submit</button>
       </div>
       </form>
     </mat-step>
   </mat-vertical-stepper>
+
+<div class="cl_bottom_fix" fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
+      
+  <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" 
+  (click)="home()">
+  <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
+  <label fxLayoutAlign="center center" class="cl_text_font">HOME</label>
+  </div>
+
+
+  <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" 
+  (click)="openChatList()">
+  <ion-icon class="cl_bottom_nav_css" name="document" (click)="openChatList()"></ion-icon>
+  <label fxLayoutAlign="center center" class="cl_text_font">CHATS</label>
+  </div>
+
+
+  <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" 
+    (click)="postAdvertisement()">
+  <ion-icon class="cl_post_css"  name="add-circle" (click)="postAdvertisement()">
+  </ion-icon>
+  <label fxLayoutAlign="center center" class="cl_selected-text_font">SELL</label>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" 
+  (click)="openFavourite()">
+  <ion-icon class="cl_bottom_nav_css" name="heart"  (click)="openFavourite()"></ion-icon>
+  <label fxLayoutAlign="center center" class="cl_text_font">MY ADS</label>
+  </div>
+
+
+  <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" 
+    (click)="openProfile()">
+    <ion-icon class="cl_bottom_nav_css" name="person"  (click)="openProfile()"></ion-icon>
+    <label fxLayoutAlign="center center" class="cl_text_font">PROFILE</label>
+  </div>
+
+</div>
 </ion-content>

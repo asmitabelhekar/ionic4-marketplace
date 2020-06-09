@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
+import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newadvertisementform',
@@ -12,7 +14,14 @@ import * as moment from 'moment';
 })
 export class NewadvertisementformPage implements OnInit {
   fileToUpload: any;
-
+  selectedCode : any = "91";
+  countryCode = [{"code" : "91","name" : "India"},
+  {"code" : "39","name":"Italy"},
+  {"code" : "81", "name" : "Japan"},
+  {"code" : "52","name" : "Mexico"}];
+  selectedRadioGroup: any;
+  checkRadioButton: any = "male";
+  getCategoryId : any;
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -35,6 +44,24 @@ export class NewadvertisementformPage implements OnInit {
   languagesArray = [];
   languageArray: any[];
   adModel: any = {};
+  advertisementModel : any = {};
+  address: any;
+  lattitude: any;
+  longitude: any;
+  countryName: any;
+  stateName: any;
+  cityName: any;
+  pincode: any;
+  usersId : any;
+
+  //getAllFormsData
+  firstFormData: any;
+  secondFormData: any;
+  thirdFormData: any;
+  fourthFormData: any;
+  FifthFormData: any;
+
+
 
   //weeks selection
   weeksArray = [];
@@ -80,6 +107,9 @@ export class NewadvertisementformPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public loader: LoaderService,
+    public router: Router,
+    public changeDetectorRef : ChangeDetectorRef,
+    public toast : ToastController,
     public apiCall: ApiService) { }
 
 
@@ -103,7 +133,9 @@ export class NewadvertisementformPage implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       emailCtrl: ['', Validators.required],
       mobileCtrl: ['', Validators.required],
-      addressCtrl: ['', Validators.required]
+      countryCodeCtrl: ['', Validators.required],
+      addressCtrl: ['', Validators.required],
+      checkRadioButton : ['',Validators.required]
     });
 
     this.thirdFormGroup = this.formBuilder.group({
@@ -129,11 +161,12 @@ export class NewadvertisementformPage implements OnInit {
   }
 
   form1() {
-    console.log(this.firstFormGroup.value);
+    this.firstFormData = this.firstFormGroup.value;
   }
 
   form2() {
     console.log(this.secondFormGroup.value);
+    this.secondFormData = this.secondFormGroup.value;
   }
 
   form3() {
@@ -142,11 +175,119 @@ export class NewadvertisementformPage implements OnInit {
 
   form4(){
     console.log(this.fourthFormGroup.value);
+    this.fourthFormData = this.fourthFormGroup.value;
   }
 
+  selectCountryCode(data){
+    this.selectedCode = data;
+      console.log("countryCode:"+(this.selectedCode));
+    }
   form5(){
-    console.log(this.fifthFormGroup.value);
+    this.FifthFormData = this.fifthFormGroup.value;
+
+    console.log("show first record:"+this.firstFormData.titleCtrl);
+    console.log("show second record:"+this.secondFormData.emailCtrl);
+    console.log("show third record:"+this.firstImage);
+    console.log("show fourth record:"+this.fourthFormData.categoryId);
+    console.log("show fifth record:"+this.FifthFormData.bannerWeek);
+
+    this.submmitAdvertisementData();
   }
+
+
+  radioGroupChange(event) {
+    console.log("radioGroupChange", event.detail.value);
+    this.selectedRadioGroup = event.detail.value;
+    if (this.selectedRadioGroup == 'male') {
+      this.advertisementModel['gender'] = 0;
+      this.checkRadioButton = "male";
+    } else if (this.selectedRadioGroup == 'female') {
+      this.advertisementModel['gender'] = 1;
+      this.checkRadioButton = "female";
+    } else {
+      this.advertisementModel['gender'] = 1;
+      this.checkRadioButton = "female";
+    }
+  }
+
+  submmitAdvertisementData() {
+
+    this.loader.showBlockingLoaderAuth();
+
+
+        let send_date = {};
+        send_date['title'] = this.firstFormData.titleCtrl;
+        send_date['description'] = this.firstFormData.descriptionCtrl;
+        send_date['price'] = this.firstFormData.priceCtrl;
+        send_date['latitude'] =this.lattitude;
+        send_date['longitude'] = this.longitude;
+        send_date['address'] =this.cityName;
+        send_date['gender'] = this.advertisementModel['gender'];
+        send_date['languages'] = this.fourthFormData.selectedLanguages;
+        send_date['email'] =this.secondFormData.emailCtrl;
+        send_date['mobile'] = this.secondFormData.mobileCtrl;
+        send_date['categoryId'] = this.fourthFormData.categoryId;
+        send_date['startDateTime'] = this.fromDateTimeAd;
+        send_date['endDateTime'] = this.toDateTimeAd;
+        send_date['isActive'] = 1;
+        send_date['images'] = this.urls;
+        send_date['countryCode'] = this.selectedCode;
+        send_date['subCategoryId'] = this.fourthFormData.subCategoryId;
+        send_date['extraFields'] = {};
+        send_date['tags'] = this.fourthFormData.selectedTags;
+
+        this.usersId = localStorage.getItem("userId");
+
+        console.log("show all forms data in send_date object:"+JSON.stringify(send_date));
+
+          let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
+          this.apiCall.post(url, send_date).subscribe(MyResponse => {
+            this.getCategoryId = MyResponse['result']['categoryId'];
+            localStorage.setItem("categoryId", this.getCategoryId);
+            this.presentToast("Advertisement posted successfully.");
+          
+            this.router.navigate(['/home', { categoryId: this.getCategoryId}]);
+            this.loader.hideBlockingLoaderAuth();
+          }, error => {
+            this.loader.hideBlockingLoaderAuth();
+            // this.presentToast("Please try again.");
+          });
+
+      
+
+    //   }
+    // }
+  }
+
+  openChatList(){
+    this.router.navigate(['/chatlist']);
+  }
+
+  postAdvertisement(){
+    this.router.navigate(['/newadvertisementform']);
+    // this.router.navigate(['/secondpageadvertisement']);
+  }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
+
+  openFavourite(){
+    this.router.navigate(['/favourite']);
+  }
+
+  openProfile(){
+    this.router.navigate(['/profile']);
+  }
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
+  }
+
 
   selectCategoryType(data) {
     // alert("check data:"+data);
@@ -250,6 +391,44 @@ export class NewadvertisementformPage implements OnInit {
 
     console.log("show next date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
   }
+
+
+  handleAddressChange(data) {
+
+    console.log("Address Data", data);
+
+    this.lattitude = data.geometry.location.lat();
+    this.longitude = data.geometry.location.lng();
+    console.log("Address Data lattitude one::", this.lattitude);
+    console.log("Address Data longitude one::", this.longitude);
+
+
+    console.log("lat", this.lattitude, this.longitude);
+    let string = "";
+    string = data['formatted_address']
+    let arr = [];
+    let str = "";
+    let ss = [];
+    arr = string.split(",");
+    for (let index = arr.length - 1; index >= 0; index--) {
+      console.log(index, "data ", arr[index]);
+      this.advertisementModel['landmark'] = arr[2];
+      this.advertisementModel['address'] = data.vicinity;
+      this.advertisementModel['location'] = data.name;
+      this.countryName = arr[arr.length - 1] != null ? arr[arr.length - 1] : "";
+      str = arr[arr.length - 2] != null ? arr[arr.length - 2] : "";
+      let statestr = str.split(' ');
+      ss = statestr;
+      this.stateName = ss[1];
+      this.pincode = ss[2];
+      this.cityName = arr[arr.length - 3] != null ? arr[arr.length - 3] : "";
+      this.changeDetectorRef.detectChanges();
+
+    }
+    console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.advertisementModel['landmark'], this.advertisementModel['location']);
+    this.address = this.advertisementModel['landmark'], this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
+  }
+
 
   detectEventGallery(event, index) {
     console.log(event);

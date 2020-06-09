@@ -84,7 +84,7 @@ export class ProfilePage implements OnInit {
   }
 
   postAdvertisement() {
-    this.router.navigate(['/postadvertisement']);
+    this.router.navigate(['/newadvertisementform']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
 
