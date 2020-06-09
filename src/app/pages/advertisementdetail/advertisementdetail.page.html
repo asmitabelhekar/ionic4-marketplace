@@ -21,7 +21,7 @@
         <ion-col size="7" align="center">
         </ion-col>
         <ion-col size="2" fxLayoutAlign="end center" (click)="editAdvertisement()" *ngIf="advertisementType == 0 ">
-          <mat-icon style="color:white;font-size:20px;margin-top:-5px ">edit</mat-icon>
+          <mat-icon style="color:white;font-size:20px;margin-top:-5px;cursor:pointer ">edit</mat-icon>
         </ion-col>
         <ion-col size="2" fxLayoutAlign="center center" *ngIf="advertisementType != 0 ">
           <!-- <mat-icon style="color:white;font-size:20px ">edit</mat-icon> -->
@@ -59,26 +59,26 @@
     <div fxLayoutAlign="start start" style="width:90%; color:black">
       <div fxLayout="column" style="color:black; font-size:14px; margin-left:4px">
         <label>{{title}}</label>
-        <label style="margin-top:5px">₹ {{price}}</label>
+        <label style="margin-top:5px">₹ {{price | number}}</label>
       </div>
 
     </div>
 
     <div fxLayoutAlign="end start" style="width:10%;">
-      <ion-icon *ngIf="getBookmarkObj [advertisementId] == true " style="color:hotpink; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
-      <ion-icon *ngIf="getBookmarkObj [advertisementId] != true " style="color:hotpink; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon>
+      <ion-icon *ngIf="getBookmarkObj [advertisementId] == true " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
+      <ion-icon *ngIf="getBookmarkObj [advertisementId] != true " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon>
 
       <!-- <ion-icon fxLayoutAlign="end start" name="heart-outline" style="width:23px; height:23px;"></ion-icon> -->
     </div>
   </div>
 
   <div fxLayout="row" style="margin-top:10px;" class="cl_margin">
-    <div fxLayoutAlign="start start" style="width:85%; color:black">
+    <div fxLayoutAlign="start start" style="width:75%; color:black">
       <mat-icon style="color:black;font-size:15px">place</mat-icon>
       <label style="margin-left:-3px" class="cl_gray_label cl_font_14">{{address}} </label>
     </div>
 
-    <div fxLayoutAlign="end start" style="width:18%;">
+    <div fxLayoutAlign="end start" style="width:25%;">
       <label class="cl_gray_label cl_font_13">{{date | date}}</label>
     </div>
   </div>

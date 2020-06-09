@@ -13,15 +13,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./newadvertisementform.page.scss'],
 })
 export class NewadvertisementformPage implements OnInit {
+
+
   fileToUpload: any;
-  selectedCode : any = "91";
-  countryCode = [{"code" : "91","name" : "India"},
-  {"code" : "39","name":"Italy"},
-  {"code" : "81", "name" : "Japan"},
-  {"code" : "52","name" : "Mexico"}];
+  selectedCode: any = "91";
+  countryCode = [{ "code": "91", "name": "India" },
+  { "code": "39", "name": "Italy" },
+  { "code": "81", "name": "Japan" },
+  { "code": "52", "name": "Mexico" }];
   selectedRadioGroup: any;
   checkRadioButton: any = "male";
-  getCategoryId : any;
+  getCategoryId: any;
+  advertisementStatus: any;
+  advertisementId: any;
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -38,13 +42,13 @@ export class NewadvertisementformPage implements OnInit {
   urls = [];
   imageUrl = 0;
   categoryId: any;
-  subCategoryId : any;
+  subCategoryId: any;
   categoryArray: any = [];
   subCategoryArray: any;
   languagesArray = [];
   languageArray: any[];
   adModel: any = {};
-  advertisementModel : any = {};
+  advertisementModel: any = {};
   address: any;
   lattitude: any;
   longitude: any;
@@ -52,7 +56,7 @@ export class NewadvertisementformPage implements OnInit {
   stateName: any;
   cityName: any;
   pincode: any;
-  usersId : any;
+  usersId: any;
 
   //getAllFormsData
   firstFormData: any;
@@ -61,6 +65,7 @@ export class NewadvertisementformPage implements OnInit {
   fourthFormData: any;
   FifthFormData: any;
 
+  advertisementObject: any;
 
 
   //weeks selection
@@ -68,7 +73,7 @@ export class NewadvertisementformPage implements OnInit {
   adWeek: any = "";
   bannerWeek: any = "";
   finalCalculation: any;
-  finalAdCalculation : any;
+  finalAdCalculation: any;
   totalCalculation: any;
   fromDateTimestamp: number = 0;
   fromDateTimeAd: number = 0;
@@ -77,7 +82,23 @@ export class NewadvertisementformPage implements OnInit {
   endDate: any;
   todayDate: any;
   endAdvertisementDate: any;
+  postStatus: any;
+  bannerImage: any;
+  filterObject: any = {};
+  bannerArray: any;
 
+  genderArray = [
+    {
+      "id":"0",
+      "value":"male",
+      "name":"Male"
+    },
+    {
+      "id":"1",
+      "value":"female",
+      "name":"Female"
+    }
+  ];
 
   //Tags
   tagsArray = [
@@ -108,10 +129,107 @@ export class NewadvertisementformPage implements OnInit {
     private formBuilder: FormBuilder,
     public loader: LoaderService,
     public router: Router,
-    public changeDetectorRef : ChangeDetectorRef,
-    public toast : ToastController,
+    public changeDetectorRef: ChangeDetectorRef,
+    public toast: ToastController,
     public apiCall: ApiService) { }
 
+
+  ionViewWillEnter() {
+    this.postStatus = localStorage.getItem("postStatus");
+    if (this.postStatus == "1") {
+      this.advertisementStatus = "update";
+      var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
+      this.advertisementObject = JSON.parse(advertisementDetail);
+      console.log("show add details:" + this.advertisementObject);
+      this.advertisementId = this.advertisementObject.id;
+      this.advertisementModel['images'] = this.advertisementObject.images;
+
+      this.firstFormGroup = this.formBuilder.group({
+        titleCtrl: [this.advertisementObject.title, Validators.required],
+        descriptionCtrl: [this.advertisementObject.description, Validators.required],
+        priceCtrl: [this.advertisementObject.price, Validators.required]
+      });
+      if (this.advertisementObject.gender == 0) {
+        this.checkRadioButton = "male";
+      } else {
+        this.checkRadioButton = "female";
+      }
+
+      this.cityName = this.advertisementObject.address;
+      this.secondFormGroup = this.formBuilder.group({
+        emailCtrl: [this.advertisementObject.email, Validators.required],
+        mobileCtrl: [this.advertisementObject.mobile, Validators.required],
+        countryCodeCtrl: [this.advertisementObject.countryCode, Validators.required],
+        addressCtrl: [this.advertisementObject.address, Validators.required],
+        checkRadioButton: [this.checkRadioButton, Validators.required]
+      });
+
+      this.categoryId = this.advertisementObject.categoryId;
+      this.getSubCategory(this.categoryId);
+      console.log("show cid:"+this.categoryId);
+      this.fourthFormGroup = this.formBuilder.group({
+        categoryId: [this.categoryId, Validators.required],
+        subCategoryId: [this.advertisementObject.subCategoryId, Validators.required],
+        selectedTags: [this.advertisementObject.tags, Validators.required],
+        selectedLanguages: [this.advertisementObject.languages, Validators.required],
+      });
+
+      this.fromDateTimeAd = this.advertisementObject.startDateTime;
+      this.toDateTimeAd = this.advertisementObject.endDateTime;
+      this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
+      this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
+      this.fifthFormGroup = this.formBuilder.group({
+        adWeek: [this.adWeek, Validators.required],
+        bannerWeek: [this.advertisementObject.gender, Validators.required]
+      });
+      this.getAllBanner();
+
+      this.urls = [];
+      // for(let i= 0;i < this.advertisementModel['images'].length; i++){
+      if (this.advertisementModel['images'][0] == undefined) {
+        this.firstImage = "";
+      } else {
+        this.firstImage = this.advertisementModel['images'][0];
+        this.urls.push(this.firstImage);
+
+      }
+
+      if (this.advertisementModel['images'][1] == undefined) {
+        this.secondImage = "";
+      } else {
+        this.secondImage = this.advertisementModel['images'][1];
+        this.urls.push(this.secondImage);
+
+      }
+
+      if (this.advertisementModel['images'][2] == undefined) {
+        this.thirdImage = "";
+      } else {
+        this.thirdImage = this.advertisementModel['images'][2];
+        this.urls.push(this.thirdImage);
+
+      }
+
+      if (this.advertisementModel['images'][3] == undefined) {
+        this.fourthImage = "";
+      } else {
+        this.fourthImage = this.advertisementModel['images'][3];
+        this.urls.push(this.fourthImage);
+
+      }
+
+      if (this.advertisementModel['images'][4] == undefined) {
+        this.fifthImage = "";
+      } else {
+        this.fifthImage = this.advertisementModel['images'][4];
+        this.urls.push(this.fifthImage);
+
+      }
+
+    } else {
+      this.advertisementStatus = "post";
+    }
+  }
 
   ngOnInit() {
     this.getCategory();
@@ -135,7 +253,7 @@ export class NewadvertisementformPage implements OnInit {
       mobileCtrl: ['', Validators.required],
       countryCodeCtrl: ['', Validators.required],
       addressCtrl: ['', Validators.required],
-      checkRadioButton : ['',Validators.required]
+      checkRadioButton: [this.checkRadioButton, Validators.required]
     });
 
     this.thirdFormGroup = this.formBuilder.group({
@@ -156,6 +274,89 @@ export class NewadvertisementformPage implements OnInit {
     });
   }
 
+
+  getAllBanner() {
+    this.loader.showBlockingLoaderAuth();
+    this.filterObject = {};
+    this.filterObject['advertisementId'] = this.advertisementId;
+    this.filterObject['userId'] = this.usersId;
+
+    let url = environment.base_url + environment.version + "category/" + this.categoryId + "/banners?" + "filters=" + JSON.stringify(this.filterObject);
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.loader.hideBlockingLoaderAuth();
+      this.bannerArray = MyResponse['result']['list'];
+      if (MyResponse['result']['count'] > 0) {
+        let getBannerId = MyResponse['result']['list'][0]['id'];
+        this.fromDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
+        this.toDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
+
+        localStorage.setItem("bannerId", getBannerId);
+        this.bannerWeek = this.getDate(this.fromDateTimestamp, this.toDateTimestamp);
+        this.finalCalculation = 7 + ((this.bannerWeek - 1) * 5);
+        console.log("selected banner week show:" + this.bannerWeek);
+
+      } else {
+        
+        console.log("post bannee API");
+      }
+
+      this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+        this.loader.hideBlockingLoaderAuth();
+      })
+
+  }
+
+
+  getDate(start, end) {
+    //get from date
+    var ts_ms = start * 1000;
+    var date_ob = new Date(ts_ms);
+    var year = date_ob.getFullYear();
+    var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    var date = ("0" + date_ob.getDate()).slice(-2);
+    let getStartDate = month + "/" + date + "/" + year;
+    var dateToday = new Date(year, parseInt(month), parseInt(date));
+
+
+    //get end date
+    var end_date_ob_ts_ms = end * 1000;
+    var end_date_ob = new Date(end_date_ob_ts_ms);
+    var end_date_ob_year = end_date_ob.getFullYear();
+    var end_date_ob_month = ("0" + (end_date_ob.getMonth() + 1)).slice(-2);
+    var end_date_ob_date = ("0" + end_date_ob.getDate()).slice(-2);
+    let getEndDate = end_date_ob_month + "/" + end_date_ob_date + "/" + end_date_ob_year;
+
+    console.log("show first date: " + getStartDate + "  ,  " + "show second date:" + getEndDate);
+
+
+    let weeks = this.calculateNumberOfWeeks(getStartDate, getEndDate);
+    console.log("show weeks:" + weeks);
+
+    return Math.abs(weeks);
+
+  }
+
+  calculateNumberOfWeeks = function (d1, d2) {
+    var format = "MM/DD/YYYY";
+    if (d1 == '' || d2 == '') {
+      return '';
+    }
+    if (moment(d1, format).isValid() && moment(d2, format).isValid()) {
+      d1 = moment(d1, format);
+      d2 = moment(d2, format);
+
+      this.w = (d1.diff(d2, 'days') / 7).toFixed(1);
+      if (this.w < 1) {
+        this.w = this.w;
+      }
+      this.selectedNoOfWeek = this.w;
+
+      return this.w;
+    }
+  }
+
   checkData(data) {
     console.log("check data:" + data);
   }
@@ -173,23 +374,23 @@ export class NewadvertisementformPage implements OnInit {
     console.log(this.thirdFormGroup.value);
   }
 
-  form4(){
+  form4() {
     console.log(this.fourthFormGroup.value);
     this.fourthFormData = this.fourthFormGroup.value;
   }
 
-  selectCountryCode(data){
+  selectCountryCode(data) {
     this.selectedCode = data;
-      console.log("countryCode:"+(this.selectedCode));
-    }
-  form5(){
+    console.log("countryCode:" + (this.selectedCode));
+  }
+  form5() {
     this.FifthFormData = this.fifthFormGroup.value;
 
-    console.log("show first record:"+this.firstFormData.titleCtrl);
-    console.log("show second record:"+this.secondFormData.emailCtrl);
-    console.log("show third record:"+this.firstImage);
-    console.log("show fourth record:"+this.fourthFormData.categoryId);
-    console.log("show fifth record:"+this.FifthFormData.bannerWeek);
+    console.log("show first record:" + this.firstFormData.titleCtrl);
+    console.log("show second record:" + this.secondFormData.emailCtrl);
+    console.log("show third record:" + this.firstImage);
+    console.log("show fourth record:" + this.fourthFormData.categoryId);
+    console.log("show fifth record:" + this.FifthFormData.bannerWeek);
 
     this.submmitAdvertisementData();
   }
@@ -215,68 +416,140 @@ export class NewadvertisementformPage implements OnInit {
     this.loader.showBlockingLoaderAuth();
 
 
-        let send_date = {};
-        send_date['title'] = this.firstFormData.titleCtrl;
-        send_date['description'] = this.firstFormData.descriptionCtrl;
-        send_date['price'] = this.firstFormData.priceCtrl;
-        send_date['latitude'] =this.lattitude;
-        send_date['longitude'] = this.longitude;
-        send_date['address'] =this.cityName;
-        send_date['gender'] = this.advertisementModel['gender'];
-        send_date['languages'] = this.fourthFormData.selectedLanguages;
-        send_date['email'] =this.secondFormData.emailCtrl;
-        send_date['mobile'] = this.secondFormData.mobileCtrl;
-        send_date['categoryId'] = this.fourthFormData.categoryId;
-        send_date['startDateTime'] = this.fromDateTimeAd;
-        send_date['endDateTime'] = this.toDateTimeAd;
-        send_date['isActive'] = 1;
-        send_date['images'] = this.urls;
-        send_date['countryCode'] = this.selectedCode;
-        send_date['subCategoryId'] = this.fourthFormData.subCategoryId;
-        send_date['extraFields'] = {};
-        send_date['tags'] = this.fourthFormData.selectedTags;
+    let send_date = {};
+    send_date['title'] = this.firstFormData.titleCtrl;
+    send_date['description'] = this.firstFormData.descriptionCtrl;
+    send_date['price'] = this.firstFormData.priceCtrl;
+    send_date['latitude'] = this.lattitude;
+    send_date['longitude'] = this.longitude;
+    send_date['address'] = this.cityName;
+    send_date['gender'] = this.advertisementModel['gender'];
+    send_date['languages'] = this.fourthFormData.selectedLanguages;
+    send_date['email'] = this.secondFormData.emailCtrl;
+    send_date['mobile'] = this.secondFormData.mobileCtrl;
+    send_date['categoryId'] = this.fourthFormData.categoryId;
+    send_date['startDateTime'] = this.fromDateTimeAd;
+    send_date['endDateTime'] = this.toDateTimeAd;
+    send_date['isActive'] = 1;
+    send_date['images'] = this.urls;
+    send_date['countryCode'] = this.selectedCode;
+    send_date['subCategoryId'] = this.fourthFormData.subCategoryId;
+    send_date['extraFields'] = {};
+    send_date['tags'] = this.fourthFormData.selectedTags;
 
-        this.usersId = localStorage.getItem("userId");
+    this.usersId = localStorage.getItem("userId");
 
-        console.log("show all forms data in send_date object:"+JSON.stringify(send_date));
+    if (this.advertisementStatus == "post") {
+      console.log("show all forms data in send_date object:" + JSON.stringify(send_date));
 
-          let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
-          this.apiCall.post(url, send_date).subscribe(MyResponse => {
-            this.getCategoryId = MyResponse['result']['categoryId'];
-            localStorage.setItem("categoryId", this.getCategoryId);
-            this.presentToast("Advertisement posted successfully.");
-          
-            this.router.navigate(['/home', { categoryId: this.getCategoryId}]);
-            this.loader.hideBlockingLoaderAuth();
-          }, error => {
-            this.loader.hideBlockingLoaderAuth();
-            // this.presentToast("Please try again.");
-          });
+      let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements";
+      this.apiCall.post(url, send_date).subscribe(MyResponse => {
+        this.getCategoryId = MyResponse['result']['categoryId'];
+        this.advertisementId = MyResponse['result']['id'];
+        localStorage.setItem("categoryId", this.getCategoryId);
+        this.postBanner(this.getCategoryId);
+        this.presentToast("Advertisement posted successfully.");
 
-      
+        this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.loader.hideBlockingLoaderAuth();
+        // this.presentToast("Please try again.");
+      });
+    }
+    else {
+      console.log("show all forms data in send_date object:" + JSON.stringify(send_date));
 
-    //   }
-    // }
+      let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements/" + this.advertisementId;
+      this.apiCall.put(url, send_date).subscribe(MyResponse => {
+        this.getCategoryId = MyResponse['result'][0]['categoryId'];
+        console.log("shoe getCategoryId:" + this.getCategoryId);
+        localStorage.setItem("categoryId", this.getCategoryId);
+        this.updateBanner(this.getCategoryId);
+        this.presentToast("Advertisement updated successfully.");
+
+        this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.loader.hideBlockingLoaderAuth();
+        // this.presentToast("Please try again.");
+      });
+    }
+    this.loader.hideBlockingLoaderAuth();
   }
 
-  openChatList(){
+  postBanner(id) {
+    this.bannerImage = this.urls[0];
+    this.loader.showBlockingLoaderAuth();
+    let send_date = {};
+    send_date['image'] = this.bannerImage;
+    send_date['title'] = this.firstFormData.titleCtrl;
+    send_date['description'] = this.firstFormData.descriptionCtrl;
+    send_date['startDateTime'] = this.fromDateTimestamp;
+    send_date['endDateTime'] = this.toDateTimestamp;
+    send_date['lat'] = this.lattitude;
+    send_date['lng'] = this.longitude;
+    send_date['isActive'] = 1;
+    send_date['city'] = this.cityName;
+    send_date['advertisementId'] = this.advertisementId;
+    send_date['userId'] = this.usersId;
+
+    let url = environment.base_url + environment.version + "category/" + id + "/banners";
+    this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      console.log("bannerposted successfully:");
+      // this.presentToast(MyResponse);
+      this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.loader.hideBlockingLoaderAuth();
+      // this.presentToast("Please try again.")
+    });
+
+  }
+
+  updateBanner(categoryId) {
+    this.loader.showBlockingLoaderAuth();
+    let send_date = {};
+    send_date['image'] = this.bannerImage;
+    send_date['title'] = this.firstFormData.titleCtrl;
+    send_date['description'] = this.firstFormData.descriptionCtrl;
+    send_date['startDateTime'] = this.fromDateTimestamp;
+    send_date['endDateTime'] = this.toDateTimestamp;
+    send_date['lat'] = this.lattitude;
+    send_date['lng'] = this.longitude;
+    send_date['isActive'] = 1;
+    send_date['city'] = this.cityName;
+    send_date['advertisementId'] = this.advertisementId;
+    send_date['userId'] = this.usersId;
+
+    let getBannerId = localStorage.getItem("bannerId");
+    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners/" + getBannerId;
+    this.apiCall.put(url, send_date).subscribe(MyResponse => {
+    
+      this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.loader.hideBlockingLoaderAuth();
+    });
+
+  }
+
+  openChatList() {
     this.router.navigate(['/chatlist']);
   }
 
-  postAdvertisement(){
+  postAdvertisement() {
     this.router.navigate(['/newadvertisementform']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home']);
   }
 
-  openFavourite(){
+  openFavourite() {
     this.router.navigate(['/favourite']);
   }
 
-  openProfile(){
+  openProfile() {
     this.router.navigate(['/profile']);
   }
 
@@ -297,7 +570,7 @@ export class NewadvertisementformPage implements OnInit {
   }
 
   selectSubCategoryType(data) {
-    
+
     console.log("show id:" + data);
     this.subCategoryId = data;
   }
@@ -373,7 +646,7 @@ export class NewadvertisementformPage implements OnInit {
     this.toDateTimestamp = endDateTimeStamp;
     console.log("show banner timestamp:" + startDateTimeStamp)
     console.log("show banner date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-}
+  }
   selectAdWeek(data) {
     this.adWeek = data;
     this.finalAdCalculation = 7 + ((data - 1) * 5);

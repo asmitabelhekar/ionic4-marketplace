@@ -444,8 +444,7 @@ export class SecondpageadvertisementPage implements OnInit {
         this.checkBoostStatus = '0';
         // this.postBanner(this.getData.categoryId);
       }
-      //  this.bannerImg = this.bannerArray['image'];
-      //  console.log("banner data:"+JSON.stringify(this.bannerArray));
+     
       this.loader.hideBlockingLoaderAuth();
     },
       error => {

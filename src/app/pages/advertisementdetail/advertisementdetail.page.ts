@@ -256,7 +256,7 @@ export class AdvertisementdetailPage implements OnInit {
     var dotIndex = str.lastIndexOf('.');
     var ext = str.substring(dotIndex);
     console.log("show first image:" + ext)
-    if(ext == ".jpg" || ext == ".png"){
+    if(ext == ".jpg" || ext == ".png" || ext == ".jpeg"){
       console.log("match image");
       this.image = image;
     }
@@ -463,7 +463,7 @@ export class AdvertisementdetailPage implements OnInit {
   editAdvertisement() {
     let status = "1";
     localStorage.setItem("postStatus", status);
-    this.router.navigate(['/postadvertisement']);
+    this.router.navigate(['/newadvertisementform']);
   }
 
 }

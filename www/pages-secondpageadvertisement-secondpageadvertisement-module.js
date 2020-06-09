@@ -503,8 +503,6 @@ var SecondpageadvertisementPage = /** @class */ (function () {
                 _this.checkBoostStatus = '0';
                 // this.postBanner(this.getData.categoryId);
             }
-            //  this.bannerImg = this.bannerArray['image'];
-            //  console.log("banner data:"+JSON.stringify(this.bannerArray));
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
         });

@@ -272,7 +272,7 @@ var ProfilePage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     ProfilePage.prototype.postAdvertisement = function () {
-        this.router.navigate(['/postadvertisement']);
+        this.router.navigate(['/newadvertisementform']);
         // this.router.navigate(['/secondpageadvertisement']);
     };
     ProfilePage.prototype.home = function () {
