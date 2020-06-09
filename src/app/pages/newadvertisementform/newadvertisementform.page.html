@@ -10,68 +10,67 @@
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
   </button> -->
   <mat-vertical-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+    <!-- <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" fxLayout="column" (ngSubmit)="form1()" #formone="ngForm">
         <ng-template matStepLabel>Advertisement Detail</ng-template>
-        <mat-form-field appearance="outline">
-          <mat-label>Title</mat-label>
-          <input matInput  type="text" formControlName="titleCtrl" required>
+        <mat-form-field appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Title</mat-label>
+          <input matInput  type="text" formControlName="titleCtrl" required class="text-font-size">
         </mat-form-field>
 
 
-        <mat-form-field appearance="outline">
-          <mat-label>Price</mat-label>
-          <input matInput type="number" formControlName="priceCtrl" required>
+        <mat-form-field appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Price</mat-label>
+          <input matInput type="number" formControlName="priceCtrl" required class="text-font-size">
         </mat-form-field>
        
-        <mat-form-field appearance="outline">
-          <mat-label>Description</mat-label>
-          <textarea matInput type="text" formControlName="descriptionCtrl" required></textarea>
+        <mat-form-field appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Description</mat-label>
+          <textarea matInput type="text" formControlName="descriptionCtrl" required class="text-font-size"></textarea>
         </mat-form-field>
        
-        <div fxLayoutAlign="end end" fxFlex="100">
+        <div fxLayoutAlign="start start" fxFlex="100">
           <button mat-button matStepperNext class="buttonClass">Next</button>
         </div>
       </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
+    </mat-step> -->
+    <!-- <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup" fxLayout="column" (ngSubmit)="form2()" #formtwo="ngForm">
         <ng-template matStepLabel>Contact Details</ng-template>
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="emailCtrl" required pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <mat-form-field appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Email</mat-label>
+          <input matInput type="email" class="text-font-size" formControlName="emailCtrl" required pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Mobile</mat-label>
-          <input matInput type="tel" minlength="10" maxlength="10" formControlName="mobileCtrl" required>
+        <mat-form-field appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Mobile</mat-label>
+          <input matInput type="tel" minlength="10" class="text-font-size" maxlength="10" formControlName="mobileCtrl" required>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <textarea matInput type="text" formControlName="addressCtrl" required></textarea>
+        <mat-form-field appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Address</mat-label>
+          <textarea matInput type="text" class="text-font-size" formControlName="addressCtrl" required></textarea>
         </mat-form-field>
-        <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="end end">
+        <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
           <button mat-button class="buttonClass" matStepperPrevious>Back</button>
           <button mat-button class="buttonClass" matStepperNext>Next</button>
         </div>
       </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup">
+    </mat-step> -->
+    <!-- <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup" fxLayout="column" (ngSubmit)="form3()" #formthree="ngForm">
         <ng-template matStepLabel>Images Upload</ng-template>
        
 
-<!-- <h5 style="margin-top:15px; margin-left:10px">Upload images</h5> -->
 <div class="cl_image_div" fxLayout="row">
 <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload1').click()">
   <ion-icon *ngIf="firstImage == '' " name="camera" class="cl_images"></ion-icon>
-  <label *ngIf="firstImage == '' " align="center">Upload Image</label>
+  <label class="floating-label-css" *ngIf="firstImage == '' " align="center">Upload Image</label>
   <img *ngIf="firstImage != '' " src="{{firstImage}}" class="cl_display_img" >
 </div>
 <div fxLayout="column" fxLayoutAlign="center center" class="cl_second_column_img" onclick="document.getElementById('image_upload2').click()">
   <ion-icon *ngIf="secondImage == '' " name="camera" class="cl_images"></ion-icon>
-  <label *ngIf="secondImage == '' " align="center">upload Image</label>
+  <label class="floating-label-css" *ngIf="secondImage == '' " align="center">upload Image</label>
   <img *ngIf="secondImage != '' " src="{{secondImage}}" class="cl_display_img">
 </div>
 </div>
@@ -79,12 +78,12 @@
 <div class="cl_image_div" fxLayout="row">
   <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload3').click()">
     <ion-icon *ngIf="thirdImage == '' " name="camera" class="cl_images"></ion-icon>
-    <label *ngIf="thirdImage == '' " align="center">upload Image</label>
+    <label class="floating-label-css" *ngIf="thirdImage == '' " align="center">upload Image</label>
     <img *ngIf="thirdImage != '' " src="{{thirdImage}}" class="cl_display_img">
   </div>
   <div fxLayout="column" fxLayoutAlign="center center" class="cl_second_column_img" onclick="document.getElementById('image_upload4').click()">
     <ion-icon *ngIf="fourthImage == '' " name="camera" class="cl_images"></ion-icon>
-    <label *ngIf="fourthImage == '' " align="center">upload Image</label>
+    <label class="floating-label-css" *ngIf="fourthImage == '' " align="center">upload Image</label>
     <img  *ngIf="fourthImage != '' " src="{{fourthImage}}" class="cl_display_img">
   </div>
   </div>
@@ -92,7 +91,7 @@
   <div class="cl_image_div" fxLayout="row">
     <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img" onclick="document.getElementById('image_upload5').click()">
       <ion-icon *ngIf="fifthImage == '' " name="camera" class="cl_images"></ion-icon>
-      <label *ngIf="fifthImage == '' " align="center">upload Image</label>
+      <label class="floating-label-css" *ngIf="fifthImage == '' " align="center">upload Image</label>
       <img *ngIf="fifthImage != '' " src="{{fifthImage}}" class="cl_display_img" >
     </div>
   
@@ -105,20 +104,20 @@
     <input style="display: none;" id="image_upload5" type="file" (change)="detectEventGallery($event,4)">
 
     
-        <div fxFlex="100" fxLayoutGap="15px" style="margin-top:20px;" fxLayoutAlign="end end">
+        <div fxFlex="100" fxLayoutGap="15px" style="margin-top:20px;" fxLayoutAlign="start start">
           <button mat-button class="buttonClass" matStepperPrevious>Back</button>
           <button mat-button  class="buttonClass" matStepperNext>Next</button>
         </div>
       </form>
-    </mat-step>
-    <mat-step [stepControl]="fourthFormGroup" >
+    </mat-step> -->
+    <!-- <mat-step [stepControl]="fourthFormGroup" >
       <form [formGroup]="fourthFormGroup" fxLayout="column" (ngSubmit)="form4()" #formfour="ngForm">
         <ng-template matStepLabel>Title</ng-template>
        
-        <mat-form-field appearance="outline" style="width:100%">
-          <mat-label>Select Category</mat-label>
+        <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
+          <mat-label class="floating-label-css">Select Category</mat-label>
          
-          <mat-select 
+          <mat-select style="font-size:13px;" 
           name="type" formControlName="categoryId" 
           (selectionChange)="selectCategoryType(categoryId)"
           class="filter-select" 
@@ -129,23 +128,23 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" style="width:100%">
-          <mat-label>Select Sub Category</mat-label>
+        <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
+          <mat-label class="floating-label-css">Select Sub Category</mat-label>
          
-          <mat-select 
+          <mat-select style="font-size:13px;"
           name="type" formControlName="subCategoryId" 
           (selectionChange)="selectSubCategoryType(subCategoryId)"
           class="filter-select" 
           [(value)]="subCategoryId">
-            <mat-option *ngFor="let type of subCategoryArray" [value]="type.id">
+            <mat-option *ngFor="let type of subCategoryArray"  [value]="type.id">
               {{type.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field style="width:100%;" appearance="outline">
-          <mat-label>Tags</mat-label>
-            <mat-select 
+        <mat-form-field style="width:100%;" appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Tags</mat-label>
+            <mat-select  style="font-size:13px;" 
             name="tag" formControlName="selectedTags" 
             (selectionChange)="selectedTags(selectedTags)"
             class="filter-select" 
@@ -159,34 +158,51 @@
         </mat-form-field>
 
 
-        <mat-form-field style="width:100%;" appearance="outline">
-          <mat-label>Languages you support</mat-label>
-            <mat-select 
+        <mat-form-field style="width:100%;" appearance="outline" class="margin-top-css">
+          <mat-label class="floating-label-css">Languages you support</mat-label>
+            <mat-select style="font-size:13px;"
             name="year"  formControlName="selectedLanguages" 
             (selectionChange)="selectedChanged(selectedLanguages)"
             class="filter-select" 
             [(value)]="selectedLanguages" 
            
             multiple >
-              <mat-option *ngFor="let year of languageArray" [value]="year.name">
+              <mat-option *ngFor="let year of languageArray"  [value]="year.name">
                 {{year.name}}
               </mat-option>
             </mat-select>
         </mat-form-field>
-        <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="end end">
+        <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
           <button mat-button class="buttonClass" matStepperPrevious>Back</button>
           <button mat-button class="buttonClass" matStepperNext>Next</button>
         </div>
       </form>
-    </mat-step>
+    </mat-step> -->
     <mat-step [stepControl]="fifthFormGroup">
       <form [formGroup]="fifthFormGroup" fxLayout="column" (ngSubmit)="form5()" #formfive="ngForm">
       <ng-template matStepLabel>Payment</ng-template>
-      <label class="desc-text" style="margin-top:20px;">How many weeks you have to post Advertisement</label>
-      <mat-form-field appearance="outline" style="width:100%">
-        <mat-label>Select Weeks</mat-label>
+    
+    
+      <label class="desc-text" style="margin:10px;">How many weeks you have to post Banner</label>
+      <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
+        <mat-label class="floating-label-css">Select Weeks</mat-label>
        
-        <mat-select 
+        <mat-select style="font-size:13px;"
+        name="type"  formControlName="bannerWeek" 
+        (selectionChange)="selectBannerWeek(bannerWeek)"
+        class="filter-select" 
+        [(value)]="bannerWeek">
+          <mat-option *ngFor="let type of weeksArray" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <label class="desc-text" style="margin:10px;">How many weeks you have to post Advertisement</label>
+      <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
+        <mat-label class="floating-label-css">Select Weeks</mat-label>
+       
+        <mat-select style="font-size:13px;" 
         name="type" formControlName="adWeek" 
         (selectionChange)="selectAdWeek(adWeek)"
         class="filter-select" 
@@ -197,21 +213,30 @@
         </mat-select>
       </mat-form-field>
 
-      <label class="desc-text">How many weeks you have to post Banner</label>
-      <mat-form-field appearance="outline" style="width:100%">
-        <mat-label>Select Weeks</mat-label>
-       
-        <mat-select 
-        name="type"  formControlName="bannerWeek" 
-        (selectionChange)="selectBannerWeek(bannerWeek)"
-        class="filter-select" 
-        [(value)]="bannerWeek">
-          <mat-option *ngFor="let type of weeksArray" [value]="type">
-            {{type}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="end end">
+    
+
+      <div style="padding-bottom:20px;">
+        <table style="width:100%"  *ngIf="bannerWeek != '' || adWeek != '' "> 
+          <th align="center" class="table-text-size">Type</th>
+          <th align="center" class="table-text-size">One Week</th>
+          <th align="center" class="table-text-size">Multiple Week</th>
+          <th align="center" class="table-text-size">Total</th>
+          <tr *ngIf="bannerWeek != '' ">
+            <td align="start" class="table-text-size">Banner</td>
+            <td align="center" class="table-text-size">$7</td>
+            <td align="center" class="table-text-size">$7 + ( {{bannerWeek}} * $5 )</td>
+            <td align="center" class="table-text-size">${{finalCalculation}}</td>
+          </tr>
+          <tr *ngIf="adWeek != '' " >
+            <td align="start" class="table-text-size">Advertisement</td>
+            <td align="center" class="table-text-size">$7</td>
+            <td align="center" class="table-text-size">$7 + ( {{adWeek}} * $5 )</td>
+            <td align="center" class="table-text-size">${{finalAdCalculation}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="start start">
         <button mat-button class="buttonClass" matStepperPrevious>Back</button>
         <button mat-button  class="buttonClass" type="button" (click)="stepper.reset()">Reset</button>
         <button mat-button class="buttonClass" (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();formfive.ngSubmit.emit()">Submit</button>

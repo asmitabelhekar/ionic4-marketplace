@@ -38,9 +38,10 @@ export class NewadvertisementformPage implements OnInit {
 
   //weeks selection
   weeksArray = [];
-  adWeek: any;
-  bannerWeek: any;
+  adWeek: any = "";
+  bannerWeek: any = "";
   finalCalculation: any;
+  finalAdCalculation : any;
   totalCalculation: any;
   fromDateTimestamp: number = 0;
   fromDateTimeAd: number = 0;
@@ -231,17 +232,10 @@ export class NewadvertisementformPage implements OnInit {
     this.toDateTimestamp = endDateTimeStamp;
     console.log("show banner timestamp:" + startDateTimeStamp)
     console.log("show banner date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-
-  }
-
-  toTimestamp(strDate) {
-    var datum = Date.parse(strDate);
-    return datum / 1000;
-  }
-
+}
   selectAdWeek(data) {
-
     this.adWeek = data;
+    this.finalAdCalculation = 7 + ((data - 1) * 5);
     this.todayDate = new Date();
     console.log("show no of week value::" + data);
     this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
@@ -290,6 +284,10 @@ export class NewadvertisementformPage implements OnInit {
   }
 
 
+  toTimestamp(strDate) {
+    var datum = Date.parse(strDate);
+    return datum / 1000;
+  }
 
   handleFirstFileInput(files: FileList) {
     if (this.fileToUpload == null || this.fileToUpload == undefined) {

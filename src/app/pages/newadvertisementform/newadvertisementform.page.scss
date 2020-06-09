@@ -15,7 +15,7 @@
   }
 
   .cl_first_column_img{
-    width:45%; 
+    width:47%; 
     color:rgb(182, 179, 179);
     height:120px;
      border: 1px solid rgb(212, 209, 209);
@@ -24,7 +24,7 @@
   }
 
   .cl_second_column_img{
-    width:45%;
+    width:47%;
     height:120px;
      color:rgb(182, 179, 179);
       border: 1px solid rgb(212, 209, 209);
@@ -60,4 +60,34 @@
 .desc-text{
   font-size:14px;
   
+}
+
+.text-font-size{
+  font-size:13px;
+}
+
+.floating-label-css{
+  font-size:13px;
+}
+
+
+.margin-top-css {
+  margin-top: 0px;
+}
+
+
+.table-text-size{
+  font-size:12px;
+}
+
+td{
+  padding: 10px;
+  border:1px solid gray;
+}
+
+
+th {
+  padding: 10px;
+  background-color: #f1f4f9;
+  border:1px solid gray;
 }
