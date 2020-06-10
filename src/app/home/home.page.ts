@@ -17,7 +17,7 @@ import { empty } from 'rxjs';
 })
 export class HomePage {
 
- 
+  getBookMarkArray: any;
   Languages: any;
   userId: any;
   arrayLength: any;
@@ -171,7 +171,7 @@ export class HomePage {
 
   getBannerData(categoryId) {
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000
+    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
       this.loader.hideBlockingLoaderAuth();
@@ -364,21 +364,21 @@ export class HomePage {
 
   removeBookmark(advertisementId) {
     this.userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks"
+    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000; 
     this.apiCall.get(url).subscribe(MyResponse => {
-      this.advertisementArray = MyResponse['result']['list'];
-      for (let i = 0; i < this.advertisementArray.length; i++) {
+      this.getBookMarkArray = MyResponse['result']['list'];
+      for (let i = 0; i < this.getBookMarkArray.length; i++) {
 
         console.log("show advertisement id:" + advertisementId);
 
-        if (this.advertisementArray[i]['id'] == advertisementId) {
-          console.log("show advertisement bookmark id:" + this.advertisementArray[i]['bookmarkId']);
+        if (this.getBookMarkArray[i]['id'] == advertisementId) {
+          console.log("show advertisement bookmark id:" + this.getBookMarkArray[i]['bookmarkId']);
 
-          this.bookmarkId = this.advertisementArray[i]['bookmarkId'];
+          this.bookmarkId = this.getBookMarkArray[i]['bookmarkId'];
           console.log("check ------ bookmark id:" + this.bookmarkId);
 
         } else {
-          console.log("show advertisement bookmark id failure ::" + this.advertisementArray[i]['bookmarkId']);
+          console.log("show advertisement bookmark id failure ::" + this.getBookMarkArray[i]['bookmarkId']);
 
         }
       }

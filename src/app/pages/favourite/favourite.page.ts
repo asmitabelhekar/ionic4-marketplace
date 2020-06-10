@@ -143,6 +143,7 @@ export class FavouritePage implements OnInit {
 
 
   }
+  
 
   removeBookmark(advertisementId) {
     this.userId = localStorage.getItem("userId");
@@ -260,6 +261,8 @@ export class FavouritePage implements OnInit {
   }
 
   postAdvertisement() {
+    let status = "0";
+    localStorage.setItem("postStatus", status);
     this.router.navigate(['/newadvertisementform']);
     // this.router.navigate(['/secondpageadvertisement']);
   }

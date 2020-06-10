@@ -49,8 +49,8 @@
             <mat-label class="floating-label-css">Select Code</mat-label>
             <mat-select name="type" formControlName="countryCodeCtrl" style="font-size:13px;"
               (selectionChange)="selectCountryCode(selectedCode)" class="filter-select" [(value)]="selectedCode">
-              <mat-option *ngFor="let code of countryCode"  [value]="code.code">
-                +{{code.code}}
+              <mat-option *ngFor="let code of countryCode"  [value]="code.dial_code">
+                +{{code.dial_code}}
               </mat-option>
             </mat-select>
           </mat-form-field>

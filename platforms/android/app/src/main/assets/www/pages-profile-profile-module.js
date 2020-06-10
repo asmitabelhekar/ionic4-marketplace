@@ -292,6 +292,8 @@ var ProfilePage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     ProfilePage.prototype.postAdvertisement = function () {
+        var status = "0";
+        localStorage.setItem("postStatus", status);
         this.router.navigate(['/newadvertisementform']);
         // this.router.navigate(['/secondpageadvertisement']);
     };

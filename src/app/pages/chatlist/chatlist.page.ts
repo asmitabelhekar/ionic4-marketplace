@@ -76,6 +76,8 @@ export class ChatlistPage implements OnInit {
   }
 
   postAdvertisement(){
+    let status = "0";
+    localStorage.setItem("postStatus", status);
     this.router.navigate(['/newadvertisementform']);
     // this.router.navigate(['/secondpageadvertisement']);
   }

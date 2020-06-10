@@ -19,18 +19,24 @@
 </ion-header>
 
 <ion-content  style="width:100%;height:100%;">
-<div style="color:black"> 
+<div style="color:black;margin-bottom:200px;"> 
 <div *ngFor="let item of chatArray"> 
 <div *ngIf="msgCount != '0' ">
-  <div fxLayout="row" fxLayoutAlign="start center" *ngIf="item.senderId != userId " style="width:100%">
-    <ion-col style="margin-left:10px">
+  <div fxLayout="row" fxLayoutAlign="start center" *ngIf="item.senderId != userId " style="width:100%; margin-top:15px">
+    <!-- <ion-col size="2" style="margin-left:10px">
       <button style="border-radius: 50%; width:50px; height:50px; background-color: #9badc0; "></button>
-    </ion-col>
+    </ion-col> -->
 
     <ion-col size="12">
       <div fxLayout="column">
-        <section  style="width:auto;min-width:40%; max-width: 60%;margin-top:20px; padding:10px; background-color: #ebeff3">
+        <section fxLayout="row" fxLayoutAlign="start center" style="margin-left:10px;">
+         <div>
+          <img src="../../../assets/agent.png" class="placeholder-css" /> 
+         </div>
+         <div style="border-radius:8px;width:auto;min-width:40%; max-width: 60%;margin-left:10px; padding:10px; background-color: #ebeff3">
           <label style="font-size: 15px;">{{item.message}}</label>
+
+         </div>
         </section>
        <!-- <label style="font-size:12px; margin-top:3px">{{item.modified | date}}</label> -->
       </div>
@@ -42,7 +48,7 @@
  
 <div *ngIf="msgCount != '0' ">
   <div fxLayout="column" fxLayoutAlign="end end"  *ngIf="item.senderId == userId ">
-    <section  style="width:auto;min-width:40%; max-width: 70%;margin-top:20px; margin-right:10px; padding:10px; background-color: #d3e2f1">
+    <section  style="border-radius:8px;width:auto;min-width:40%; max-width: 70%;margin-top:20px; margin-right:10px; padding:10px; background-color: #d3e2f1">
       <label>{{item.message}}</label>
       <!-- <img src="../../../assets/defaultpic.png" style="height:80px; width:80px; border:1px solid gray" /> -->
     </section>

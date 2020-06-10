@@ -59,7 +59,7 @@ export class DetailchatPage implements OnInit {
 
       send_date['message'] = this.chatModel['message'];
       this.userId = localStorage.getItem("userId");
-      let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id;
+      let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id + "?" + "size=" + 1000;
       this.apiCall.post(url, send_date).subscribe(MyResponse => {
 
         this.getChatMassages();
@@ -85,7 +85,7 @@ export class DetailchatPage implements OnInit {
   getChatMassages() {
     this.loader.showBlockingLoaderAuth();
     this.userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id;
+    let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id+ "?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.chatArray = MyResponse['result']['list'];
       this.msgCount = MyResponse['result']['count'];

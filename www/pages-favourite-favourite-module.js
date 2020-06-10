@@ -439,6 +439,8 @@ var FavouritePage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     FavouritePage.prototype.postAdvertisement = function () {
+        var status = "0";
+        localStorage.setItem("postStatus", status);
         this.router.navigate(['/newadvertisementform']);
         // this.router.navigate(['/secondpageadvertisement']);
     };

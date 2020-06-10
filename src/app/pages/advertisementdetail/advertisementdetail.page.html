@@ -63,7 +63,7 @@
 
     </div>
 
-    <div fxLayoutAlign="end start" style="width:7%;">
+    <div fxLayoutAlign="end start" style="width:9%;">
       <div fxLayoutAlign="start start" (click)="editAdvertisement()" *ngIf="advertisementType == 0 ">
         <mat-icon style="color:rgb(87, 85, 85);font-size:20px;margin-top:-5px;cursor:pointer ">edit</mat-icon>
       </div>
@@ -72,7 +72,7 @@
         <ion-icon name="share-social-outline" class="cl_share_icon"></ion-icon>
       </div>
     </div>
-    <div fxLayoutAlign="end start" style="width:8%;">
+    <div fxLayoutAlign="end start" style="width:6%;">
       <ion-icon *ngIf="getBookmarkObj [advertisementId] == true " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
       <ion-icon *ngIf="getBookmarkObj [advertisementId] != true " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon>
 

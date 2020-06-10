@@ -198,6 +198,8 @@ var ChatlistPage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     ChatlistPage.prototype.postAdvertisement = function () {
+        var status = "0";
+        localStorage.setItem("postStatus", status);
         this.router.navigate(['/newadvertisementform']);
         // this.router.navigate(['/secondpageadvertisement']);
     };

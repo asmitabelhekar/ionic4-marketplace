@@ -18,10 +18,11 @@ export class NewadvertisementformPage implements OnInit {
 
   fileToUpload: any;
   selectedCode: any = "91";
-  countryCode = [{ "code": "91", "name": "India" },
-  { "code": "39", "name": "Italy" },
-  { "code": "81", "name": "Japan" },
-  { "code": "52", "name": "Mexico" }];
+  countryCode = [];
+  //   { "code": "91", "name": "India" },
+  // { "code": "39", "name": "Italy" },
+  // { "code": "81", "name": "Japan" },
+  // { "code": "52", "name": "Mexico" }];
   selectedRadioGroup: any;
   checkRadioButton: any = "male";
   getCategoryId: any;
@@ -124,6 +125,7 @@ export class NewadvertisementformPage implements OnInit {
       "name": "Equipment"
     }
   ];
+  data:any;
 
 
   constructor(
@@ -132,10 +134,27 @@ export class NewadvertisementformPage implements OnInit {
     public router: Router,
     public changeDetectorRef: ChangeDetectorRef,
     public toast: ToastController,
-    public apiCall: ApiService) { }
+    public apiCall: ApiService) {
+      this.read_data();
+     }
 
+     read_data(){
+      fetch('../../../assets/countrycode.json').then(res => res.json())
+      .then(json => {
+        this.countryCode = json;
+        console.log(this.data);
+      });
+
+     
+    }
+  
 
   ionViewWillEnter() {
+
+
+  
+
+
     this.postStatus = localStorage.getItem("postStatus");
     if (this.postStatus == "1") {
       this.advertisementStatus = "update";
@@ -257,7 +276,7 @@ export class NewadvertisementformPage implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       emailCtrl: ['', Validators.required],
       mobileCtrl: ['', Validators.required],
-      countryCodeCtrl: ['', Validators.required],
+      countryCodeCtrl: ['91', Validators.required],
       addressCtrl: ['', Validators.required],
       checkRadioButton: [this.checkRadioButton, Validators.required]
     });
