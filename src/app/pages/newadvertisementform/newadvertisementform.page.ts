@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class NewadvertisementformPage implements OnInit {
 
+  totalCalculatePayment : any;
 
   fileToUpload: any;
   selectedCode: any = "91";
@@ -72,8 +73,8 @@ export class NewadvertisementformPage implements OnInit {
   weeksArray = [];
   adWeek: any = "";
   bannerWeek: any = "";
-  finalCalculation: any;
-  finalAdCalculation: any;
+  finalCalculation: any = 0;
+  finalAdCalculation: any = 0;
   totalCalculation: any;
   fromDateTimestamp: number = 0;
   fromDateTimeAd: number = 0;
@@ -156,6 +157,7 @@ export class NewadvertisementformPage implements OnInit {
       }
 
       this.cityName = this.advertisementObject.address;
+
       this.secondFormGroup = this.formBuilder.group({
         emailCtrl: [this.advertisementObject.email, Validators.required],
         mobileCtrl: [this.advertisementObject.mobile, Validators.required],
@@ -173,16 +175,20 @@ export class NewadvertisementformPage implements OnInit {
         selectedTags: [this.advertisementObject.tags, Validators.required],
         selectedLanguages: [this.advertisementObject.languages, Validators.required],
       });
+      this.getAllBanner();
+
 
       this.fromDateTimeAd = this.advertisementObject.startDateTime;
       this.toDateTimeAd = this.advertisementObject.endDateTime;
       this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
       this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
+      this.totalCalculatePayment = 0;
+      this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+   
       this.fifthFormGroup = this.formBuilder.group({
         adWeek: [this.adWeek, Validators.required],
-        bannerWeek: [this.advertisementObject.gender, Validators.required]
+        bannerWeek: [this.bannerWeek, Validators.required]
       });
-      this.getAllBanner();
 
       this.urls = [];
       // for(let i= 0;i < this.advertisementModel['images'].length; i++){
@@ -293,6 +299,9 @@ export class NewadvertisementformPage implements OnInit {
         localStorage.setItem("bannerId", getBannerId);
         this.bannerWeek = this.getDate(this.fromDateTimestamp, this.toDateTimestamp);
         this.finalCalculation = 7 + ((this.bannerWeek - 1) * 5);
+
+        this.totalCalculatePayment = 0;
+        this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
         console.log("selected banner week show:" + this.bannerWeek);
 
       } else {
@@ -467,8 +476,8 @@ export class NewadvertisementformPage implements OnInit {
         localStorage.setItem("categoryId", this.getCategoryId);
         this.updateBanner(this.getCategoryId);
         this.presentToast("Advertisement updated successfully.");
-
-        this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
+        this.router.navigate(['/favourite']);
+        // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
         this.loader.hideBlockingLoaderAuth();
       }, error => {
         this.loader.hideBlockingLoaderAuth();
@@ -637,6 +646,9 @@ export class NewadvertisementformPage implements OnInit {
     // this.checkBoostStatus = localStorage.getItem("boostStatus");
 
     this.finalCalculation = 7 + ((data - 1) * 5);
+    this.totalCalculatePayment = 0;
+    this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+   
     this.totalCalculation = this.finalCalculation;
     this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
 
@@ -650,6 +662,9 @@ export class NewadvertisementformPage implements OnInit {
   selectAdWeek(data) {
     this.adWeek = data;
     this.finalAdCalculation = 7 + ((data - 1) * 5);
+    this.totalCalculatePayment = 0;
+    this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+   
     this.todayDate = new Date();
     console.log("show no of week value::" + data);
     this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');

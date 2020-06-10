@@ -18,18 +18,17 @@
           <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
         </ion-col>
 
-        <ion-col size="7" align="center">
+        <ion-col size="10" align="center">
         </ion-col>
-        <ion-col size="2" fxLayoutAlign="end center" (click)="editAdvertisement()" *ngIf="advertisementType == 0 ">
+        <!-- <ion-col size="2" fxLayoutAlign="end center" (click)="editAdvertisement()" *ngIf="advertisementType == 0 ">
           <mat-icon style="color:white;font-size:20px;margin-top:-5px;cursor:pointer ">edit</mat-icon>
         </ion-col>
         <ion-col size="2" fxLayoutAlign="center center" *ngIf="advertisementType != 0 ">
-          <!-- <mat-icon style="color:white;font-size:20px ">edit</mat-icon> -->
         </ion-col>
         <ion-col size="1" fxLayoutAlign="center center" (click)="sharePicker(advertisementImages[0])">
           <img src="../../../assets/sharewhitee.png" class="cl_share_icon" />
 
-        </ion-col>
+        </ion-col> -->
      
       </ion-row>
     </div>
@@ -56,7 +55,7 @@
 
 
   <div fxLayout="row" style="margin-top:10px;" class="cl_margin">
-    <div fxLayoutAlign="start start" style="width:90%; color:black">
+    <div fxLayoutAlign="start start" style="width:85%; color:black">
       <div fxLayout="column" style="color:black; font-size:14px; margin-left:4px">
         <label>{{title}}</label>
         <label style="margin-top:5px">₹ {{price | number}}</label>
@@ -64,7 +63,16 @@
 
     </div>
 
-    <div fxLayoutAlign="end start" style="width:10%;">
+    <div fxLayoutAlign="end start" style="width:7%;">
+      <div fxLayoutAlign="start start" (click)="editAdvertisement()" *ngIf="advertisementType == 0 ">
+        <mat-icon style="color:rgb(87, 85, 85);font-size:20px;margin-top:-5px;cursor:pointer ">edit</mat-icon>
+      </div>
+      <div fxLayoutAlign="end start" (click)="sharePicker(advertisementImages[0])">
+        <!-- <img src="../../../assets/sharewhitee.png" class="cl_share_icon" /> -->
+        <ion-icon name="share-social-outline" class="cl_share_icon"></ion-icon>
+      </div>
+    </div>
+    <div fxLayoutAlign="end start" style="width:8%;">
       <ion-icon *ngIf="getBookmarkObj [advertisementId] == true " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
       <ion-icon *ngIf="getBookmarkObj [advertisementId] != true " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon>
 

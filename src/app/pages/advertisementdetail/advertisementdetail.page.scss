@@ -5,8 +5,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
     outline: 0;
     box-shadow: 0 0 0 0;
     // margin-right: 15px;
@@ -148,7 +148,9 @@
 
 
 .cl_share_icon{
-  width:30px;
+  width:27px;
    height:30px;
-  margin-right:10px;
+  // margin-right:10px;
+  margin-top:-5px;
+  color:rgb(75, 73, 73);
 }

@@ -334,7 +334,7 @@ export class HomePage {
       console.log("before delete:" + (this.postBookmarkObj));
       delete this.postBookmarkObj[advertisementid];
       localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
-      // this.removeBookmark(advertisementid);
+      this.removeBookmark(advertisementid);
 
 
 

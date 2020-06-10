@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
   noInternet = 1;
   name: any;
   email: any;
+  updateStatus = 0;
   mobile: any;
   roleId: any;
   username: any;
@@ -23,6 +24,7 @@ export class ProfilePage implements OnInit {
   lattitude: any;
   longitude: any;
   address: any;
+  loginUserId : any;
   profileDetail: any;
   constructor(public router: Router,
     public networkServices: NetworkService,
@@ -34,13 +36,22 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.userId = this.activatedRoute.snapshot.params['userId'];
-    console.log("user id:" + this.userId);
-    this.getProfileInfo();
+    // this.userId = this.activatedRoute.snapshot.params['userId'];
+    // console.log("user id:" + this.userId);
+    // this.getProfileInfo();
     // this.getCountryCode();
   }
 
   ionViewWillEnter(){
+    this.userId = this.activatedRoute.snapshot.params['userId'];
+    console.log("user id:" + this.userId);
+    // if (this.userId == undefined || this.userId == "" || this.userId == null) {
+    //   this.userId = localStorage.getItem('userId');
+    //   this.updateStatus = 0;
+    // } else {
+    //   this.updateStatus = 1;
+    // }
+
     this.getProfileInfo();
   }
   getCountryCode() {
@@ -61,8 +72,17 @@ export class ProfilePage implements OnInit {
     this.noInternet = 1;
     if (this.userId == undefined || this.userId == "" || this.userId == null) {
       this.userId = localStorage.getItem('userId');
+      // this.updateStatus = 0;
     } else {
-
+      // this.updateStatus = 1;
+    }
+    this.loginUserId = localStorage.getItem('userId');
+    if(this.loginUserId == this.userId){
+      this.updateStatus = 0;
+      console.log("match id:");
+    }else{
+      this.updateStatus = 1;
+      console.log("id not match");
     }
     let url = environment.base_url + environment.version + "users/" + this.userId;
     this.apiCall.get(url).subscribe(MyResponse => {
@@ -118,3 +138,4 @@ export class ProfilePage implements OnInit {
     this.router.navigate(['/updateprofile', { profileData : JSON.stringify(this.profileDetail)}]);
   }
 }
+

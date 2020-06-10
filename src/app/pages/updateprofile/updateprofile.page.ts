@@ -11,6 +11,8 @@ import { ToastController } from '@ionic/angular';
 })
 export class UpdateprofilePage implements OnInit {
 
+  loginUserId : any;
+  updateStatus = 0;
   userRole : any;
   getProfileDetail: any;
   profileModel : any = {};
@@ -23,10 +25,16 @@ export class UpdateprofilePage implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.loginUserId = localStorage.getItem('userId');
     this.userRole = localStorage.getItem('userRole');
     let getData = this.activatedRoute.snapshot.params['profileData'];
     this.getProfileDetail = JSON.parse(getData);
     console.log("getProfileDetail id:"+this.getProfileDetail.id);
+    if(this.loginUserId == this.getProfileDetail.id){
+      this.updateStatus = 0;
+    }else{
+      this.updateStatus = 1;
+    }
     this.profileModel['name'] = this.getProfileDetail.name;
     this.profileModel['email'] = this.getProfileDetail.email;
     this.profileModel['contact'] = this.getProfileDetail.mobile;
