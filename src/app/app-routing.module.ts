@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'newadvertisementform',
     loadChildren: () => import('./pages/newadvertisementform/newadvertisementform.module').then( m => m.NewadvertisementformPageModule)
+  },
+  {
+    path: 'razorpay',
+    loadChildren: () => import('./pages/razorpay/razorpay.module').then( m => m.RazorpayPageModule)
   }
  
 ];
