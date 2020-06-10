@@ -9,7 +9,74 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <!-- <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> -->\n    <label style=\"color:white; font-size:17px; margin-left:10px\">Favourite</label>\n\n    <!-- <ion-title style=\"color:white; margin-left:10px\">\n      Favourite\n    </ion-title> -->\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-item-divider>\n  <ion-segment (ionChange)=\"segmentChanged($event)\" value=\"myadds\" [(ngModel)]=\"segment\">\n    <ion-segment-button value=\"0\" style=\"--background: white;\">\n      <ion-label >My Adds</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"1\" style=\"--background: white;\">\n      <ion-label >Bookmarks</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n</ion-item-divider>\n\n<ion-slides #slides pager=\"false\" [options]=\"sliderOptions\" (ionSlideDidChange)=\"slideChanged(slides)\" (ionSlidesDidLoad)=\"slideChanged(slides)\">\n\n  <ion-slide style=\"height:100%;width:100%\">\n    <div  *ngIf=\"tabTitle == '0' \">\n\n      <div *ngIf=\"arrayLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n  \n      \n        <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n          <div  >\n            <div class=\"column\" style=\"position:relative\">\n              <img src={{item.images[0]}} style=\"border-radius: 5px;width:100%; height:100%\" (click)=\"showAdvertisementDetail(image, item.id)\"/>\n            \n              <div style=\"position:absolute;top:7px;right:8px;width:30px;height:30px;\"\n              (click)=\"bookmarkAdvertisement(item.id)\">\n              <ion-icon *ngIf=\"getBookmarkObj [item.id] == true \"\n                style=\"color:#fb7645;width:24px;height:24px; margin-left:5px\" name=\"heart\"></ion-icon>\n              <ion-icon *ngIf=\"getBookmarkObj [item.id] != true \"\n                style=\"color:#fb7645;width:24px;height:24px; margin-left:5px\" name=\"heart-outline\"></ion-icon>\n            </div>\n            \n                <div fxLayoutAlign=\"end end\" fxLayout=\"column\" (click)=\"showAdvertisementDetail(item.categoryId, item.id)\"\n                style=\"position:absolute;background-image: linear-gradient(to bottom, transparent 15%, rgb(0, 0, 0,1)) ;bottom:8px;width:96%;  border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n  \n  \n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                  <div fxFlex=\"100\" fxLayoutAlign=\"start start\">\n                    <div class=\"b\">\n                    <label style=\"font-size:11px;padding-left:5px\">{{item.title}}</label>\n                    </div>\n                  </div>\n  \n  \n                </div>\n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white; padding-bottom:2px\">\n                  <div fxFlex=\"30\" fxLayoutAlign=\"start center\">\n                    <label style=\"font-size:10px;padding-left:5px;font-weight:normal\">₹ {{item.price | number}}</label>\n  \n                  </div>\n                  <div fxFlex=\"20\">\n  \n                  </div>\n  \n                  <div fxFlex=\"50\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\" style=\"margin-top:-5px\">\n                      <label style=\"font-size:10px; color:white;padding-right: 5px;\">{{item.address}}</label>\n                    </div>\n                  </div>\n  \n                </div>\n  \n               \n  \n  \n              </div>\n            </div>\n  \n          </div>\n  \n  \n        </div>\n    \n    \n      </div>\n      <img style=\"width:100%; height:60px; visibility: hidden;\" />\n      <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%\">\n        <h3 align=\"center\">No records found.</h3>\n      </div>\n  \n  \n    </div></ion-slide>\n\n\n  <ion-slide style=\"height:100%;width:100%\" >\n  \n    <div  *ngIf=\"tabTitle == '1' \" style=\"width:100%\">\n      <div *ngIf=\"bookmarkLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n  \n      \n        <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n          <div (click)=\"showAdvertisementDetail(image, item.id)\">\n            <div class=\"column\" style=\"position:relative\">\n              <img src={{item.images[0]}} style=\"border-radius: 5px;width:100%; height:100%\" />\n              <div\n                style=\"position:absolute; bottom:8px;width:96%;background-image: linear-gradient(to bottom, transparent 15%, rgb(0, 0, 0,1)) ;; border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                  <div fxFlex=\"100\" fxLayoutAlign=\"start start\">\n                    <div class=\"b\">\n                    <label style=\"font-size:11px;padding-left:5px\">{{item.title}}</label>\n                    </div>\n                  </div>\n  \n  \n                </div>\n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                  <div fxFlex=\"30\" fxLayoutAlign=\"start center\">\n                    <label style=\"font-size:11px;padding-left:5px\">{{item.price}}</label>\n                    \n                  </div>\n                  <div fxFlex=\"20\">\n  \n                  </div>\n  \n  \n                  <div fxFlex=\"50\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\" style=\"margin-top:-5px\">\n                      <label style=\"font-size:10px; color:white;padding-right: 5px;\">{{item.address}}\n                          </label>\n                    </div>\n                  </div>\n  \n                </div>\n  \n  \n  \n  \n              </div>\n            </div>\n  \n          </div>\n  \n  \n        </div>\n    \n    \n      </div>\n      <img style=\"width:100%; height:60px; visibility: hidden;\" />\n      <div *ngIf=\"bookmarkLength == 0 \" style=\"margin-top:20%\">\n        <h3 align=\"center\">No bookmarks found.</h3>\n      </div>\n  \n    </div>\n  </ion-slide>\n</ion-slides>\n \n \n\n \n\n\n  <div class=\"cl_bottom_fix\" fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      \n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n    (click)=\"home()\">\n    <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">HOME</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n    (click)=\"openChatList()\">\n    <ion-icon class=\"cl_bottom_nav_css\" name=\"document\" (click)=\"openChatList()\"></ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">CHATS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n      (click)=\"postAdvertisement()\">\n    <ion-icon class=\"cl_bottom_nav_css\"  name=\"add-circle\" (click)=\"postAdvertisement()\">\n    </ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">SELL</label>\n    </div>\n  \n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n    (click)=\"openFavourite()\">\n    <ion-icon class=\"cl_post_css\" name=\"heart\"  (click)=\"openFavourite()\"></ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_selected-text_font\">MY ADS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n      (click)=\"openProfile()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"person\"  (click)=\"openProfile()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">PROFILE</label>\n    </div>\n\n  </div>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\">\n    <!-- <ion-buttons slot=\"start\" style=\"color:white\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> -->\n    <label style=\"color:white; font-size:17px; margin-left:10px\">Favourite</label>\n\n    <!-- <ion-title style=\"color:white; margin-left:10px\">\n      Favourite\n    </ion-title> -->\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-item-divider>\n  <ion-segment (ionChange)=\"segmentChanged($event)\" value=\"myadds\" [(ngModel)]=\"segment\">\n    <ion-segment-button value=\"0\" style=\"--background: white;\">\n      <ion-label >My Adds</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"1\" style=\"--background: white;\">\n      <ion-label >Bookmarks</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n</ion-item-divider>\n\n<ion-slides #slides pager=\"false\" [options]=\"sliderOptions\" (ionSlideDidChange)=\"slideChanged(slides)\" (ionSlidesDidLoad)=\"slideChanged(slides)\" style=\"width:100%\">\n\n  <ion-slide style=\"height:100%;width:100%\">\n    <div  *ngIf=\"tabTitle == '0' \" style=\"width:100%\">\n\n      <div *ngIf=\"arrayLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\">\n  \n      \n        <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n          <div  style=\"width:100%\">\n            <div class=\"column\" style=\"position:relative\">\n              <img src={{item.images[0]}} style=\"border-radius: 5px;width:100%; height:100%\" (click)=\"showAdvertisementDetail(image, item.id)\"/>\n            \n              <div style=\"position:absolute;top:7px;right:8px;width:30px;height:30px;\"\n              (click)=\"bookmarkAdvertisement(item.id)\">\n              <ion-icon *ngIf=\"getBookmarkObj [item.id] == true \"\n                style=\"color:#fb7645;width:24px;height:24px; margin-left:5px\" name=\"heart\"></ion-icon>\n              <ion-icon *ngIf=\"getBookmarkObj [item.id] != true \"\n                style=\"color:#fb7645;width:24px;height:24px; margin-left:5px\" name=\"heart-outline\"></ion-icon>\n            </div>\n            \n                <div fxLayoutAlign=\"end end\" fxLayout=\"column\" (click)=\"showAdvertisementDetail(item.categoryId, item.id)\"\n                style=\"position:absolute;background-image: linear-gradient(to bottom, transparent 15%, rgb(0, 0, 0,1)) ;bottom:8px;width:96%;  border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n  \n  \n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                  <div fxFlex=\"100\" fxLayoutAlign=\"start start\">\n                    <div class=\"b\">\n                    <label style=\"font-size:11px;padding-left:5px\">{{item.title}}</label>\n                    </div>\n                  </div>\n  \n  \n                </div>\n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white; padding-bottom:2px\">\n                  <div fxFlex=\"30\" fxLayoutAlign=\"start center\">\n                    <label style=\"font-size:10px;padding-left:5px;font-weight:normal\">₹ {{item.price | number}}</label>\n  \n                  </div>\n                  <div fxFlex=\"20\">\n  \n                  </div>\n  \n                  <div fxFlex=\"50\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\" style=\"margin-top:-5px\">\n                      <label style=\"font-size:10px; color:white;padding-right: 5px;\">{{item.address}}</label>\n                    </div>\n                  </div>\n  \n                </div>\n  \n               \n  \n  \n              </div>\n            </div>\n  \n          </div>\n  \n  \n        </div>\n    \n    \n      </div>\n      <img style=\"width:100%; height:60px; visibility: hidden;\" />\n      <div *ngIf=\"arrayLength == 0 \" style=\"margin-top:20%;\">\n        <h3 align=\"center\">No records found.</h3>\n      </div>\n  \n  \n    </div></ion-slide>\n\n\n  <ion-slide style=\"height:100vh;width:100%; overflow-y: scroll;\" >\n  \n    <div  *ngIf=\"tabTitle == '1' \" style=\"width:100%\">\n      <div *ngIf=\"bookmarkLength > 0\" style=\"width:98%; margin-left:1%; margin-top:10px\" fxLayoutALign=\"start start\">\n  \n      \n        <div class=\"row\" *ngFor=\"let item of advertisementArray\">\n          <div (click)=\"showAdvertisementDetail(image, item.id)\">\n            <div class=\"column\" style=\"position:relative\">\n              <img src={{item.images[0]}} style=\"border-radius: 5px;width:100%; height:100%\" />\n              <div\n                style=\"position:absolute; bottom:8px;width:96%;background-image: linear-gradient(to bottom, transparent 15%, rgb(0, 0, 0,1)) ;; border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;;\">\n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px;\">\n                  <div fxFlex=\"100\" fxLayoutAlign=\"start start\">\n                    <div class=\"b\">\n                    <label style=\"font-size:11px;padding-left:5px\">{{item.title}}</label>\n                    </div>\n                  </div>\n  \n  \n                </div>\n  \n                <div fxLayout=\"row\" style=\"width:100%; color:white;padding-top:2px; padding-bottom:2px\">\n                  <div fxFlex=\"30\" fxLayoutAlign=\"start center\">\n                    <label style=\"font-size:11px;padding-left:5px\">{{item.price | number}}</label>\n                    \n                  </div>\n                  <div fxFlex=\"20\">\n  \n                  </div>\n  \n  \n                  <div fxFlex=\"50\" fxLayoutAlign=\"end start\">\n                    <div class=\"b\" style=\"margin-top:-5px\">\n                      <label style=\"font-size:10px; color:white;padding-right: 5px;\">{{item.address}}\n                          </label>\n                    </div>\n                  </div>\n  \n                </div>\n  \n  \n  \n  \n              </div>\n            </div>\n  \n          </div>\n  \n  \n        </div>\n    \n    \n      </div>\n      <img style=\"width:100%; height:60px; visibility: hidden;\" />\n      <div *ngIf=\"bookmarkLength == 0 \" style=\"margin-top:20%;\">\n        <h3 align=\"center\">No bookmarks found.</h3>\n      </div>\n  \n    </div>\n  </ion-slide>\n</ion-slides>\n \n \n\n \n\n\n  <div class=\"cl_bottom_fix\" fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n      \n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n    (click)=\"home()\">\n    <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">HOME</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n    (click)=\"openChatList()\">\n    <ion-icon class=\"cl_bottom_nav_css\" name=\"document\" (click)=\"openChatList()\"></ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">CHATS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n      (click)=\"postAdvertisement()\">\n    <ion-icon class=\"cl_bottom_nav_css\"  name=\"add-circle\" (click)=\"postAdvertisement()\">\n    </ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">SELL</label>\n    </div>\n  \n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n    (click)=\"openFavourite()\">\n    <ion-icon class=\"cl_post_css\" name=\"heart\"  (click)=\"openFavourite()\"></ion-icon>\n    <label fxLayoutAlign=\"center center\" class=\"cl_selected-text_font\">MY ADS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" \n      (click)=\"openProfile()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"person\"  (click)=\"openProfile()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">PROFILE</label>\n    </div>\n\n  </div>\n\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./src/app/material.module.ts":
+/*!************************************!*\
+  !*** ./src/app/material.module.ts ***!
+  \************************************/
+/*! exports provided: MaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialModule", function() { return MaterialModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+
+
+
+
+var MaterialModule = /** @class */ (function () {
+    function MaterialModule() {
+    }
+    MaterialModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            exports: [
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatOptionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatAutocompleteModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonToggleModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCheckboxModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatChipsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatExpansionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatGridListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatMenuModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatProgressBarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatRadioModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSelectModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSidenavModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSlideToggleModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSliderModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatStepperModule"],
+                _angular_flex_layout__WEBPACK_IMPORTED_MODULE_3__["FlexLayoutModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTabsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatToolbarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTooltipModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatNativeDateModule"],
+            ]
+        })
+    ], MaterialModule);
+    return MaterialModule;
+}());
+
+
 
 /***/ }),
 
@@ -114,7 +181,7 @@ var FavouritePageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".cl_bottom_nav_css {\n  width: 24px;\n  height: 24px;\n  width: 100%;\n  color: gray;\n  background-color: #ffffff;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  z-index: 1;\n  width: 100%;\n  padding: 8px;\n  border-top: 1px solid #f1f4f9;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 100%;\n  width: 24px;\n  height: 24px;\n  color: #fb7645;\n  background-color: #ffffff;\n}\n\n.cl_text_font {\n  padding-top: 4px;\n  font-size: 11px;\n}\n\n.cl_selected-text_font {\n  padding-top: 4px;\n  font-size: 11px;\n  color: #fb7645;\n}\n\n.column {\n  float: left;\n  border-radius: 5px;\n  width: 50%;\n  height: 150px;\n  padding-left: 4px;\n  padding-right: 4px;\n  padding-bottom: 9px;\n}\n\n.swipe-area {\n  height: 100%;\n  width: 100%;\n}\n\ndiv.b {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9mYXZvdXJpdGUvZmF2b3VyaXRlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvZmF2b3VyaXRlL2Zhdm91cml0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUdBLFdBQUE7RUFDQSxXQUFBO0VBR0EseUJBQUE7QUNKRjs7QURPQTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0MsNkJBQUE7RUFDQyx1QkFBQTtBQ0pKOztBRE9BO0VBQ0UsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUdBLHlCQUFBO0FDTkY7O0FEVUE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7QUNQRjs7QURVQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNQRjs7QURVRTtFQUNFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUVBLG1CQUFBO0FDUko7O0FEWUU7RUFDRSxZQUFBO0VBQ0EsV0FBQTtBQ1RKOztBRHdCRTtFQUNFLG1CQUFBO0VBRUEsZ0JBQUE7RUFFQSx1QkFBQTtBQ3ZCSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Zhdm91cml0ZS9mYXZvdXJpdGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4uY2xfYm90dG9tX25hdl9jc3N7XG4gIHdpZHRoOjI0cHg7XG4gIGhlaWdodDoyNHB4O1xuICAvLyBjb2xvcjpncmF5O1xuXG4gIHdpZHRoOjEwMCU7XG4gIGNvbG9yOmdyYXk7XG4gIC8vIHBhZGRpbmctdG9wOjVweDtcbiAgLy8gcGFkZGluZy1ib3R0b206NXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xufVxuXG4uY2xfYm90dG9tX2ZpeHtcbiAgcG9zaXRpb246IGZpeGVkOyBcbiAgYm90dG9tOjBweDtcbiAgei1pbmRleDoxO1xuICB3aWR0aDoxMDAlO1xuICBwYWRkaW5nOjhweDtcbiAgIGJvcmRlci10b3A6MXB4IHNvbGlkICNmMWY0Zjk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2Nzc3tcbiAgd2lkdGg6MTAwJTtcbiAgd2lkdGg6MjRweDtcbiAgaGVpZ2h0OjI0cHg7XG4gIGNvbG9yOiAjZmI3NjQ1O1xuICAvLyBwYWRkaW5nLXRvcDo1cHg7XG4gIC8vIHBhZGRpbmctYm90dG9tOjVweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbiBcbn1cblxuLmNsX3RleHRfZm9udHtcbiAgcGFkZGluZy10b3A6NHB4O1xuICBmb250LXNpemU6IDExcHg7XG59XG5cbi5jbF9zZWxlY3RlZC10ZXh0X2ZvbnR7XG4gIHBhZGRpbmctdG9wOjRweDtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbn1cblxuICAuY29sdW1uIHtcbiAgICBmbG9hdDogbGVmdDtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBoZWlnaHQ6MTUwcHg7XG4gICAgcGFkZGluZy1sZWZ0OiA0cHg7XG4gICAgcGFkZGluZy1yaWdodDogNHB4O1xuICAgIC8vIHBhZGRpbmctdG9wOiA1cHg7XG4gICAgcGFkZGluZy1ib3R0b206IDlweDtcbiAgICAvLyBtYXJnaW4tdG9wOi01cHg7XG4gIH1cblxuICAuc3dpcGUtYXJlYSB7XG4gICAgaGVpZ2h0OjEwMCU7XG4gICAgd2lkdGg6MTAwJTtcbiAgfVxuICAvLyAudGFiLW9uZSB7XG5cbiAgLy8gICAtLWJhY2tncm91bmQ6ICMxNTJhM2YgIWltcG9ydGFudDtcbiAgLy8gICAtLWNvbG9yOndoaXRlO1xuICAgIFxuICAvLyB9XG5cbiAgLy8gLnRhYi10d28ge1xuXG4gIC8vICAgLS1iYWNrZ3JvdW5kOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAvLyAgIC0tY29sb3I6IzE1MmEzZjtcbiAgLy8gfVxuXG4gIGRpdi5iIHtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwOyBcbiAgICAvLyB3aWR0aDogODBweDsgXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAvLyBtYXJnaW4tcmlnaHQ6N3B4O1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyBcbiAgICAvLyBib3JkZXI6IDFweCBzb2xpZCAjMDAwMDAwO1xuICB9XG4gICIsIi5jbF9ib3R0b21fbmF2X2NzcyB7XG4gIHdpZHRoOiAyNHB4O1xuICBoZWlnaHQ6IDI0cHg7XG4gIHdpZHRoOiAxMDAlO1xuICBjb2xvcjogZ3JheTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX2JvdHRvbV9maXgge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogOHB4O1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2YxZjRmOTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2NzcyB7XG4gIHdpZHRoOiAxMDAlO1xuICB3aWR0aDogMjRweDtcbiAgaGVpZ2h0OiAyNHB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX3RleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLmNsX3NlbGVjdGVkLXRleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgY29sb3I6ICNmYjc2NDU7XG59XG5cbi5jb2x1bW4ge1xuICBmbG9hdDogbGVmdDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICB3aWR0aDogNTAlO1xuICBoZWlnaHQ6IDE1MHB4O1xuICBwYWRkaW5nLWxlZnQ6IDRweDtcbiAgcGFkZGluZy1yaWdodDogNHB4O1xuICBwYWRkaW5nLWJvdHRvbTogOXB4O1xufVxuXG4uc3dpcGUtYXJlYSB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbmRpdi5iIHtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".cl_bottom_nav_css {\n  width: 24px;\n  height: 24px;\n  width: 100%;\n  color: gray;\n  background-color: #ffffff;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  z-index: 1;\n  width: 100%;\n  padding: 8px;\n  border-top: 1px solid #f1f4f9;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 100%;\n  width: 24px;\n  height: 24px;\n  color: #fb7645;\n  background-color: #ffffff;\n}\n\n.cl_text_font {\n  padding-top: 4px;\n  font-size: 11px;\n}\n\n.cl_selected-text_font {\n  padding-top: 4px;\n  font-size: 11px;\n  color: #fb7645;\n}\n\n.column {\n  float: left;\n  border-radius: 5px;\n  width: 50%;\n  height: 150px;\n  padding-left: 4px;\n  padding-right: 4px;\n  padding-bottom: 9px;\n}\n\n.swipe-area {\n  height: 100%;\n  width: 100%;\n}\n\ndiv.b {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.swiper-slide {\n  align-items: start;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9mYXZvdXJpdGUvZmF2b3VyaXRlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvZmF2b3VyaXRlL2Zhdm91cml0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUdBLFdBQUE7RUFDQSxXQUFBO0VBR0EseUJBQUE7QUNKRjs7QURPQTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0MsNkJBQUE7RUFDQyx1QkFBQTtBQ0pKOztBRE9BO0VBQ0UsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUdBLHlCQUFBO0FDTkY7O0FEVUE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7QUNQRjs7QURVQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNQRjs7QURVRTtFQUNFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUVBLG1CQUFBO0FDUko7O0FEWUU7RUFDRSxZQUFBO0VBQ0EsV0FBQTtBQ1RKOztBRHdCRTtFQUNFLG1CQUFBO0VBRUEsZ0JBQUE7RUFFQSx1QkFBQTtBQ3ZCSjs7QUQyQkU7RUFFRSxrQkFBQTtBQ3pCSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Zhdm91cml0ZS9mYXZvdXJpdGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4uY2xfYm90dG9tX25hdl9jc3N7XG4gIHdpZHRoOjI0cHg7XG4gIGhlaWdodDoyNHB4O1xuICAvLyBjb2xvcjpncmF5O1xuXG4gIHdpZHRoOjEwMCU7XG4gIGNvbG9yOmdyYXk7XG4gIC8vIHBhZGRpbmctdG9wOjVweDtcbiAgLy8gcGFkZGluZy1ib3R0b206NXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xufVxuXG4uY2xfYm90dG9tX2ZpeHtcbiAgcG9zaXRpb246IGZpeGVkOyBcbiAgYm90dG9tOjBweDtcbiAgei1pbmRleDoxO1xuICB3aWR0aDoxMDAlO1xuICBwYWRkaW5nOjhweDtcbiAgIGJvcmRlci10b3A6MXB4IHNvbGlkICNmMWY0Zjk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2Nzc3tcbiAgd2lkdGg6MTAwJTtcbiAgd2lkdGg6MjRweDtcbiAgaGVpZ2h0OjI0cHg7XG4gIGNvbG9yOiAjZmI3NjQ1O1xuICAvLyBwYWRkaW5nLXRvcDo1cHg7XG4gIC8vIHBhZGRpbmctYm90dG9tOjVweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbiBcbn1cblxuLmNsX3RleHRfZm9udHtcbiAgcGFkZGluZy10b3A6NHB4O1xuICBmb250LXNpemU6IDExcHg7XG59XG5cbi5jbF9zZWxlY3RlZC10ZXh0X2ZvbnR7XG4gIHBhZGRpbmctdG9wOjRweDtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbn1cblxuICAuY29sdW1uIHtcbiAgICBmbG9hdDogbGVmdDtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBoZWlnaHQ6MTUwcHg7XG4gICAgcGFkZGluZy1sZWZ0OiA0cHg7XG4gICAgcGFkZGluZy1yaWdodDogNHB4O1xuICAgIC8vIHBhZGRpbmctdG9wOiA1cHg7XG4gICAgcGFkZGluZy1ib3R0b206IDlweDtcbiAgICAvLyBtYXJnaW4tdG9wOi01cHg7XG4gIH1cblxuICAuc3dpcGUtYXJlYSB7XG4gICAgaGVpZ2h0OjEwMCU7XG4gICAgd2lkdGg6MTAwJTtcbiAgfVxuICAvLyAudGFiLW9uZSB7XG5cbiAgLy8gICAtLWJhY2tncm91bmQ6ICMxNTJhM2YgIWltcG9ydGFudDtcbiAgLy8gICAtLWNvbG9yOndoaXRlO1xuICAgIFxuICAvLyB9XG5cbiAgLy8gLnRhYi10d28ge1xuXG4gIC8vICAgLS1iYWNrZ3JvdW5kOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAvLyAgIC0tY29sb3I6IzE1MmEzZjtcbiAgLy8gfVxuXG4gIGRpdi5iIHtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwOyBcbiAgICAvLyB3aWR0aDogODBweDsgXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAvLyBtYXJnaW4tcmlnaHQ6N3B4O1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyBcbiAgICAvLyBib3JkZXI6IDFweCBzb2xpZCAjMDAwMDAwO1xuICB9XG4gIFxuICAuc3dpcGVyLXNsaWRlIHtcbiAgIFxuICAgIGFsaWduLWl0ZW1zOiBzdGFydDtcbiAgIFxufSIsIi5jbF9ib3R0b21fbmF2X2NzcyB7XG4gIHdpZHRoOiAyNHB4O1xuICBoZWlnaHQ6IDI0cHg7XG4gIHdpZHRoOiAxMDAlO1xuICBjb2xvcjogZ3JheTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX2JvdHRvbV9maXgge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogOHB4O1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2YxZjRmOTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2NzcyB7XG4gIHdpZHRoOiAxMDAlO1xuICB3aWR0aDogMjRweDtcbiAgaGVpZ2h0OiAyNHB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX3RleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLmNsX3NlbGVjdGVkLXRleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgY29sb3I6ICNmYjc2NDU7XG59XG5cbi5jb2x1bW4ge1xuICBmbG9hdDogbGVmdDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICB3aWR0aDogNTAlO1xuICBoZWlnaHQ6IDE1MHB4O1xuICBwYWRkaW5nLWxlZnQ6IDRweDtcbiAgcGFkZGluZy1yaWdodDogNHB4O1xuICBwYWRkaW5nLWJvdHRvbTogOXB4O1xufVxuXG4uc3dpcGUtYXJlYSB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbmRpdi5iIHtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG59XG5cbi5zd2lwZXItc2xpZGUge1xuICBhbGlnbi1pdGVtczogc3RhcnQ7XG59Il19 */");
 
 /***/ }),
 
@@ -372,7 +439,9 @@ var FavouritePage = /** @class */ (function () {
         this.router.navigate(['/chatlist']);
     };
     FavouritePage.prototype.postAdvertisement = function () {
-        this.router.navigate(['/postadvertisement']);
+        var status = "0";
+        localStorage.setItem("postStatus", status);
+        this.router.navigate(['/newadvertisementform']);
         // this.router.navigate(['/secondpageadvertisement']);
     };
     FavouritePage.prototype.home = function () {
@@ -416,6 +485,100 @@ var FavouritePage = /** @class */ (function () {
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
     ], FavouritePage);
     return FavouritePage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/service/apiservice/api.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/service/apiservice/api.service.ts ***!
+  \***************************************************/
+/*! exports provided: ApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var ApiService = /** @class */ (function () {
+    function ApiService(http) {
+        this.http = http;
+    }
+    //Image Upload Post
+    ApiService.prototype.callPostApiForImage = function (url, data) {
+        var formData = new FormData();
+        formData.append('image', data);
+        // formData.append('isSaveToLocal', 'false');
+        // console.log("url", url,data,options);
+        return this.http.post(url, formData);
+    };
+    //POST
+    ApiService.prototype.post = function (url, data) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        console.log(url);
+        return this.http.post(url, data, httpOptions);
+    };
+    //GET
+    ApiService.prototype.get = function (url) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        console.log(url);
+        return this.http.get(url, httpOptions);
+    };
+    // public getCode(url,token) {
+    // console.log("show token::"+token);
+    //   const httpOptions = {
+    //     headers: new HttpHeaders({
+    //       'Content-Type':  'application/json',
+    //       'Authorization':'Token' + " " +"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdmdhZGFnaUBnbWFpbC5jb20ifSwiZXhwIjoxNTY2MjM0ODU0fQ.nMWPN38zptwwDKAo11bFyjhCRuzNhZc6NqqCaYJVxP0"
+    //     })
+    //   }
+    //   console.log(url);
+    //   return this.http.get(url,httpOptions);
+    // }
+    ApiService.prototype.delete = function (url) {
+        console.log(url);
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        return this.http.delete(url);
+    };
+    //PUT
+    ApiService.prototype.put = function (url, data) {
+        console.log(url);
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            })
+        };
+        return this.http.put(url, data, httpOptions);
+    };
+    ApiService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ApiService);
+    return ApiService;
 }());
 
 

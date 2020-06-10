@@ -339,6 +339,7 @@ export class AdvertisementdetailPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.userName = this.profileDetail.name;
+      localStorage.setItem("getName",this.userName);
       this.userId = this.profileDetail.id;
       this.userCreated = this.profileDetail.created;
       this.loader.hideBlockingLoaderAuth();

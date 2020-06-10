@@ -52,6 +52,7 @@ export class UpdateprofilePage implements OnInit {
 
     let send_date = {};
     send_date['name'] = this.profileModel['name'];
+    localStorage.setItem("getName",send_date['name']);
     send_date['email'] = this.profileModel['email'];
     send_date['mobile'] = this.profileModel['contact'];
     send_date['isActive'] = 1;

@@ -278,6 +278,7 @@ var ProfilePage = /** @class */ (function () {
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.name = _this.profileDetail.name;
+            localStorage.setItem("getName", _this.name);
             _this.mobile = _this.profileDetail.mobile;
             _this.email = _this.profileDetail.email;
             _this.loader.hideBlockingLoaderAuth();

@@ -88,6 +88,7 @@ export class ProfilePage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.name = this.profileDetail.name;
+      localStorage.setItem("getName",this.name);
       this.mobile = this.profileDetail.mobile;
       this.email = this.profileDetail.email;
       this.loader.hideBlockingLoaderAuth();

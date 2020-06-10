@@ -804,6 +804,10 @@ var routes = [
     {
         path: 'newadvertisementform',
         loadChildren: function () { return Promise.all(/*! import() | pages-newadvertisementform-newadvertisementform-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-newadvertisementform-newadvertisementform-module")]).then(__webpack_require__.bind(null, /*! ./pages/newadvertisementform/newadvertisementform.module */ "./src/app/pages/newadvertisementform/newadvertisementform.module.ts")).then(function (m) { return m.NewadvertisementformPageModule; }); }
+    },
+    {
+        path: 'razorpay',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-razorpay-razorpay-module */ "pages-razorpay-razorpay-module").then(__webpack_require__.bind(null, /*! ./pages/razorpay/razorpay.module */ "./src/app/pages/razorpay/razorpay.module.ts")).then(function (m) { return m.RazorpayPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

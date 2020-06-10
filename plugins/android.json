@@ -16,6 +16,9 @@
     "cordova-plugin-googleplus": {
       "PLAY_SERVICES_VERSION": "15.0.1",
       "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "com.holyhub.v1"
     }
   },
   "dependent_plugins": {

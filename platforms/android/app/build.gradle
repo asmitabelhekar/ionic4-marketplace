@@ -301,6 +301,7 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:19.0.0"
     implementation "com.google.android.gms:play-services-auth:15.0.1"
     implementation "com.google.android.gms:play-services-identity:15.0.1"
+    implementation "com.razorpay:checkout:1.5.12"
     // SUB-PROJECT DEPENDENCIES END
 }
 

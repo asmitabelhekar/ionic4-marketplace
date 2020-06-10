@@ -310,9 +310,9 @@ export class HomePage {
   }
 
   openProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/razorpay']);
+    // this.router.navigate(['/profile']);
   }
-
 
 
   showAdvertisementDetail(categoryId, id) {

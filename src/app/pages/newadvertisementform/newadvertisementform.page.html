@@ -285,14 +285,19 @@
               <td align="center" class="table-text-size">${{totalCalculatePayment}}</td>
             </tr>
           </table>
+         
         </div>
+        <div fxFlex="100">
+        <!-- <button *ngIf="totalCalculatePayment == 0 "  class="disabledClass">Pay with RazorPay</button> -->
 
-        <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="start start">
+        <button *ngIf="totalCalculatePayment != '0' "  class="buttonPayClass" (click)="payWithRazor()">Pay with RazorPay</button>
+      </div>
+        <!-- <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="start start" style="margin-top:22px;">
           <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
           <button mat-button class="buttonBackClass" type="button" (click)="stepper.reset()">Reset</button>
           <button mat-button class="buttonClass"
             (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();">Submit</button>
-        </div>
+        </div> -->
       </form>
     </mat-step>
   </mat-vertical-stepper>

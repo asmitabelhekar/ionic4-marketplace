@@ -154,6 +154,10 @@
             {
               "xml": "<access origin=\"https://accounts.google.com/*\" />",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Checkout\"><param name=\"android-package\" value=\"com.razorpay.cordova.Main\" /></feature>",
+              "count": 1
             }
           ],
           "/widget": [
@@ -429,6 +433,9 @@
     },
     "cordova-plugin-googleplus": {
       "PLAY_SERVICES_VERSION": "15.0.1",
+      "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "com.razorpay.cordova": {
       "PACKAGE_NAME": "com.holyhub.v1"
     }
   },
@@ -993,6 +1000,14 @@
       "clobbers": [
         "window.plugins.googleplus"
       ]
+    },
+    {
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "pluginId": "com.razorpay.cordova",
+      "clobbers": [
+        "RazorpayCheckout"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -1019,6 +1034,7 @@
     "cordova-plugin-fcm-with-dependecy-updated": "6.3.1",
     "cordova-plugin-androidx": "1.0.2",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-googleplus": "8.5.0"
+    "cordova-plugin-googleplus": "8.5.0",
+    "com.razorpay.cordova": "0.16.1"
   }
 }

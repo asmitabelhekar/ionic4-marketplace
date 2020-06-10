@@ -559,6 +559,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.plugins.googleplus"
       ]
+    },
+    {
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "pluginId": "com.razorpay.cordova",
+      "clobbers": [
+        "RazorpayCheckout"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -585,6 +593,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-fcm-with-dependecy-updated": "6.3.1",
     "cordova-plugin-androidx": "1.0.2",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-googleplus": "8.5.0"
+    "cordova-plugin-googleplus": "8.5.0",
+    "com.razorpay.cordova": "0.16.1"
   };
 });

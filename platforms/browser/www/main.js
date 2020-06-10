@@ -740,50 +740,50 @@ var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     // { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
     // { path: 'sliderintro', loadChildren: () => import('./pages/sliderintro/sliderintro.module').then( m => m.SliderintroPageModule)},
-    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
+    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
     {
         path: 'popup',
-        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
     },
     {
         path: 'chatlist',
-        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
     },
     {
         path: 'detailchat',
-        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
     {
         path: 'postadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
     },
     {
         path: 'showfilterdata',
-        loadChildren: function () { return Promise.all(/*! import() | pages-showfilterdata-showfilterdata-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-showfilterdata-showfilterdata-module")]).then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-showfilterdata-showfilterdata-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("common"), __webpack_require__.e("pages-showfilterdata-showfilterdata-module")]).then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
     },
     {
         path: 'nextadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
     },
     {
         path: 'secondpageadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
     },
     {
         path: 'home',
-        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
     },
     {
         path: 'favourite',
-        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
     },
     {
         path: 'profile',
-        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
     },
     {
         path: 'advertisementdetail',
-        loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
     },
     {
         path: 'orderhistory',
@@ -791,15 +791,23 @@ var routes = [
     },
     {
         path: 'updateprofile',
-        loadChildren: function () { return Promise.all(/*! import() | pages-updateprofile-updateprofile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~0d28f724"), __webpack_require__.e("common"), __webpack_require__.e("pages-updateprofile-updateprofile-module")]).then(__webpack_require__.bind(null, /*! ./pages/updateprofile/updateprofile.module */ "./src/app/pages/updateprofile/updateprofile.module.ts")).then(function (m) { return m.UpdateprofilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-updateprofile-updateprofile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-updateprofile-updateprofile-module")]).then(__webpack_require__.bind(null, /*! ./pages/updateprofile/updateprofile.module */ "./src/app/pages/updateprofile/updateprofile.module.ts")).then(function (m) { return m.UpdateprofilePageModule; }); }
     },
     {
         path: 'checkinternet',
-        loadChildren: function () { return Promise.all(/*! import() | pages-checkinternet-checkinternet-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-checkinternet-checkinternet-module")]).then(__webpack_require__.bind(null, /*! ./pages/checkinternet/checkinternet.module */ "./src/app/pages/checkinternet/checkinternet.module.ts")).then(function (m) { return m.CheckinternetPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-checkinternet-checkinternet-module */ "pages-checkinternet-checkinternet-module").then(__webpack_require__.bind(null, /*! ./pages/checkinternet/checkinternet.module */ "./src/app/pages/checkinternet/checkinternet.module.ts")).then(function (m) { return m.CheckinternetPageModule; }); }
     },
     {
         path: 'notificationlist',
         loadChildren: function () { return __webpack_require__.e(/*! import() | pages-notificationlist-notificationlist-module */ "pages-notificationlist-notificationlist-module").then(__webpack_require__.bind(null, /*! ./pages/notificationlist/notificationlist.module */ "./src/app/pages/notificationlist/notificationlist.module.ts")).then(function (m) { return m.NotificationlistPageModule; }); }
+    },
+    {
+        path: 'newadvertisementform',
+        loadChildren: function () { return Promise.all(/*! import() | pages-newadvertisementform-newadvertisementform-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-newadvertisementform-newadvertisementform-module")]).then(__webpack_require__.bind(null, /*! ./pages/newadvertisementform/newadvertisementform.module */ "./src/app/pages/newadvertisementform/newadvertisementform.module.ts")).then(function (m) { return m.NewadvertisementformPageModule; }); }
+    },
+    {
+        path: 'razorpay',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-razorpay-razorpay-module */ "pages-razorpay-razorpay-module").then(__webpack_require__.bind(null, /*! ./pages/razorpay/razorpay.module */ "./src/app/pages/razorpay/razorpay.module.ts")).then(function (m) { return m.RazorpayPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -1127,6 +1135,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
 /* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+
 
 
 
@@ -1176,6 +1186,7 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatStepperModule"],
                 ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
                 _ionic_storage__WEBPACK_IMPORTED_MODULE_29__["IonicStorageModule"].forRoot()
@@ -1196,6 +1207,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_26__["File"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_22__["SocialSharing"],
+                _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_30__["GooglePlus"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -1272,7 +1284,7 @@ var PopupaddressComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".loginButton {\n  background-color: #152a3f;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9wb3B1cC9wb3B1cC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3BvcHVwL3BvcHVwLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcG9wdXAvcG9wdXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbi5sb2dpbkJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTUyYTNmO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiBcbiAgfSIsIi5sb2dpbkJ1dHRvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxNTJhM2Y7XG4gIGNvbG9yOiB3aGl0ZTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".loginButton {\n  background-color: #fb7645;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9wb3B1cC9wb3B1cC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3BvcHVwL3BvcHVwLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcG9wdXAvcG9wdXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbi5sb2dpbkJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmI3NjQ1O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiBcbiAgfSIsIi5sb2dpbkJ1dHRvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYjc2NDU7XG4gIGNvbG9yOiB3aGl0ZTtcbn0iXX0= */");
 
 /***/ }),
 

@@ -657,6 +657,20 @@ module.exports = [
         "clobbers": [
             "GooglePlus"
         ]
+    },
+    {
+        "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+        "id": "com.razorpay.cordova.RazorpayCheckout",
+        "pluginId": "com.razorpay.cordova",
+        "clobbers": [
+            "RazorpayCheckout"
+        ]
+    },
+    {
+        "file": "plugins/com.razorpay.cordova/src/browser/CheckoutProxy.js",
+        "id": "com.razorpay.cordova.CheckoutProxy",
+        "pluginId": "com.razorpay.cordova",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -684,7 +698,8 @@ module.exports.metadata =
     "cordova-plugin-fcm-with-dependecy-updated": "6.3.1",
     "cordova-plugin-androidx": "1.0.2",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-googleplus": "8.5.0"
+    "cordova-plugin-googleplus": "8.5.0",
+    "com.razorpay.cordova": "0.16.1"
 }
 // BOTTOM OF METADATA
 });

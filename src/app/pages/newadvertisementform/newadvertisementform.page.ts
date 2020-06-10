@@ -7,6 +7,9 @@ import * as moment from 'moment';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+
+declare var RazorpayCheckout : any;
+
 @Component({
   selector: 'app-newadvertisementform',
   templateUrl: './newadvertisementform.page.html',
@@ -14,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class NewadvertisementformPage implements OnInit {
 
-  totalCalculatePayment : any;
+  totalCalculatePayment : any = 0;
 
   fileToUpload: any;
   selectedCode: any = "91";
@@ -126,7 +129,9 @@ export class NewadvertisementformPage implements OnInit {
     }
   ];
   data:any;
-
+  paymentAmount : number = 333;
+  currency : string = 'USD';
+  razor_key = 'rzp_test_IA8F5OYVBMKeQw';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -420,7 +425,7 @@ export class NewadvertisementformPage implements OnInit {
     console.log("show fourth record:" + this.fourthFormData.categoryId);
     console.log("show fifth record:" + this.FifthFormData.bannerWeek);
 
-    this.submmitAdvertisementData();
+    // this.submmitAdvertisementData();
   }
 
 
@@ -901,4 +906,41 @@ export class NewadvertisementformPage implements OnInit {
     );
   }
 
+
+  payWithRazor() {
+    let getName = localStorage.getItem("getName");
+    var options = {
+      description: 'Credits towards consultation',
+      image: 'https://i.imgur.com/3g7nmJC.png',
+      currency: this.currency, // your 3 letter currency code
+      key: this.razor_key, // your Key Id from Razorpay dashboard
+      amount: this.totalCalculatePayment, // Payment amount in smallest denomiation e.g. cents for USD
+      name: 'Holyhub',
+      prefill: {
+        email: this.secondFormData.emailCtrl,
+        contact: this.secondFormData.mobileCtrl,
+        name: getName
+      },
+      theme: {
+        color: '#fe8860'
+      },
+      modal: {
+        ondismiss: function () {
+          // alert('dismissed')
+        }
+      }
+    };
+    // this.submmitAdvertisementData();
+
+    var successCallback = function (payment_id) {
+      alert('payment_id: ' + payment_id);
+      this.submmitAdvertisementData();
+    };
+
+    var cancelCallback = function (error) {
+      // alert(error.description + ' (Error ' + error.code + ')');
+    };
+
+    RazorpayCheckout.open(options, successCallback, cancelCallback);
+  }
 }

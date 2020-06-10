@@ -49,6 +49,25 @@
     padding-left:10px;
     padding-right:10px;
   }
+  .buttonPayClass{
+    background: linear-gradient(to right, #fe4f14,#fe8860,#feae93);
+    // background-color: #fa7549;
+    color:white;
+    padding:12px;
+    width:100%;
+    font-weight:500;
+    border-radius:5px;
+    font-size:16px;
+
+    // padding-left:10px;
+    // padding-right:10px;
+  }
+  .disabledClass{
+    background-color: #f1f4f9;
+    color:black;
+    padding-left:10px;
+    padding-right:10px;
+  }
 
   .buttonBackClass{
     background-color: #f1f4f9;
