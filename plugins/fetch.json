@@ -209,8 +209,7 @@
     },
     "is_top_level": true,
     "variables": {
-      "REVERSED_CLIENT_ID": "960549587607-us54fd3j88ekd76184v6oovisfqth0ut.apps.googleusercontent.com",
-      "WEB_APPLICATION_CLIENT_ID": "960549587607-us54fd3j88ekd76184v6oovisfqth0ut.apps.googleusercontent.com"
+      "REVERSED_CLIENT_ID": "786748210062-vk8bkrmm01m8ufg9dk6ckfb0u3hv8h40.apps.googleusercontent.com"
     }
   },
   "com.razorpay.cordova": {
@@ -228,5 +227,18 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-facebook4": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-facebook4@^6.4.0"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_ID": "565854444289989",
+      "APP_NAME": "Marketplace",
+      "FACEBOOK_HYBRID_APP_EVENTS": "false",
+      "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0"
+    }
   }
 }

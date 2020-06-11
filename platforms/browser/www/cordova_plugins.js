@@ -689,6 +689,14 @@ module.exports = [
         "file": "plugins/cordova-plugin-nativestorage/www/NativeStorageError.js",
         "id": "cordova-plugin-nativestorage.NativeStorageError",
         "pluginId": "cordova-plugin-nativestorage"
+    },
+    {
+        "file": "plugins/cordova-plugin-facebook4/www/facebook-browser.js",
+        "id": "cordova-plugin-facebook4.FacebookConnectPluginBrowser",
+        "pluginId": "cordova-plugin-facebook4",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -718,7 +726,8 @@ module.exports.metadata =
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-googleplus": "8.5.0",
     "com.razorpay.cordova": "0.16.1",
-    "cordova-plugin-nativestorage": "2.3.2"
+    "cordova-plugin-nativestorage": "2.3.2",
+    "cordova-plugin-facebook4": "6.4.0"
 }
 // BOTTOM OF METADATA
 });
