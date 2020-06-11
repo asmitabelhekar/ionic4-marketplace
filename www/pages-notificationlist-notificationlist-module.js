@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Notifications</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Congratulation!</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n      You get price from our sponsor:\n      <h2>{{price}}</h2>\n    </ion-card-content>\n  </ion-card>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Notifications</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Congratulation!</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <img src=\"{{gmailData.imageUrl}}\" />\n      <br/>\n      <br/>\n      <br/>\n      <label>{{gmailData.displayName}}</label>\n     \n    </ion-card-content>\n  </ion-card>\n</ion-content>");
 
 /***/ }),
 
@@ -133,6 +133,9 @@ var NotificationlistPage = /** @class */ (function () {
         this.price = '100';
     }
     NotificationlistPage.prototype.ngOnInit = function () {
+        var data = localStorage.getItem("gmailData");
+        this.gmailData = JSON.parse(data);
+        alert("show data in notifications page:" + JSON.stringify(this.gmailData));
         this.price = this.route.snapshot.params['price'];
     };
     NotificationlistPage.ctorParameters = function () { return [

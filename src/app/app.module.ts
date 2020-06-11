@@ -31,6 +31,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 
@@ -71,6 +72,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
     File,
     SplashScreen,
     SocialSharing,
+    NativeStorage,
     GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

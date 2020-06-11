@@ -394,8 +394,8 @@ var HomePage = /** @class */ (function () {
         this.router.navigate(['/favourite']);
     };
     HomePage.prototype.openProfile = function () {
-        this.router.navigate(['/razorpay']);
-        // this.router.navigate(['/profile']);
+        // this.router.navigate(['/razorpay']);
+        this.router.navigate(['/profile']);
     };
     HomePage.prototype.showAdvertisementDetail = function (categoryId, id) {
         var sendId = {

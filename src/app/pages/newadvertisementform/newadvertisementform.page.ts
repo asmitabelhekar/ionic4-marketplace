@@ -425,7 +425,7 @@ export class NewadvertisementformPage implements OnInit {
     console.log("show fourth record:" + this.fourthFormData.categoryId);
     console.log("show fifth record:" + this.FifthFormData.bannerWeek);
 
-    // this.submmitAdvertisementData();
+    this.submmitAdvertisementData();
   }
 
 
@@ -926,7 +926,7 @@ export class NewadvertisementformPage implements OnInit {
       },
       modal: {
         ondismiss: function () {
-          // alert('dismissed')
+          console.log('dismissed')
         }
       }
     };
@@ -938,7 +938,7 @@ export class NewadvertisementformPage implements OnInit {
     };
 
     var cancelCallback = function (error) {
-      // alert(error.description + ' (Error ' + error.code + ')');
+      console.log("show payment gateway error:"+error.description + ' (Error ' + error.code + ')');
     };
 
     RazorpayCheckout.open(options, successCallback, cancelCallback);

@@ -19,6 +19,9 @@
     },
     "com.razorpay.cordova": {
       "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.holyhub.v1"
     }
   },
   "dependent_plugins": {}

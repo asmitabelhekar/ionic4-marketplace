@@ -79,7 +79,7 @@ export class AppComponent {
   initializeApp() {
     this.preloader.showBlockingLoaderAuth();
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
       this.loginSession();
       this.fcm.subscribeToTopic('people');

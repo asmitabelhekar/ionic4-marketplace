@@ -63,11 +63,13 @@
   
   
         <div style="margin-top:5%">
-          <!-- <button (click)="loginWithGmail()">Gmail login</button> -->
+          <button (click)="logOut()" class="loginButton">Gmail Logout</button>
+
+          <button (click)="loginWithGmail()" class="loginButton">Gmail login</button>
           <button [disabled]="mobile.invalid || password.invalid" mat-raised-button class="loginButton" (click)="login(loginModel)">Login</button>
         </div>
-  
-  
+
+       
         <!-- </form> -->
   
       </div>

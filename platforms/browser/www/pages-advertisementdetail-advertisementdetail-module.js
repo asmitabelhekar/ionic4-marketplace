@@ -435,6 +435,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.userName = _this.profileDetail.name;
+            localStorage.setItem("getName", _this.userName);
             _this.userId = _this.profileDetail.id;
             _this.userCreated = _this.profileDetail.created;
             _this.loader.hideBlockingLoaderAuth();

@@ -920,7 +920,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.preloader.showBlockingLoaderAuth();
         this.platform.ready().then(function () {
-            _this.statusBar.styleDefault();
+            _this.statusBar.styleLightContent();
             _this.splashScreen.hide();
             _this.loginSession();
             _this.fcm.subscribeToTopic('people');
@@ -1136,6 +1136,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+/* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/ngx/index.js");
+
 
 
 
@@ -1207,6 +1209,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_26__["File"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_22__["SocialSharing"],
+                _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_31__["NativeStorage"],
                 _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_30__["GooglePlus"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
@@ -1516,6 +1519,7 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     base_url: "http://3.6.135.154:17700/api/",
+    googleWebClientId: "401245627689-4ceut94d75nmslud8un0lafphp6mm6ph.apps.googleusercontent.com",
     version: "v1.0.0/"
 };
 /*

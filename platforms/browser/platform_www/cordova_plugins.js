@@ -671,6 +671,24 @@ module.exports = [
         "id": "com.razorpay.cordova.CheckoutProxy",
         "pluginId": "com.razorpay.cordova",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-nativestorage/www/mainHandle.js",
+        "id": "cordova-plugin-nativestorage.mainHandle",
+        "pluginId": "cordova-plugin-nativestorage",
+        "clobbers": [
+            "NativeStorage"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-nativestorage/www/LocalStorageHandle.js",
+        "id": "cordova-plugin-nativestorage.LocalStorageHandle",
+        "pluginId": "cordova-plugin-nativestorage"
+    },
+    {
+        "file": "plugins/cordova-plugin-nativestorage/www/NativeStorageError.js",
+        "id": "cordova-plugin-nativestorage.NativeStorageError",
+        "pluginId": "cordova-plugin-nativestorage"
     }
 ];
 module.exports.metadata = 
@@ -699,7 +717,8 @@ module.exports.metadata =
     "cordova-plugin-androidx": "1.0.2",
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-googleplus": "8.5.0",
-    "com.razorpay.cordova": "0.16.1"
+    "com.razorpay.cordova": "0.16.1",
+    "cordova-plugin-nativestorage": "2.3.2"
 }
 // BOTTOM OF METADATA
 });
