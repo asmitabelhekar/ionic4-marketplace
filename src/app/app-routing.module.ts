@@ -75,6 +75,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/razorpay/razorpay.module').then( m => m.RazorpayPageModule)
   }
  
+
 ];
 
 @NgModule({

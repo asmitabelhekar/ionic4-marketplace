@@ -223,7 +223,7 @@
   "cordova-plugin-nativestorage": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-nativestorage"
+      "id": "cordova-plugin-nativestorage@^2.3.2"
     },
     "is_top_level": true,
     "variables": {}
@@ -235,10 +235,19 @@
     },
     "is_top_level": true,
     "variables": {
-      "APP_ID": "565854444289989",
-      "APP_NAME": "Marketplace",
-      "FACEBOOK_HYBRID_APP_EVENTS": "false",
-      "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0"
+      "APP_ID": "293072848530685",
+      "APP_NAME": "holyhub"
+    }
+  },
+  "cordova-plugin-facebook": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-facebook@^0.2.2"
+    },
+    "is_top_level": true,
+    "variables": {
+      "FACEBOOK_APP_ID": "293072848530685",
+      "FACEBOOK_DISPLAY_NAME": "holyhub"
     }
   }
 }

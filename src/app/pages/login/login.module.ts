@@ -9,6 +9,8 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { MaterialModule } from 'src/app/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { Facebook } from '@ionic-native/facebook/ngx';
+
 
 @NgModule({
   imports: [
@@ -19,7 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     LoginPageRoutingModule
   ],
-  providers : [ GooglePlus],
+  providers : [ GooglePlus, Facebook],
   declarations: [LoginPage]
 })
 export class LoginPageModule {}

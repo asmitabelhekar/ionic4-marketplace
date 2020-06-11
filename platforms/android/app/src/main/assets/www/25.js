@@ -10,24 +10,27 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_img", function() { return Img; });
-/* harmony import */ var _index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-e23c3ffd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-e23c3ffd.js");
-/* harmony import */ var _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-fbc9a2ac.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-fbc9a2ac.js");
+/* harmony import */ var _index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-29df6f59.js */ "./node_modules/@ionic/core/dist/esm-es5/index-29df6f59.js");
+/* harmony import */ var _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-08f4fb8a.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-08f4fb8a.js");
 
 
 var imgCss = ":host{display:block;-o-object-fit:contain;object-fit:contain}img{display:block;width:100%;height:100%;-o-object-fit:inherit;object-fit:inherit;-o-object-position:inherit;object-position:inherit}";
+/**
+ * @part image - The inner `img` element.
+ */
 var Img = /** @class */ (function () {
     function Img(hostRef) {
         var _this = this;
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.onLoad = function () {
             _this.ionImgDidLoad.emit();
         };
         this.onError = function () {
             _this.ionError.emit();
         };
-        this.ionImgWillLoad = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionImgWillLoad", 7);
-        this.ionImgDidLoad = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionImgDidLoad", 7);
-        this.ionError = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionError", 7);
+        this.ionImgWillLoad = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionImgWillLoad", 7);
+        this.ionImgDidLoad = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionImgDidLoad", 7);
+        this.ionError = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionError", 7);
     }
     Img.prototype.srcChanged = function () {
         this.addIO();
@@ -40,7 +43,10 @@ var Img = /** @class */ (function () {
         if (this.src === undefined) {
             return;
         }
-        if ('IntersectionObserver' in window) {
+        if (typeof window !== 'undefined' &&
+            'IntersectionObserver' in window &&
+            'IntersectionObserverEntry' in window &&
+            'isIntersecting' in window.IntersectionObserverEntry.prototype) {
             this.removeIO();
             this.io = new IntersectionObserver(function (data) {
                 // because there will only ever be one instance
@@ -70,11 +76,11 @@ var Img = /** @class */ (function () {
         }
     };
     Img.prototype.render = function () {
-        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this) }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["h"])("img", { decoding: "async", src: this.loadSrc, alt: this.alt, onLoad: this.onLoad, onError: this.loadError, part: "image" })));
+        return (Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this) }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["h"])("img", { decoding: "async", src: this.loadSrc, alt: this.alt, onLoad: this.onLoad, onError: this.loadError, part: "image" })));
     };
     Object.defineProperty(Img.prototype, "el", {
-        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); },
-        enumerable: true,
+        get: function () { return Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); },
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Img, "watchers", {
@@ -83,7 +89,7 @@ var Img = /** @class */ (function () {
                 "src": ["srcChanged"]
             };
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return Img;

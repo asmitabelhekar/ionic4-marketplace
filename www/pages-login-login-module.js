@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"MainLoginClass\">\n\n\n  <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"margin-top:20%\">\n    <div fxLayout=\"column\"  >\n      <!-- <img class=\"centerImg\" src=\"../../../assets/applogo.png\" style=\"width:200px;height:120px;margin-top:5%\" /> -->\n      <h3 style=\"color:black\" align=\"center\">Login</h3>\n      <img src=\"../../../assets/holyhublogo.png\" style=\"width:300px; height:280px;margin-top:-40px; margin-bottom:-20px\"/>\n    </div>\n\n    <ion-card style=\"width:90%; padding-bottom:30px;border-radius: 20px;\">\n      <div class=\"LoginFormClass\">\n\n        <!-- <form name=\"entryform\" style=\"width: 100%;\" #f=\"ngForm\" novalidate> -->\n  \n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:100%\">\n          <mat-form-field style=\"width:92%; margin-top:15%;margin-left:4%;color:black; margin-right:4%\"\n            appearance=\"fill\">\n            <mat-label style=\"color:black\">Phone Number</mat-label>\n            <input matInput type=\"tel\" id=\"mobile\" class=\"form-control\" required minlength=\"10\" appearance=\"outline\"\n              maxlength=\"10\" [(ngModel)]=\"loginModel.mobile\" #mobile=\"ngModel\" />\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"mobile.invalid && (mobile.dirty || mobile.touched)\" class=\"alert alert-danger\">\n                  <div class=\"LoginError\" *ngIf=\"mobile.errors.required\">\n                    Please Enter Phone Number\n                  </div>\n                  <div class=\"LoginError\" *ngIf=\"mobile.errors.minlength\">\n                    Phone Number must be at least 10 digits long.\n                  </div>\n  \n  \n                </div>\n              </div>\n            </mat-error>\n          </mat-form-field>\n  \n          <mat-form-field style=\"width:92%;color:black ;margin-top:5px\" appearance=\"fill\">\n            <mat-label style=\"color:black\">Password</mat-label>\n            <input matInput [type]=\"hide ? 'password' : 'text'\" id=\"password\" class=\"form-control\"\n              required [(ngModel)]=\"loginModel.password\" #password=\"ngModel\" style=\"color:black\"/>\n            <mat-icon matSuffix (click)=\"hide = !hide\" style=\"color:black\">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"password.invalid && (password.dirty || password.touched)\" class=\"alert alert-danger\">\n                  <div class=\"LoginError\" *ngIf=\"password.errors.required\">\n                    Please Enter Password\n                  </div>\n  \n  \n  \n                </div>\n              </div>\n            </mat-error>\n          </mat-form-field>\n          <div *ngIf=\"is_error\" class=\"LoginError\">\n            {{message}}\n          </div>\n        </div>\n  \n  \n  \n  \n        <button (click)=\"logOut()\" class=\"loginfb()\">FB Login</button>\n        <div style=\"margin-top:5%\">\n          <button (click)=\"logOut()\" class=\"loginButton\">Gmail Logout</button>\n\n          <button (click)=\"loginWithGmail()\" class=\"loginButton\">Gmail login</button>\n          <button [disabled]=\"mobile.invalid || password.invalid\" mat-raised-button class=\"loginButton\" (click)=\"login(loginModel)\">Login</button>\n        </div>\n\n       \n        <!-- </form> -->\n  \n      </div>\n    </ion-card>\n  \n\n  </div>\n\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"MainLoginClass\">\n\n\n  <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"margin-top:20%\">\n    <div fxLayout=\"column\"  >\n      <!-- <img class=\"centerImg\" src=\"../../../assets/applogo.png\" style=\"width:200px;height:120px;margin-top:5%\" /> -->\n      <h3 style=\"color:black\" align=\"center\">Login</h3>\n      <img src=\"../../../assets/holyhublogo.png\" style=\"width:300px; height:280px;margin-top:-40px; margin-bottom:-20px\"/>\n    </div>\n\n    <ion-card style=\"width:90%; padding-bottom:30px;border-radius: 20px;\">\n      <div class=\"LoginFormClass\">\n\n        <!-- <form name=\"entryform\" style=\"width: 100%;\" #f=\"ngForm\" novalidate> -->\n  \n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:100%\">\n          <mat-form-field style=\"width:92%; margin-top:15%;margin-left:4%;color:black; margin-right:4%\"\n            appearance=\"fill\">\n            <mat-label style=\"color:black\">Phone Number</mat-label>\n            <input matInput type=\"tel\" id=\"mobile\" class=\"form-control\" required minlength=\"10\" appearance=\"outline\"\n              maxlength=\"10\" [(ngModel)]=\"loginModel.mobile\" #mobile=\"ngModel\" />\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"mobile.invalid && (mobile.dirty || mobile.touched)\" class=\"alert alert-danger\">\n                  <div class=\"LoginError\" *ngIf=\"mobile.errors.required\">\n                    Please Enter Phone Number\n                  </div>\n                  <div class=\"LoginError\" *ngIf=\"mobile.errors.minlength\">\n                    Phone Number must be at least 10 digits long.\n                  </div>\n  \n  \n                </div>\n              </div>\n            </mat-error>\n          </mat-form-field>\n  \n          <mat-form-field style=\"width:92%;color:black ;margin-top:5px\" appearance=\"fill\">\n            <mat-label style=\"color:black\">Password</mat-label>\n            <input matInput [type]=\"hide ? 'password' : 'text'\" id=\"password\" class=\"form-control\"\n              required [(ngModel)]=\"loginModel.password\" #password=\"ngModel\" style=\"color:black\"/>\n            <mat-icon matSuffix (click)=\"hide = !hide\" style=\"color:black\">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>\n            <mat-error>\n              <div class=\"form-group\">\n                <div *ngIf=\"password.invalid && (password.dirty || password.touched)\" class=\"alert alert-danger\">\n                  <div class=\"LoginError\" *ngIf=\"password.errors.required\">\n                    Please Enter Password\n                  </div>\n  \n  \n  \n                </div>\n              </div>\n            </mat-error>\n          </mat-form-field>\n          <div *ngIf=\"is_error\" class=\"LoginError\">\n            {{message}}\n          </div>\n        </div>\n  \n  \n  \n  \n        <button (click)=\"fbLogin()\" class=\"loginButton\">FB Login</button>\n        <button (click)=\"fbLogout()\" class=\"loginButton\">FB logout</button>\n        <div style=\"margin-top:5%\" fxLayout=\"row\">\n          <button (click)=\"logOut()\" class=\"loginButton\">Gmail Logout</button>\n\n          <button (click)=\"loginWithGmail()\" class=\"loginButton\">Gmail login</button>\n          <button [disabled]=\"mobile.invalid || password.invalid\" mat-raised-button class=\"loginButton\" (click)=\"login(loginModel)\">Login</button>\n        </div>\n\n       \n        <!-- </form> -->\n  \n      </div>\n    </ion-card>\n  \n\n  </div>\n\n\n</div>");
 
 /***/ }),
 
@@ -140,6 +140,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./login.page */ "./src/app/pages/login/login.page.ts");
 /* harmony import */ var src_app_material_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/material.module */ "./src/app/material.module.ts");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+/* harmony import */ var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/facebook/ngx */ "./node_modules/@ionic-native/facebook/ngx/index.js");
+
 
 
 
@@ -163,7 +165,7 @@ var LoginPageModule = /** @class */ (function () {
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__["FlexLayoutModule"],
                 _login_routing_module__WEBPACK_IMPORTED_MODULE_6__["LoginPageRoutingModule"]
             ],
-            providers: [_ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_4__["GooglePlus"]],
+            providers: [_ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_4__["GooglePlus"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_10__["Facebook"]],
             declarations: [_login_page__WEBPACK_IMPORTED_MODULE_7__["LoginPage"]]
         })
     ], LoginPageModule);
@@ -206,6 +208,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
 /* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
 /* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/ngx/index.js");
+/* harmony import */ var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/facebook/ngx */ "./node_modules/@ionic-native/facebook/ngx/index.js");
+/* harmony import */ var ngx_facebook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-facebook */ "./node_modules/ngx-facebook/dist/esm/index.js");
+
+
 
 
 
@@ -216,20 +222,77 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var LoginPage = /** @class */ (function () {
-    function LoginPage(router, toast, menuController, loader, googlePlus, nativeStorage, loadingController, apiCall) {
+    function LoginPage(router, toast, menuController, loader, fb, facebook, googlePlus, nativeStorage, loadingController, apiCall) {
+        var _this = this;
         this.router = router;
         this.toast = toast;
         this.menuController = menuController;
         this.loader = loader;
+        this.fb = fb;
+        this.facebook = facebook;
         this.googlePlus = googlePlus;
         this.nativeStorage = nativeStorage;
         this.loadingController = loadingController;
         this.apiCall = apiCall;
         this.hide = true;
         this.loginModel = {};
+        this.isLoggedIn = false;
+        this.users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
         this.menuController.enable(false);
+        // let initParams: InitParams = {
+        //   appId: '293072848530685',
+        //   xfbml: true,
+        //   version: 'v2.8'
+        // };
+        // fb.init(initParams);
+        facebook.getLoginStatus()
+            .then(function (res) {
+            console.log(res.status);
+            if (res.status === 'connect') {
+                _this.isLoggedIn = true;
+            }
+            else {
+                _this.isLoggedIn = false;
+            }
+        })
+            .catch(function (e) { return console.log(e); });
     }
     LoginPage.prototype.ngOnInit = function () {
+    };
+    LoginPage.prototype.fbLogin = function () {
+        var _this = this;
+        this.facebook.login(['public_profile', 'user_friends', 'email'])
+            .then(function (res) {
+            if (res.status === 'connected') {
+                _this.isLoggedIn = true;
+                _this.getUserDetail(res.authResponse.userID);
+            }
+            else {
+                _this.isLoggedIn = false;
+            }
+        })
+            .catch(function (e) { return console.log('Error logging into Facebook', e); });
+        // this.fb.login()
+        // .then((response: LoginResponse) => alert("show data:"+response))
+        // .catch((error: any) => alert(error));
+    };
+    LoginPage.prototype.getUserDetail = function (userid) {
+        var _this = this;
+        this.facebook.api('/' + userid + '/?fields=id,email,name,picture', ['public_profile'])
+            .then(function (res) {
+            _this.router.navigate(['/home']);
+            console.log("show details:" + res);
+            _this.users = res;
+        })
+            .catch(function (e) {
+            console.log(e);
+        });
+    };
+    LoginPage.prototype.fbLogout = function () {
+        var _this = this;
+        this.fb.logout()
+            .then(function (res) { return _this.isLoggedIn = false; })
+            .catch(function (e) { return console.log('Error logout from Facebook', e); });
     };
     LoginPage.prototype.login = function (data) {
         var _this = this;
@@ -268,13 +331,19 @@ var LoginPage = /** @class */ (function () {
             });
         });
     };
+    // fblogin(){
+    //   this.fb.login(['public_profile', 'user_friends', 'email'])
+    // .then((res: FacebookLoginResponse) => alert('Logged into Facebook!'+res))
+    // .catch(e => alert('Error logging into Facebook'+e));
+    // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+    // }
     LoginPage.prototype.loginWithGmail = function () {
         var _this = this;
         this.googlePlus.login({})
             .then(function (res) {
             _this.loginDetails = res;
             localStorage.setItem("gmailData", JSON.stringify(_this.loginDetails));
-            _this.router.navigate(['/notificationlist']);
+            _this.router.navigate(['/home']);
             // alert("show details:"+JSON.stringify(this.loginDetails));
         }, function (err) {
         });
@@ -288,6 +357,8 @@ var LoginPage = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["MenuController"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__["LoaderService"] },
+        { type: ngx_facebook__WEBPACK_IMPORTED_MODULE_10__["FacebookService"] },
+        { type: _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_9__["Facebook"] },
         { type: _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_7__["GooglePlus"] },
         { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_8__["NativeStorage"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"] },
@@ -303,6 +374,8 @@ var LoginPage = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["MenuController"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_6__["LoaderService"],
+            ngx_facebook__WEBPACK_IMPORTED_MODULE_10__["FacebookService"],
+            _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_9__["Facebook"],
             _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_7__["GooglePlus"],
             _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_8__["NativeStorage"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"],

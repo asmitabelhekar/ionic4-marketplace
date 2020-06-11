@@ -32,7 +32,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-
+// import { FacebookService } from 'ngx-facebook';
+import { FacebookModule } from 'ngx-facebook'
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 
 @NgModule({
@@ -53,7 +55,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     MatStepperModule,
     GooglePlaceModule,
     BrowserAnimationsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    FacebookModule.forRoot()
   ],
     
   providers: [
@@ -74,7 +77,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     SocialSharing,
     NativeStorage,
     GooglePlus,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    Facebook,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
 })

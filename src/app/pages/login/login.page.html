@@ -61,8 +61,9 @@
   
   
   
-        <button (click)="logOut()" class="loginfb()">FB Login</button>
-        <div style="margin-top:5%">
+        <button (click)="fbLogin()" class="loginButton">FB Login</button>
+        <button (click)="fbLogout()" class="loginButton">FB logout</button>
+        <div style="margin-top:5%" fxLayout="row">
           <button (click)="logOut()" class="loginButton">Gmail Logout</button>
 
           <button (click)="loginWithGmail()" class="loginButton">Gmail login</button>
