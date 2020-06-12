@@ -1,8 +1,8 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["input-shims-77712174-js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["input-shims-d4609e0d-js"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/input-shims-77712174.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/input-shims-d4609e0d.js":
 /*!***********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/input-shims-77712174.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/input-shims-d4609e0d.js ***!
   \***********************************************************************/
 /*! exports provided: startInputShims */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -146,7 +146,7 @@ var calcScrollData = function (inputRect, contentRect, keyboardHeight, platformH
     var visibleAreaBottom = Math.min(contentRect.bottom, platformHeight - keyboardHeight);
     // compute safe area
     var safeAreaTop = visibleAreaTop + 15;
-    var safeAreaBottom = visibleAreaBottom * 0.5;
+    var safeAreaBottom = visibleAreaBottom - 15;
     // figure out if each edge of the input is within the safe area
     var distanceToBottom = safeAreaBottom - inputBottom;
     var distanceToTop = safeAreaTop - inputTop;
@@ -404,4 +404,4 @@ var startInputShims = function (config) {
 /***/ })
 
 }]);
-//# sourceMappingURL=input-shims-77712174-js.js.map
+//# sourceMappingURL=input-shims-d4609e0d-js.js.map

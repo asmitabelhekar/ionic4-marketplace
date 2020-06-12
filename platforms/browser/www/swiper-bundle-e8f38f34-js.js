@@ -1,8 +1,8 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["swiper-bundle-f564f87c-js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["swiper-bundle-e8f38f34-js"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-f564f87c.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-e8f38f34.js":
 /*!*************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-f564f87c.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-e8f38f34.js ***!
   \*************************************************************************/
 /*! exports provided: Swiper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13,88 +13,148 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 /**
- * SSR Window 1.0.1
+ * SSR Window 2.0.0
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
- * Copyright 2018, Vladimir Kharlampidi
+ * Copyright 2020, Vladimir Kharlampidi
  *
  * Licensed under MIT
  *
- * Released on: July 18, 2018
+ * Released on: May 12, 2020
  */
-var doc = (typeof document === 'undefined') ? {
+/* eslint-disable no-param-reassign */
+function isObject(obj) {
+    return (obj !== null &&
+        typeof obj === 'object' &&
+        'constructor' in obj &&
+        obj.constructor === Object);
+}
+function extend(target, src) {
+    if (target === void 0) {
+        target = {};
+    }
+    if (src === void 0) {
+        src = {};
+    }
+    Object.keys(src).forEach(function (key) {
+        if (typeof target[key] === 'undefined')
+            target[key] = src[key];
+        else if (isObject(src[key]) &&
+            isObject(target[key]) &&
+            Object.keys(src[key]).length > 0) {
+            extend(target[key], src[key]);
+        }
+    });
+}
+var doc = typeof document !== 'undefined' ? document : {};
+var ssrDocument = {
     body: {},
-    addEventListener: function addEventListener() { },
-    removeEventListener: function removeEventListener() { },
+    addEventListener: function () { },
+    removeEventListener: function () { },
     activeElement: {
-        blur: function blur() { },
+        blur: function () { },
         nodeName: '',
     },
-    querySelector: function querySelector() {
+    querySelector: function () {
         return null;
     },
-    querySelectorAll: function querySelectorAll() {
+    querySelectorAll: function () {
         return [];
     },
-    getElementById: function getElementById() {
+    getElementById: function () {
         return null;
     },
-    createEvent: function createEvent() {
+    createEvent: function () {
         return {
-            initEvent: function initEvent() { },
+            initEvent: function () { },
         };
     },
-    createElement: function createElement() {
+    createElement: function () {
         return {
             children: [],
             childNodes: [],
             style: {},
-            setAttribute: function setAttribute() { },
-            getElementsByTagName: function getElementsByTagName() {
+            setAttribute: function () { },
+            getElementsByTagName: function () {
                 return [];
             },
         };
     },
-    location: { hash: '' },
-} : document; // eslint-disable-line
-var win = (typeof window === 'undefined') ? {
-    document: doc,
+    createElementNS: function () {
+        return {};
+    },
+    importNode: function () {
+        return null;
+    },
+    location: {
+        hash: '',
+        host: '',
+        hostname: '',
+        href: '',
+        origin: '',
+        pathname: '',
+        protocol: '',
+        search: '',
+    },
+};
+extend(doc, ssrDocument);
+var win = typeof window !== 'undefined' ? window : {};
+var ssrWindow = {
+    document: ssrDocument,
     navigator: {
         userAgent: '',
     },
-    location: {},
-    history: {},
+    location: {
+        hash: '',
+        host: '',
+        hostname: '',
+        href: '',
+        origin: '',
+        pathname: '',
+        protocol: '',
+        search: '',
+    },
+    history: {
+        replaceState: function () { },
+        pushState: function () { },
+        go: function () { },
+        back: function () { },
+    },
     CustomEvent: function CustomEvent() {
         return this;
     },
-    addEventListener: function addEventListener() { },
-    removeEventListener: function removeEventListener() { },
-    getComputedStyle: function getComputedStyle() {
+    addEventListener: function () { },
+    removeEventListener: function () { },
+    getComputedStyle: function () {
         return {
-            getPropertyValue: function getPropertyValue() {
+            getPropertyValue: function () {
                 return '';
             },
         };
     },
-    Image: function Image() { },
-    Date: function Date() { },
+    Image: function () { },
+    Date: function () { },
     screen: {},
-    setTimeout: function setTimeout() { },
-    clearTimeout: function clearTimeout() { },
-} : window; // eslint-disable-line
+    setTimeout: function () { },
+    clearTimeout: function () { },
+    matchMedia: function () {
+        return {};
+    },
+};
+extend(win, ssrWindow);
 /**
- * Dom7 2.1.3
+ * Dom7 2.1.5
  * Minimalistic JavaScript library for DOM manipulation, with a jQuery-compatible API
  * http://framework7.io/docs/dom.html
  *
- * Copyright 2019, Vladimir Kharlampidi
+ * Copyright 2020, Vladimir Kharlampidi
  * The iDangero.us
  * http://www.idangero.us/
  *
  * Licensed under MIT
  *
- * Released on: February 11, 2019
+ * Released on: May 15, 2020
  */
 var Dom7 = /** @class */ (function () {
     function Dom7(arr) {
@@ -856,7 +916,7 @@ function add() {
     return dom;
 }
 /**
- * Swiper 5.3.7
+ * Swiper 5.4.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * http://swiperjs.com
  *
@@ -864,7 +924,7 @@ function add() {
  *
  * Released under the MIT License
  *
- * Released on: April 10, 2020
+ * Released on: May 20, 2020
  */
 var Methods = {
     addClass: addClass,
@@ -1031,10 +1091,8 @@ var Utils = {
 };
 var Support = (function Support() {
     return {
-        touch: (win.Modernizr && win.Modernizr.touch === true) || (function checkTouch() {
-            return !!((win.navigator.maxTouchPoints > 0) || ('ontouchstart' in win) || (win.DocumentTouch && doc instanceof win.DocumentTouch));
-        }()),
-        pointerEvents: !!win.PointerEvent && ('maxTouchPoints' in win.navigator) && win.navigator.maxTouchPoints > 0,
+        touch: !!(('ontouchstart' in win) || (win.DocumentTouch && doc instanceof win.DocumentTouch)),
+        pointerEvents: !!win.PointerEvent && ('maxTouchPoints' in win.navigator) && win.navigator.maxTouchPoints >= 0,
         observer: (function checkObserver() {
             return ('MutationObserver' in win || 'WebkitMutationObserver' in win);
         }()),
@@ -1206,7 +1264,7 @@ var SwiperClass = /** @class */ (function () {
                 return;
             Class.use(components);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     SwiperClass.installModule = function (module) {
@@ -2827,7 +2885,7 @@ function onTouchMove(event) {
         }
         return;
     }
-    if (data.isTouchEvent && e.type === 'mousemove')
+    if (data.isTouchEvent && e.type !== 'touchmove')
         return;
     var targetTouch = e.type === 'touchmove' && e.targetTouches && (e.targetTouches[0] || e.changedTouches[0]);
     var pageX = e.type === 'touchmove' ? targetTouch.pageX : e.pageX;
@@ -2913,7 +2971,7 @@ function onTouchMove(event) {
         return;
     }
     swiper.allowClick = false;
-    if (!params.cssMode) {
+    if (!params.cssMode && e.cancelable) {
         e.preventDefault();
     }
     if (params.touchMoveStopPropagation && !params.nested) {
@@ -3209,12 +3267,14 @@ function onTouchEnd(event) {
                         return;
                     swiper.emit('momentumBounce');
                     swiper.setTransition(params.speed);
-                    swiper.setTranslate(afterBouncePosition_1);
-                    $wrapperEl.transitionEnd(function () {
-                        if (!swiper || swiper.destroyed)
-                            return;
-                        swiper.transitionEnd();
-                    });
+                    setTimeout(function () {
+                        swiper.setTranslate(afterBouncePosition_1);
+                        $wrapperEl.transitionEnd(function () {
+                            if (!swiper || swiper.destroyed)
+                                return;
+                            swiper.transitionEnd();
+                        });
+                    }, 0);
                 });
             }
             else if (swiper.velocity) {
@@ -3609,7 +3669,8 @@ function loadImage(imageEl, src, srcset, sizes, checkForComplete, callback) {
         if (callback)
             callback();
     }
-    if (!imageEl.complete || !checkForComplete) {
+    var isPicture = $(imageEl).parent('picture')[0];
+    if (!isPicture && (!imageEl.complete || !checkForComplete)) {
         if (src) {
             image = new win.Image();
             image.onload = onReady;
@@ -4198,28 +4259,28 @@ var Swiper = /** @class */ (function (_super) {
         get: function () {
             return extendedDefaults;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Swiper, "defaults", {
         get: function () {
             return defaults;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Swiper, "Class", {
         get: function () {
             return SwiperClass;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Swiper, "$", {
         get: function () {
             return $;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return Swiper;
@@ -4538,7 +4599,7 @@ var Mousewheel = {
             // Else (this is the first time the wheel is moved):
             //     Animate the slider.
             if (prevEvent) {
-                if (newEvent.direction !== prevEvent.direction || newEvent.delta > prevEvent.delta) {
+                if (newEvent.direction !== prevEvent.direction || newEvent.delta > prevEvent.delta || newEvent.time > prevEvent.time + 150) {
                     swiper.mousewheel.animateSlider(newEvent);
                 }
             }
@@ -5532,7 +5593,7 @@ var Zoom = {
             return;
         if (image.isTouched)
             return;
-        if (Device.android)
+        if (Device.android && e.cancelable)
             e.preventDefault();
         image.isTouched = true;
         image.touchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
@@ -5585,7 +5646,9 @@ var Zoom = {
                 return;
             }
         }
-        e.preventDefault();
+        if (e.cancelable) {
+            e.preventDefault();
+        }
         e.stopPropagation();
         image.isMoved = true;
         image.currentX = (image.touchesCurrent.x - image.touchesStart.x) + image.startX;
@@ -6172,4 +6235,4 @@ Swiper.use([pagination, scrollbar, autoplay, zoom]);
 /***/ })
 
 }]);
-//# sourceMappingURL=swiper-bundle-f564f87c-js.js.map
+//# sourceMappingURL=swiper-bundle-e8f38f34-js.js.map

@@ -1,14 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-dom"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/dom-3186fe7f.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/dom-24a54a40.js":
 /*!***************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/dom-3186fe7f.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/dom-24a54a40.js ***!
   \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 /*
- Stencil Client Platform v1.12.4 | MIT Licensed | https://stenciljs.com
+ Stencil Client Platform v1.14.0 | MIT Licensed | https://stenciljs.com
  */
 (function () {
     var aa = new Set("annotation-xml color-profile font-face font-face-src font-face-uri font-face-format font-face-name missing-glyph".split(" "));
@@ -389,8 +389,7 @@
                 b.c[e](a);
         } return this.__CE_shadowRoot = a; });
         O && O.get ? a(Element.prototype, O) : W && W.get ? a(HTMLElement.prototype, W) : da(c, function (b) {
-            a(b, { enumerable: !0, configurable: !0, get: function () { return H.call(this, !0).innerHTML; },
-                set: function (a) { var b = "template" === this.localName, c = b ? this.content : this, e = G.call(document, this.namespaceURI, this.localName); for (e.innerHTML = a; 0 < c.childNodes.length;)
+            a(b, { enumerable: !0, configurable: !0, get: function () { return H.call(this, !0).innerHTML; }, set: function (a) { var b = "template" === this.localName, c = b ? this.content : this, e = G.call(document, this.namespaceURI, this.localName); for (e.innerHTML = a; 0 < c.childNodes.length;)
                     K.call(c, c.childNodes[0]); for (a = b ? e.content : e; 0 < a.childNodes.length;)
                     I.call(c, a.childNodes[0]); } });
         });

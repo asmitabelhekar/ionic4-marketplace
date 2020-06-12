@@ -12,10 +12,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_nav", function() { return Nav; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_nav_link", function() { return NavLink; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-e23c3ffd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-e23c3ffd.js");
-/* harmony import */ var _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ionic-global-fbc9a2ac.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-fbc9a2ac.js");
+/* harmony import */ var _index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-29df6f59.js */ "./node_modules/@ionic/core/dist/esm-es5/index-29df6f59.js");
+/* harmony import */ var _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ionic-global-08f4fb8a.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-08f4fb8a.js");
 /* harmony import */ var _helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-5c745fbd.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-5c745fbd.js");
-/* harmony import */ var _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-b60886e1.js */ "./node_modules/@ionic/core/dist/esm-es5/index-b60886e1.js");
+/* harmony import */ var _index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-c5440634.js */ "./node_modules/@ionic/core/dist/esm-es5/index-c5440634.js");
 /* harmony import */ var _cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cubic-bezier-685f606a.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-685f606a.js");
 /* harmony import */ var _framework_delegate_d1eb6504_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./framework-delegate-d1eb6504.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-d1eb6504.js");
 
@@ -125,8 +125,8 @@ var convertToViews = function (pages) {
 };
 var navCss = ":host{left:0;right:0;top:0;bottom:0;position:absolute;contain:layout size style;overflow:hidden;z-index:0}";
 var Nav = /** @class */ (function () {
-    function class_1(hostRef) {
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    function Nav(hostRef) {
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.transInstr = [];
         this.animationEnabled = true;
         this.useRouter = false;
@@ -137,33 +137,33 @@ var Nav = /** @class */ (function () {
          * If `true`, the nav should animate the transition of components.
          */
         this.animated = true;
-        this.ionNavWillLoad = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionNavWillLoad", 7);
-        this.ionNavWillChange = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionNavWillChange", 3);
-        this.ionNavDidChange = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionNavDidChange", 3);
+        this.ionNavWillLoad = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionNavWillLoad", 7);
+        this.ionNavWillChange = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionNavWillChange", 3);
+        this.ionNavDidChange = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionNavDidChange", 3);
     }
-    class_1.prototype.swipeGestureChanged = function () {
+    Nav.prototype.swipeGestureChanged = function () {
         if (this.gesture) {
             this.gesture.enable(this.swipeGesture === true);
         }
     };
-    class_1.prototype.rootChanged = function () {
+    Nav.prototype.rootChanged = function () {
         if (this.root !== undefined) {
             if (!this.useRouter) {
                 this.setRoot(this.root, this.rootParams);
             }
         }
     };
-    class_1.prototype.componentWillLoad = function () {
+    Nav.prototype.componentWillLoad = function () {
         this.useRouter =
             !!document.querySelector('ion-router') &&
                 !this.el.closest('[no-router]');
         if (this.swipeGesture === undefined) {
-            var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
-            this.swipeGesture = _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].getBoolean('swipeBackEnabled', mode === 'ios');
+            var mode = Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+            this.swipeGesture = _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].getBoolean('swipeBackEnabled', mode === 'ios');
         }
         this.ionNavWillLoad.emit();
     };
-    class_1.prototype.componentDidLoad = function () {
+    Nav.prototype.componentDidLoad = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var _a;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
@@ -171,7 +171,7 @@ var Nav = /** @class */ (function () {
                     case 0:
                         this.rootChanged();
                         _a = this;
-                        return [4 /*yield*/, __webpack_require__.e(/*! import() | swipe-back-7b4b8b66-js */ "swipe-back-7b4b8b66-js").then(__webpack_require__.bind(null, /*! ./swipe-back-7b4b8b66.js */ "./node_modules/@ionic/core/dist/esm-es5/swipe-back-7b4b8b66.js"))];
+                        return [4 /*yield*/, __webpack_require__.e(/*! import() | swipe-back-0a6a44c8-js */ "swipe-back-0a6a44c8-js").then(__webpack_require__.bind(null, /*! ./swipe-back-0a6a44c8.js */ "./node_modules/@ionic/core/dist/esm-es5/swipe-back-0a6a44c8.js"))];
                     case 1:
                         _a.gesture = (_b.sent()).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
                         this.swipeGestureChanged();
@@ -180,10 +180,10 @@ var Nav = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.componentDidUnload = function () {
+    Nav.prototype.componentDidUnload = function () {
         for (var _i = 0, _a = this.views; _i < _a.length; _i++) {
             var view = _a[_i];
-            Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
+            Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
             view._destroy();
         }
         if (this.gesture) {
@@ -204,7 +204,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.push = function (component, componentProps, opts, done) {
+    Nav.prototype.push = function (component, componentProps, opts, done) {
         return this.queueTrns({
             insertStart: -1,
             insertViews: [{ page: component, params: componentProps }],
@@ -221,7 +221,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.insert = function (insertIndex, component, componentProps, opts, done) {
+    Nav.prototype.insert = function (insertIndex, component, componentProps, opts, done) {
         return this.queueTrns({
             insertStart: insertIndex,
             insertViews: [{ page: component, params: componentProps }],
@@ -238,7 +238,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.insertPages = function (insertIndex, insertComponents, opts, done) {
+    Nav.prototype.insertPages = function (insertIndex, insertComponents, opts, done) {
         return this.queueTrns({
             insertStart: insertIndex,
             insertViews: insertComponents,
@@ -252,7 +252,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.pop = function (opts, done) {
+    Nav.prototype.pop = function (opts, done) {
         return this.queueTrns({
             removeStart: -1,
             removeCount: 1,
@@ -266,7 +266,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.popTo = function (indexOrViewCtrl, opts, done) {
+    Nav.prototype.popTo = function (indexOrViewCtrl, opts, done) {
         var tiConfig = {
             removeStart: -1,
             removeCount: -1,
@@ -287,7 +287,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.popToRoot = function (opts, done) {
+    Nav.prototype.popToRoot = function (opts, done) {
         return this.queueTrns({
             removeStart: 1,
             removeCount: -1,
@@ -302,7 +302,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.removeIndex = function (startIndex, removeCount, opts, done) {
+    Nav.prototype.removeIndex = function (startIndex, removeCount, opts, done) {
         if (removeCount === void 0) { removeCount = 1; }
         return this.queueTrns({
             removeStart: startIndex,
@@ -318,7 +318,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.setRoot = function (component, componentProps, opts, done) {
+    Nav.prototype.setRoot = function (component, componentProps, opts, done) {
         return this.setPages([{ page: component, params: componentProps }], opts, done);
     };
     /**
@@ -331,7 +331,7 @@ var Nav = /** @class */ (function () {
      * @param opts The navigation options.
      * @param done The transition complete function.
      */
-    class_1.prototype.setPages = function (views, opts, done) {
+    Nav.prototype.setPages = function (views, opts, done) {
         if (opts == null) {
             opts = {};
         }
@@ -348,7 +348,7 @@ var Nav = /** @class */ (function () {
         }, done);
     };
     /** @internal */
-    class_1.prototype.setRouteId = function (id, params, direction) {
+    Nav.prototype.setRouteId = function (id, params, direction, animation) {
         var _this = this;
         var active = this.getActiveSync();
         if (matches(active, id, params)) {
@@ -390,19 +390,19 @@ var Nav = /** @class */ (function () {
         else {
             var viewController = this.views.find(function (v) { return matches(v, id, params); });
             if (viewController) {
-                finish = this.popTo(viewController, Object.assign(Object.assign({}, commonOpts), { direction: 'back' }));
+                finish = this.popTo(viewController, Object.assign(Object.assign({}, commonOpts), { direction: 'back', animationBuilder: animation }));
             }
             else if (direction === 'forward') {
-                finish = this.push(id, params, commonOpts);
+                finish = this.push(id, params, Object.assign(Object.assign({}, commonOpts), { animationBuilder: animation }));
             }
             else if (direction === 'back') {
-                finish = this.setRoot(id, params, Object.assign(Object.assign({}, commonOpts), { direction: 'back', animated: true }));
+                finish = this.setRoot(id, params, Object.assign(Object.assign({}, commonOpts), { direction: 'back', animated: true, animationBuilder: animation }));
             }
         }
         return promise;
     };
     /** @internal */
-    class_1.prototype.getRouteId = function () {
+    Nav.prototype.getRouteId = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var active;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
@@ -420,7 +420,7 @@ var Nav = /** @class */ (function () {
     /**
      * Get the active view.
      */
-    class_1.prototype.getActive = function () {
+    Nav.prototype.getActive = function () {
         return Promise.resolve(this.getActiveSync());
     };
     /**
@@ -428,7 +428,7 @@ var Nav = /** @class */ (function () {
      *
      * @param index The index of the view.
      */
-    class_1.prototype.getByIndex = function (index) {
+    Nav.prototype.getByIndex = function (index) {
         return Promise.resolve(this.views[index]);
     };
     /**
@@ -436,7 +436,7 @@ var Nav = /** @class */ (function () {
      *
      * @param view The view to check.
      */
-    class_1.prototype.canGoBack = function (view) {
+    Nav.prototype.canGoBack = function (view) {
         return Promise.resolve(this.canGoBackSync(view));
     };
     /**
@@ -444,20 +444,20 @@ var Nav = /** @class */ (function () {
      *
      * @param view The view to get.
      */
-    class_1.prototype.getPrevious = function (view) {
+    Nav.prototype.getPrevious = function (view) {
         return Promise.resolve(this.getPreviousSync(view));
     };
-    class_1.prototype.getLength = function () {
+    Nav.prototype.getLength = function () {
         return this.views.length;
     };
-    class_1.prototype.getActiveSync = function () {
+    Nav.prototype.getActiveSync = function () {
         return this.views[this.views.length - 1];
     };
-    class_1.prototype.canGoBackSync = function (view) {
+    Nav.prototype.canGoBackSync = function (view) {
         if (view === void 0) { view = this.getActiveSync(); }
         return !!(view && this.getPreviousSync(view));
     };
-    class_1.prototype.getPreviousSync = function (view) {
+    Nav.prototype.getPreviousSync = function (view) {
         if (view === void 0) { view = this.getActiveSync(); }
         if (!view) {
             return undefined;
@@ -476,7 +476,7 @@ var Nav = /** @class */ (function () {
     // 7. _transitionStart(): called once the transition actually starts, it initializes the Animation underneath.
     // 8. _transitionFinish(): called once the transition finishes
     // 9. _cleanup(): syncs the navigation internal state with the DOM. For example it removes the pages from the DOM or hides/show them.
-    class_1.prototype.queueTrns = function (ti, done) {
+    Nav.prototype.queueTrns = function (ti, done) {
         if (this.isTransitioning && ti.opts != null && ti.opts.skipIfBusy) {
             return Promise.resolve(false);
         }
@@ -496,7 +496,7 @@ var Nav = /** @class */ (function () {
         this.nextTrns();
         return promise;
     };
-    class_1.prototype.success = function (result, ti) {
+    Nav.prototype.success = function (result, ti) {
         if (this.destroyed) {
             this.fireError('nav controller was destroyed', ti);
             return;
@@ -513,7 +513,7 @@ var Nav = /** @class */ (function () {
             }
         }
     };
-    class_1.prototype.failed = function (rejectReason, ti) {
+    Nav.prototype.failed = function (rejectReason, ti) {
         if (this.destroyed) {
             this.fireError('nav controller was destroyed', ti);
             return;
@@ -521,7 +521,7 @@ var Nav = /** @class */ (function () {
         this.transInstr.length = 0;
         this.fireError(rejectReason, ti);
     };
-    class_1.prototype.fireError = function (rejectReason, ti) {
+    Nav.prototype.fireError = function (rejectReason, ti) {
         if (ti.done) {
             ti.done(false, false, rejectReason);
         }
@@ -532,7 +532,7 @@ var Nav = /** @class */ (function () {
             ti.resolve(false);
         }
     };
-    class_1.prototype.nextTrns = function () {
+    Nav.prototype.nextTrns = function () {
         // this is the framework's bread 'n butta function
         // only one transition is allowed at any given time
         if (this.isTransitioning) {
@@ -547,9 +547,9 @@ var Nav = /** @class */ (function () {
         this.runTransition(ti);
         return true;
     };
-    class_1.prototype.runTransition = function (ti) {
+    Nav.prototype.runTransition = function (ti) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var leavingView, enteringView, requiresTransition, result, _a, rejectReason_1;
+            var leavingView, enteringView, requiresTransition, isBackDirection, result, _a, rejectReason_1;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -572,6 +572,17 @@ var Nav = /** @class */ (function () {
                         this.postViewInit(enteringView, leavingView, ti);
                         requiresTransition = (ti.enteringRequiresTransition || ti.leavingRequiresTransition) &&
                             enteringView !== leavingView;
+                        if (requiresTransition && ti.opts && leavingView) {
+                            isBackDirection = ti.opts.direction === 'back';
+                            /**
+                             * If heading back, use the entering page's animation
+                             * unless otherwise specified by the developer.
+                             */
+                            if (isBackDirection) {
+                                ti.opts.animationBuilder = ti.opts.animationBuilder || (enteringView && enteringView.animationBuilder);
+                            }
+                            leavingView.animationBuilder = ti.opts.animationBuilder;
+                        }
                         if (!requiresTransition) return [3 /*break*/, 4];
                         return [4 /*yield*/, this.transition(enteringView, leavingView, ti)];
                     case 3:
@@ -604,7 +615,7 @@ var Nav = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.prepareTI = function (ti) {
+    Nav.prototype.prepareTI = function (ti) {
         var viewsLength = this.views.length;
         ti.opts = ti.opts || {};
         if (ti.opts.delegate === undefined) {
@@ -660,7 +671,7 @@ var Nav = /** @class */ (function () {
         }
         ti.insertViews = viewControllers;
     };
-    class_1.prototype.getEnteringView = function (ti, leavingView) {
+    Nav.prototype.getEnteringView = function (ti, leavingView) {
         var insertViews = ti.insertViews;
         if (insertViews !== undefined) {
             // grab the very last view of the views to be inserted
@@ -680,7 +691,7 @@ var Nav = /** @class */ (function () {
         }
         return undefined;
     };
-    class_1.prototype.postViewInit = function (enteringView, leavingView, ti) {
+    Nav.prototype.postViewInit = function (enteringView, leavingView, ti) {
         Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(leavingView || enteringView, 'Both leavingView and enteringView are null');
         Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(ti.resolve, 'resolve must be valid');
         Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(ti.reject, 'reject must be valid');
@@ -734,9 +745,9 @@ var Nav = /** @class */ (function () {
         if (destroyQueue && destroyQueue.length > 0) {
             for (var _a = 0, destroyQueue_1 = destroyQueue; _a < destroyQueue_1.length; _a++) {
                 var view = destroyQueue_1[_a];
-                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["b"]);
-                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["c"]);
-                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
+                Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["b"]);
+                Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["c"]);
+                Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["l"])(view.element, _index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
             }
             // once all lifecycle events has been delivered, we can safely detroy the views
             for (var _b = 0, destroyQueue_2 = destroyQueue; _b < destroyQueue_2.length; _b++) {
@@ -745,7 +756,7 @@ var Nav = /** @class */ (function () {
             }
         }
     };
-    class_1.prototype.transition = function (enteringView, leavingView, ti) {
+    Nav.prototype.transition = function (enteringView, leavingView, ti) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var opts, progressCallback, mode, enteringEl, leavingEl, animationOpts, hasCompleted;
             var _this = this;
@@ -756,12 +767,12 @@ var Nav = /** @class */ (function () {
                         progressCallback = opts.progressAnimation
                             ? function (ani) { return _this.sbAni = ani; }
                             : undefined;
-                        mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+                        mode = Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
                         enteringEl = enteringView.element;
                         leavingEl = leavingView && leavingView.element;
-                        animationOpts = Object.assign({ mode: mode, showGoBack: this.canGoBackSync(enteringView), baseEl: this.el, animationBuilder: this.animation || opts.animationBuilder || _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('navAnimation'), progressCallback: progressCallback, animated: this.animated && _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].getBoolean('animated', true), enteringEl: enteringEl,
+                        animationOpts = Object.assign({ mode: mode, showGoBack: this.canGoBackSync(enteringView), baseEl: this.el, animationBuilder: this.animation || opts.animationBuilder || _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('navAnimation'), progressCallback: progressCallback, animated: this.animated && _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].getBoolean('animated', true), enteringEl: enteringEl,
                             leavingEl: leavingEl }, opts);
-                        return [4 /*yield*/, Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["t"])(animationOpts)];
+                        return [4 /*yield*/, Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["t"])(animationOpts)];
                     case 1:
                         hasCompleted = (_a.sent()).hasCompleted;
                         return [2 /*return*/, this.transitionFinish(hasCompleted, enteringView, leavingView, opts)];
@@ -769,7 +780,7 @@ var Nav = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.transitionFinish = function (hasCompleted, enteringView, leavingView, opts) {
+    Nav.prototype.transitionFinish = function (hasCompleted, enteringView, leavingView, opts) {
         var cleanupView = hasCompleted ? enteringView : leavingView;
         if (cleanupView) {
             this.cleanup(cleanupView);
@@ -782,7 +793,7 @@ var Nav = /** @class */ (function () {
             direction: opts.direction
         };
     };
-    class_1.prototype.insertViewAt = function (view, index) {
+    Nav.prototype.insertViewAt = function (view, index) {
         var views = this.views;
         var existingIndex = views.indexOf(view);
         if (existingIndex > -1) {
@@ -800,7 +811,7 @@ var Nav = /** @class */ (function () {
             views.splice(index, 0, view);
         }
     };
-    class_1.prototype.removeView = function (view) {
+    Nav.prototype.removeView = function (view) {
         Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["b"])(view.state === VIEW_STATE_ATTACHED || view.state === VIEW_STATE_DESTROYED, 'view state should be loaded or destroyed');
         var views = this.views;
         var index = views.indexOf(view);
@@ -809,14 +820,14 @@ var Nav = /** @class */ (function () {
             views.splice(index, 1);
         }
     };
-    class_1.prototype.destroyView = function (view) {
+    Nav.prototype.destroyView = function (view) {
         view._destroy();
         this.removeView(view);
     };
     /**
      * DOM WRITE
      */
-    class_1.prototype.cleanup = function (activeView) {
+    Nav.prototype.cleanup = function (activeView) {
         // ok, cleanup time!! Destroy all of the views that are
         // INACTIVE and come after the active view
         // only do this if the views exist, though
@@ -831,24 +842,24 @@ var Nav = /** @class */ (function () {
             if (i > activeViewIndex) {
                 // this view comes after the active view
                 // let's unload it
-                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["l"])(element, _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
+                Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["l"])(element, _index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["d"]);
                 this.destroyView(view);
             }
             else if (i < activeViewIndex) {
                 // this view comes before the active view
                 // and it is not a portal then ensure it is hidden
-                Object(_index_b60886e1_js__WEBPACK_IMPORTED_MODULE_4__["s"])(element, true);
+                Object(_index_c5440634_js__WEBPACK_IMPORTED_MODULE_4__["s"])(element, true);
             }
         }
     };
-    class_1.prototype.canStart = function () {
+    Nav.prototype.canStart = function () {
         return (!!this.swipeGesture &&
             !this.isTransitioning &&
             this.transInstr.length === 0 &&
             this.animationEnabled &&
             this.canGoBackSync());
     };
-    class_1.prototype.onStart = function () {
+    Nav.prototype.onStart = function () {
         this.queueTrns({
             removeStart: -1,
             removeCount: 1,
@@ -858,12 +869,12 @@ var Nav = /** @class */ (function () {
             }
         }, undefined);
     };
-    class_1.prototype.onMove = function (stepValue) {
+    Nav.prototype.onMove = function (stepValue) {
         if (this.sbAni) {
             this.sbAni.progressStep(stepValue);
         }
     };
-    class_1.prototype.onEnd = function (shouldComplete, stepValue, dur) {
+    Nav.prototype.onEnd = function (shouldComplete, stepValue, dur) {
         var _this = this;
         if (this.sbAni) {
             this.animationEnabled = false;
@@ -890,42 +901,42 @@ var Nav = /** @class */ (function () {
             this.sbAni.progressEnd(shouldComplete ? 1 : 0, newStepValue, dur);
         }
     };
-    class_1.prototype.render = function () {
-        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null));
+    Nav.prototype.render = function () {
+        return (Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null));
     };
-    Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
-        enumerable: true,
+    Object.defineProperty(Nav.prototype, "el", {
+        get: function () { return Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        enumerable: false,
         configurable: true
     });
-    Object.defineProperty(class_1, "watchers", {
+    Object.defineProperty(Nav, "watchers", {
         get: function () {
             return {
                 "swipeGesture": ["swipeGestureChanged"],
                 "root": ["rootChanged"]
             };
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
-    return class_1;
+    return Nav;
 }());
 Nav.style = navCss;
-var navLink = function (el, routerDirection, component, componentProps) {
+var navLink = function (el, routerDirection, component, componentProps, routerAnimation) {
     var nav = el.closest('ion-nav');
     if (nav) {
         if (routerDirection === 'forward') {
             if (component !== undefined) {
-                return nav.push(component, componentProps, { skipIfBusy: true });
+                return nav.push(component, componentProps, { skipIfBusy: true, animationBuilder: routerAnimation });
             }
         }
         else if (routerDirection === 'root') {
             if (component !== undefined) {
-                return nav.setRoot(component, componentProps, { skipIfBusy: true });
+                return nav.setRoot(component, componentProps, { skipIfBusy: true, animationBuilder: routerAnimation });
             }
         }
         else if (routerDirection === 'back') {
-            return nav.pop({ skipIfBusy: true });
+            return nav.pop({ skipIfBusy: true, animationBuilder: routerAnimation });
         }
     }
     return Promise.resolve(false);
@@ -933,21 +944,21 @@ var navLink = function (el, routerDirection, component, componentProps) {
 var NavLink = /** @class */ (function () {
     function NavLink(hostRef) {
         var _this = this;
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         /**
          * The transition direction when navigating to another page.
          */
         this.routerDirection = 'forward';
         this.onClick = function () {
-            return navLink(_this.el, _this.routerDirection, _this.component, _this.componentProps);
+            return navLink(_this.el, _this.routerDirection, _this.component, _this.componentProps, _this.routerAnimation);
         };
     }
     NavLink.prototype.render = function () {
-        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick }));
+        return (Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick }));
     };
     Object.defineProperty(NavLink.prototype, "el", {
-        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
-        enumerable: true,
+        get: function () { return Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        enumerable: false,
         configurable: true
     });
     return NavLink;

@@ -139,10 +139,10 @@ width:100%;
 .loginButton{
 background-color: #fbb5da;
 color: white;
-width:30%;
- margin-left:35%; 
- margin-right:35%;
-  padding:5px; 
+width:92%;
+//  margin-left:35%; 
+//  margin-right:35%;
+  // padding:5px; 
 font-size:18px;
 }
 
@@ -157,3 +157,8 @@ font-size:18px;
 //     background-color: #ffffff !important;
 //   }
 // }
+
+.socialMediaIcon{
+  width:30px;
+  height:30px;
+}

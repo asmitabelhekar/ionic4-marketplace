@@ -72,9 +72,6 @@ export class LoginPage implements OnInit {
       })
       .catch(e => console.log('Error logging into Facebook', e));
 
-    // this.fb.login()
-    // .then((response: LoginResponse) => alert("show data:"+response))
-    // .catch((error: any) => alert(error));
   }
 
   getUserDetail(userid: any) {
@@ -83,6 +80,11 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/home']);
         console.log("show details:"+res);
         this.users = res;
+        localStorage.setItem("userId", this.users.id);
+        localStorage.setItem("loginStatus", 'yes');
+        // localStorage.setItem("userRole", this.users['result']['userRole']);
+        localStorage.setItem("userName", this.users.name);
+        // localStorage.setItem("userCreated", this.users.);
       })
       .catch(e => {
         console.log(e);
@@ -147,8 +149,13 @@ export class LoginPage implements OnInit {
       .then((res) => {
         this.loginDetails = res;
         localStorage.setItem("gmailData", JSON.stringify(this.loginDetails));
+        localStorage.setItem("userId", this.users.id);
+        localStorage.setItem("loginStatus", 'yes');
+        // localStorage.setItem("userRole", this.users['result']['userRole']);
+        localStorage.setItem("userName", this.users.name);
+        // localStorage.setItem("userCreated", this.users.);
         this.router.navigate(['/home']);
-        // alert("show details:"+JSON.stringify(this.loginDetails));
+        console.log("show details:"+JSON.stringify(this.loginDetails));
       }, (err) => {
 
       })

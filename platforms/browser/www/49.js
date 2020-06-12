@@ -12,32 +12,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_refresher", function() { return Refresher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_refresher_content", function() { return RefresherContent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-e23c3ffd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-e23c3ffd.js");
-/* harmony import */ var _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ionic-global-fbc9a2ac.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-fbc9a2ac.js");
-/* harmony import */ var _utils_918b8264_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils-918b8264.js */ "./node_modules/@ionic/core/dist/esm-es5/utils-918b8264.js");
-/* harmony import */ var _index_mjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.mjs */ "./node_modules/@ionic/core/dist/esm-es5/index.mjs");
-/* harmony import */ var _helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers-5c745fbd.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-5c745fbd.js");
-/* harmony import */ var _animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./animation-6064ebf7.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-6064ebf7.js");
-/* harmony import */ var _index_b60886e1_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index-b60886e1.js */ "./node_modules/@ionic/core/dist/esm-es5/index-b60886e1.js");
-/* harmony import */ var _ios_transition_4d4e1cfa_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ios.transition-4d4e1cfa.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-4d4e1cfa.js");
-/* harmony import */ var _md_transition_c0dc4c62_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./md.transition-c0dc4c62.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-c0dc4c62.js");
-/* harmony import */ var _cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./cubic-bezier-685f606a.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-685f606a.js");
-/* harmony import */ var _index_6f647ec8_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./index-6f647ec8.js */ "./node_modules/@ionic/core/dist/esm-es5/index-6f647ec8.js");
-/* harmony import */ var _index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./index-79d74e0b.js */ "./node_modules/@ionic/core/dist/esm-es5/index-79d74e0b.js");
-/* harmony import */ var _hardware_back_button_7b6ede21_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./hardware-back-button-7b6ede21.js */ "./node_modules/@ionic/core/dist/esm-es5/hardware-back-button-7b6ede21.js");
-/* harmony import */ var _index_88d5bee7_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./index-88d5bee7.js */ "./node_modules/@ionic/core/dist/esm-es5/index-88d5bee7.js");
-/* harmony import */ var _overlays_e78a87c2_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./overlays-e78a87c2.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-e78a87c2.js");
-/* harmony import */ var _haptic_da73c8fd_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./haptic-da73c8fd.js */ "./node_modules/@ionic/core/dist/esm-es5/haptic-da73c8fd.js");
-/* harmony import */ var _spinner_configs_c78e170e_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./spinner-configs-c78e170e.js */ "./node_modules/@ionic/core/dist/esm-es5/spinner-configs-c78e170e.js");
-
-
-
-
-
-
-
-
-
+/* harmony import */ var _index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-29df6f59.js */ "./node_modules/@ionic/core/dist/esm-es5/index-29df6f59.js");
+/* harmony import */ var _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ionic-global-08f4fb8a.js */ "./node_modules/@ionic/core/dist/esm-es5/ionic-global-08f4fb8a.js");
+/* harmony import */ var _helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-5c745fbd.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-5c745fbd.js");
+/* harmony import */ var _animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animation-a635a2fc.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-a635a2fc.js");
+/* harmony import */ var _cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cubic-bezier-685f606a.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-685f606a.js");
+/* harmony import */ var _index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index-79d74e0b.js */ "./node_modules/@ionic/core/dist/esm-es5/index-79d74e0b.js");
+/* harmony import */ var _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./haptic-7b8ba70a.js */ "./node_modules/@ionic/core/dist/esm-es5/haptic-7b8ba70a.js");
+/* harmony import */ var _spinner_configs_c78e170e_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./spinner-configs-c78e170e.js */ "./node_modules/@ionic/core/dist/esm-es5/spinner-configs-c78e170e.js");
 
 
 
@@ -61,10 +43,10 @@ var createBaseAnimation = function (pullingRefresherIcon) {
     var spinnerArrowContainer = pullingRefresherIcon.querySelector('.spinner-arrow-container');
     var arrowContainer = pullingRefresherIcon.querySelector('.arrow-container');
     var arrow = (arrowContainer) ? arrowContainer.querySelector('ion-icon') : null;
-    var baseAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    var baseAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .duration(1000)
         .easing('ease-out');
-    var spinnerArrowContainerAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    var spinnerArrowContainerAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .addElement(spinnerArrowContainer)
         .keyframes([
         { offset: 0, opacity: '0.3' },
@@ -72,7 +54,7 @@ var createBaseAnimation = function (pullingRefresherIcon) {
         { offset: 0.55, opacity: '1' },
         { offset: 1, opacity: '1' }
     ]);
-    var circleInnerAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    var circleInnerAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .addElement(circle)
         .keyframes([
         { offset: 0, strokeDasharray: '1px, 200px' },
@@ -80,7 +62,7 @@ var createBaseAnimation = function (pullingRefresherIcon) {
         { offset: 0.55, strokeDasharray: '100px, 200px' },
         { offset: 1, strokeDasharray: '100px, 200px' }
     ]);
-    var circleOuterAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    var circleOuterAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .addElement(spinner)
         .keyframes([
         { offset: 0, transform: 'rotate(-90deg)' },
@@ -92,7 +74,7 @@ var createBaseAnimation = function (pullingRefresherIcon) {
      * without errors being thrown
      */
     if (arrowContainer && arrow) {
-        var arrowContainerAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+        var arrowContainerAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
             .addElement(arrowContainer)
             .keyframes([
             { offset: 0, transform: 'rotate(0deg)' },
@@ -100,7 +82,7 @@ var createBaseAnimation = function (pullingRefresherIcon) {
             { offset: 0.55, transform: 'rotate(280deg)' },
             { offset: 1, transform: 'rotate(400deg)' }
         ]);
-        var arrowAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+        var arrowAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
             .addElement(arrow)
             .keyframes([
             { offset: 0, transform: 'translateX(2px) scale(0)' },
@@ -114,7 +96,7 @@ var createBaseAnimation = function (pullingRefresherIcon) {
 };
 var createScaleAnimation = function (pullingRefresherIcon) {
     var height = pullingRefresherIcon.clientHeight;
-    var spinnerAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    var spinnerAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .addElement(pullingRefresherIcon)
         .keyframes([
         { offset: 0, transform: "scale(0) translateY(-" + (height + 20) + "px)" },
@@ -124,7 +106,7 @@ var createScaleAnimation = function (pullingRefresherIcon) {
 };
 var createTranslateAnimation = function (pullingRefresherIcon) {
     var height = pullingRefresherIcon.clientHeight;
-    var spinnerAnimation = Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    var spinnerAnimation = Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .addElement(pullingRefresherIcon)
         .keyframes([
         { offset: 0, transform: "translateY(-" + (height + 20) + "px)" },
@@ -133,7 +115,7 @@ var createTranslateAnimation = function (pullingRefresherIcon) {
     return createBaseAnimation(pullingRefresherIcon).addAnimation([spinnerAnimation]);
 };
 var createSnapBackAnimation = function (pullingRefresherIcon) {
-    return Object(_animation_6064ebf7_js__WEBPACK_IMPORTED_MODULE_6__["c"])()
+    return Object(_animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_4__["c"])()
         .duration(125)
         .addElement(pullingRefresherIcon)
         .fromTo('transform', 'translateY(var(--ion-pulling-refresher-translate, 100px))', 'translateY(0px)');
@@ -144,13 +126,13 @@ var setSpinnerOpacity = function (spinner, opacity) {
     spinner.style.setProperty('opacity', opacity.toString());
 };
 var handleScrollWhilePulling = function (spinner, ticks, opacity, currentTickToShow) {
-    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
         setSpinnerOpacity(spinner, opacity);
         ticks.forEach(function (el, i) { return el.style.setProperty('opacity', (i <= currentTickToShow) ? '0.99' : '0'); });
     });
 };
 var handleScrollWhileRefreshing = function (spinner, lastVelocityY) {
-    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
         // If user pulls down quickly, the spinner should spin faster
         spinner.style.setProperty('--refreshing-rotation-duration', (lastVelocityY >= 1.0) ? '0.5s' : '2s');
         spinner.style.setProperty('opacity', '1');
@@ -161,7 +143,7 @@ var translateElement = function (el, value) {
         return Promise.resolve();
     }
     var trans = transitionEndAsync(el, 200);
-    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
         el.style.setProperty('transition', '0.2s all ease-out');
         if (value === undefined) {
             el.style.removeProperty('transform');
@@ -179,7 +161,7 @@ var shouldUseNativeRefresher = function (referenceEl, mode) {
     var refreshingSpinner = referenceEl.querySelector('ion-refresher-content .refresher-refreshing ion-spinner');
     return (pullingSpinner !== null &&
         refreshingSpinner !== null &&
-        ((mode === 'ios' && Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["i"])('mobile') && referenceEl.style.webkitOverflowScrolling !== undefined) ||
+        ((mode === 'ios' && Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["i"])('mobile') && referenceEl.style.webkitOverflowScrolling !== undefined) ||
             mode === 'md'));
 };
 var transitionEndAsync = function (el, expectedDuration) {
@@ -223,8 +205,8 @@ var transitionEnd = function (el, expectedDuration, callback) {
 var refresherIosCss = "ion-refresher{left:0;top:0;display:none;position:absolute;width:100%;height:60px;pointer-events:none;z-index:-1}[dir=rtl] ion-refresher,:host-context([dir=rtl]) ion-refresher{left:unset;right:unset;right:0}ion-refresher.refresher-active{display:block}ion-refresher-content{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;height:100%}.refresher-pulling,.refresher-refreshing{display:none;width:100%}.refresher-pulling-icon,.refresher-refreshing-icon{-webkit-transform-origin:center;transform-origin:center;-webkit-transition:200ms;transition:200ms;font-size:30px;text-align:center}[dir=rtl] .refresher-pulling-icon,:host-context([dir=rtl]) .refresher-pulling-icon,[dir=rtl] .refresher-refreshing-icon,:host-context([dir=rtl]) .refresher-refreshing-icon{-webkit-transform-origin:calc(100% - center);transform-origin:calc(100% - center)}.refresher-pulling-text,.refresher-refreshing-text{font-size:16px;text-align:center}ion-refresher-content .arrow-container{display:none}.refresher-pulling ion-refresher-content .refresher-pulling{display:block}.refresher-ready ion-refresher-content .refresher-pulling{display:block}.refresher-ready ion-refresher-content .refresher-pulling-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.refresher-refreshing ion-refresher-content .refresher-refreshing{display:block}.refresher-cancelling ion-refresher-content .refresher-pulling{display:block}.refresher-cancelling ion-refresher-content .refresher-pulling-icon{-webkit-transform:scale(0);transform:scale(0)}.refresher-completing ion-refresher-content .refresher-refreshing{display:block}.refresher-completing ion-refresher-content .refresher-refreshing-icon{-webkit-transform:scale(0);transform:scale(0)}.refresher-native .refresher-pulling-text,.refresher-native .refresher-refreshing-text{display:none}.refresher-ios .refresher-pulling-icon,.refresher-ios .refresher-refreshing-icon{color:var(--ion-text-color, #000)}.refresher-ios .refresher-pulling-text,.refresher-ios .refresher-refreshing-text{color:var(--ion-text-color, #000)}.refresher-ios .refresher-refreshing .spinner-lines-ios line,.refresher-ios .refresher-refreshing .spinner-lines-small-ios line,.refresher-ios .refresher-refreshing .spinner-crescent circle{stroke:var(--ion-text-color, #000)}.refresher-ios .refresher-refreshing .spinner-bubbles circle,.refresher-ios .refresher-refreshing .spinner-circles circle,.refresher-ios .refresher-refreshing .spinner-dots circle{fill:var(--ion-text-color, #000)}ion-refresher.refresher-native{display:block;z-index:1}ion-refresher.refresher-native ion-spinner{margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){ion-refresher.refresher-native ion-spinner{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}.refresher-native .refresher-refreshing ion-spinner{--refreshing-rotation-duration:2s;display:none;-webkit-animation:var(--refreshing-rotation-duration) ease-out refresher-rotate forwards;animation:var(--refreshing-rotation-duration) ease-out refresher-rotate forwards}.refresher-native .refresher-refreshing{display:none;-webkit-animation:250ms linear refresher-pop forwards;animation:250ms linear refresher-pop forwards}.refresher-native.refresher-refreshing .refresher-pulling ion-spinner,.refresher-native.refresher-completing .refresher-pulling ion-spinner{display:none}.refresher-native.refresher-refreshing .refresher-refreshing ion-spinner,.refresher-native.refresher-completing .refresher-refreshing ion-spinner{display:block}.refresher-native.refresher-pulling .refresher-pulling ion-spinner{display:block}.refresher-native.refresher-pulling .refresher-refreshing ion-spinner{display:none}@-webkit-keyframes refresher-pop{0%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}50%{-webkit-transform:scale(1.2);transform:scale(1.2);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes refresher-pop{0%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}50%{-webkit-transform:scale(1.2);transform:scale(1.2);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes refresher-rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(180deg);transform:rotate(180deg)}}@keyframes refresher-rotate{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(180deg);transform:rotate(180deg)}}";
 var refresherMdCss = "ion-refresher{left:0;top:0;display:none;position:absolute;width:100%;height:60px;pointer-events:none;z-index:-1}[dir=rtl] ion-refresher,:host-context([dir=rtl]) ion-refresher{left:unset;right:unset;right:0}ion-refresher.refresher-active{display:block}ion-refresher-content{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;height:100%}.refresher-pulling,.refresher-refreshing{display:none;width:100%}.refresher-pulling-icon,.refresher-refreshing-icon{-webkit-transform-origin:center;transform-origin:center;-webkit-transition:200ms;transition:200ms;font-size:30px;text-align:center}[dir=rtl] .refresher-pulling-icon,:host-context([dir=rtl]) .refresher-pulling-icon,[dir=rtl] .refresher-refreshing-icon,:host-context([dir=rtl]) .refresher-refreshing-icon{-webkit-transform-origin:calc(100% - center);transform-origin:calc(100% - center)}.refresher-pulling-text,.refresher-refreshing-text{font-size:16px;text-align:center}ion-refresher-content .arrow-container{display:none}.refresher-pulling ion-refresher-content .refresher-pulling{display:block}.refresher-ready ion-refresher-content .refresher-pulling{display:block}.refresher-ready ion-refresher-content .refresher-pulling-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.refresher-refreshing ion-refresher-content .refresher-refreshing{display:block}.refresher-cancelling ion-refresher-content .refresher-pulling{display:block}.refresher-cancelling ion-refresher-content .refresher-pulling-icon{-webkit-transform:scale(0);transform:scale(0)}.refresher-completing ion-refresher-content .refresher-refreshing{display:block}.refresher-completing ion-refresher-content .refresher-refreshing-icon{-webkit-transform:scale(0);transform:scale(0)}.refresher-native .refresher-pulling-text,.refresher-native .refresher-refreshing-text{display:none}.refresher-md .refresher-pulling-icon,.refresher-md .refresher-refreshing-icon{color:var(--ion-text-color, #000)}.refresher-md .refresher-pulling-text,.refresher-md .refresher-refreshing-text{color:var(--ion-text-color, #000)}.refresher-md .refresher-refreshing .spinner-lines-md line,.refresher-md .refresher-refreshing .spinner-lines-small-md line,.refresher-md .refresher-refreshing .spinner-crescent circle{stroke:var(--ion-text-color, #000)}.refresher-md .refresher-refreshing .spinner-bubbles circle,.refresher-md .refresher-refreshing .spinner-circles circle,.refresher-md .refresher-refreshing .spinner-dots circle{fill:var(--ion-text-color, #000)}ion-refresher.refresher-native{display:block;z-index:1}ion-refresher.refresher-native ion-spinner{margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;width:24px;height:24px;color:var(--ion-color-primary, #3880ff)}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){ion-refresher.refresher-native ion-spinner{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}ion-refresher.refresher-native .spinner-arrow-container{display:inherit}ion-refresher.refresher-native .arrow-container{display:block;position:absolute;width:24px;height:24px}ion-refresher.refresher-native .arrow-container ion-icon{margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;left:0;right:0;bottom:-4px;position:absolute;color:var(--ion-color-primary, #3880ff);font-size:12px}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){ion-refresher.refresher-native .arrow-container ion-icon{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}ion-refresher.refresher-native.refresher-pulling ion-refresher-content .refresher-pulling,ion-refresher.refresher-native.refresher-ready ion-refresher-content .refresher-pulling{display:-ms-flexbox;display:flex}ion-refresher.refresher-native.refresher-refreshing ion-refresher-content .refresher-refreshing,ion-refresher.refresher-native.refresher-completing ion-refresher-content .refresher-refreshing,ion-refresher.refresher-native.refresher-cancelling ion-refresher-content .refresher-refreshing{display:-ms-flexbox;display:flex}ion-refresher.refresher-native .refresher-pulling-icon{-webkit-transform:translateY(calc(-100% - 10px));transform:translateY(calc(-100% - 10px))}ion-refresher.refresher-native .refresher-pulling-icon,ion-refresher.refresher-native .refresher-refreshing-icon{margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;border-radius:100%;padding-left:8px;padding-right:8px;padding-top:8px;padding-bottom:8px;display:-ms-flexbox;display:flex;border:1px solid #ececec;background:white;-webkit-box-shadow:0px 1px 6px rgba(0, 0, 0, 0.1);box-shadow:0px 1px 6px rgba(0, 0, 0, 0.1)}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){ion-refresher.refresher-native .refresher-pulling-icon,ion-refresher.refresher-native .refresher-refreshing-icon{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){ion-refresher.refresher-native .refresher-pulling-icon,ion-refresher.refresher-native .refresher-refreshing-icon{padding-left:unset;padding-right:unset;-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px}}";
 var Refresher = /** @class */ (function () {
-    function class_1(hostRef) {
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    function Refresher(hostRef) {
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.appliedStyles = false;
         this.didStart = false;
         this.progress = 0;
@@ -291,17 +273,17 @@ var Refresher = /** @class */ (function () {
          * If `true`, the refresher will be hidden.
          */
         this.disabled = false;
-        this.ionRefresh = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionRefresh", 7);
-        this.ionPull = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionPull", 7);
-        this.ionStart = Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this, "ionStart", 7);
+        this.ionRefresh = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionRefresh", 7);
+        this.ionPull = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPull", 7);
+        this.ionStart = Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionStart", 7);
     }
-    class_1.prototype.disabledChanged = function () {
+    Refresher.prototype.disabledChanged = function () {
         if (this.gesture) {
             this.gesture.enable(!this.disabled);
         }
     };
-    class_1.prototype.checkNativeRefresher = function () {
-        var useNativeRefresher = shouldUseNativeRefresher(this.el, Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this));
+    Refresher.prototype.checkNativeRefresher = function () {
+        var useNativeRefresher = shouldUseNativeRefresher(this.el, Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this));
         if (useNativeRefresher && !this.nativeRefresher) {
             var contentEl = this.el.closest('ion-content');
             this.setupNativeRefresher(contentEl);
@@ -310,20 +292,20 @@ var Refresher = /** @class */ (function () {
             this.destroyNativeRefresher();
         }
     };
-    class_1.prototype.destroyNativeRefresher = function () {
+    Refresher.prototype.destroyNativeRefresher = function () {
         if (this.scrollEl && this.scrollListenerCallback) {
             this.scrollEl.removeEventListener('scroll', this.scrollListenerCallback);
             this.scrollListenerCallback = undefined;
         }
         this.nativeRefresher = false;
     };
-    class_1.prototype.resetNativeRefresher = function (el, state) {
+    Refresher.prototype.resetNativeRefresher = function (el, state) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.state = state;
-                        if (!(Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this) === 'ios')) return [3 /*break*/, 2];
+                        if (!(Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this) === 'ios')) return [3 /*break*/, 2];
                         return [4 /*yield*/, translateElement(el, undefined)];
                     case 1:
                         _a.sent();
@@ -345,7 +327,7 @@ var Refresher = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.setupiOSNativeRefresher = function (pullingSpinner, refreshingSpinner) {
+    Refresher.prototype.setupiOSNativeRefresher = function (pullingSpinner, refreshingSpinner) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var ticks, MAX_PULL, NUM_TICKS, _a;
             var _this = this;
@@ -356,13 +338,13 @@ var Refresher = /** @class */ (function () {
                         ticks = pullingSpinner.shadowRoot.querySelectorAll('svg');
                         MAX_PULL = this.scrollEl.clientHeight * 0.16;
                         NUM_TICKS = ticks.length;
-                        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return ticks.forEach(function (el) { return el.style.setProperty('animation', 'none'); }); });
+                        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return ticks.forEach(function (el) { return el.style.setProperty('animation', 'none'); }); });
                         this.scrollListenerCallback = function () {
                             // If pointer is not on screen or refresher is not active, ignore scroll
                             if (!_this.pointerDown && _this.state === 1 /* Inactive */) {
                                 return;
                             }
-                            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["f"])(function () {
+                            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["d"])(function () {
                                 // PTR should only be active when overflow scrolling at the top
                                 var scrollTop = _this.scrollEl.scrollTop;
                                 var refresherHeight = _this.el.clientHeight;
@@ -372,11 +354,11 @@ var Refresher = /** @class */ (function () {
                                      * progressively fade refresher out/in
                                      */
                                     if (_this.state === 8 /* Refreshing */) {
-                                        var ratio_1 = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["c"])(0, scrollTop / (refresherHeight * 0.5), 1);
-                                        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return setSpinnerOpacity(refreshingSpinner, 1 - ratio_1); });
+                                        var ratio_1 = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, scrollTop / (refresherHeight * 0.5), 1);
+                                        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return setSpinnerOpacity(refreshingSpinner, 1 - ratio_1); });
                                         return;
                                     }
-                                    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return setSpinnerOpacity(pullingSpinner, 0); });
+                                    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return setSpinnerOpacity(pullingSpinner, 0); });
                                     return;
                                 }
                                 if (_this.pointerDown) {
@@ -390,9 +372,9 @@ var Refresher = /** @class */ (function () {
                                     }
                                 }
                                 // delay showing the next tick marks until user has pulled 30px
-                                var opacity = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["c"])(0, Math.abs(scrollTop) / refresherHeight, 0.99);
-                                var pullAmount = _this.progress = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["c"])(0, (Math.abs(scrollTop) - 30) / MAX_PULL, 1);
-                                var currentTickToShow = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["c"])(0, Math.floor(pullAmount * NUM_TICKS), NUM_TICKS - 1);
+                                var opacity = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, Math.abs(scrollTop) / refresherHeight, 0.99);
+                                var pullAmount = _this.progress = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, (Math.abs(scrollTop) - 30) / MAX_PULL, 1);
+                                var currentTickToShow = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, Math.floor(pullAmount * NUM_TICKS), NUM_TICKS - 1);
                                 var shouldShowRefreshingSpinner = _this.state === 8 /* Refreshing */ || currentTickToShow === NUM_TICKS - 1;
                                 if (shouldShowRefreshingSpinner) {
                                     if (_this.pointerDown) {
@@ -401,7 +383,7 @@ var Refresher = /** @class */ (function () {
                                     if (!_this.didRefresh) {
                                         _this.beginRefresh();
                                         _this.didRefresh = true;
-                                        Object(_haptic_da73c8fd_js__WEBPACK_IMPORTED_MODULE_16__["a"])({ style: 'light' });
+                                        Object(_haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_7__["d"])({ style: 'light' });
                                         /**
                                          * Translate the content element otherwise when pointer is removed
                                          * from screen the scroll content will bounce back over the refresher
@@ -419,7 +401,7 @@ var Refresher = /** @class */ (function () {
                         };
                         this.scrollEl.addEventListener('scroll', this.scrollListenerCallback);
                         _a = this;
-                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-6f647ec8.js */ "./node_modules/@ionic/core/dist/esm-es5/index-6f647ec8.js"))];
+                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm-es5/index-eea61379.js"))];
                     case 1:
                         _a.gesture = (_b.sent()).createGesture({
                             el: this.scrollEl,
@@ -444,7 +426,7 @@ var Refresher = /** @class */ (function () {
                                     _this.needsCompletion = false;
                                 }
                                 else if (_this.didRefresh) {
-                                    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["f"])(function () { return translateElement(_this.elementToTransform, _this.el.clientHeight + "px"); });
+                                    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["d"])(function () { return translateElement(_this.elementToTransform, _this.el.clientHeight + "px"); });
                                 }
                             },
                         });
@@ -454,18 +436,18 @@ var Refresher = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.setupMDNativeRefresher = function (contentEl, pullingSpinner, refreshingSpinner) {
+    Refresher.prototype.setupMDNativeRefresher = function (contentEl, pullingSpinner, refreshingSpinner) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var circle, pullingRefresherIcon, refreshingCircle, _a;
             var _this = this;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        circle = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["g"])(pullingSpinner).querySelector('circle');
+                        circle = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["g"])(pullingSpinner).querySelector('circle');
                         pullingRefresherIcon = this.el.querySelector('ion-refresher-content .refresher-pulling-icon');
-                        refreshingCircle = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["g"])(refreshingSpinner).querySelector('circle');
+                        refreshingCircle = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["g"])(refreshingSpinner).querySelector('circle');
                         if (circle !== null && refreshingCircle !== null) {
-                            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+                            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
                                 circle.style.setProperty('animation', 'none');
                                 // This lines up the animation on the refreshing spinner with the pulling spinner
                                 refreshingSpinner.style.setProperty('animation-delay', '-655ms');
@@ -473,7 +455,7 @@ var Refresher = /** @class */ (function () {
                             });
                         }
                         _a = this;
-                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-6f647ec8.js */ "./node_modules/@ionic/core/dist/esm-es5/index-6f647ec8.js"))];
+                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm-es5/index-eea61379.js"))];
                     case 1:
                         _a.gesture = (_b.sent()).createGesture({
                             el: this.scrollEl,
@@ -493,7 +475,7 @@ var Refresher = /** @class */ (function () {
                                 if (!ev.data.didStart) {
                                     ev.data.didStart = true;
                                     _this.state = 2 /* Pulling */;
-                                    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+                                    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
                                         var animationType = getRefresherAnimationType(contentEl);
                                         var animation = createPullingAnimation(animationType, pullingRefresherIcon);
                                         ev.data.animation = animation;
@@ -505,7 +487,7 @@ var Refresher = /** @class */ (function () {
                                     return;
                                 }
                                 // Since we are using an easing curve, slow the gesture tracking down a bit
-                                _this.progress = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["c"])(0, (ev.deltaY / 180) * 0.5, 1);
+                                _this.progress = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["c"])(0, (ev.deltaY / 180) * 0.5, 1);
                                 ev.data.animation.progressStep(_this.progress);
                                 _this.ionPull.emit();
                             },
@@ -513,7 +495,7 @@ var Refresher = /** @class */ (function () {
                                 if (!ev.data.didStart) {
                                     return;
                                 }
-                                Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return _this.scrollEl.style.removeProperty('--overflow'); });
+                                Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return _this.scrollEl.style.removeProperty('--overflow'); });
                                 if (_this.progress <= 0.4) {
                                     _this.gesture.enable(false);
                                     ev.data.animation
@@ -526,10 +508,10 @@ var Refresher = /** @class */ (function () {
                                     });
                                     return;
                                 }
-                                var progress = Object(_cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_10__["g"])([0, 0], [0, 0], [1, 1], [1, 1], _this.progress)[0];
+                                var progress = Object(_cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_5__["g"])([0, 0], [0, 0], [1, 1], [1, 1], _this.progress)[0];
                                 var snapBackAnimation = createSnapBackAnimation(pullingRefresherIcon);
                                 _this.animations.push(snapBackAnimation);
-                                Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, function () {
+                                Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, function () {
                                     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
                                         switch (_a.label) {
                                             case 0:
@@ -552,7 +534,7 @@ var Refresher = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.setupNativeRefresher = function (contentEl) {
+    Refresher.prototype.setupNativeRefresher = function (contentEl) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var pullingSpinner, refreshingSpinner;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
@@ -567,7 +549,7 @@ var Refresher = /** @class */ (function () {
                         return [4 /*yield*/, contentEl.componentOnReady()];
                     case 1:
                         _a.sent();
-                        if (Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this) === 'ios') {
+                        if (Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this) === 'ios') {
                             this.setupiOSNativeRefresher(pullingSpinner, refreshingSpinner);
                         }
                         else {
@@ -578,10 +560,10 @@ var Refresher = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.componentDidUpdate = function () {
+    Refresher.prototype.componentDidUpdate = function () {
         this.checkNativeRefresher();
     };
-    class_1.prototype.connectedCallback = function () {
+    Refresher.prototype.connectedCallback = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var contentEl, _a, _b;
             var _this = this;
@@ -601,13 +583,13 @@ var Refresher = /** @class */ (function () {
                         return [4 /*yield*/, contentEl.getScrollElement()];
                     case 1:
                         _a.scrollEl = _c.sent();
-                        this.backgroundContentEl = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["g"])(contentEl).querySelector('#background-content');
-                        if (!shouldUseNativeRefresher(this.el, Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this))) return [3 /*break*/, 2];
+                        this.backgroundContentEl = Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["g"])(contentEl).querySelector('#background-content');
+                        if (!shouldUseNativeRefresher(this.el, Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this))) return [3 /*break*/, 2];
                         this.setupNativeRefresher(contentEl);
                         return [3 /*break*/, 4];
                     case 2:
                         _b = this;
-                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-6f647ec8.js */ "./node_modules/@ionic/core/dist/esm-es5/index-6f647ec8.js"))];
+                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm-es5/index-eea61379.js"))];
                     case 3:
                         _b.gesture = (_c.sent()).createGesture({
                             el: contentEl,
@@ -628,7 +610,7 @@ var Refresher = /** @class */ (function () {
             });
         });
     };
-    class_1.prototype.disconnectedCallback = function () {
+    Refresher.prototype.disconnectedCallback = function () {
         this.destroyNativeRefresher();
         this.scrollEl = undefined;
         if (this.gesture) {
@@ -645,7 +627,7 @@ var Refresher = /** @class */ (function () {
      * the refresher. This method also changes the refresher's state from
      * `refreshing` to `completing`.
      */
-    class_1.prototype.complete = function () {
+    Refresher.prototype.complete = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var _this = this;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
@@ -653,7 +635,7 @@ var Refresher = /** @class */ (function () {
                     this.needsCompletion = true;
                     // Do not reset scroll el until user removes pointer from screen
                     if (!this.pointerDown) {
-                        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["r"])(function () { return Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["r"])(function () { return _this.resetNativeRefresher(_this.elementToTransform, 32 /* Completing */); }); });
+                        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["r"])(function () { return Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["r"])(function () { return _this.resetNativeRefresher(_this.elementToTransform, 32 /* Completing */); }); });
                     }
                 }
                 else {
@@ -666,14 +648,14 @@ var Refresher = /** @class */ (function () {
     /**
      * Changes the refresher's state from `refreshing` to `cancelling`.
      */
-    class_1.prototype.cancel = function () {
+    Refresher.prototype.cancel = function () {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
             var _this = this;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
                 if (this.nativeRefresher) {
                     // Do not reset scroll el until user removes pointer from screen
                     if (!this.pointerDown) {
-                        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["r"])(function () { return Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_5__["r"])(function () { return _this.resetNativeRefresher(_this.elementToTransform, 16 /* Cancelling */); }); });
+                        Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["r"])(function () { return Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_3__["r"])(function () { return _this.resetNativeRefresher(_this.elementToTransform, 16 /* Cancelling */); }); });
                     }
                 }
                 else {
@@ -692,10 +674,10 @@ var Refresher = /** @class */ (function () {
      * refresh will not happen, and the content will return to it's original
      * position.
      */
-    class_1.prototype.getProgress = function () {
+    Refresher.prototype.getProgress = function () {
         return Promise.resolve(this.progress);
     };
-    class_1.prototype.canStart = function () {
+    Refresher.prototype.canStart = function () {
         if (!this.scrollEl) {
             return false;
         }
@@ -709,11 +691,11 @@ var Refresher = /** @class */ (function () {
         }
         return true;
     };
-    class_1.prototype.onStart = function () {
+    Refresher.prototype.onStart = function () {
         this.progress = 0;
         this.state = 1 /* Inactive */;
     };
-    class_1.prototype.onMove = function (detail) {
+    Refresher.prototype.onMove = function (detail) {
         if (!this.scrollEl) {
             return;
         }
@@ -799,7 +781,7 @@ var Refresher = /** @class */ (function () {
         this.state = 4 /* Ready */;
         return;
     };
-    class_1.prototype.onEnd = function () {
+    Refresher.prototype.onEnd = function () {
         // only run in a zone when absolutely necessary
         if (this.state === 4 /* Ready */) {
             // they pulled down far enough, so it's ready to refresh
@@ -813,7 +795,7 @@ var Refresher = /** @class */ (function () {
             this.cancel();
         }
     };
-    class_1.prototype.beginRefresh = function () {
+    Refresher.prototype.beginRefresh = function () {
         // assumes we're already back in a zone
         // they pulled down far enough, so it's ready to refresh
         this.state = 8 /* Refreshing */;
@@ -825,7 +807,7 @@ var Refresher = /** @class */ (function () {
             complete: this.complete.bind(this)
         });
     };
-    class_1.prototype.close = function (state, delay) {
+    Refresher.prototype.close = function (state, delay) {
         var _this = this;
         // create fallback timer incase something goes wrong with transitionEnd event
         setTimeout(function () {
@@ -840,13 +822,13 @@ var Refresher = /** @class */ (function () {
         this.setCss(0, this.closeDuration, true, delay);
         // TODO: stop gesture
     };
-    class_1.prototype.setCss = function (y, duration, overflowVisible, delay) {
+    Refresher.prototype.setCss = function (y, duration, overflowVisible, delay) {
         var _this = this;
         if (this.nativeRefresher) {
             return;
         }
         this.appliedStyles = (y > 0);
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
             if (_this.scrollEl && _this.backgroundContentEl) {
                 var scrollStyle = _this.scrollEl.style;
                 var backgroundStyle = _this.backgroundContentEl.style;
@@ -857,10 +839,10 @@ var Refresher = /** @class */ (function () {
             }
         });
     };
-    class_1.prototype.render = function () {
+    Refresher.prototype.render = function () {
         var _a;
-        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
-        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["H"], { slot: "fixed", class: (_a = {},
+        var mode = Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+        return (Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["H"], { slot: "fixed", class: (_a = {},
                 _a[mode] = true,
                 // Used internally for styling
                 _a["refresher-" + mode] = true,
@@ -873,21 +855,21 @@ var Refresher = /** @class */ (function () {
                 _a['refresher-completing'] = this.state === 32 /* Completing */,
                 _a) }));
     };
-    Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
-        enumerable: true,
+    Object.defineProperty(Refresher.prototype, "el", {
+        get: function () { return Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        enumerable: false,
         configurable: true
     });
-    Object.defineProperty(class_1, "watchers", {
+    Object.defineProperty(Refresher, "watchers", {
         get: function () {
             return {
                 "disabled": ["disabledChanged"]
             };
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
-    return class_1;
+    return Refresher;
 }());
 Refresher.style = {
     /*STENCIL:MODE:ios*/ ios: refresherIosCss,
@@ -895,34 +877,34 @@ Refresher.style = {
 };
 var RefresherContent = /** @class */ (function () {
     function RefresherContent(hostRef) {
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
     }
     RefresherContent.prototype.componentWillLoad = function () {
         if (this.pullingIcon === undefined) {
-            var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+            var mode = Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
             var overflowRefresher = this.el.style.webkitOverflowScrolling !== undefined ? 'lines' : 'arrow-down';
-            this.pullingIcon = _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('refreshingIcon', mode === 'ios' && Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["i"])('mobile') ? _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('spinner', overflowRefresher) : 'circular');
+            this.pullingIcon = _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('refreshingIcon', mode === 'ios' && Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["i"])('mobile') ? _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('spinner', overflowRefresher) : 'circular');
         }
         if (this.refreshingSpinner === undefined) {
-            var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
-            this.refreshingSpinner = _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('refreshingSpinner', _ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('spinner', mode === 'ios' ? 'lines' : 'circular'));
+            var mode = Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+            this.refreshingSpinner = _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('refreshingSpinner', _ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["c"].get('spinner', mode === 'ios' ? 'lines' : 'circular'));
         }
     };
     RefresherContent.prototype.render = function () {
         var pullingIcon = this.pullingIcon;
-        var hasSpinner = pullingIcon != null && _spinner_configs_c78e170e_js__WEBPACK_IMPORTED_MODULE_17__["S"][pullingIcon] !== undefined;
-        var mode = Object(_ionic_global_fbc9a2ac_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
-        return (Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: mode }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling" }, this.pullingIcon && hasSpinner &&
-            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-icon" }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "spinner-arrow-container" }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-spinner", { name: this.pullingIcon, paused: true }), mode === 'md' && this.pullingIcon === 'circular' &&
-                Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "arrow-container" }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { name: "caret-back-sharp" })))), this.pullingIcon && !hasSpinner &&
-            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-icon" }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { icon: this.pullingIcon, lazy: false })), this.pullingText &&
-            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-text", innerHTML: Object(_index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_12__["s"])(this.pullingText) })), Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing" }, this.refreshingSpinner &&
-            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing-icon" }, Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-spinner", { name: this.refreshingSpinner })), this.refreshingText &&
-            Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing-text", innerHTML: Object(_index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_12__["s"])(this.refreshingText) }))));
+        var hasSpinner = pullingIcon != null && _spinner_configs_c78e170e_js__WEBPACK_IMPORTED_MODULE_8__["S"][pullingIcon] !== undefined;
+        var mode = Object(_ionic_global_08f4fb8a_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+        return (Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: mode }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling" }, this.pullingIcon && hasSpinner &&
+            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-icon" }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "spinner-arrow-container" }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-spinner", { name: this.pullingIcon, paused: true }), mode === 'md' && this.pullingIcon === 'circular' &&
+                Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "arrow-container" }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { name: "caret-back-sharp" })))), this.pullingIcon && !hasSpinner &&
+            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-icon" }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { icon: this.pullingIcon, lazy: false })), this.pullingText &&
+            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-pulling-text", innerHTML: Object(_index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_6__["s"])(this.pullingText) })), Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing" }, this.refreshingSpinner &&
+            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing-icon" }, Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-spinner", { name: this.refreshingSpinner })), this.refreshingText &&
+            Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "refresher-refreshing-text", innerHTML: Object(_index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_6__["s"])(this.refreshingText) }))));
     };
     Object.defineProperty(RefresherContent.prototype, "el", {
-        get: function () { return Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
-        enumerable: true,
+        get: function () { return Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        enumerable: false,
         configurable: true
     });
     return RefresherContent;

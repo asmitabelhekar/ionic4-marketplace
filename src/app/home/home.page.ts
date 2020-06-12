@@ -16,7 +16,7 @@ import { empty } from 'rxjs';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  showNoBanner = 0;
   getBookMarkArray: any;
   Languages: any;
   userId: any;
@@ -25,6 +25,7 @@ export class HomePage {
   bookmarkId: any;
   checkString: string;
   bannerImg: any;
+  bannerCount : any;
   checkStatus: boolean;
   categoryId = 5;
   categoryName = "Music";
@@ -174,6 +175,12 @@ export class HomePage {
     let url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
+      this.bannerCount = MyResponse['result']['count'];
+      if(this.bannerCount == 0){
+        this.showNoBanner=1;
+      }else{
+        this.showNoBanner=0;
+      }
       this.loader.hideBlockingLoaderAuth();
     },
       error => {
@@ -214,34 +221,39 @@ export class HomePage {
     console.log("check title id ::" + title + "   " + "id" + id);
     this.categoryId = id;
     this.displayCategory = id;
-    if (title == "Dance") {
-      this.getBannerData(id);
-      this.advertisementArray = [];
-      this.currentPage = 0;
-      this.getAdvertisement(id);
-    } else if (title == "Yoga") {
-      this.getBannerData(id);
-      this.advertisementArray = [];
-      this.currentPage = 0;
-      this.getAdvertisement(id);
-    } else if (title == "Meditation") {
-      this.getBannerData(id);
-      this.advertisementArray = [];
-      this.currentPage = 0;
-      this.getAdvertisement(id);
-    }
-    else if (title == "Massage") {
-      this.getBannerData(id);
-      this.advertisementArray = [];
-      this.currentPage = 0;
-      this.getAdvertisement(id);
-    }
-    else if (title == "Music") {
-      this.getBannerData(id);
-      this.advertisementArray = [];
-      this.currentPage = 0;
-      this.getAdvertisement(id);
-    }
+
+    this.getBannerData(id);
+    this.advertisementArray = [];
+    this.currentPage = 0;
+    this.getAdvertisement(id);
+    // if (title == "Dance") {
+    //   this.getBannerData(id);
+    //   this.advertisementArray = [];
+    //   this.currentPage = 0;
+    //   this.getAdvertisement(id);
+    // } else if (title == "Yoga") {
+    //   this.getBannerData(id);
+    //   this.advertisementArray = [];
+    //   this.currentPage = 0;
+    //   this.getAdvertisement(id);
+    // } else if (title == "Meditation") {
+    //   this.getBannerData(id);
+    //   this.advertisementArray = [];
+    //   this.currentPage = 0;
+    //   this.getAdvertisement(id);
+    // }
+    // else if (title == "Massage") {
+    //   this.getBannerData(id);
+    //   this.advertisementArray = [];
+    //   this.currentPage = 0;
+    //   this.getAdvertisement(id);
+    // }
+    // else if (title == "Music") {
+    //   this.getBannerData(id);
+    //   this.advertisementArray = [];
+    //   this.currentPage = 0;
+    //   this.getAdvertisement(id);
+    // }
   }
 
   async presentPrompt() {

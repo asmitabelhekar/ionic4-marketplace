@@ -10,6 +10,7 @@ import { LoginPage } from './login.page';
 import { MaterialModule } from 'src/app/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { MatDividerModule } from '@angular/material';
 
 
 @NgModule({

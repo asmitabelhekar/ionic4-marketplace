@@ -1137,6 +1137,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
 /* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/ngx/index.js");
+/* harmony import */ var ngx_facebook__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ngx-facebook */ "./node_modules/ngx-facebook/dist/esm/index.js");
+/* harmony import */ var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @ionic-native/facebook/ngx */ "./node_modules/@ionic-native/facebook/ngx/index.js");
 
 
 
@@ -1167,6 +1169,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+// import { FacebookService } from 'ngx-facebook';
 
 
 var AppModule = /** @class */ (function () {
@@ -1191,7 +1196,8 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatStepperModule"],
                 ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
-                _ionic_storage__WEBPACK_IMPORTED_MODULE_29__["IonicStorageModule"].forRoot()
+                _ionic_storage__WEBPACK_IMPORTED_MODULE_29__["IonicStorageModule"].forRoot(),
+                ngx_facebook__WEBPACK_IMPORTED_MODULE_32__["FacebookModule"].forRoot()
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
@@ -1211,7 +1217,8 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_22__["SocialSharing"],
                 _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_31__["NativeStorage"],
                 _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_30__["GooglePlus"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
+                _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_33__["Facebook"],
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })

@@ -1,8 +1,8 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["status-tap-6a77b957-js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["status-tap-171795fe-js"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/status-tap-6a77b957.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/status-tap-171795fe.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/status-tap-6a77b957.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/status-tap-171795fe.js ***!
   \**********************************************************************/
 /*! exports provided: startStatusTap */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -10,12 +10,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startStatusTap", function() { return startStatusTap; });
-/* harmony import */ var _index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-e23c3ffd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-e23c3ffd.js");
+/* harmony import */ var _index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-29df6f59.js */ "./node_modules/@ionic/core/dist/esm-es5/index-29df6f59.js");
 
 var startStatusTap = function () {
     var win = window;
     win.addEventListener('statusTap', function () {
-        Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["d"])(function () {
             var width = win.innerWidth;
             var height = win.innerHeight;
             var el = document.elementFromPoint(width / 2, height / 2);
@@ -25,7 +25,7 @@ var startStatusTap = function () {
             var contentEl = el.closest('ion-content');
             if (contentEl) {
                 contentEl.componentOnReady().then(function () {
-                    Object(_index_e23c3ffd_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () { return contentEl.scrollToTop(300); });
+                    Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () { return contentEl.scrollToTop(300); });
                 });
             }
         });
@@ -37,4 +37,4 @@ var startStatusTap = function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=status-tap-6a77b957-js.js.map
+//# sourceMappingURL=status-tap-171795fe-js.js.map

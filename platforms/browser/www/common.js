@@ -1,5 +1,72 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
+/***/ "./node_modules/@ionic/core/dist/esm-es5/button-active-274abd17.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/button-active-274abd17.js ***!
+  \*************************************************************************/
+/*! exports provided: c */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return createButtonActiveGesture; });
+/* harmony import */ var _index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-29df6f59.js */ "./node_modules/@ionic/core/dist/esm-es5/index-29df6f59.js");
+/* harmony import */ var _index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm-es5/index-eea61379.js");
+/* harmony import */ var _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./haptic-7b8ba70a.js */ "./node_modules/@ionic/core/dist/esm-es5/haptic-7b8ba70a.js");
+
+
+
+var createButtonActiveGesture = function (el, isButton) {
+    var touchedButton;
+    var activateButtonAtPoint = function (x, y, hapticFeedbackFn) {
+        if (typeof document === 'undefined') {
+            return;
+        }
+        var target = document.elementFromPoint(x, y);
+        if (!target || !isButton(target)) {
+            clearActiveButton();
+            return;
+        }
+        if (target !== touchedButton) {
+            clearActiveButton();
+            setActiveButton(target, hapticFeedbackFn);
+        }
+    };
+    var setActiveButton = function (button, hapticFeedbackFn) {
+        touchedButton = button;
+        var buttonToModify = touchedButton;
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () { return buttonToModify.classList.add('ion-activated'); });
+        hapticFeedbackFn();
+    };
+    var clearActiveButton = function (dispatchClick) {
+        if (dispatchClick === void 0) { dispatchClick = false; }
+        if (!touchedButton) {
+            return;
+        }
+        var buttonToModify = touchedButton;
+        Object(_index_29df6f59_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () { return buttonToModify.classList.remove('ion-activated'); });
+        if (dispatchClick) {
+            touchedButton.click();
+        }
+        touchedButton = undefined;
+    };
+    return Object(_index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__["createGesture"])({
+        el: el,
+        gestureName: 'buttonActiveDrag',
+        threshold: 0,
+        onStart: function (ev) { return activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["a"]); },
+        onMove: function (ev) { return activateButtonAtPoint(ev.currentX, ev.currentY, _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["b"]); },
+        onEnd: function () {
+            clearActiveButton(true);
+            Object(_haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__["h"])();
+        }
+    });
+};
+
+
+
+/***/ }),
+
 /***/ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-d1eb6504.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm-es5/framework-delegate-d1eb6504.js ***!
@@ -58,20 +125,20 @@ var detachComponent = function (delegate, element) {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/haptic-da73c8fd.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/haptic-7b8ba70a.js":
 /*!******************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/haptic-da73c8fd.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/haptic-7b8ba70a.js ***!
   \******************************************************************/
 /*! exports provided: a, b, c, d, h */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hapticImpact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hapticSelectionStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hapticSelectionChanged; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hapticSelectionEnd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hapticSelection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hapticSelectionStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hapticSelectionChanged; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hapticSelection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hapticImpact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hapticSelectionEnd; });
 var HapticEngine = {
     getEngine: function () {
         var win = window;
@@ -136,10 +203,10 @@ var HapticEngine = {
             return;
         }
         if (this.isCapacitor()) {
-            engine.selectionChanged();
+            engine.selectionEnd();
         }
         else {
-            engine.gestureSelectionChanged();
+            engine.gestureSelectionEnd();
         }
     }
 };
@@ -304,9 +371,9 @@ var SPINNERS = spinners;
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/theme-c2dc54d9.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/theme-3f0b0c04.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/theme-c2dc54d9.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/theme-3f0b0c04.js ***!
   \*****************************************************************/
 /*! exports provided: c, g, h, o */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -349,7 +416,7 @@ var getClassMap = function (classes) {
     return map;
 };
 var SCHEME = /^[a-z][a-z0-9+\-.]*:/;
-var openURL = function (url, ev, direction) { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function () {
+var openURL = function (url, ev, direction, animation) { return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function () {
     var router;
     return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
         if (url != null && url[0] !== '#' && !SCHEME.test(url)) {
@@ -358,7 +425,7 @@ var openURL = function (url, ev, direction) { return Object(tslib__WEBPACK_IMPOR
                 if (ev != null) {
                     ev.preventDefault();
                 }
-                return [2 /*return*/, router.push(url, direction)];
+                return [2 /*return*/, router.push(url, direction, animation)];
             }
         }
         return [2 /*return*/, false];

@@ -46,7 +46,8 @@
         class="half-black">
         <ion-slide *ngFor="let item of bannerArray"
           (click)="showAdvertisementDetail(item.categoryId, item.advertisementId)">
-          <div class="cl_img_div">
+         
+          <div *ngIf="bannerCount != 0 " class="cl_img_div">
             <img src="{{item.image}}" class="cl_margin100" />
 
             <div fxLayout="column" fxLayoutAlign="end end" class="checkBack"
@@ -74,8 +75,17 @@
               </div>
             </div>
           </div>
+          <!-- <div *ngIf="showNoBanner == 1 " class="cl_img_div">
+            <h3 align="center">No banners available</h3>
+          </div> -->
         </ion-slide>
       </ion-slides>
+
+
+      <div fxLayoutAlign="center center" *ngIf="showNoBanner == 1 " class="cl_img_div" style="background-color:rgb(175, 171, 171);">
+        <h3 align="center">No banners available</h3>
+      </div>
+
     </div>
 
 
