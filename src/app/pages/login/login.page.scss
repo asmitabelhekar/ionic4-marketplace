@@ -168,47 +168,59 @@ width:100%;
 .loginFbButton{
   background-color: #395696;
   color: white;
-  width:80%;
-  margin-top:15px;
-  font-size:14px;
-  // padding:4px;
+  width:100%;
+  // margin-top:25px;
+  font-size:12px;
+  padding:4px;
   border-radius:25px;
 }
 
 .loginGmailButton{
   background-color: #ca4d45;
   color: white;
-  width:80%;
-  margin-top:25px;
-  font-size:14px;
-  // padding:4px;
+  width:100%;
+  // margin-top:25px;
+  font-size:12px;
+  padding:4px;
   border-radius:25px;
 }
 
 .sub-text-css{
   color:white;
   font-size:10px;
-  justify-content: center;
 text-align: justify;
 width:75%;
 text-justify: inter-word;
 }
 .text-size-f-css{
   font-size:22px;
+  font-weight:bold;
 }
 
 .text-size-G-css{
-  font-size:18px;
+  font-size:20px;
+  font-weight:bold;
 }
 
-
-.desc-text-signin{
+.desc-text{
   color:gray; 
   font-size:12px;
   width:80%;
    padding:8px;
+ margin-top:30px;
+}
+.desc-text-signin{
+  color:gray; 
+  font-size:10px;
+  width:95%;
+   padding:8px;
   position: fixed;
   bottom:5px;
+  text-justify: inter-word;
+}
+
+.color-change{
+  color:#f35b28;
 }
 // ion-card{
 //   background-color: gray;
