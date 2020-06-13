@@ -26,7 +26,6 @@ export class LoginPage implements OnInit {
     public toast: ToastController,
     public menuController: MenuController,
     public loader: LoaderService,
-    private fb: FacebookService,
     private facebook: Facebook,
     private googlePlus: GooglePlus,
     public nativeStorage: NativeStorage,
@@ -65,6 +64,7 @@ export class LoginPage implements OnInit {
       .then(res => {
         if (res.status === 'connected') {
           this.isLoggedIn = true;
+          localStorage.setItem("loginType","fb");
           this.getUserDetail(res.authResponse.userID);
         } else {
           this.isLoggedIn = false;
@@ -93,7 +93,7 @@ export class LoginPage implements OnInit {
 
 
   fbLogout() {
-    this.fb.logout()
+    this.facebook.logout()
       .then(res => this.isLoggedIn = false)
       .catch(e => console.log('Error logout from Facebook', e));
   }
@@ -113,6 +113,7 @@ export class LoginPage implements OnInit {
     let url = environment.base_url + environment.version + "users/login";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
       localStorage.setItem("userId", MyResponse['result']['id']);
+      localStorage.setItem("loginType","email");
       localStorage.setItem("loginStatus", 'yes');
       localStorage.setItem("userRole", MyResponse['result']['userRole']);
       localStorage.setItem("userName", MyResponse['result']['name']);
@@ -134,15 +135,6 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  // fblogin(){
-  //   this.fb.login(['public_profile', 'user_friends', 'email'])
-  // .then((res: FacebookLoginResponse) => alert('Logged into Facebook!'+res))
-  // .catch(e => alert('Error logging into Facebook'+e));
-
-
-  // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
-  // }
-
 
   loginWithGmail() {
     this.googlePlus.login({})
@@ -151,6 +143,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem("gmailData", JSON.stringify(this.loginDetails));
         localStorage.setItem("userId", this.users.id);
         localStorage.setItem("loginStatus", 'yes');
+        localStorage.setItem("loginType","gmail");
         // localStorage.setItem("userRole", this.users['result']['userRole']);
         localStorage.setItem("userName", this.users.name);
         // localStorage.setItem("userCreated", this.users.);

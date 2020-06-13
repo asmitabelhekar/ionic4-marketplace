@@ -206,6 +206,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/loaderservice/loader.service */ "./src/app/service/loaderservice/loader.service.ts");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm5/ionic-angular.js");
+/* harmony import */ var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/facebook/ngx */ "./node_modules/@ionic-native/facebook/ngx/index.js");
+/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+
+
 
 
 
@@ -215,15 +219,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(router, networkServices, activatedRoute, loader, menuController, apiCall) {
+    function ProfilePage(router, networkServices, activatedRoute, loader, facebook, googlePlus, menuController, apiCall) {
         this.router = router;
         this.networkServices = networkServices;
         this.activatedRoute = activatedRoute;
         this.loader = loader;
+        this.facebook = facebook;
+        this.googlePlus = googlePlus;
         this.menuController = menuController;
         this.apiCall = apiCall;
         this.noInternet = 1;
         this.updateStatus = 0;
+        this.isLoggedIn = false;
         this.menuController.enable(false);
     }
     ProfilePage.prototype.ngOnInit = function () {
@@ -235,6 +242,7 @@ var ProfilePage = /** @class */ (function () {
     ProfilePage.prototype.ionViewWillEnter = function () {
         this.userId = this.activatedRoute.snapshot.params['userId'];
         console.log("user id:" + this.userId);
+        this.loginType = localStorage.getItem("loginType");
         // if (this.userId == undefined || this.userId == "" || this.userId == null) {
         //   this.userId = localStorage.getItem('userId');
         //   this.updateStatus = 0;
@@ -308,9 +316,26 @@ var ProfilePage = /** @class */ (function () {
         this.router.navigate(['/profile']);
     };
     ProfilePage.prototype.logOut = function () {
-        localStorage.clear();
-        this.router.navigate(['/login']);
-        localStorage.setItem("loginStatus", "no");
+        var _this = this;
+        if (this.loginType == "fb") {
+            this.facebook.logout()
+                .then(function (res) { return _this.isLoggedIn = false; })
+                .catch(function (e) { return console.log('Error logout from Facebook', e); });
+            localStorage.clear();
+            this.router.navigate(['/login']);
+            localStorage.setItem("loginStatus", "no");
+        }
+        else if (this.loginType == "gmail") {
+            this.googlePlus.logout();
+            localStorage.clear();
+            this.router.navigate(['/login']);
+            localStorage.setItem("loginStatus", "no");
+        }
+        else {
+            localStorage.clear();
+            this.router.navigate(['/login']);
+            localStorage.setItem("loginStatus", "no");
+        }
     };
     ProfilePage.prototype.goBackword = function () {
         window.history.back();
@@ -328,6 +353,8 @@ var ProfilePage = /** @class */ (function () {
         { type: src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"] },
+        { type: _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_8__["Facebook"] },
+        { type: _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_9__["GooglePlus"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["MenuController"] },
         { type: src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] }
     ]; };
@@ -341,6 +368,8 @@ var ProfilePage = /** @class */ (function () {
             src_app_service_network_network_service__WEBPACK_IMPORTED_MODULE_4__["NetworkService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_5__["LoaderService"],
+            _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_8__["Facebook"],
+            _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_9__["GooglePlus"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["MenuController"],
             src_app_service_apiservice_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"]])
     ], ProfilePage);

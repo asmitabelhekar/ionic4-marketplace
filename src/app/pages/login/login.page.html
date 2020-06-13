@@ -1,22 +1,54 @@
 <div class="MainLoginClass">
+  <div fxLayout="column" fxLayoutAlign="center center" style="margin-top:100px;">
+
+    <img src="../../../assets/holyhublogooo.png" style="width:220px; height:120px;"/>
+    <h4 align="center" style="color:white;margin-top:50px;">One solution, Infinite Posibilities</h4>
+    <label class="sub-text-css">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem facilis ipsam veritatis adipisci vitae accusamus sint molestiae quam eius error quae, sequi dolore quasi inventore officia consequuntur sapiente cum asperiores?</label>
+  </div>
+<div class="sociallogin-container" fxLayout="column" fxLayoutAlign="center center">
+  <label fxLayoutAlign="start center" style="color:gray">Sign in with Social Networks</label>
+
+<div style="margin-top:5%" fxLayout="row" style="width:90%">
+<div fxFlex="48" fxLayout="row" class="loginFbButton" (click)="fbLogin()">
+  <div fxFlex="20" fxLayoutAlign="end center" style="padding:10px;" >
+    <label class="text-size-f-css">f</label>
+  </div>
+  <div fxFlex="2">
+   
+  </div>
+  <div fxFlex="78" fxLayoutAlign="center center" style="padding:10px;">
+    <label>FACEBOOK</label>
+  </div>
+</div>
+<div fxFlex="4"></div>
+    
+<div fxFlex="48" fxLayout="row" class="loginGmailButton" (click)="loginWithGmail()">
+  <div fxFlex="20" fxLayoutAlign="end center" style="padding:10px;" >
+    <label class="text-size-G-css">G</label>
+  </div>
+  <div fxFlex="2">
+   
+  </div>
+  <div fxFlex="78" fxLayoutAlign="center center" style="padding:10px;">
+    <label>GOOGLE</label>
+  </div>
+</div>
+
+</div>
+<label fxLayoutAlign="center center" class="desc-text-signin">By sign in you agree to the Terms and the Conditions</label>
+
+</div>
+ 
+</div>
 
 
-  <div fxLayout="column" fxLayoutAlign="center center" style="margin-top:15%">
-    <div fxLayout="column"  >
-      <!-- <img class="centerImg" src="../../../assets/applogo.png" style="width:200px;height:120px;margin-top:5%" /> -->
-      <!-- <h3 style="color:black" align="center">Login</h3> -->
-      <img src="../../../assets/holyhublogo.png" style="width:300px; height:280px;margin-top:-40px; margin-bottom:-20px"/>
-    </div>
+  <!-- <button fxLayout="row" fxFlex="100"  mat-raised-button class="loginFbButton" (click)="fbLogin()"><label fxFlex="50" fxLayoutAlign="start center">f</label><label fxFlex="50" fxLayoutAlign="center center">LOGIN WITH FACEBOOK</label></button>
+  <button fxLayout="row" mat-raised-button class="loginGmailButton" (click)="loginWithGmail()"><label fxLayoutAlign="start center">G</label><label fxLayoutAlign="center center">LOGIN WITH GMAIL</label></button> -->
 
-    <ion-card style="width:90%; padding-bottom:30px;border-radius: 20px;">
-      <div class="LoginFormClass" fxLayout="column">
-
-        <!-- <form name="entryform" style="width: 100%;" #f="ngForm" novalidate> -->
-  
-        <div fxLayout="column" fxLayoutAlign="center center" style="width:100%">
-          <mat-form-field style="width:92%; margin-top:15%;margin-left:4%;color:black; margin-right:4%"
-            appearance="fill">
-            <mat-label style="color:black">Phone Number</mat-label>
+        <!-- <div fxLayout="column" fxLayoutAlign="center center" style="width:100%">
+          <mat-form-field style="width:92%; margin-top:5%;margin-left:4%;color:black; margin-right:4%"
+            appearance="outline">
+            <mat-label style="color:gray">Phone Number</mat-label>
             <input matInput type="tel" id="mobile" class="form-control" required minlength="10" appearance="outline"
               maxlength="10" [(ngModel)]="loginModel.mobile" #mobile="ngModel" />
             <mat-error>
@@ -35,11 +67,11 @@
             </mat-error>
           </mat-form-field>
   
-          <mat-form-field style="width:92%;color:black ;margin-top:5px" appearance="fill">
-            <mat-label style="color:black">Password</mat-label>
+          <mat-form-field style="width:92%;color:black ;margin-top:5px" appearance="outline">
+            <mat-label style="color:gray">Password</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" id="password" class="form-control"
               required [(ngModel)]="loginModel.password" #password="ngModel" style="color:black"/>
-            <mat-icon matSuffix (click)="hide = !hide" style="color:black">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-icon matSuffix (click)="hide = !hide" style="color:gray">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error>
               <div class="form-group">
                 <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
@@ -57,39 +89,6 @@
             {{message}}
           </div>
         </div>
+          <button [disabled]="mobile.invalid || password.invalid" mat-raised-button class="loginButton" (click)="login(loginModel)">LOGIN</button> -->
   
   
-  
-  
-        <!-- <button (click)="fbLogin()" class="loginButton">FB Login</button>
-        <button (click)="fbLogout()" class="loginButton">FB logout</button> -->
-        <div style="margin-top:5%" fxLayoutAlign="center center">
-          <!-- <button (click)="logOut()" class="loginButton">Gmail Logout</button>
-
-          <button (click)="loginWithGmail()" class="loginButton">Gmail login</button> -->
-          <button [disabled]="mobile.invalid || password.invalid" mat-raised-button class="loginButton" (click)="login(loginModel)">Login</button>
-        </div>
-
-        
-        <h5 style="margin-top:10px" align="center">Or connect using</h5>
-
-        <div style="margin-top:5px" fxLayout="row" fxFlex="100">
-          <div fxFlex="48" fxLayoutAlign="end center">
-            <img (click)="fbLogin()" src="../../../assets/fbicon.png" class="socialMediaIcon" />
-          </div>
-          <div fxFlex="4"></div>
-          <div fxFlex="48" fxLayoutAlign="start center">
-            <img (click)="loginWithGmail()" src="../../../assets/gmicon.png" class="socialMediaIcon" />
-          </div>
-        </div>
-       
-        <!-- </form> -->
-  
-      </div>
-    </ion-card>
-  
-
-  </div>
-
-
-</div>
