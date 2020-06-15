@@ -167,3 +167,32 @@ th {
 ion-radio {
   --color-checked: #fb7645;
 }
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #fb7645; /*replace with your color*/
+}
+
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #f5b9a6;  /*replace with your color*/
+}
+
+.card-css
+{
+  border-radius:7px;
+  width:80px;
+  height:80px;
+}
+
+.card-one {
+  background: linear-gradient(to bottom, #fe4f14,#fe8860,#feae93);
+  // --background: #152a3f !important;
+  --color:white;
+  
+}
+
+.card-two {
+
+  --background: white !important;
+  --color:black;
+}

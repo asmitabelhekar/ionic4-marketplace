@@ -8,7 +8,7 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 
-declare var RazorpayCheckout : any;
+declare var RazorpayCheckout: any;
 
 @Component({
   selector: 'app-newadvertisementform',
@@ -17,8 +17,9 @@ declare var RazorpayCheckout : any;
 })
 export class NewadvertisementformPage implements OnInit {
 
-  totalCalculatePayment : any = 0;
-
+  totalCalculatePayment: any = 0;
+  adPlanName : any;
+  bannerPlanName : any;
   fileToUpload: any;
   selectedCode: any = "91";
   countryCode = [];
@@ -38,6 +39,11 @@ export class NewadvertisementformPage implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
+
+  selectPlan: any = {};
+  checkStatus: boolean;
+  selectedBannerPrice : number = 0;
+  selectedAdPrice: number = 0;
 
   firstImage = "";
   secondImage = "";
@@ -94,17 +100,40 @@ export class NewadvertisementformPage implements OnInit {
 
   genderArray = [
     {
-      "id":"0",
-      "value":"male",
-      "name":"Male"
+      "id": "0",
+      "value": "male",
+      "name": "Male"
     },
     {
-      "id":"1",
-      "value":"female",
-      "name":"Female"
+      "id": "1",
+      "value": "female",
+      "name": "Female"
     }
   ];
 
+  planArray = [
+    {
+      "planName": "plan1",
+      "days": "7",
+      "price": "1000"
+    },
+    {
+      "planName": "plan2",
+      "days": "6",
+      "price": "2000"
+    },
+    {
+      "planName": "plan3",
+      "days": "9",
+      "price": "3000"
+    },
+    {
+      "planName": "plan4",
+      "days": "12",
+      "price": "4000"
+    }
+   
+  ];
   //Tags
   tagsArray = [
     {
@@ -128,9 +157,9 @@ export class NewadvertisementformPage implements OnInit {
       "name": "Equipment"
     }
   ];
-  data:any;
-  paymentAmount : number = 333;
-  currency : string = 'USD';
+  data: any;
+  paymentAmount: number = 333;
+  currency: string = 'USD';
   razor_key = 'rzp_test_IA8F5OYVBMKeQw';
 
   constructor(
@@ -140,24 +169,24 @@ export class NewadvertisementformPage implements OnInit {
     public changeDetectorRef: ChangeDetectorRef,
     public toast: ToastController,
     public apiCall: ApiService) {
-      this.read_data();
-     }
+    this.read_data();
+  }
 
-     read_data(){
-      fetch('../../../assets/countrycode.json').then(res => res.json())
+  read_data() {
+    fetch('../../../assets/countrycode.json').then(res => res.json())
       .then(json => {
         this.countryCode = json;
         console.log(this.data);
       });
 
-     
-    }
-  
+
+  }
+
 
   ionViewWillEnter() {
 
 
-  
+
 
 
     this.postStatus = localStorage.getItem("postStatus");
@@ -192,7 +221,7 @@ export class NewadvertisementformPage implements OnInit {
 
       this.categoryId = this.advertisementObject.categoryId;
       this.getSubCategory(this.categoryId);
-      console.log("show cid:"+this.categoryId);
+      console.log("show cid:" + this.categoryId);
       this.fourthFormGroup = this.formBuilder.group({
         categoryId: [this.categoryId, Validators.required],
         subCategoryId: [this.advertisementObject.subCategoryId, Validators.required],
@@ -208,7 +237,7 @@ export class NewadvertisementformPage implements OnInit {
       this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
       this.totalCalculatePayment = 0;
       this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-   
+
       this.fifthFormGroup = this.formBuilder.group({
         adWeek: [this.adWeek, Validators.required],
         bannerWeek: [this.bannerWeek, Validators.required]
@@ -329,7 +358,7 @@ export class NewadvertisementformPage implements OnInit {
         console.log("selected banner week show:" + this.bannerWeek);
 
       } else {
-        
+
         console.log("post bannee API");
       }
 
@@ -557,7 +586,7 @@ export class NewadvertisementformPage implements OnInit {
     let getBannerId = localStorage.getItem("bannerId");
     let url = environment.base_url + environment.version + "category/" + categoryId + "/banners/" + getBannerId;
     this.apiCall.put(url, send_date).subscribe(MyResponse => {
-    
+
       this.loader.hideBlockingLoaderAuth();
     }, error => {
       this.loader.hideBlockingLoaderAuth();
@@ -661,7 +690,23 @@ export class NewadvertisementformPage implements OnInit {
         // this.networkServices.onPageLoadCheckInternet();
       })
   }
+  checkAdveriseMentPriceCard(planName,price){
+    this.totalCalculatePayment = 0;
+    this.selectedAdPrice = price;
+    console.log("show final payment:"+this.totalCalculatePayment);
+    console.log("show selectedBannerPrice payment:"+this.selectedBannerPrice);
+    console.log("show selectedAdPrice payment:"+this.selectedAdPrice);
+    this.totalCalculatePayment = +this.selectedBannerPrice +  +this.selectedAdPrice;
+    console.log("final payment:"+this.totalCalculatePayment);
+    this.adPlanName = planName;
+  }
 
+  checkBannerPriceCard(planName, price){
+    this.totalCalculatePayment = 0;
+    this.selectedBannerPrice = price;
+    this.totalCalculatePayment = +this.selectedBannerPrice +  +this.selectedAdPrice;
+    this.bannerPlanName = planName;
+  }
 
   selectBannerWeek(data) {
     this.bannerWeek = data;
@@ -672,7 +717,7 @@ export class NewadvertisementformPage implements OnInit {
     this.finalCalculation = 7 + ((data - 1) * 5);
     this.totalCalculatePayment = 0;
     this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-   
+
     this.totalCalculation = this.finalCalculation;
     this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
 
@@ -688,7 +733,7 @@ export class NewadvertisementformPage implements OnInit {
     this.finalAdCalculation = 7 + ((data - 1) * 5);
     this.totalCalculatePayment = 0;
     this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-   
+
     this.todayDate = new Date();
     console.log("show no of week value::" + data);
     this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
@@ -932,7 +977,7 @@ export class NewadvertisementformPage implements OnInit {
       image: 'https://i.imgur.com/3g7nmJC.png',
       currency: this.currency, // your 3 letter currency code
       key: this.razor_key,
-      payment_capture : 1, // your Key Id from Razorpay dashboard
+      payment_capture: 1, // your Key Id from Razorpay dashboard
       amount: this.totalCalculatePayment, // Payment amount in smallest denomiation e.g. cents for USD
       name: 'Holyhub',
       prefill: {
@@ -956,16 +1001,34 @@ export class NewadvertisementformPage implements OnInit {
     //   this.submmitAdvertisementData();
     // };
 
-    var successCallback = function(success) {
+    var successCallback = function (success) {
       alert('payment_id: ' + success)
       var orderId = success.razorpay_order_id
       var signature = success.razorpay_signature
     }
 
     var cancelCallback = function (error) {
-      alert("show payment gateway error:"+error.description + ' (Error ' + error.code + ')');
+      alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
     };
 
     RazorpayCheckout.open(options, successCallback, cancelCallback);
+  }
+
+  setValue(name) {
+    this.checkStatus = this.selectPlan.hasOwnProperty(name);
+
+    if (this.checkStatus) {
+      console.log("before delete:" + (this.selectPlan));
+      delete this.selectPlan[name];
+      localStorage.setItem("BOOKMARK", JSON.stringify(this.selectPlan));
+
+
+
+      console.log("after delete:" + (this.selectPlan));
+    } else {
+      this.selectPlan[name] = true;
+
+    }
+    console.log("check data:" + JSON.stringify(this.selectPlan));
   }
 }

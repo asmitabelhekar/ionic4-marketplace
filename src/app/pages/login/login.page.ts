@@ -8,6 +8,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { FacebookModule, FacebookService, LoginResponse, InitParams } from 'ngx-facebook';
+import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,7 +19,10 @@ export class LoginPage implements OnInit {
   hide = true;
   loginModel: any = {};
   loginDetails: any;
-
+  gmailId : any = "";
+  fbId : any = "";
+  userName : any;
+  userEmail : any;
   isLoggedIn = false;
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
 
@@ -60,6 +64,7 @@ export class LoginPage implements OnInit {
 
 
   fbLogin() {
+    this.router.navigate(['/home']);
     this.facebook.login(['public_profile', 'user_friends', 'email'])
       .then(res => {
         if (res.status === 'connected') {
@@ -77,14 +82,14 @@ export class LoginPage implements OnInit {
   getUserDetail(userid: any) {
     this.facebook.api('/' + userid + '/?fields=id,email,name,picture', ['public_profile'])
       .then(res => {
-        this.router.navigate(['/home']);
-        alert("show fb login details:"+JSON.stringify(res));
+        // this.router.navigate(['/home']);
+      
         this.users = res;
-        localStorage.setItem("userId", this.users.id);
-        localStorage.setItem("loginStatus", 'yes');
-        // localStorage.setItem("userRole", this.users['result']['userRole']);
-        localStorage.setItem("userName", this.users.name);
-        // localStorage.setItem("userCreated", this.users.);
+        this.gmailId = "";
+        this.fbId = res.id;
+        this.userName = res.name;
+        this.userEmail = res.email;
+      this.login();
       })
       .catch(e => {
         console.log(e);
@@ -101,16 +106,25 @@ export class LoginPage implements OnInit {
 
 
 
-  login(data) {
+  login() {
 
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
 
 
-    send_date['mobile'] = this.loginModel.mobile;
-    send_date['password'] = this.loginModel.password;
+    send_date['name'] = this.userName;
+    // send_date['mobile'] = this.loginModel.mobile;
+    send_date['userRole'] = 0;
+    send_date['email'] = this.userEmail;
+    if(this.gmailId != ""){
+      send_date['gmailId'] = this.gmailId;
+    }
 
-    let url = environment.base_url + environment.version + "users/login";
+    if(this.fbId != ""){
+      send_date['facebookId'] = this.fbId;
+    }
+
+    let url = environment.base_url + environment.version + "users";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
       localStorage.setItem("userId", MyResponse['result']['id']);
       localStorage.setItem("loginType","email");
@@ -119,6 +133,7 @@ export class LoginPage implements OnInit {
       localStorage.setItem("userName", MyResponse['result']['name']);
       localStorage.setItem("userCreated", MyResponse['result']['created']);
       this.router.navigate(['/home']);
+      console.log("show login details:"+JSON.stringify(MyResponse));
       this.loader.hideBlockingLoaderAuth();
     }, error => {
       this.presentToast("Please try again");
@@ -140,15 +155,11 @@ export class LoginPage implements OnInit {
     this.googlePlus.login({})
       .then((res) => {
         this.loginDetails = res;
-        localStorage.setItem("gmailData", JSON.stringify(this.loginDetails));
-        localStorage.setItem("userId", this.users.id);
-        localStorage.setItem("loginStatus", 'yes');
-        localStorage.setItem("loginType","gmail");
-        // localStorage.setItem("userRole", this.users['result']['userRole']);
-        localStorage.setItem("userName", this.users.name);
-        // localStorage.setItem("userCreated", this.users.);
-        this.router.navigate(['/home']);
-        alert("show gmail login details:"+JSON.stringify(this.loginDetails));
+        this.gmailId = res.userId;
+        this.fbId="";
+        this.userName = res.displayName;
+        this.userEmail = res.email;
+       this.login();
       }, (err) => {
 
       })

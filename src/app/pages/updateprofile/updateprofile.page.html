@@ -52,14 +52,14 @@
   <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%" appearance="outline">
     <mat-label>Mobile</mat-label>
         <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="profileModel.contact" #contact="ngModel"
-          align="center" required pattern="[0-9]+$">
-          <mat-error>
+          align="center" >
+          <!-- <mat-error>
             <div class="form-group">
               <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
                 Mobile Is Requird
               </div>
             </div>
-          </mat-error>
+          </mat-error> -->
   </mat-form-field>
   </div>
 
@@ -72,6 +72,6 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button class="updateProfileButton" [disabled]="email.invalid ||  contact.invalid || name.invalid"
-  (click)="updateProfileData(advertisementModel)"><b>Next</b></button>
+  <button mat-raised-button class="updateProfileButton" [disabled]="email.invalid ||  name.invalid"
+  (click)="updateProfileData(advertisementModel)"><b>Update</b></button>
 </ion-content>

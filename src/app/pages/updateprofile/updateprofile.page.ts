@@ -46,6 +46,9 @@ export class UpdateprofilePage implements OnInit {
   }
 
   updateProfileData(){
+    if(this.profileModel['contact'] == null){
+      this.profileModel['contact'] = "";
+    }
     console.log("profile name:"+this.profileModel['name']);
     console.log("profile email:"+this.profileModel['email']);
     console.log("profile contact:"+this.profileModel['contact']);
