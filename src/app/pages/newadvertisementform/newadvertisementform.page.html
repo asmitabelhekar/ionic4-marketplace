@@ -255,9 +255,9 @@
 
           <div fxLayout="row wrap">
             <ion-card fxLayout="column" fxLayoutGap="10px"
-              [ngClass]="(bannerPlanName == item.planName) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
-              *ngFor="let item of planArray" class="card-css" (click)="checkBannerPriceCard(item.planName,item.price)">
-              <label>{{item.planName}}</label>
+              [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
+              *ngFor="let item of plansArray" class="card-css" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)">
+              <label>{{item.name}}</label>
               <label>${{item.price}}</label>
             </ion-card>
 
@@ -266,8 +266,8 @@
           <label class="desc-text" style="margin-top:10px;margin-bottom:10px;">Banner Plans</label>
 
           <div fxLayout="row wrap">
-            <ion-card fxLayout="column" fxLayoutGap="10px" [ngClass]="(adPlanName == item.planName) ? 'card-one' : 'card-two' " fxLayoutAlign="center center" *ngFor="let item of planArray" class="card-css" (click)="checkAdveriseMentPriceCard(item.planName,item.price)">
-              <label>{{item.planName}}</label>
+            <ion-card fxLayout="column" fxLayoutGap="10px" [ngClass]="(adPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center" *ngFor="let item of plansArray" class="card-css" (click)="checkAdveriseMentPriceCard(item.name,item.price)">
+              <label>{{item.name}}</label>
               <label>${{item.price}}</label>
              </ion-card>
           
@@ -283,7 +283,7 @@
         <div fxFlex="100">
           <!-- <button *ngIf="totalCalculatePayment == 0 "  class="disabledClass">Pay with RazorPay</button> -->
 
-          <button class="buttonPayClass" (click)="payWithRazor()">Pay with RazorPay</button>
+          <button class="buttonPayClass" (click)="submmitAdvertisementData()">Pay with RazorPay</button>
         </div>
         <!-- <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="start start" style="margin-top:22px;">
           <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>

@@ -18,8 +18,8 @@ declare var RazorpayCheckout: any;
 export class NewadvertisementformPage implements OnInit {
 
   totalCalculatePayment: any = 0;
-  adPlanName : any;
-  bannerPlanName : any;
+  adPlanName: any;
+  bannerPlanName: any;
   fileToUpload: any;
   selectedCode: any = "91";
   countryCode = [];
@@ -42,7 +42,7 @@ export class NewadvertisementformPage implements OnInit {
 
   selectPlan: any = {};
   checkStatus: boolean;
-  selectedBannerPrice : number = 0;
+  selectedBannerPrice: number = 0;
   selectedAdPrice: number = 0;
 
   firstImage = "";
@@ -97,6 +97,10 @@ export class NewadvertisementformPage implements OnInit {
   bannerImage: any;
   filterObject: any = {};
   bannerArray: any;
+  checkBannerEndDateTimestamp: any;
+  checkBannerStartDateTimestamp: any;
+  checkAdEndDateTimestamp: any;
+  checkAdStartDateTimestamp: any;
 
   genderArray = [
     {
@@ -132,8 +136,10 @@ export class NewadvertisementformPage implements OnInit {
       "days": "12",
       "price": "4000"
     }
-   
+
   ];
+
+  plansArray = [];
   //Tags
   tagsArray = [
     {
@@ -185,10 +191,7 @@ export class NewadvertisementformPage implements OnInit {
 
   ionViewWillEnter() {
 
-
-
-
-
+    this.getPlan();
     this.postStatus = localStorage.getItem("postStatus");
     if (this.postStatus == "1") {
       this.advertisementStatus = "update";
@@ -490,8 +493,8 @@ export class NewadvertisementformPage implements OnInit {
     send_date['email'] = this.secondFormData.emailCtrl;
     send_date['mobile'] = this.secondFormData.mobileCtrl;
     send_date['categoryId'] = this.fourthFormData.categoryId;
-    send_date['startDateTime'] = this.fromDateTimeAd;
-    send_date['endDateTime'] = this.toDateTimeAd;
+    send_date['startDateTime'] = this.checkAdStartDateTimestamp;
+    send_date['endDateTime'] = this.checkAdEndDateTimestamp;
     send_date['isActive'] = 1;
     send_date['images'] = this.urls;
     send_date['countryCode'] = this.selectedCode;
@@ -510,8 +513,8 @@ export class NewadvertisementformPage implements OnInit {
         this.advertisementId = MyResponse['result']['id'];
         localStorage.setItem("categoryId", this.getCategoryId);
         this.postBanner(this.getCategoryId);
-        this.presentToast("Advertisement posted successfully.");
-
+        // this.presentToast("Advertisement posted successfully.");
+        this.payWithRazor();
         this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
         this.loader.hideBlockingLoaderAuth();
       }, error => {
@@ -547,8 +550,8 @@ export class NewadvertisementformPage implements OnInit {
     send_date['image'] = this.bannerImage;
     send_date['title'] = this.firstFormData.titleCtrl;
     send_date['description'] = this.firstFormData.descriptionCtrl;
-    send_date['startDateTime'] = this.fromDateTimestamp;
-    send_date['endDateTime'] = this.toDateTimestamp;
+    send_date['startDateTime'] = this.checkBannerStartDateTimestamp;
+    send_date['endDateTime'] = this.checkBannerEndDateTimestamp;
     send_date['lat'] = this.lattitude;
     send_date['lng'] = this.longitude;
     send_date['isActive'] = 1;
@@ -671,6 +674,17 @@ export class NewadvertisementformPage implements OnInit {
       })
   }
 
+  getPlan() {
+    let url = environment.base_url + environment.version + "subscriptions";
+    this.apiCall.get(url).subscribe(MyResponse => {
+      this.plansArray = MyResponse['result']['list'];
+      console.log("show plansArray " + this.plansArray);
+    },
+      error => {
+
+      })
+  }
+
 
   selectedChanged(selectedLanguage) {
     // alert("selectedLanguage:"+JSON.stringify(selectedLanguage));
@@ -690,21 +704,34 @@ export class NewadvertisementformPage implements OnInit {
         // this.networkServices.onPageLoadCheckInternet();
       })
   }
-  checkAdveriseMentPriceCard(planName,price){
+  checkAdveriseMentPriceCard(planName, price, noOfDays) {
+
+    let startAddate = new Date();
+    this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
+    console.log("start timestamp:" + this.checkAdStartDateTimestamp);
+    this.checkAdEndDateTimestamp = moment(startAddate, "MM--DD-YYYY").add(noOfDays, 'days');
+
     this.totalCalculatePayment = 0;
     this.selectedAdPrice = price;
-    console.log("show final payment:"+this.totalCalculatePayment);
-    console.log("show selectedBannerPrice payment:"+this.selectedBannerPrice);
-    console.log("show selectedAdPrice payment:"+this.selectedAdPrice);
-    this.totalCalculatePayment = +this.selectedBannerPrice +  +this.selectedAdPrice;
-    console.log("final payment:"+this.totalCalculatePayment);
+
+    this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
+    console.log("final payment:" + this.totalCalculatePayment);
     this.adPlanName = planName;
   }
 
-  checkBannerPriceCard(planName, price){
+  checkBannerPriceCard(planName, price, noOfDays) {
+    console.log("no of days:::" + noOfDays);
+    let startdate = new Date();
+
+    this.checkBannerStartDateTimestamp = this.toTimestamp(startdate);
+    console.log("start banner timestamp:::" + this.checkBannerStartDateTimestamp);
+    this.checkBannerEndDateTimestamp = moment(startdate, "MM--DD-YYYY").add(noOfDays, 'days');
+
+    var time = moment(this.checkBannerEndDateTimestamp).format("DD-MM-YYYY");
+    console.log("no of days after calculation:::" + time);
     this.totalCalculatePayment = 0;
     this.selectedBannerPrice = price;
-    this.totalCalculatePayment = +this.selectedBannerPrice +  +this.selectedAdPrice;
+    this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
     this.bannerPlanName = planName;
   }
 
@@ -977,7 +1004,6 @@ export class NewadvertisementformPage implements OnInit {
       image: 'https://i.imgur.com/3g7nmJC.png',
       currency: this.currency, // your 3 letter currency code
       key: this.razor_key,
-      payment_capture: 1, // your Key Id from Razorpay dashboard
       amount: this.totalCalculatePayment, // Payment amount in smallest denomiation e.g. cents for USD
       name: 'Holyhub',
       prefill: {
@@ -1002,9 +1028,8 @@ export class NewadvertisementformPage implements OnInit {
     // };
 
     var successCallback = function (success) {
-      alert('payment_id: ' + success)
-      var orderId = success.razorpay_order_id
-      var signature = success.razorpay_signature
+      // alert('payment_id: ' + success)
+      this.gateWayLogsCheck(success);
     }
 
     var cancelCallback = function (error) {
@@ -1030,5 +1055,27 @@ export class NewadvertisementformPage implements OnInit {
 
     }
     console.log("check data:" + JSON.stringify(this.selectPlan));
+  }
+
+  gatewayLogsCheck(success) {
+
+    this.loader.showBlockingLoaderAuth();
+    let send_date = {};
+    send_date['advertisementId'] = this.bannerImage;
+    send_date['userId'] = this.firstFormData.titleCtrl;
+    send_date['paymentId'] = success;
+    send_date['isSuccess'] = 0;
+    send_date['advertisementStartDate'] = this.checkBannerEndDateTimestamp;
+    send_date['advertisementEndDate'] = this.lattitude;
+    send_date['bannerStartDate'] = this.longitude;
+    send_date['bannerEndDate'] = 1;
+
+
+    let url = environment.base_url + environment.version + "payment-gateway-logs";
+    this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.loader.hideBlockingLoaderAuth();
+    });
   }
 }
