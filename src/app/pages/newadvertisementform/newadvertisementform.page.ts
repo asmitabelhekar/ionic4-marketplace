@@ -755,6 +755,8 @@ export class NewadvertisementformPage implements OnInit {
         this.fileToUpload = file;
         reader.readAsDataURL(this.fileToUpload);
       }
+
+      // this.handleFirstFileInput(this.fileToUpload,index);
       if (index == 0) {
         this.handleFirstFileInput(this.fileToUpload);
       } else if (index == 1) {
@@ -796,6 +798,22 @@ export class NewadvertisementformPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
+        // if(index == 0){
+        //   this.firstImage = MyResponse['result'][0];
+        // }else  if(index == 1){
+        //   this.secondImage = MyResponse['result'][0];
+        // }else  if(index == 2){
+        //   this.thirdImage = MyResponse['result'][0];
+        // }else  if(index == 3){
+        //   this.fourthImage = MyResponse['result'][0];
+        // }else  if(index == 4){
+        //   this.fifthImage = MyResponse['result'][0];
+        // }else{
+
+        // }
+
+
+
         this.firstImage = MyResponse['result'][0];
         console.log("print url resonce:" + this.firstImage);
       }, error => {
@@ -913,7 +931,8 @@ export class NewadvertisementformPage implements OnInit {
       description: 'Credits towards consultation',
       image: 'https://i.imgur.com/3g7nmJC.png',
       currency: this.currency, // your 3 letter currency code
-      key: this.razor_key, // your Key Id from Razorpay dashboard
+      key: this.razor_key,
+      payment_capture : 1, // your Key Id from Razorpay dashboard
       amount: this.totalCalculatePayment, // Payment amount in smallest denomiation e.g. cents for USD
       name: 'Holyhub',
       prefill: {
@@ -932,13 +951,19 @@ export class NewadvertisementformPage implements OnInit {
     };
     // this.submmitAdvertisementData();
 
-    var successCallback = function (payment_id) {
-      alert('payment_id: ' + payment_id);
-      this.submmitAdvertisementData();
-    };
+    // var successCallback = function (payment_id) {
+    //   alert('payment_id: ' + payment_id);
+    //   this.submmitAdvertisementData();
+    // };
+
+    var successCallback = function(success) {
+      alert('payment_id: ' + success)
+      var orderId = success.razorpay_order_id
+      var signature = success.razorpay_signature
+    }
 
     var cancelCallback = function (error) {
-      console.log("show payment gateway error:"+error.description + ' (Error ' + error.code + ')');
+      alert("show payment gateway error:"+error.description + ' (Error ' + error.code + ')');
     };
 
     RazorpayCheckout.open(options, successCallback, cancelCallback);

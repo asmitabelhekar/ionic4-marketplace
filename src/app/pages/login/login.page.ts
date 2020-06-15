@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
     this.facebook.api('/' + userid + '/?fields=id,email,name,picture', ['public_profile'])
       .then(res => {
         this.router.navigate(['/home']);
-        console.log("show details:"+res);
+        alert("show fb login details:"+JSON.stringify(res));
         this.users = res;
         localStorage.setItem("userId", this.users.id);
         localStorage.setItem("loginStatus", 'yes');
@@ -148,7 +148,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem("userName", this.users.name);
         // localStorage.setItem("userCreated", this.users.);
         this.router.navigate(['/home']);
-        console.log("show details:"+JSON.stringify(this.loginDetails));
+        alert("show gmail login details:"+JSON.stringify(this.loginDetails));
       }, (err) => {
 
       })

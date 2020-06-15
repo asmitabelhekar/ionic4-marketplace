@@ -744,6 +744,7 @@ var NewadvertisementformPage = /** @class */ (function () {
                 this.fileToUpload = file;
                 reader.readAsDataURL(this.fileToUpload);
             }
+            // this.handleFirstFileInput(this.fileToUpload,index);
             if (index == 0) {
                 this.handleFirstFileInput(this.fileToUpload);
             }
@@ -783,6 +784,18 @@ var NewadvertisementformPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
+            // if(index == 0){
+            //   this.firstImage = MyResponse['result'][0];
+            // }else  if(index == 1){
+            //   this.secondImage = MyResponse['result'][0];
+            // }else  if(index == 2){
+            //   this.thirdImage = MyResponse['result'][0];
+            // }else  if(index == 3){
+            //   this.fourthImage = MyResponse['result'][0];
+            // }else  if(index == 4){
+            //   this.fifthImage = MyResponse['result'][0];
+            // }else{
+            // }
             _this.firstImage = MyResponse['result'][0];
             console.log("print url resonce:" + _this.firstImage);
         }, function (error) {
@@ -885,6 +898,7 @@ var NewadvertisementformPage = /** @class */ (function () {
             image: 'https://i.imgur.com/3g7nmJC.png',
             currency: this.currency,
             key: this.razor_key,
+            payment_capture: 1,
             amount: this.totalCalculatePayment,
             name: 'Holyhub',
             prefill: {
@@ -902,12 +916,17 @@ var NewadvertisementformPage = /** @class */ (function () {
             }
         };
         // this.submmitAdvertisementData();
-        var successCallback = function (payment_id) {
-            alert('payment_id: ' + payment_id);
-            this.submmitAdvertisementData();
+        // var successCallback = function (payment_id) {
+        //   alert('payment_id: ' + payment_id);
+        //   this.submmitAdvertisementData();
+        // };
+        var successCallback = function (success) {
+            alert('payment_id: ' + success);
+            var orderId = success.razorpay_order_id;
+            var signature = success.razorpay_signature;
         };
         var cancelCallback = function (error) {
-            console.log("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
+            alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
         };
         RazorpayCheckout.open(options, successCallback, cancelCallback);
     };
