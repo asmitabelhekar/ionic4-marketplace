@@ -301,6 +301,8 @@ export class NewadvertisementformPage implements OnInit {
 
     } else {
       this.advertisementStatus = "post";
+
+     
     }
   }
 
@@ -709,6 +711,19 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.plansArray = MyResponse['result']['list'];
       console.log("show plansArray " + this.plansArray);
+      if(this.postStatus == "1"){
+        console.log("check first plan name of ad in update:");
+      }else{
+        console.log("check first plan name of ad in post:");
+        for(let i=0; i< this.plansArray.length; i++){
+          if(this.plansArray[i]['isAdvertisement'] == "0"){
+            this.adPlanName = this.plansArray[i]['name'];
+            this.checkAdveriseMentPriceCard(this.adPlanName,this.plansArray[i]['price'],this.plansArray[i]['noOfDays']);
+            console.log("check first plan name of ad:"+this.adPlanName);
+          }
+        }
+      }
+     
     },
       error => {
 
@@ -754,12 +769,12 @@ export class NewadvertisementformPage implements OnInit {
     if (this.postStatus == "1") {
       let currentDate = new Date();
       let compareDates = this.compare(new Date(currentDate), new Date(this.getEndDateForUpdate));
-      console.log("check dates comparison:" + compareDates);
+
       this.checkAdStartDateTimestamp = this.toTimestamp(compareDates);
-      console.log("check checkAdStartDateTimestamp dates comparison:" + this.checkAdStartDateTimestamp);
-      let checkNew = moment(this.getEndDateForUpdate, "MM-DD-YYYY").add(noOfDays, 'days');
-      console.log("selected plan next ---:" + this.checkAdEndDateTimestamp);
+
+      let checkNew = moment(compareDates, "MM-DD-YYYY").add(noOfDays, 'days');
       this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+      console.log("check final end date timestamp:"+this.checkAdEndDateTimestamp);
     } else {
       let startAddate = new Date();
       this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
@@ -798,8 +813,12 @@ export class NewadvertisementformPage implements OnInit {
     } else {
 
       console.log("update banner----");
-      this.checkBannerStartDateTimestamp = this.toTimestamp(this.getEndDateForUpdateBanner);
-      let checkNew = moment(this.getEndDateForUpdateBanner, "MM-DD-YYYY").add(noOfDays, 'days');
+      let currentDate = new Date();
+      let compareBannerDates = this.compare(new Date(currentDate), new Date(this.getEndDateForUpdateBanner));
+
+
+      this.checkBannerStartDateTimestamp = this.toTimestamp(compareBannerDates);
+      let checkNew = moment(compareBannerDates, "MM-DD-YYYY").add(noOfDays, 'days');
       console.log("selected plan next ---:" + this.checkBannerEndDateTimestamp);
       this.checkBannerEndDateTimestamp = this.toTimestamp(checkNew);
     }
