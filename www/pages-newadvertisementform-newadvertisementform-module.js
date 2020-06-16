@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:white\">Advertisement</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <!-- <button mat-raised-button (click)=\"isLinear = !isLinear\" id=\"toggle-linear\">\n    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}\n  </button> -->\n  <mat-vertical-stepper [linear]=\"true\" #stepper style=\"padding-bottom:100px;\">\n    <!-- <mat-step [stepControl]=\"firstFormGroup\">\n      <form [formGroup]=\"firstFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form1()\" #formone=\"ngForm\">\n        <ng-template matStepLabel>Advertisement Detail</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Title</mat-label>\n          <input matInput type=\"text\" formControlName=\"titleCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Price</mat-label>\n          <input matInput type=\"number\" formControlName=\"priceCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Description</mat-label>\n          <textarea matInput type=\"text\" formControlName=\"descriptionCtrl\" required class=\"text-font-size\"></textarea>\n        </mat-form-field>\n\n        <div fxLayoutAlign=\"start start\" fxFlex=\"100\">\n          <button mat-button matStepperNext class=\"buttonClass\">Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <form [formGroup]=\"secondFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form2()\" #formtwo=\"ngForm\">\n        <ng-template matStepLabel>Contact Details</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Email</mat-label>\n          <input matInput type=\"email\" class=\"text-font-size\" formControlName=\"emailCtrl\" required\n            pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\n        </mat-form-field>\n\n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n          <mat-form-field class=\"margin-top-css\" style=\"width:25%; height:82px; margin-right:10px; \"\n            appearance=\"outline\">\n            <mat-label class=\"floating-label-css\">Select Code</mat-label>\n            <mat-select name=\"type\" formControlName=\"countryCodeCtrl\" style=\"font-size:13px;\"\n              (selectionChange)=\"selectCountryCode(selectedCode)\" class=\"filter-select\" [(value)]=\"selectedCode\">\n              <mat-option *ngFor=\"let code of countryCode\"  [value]=\"code.dial_code\">\n                +{{code.dial_code}}\n              </mat-option>\n            </mat-select>\n          </mat-form-field>\n\n          <mat-form-field appearance=\"outline\" class=\"margin-top-css\"\n            style=\"width:74%; height:82px; \">\n            <mat-label class=\"floating-label-css\">Mobile</mat-label>\n            <input matInput type=\"tel\" minlength=\"10\" class=\"text-font-size\" maxlength=\"10\" formControlName=\"mobileCtrl\"\n              required>\n          </mat-form-field>\n\n        </div>\n\n\n        <ion-row\n          style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px\">\n          <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n            <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n          </ion-col>\n\n          <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n            <ion-radio-group (ionChange)=\"radioGroupChange($event)\" formControlName=\"checkRadioButton\">\n\n              <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n                <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n                  <ion-radio value=\"{{item.value}}\"></ion-radio>\n                  <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">{{item.name}}</ion-label>\n                </div>\n\n              \n\n              </div>\n            \n            </ion-radio-group>\n\n\n          </ion-col>\n        </ion-row>\n\n        <label class=\"floating-label-css\" style=\"color:gray;margin-top:5px;margin-bottom:5px;\">Just start typing you will get autocomplete result\n          for address</label>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Address</mat-label>\n          <input matInput class=\"text-font-size\" formControlName=\"addressCtrl\" ngx-google-places-autocomplete\n            #placesRef=\"ngx-places\" name=\"city\" required (onAddressChange)=\"handleAddressChange($event)\">\n        </mat-form-field>\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"thirdFormGroup\">\n      <form [formGroup]=\"thirdFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form3()\" #formthree=\"ngForm\">\n        <ng-template matStepLabel>Images Upload</ng-template>\n        <label class=\"desc-text\" style=\"color:gray;margin-top:5px;\">We recommend uploading image aspect ratio as 2:1</label>\n\n\n        <div class=\"cl_image_div\" style=\"margin-top:20px;\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload1').click()\">\n            <ion-icon *ngIf=\"firstImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"firstImage == '' \" align=\"center\">Upload Image</label>\n            <img *ngIf=\"firstImage != '' \" src=\"{{firstImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload2').click()\">\n            <ion-icon *ngIf=\"secondImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"secondImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"secondImage != '' \" src=\"{{secondImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload3').click()\">\n            <ion-icon *ngIf=\"thirdImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"thirdImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"thirdImage != '' \" src=\"{{thirdImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload4').click()\">\n            <ion-icon *ngIf=\"fourthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fourthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fourthImage != '' \" src=\"{{fourthImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload5').click()\">\n            <ion-icon *ngIf=\"fifthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fifthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fifthImage != '' \" src=\"{{fifthImage}}\" class=\"cl_display_img\">\n          </div>\n\n        </div>\n\n        <input style=\"display: none;\" id=\"image_upload1\" type=\"file\" (change)=\"detectEventGallery($event,0)\">\n        <input style=\"display: none;\" id=\"image_upload2\" type=\"file\" (change)=\"detectEventGallery($event,1)\">\n        <input style=\"display: none;\" id=\"image_upload3\" type=\"file\" (change)=\"detectEventGallery($event,2)\">\n        <input style=\"display: none;\" id=\"image_upload4\" type=\"file\" (change)=\"detectEventGallery($event,3)\">\n        <input style=\"display: none;\" id=\"image_upload5\" type=\"file\" (change)=\"detectEventGallery($event,4)\">\n\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" style=\"margin-top:20px;\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"fourthFormGroup\">\n      <form [formGroup]=\"fourthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form4()\" #formfour=\"ngForm\">\n        <ng-template matStepLabel>Filter Detail</ng-template>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"categoryId\"\n            (selectionChange)=\"selectCategoryType(categoryId)\" class=\"filter-select\" [(value)]=\"categoryId\">\n            <mat-option *ngFor=\"let type of categoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Sub Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"subCategoryId\"\n            (selectionChange)=\"selectSubCategoryType(subCategoryId)\" class=\"filter-select\" [(value)]=\"subCategoryId\">\n            <mat-option *ngFor=\"let type of subCategoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Tags</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"tag\" formControlName=\"selectedTags\"\n            (selectionChange)=\"selectedTags(selectedTags)\" class=\"filter-select\" [(value)]=\"selectedTags\" multiple>\n            <mat-option *ngFor=\"let tag of tagsArray\" [value]=\"tag.name\">\n              {{tag.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Languages you support</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"year\" formControlName=\"selectedLanguages\"\n            (selectionChange)=\"selectedChanged(selectedLanguages)\" class=\"filter-select\" [(value)]=\"selectedLanguages\"\n            multiple>\n            <mat-option *ngFor=\"let year of languageArray\" [value]=\"year.name\">\n              {{year.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step> -->\n    <mat-step [stepControl]=\"fifthFormGroup\">\n      <form [formGroup]=\"fifthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form5()\" #formfive=\"ngForm\">\n        <ng-template matStepLabel>Payment</ng-template>\n\n        <!-- \n        <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;\">How many weeks you have to post Banner</label>\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Banner Weeks</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"bannerWeek\"\n            (selectionChange)=\"selectBannerWeek(bannerWeek)\" class=\"filter-select\" [(value)]=\"bannerWeek\">\n            <mat-option *ngFor=\"let type of weeksArray\" [value]=\"type\">\n              {{type}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px\">How many weeks you have to post Advertisement</label>\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Advertisement Weeks</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"adWeek\"\n            (selectionChange)=\"selectAdWeek(adWeek)\" class=\"filter-select\" [(value)]=\"adWeek\">\n            <mat-option *ngFor=\"let type of weeksArray\" [value]=\"type\">\n              {{type}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field> -->\n\n\n\n        <div style=\"padding-bottom:20px;\" fxLayout=\"column\">\n\n        <label class=\"desc-text\" style=\"margin-top:25px;\">Advertisement Plans</label>\n\n\n          <div fxLayout=\"row wrap\">\n            <ion-card fxLayout=\"column\" fxLayoutGap=\"10px\"\n              [ngClass]=\"(bannerPlanName == item.planName) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\"\n              *ngFor=\"let item of planArray\" class=\"card-css\" (click)=\"checkBannerPriceCard(item.planName,item.price)\">\n              <label>{{item.planName}}</label>\n              <label>${{item.price}}</label>\n            </ion-card>\n\n          </div>\n\n          <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;\">Banner Plans</label>\n\n          <div fxLayout=\"row wrap\">\n            <ion-card fxLayout=\"column\" fxLayoutGap=\"10px\" [ngClass]=\"(adPlanName == item.planName) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\" *ngFor=\"let item of planArray\" class=\"card-css\" (click)=\"checkAdveriseMentPriceCard(item.planName,item.price)\">\n              <label>{{item.planName}}</label>\n              <label>${{item.price}}</label>\n             </ion-card>\n          \n          </div>\n\n          <div fxFlex=\"100\" style=\"margin-top:20px;padding:10px;\">\n            <label>Total :${{totalCalculatePayment}} </label>\n\n          </div>\n\n\n        </div>\n        <div fxFlex=\"100\">\n          <!-- <button *ngIf=\"totalCalculatePayment == 0 \"  class=\"disabledClass\">Pay with RazorPay</button> -->\n\n          <button class=\"buttonPayClass\" (click)=\"payWithRazor()\">Pay with RazorPay</button>\n        </div>\n        <!-- <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayout=\"row\" fxLayoutAlign=\"start start\" style=\"margin-top:22px;\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonBackClass\" type=\"button\" (click)=\"stepper.reset()\">Reset</button>\n          <button mat-button class=\"buttonClass\"\n            (click)=\"formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();\">Submit</button>\n        </div> -->\n      </form>\n    </mat-step>\n  </mat-vertical-stepper>\n\n  <div class=\"cl_bottom_fix\" fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"home()\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">HOME</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openChatList()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"document\" (click)=\"openChatList()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">CHATS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"postAdvertisement()\">\n      <ion-icon class=\"cl_post_css\" name=\"add-circle\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_selected-text_font\">SELL</label>\n    </div>\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openFavourite()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"heart\" (click)=\"openFavourite()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">MY ADS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openProfile()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"person\" (click)=\"openProfile()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">PROFILE</label>\n    </div>\n\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:white\">Advertisement</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <!-- <button mat-raised-button (click)=\"isLinear = !isLinear\" id=\"toggle-linear\">\n    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}\n  </button> -->\n  <mat-vertical-stepper [linear]=\"true\" #stepper style=\"padding-bottom:100px;\">\n    <mat-step [stepControl]=\"firstFormGroup\">\n      <form [formGroup]=\"firstFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form1()\" #formone=\"ngForm\">\n        <ng-template matStepLabel>Advertisement Detail</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Title</mat-label>\n          <input matInput type=\"text\" formControlName=\"titleCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Price</mat-label>\n          <input matInput type=\"number\" formControlName=\"priceCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Description</mat-label>\n          <textarea matInput type=\"text\" formControlName=\"descriptionCtrl\" required class=\"text-font-size\"></textarea>\n        </mat-form-field>\n\n        <div fxLayoutAlign=\"start start\" fxFlex=\"100\">\n          <button mat-button matStepperNext class=\"buttonClass\">Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <form [formGroup]=\"secondFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form2()\" #formtwo=\"ngForm\">\n        <ng-template matStepLabel>Contact Details</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Email</mat-label>\n          <input matInput type=\"email\" class=\"text-font-size\" formControlName=\"emailCtrl\" required\n            pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\n        </mat-form-field>\n\n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n          <mat-form-field class=\"margin-top-css\" style=\"width:25%; height:82px; margin-right:10px; \"\n            appearance=\"outline\">\n            <mat-label class=\"floating-label-css\">Select Code</mat-label>\n            <mat-select name=\"type\" formControlName=\"countryCodeCtrl\" style=\"font-size:13px;\"\n              (selectionChange)=\"selectCountryCode(selectedCode)\" class=\"filter-select\" [(value)]=\"selectedCode\">\n              <mat-option *ngFor=\"let code of countryCode\"  [value]=\"code.dial_code\">\n                +{{code.dial_code}}\n              </mat-option>\n            </mat-select>\n          </mat-form-field>\n\n          <mat-form-field appearance=\"outline\" class=\"margin-top-css\"\n            style=\"width:74%; height:82px; \">\n            <mat-label class=\"floating-label-css\">Mobile</mat-label>\n            <input matInput type=\"tel\" minlength=\"10\" class=\"text-font-size\" maxlength=\"10\" formControlName=\"mobileCtrl\"\n              required>\n          </mat-form-field>\n\n        </div>\n\n\n        <ion-row\n          style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px\">\n          <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n            <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n          </ion-col>\n\n          <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n            <ion-radio-group (ionChange)=\"radioGroupChange($event)\" formControlName=\"checkRadioButton\">\n\n              <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n                <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n                  <ion-radio value=\"{{item.value}}\"></ion-radio>\n                  <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">{{item.name}}</ion-label>\n                </div>\n\n              \n\n              </div>\n            \n            </ion-radio-group>\n\n\n          </ion-col>\n        </ion-row>\n\n        <label class=\"floating-label-css\" style=\"color:gray;margin-top:5px;margin-bottom:5px;\">Just start typing you will get autocomplete result\n          for address</label>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Address</mat-label>\n          <input matInput class=\"text-font-size\" formControlName=\"addressCtrl\" ngx-google-places-autocomplete\n            #placesRef=\"ngx-places\" name=\"city\" required (onAddressChange)=\"handleAddressChange($event)\">\n        </mat-form-field>\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"thirdFormGroup\">\n      <form [formGroup]=\"thirdFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form3()\" #formthree=\"ngForm\">\n        <ng-template matStepLabel>Images Upload</ng-template>\n        <label class=\"desc-text\" style=\"color:gray;margin-top:5px;\">We recommend uploading image aspect ratio as 2:1</label>\n\n\n        <div class=\"cl_image_div\" style=\"margin-top:20px;\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload1').click()\">\n            <ion-icon *ngIf=\"firstImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"firstImage == '' \" align=\"center\">Upload Image</label>\n            <img *ngIf=\"firstImage != '' \" src=\"{{firstImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload2').click()\">\n            <ion-icon *ngIf=\"secondImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"secondImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"secondImage != '' \" src=\"{{secondImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload3').click()\">\n            <ion-icon *ngIf=\"thirdImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"thirdImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"thirdImage != '' \" src=\"{{thirdImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload4').click()\">\n            <ion-icon *ngIf=\"fourthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fourthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fourthImage != '' \" src=\"{{fourthImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload5').click()\">\n            <ion-icon *ngIf=\"fifthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fifthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fifthImage != '' \" src=\"{{fifthImage}}\" class=\"cl_display_img\">\n          </div>\n\n        </div>\n\n        <input style=\"display: none;\" id=\"image_upload1\" type=\"file\" (change)=\"detectEventGallery($event,0)\">\n        <input style=\"display: none;\" id=\"image_upload2\" type=\"file\" (change)=\"detectEventGallery($event,1)\">\n        <input style=\"display: none;\" id=\"image_upload3\" type=\"file\" (change)=\"detectEventGallery($event,2)\">\n        <input style=\"display: none;\" id=\"image_upload4\" type=\"file\" (change)=\"detectEventGallery($event,3)\">\n        <input style=\"display: none;\" id=\"image_upload5\" type=\"file\" (change)=\"detectEventGallery($event,4)\">\n\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" style=\"margin-top:20px;\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"fourthFormGroup\">\n      <form [formGroup]=\"fourthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form4()\" #formfour=\"ngForm\">\n        <ng-template matStepLabel>Filter Detail</ng-template>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"categoryId\"\n            (selectionChange)=\"selectCategoryType(categoryId)\" class=\"filter-select\" [(value)]=\"categoryId\">\n            <mat-option *ngFor=\"let type of categoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Sub Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"subCategoryId\"\n            (selectionChange)=\"selectSubCategoryType(subCategoryId)\" class=\"filter-select\" [(value)]=\"subCategoryId\">\n            <mat-option *ngFor=\"let type of subCategoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Tags</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"tag\" formControlName=\"selectedTags\"\n            (selectionChange)=\"selectedTags(selectedTags)\" class=\"filter-select\" [(value)]=\"selectedTags\" multiple>\n            <mat-option *ngFor=\"let tag of tagsArray\" [value]=\"tag.name\">\n              {{tag.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Languages you support</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"year\" formControlName=\"selectedLanguages\"\n            (selectionChange)=\"selectedChanged(selectedLanguages)\" class=\"filter-select\" [(value)]=\"selectedLanguages\"\n            multiple>\n            <mat-option *ngFor=\"let year of languageArray\" [value]=\"year.name\">\n              {{year.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"fifthFormGroup\">\n      <form [formGroup]=\"fifthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form5()\" #formfive=\"ngForm\">\n        <ng-template matStepLabel>Payment</ng-template>\n\n        <!-- \n        <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;\">How many weeks you have to post Banner</label>\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Banner Weeks</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"bannerWeek\"\n            (selectionChange)=\"selectBannerWeek(bannerWeek)\" class=\"filter-select\" [(value)]=\"bannerWeek\">\n            <mat-option *ngFor=\"let type of weeksArray\" [value]=\"type\">\n              {{type}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px\">How many weeks you have to post Advertisement</label>\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Advertisement Weeks</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"adWeek\"\n            (selectionChange)=\"selectAdWeek(adWeek)\" class=\"filter-select\" [(value)]=\"adWeek\">\n            <mat-option *ngFor=\"let type of weeksArray\" [value]=\"type\">\n              {{type}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field> -->\n\n\n\n        <div style=\"padding-bottom:20px;\" fxLayout=\"column\">\n\n        <label class=\"desc-text\" style=\"margin-top:25px;\">Advertisement Plans</label>\n\n\n          <div fxLayout=\"row wrap\">\n            <div  *ngFor=\"let item of plansArray\">\n            <ion-card  *ngIf=\"item.isAdvertisement == 0 \" fxLayout=\"column\" fxLayoutGap=\"10px\"\n              [ngClass]=\"(adPlanName == item.name) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\"\n              class=\"card-css\" (click)=\"checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays)\">\n            \n              <label>{{item.name}}</label>\n              <label>${{item.price}}</label>\n             \n            </ion-card>\n          </div>\n\n          </div>\n\n          <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;\">Banner Plans</label>\n\n          <div fxLayout=\"row wrap\">\n            <div  *ngFor=\"let item of plansArray\">\n            <ion-card  *ngIf=\"item.isAdvertisement == 1 \" fxLayout=\"column\" fxLayoutGap=\"10px\" [ngClass]=\"(bannerPlanName == item.name) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\" class=\"card-css\" (click)=\"checkBannerPriceCard(item.name,item.price,item.noOfDays)\">\n                <label>{{item.name}}</label>\n                <label>${{item.price}}</label>\n             </ion-card>\n          </div>\n          </div>\n\n          <div fxFlex=\"100\" style=\"margin-top:20px;padding:10px;\">\n            <label>Total :${{totalCalculatePayment}} </label>\n\n          </div>\n\n\n        </div>\n        <div fxFlex=\"100\">\n          <!-- <button *ngIf=\"totalCalculatePayment == 0 \"  class=\"disabledClass\">Pay with RazorPay</button> -->\n\n          <button class=\"buttonPayClass\" (click)=\"submmitAdvertisementData()\">Pay with RazorPay</button>\n        </div>\n        <!-- <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayout=\"row\" fxLayoutAlign=\"start start\" style=\"margin-top:22px;\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonBackClass\" type=\"button\" (click)=\"stepper.reset()\">Reset</button>\n          <button mat-button class=\"buttonClass\"\n            (click)=\"formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();\">Submit</button>\n        </div> -->\n      </form>\n    </mat-step>\n  </mat-vertical-stepper>\n\n  <div class=\"cl_bottom_fix\" fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"home()\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">HOME</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openChatList()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"document\" (click)=\"openChatList()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">CHATS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"postAdvertisement()\">\n      <ion-icon class=\"cl_post_css\" name=\"add-circle\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_selected-text_font\">SELL</label>\n    </div>\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openFavourite()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"heart\" (click)=\"openFavourite()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">MY ADS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openProfile()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"person\" (click)=\"openProfile()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">PROFILE</label>\n    </div>\n\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -192,6 +192,10 @@ var NewadvertisementformPage = /** @class */ (function () {
         this.toDateTimestamp = 0;
         this.toDateTimeAd = 0;
         this.filterObject = {};
+        this.checkBannerEndDateTimestamp = 0;
+        this.checkBannerStartDateTimestamp = 0;
+        this.checkAdEndDateTimestamp = 0;
+        this.checkAdStartDateTimestamp = 0;
         this.genderArray = [
             {
                 "id": "0",
@@ -226,6 +230,7 @@ var NewadvertisementformPage = /** @class */ (function () {
                 "price": "4000"
             }
         ];
+        this.plansArray = [];
         //Tags
         this.tagsArray = [
             {
@@ -279,12 +284,14 @@ var NewadvertisementformPage = /** @class */ (function () {
         });
     };
     NewadvertisementformPage.prototype.ionViewWillEnter = function () {
+        this.getPlan();
         this.postStatus = localStorage.getItem("postStatus");
+        console.log("check status ad or update:" + this.postStatus);
         if (this.postStatus == "1") {
             this.advertisementStatus = "update";
             var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
             this.advertisementObject = JSON.parse(advertisementDetail);
-            console.log("show add details:" + this.advertisementObject);
+            console.log("show add details:" + JSON.stringify(this.advertisementObject));
             this.advertisementId = this.advertisementObject.id;
             this.advertisementModel['images'] = this.advertisementObject.images;
             this.firstFormGroup = this.formBuilder.group({
@@ -316,8 +323,13 @@ var NewadvertisementformPage = /** @class */ (function () {
                 selectedLanguages: [this.advertisementObject.languages, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             });
             this.getAllBanner();
-            this.fromDateTimeAd = this.advertisementObject.startDateTime;
-            this.toDateTimeAd = this.advertisementObject.endDateTime;
+            this.checkAdStartDateTimestamp = this.advertisementObject.startDateTime;
+            this.checkAdEndDateTimestamp = this.advertisementObject.endDateTime;
+            var getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+            this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+            console.log("checkAdEndDateTimestamp::" + this.checkAdEndDateTimestamp);
+            console.log("get Start Date For Update::" + getStartDateForUpdate);
+            console.log("get End Date For Update::" + this.getEndDateForUpdate);
             this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
             this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
             this.totalCalculatePayment = 0;
@@ -368,6 +380,16 @@ var NewadvertisementformPage = /** @class */ (function () {
             this.advertisementStatus = "post";
         }
     };
+    NewadvertisementformPage.prototype.timestampToDate = function (tmsp) {
+        var ts_ms = tmsp * 1000;
+        var date_ob = new Date(ts_ms);
+        var year = date_ob.getFullYear();
+        var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+        var date = ("0" + date_ob.getDate()).slice(-2);
+        var getStartDate = month + "/" + date + "/" + year;
+        return getStartDate;
+        var dateToday = new Date(year, parseInt(month), parseInt(date));
+    };
     NewadvertisementformPage.prototype.ngOnInit = function () {
         this.getCategory();
         this.getLanguages();
@@ -414,10 +436,15 @@ var NewadvertisementformPage = /** @class */ (function () {
             _this.bannerArray = MyResponse['result']['list'];
             if (MyResponse['result']['count'] > 0) {
                 var getBannerId = MyResponse['result']['list'][0]['id'];
-                _this.fromDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
-                _this.toDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
+                _this.checkBannerStartDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
+                _this.checkBannerEndDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
+                var getStartDateForUpdateBanner = _this.timestampToDate(_this.checkBannerStartDateTimestamp);
+                _this.getEndDateForUpdateBanner = _this.timestampToDate(_this.checkBannerEndDateTimestamp);
+                console.log("selected getEndDateForUpdateBanner:" + _this.getEndDateForUpdateBanner);
+                console.log("get Start Date For Update Banner::" + getStartDateForUpdateBanner);
+                console.log("get End Date For Update Banner::" + _this.getEndDateForUpdateBanner);
                 localStorage.setItem("bannerId", getBannerId);
-                _this.bannerWeek = _this.getDate(_this.fromDateTimestamp, _this.toDateTimestamp);
+                _this.bannerWeek = _this.getDate(_this.checkBannerStartDateTimestamp, _this.checkBannerEndDateTimestamp);
                 _this.finalCalculation = 7 + ((_this.bannerWeek - 1) * 5);
                 _this.totalCalculatePayment = 0;
                 _this.totalCalculatePayment = _this.finalCalculation + _this.finalAdCalculation;
@@ -480,7 +507,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         console.log("show third record:" + this.firstImage);
         console.log("show fourth record:" + this.fourthFormData.categoryId);
         console.log("show fifth record:" + this.FifthFormData.bannerWeek);
-        this.submmitAdvertisementData();
+        // this.submmitAdvertisementData();
     };
     NewadvertisementformPage.prototype.radioGroupChange = function (event) {
         console.log("radioGroupChange", event.detail.value);
@@ -501,6 +528,7 @@ var NewadvertisementformPage = /** @class */ (function () {
     NewadvertisementformPage.prototype.submmitAdvertisementData = function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
+        // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
         var send_date = {};
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
@@ -513,8 +541,8 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['email'] = this.secondFormData.emailCtrl;
         send_date['mobile'] = this.secondFormData.mobileCtrl;
         send_date['categoryId'] = this.fourthFormData.categoryId;
-        send_date['startDateTime'] = this.fromDateTimeAd;
-        send_date['endDateTime'] = this.toDateTimeAd;
+        send_date['startDateTime'] = this.checkAdStartDateTimestamp;
+        send_date['endDateTime'] = this.checkAdEndDateTimestamp;
         send_date['isActive'] = 1;
         send_date['images'] = this.urls;
         send_date['countryCode'] = this.selectedCode;
@@ -530,7 +558,8 @@ var NewadvertisementformPage = /** @class */ (function () {
                 _this.advertisementId = MyResponse['result']['id'];
                 localStorage.setItem("categoryId", _this.getCategoryId);
                 _this.postBanner(_this.getCategoryId);
-                _this.presentToast("Advertisement posted successfully.");
+                // this.presentToast("Advertisement posted successfully.");
+                _this.payWithRazor();
                 _this.router.navigate(['/home', { categoryId: _this.getCategoryId }]);
                 _this.loader.hideBlockingLoaderAuth();
             }, function (error) {
@@ -539,6 +568,7 @@ var NewadvertisementformPage = /** @class */ (function () {
             });
         }
         else {
+            var timestamp_formation = new Date(this.getEndDateForUpdate).getTime();
             console.log("show all forms data in send_date object:" + JSON.stringify(send_date));
             var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "users/" + this.usersId + "/advertisements/" + this.advertisementId;
             this.apiCall.put(url, send_date).subscribe(function (MyResponse) {
@@ -546,6 +576,7 @@ var NewadvertisementformPage = /** @class */ (function () {
                 console.log("shoe getCategoryId:" + _this.getCategoryId);
                 localStorage.setItem("categoryId", _this.getCategoryId);
                 _this.updateBanner(_this.getCategoryId);
+                _this.payWithRazor();
                 _this.presentToast("Advertisement updated successfully.");
                 _this.router.navigate(['/favourite']);
                 // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
@@ -565,8 +596,8 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['image'] = this.bannerImage;
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
-        send_date['startDateTime'] = this.fromDateTimestamp;
-        send_date['endDateTime'] = this.toDateTimestamp;
+        send_date['startDateTime'] = this.checkBannerStartDateTimestamp;
+        send_date['endDateTime'] = this.checkBannerEndDateTimestamp;
         send_date['lat'] = this.lattitude;
         send_date['lng'] = this.longitude;
         send_date['isActive'] = 1;
@@ -590,8 +621,8 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['image'] = this.bannerImage;
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
-        send_date['startDateTime'] = this.fromDateTimestamp;
-        send_date['endDateTime'] = this.toDateTimestamp;
+        send_date['startDateTime'] = this.checkBannerStartDateTimestamp;
+        send_date['endDateTime'] = this.checkBannerEndDateTimestamp;
         send_date['lat'] = this.lattitude;
         send_date['lng'] = this.longitude;
         send_date['isActive'] = 1;
@@ -677,6 +708,15 @@ var NewadvertisementformPage = /** @class */ (function () {
         }, function (error) {
         });
     };
+    NewadvertisementformPage.prototype.getPlan = function () {
+        var _this = this;
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "subscriptions";
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.plansArray = MyResponse['result']['list'];
+            console.log("show plansArray " + _this.plansArray);
+        }, function (error) {
+        });
+    };
     NewadvertisementformPage.prototype.selectedChanged = function (selectedLanguage) {
         // alert("selectedLanguage:"+JSON.stringify(selectedLanguage));
         this.languagesArray = (selectedLanguage);
@@ -693,21 +733,56 @@ var NewadvertisementformPage = /** @class */ (function () {
             // this.networkServices.onPageLoadCheckInternet();
         });
     };
-    NewadvertisementformPage.prototype.checkAdveriseMentPriceCard = function (planName, price) {
+    NewadvertisementformPage.prototype.checkAdveriseMentPriceCard = function (planName, price, noOfDays) {
+        if (this.postStatus == "1") {
+            this.checkAdStartDateTimestamp = this.toTimestamp(this.getEndDateForUpdate);
+            var checkNew = moment__WEBPACK_IMPORTED_MODULE_6__(this.getEndDateForUpdate, "MM-DD-YYYY").add(noOfDays, 'days');
+            console.log("selected plan next ---:" + this.checkAdEndDateTimestamp);
+            this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+        }
+        else {
+            var startAddate = new Date();
+            this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
+            console.log("start timestamp:" + this.checkAdStartDateTimestamp);
+            var checkNew = moment__WEBPACK_IMPORTED_MODULE_6__(startAddate, "MM-DD-YYYY").add(noOfDays, 'days');
+            this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+        }
+        console.log("checkAdEndDateTimestamp fromDateTimeAd:::" + this.checkAdStartDateTimestamp);
         this.totalCalculatePayment = 0;
         this.selectedAdPrice = price;
-        console.log("show final payment:" + this.totalCalculatePayment);
-        console.log("show selectedBannerPrice payment:" + this.selectedBannerPrice);
-        console.log("show selectedAdPrice payment:" + this.selectedAdPrice);
         this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
         console.log("final payment:" + this.totalCalculatePayment);
         this.adPlanName = planName;
+        var getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+        this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+        console.log("ad dates show:::" + getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
     };
-    NewadvertisementformPage.prototype.checkBannerPriceCard = function (planName, price) {
+    NewadvertisementformPage.prototype.checkBannerPriceCard = function (planName, price, noOfDays) {
+        console.log("no of days:::" + noOfDays);
+        if (this.postStatus == "0") {
+            console.log("post banner----");
+            var startdate = new Date();
+            this.checkBannerStartDateTimestamp = this.toTimestamp(startdate);
+            console.log("start banner timestamp:::" + this.checkBannerStartDateTimestamp);
+            var checkBannerNew = moment__WEBPACK_IMPORTED_MODULE_6__(startdate, "MM-DD-YYYY").add(noOfDays, 'days');
+            this.checkBannerEndDateTimestamp = this.toTimestamp(checkBannerNew);
+        }
+        else {
+            console.log("update banner----");
+            this.checkBannerStartDateTimestamp = this.toTimestamp(this.getEndDateForUpdateBanner);
+            var checkNew = moment__WEBPACK_IMPORTED_MODULE_6__(this.getEndDateForUpdateBanner, "MM-DD-YYYY").add(noOfDays, 'days');
+            console.log("selected plan next ---:" + this.checkBannerEndDateTimestamp);
+            this.checkBannerEndDateTimestamp = this.toTimestamp(checkNew);
+        }
+        // var time = moment(this.checkBannerEndDateTimestamp).format("DD-MM-YYYY");
+        // console.log("no of days after calculation:::" + time);
         this.totalCalculatePayment = 0;
         this.selectedBannerPrice = price;
         this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
         this.bannerPlanName = planName;
+        var getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+        this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+        console.log("banner dates show:::" + getStartDateForUpdateBanner + ":end date:" + this.getEndDateForUpdateBanner);
     };
     NewadvertisementformPage.prototype.selectBannerWeek = function (data) {
         this.bannerWeek = data;
@@ -933,13 +1008,13 @@ var NewadvertisementformPage = /** @class */ (function () {
         });
     };
     NewadvertisementformPage.prototype.payWithRazor = function () {
+        var _this = this;
         var getName = localStorage.getItem("getName");
         var options = {
             description: 'Credits towards consultation',
             image: 'https://i.imgur.com/3g7nmJC.png',
             currency: this.currency,
             key: this.razor_key,
-            payment_capture: 1,
             amount: this.totalCalculatePayment,
             name: 'Holyhub',
             prefill: {
@@ -963,8 +1038,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         // };
         var successCallback = function (success) {
             alert('payment_id: ' + success);
-            var orderId = success.razorpay_order_id;
-            var signature = success.razorpay_signature;
+            _this.gatewayLogsCheck(success);
         };
         var cancelCallback = function (error) {
             alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
@@ -983,6 +1057,29 @@ var NewadvertisementformPage = /** @class */ (function () {
             this.selectPlan[name] = true;
         }
         console.log("check data:" + JSON.stringify(this.selectPlan));
+    };
+    NewadvertisementformPage.prototype.gatewayLogsCheck = function (success) {
+        var _this = this;
+        var getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+        this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+        var getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+        this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+        this.loader.showBlockingLoaderAuth();
+        var send_date = {};
+        send_date['advertisementId'] = this.advertisementId;
+        send_date['userId'] = this.usersId;
+        send_date['paymentId'] = (success);
+        send_date['isSuccess'] = 0;
+        send_date['advertisementStartDate'] = getStartDateForUpdate;
+        send_date['advertisementEndDate'] = this.getEndDateForUpdate;
+        send_date['bannerStartDate'] = getStartDateForUpdateBanner;
+        send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "payment-gateway-logs";
+        this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
+            _this.loader.hideBlockingLoaderAuth();
+        }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+        });
     };
     NewadvertisementformPage.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },

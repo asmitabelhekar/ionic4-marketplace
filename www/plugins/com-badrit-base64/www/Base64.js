@@ -1,5 +1,4 @@
-cordova.define("com-badrit-base64.Base64", function(require, exports, module) {
-// window.plugins.Base64
+cordova.define("com-badrit-base64.Base64", function(require, exports, module) { // window.plugins.Base64
 
 function Base64() {
 }

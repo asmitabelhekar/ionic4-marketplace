@@ -97,10 +97,13 @@ export class NewadvertisementformPage implements OnInit {
   bannerImage: any;
   filterObject: any = {};
   bannerArray: any;
-  checkBannerEndDateTimestamp: any;
-  checkBannerStartDateTimestamp: any;
-  checkAdEndDateTimestamp: any;
-  checkAdStartDateTimestamp: any;
+  checkBannerEndDateTimestamp: any = 0;
+  checkBannerStartDateTimestamp: any = 0;
+  checkAdEndDateTimestamp: any = 0;
+  checkAdStartDateTimestamp: any = 0;
+
+  getEndDateForUpdate: any;
+  getEndDateForUpdateBanner: any;
 
   genderArray = [
     {
@@ -191,13 +194,16 @@ export class NewadvertisementformPage implements OnInit {
 
   ionViewWillEnter() {
 
+    let nnnn = this.toTimestamp("06/10/2020");
+    console.log("show nnnn timesatmp:" + nnnn);
     this.getPlan();
     this.postStatus = localStorage.getItem("postStatus");
+    console.log("check status ad or update:" + this.postStatus);
     if (this.postStatus == "1") {
       this.advertisementStatus = "update";
       var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
       this.advertisementObject = JSON.parse(advertisementDetail);
-      console.log("show add details:" + this.advertisementObject);
+      console.log("show add details:" + JSON.stringify(this.advertisementObject));
       this.advertisementId = this.advertisementObject.id;
       this.advertisementModel['images'] = this.advertisementObject.images;
 
@@ -234,8 +240,13 @@ export class NewadvertisementformPage implements OnInit {
       this.getAllBanner();
 
 
-      this.fromDateTimeAd = this.advertisementObject.startDateTime;
-      this.toDateTimeAd = this.advertisementObject.endDateTime;
+      this.checkAdStartDateTimestamp = this.advertisementObject.startDateTime;
+      this.checkAdEndDateTimestamp = this.advertisementObject.endDateTime;
+      let getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+      this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+      console.log("checkAdEndDateTimestamp::" + this.checkAdEndDateTimestamp);
+      console.log("get Start Date For Update::" + getStartDateForUpdate);
+      console.log("get End Date For Update::" + this.getEndDateForUpdate);
       this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
       this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
       this.totalCalculatePayment = 0;
@@ -291,6 +302,17 @@ export class NewadvertisementformPage implements OnInit {
     } else {
       this.advertisementStatus = "post";
     }
+  }
+
+  timestampToDate(tmsp) {
+    var ts_ms = tmsp * 1000;
+    var date_ob = new Date(ts_ms);
+    var year = date_ob.getFullYear();
+    var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    var date = ("0" + date_ob.getDate()).slice(-2);
+    let getStartDate = month + "/" + date + "/" + year;
+    return getStartDate;
+    var dateToday = new Date(year, parseInt(month), parseInt(date));
   }
 
   ngOnInit() {
@@ -349,11 +371,15 @@ export class NewadvertisementformPage implements OnInit {
       this.bannerArray = MyResponse['result']['list'];
       if (MyResponse['result']['count'] > 0) {
         let getBannerId = MyResponse['result']['list'][0]['id'];
-        this.fromDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
-        this.toDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
-
+        this.checkBannerStartDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
+        this.checkBannerEndDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
+        let getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+        this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+        console.log("selected getEndDateForUpdateBanner:" + this.getEndDateForUpdateBanner);
+        console.log("get Start Date For Update Banner::" + getStartDateForUpdateBanner);
+        console.log("get End Date For Update Banner::" + this.getEndDateForUpdateBanner);
         localStorage.setItem("bannerId", getBannerId);
-        this.bannerWeek = this.getDate(this.fromDateTimestamp, this.toDateTimestamp);
+        this.bannerWeek = this.getDate(this.checkBannerStartDateTimestamp, this.checkBannerEndDateTimestamp);
         this.finalCalculation = 7 + ((this.bannerWeek - 1) * 5);
 
         this.totalCalculatePayment = 0;
@@ -457,7 +483,7 @@ export class NewadvertisementformPage implements OnInit {
     console.log("show fourth record:" + this.fourthFormData.categoryId);
     console.log("show fifth record:" + this.FifthFormData.bannerWeek);
 
-    this.submmitAdvertisementData();
+    // this.submmitAdvertisementData();
   }
 
 
@@ -479,7 +505,7 @@ export class NewadvertisementformPage implements OnInit {
   submmitAdvertisementData() {
 
     this.loader.showBlockingLoaderAuth();
-
+    // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
 
     let send_date = {};
     send_date['title'] = this.firstFormData.titleCtrl;
@@ -523,6 +549,9 @@ export class NewadvertisementformPage implements OnInit {
       });
     }
     else {
+
+      var timestamp_formation = new Date(this.getEndDateForUpdate).getTime();
+
       console.log("show all forms data in send_date object:" + JSON.stringify(send_date));
 
       let url = environment.base_url + environment.version + "users/" + this.usersId + "/advertisements/" + this.advertisementId;
@@ -531,6 +560,7 @@ export class NewadvertisementformPage implements OnInit {
         console.log("shoe getCategoryId:" + this.getCategoryId);
         localStorage.setItem("categoryId", this.getCategoryId);
         this.updateBanner(this.getCategoryId);
+        this.payWithRazor();
         this.presentToast("Advertisement updated successfully.");
         this.router.navigate(['/favourite']);
         // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
@@ -577,8 +607,8 @@ export class NewadvertisementformPage implements OnInit {
     send_date['image'] = this.bannerImage;
     send_date['title'] = this.firstFormData.titleCtrl;
     send_date['description'] = this.firstFormData.descriptionCtrl;
-    send_date['startDateTime'] = this.fromDateTimestamp;
-    send_date['endDateTime'] = this.toDateTimestamp;
+    send_date['startDateTime'] = this.checkBannerStartDateTimestamp;
+    send_date['endDateTime'] = this.checkBannerEndDateTimestamp;
     send_date['lat'] = this.lattitude;
     send_date['lng'] = this.longitude;
     send_date['isActive'] = 1;
@@ -704,35 +734,85 @@ export class NewadvertisementformPage implements OnInit {
         // this.networkServices.onPageLoadCheckInternet();
       })
   }
+  compare(date1, date2) {
+    console.log("first date:" + date1);
+    console.log("second date:" + date2);
+    if (date1 > date2) {
+      console.log("check first date :" + date1);
+      return date1;
+    }
+    else if (date1 < date2) {
+      console.log("check second date :" + date2);
+      return date2;
+    }
+    else return (date1);
+  }
+
+
   checkAdveriseMentPriceCard(planName, price, noOfDays) {
 
-    let startAddate = new Date();
-    this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
-    console.log("start timestamp:" + this.checkAdStartDateTimestamp);
-    this.checkAdEndDateTimestamp = moment(startAddate, "MM--DD-YYYY").add(noOfDays, 'days');
+    if (this.postStatus == "1") {
+      let currentDate = new Date();
+      let compareDates = this.compare(new Date(currentDate), new Date(this.getEndDateForUpdate));
+      console.log("check dates comparison:" + compareDates);
+      this.checkAdStartDateTimestamp = this.toTimestamp(compareDates);
+      console.log("check checkAdStartDateTimestamp dates comparison:" + this.checkAdStartDateTimestamp);
+      let checkNew = moment(this.getEndDateForUpdate, "MM-DD-YYYY").add(noOfDays, 'days');
+      console.log("selected plan next ---:" + this.checkAdEndDateTimestamp);
+      this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+    } else {
+      let startAddate = new Date();
+      this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
+      console.log("start timestamp:" + this.checkAdStartDateTimestamp);
+      let checkNew = moment(startAddate, "MM-DD-YYYY").add(noOfDays, 'days');
+      this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+    }
 
+    console.log("checkAdEndDateTimestamp fromDateTimeAd:::" + this.checkAdStartDateTimestamp);
     this.totalCalculatePayment = 0;
     this.selectedAdPrice = price;
-
     this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
     console.log("final payment:" + this.totalCalculatePayment);
     this.adPlanName = planName;
+
+    let getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+    this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+
+    console.log("ad dates show:::" + getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
   }
 
   checkBannerPriceCard(planName, price, noOfDays) {
     console.log("no of days:::" + noOfDays);
-    let startdate = new Date();
 
-    this.checkBannerStartDateTimestamp = this.toTimestamp(startdate);
-    console.log("start banner timestamp:::" + this.checkBannerStartDateTimestamp);
-    this.checkBannerEndDateTimestamp = moment(startdate, "MM--DD-YYYY").add(noOfDays, 'days');
+    if (this.postStatus == "0") {
 
-    var time = moment(this.checkBannerEndDateTimestamp).format("DD-MM-YYYY");
-    console.log("no of days after calculation:::" + time);
+      console.log("post banner----");
+      let startdate = new Date();
+      this.checkBannerStartDateTimestamp = this.toTimestamp(startdate);
+      console.log("start banner timestamp:::" + this.checkBannerStartDateTimestamp);
+      let checkBannerNew = moment(startdate, "MM-DD-YYYY").add(noOfDays, 'days');
+      this.checkBannerEndDateTimestamp = this.toTimestamp(checkBannerNew);
+
+
+
+    } else {
+
+      console.log("update banner----");
+      this.checkBannerStartDateTimestamp = this.toTimestamp(this.getEndDateForUpdateBanner);
+      let checkNew = moment(this.getEndDateForUpdateBanner, "MM-DD-YYYY").add(noOfDays, 'days');
+      console.log("selected plan next ---:" + this.checkBannerEndDateTimestamp);
+      this.checkBannerEndDateTimestamp = this.toTimestamp(checkNew);
+    }
+    // var time = moment(this.checkBannerEndDateTimestamp).format("DD-MM-YYYY");
+    // console.log("no of days after calculation:::" + time);
     this.totalCalculatePayment = 0;
     this.selectedBannerPrice = price;
     this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
     this.bannerPlanName = planName;
+
+    let getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+    this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+    console.log("banner dates show:::" + getStartDateForUpdateBanner + ":end date:" + this.getEndDateForUpdateBanner);
   }
 
   selectBannerWeek(data) {
@@ -1027,9 +1107,10 @@ export class NewadvertisementformPage implements OnInit {
     //   this.submmitAdvertisementData();
     // };
 
-    var successCallback = function (success) {
-      // alert('payment_id: ' + success)
-      this.gateWayLogsCheck(success);
+    var successCallback = (success) => {
+      alert('payment_id: ' + success);
+
+      this.gatewayLogsCheck(success);
     }
 
     var cancelCallback = function (error) {
@@ -1059,16 +1140,23 @@ export class NewadvertisementformPage implements OnInit {
 
   gatewayLogsCheck(success) {
 
+    let getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+    this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+
+    let getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+    this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+
     this.loader.showBlockingLoaderAuth();
+
     let send_date = {};
-    send_date['advertisementId'] = this.bannerImage;
-    send_date['userId'] = this.firstFormData.titleCtrl;
-    send_date['paymentId'] = success;
+    send_date['advertisementId'] = this.advertisementId;
+    send_date['userId'] = this.usersId;
+    send_date['paymentId'] = (success);
     send_date['isSuccess'] = 0;
-    send_date['advertisementStartDate'] = this.checkBannerEndDateTimestamp;
-    send_date['advertisementEndDate'] = this.lattitude;
-    send_date['bannerStartDate'] = this.longitude;
-    send_date['bannerEndDate'] = 1;
+    send_date['advertisementStartDate'] = getStartDateForUpdate;
+    send_date['advertisementEndDate'] = this.getEndDateForUpdate;
+    send_date['bannerStartDate'] = getStartDateForUpdateBanner;
+    send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
 
 
     let url = environment.base_url + environment.version + "payment-gateway-logs";
