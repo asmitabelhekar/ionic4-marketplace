@@ -79,7 +79,8 @@ export class NewadvertisementformPage implements OnInit {
   FifthFormData: any;
 
   advertisementObject: any;
-
+  adRemainingDays: any;
+  bannerRemainingDays: any;
 
   //weeks selection
   weeksArray = [];
@@ -105,7 +106,7 @@ export class NewadvertisementformPage implements OnInit {
   checkAdStartDateTimestamp: any = 0;
 
   getEndDateForUpdate: any;
-  getStartDateForUpdate : any;
+  getStartDateForUpdate: any;
 
   getStartDateForUpdateBanner: any;
   getEndDateForUpdateBanner: any;
@@ -248,9 +249,22 @@ export class NewadvertisementformPage implements OnInit {
       this.checkAdStartDateTimestamp = this.advertisementObject.startDateTime;
       this.checkAdEndDateTimestamp = this.advertisementObject.endDateTime;
       this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
-      
       this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
-      console.log("checkAdEndDateTimestamp::" + this.checkAdEndDateTimestamp);
+
+      var given = moment(this.getEndDateForUpdate);
+      var current = moment().startOf('day');
+
+      console.log("show diff in days:" + moment.duration(given.diff(current)).asDays());
+      this.adRemainingDays = moment.duration(given.diff(current)).asDays();
+
+      if (this.adRemainingDays > 0) {
+        this.adRemainingDays = this.adRemainingDays;
+      } else {
+        this.adRemainingDays = 0;
+      }
+
+
+      console.log("check remaining days:::" + this.adRemainingDays);
       console.log("get Start Date For Update::" + this.getStartDateForUpdate);
       console.log("get End Date For Update::" + this.getEndDateForUpdate);
       // this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
@@ -389,6 +403,22 @@ export class NewadvertisementformPage implements OnInit {
         this.checkBannerEndDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
         this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
         this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+
+
+        var givenB = moment(this.getEndDateForUpdateBanner);
+        var currentB = moment().startOf('day');
+  
+        console.log("show banner diff in days:" + moment.duration(givenB.diff(currentB)).asDays());
+        this.bannerRemainingDays = moment.duration(givenB.diff(currentB)).asDays();
+  
+        if (this.bannerRemainingDays > 0) {
+          this.bannerRemainingDays = this.bannerRemainingDays;
+        } else {
+          this.bannerRemainingDays = 0;
+        }
+
+        
+
         console.log("selected getEndDateForUpdateBanner:" + this.getEndDateForUpdateBanner);
         console.log("get Start Date For Update Banner::" + this.getStartDateForUpdateBanner);
         console.log("get End Date For Update Banner::" + this.getEndDateForUpdateBanner);
@@ -559,7 +589,7 @@ export class NewadvertisementformPage implements OnInit {
         } else {
           this.postBanner(this.getCategoryId);
         }
-       
+
         this.payWithRazor();
         // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
         this.loader.hideBlockingLoaderAuth();
@@ -580,17 +610,17 @@ export class NewadvertisementformPage implements OnInit {
         console.log("shoe getCategoryId:" + this.getCategoryId);
         localStorage.setItem("categoryId", this.getCategoryId);
 
-        if(this.bannerUpdateStatusCheck == 0){
+        if (this.bannerUpdateStatusCheck == 0) {
           this.postBanner(this.getCategoryId);
-        }else{
+        } else {
           this.updateBanner(this.getCategoryId);
         }
-        if(this.totalCalculatePayment == 0){
+        if (this.totalCalculatePayment == 0) {
 
-        }else{
+        } else {
           this.payWithRazor();
         }
-       
+
         this.presentToast("Advertisement updated successfully.");
         this.router.navigate(['/favourite']);
         // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
@@ -866,7 +896,7 @@ export class NewadvertisementformPage implements OnInit {
   //   this.bannerWeek = data;
 
   //   this.finalCalculation = 7 + ((data - 1) * 5);
-  
+
   //   this.totalCalculation = this.finalCalculation;
   //   this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
 
@@ -880,7 +910,7 @@ export class NewadvertisementformPage implements OnInit {
   // selectAdWeek(data) {
   //   this.adWeek = data;
   //   this.finalAdCalculation = 7 + ((data - 1) * 5);
-   
+
   //   this.todayDate = new Date();
   //   console.log("show no of week value::" + data);
   //   this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
@@ -949,8 +979,8 @@ export class NewadvertisementformPage implements OnInit {
         reader.readAsDataURL(this.fileToUpload);
       }
 
-      this.handleFirstFileInput(this.fileToUpload,index);
-     
+      this.handleFirstFileInput(this.fileToUpload, index);
+
     }
     console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
   }
@@ -961,7 +991,7 @@ export class NewadvertisementformPage implements OnInit {
     return datum / 1000;
   }
 
-  handleFirstFileInput(files: FileList , index) {
+  handleFirstFileInput(files: FileList, index) {
     this.loader.showBlockingLoaderAuth();
     if (files == null || files == undefined) {
     }
@@ -970,7 +1000,7 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-       
+
 
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -978,22 +1008,22 @@ export class NewadvertisementformPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        if(index == 0){
+        if (index == 0) {
           this.urls[0] = MyResponse['result'][0];
           this.firstImage = MyResponse['result'][0];
-        }else  if(index == 1){
+        } else if (index == 1) {
           this.urls[1] = MyResponse['result'][0];
           this.secondImage = MyResponse['result'][0];
-        }else  if(index == 2){
+        } else if (index == 2) {
           this.urls[2] = MyResponse['result'][0];
           this.thirdImage = MyResponse['result'][0];
-        }else  if(index == 3){
+        } else if (index == 3) {
           this.urls[3] = MyResponse['result'][0];
           this.fourthImage = MyResponse['result'][0];
-        }else  if(index == 4){
+        } else if (index == 4) {
           this.urls[4] = MyResponse['result'][0];
           this.fifthImage = MyResponse['result'][0];
-        }else{
+        } else {
 
         }
         console.log("print url resonce:" + this.firstImage);
@@ -1007,7 +1037,7 @@ export class NewadvertisementformPage implements OnInit {
 
 
   payWithRazor() {
-    console.log("check payment count:"+this.totalCalculatePayment);
+    console.log("check payment count:" + this.totalCalculatePayment);
     let getName = localStorage.getItem("getName");
     var options = {
       description: 'Credits towards consultation',
@@ -1043,7 +1073,7 @@ export class NewadvertisementformPage implements OnInit {
       this.gatewayLogsCheck(success);
     }
 
-    var cancelCallback =  (error) => {
+    var cancelCallback = (error) => {
       alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
     };
 
@@ -1073,7 +1103,7 @@ export class NewadvertisementformPage implements OnInit {
     this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
     this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
 
-    
+
     this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
     this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
 
@@ -1086,13 +1116,13 @@ export class NewadvertisementformPage implements OnInit {
     send_date['isSuccess'] = 0;
     send_date['advertisementStartDate'] = this.getStartDateForUpdate;
     send_date['advertisementEndDate'] = this.getEndDateForUpdate;
-    if(this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0){
+    if (this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0) {
 
-    }else{
+    } else {
       send_date['bannerStartDate'] = this.getStartDateForUpdateBanner;
       send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
     }
-  
+
 
 
     let url = environment.base_url + environment.version + "payment-gateway-logs";

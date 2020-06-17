@@ -220,25 +220,41 @@
       <form [formGroup]="fifthFormGroup" fxLayout="column" #formfour="ngForm">
         <ng-template matStepLabel>Dates</ng-template>
 
-        <div fxFlex="100" fxLayoutGap="10" fxLayout="row">
+        <div fxFlex="100" fxLayoutGap="5" fxLayout="row">
           <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center">
-            <label class="padding1px">Advertisement</label>
-            <label class="padding1px">plan</label>
-            <label class="padding1px">expires on</label>
-            <label class="padding1px"><b>{{getEndDateForUpdate | date }}</b></label>
+            <div fxLayout="column" *ngIf="adRemainingDays != 0 ">
+              <label class="padding1px">{{adRemainingDays}} days remaining.</label>
+              <label class="padding1px">Advertisement plan</label>
+              <label class="padding1px">expires on</label>
+              <label class="padding1px"><b>{{getEndDateForUpdate | date }}</b></label>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="center center" *ngIf="adRemainingDays == 0 ">
+              <label class="padding12px"> Your advertisement plan expires on <b>{{getEndDateForUpdate | date}}</b>, please renew
+                it</label>
+
+            </div>
+
           </ion-card>
-  
-          <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center">
-            <label class="padding1px">Banner</label>
-            <label class="padding1px">plan</label>
-            <label class="padding1px">expires on</label>
-            <label class="padding1px"><b>{{getEndDateForUpdateBanner | date }}</b></label>
+
+          <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center" *ngIf="checkBannerEndDateTimestamp != 0 ">
+            <div fxLayout="column" *ngIf="bannerRemainingDays != 0 ">
+              <label class="padding1px">{{bannerRemainingDays}} days remaining.</label>
+              <label class="padding1px">Banner plan</label>
+              <label class="padding1px">expires on</label>
+              <label class="padding1px"><b>{{getEndDateForUpdateBanner | date }}</b></label>
+            </div>
+            <div fxLayout="column" *ngIf="bannerRemainingDays == 0 ">
+              <label class="padding12px"> Your advertisement plan expires on <b>{{getEndDateForUpdateBanner | date}}</b>, please renew
+                it</label>
+                
+            </div>
           </ion-card>
           <!-- <ion-card class="expiryCard-css" fxFlex="48">
             <label class="line">Banner plan expires on <b>{{getEndDateForUpdateBanner | date }}</b></label>
           </ion-card> -->
         </div>
-       
+
 
         <!-- <ion-row style="margin:5px;margin-top:10px;">
           <ion-col size="5">
@@ -275,7 +291,8 @@
 
         <div style="padding-bottom:10px;" fxLayout="column">
 
-          <label class="desc-text" style="margin-top:15px;margin-bottom:10px;font-weight:400">Advertisement Plans</label>
+          <label class="desc-text" style="margin-top:15px;margin-bottom:10px;font-weight:400">Advertisement
+            Plans</label>
 
 
           <div fxLayout="row wrap">
@@ -283,8 +300,11 @@
               <ion-card *ngIf="item.isAdvertisement == 0 " fxLayout="column"
                 [ngClass]="(adPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
                 class="card-css" (click)="checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays)">
-                <label [ngClass]="(adPlanName == item.name) ? 'h-css-one' : 'h-css-two' " style="font-size:17px;font-weight:450">${{item.price}}</label>
-                <label [ngClass]="(adPlanName == item.name) ? 'label-css-one' : 'label-css-two' " fxLayoutAlign="center center" style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
+                <label [ngClass]="(adPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
+                  style="font-size:17px;font-weight:450">${{item.price}}</label>
+                <label [ngClass]="(adPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
+                  fxLayoutAlign="center center"
+                  style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
 
               </ion-card>
             </div>
@@ -294,12 +314,15 @@
           <label class="desc-text" style="margin-top:10px;margin-bottom:10px;font-weight:400">Banner Plans</label>
 
           <div fxLayout="row wrap">
-            <div *ngFor="let item of plansArray" >
-              <ion-card *ngIf="item.isAdvertisement == 1 "  fxLayout="column"
+            <div *ngFor="let item of plansArray">
+              <ion-card *ngIf="item.isAdvertisement == 1 " fxLayout="column"
                 [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
                 class="card-css" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)">
-                <label [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' " style="font-size:17px;font-weight:450">${{item.price}}</label>
-                <label [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "  fxLayoutAlign="center center" style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
+                <label [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
+                  style="font-size:17px;font-weight:450">${{item.price}}</label>
+                <label [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
+                  fxLayoutAlign="center center"
+                  style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
               </ion-card>
             </div>
           </div>
