@@ -53,9 +53,9 @@
   }
   
   .cl_content_fontsize{
-  font-size:17px;
+  font-size:15px;
   color: black;
-  padding:3px;
+  // padding:3px;
   }
   
 
@@ -111,8 +111,84 @@
 }
 
 .cl_edit_css{
-  font-size:21px;
+  font-size:19px;
   // margin-top:10px;
   // margin-left:3px;
-  color:rgb(104, 102, 102);
+  color:white;
+  margin-left:5px;
+  margin-top:12px;
+}
+
+.img-div{
+  // height:250px;
+  position: relative;
+  padding-bottom:70px;
+  background: linear-gradient(to bottom, #fe4f14,#fe8860,#feae93);
+  // background: linear-gradient(to bottom,#f88863,#fcb29a);
+  // border:1px solid gray;
+  width:100%;
+}
+
+.img-css{
+  width:100px;
+   height:100px; 
+   border-radius: 100%;
+   color:white;
+   margin-top:100px;
+   background:#f1f4f9;
+  //  border:1px solid #d7d8da ;
+    // padding:5px;
+}
+
+.show-count-css{
+  // border-top:1px solid rgb(168, 165, 165);
+  // border-bottom:1px solid rgb(168, 165, 165);
+  width:90%;
+  border-radius:10px;
+ padding:2px;
+  // background-color: #f1f4f9;
+}
+
+.first-subcount-div{
+// border-right:1px solid gray;
+// height:50px;
+padding:5px;
+}
+
+.second-subcount-div{
+  // border:1px solid gray;
+  // height:50px;
+  padding:5px;
+}
+
+.count-css{
+color:#fb7645;
+font-size:25px;
+padding:3px;
+font-weight:450;
+}
+
+.type-text-css{
+  color:gray;
+  font-size:14px;
+  padding:3px;
+}
+
+.icon-css{
+  height:20px;
+  width:20px;
+   margin:2px;
+   color:gray;
+}
+
+.arrow-icon-css{
+  height:25px;
+  width:25px;
+   margin:2px;
+   color:gray;
+}
+
+.row-css{
+  margin:5px;
+  width:100%;
 }
