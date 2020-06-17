@@ -13,34 +13,11 @@ import { NetworkService } from 'src/app/service/network/network.service';
 })
 export class ChatlistPage implements OnInit {
 
+  usersCount : any = 0;
   userId : any;
   noInternet  = "0";
   usersArray = [];
-  chatListArray = [
-    {
-      "image": "",
-      "name": "Asmita Belhekar"
-    },
-    {
-      "image": "",
-      "name": "Smita Belhekar"
-    },
-    {
-      "image": "",
-      "name": "Pranil Belhekar"
-    },
-    {
-      "image": "",
-      "name": "Suman Belhekar"
-    },
-    {
-      "image": "",
-      "name": "Asmita Belhekar"
-    }, {
-      "image": "",
-      "name": "Asmita Belhekar"
-    }
-  ];
+
   constructor(public router: Router,
     public loader : LoaderService,
     public apiCall : ApiService,
@@ -99,6 +76,7 @@ export class ChatlistPage implements OnInit {
     let url = environment.base_url + environment.version  +"users/" + this.userId + "/chat-users";
     this.apiCall.get(url).subscribe(MyResponse => {
      this.usersArray = MyResponse['result']['list'];
+     this.usersCount = MyResponse['result']['count'];
      console.log("show users:"+this.usersArray);
      this.loader.hideBlockingLoaderAuth();
      this.noInternet = '0';

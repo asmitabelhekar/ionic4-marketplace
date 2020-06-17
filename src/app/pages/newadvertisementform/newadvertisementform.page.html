@@ -6,9 +6,6 @@
 
 <ion-content>
 
-  <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button> -->
   <mat-vertical-stepper [linear]="true" #stepper style="padding-bottom:100px;">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" fxLayout="column" (ngSubmit)="form1()" #formone="ngForm">
@@ -49,14 +46,13 @@
             <mat-label class="floating-label-css">Select Code</mat-label>
             <mat-select name="type" formControlName="countryCodeCtrl" style="font-size:13px;"
               (selectionChange)="selectCountryCode(selectedCode)" class="filter-select" [(value)]="selectedCode">
-              <mat-option *ngFor="let code of countryCode"  [value]="code.dial_code">
+              <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
                 +{{code.dial_code}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="margin-top-css"
-            style="width:74%; height:82px; ">
+          <mat-form-field appearance="outline" class="margin-top-css" style="width:74%; height:82px; ">
             <mat-label class="floating-label-css">Mobile</mat-label>
             <input matInput type="tel" minlength="10" class="text-font-size" maxlength="10" formControlName="mobileCtrl"
               required>
@@ -78,20 +74,22 @@
               <div fxLayout="row" fxLayoutGap="10px">
                 <div *ngFor="let item of genderArray" fxLayoutAlign="center center">
                   <ion-radio value="{{item.value}}"></ion-radio>
-                  <ion-label fxLayoutAlign="center center" class="floating-label-css" style="margin-left:10px">{{item.name}}</ion-label>
+                  <ion-label fxLayoutAlign="center center" class="floating-label-css" style="margin-left:10px">
+                    {{item.name}}</ion-label>
                 </div>
 
-              
+
 
               </div>
-            
+
             </ion-radio-group>
 
 
           </ion-col>
         </ion-row>
 
-        <label class="floating-label-css" style="color:gray;margin-top:5px;margin-bottom:5px;">Just start typing you will get autocomplete result
+        <label class="floating-label-css" style="color:gray;margin-top:5px;margin-bottom:5px;">Just start typing you
+          will get autocomplete result
           for address</label>
         <mat-form-field appearance="outline" class="margin-top-css">
           <mat-label class="floating-label-css">Address</mat-label>
@@ -108,7 +106,8 @@
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup" fxLayout="column" (ngSubmit)="form3()" #formthree="ngForm">
         <ng-template matStepLabel>Images Upload</ng-template>
-        <label class="desc-text" style="color:gray;margin-top:5px;">We recommend uploading image aspect ratio as 2:1</label>
+        <label class="desc-text" style="color:gray;margin-top:5px;">We recommend uploading image aspect ratio as
+          2:1</label>
 
 
         <div class="cl_image_div" style="margin-top:20px;" fxLayout="row">
@@ -217,85 +216,108 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="fifthFormGroup">
-      <form [formGroup]="fifthFormGroup" fxLayout="column" (ngSubmit)="form5()" #formfive="ngForm">
+    <mat-step [stepControl]="fifthFormGroup" *ngIf="postStatus == '1' ">
+      <form [formGroup]="fifthFormGroup" fxLayout="column" #formfour="ngForm">
+        <ng-template matStepLabel>Dates</ng-template>
+
+        <div fxFlex="100" fxLayoutGap="10" fxLayout="row">
+          <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center">
+            <label class="padding1px">Advertisement</label>
+            <label class="padding1px">plan</label>
+            <label class="padding1px">expires on</label>
+            <label class="padding1px"><b>{{getEndDateForUpdate | date }}</b></label>
+          </ion-card>
+  
+          <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center">
+            <label class="padding1px">Banner</label>
+            <label class="padding1px">plan</label>
+            <label class="padding1px">expires on</label>
+            <label class="padding1px"><b>{{getEndDateForUpdateBanner | date }}</b></label>
+          </ion-card>
+          <!-- <ion-card class="expiryCard-css" fxFlex="48">
+            <label class="line">Banner plan expires on <b>{{getEndDateForUpdateBanner | date }}</b></label>
+          </ion-card> -->
+        </div>
+       
+
+        <!-- <ion-row style="margin:5px;margin-top:10px;">
+          <ion-col size="5">
+            <label style="color:rgb(66, 65, 65);font-size:12px;">Advertisement - </label>
+          </ion-col>
+          <ion-col size="7">
+            <label style="color:rgb(66, 65, 65);font-size:12px;">{{getStartDateForUpdate | date}} &nbsp; <b>-</b>
+              &nbsp; {{getEndDateForUpdate | date }}</label>
+          </ion-col>
+        </ion-row>
+        <ion-row style="margin:5px;" *ngIf="checkBannerEndDateTimestamp != 0 ">
+          <ion-col size="5">
+            <label style="color:rgb(66, 65, 65);font-size:12px;">Banner - </label>
+          </ion-col>
+          <ion-col size="7">
+            <label style="color:rgb(66, 65, 65);font-size:12px;">{{getStartDateForUpdateBanner | date}} &nbsp;
+              <b>-</b> &nbsp; {{getEndDateForUpdateBanner | date}}</label>
+          </ion-col>
+        </ion-row> -->
+
+
+
+        <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start" style="margin-top:15px;">
+          <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
+          <button mat-button class="buttonClass" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="sixthFormGroup">
+      <form [formGroup]="sixthFormGroup" fxLayout="column" (ngSubmit)="form5()" #formfive="ngForm">
         <ng-template matStepLabel>Payment</ng-template>
 
-        <!-- 
-        <label class="desc-text" style="margin-top:10px;margin-bottom:10px;">How many weeks you have to post Banner</label>
-        <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
-          <mat-label class="floating-label-css">Select Banner Weeks</mat-label>
-
-          <mat-select style="font-size:13px;" name="type" formControlName="bannerWeek"
-            (selectionChange)="selectBannerWeek(bannerWeek)" class="filter-select" [(value)]="bannerWeek">
-            <mat-option *ngFor="let type of weeksArray" [value]="type">
-              {{type}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <label class="desc-text" style="margin-top:10px;margin-bottom:10px">How many weeks you have to post Advertisement</label>
-        <mat-form-field appearance="outline" style="width:100%" class="margin-top-css">
-          <mat-label class="floating-label-css">Select Advertisement Weeks</mat-label>
-
-          <mat-select style="font-size:13px;" name="type" formControlName="adWeek"
-            (selectionChange)="selectAdWeek(adWeek)" class="filter-select" [(value)]="adWeek">
-            <mat-option *ngFor="let type of weeksArray" [value]="type">
-              {{type}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field> -->
 
 
+        <div style="padding-bottom:10px;" fxLayout="column">
 
-        <div style="padding-bottom:20px;" fxLayout="column">
-
-        <label class="desc-text" style="margin-top:25px;">Advertisement Plans</label>
+          <label class="desc-text" style="margin-top:15px;margin-bottom:10px;font-weight:400">Advertisement Plans</label>
 
 
           <div fxLayout="row wrap">
-            <div  *ngFor="let item of plansArray">
-            <ion-card  *ngIf="item.isAdvertisement == 0 " fxLayout="column" fxLayoutGap="10px"
-              [ngClass]="(adPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
-              class="card-css" (click)="checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays)">
-            
-              <label>{{item.name}}</label>
-              <label>${{item.price}}</label>
-             
-            </ion-card>
-          </div>
+            <div *ngFor="let item of plansArray">
+              <ion-card *ngIf="item.isAdvertisement == 0 " fxLayout="column"
+                [ngClass]="(adPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
+                class="card-css" (click)="checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays)">
+                <label [ngClass]="(adPlanName == item.name) ? 'h-css-one' : 'h-css-two' " style="font-size:17px;font-weight:450">${{item.price}}</label>
+                <label [ngClass]="(adPlanName == item.name) ? 'label-css-one' : 'label-css-two' " fxLayoutAlign="center center" style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
+
+              </ion-card>
+            </div>
 
           </div>
 
-          <label class="desc-text" style="margin-top:10px;margin-bottom:10px;">Banner Plans</label>
+          <label class="desc-text" style="margin-top:10px;margin-bottom:10px;font-weight:400">Banner Plans</label>
 
           <div fxLayout="row wrap">
-            <div  *ngFor="let item of plansArray">
-            <ion-card  *ngIf="item.isAdvertisement == 1 " fxLayout="column" fxLayoutGap="10px" [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center" class="card-css" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)">
-                <label>{{item.name}}</label>
-                <label>${{item.price}}</label>
-             </ion-card>
-          </div>
+            <div *ngFor="let item of plansArray" >
+              <ion-card *ngIf="item.isAdvertisement == 1 "  fxLayout="column"
+                [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
+                class="card-css" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)">
+                <label [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' " style="font-size:17px;font-weight:450">${{item.price}}</label>
+                <label [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "  fxLayoutAlign="center center" style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
+              </ion-card>
+            </div>
           </div>
 
-          <div fxFlex="100" style="margin-top:20px;padding:10px;">
-            <label>Total :${{totalCalculatePayment}} </label>
+          <div fxFlex="100" *ngIf="totalCalculatePayment != 0 " style="margin-top:15px;padding:10px;">
+            <label style="color:#fb7645">Total : $ {{totalCalculatePayment}} </label>
 
           </div>
 
 
         </div>
         <div fxFlex="100">
-          <!-- <button *ngIf="totalCalculatePayment == 0 "  class="disabledClass">Pay with RazorPay</button> -->
-
-          <button class="buttonPayClass" (click)="submmitAdvertisementData()">Pay with RazorPay</button>
+          <button class="buttonPayClass" *ngIf="totalCalculatePayment == 0 "
+            (click)="submmitAdvertisementData()">Update</button>
+          <button class="buttonPayClass" *ngIf="totalCalculatePayment != 0 " (click)="submmitAdvertisementData()">Pay
+            with RazorPay</button>
         </div>
-        <!-- <div fxFlex="100" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="start start" style="margin-top:22px;">
-          <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
-          <button mat-button class="buttonBackClass" type="button" (click)="stepper.reset()">Reset</button>
-          <button mat-button class="buttonClass"
-            (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();">Submit</button>
-        </div> -->
+
       </form>
     </mat-step>
   </mat-vertical-stepper>

@@ -312,14 +312,19 @@ var LoginPage = /** @class */ (function () {
         }
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "users";
         this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
-            localStorage.setItem("userId", MyResponse['result']['id']);
-            localStorage.setItem("loginType", "email");
-            localStorage.setItem("loginStatus", 'yes');
-            localStorage.setItem("userRole", MyResponse['result']['userRole']);
-            localStorage.setItem("userName", MyResponse['result']['name']);
-            localStorage.setItem("userCreated", MyResponse['result']['created']);
-            _this.router.navigate(['/home']);
-            console.log("show login details:" + JSON.stringify(MyResponse));
+            if (MyResponse['result']['isActive'] == 1) {
+                localStorage.setItem("userId", MyResponse['result']['id']);
+                localStorage.setItem("loginType", "email");
+                localStorage.setItem("loginStatus", 'yes');
+                localStorage.setItem("userRole", MyResponse['result']['userRole']);
+                localStorage.setItem("userName", MyResponse['result']['name']);
+                localStorage.setItem("userCreated", MyResponse['result']['created']);
+                _this.router.navigate(['/home']);
+                console.log("show login details:" + JSON.stringify(MyResponse));
+            }
+            else {
+                _this.presentToast("Please try again");
+            }
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
             _this.presentToast("Please try again");

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n<ion-content>\n<div style=\"width:100%; height:100%\" (click)=\"reconnect()\">\n<img src=\"../../../assets/reconnect.png\" style=\"width:100%; height:100%\" />\n</div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header class=\"new-background-color\">\n    <ion-toolbar class=\"new-background-color\">\n  \n      <label style=\"color:white; font-size:17px; margin-left:10px\">No Internet</label>\n  \n    </ion-toolbar>\n  </ion-header>\n<ion-content>\n<div style=\"width:100%; height:100%\" (click)=\"reconnect()\">\n<img src=\"../../../assets/reconnect.png\" style=\"width:100%; height:100%\" />\n</div>\n</ion-content>\n");
 
 /***/ }),
 

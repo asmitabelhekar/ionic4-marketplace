@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/service/apiservice/api.service';
 import { NetworkService } from 'src/app/service/network/network.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { environment } from 'src/environments/environment';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
@@ -34,6 +34,7 @@ export class ProfilePage implements OnInit {
 
   constructor(
     public router: Router,
+    public alertCtrl : AlertController,
     public networkServices: NetworkService,
     public activatedRoute: ActivatedRoute,
     public loader: LoaderService,
@@ -159,6 +160,31 @@ export class ProfilePage implements OnInit {
   }
   goBackword(){
     window.history.back();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: '',
+      message: 'Are you sure you want to logout?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            console.log('Confirm Okay');
+           this.logOut();
+          }
+        }
+      ]
+    });
+    alert.setAttribute('role', 'alert');
+    await alert.present();
   }
 
   updateProfile(){

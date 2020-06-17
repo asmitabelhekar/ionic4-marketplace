@@ -8,7 +8,7 @@
       <ion-label style="color:white;" class="TitleText">Profile</ion-label>
     </ion-col>
   <ion-col size="3">
-    <label style="position: fixed; right:10px;color:white; bottom: 15px;  font-size:18px" (click)="logOut()">Log Out</label>
+    <label style="position: fixed; right:10px;color:white; bottom: 15px;  font-size:18px" (click)="presentAlert()">Log Out</label>
   </ion-col>
   </ion-row>
    
@@ -19,12 +19,12 @@
 
 
   <div style="height:320px;position: relative; top:0px;background-color: #f1f4f9;" fxLayoutAlign="center center" *ngIf="noInternet == 1 ">
-    <!-- <img src="../../../assets/noimage.png" style="width:100%; height:100%;" /> -->
+    <img src="../../../assets/agent.png" style="width:80%; height:80%;" />
     <div style="position: absolute; bottom :60px;" >
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <ion-icon name="person" 
+      <div fxLayout="column" fxLayoutAlign="start center">
+        <!-- <ion-icon name="person" 
           style="width:60px; height:60px; border-radius: 100%;color:white;background-color: rgb(168, 158, 158) ; padding:15px">
-        </ion-icon>
+        </ion-icon> -->
         <label   style="margin-top:10px; color: black;font-size: 20px;">{{name}}</label>
         <!-- <div fxLayout="row" (click)="updateProfile()" fxLayoutAlign="center center">
           <label   style="margin-top:10px; color: black;font-size: 20px;">{{name}}</label>

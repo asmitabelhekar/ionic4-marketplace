@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:white\">Advertisement</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <!-- <button mat-raised-button (click)=\"isLinear = !isLinear\" id=\"toggle-linear\">\n    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}\n  </button> -->\n  <mat-vertical-stepper [linear]=\"true\" #stepper style=\"padding-bottom:100px;\">\n    <!-- <mat-step [stepControl]=\"firstFormGroup\">\n      <form [formGroup]=\"firstFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form1()\" #formone=\"ngForm\">\n        <ng-template matStepLabel>Advertisement Detail</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Title</mat-label>\n          <input matInput type=\"text\" formControlName=\"titleCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Price</mat-label>\n          <input matInput type=\"number\" formControlName=\"priceCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Description</mat-label>\n          <textarea matInput type=\"text\" formControlName=\"descriptionCtrl\" required class=\"text-font-size\"></textarea>\n        </mat-form-field>\n\n        <div fxLayoutAlign=\"start start\" fxFlex=\"100\">\n          <button mat-button matStepperNext class=\"buttonClass\">Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <form [formGroup]=\"secondFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form2()\" #formtwo=\"ngForm\">\n        <ng-template matStepLabel>Contact Details</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Email</mat-label>\n          <input matInput type=\"email\" class=\"text-font-size\" formControlName=\"emailCtrl\" required\n            pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\n        </mat-form-field>\n\n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n          <mat-form-field class=\"margin-top-css\" style=\"width:25%; height:82px; margin-right:10px; \"\n            appearance=\"outline\">\n            <mat-label class=\"floating-label-css\">Select Code</mat-label>\n            <mat-select name=\"type\" formControlName=\"countryCodeCtrl\" style=\"font-size:13px;\"\n              (selectionChange)=\"selectCountryCode(selectedCode)\" class=\"filter-select\" [(value)]=\"selectedCode\">\n              <mat-option *ngFor=\"let code of countryCode\"  [value]=\"code.dial_code\">\n                +{{code.dial_code}}\n              </mat-option>\n            </mat-select>\n          </mat-form-field>\n\n          <mat-form-field appearance=\"outline\" class=\"margin-top-css\"\n            style=\"width:74%; height:82px; \">\n            <mat-label class=\"floating-label-css\">Mobile</mat-label>\n            <input matInput type=\"tel\" minlength=\"10\" class=\"text-font-size\" maxlength=\"10\" formControlName=\"mobileCtrl\"\n              required>\n          </mat-form-field>\n\n        </div>\n\n\n        <ion-row\n          style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px\">\n          <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n            <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n          </ion-col>\n\n          <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n            <ion-radio-group (ionChange)=\"radioGroupChange($event)\" formControlName=\"checkRadioButton\">\n\n              <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n                <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n                  <ion-radio value=\"{{item.value}}\"></ion-radio>\n                  <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">{{item.name}}</ion-label>\n                </div>\n\n              \n\n              </div>\n            \n            </ion-radio-group>\n\n\n          </ion-col>\n        </ion-row>\n\n        <label class=\"floating-label-css\" style=\"color:gray;margin-top:5px;margin-bottom:5px;\">Just start typing you will get autocomplete result\n          for address</label>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Address</mat-label>\n          <input matInput class=\"text-font-size\" formControlName=\"addressCtrl\" ngx-google-places-autocomplete\n            #placesRef=\"ngx-places\" name=\"city\" required (onAddressChange)=\"handleAddressChange($event)\">\n        </mat-form-field>\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"thirdFormGroup\">\n      <form [formGroup]=\"thirdFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form3()\" #formthree=\"ngForm\">\n        <ng-template matStepLabel>Images Upload</ng-template>\n        <label class=\"desc-text\" style=\"color:gray;margin-top:5px;\">We recommend uploading image aspect ratio as 2:1</label>\n\n\n        <div class=\"cl_image_div\" style=\"margin-top:20px;\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload1').click()\">\n            <ion-icon *ngIf=\"firstImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"firstImage == '' \" align=\"center\">Upload Image</label>\n            <img *ngIf=\"firstImage != '' \" src=\"{{firstImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload2').click()\">\n            <ion-icon *ngIf=\"secondImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"secondImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"secondImage != '' \" src=\"{{secondImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload3').click()\">\n            <ion-icon *ngIf=\"thirdImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"thirdImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"thirdImage != '' \" src=\"{{thirdImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload4').click()\">\n            <ion-icon *ngIf=\"fourthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fourthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fourthImage != '' \" src=\"{{fourthImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload5').click()\">\n            <ion-icon *ngIf=\"fifthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fifthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fifthImage != '' \" src=\"{{fifthImage}}\" class=\"cl_display_img\">\n          </div>\n\n        </div>\n\n        <input style=\"display: none;\" id=\"image_upload1\" type=\"file\" (change)=\"detectEventGallery($event,0)\">\n        <input style=\"display: none;\" id=\"image_upload2\" type=\"file\" (change)=\"detectEventGallery($event,1)\">\n        <input style=\"display: none;\" id=\"image_upload3\" type=\"file\" (change)=\"detectEventGallery($event,2)\">\n        <input style=\"display: none;\" id=\"image_upload4\" type=\"file\" (change)=\"detectEventGallery($event,3)\">\n        <input style=\"display: none;\" id=\"image_upload5\" type=\"file\" (change)=\"detectEventGallery($event,4)\">\n\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" style=\"margin-top:20px;\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"fourthFormGroup\">\n      <form [formGroup]=\"fourthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form4()\" #formfour=\"ngForm\">\n        <ng-template matStepLabel>Filter Detail</ng-template>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"categoryId\"\n            (selectionChange)=\"selectCategoryType(categoryId)\" class=\"filter-select\" [(value)]=\"categoryId\">\n            <mat-option *ngFor=\"let type of categoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Sub Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"subCategoryId\"\n            (selectionChange)=\"selectSubCategoryType(subCategoryId)\" class=\"filter-select\" [(value)]=\"subCategoryId\">\n            <mat-option *ngFor=\"let type of subCategoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Tags</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"tag\" formControlName=\"selectedTags\"\n            (selectionChange)=\"selectedTags(selectedTags)\" class=\"filter-select\" [(value)]=\"selectedTags\" multiple>\n            <mat-option *ngFor=\"let tag of tagsArray\" [value]=\"tag.name\">\n              {{tag.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Languages you support</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"year\" formControlName=\"selectedLanguages\"\n            (selectionChange)=\"selectedChanged(selectedLanguages)\" class=\"filter-select\" [(value)]=\"selectedLanguages\"\n            multiple>\n            <mat-option *ngFor=\"let year of languageArray\" [value]=\"year.name\">\n              {{year.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step> -->\n    <mat-step [stepControl]=\"fifthFormGroup\">\n      <form [formGroup]=\"fifthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form5()\" #formfive=\"ngForm\">\n        <ng-template matStepLabel>Payment</ng-template>\n\n        <!-- \n        <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;\">How many weeks you have to post Banner</label>\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Banner Weeks</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"bannerWeek\"\n            (selectionChange)=\"selectBannerWeek(bannerWeek)\" class=\"filter-select\" [(value)]=\"bannerWeek\">\n            <mat-option *ngFor=\"let type of weeksArray\" [value]=\"type\">\n              {{type}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px\">How many weeks you have to post Advertisement</label>\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Advertisement Weeks</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"adWeek\"\n            (selectionChange)=\"selectAdWeek(adWeek)\" class=\"filter-select\" [(value)]=\"adWeek\">\n            <mat-option *ngFor=\"let type of weeksArray\" [value]=\"type\">\n              {{type}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field> -->\n\n\n\n        <div style=\"padding-bottom:20px;\" fxLayout=\"column\">\n\n        <label class=\"desc-text\" style=\"margin-top:25px;\">Advertisement Plans</label>\n\n\n          <div fxLayout=\"row wrap\">\n            <ion-card fxLayout=\"column\" fxLayoutGap=\"10px\"\n              [ngClass]=\"(bannerPlanName == item.planName) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\"\n              *ngFor=\"let item of planArray\" class=\"card-css\" (click)=\"checkBannerPriceCard(item.planName,item.price)\">\n              <label>{{item.planName}}</label>\n              <label>${{item.price}}</label>\n            </ion-card>\n\n          </div>\n\n          <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;\">Banner Plans</label>\n\n          <div fxLayout=\"row wrap\">\n            <ion-card fxLayout=\"column\" fxLayoutGap=\"10px\" [ngClass]=\"(adPlanName == item.planName) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\" *ngFor=\"let item of planArray\" class=\"card-css\" (click)=\"checkAdveriseMentPriceCard(item.planName,item.price)\">\n              <label>{{item.planName}}</label>\n              <label>${{item.price}}</label>\n             </ion-card>\n          \n          </div>\n\n          <div fxFlex=\"100\" style=\"margin-top:20px;padding:10px;\">\n            <label>Total :${{totalCalculatePayment}} </label>\n\n          </div>\n\n\n        </div>\n        <div fxFlex=\"100\">\n          <!-- <button *ngIf=\"totalCalculatePayment == 0 \"  class=\"disabledClass\">Pay with RazorPay</button> -->\n\n          <button class=\"buttonPayClass\" (click)=\"payWithRazor()\">Pay with RazorPay</button>\n        </div>\n        <!-- <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayout=\"row\" fxLayoutAlign=\"start start\" style=\"margin-top:22px;\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonBackClass\" type=\"button\" (click)=\"stepper.reset()\">Reset</button>\n          <button mat-button class=\"buttonClass\"\n            (click)=\"formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit();formfour.ngSubmit.emit();\">Submit</button>\n        </div> -->\n      </form>\n    </mat-step>\n  </mat-vertical-stepper>\n\n  <div class=\"cl_bottom_fix\" fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"home()\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">HOME</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openChatList()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"document\" (click)=\"openChatList()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">CHATS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"postAdvertisement()\">\n      <ion-icon class=\"cl_post_css\" name=\"add-circle\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_selected-text_font\">SELL</label>\n    </div>\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openFavourite()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"heart\" (click)=\"openFavourite()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">MY ADS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openProfile()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"person\" (click)=\"openProfile()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">PROFILE</label>\n    </div>\n\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:white\">Advertisement</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <mat-vertical-stepper [linear]=\"true\" #stepper style=\"padding-bottom:100px;\">\n    <mat-step [stepControl]=\"firstFormGroup\">\n      <form [formGroup]=\"firstFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form1()\" #formone=\"ngForm\">\n        <ng-template matStepLabel>Advertisement Detail</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Title</mat-label>\n          <input matInput type=\"text\" formControlName=\"titleCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Price</mat-label>\n          <input matInput type=\"number\" formControlName=\"priceCtrl\" required class=\"text-font-size\">\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Description</mat-label>\n          <textarea matInput type=\"text\" formControlName=\"descriptionCtrl\" required class=\"text-font-size\"></textarea>\n        </mat-form-field>\n\n        <div fxLayoutAlign=\"start start\" fxFlex=\"100\">\n          <button mat-button matStepperNext class=\"buttonClass\">Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <form [formGroup]=\"secondFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form2()\" #formtwo=\"ngForm\">\n        <ng-template matStepLabel>Contact Details</ng-template>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Email</mat-label>\n          <input matInput type=\"email\" class=\"text-font-size\" formControlName=\"emailCtrl\" required\n            pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\n        </mat-form-field>\n\n        <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n          <mat-form-field class=\"margin-top-css\" style=\"width:25%; height:82px; margin-right:10px; \"\n            appearance=\"outline\">\n            <mat-label class=\"floating-label-css\">Select Code</mat-label>\n            <mat-select name=\"type\" formControlName=\"countryCodeCtrl\" style=\"font-size:13px;\"\n              (selectionChange)=\"selectCountryCode(selectedCode)\" class=\"filter-select\" [(value)]=\"selectedCode\">\n              <mat-option *ngFor=\"let code of countryCode\" [value]=\"code.dial_code\">\n                +{{code.dial_code}}\n              </mat-option>\n            </mat-select>\n          </mat-form-field>\n\n          <mat-form-field appearance=\"outline\" class=\"margin-top-css\" style=\"width:74%; height:82px; \">\n            <mat-label class=\"floating-label-css\">Mobile</mat-label>\n            <input matInput type=\"tel\" minlength=\"10\" class=\"text-font-size\" maxlength=\"10\" formControlName=\"mobileCtrl\"\n              required>\n          </mat-form-field>\n\n        </div>\n\n\n        <ion-row\n          style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px\">\n          <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n            <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n          </ion-col>\n\n          <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n            <ion-radio-group (ionChange)=\"radioGroupChange($event)\" formControlName=\"checkRadioButton\">\n\n              <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n                <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n                  <ion-radio value=\"{{item.value}}\"></ion-radio>\n                  <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">\n                    {{item.name}}</ion-label>\n                </div>\n\n\n\n              </div>\n\n            </ion-radio-group>\n\n\n          </ion-col>\n        </ion-row>\n\n        <label class=\"floating-label-css\" style=\"color:gray;margin-top:5px;margin-bottom:5px;\">Just start typing you\n          will get autocomplete result\n          for address</label>\n        <mat-form-field appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Address</mat-label>\n          <input matInput class=\"text-font-size\" formControlName=\"addressCtrl\" ngx-google-places-autocomplete\n            #placesRef=\"ngx-places\" name=\"city\" required (onAddressChange)=\"handleAddressChange($event)\">\n        </mat-form-field>\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"thirdFormGroup\">\n      <form [formGroup]=\"thirdFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form3()\" #formthree=\"ngForm\">\n        <ng-template matStepLabel>Images Upload</ng-template>\n        <label class=\"desc-text\" style=\"color:gray;margin-top:5px;\">We recommend uploading image aspect ratio as\n          2:1</label>\n\n\n        <div class=\"cl_image_div\" style=\"margin-top:20px;\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload1').click()\">\n            <ion-icon *ngIf=\"firstImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"firstImage == '' \" align=\"center\">Upload Image</label>\n            <img *ngIf=\"firstImage != '' \" src=\"{{firstImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload2').click()\">\n            <ion-icon *ngIf=\"secondImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"secondImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"secondImage != '' \" src=\"{{secondImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload3').click()\">\n            <ion-icon *ngIf=\"thirdImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"thirdImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"thirdImage != '' \" src=\"{{thirdImage}}\" class=\"cl_display_img\">\n          </div>\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_second_column_img\"\n            onclick=\"document.getElementById('image_upload4').click()\">\n            <ion-icon *ngIf=\"fourthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fourthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fourthImage != '' \" src=\"{{fourthImage}}\" class=\"cl_display_img\">\n          </div>\n        </div>\n\n        <div class=\"cl_image_div\" fxLayout=\"row\">\n          <div fxLayout=\"column\" fxLayoutAlign=\"center center\" class=\"cl_first_column_img\"\n            onclick=\"document.getElementById('image_upload5').click()\">\n            <ion-icon *ngIf=\"fifthImage == '' \" name=\"camera\" class=\"cl_images\"></ion-icon>\n            <label class=\"floating-label-css\" *ngIf=\"fifthImage == '' \" align=\"center\">upload Image</label>\n            <img *ngIf=\"fifthImage != '' \" src=\"{{fifthImage}}\" class=\"cl_display_img\">\n          </div>\n\n        </div>\n\n        <input style=\"display: none;\" id=\"image_upload1\" type=\"file\" (change)=\"detectEventGallery($event,0)\">\n        <input style=\"display: none;\" id=\"image_upload2\" type=\"file\" (change)=\"detectEventGallery($event,1)\">\n        <input style=\"display: none;\" id=\"image_upload3\" type=\"file\" (change)=\"detectEventGallery($event,2)\">\n        <input style=\"display: none;\" id=\"image_upload4\" type=\"file\" (change)=\"detectEventGallery($event,3)\">\n        <input style=\"display: none;\" id=\"image_upload5\" type=\"file\" (change)=\"detectEventGallery($event,4)\">\n\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" style=\"margin-top:20px;\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"fourthFormGroup\">\n      <form [formGroup]=\"fourthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form4()\" #formfour=\"ngForm\">\n        <ng-template matStepLabel>Filter Detail</ng-template>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"categoryId\"\n            (selectionChange)=\"selectCategoryType(categoryId)\" class=\"filter-select\" [(value)]=\"categoryId\">\n            <mat-option *ngFor=\"let type of categoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field appearance=\"outline\" style=\"width:100%\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Select Sub Category</mat-label>\n\n          <mat-select style=\"font-size:13px;\" name=\"type\" formControlName=\"subCategoryId\"\n            (selectionChange)=\"selectSubCategoryType(subCategoryId)\" class=\"filter-select\" [(value)]=\"subCategoryId\">\n            <mat-option *ngFor=\"let type of subCategoryArray\" [value]=\"type.id\">\n              {{type.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Tags</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"tag\" formControlName=\"selectedTags\"\n            (selectionChange)=\"selectedTags(selectedTags)\" class=\"filter-select\" [(value)]=\"selectedTags\" multiple>\n            <mat-option *ngFor=\"let tag of tagsArray\" [value]=\"tag.name\">\n              {{tag.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n\n        <mat-form-field style=\"width:100%;\" appearance=\"outline\" class=\"margin-top-css\">\n          <mat-label class=\"floating-label-css\">Languages you support</mat-label>\n          <mat-select style=\"font-size:13px;\" name=\"year\" formControlName=\"selectedLanguages\"\n            (selectionChange)=\"selectedChanged(selectedLanguages)\" class=\"filter-select\" [(value)]=\"selectedLanguages\"\n            multiple>\n            <mat-option *ngFor=\"let year of languageArray\" [value]=\"year.name\">\n              {{year.name}}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"fifthFormGroup\" *ngIf=\"postStatus == '1' \">\n      <form [formGroup]=\"fifthFormGroup\" fxLayout=\"column\" #formfour=\"ngForm\">\n        <ng-template matStepLabel>Dates</ng-template>\n\n        <div fxFlex=\"100\" fxLayoutGap=\"10\" fxLayout=\"row\">\n          <ion-card class=\"expiryCard-css\" fxFlex=\"49\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n            <label class=\"padding1px\">Advertisement</label>\n            <label class=\"padding1px\">plan</label>\n            <label class=\"padding1px\">expires on</label>\n            <label class=\"padding1px\"><b>{{getEndDateForUpdate | date }}</b></label>\n          </ion-card>\n  \n          <ion-card class=\"expiryCard-css\" fxFlex=\"49\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n            <label class=\"padding1px\">Banner</label>\n            <label class=\"padding1px\">plan</label>\n            <label class=\"padding1px\">expires on</label>\n            <label class=\"padding1px\"><b>{{getEndDateForUpdateBanner | date }}</b></label>\n          </ion-card>\n          <!-- <ion-card class=\"expiryCard-css\" fxFlex=\"48\">\n            <label class=\"line\">Banner plan expires on <b>{{getEndDateForUpdateBanner | date }}</b></label>\n          </ion-card> -->\n        </div>\n       \n\n        <!-- <ion-row style=\"margin:5px;margin-top:10px;\">\n          <ion-col size=\"5\">\n            <label style=\"color:rgb(66, 65, 65);font-size:12px;\">Advertisement - </label>\n          </ion-col>\n          <ion-col size=\"7\">\n            <label style=\"color:rgb(66, 65, 65);font-size:12px;\">{{getStartDateForUpdate | date}} &nbsp; <b>-</b>\n              &nbsp; {{getEndDateForUpdate | date }}</label>\n          </ion-col>\n        </ion-row>\n        <ion-row style=\"margin:5px;\" *ngIf=\"checkBannerEndDateTimestamp != 0 \">\n          <ion-col size=\"5\">\n            <label style=\"color:rgb(66, 65, 65);font-size:12px;\">Banner - </label>\n          </ion-col>\n          <ion-col size=\"7\">\n            <label style=\"color:rgb(66, 65, 65);font-size:12px;\">{{getStartDateForUpdateBanner | date}} &nbsp;\n              <b>-</b> &nbsp; {{getEndDateForUpdateBanner | date}}</label>\n          </ion-col>\n        </ion-row> -->\n\n\n\n        <div fxFlex=\"100\" fxLayoutGap=\"15px\" fxLayoutAlign=\"start start\" style=\"margin-top:15px;\">\n          <button mat-button class=\"buttonBackClass\" matStepperPrevious>Back</button>\n          <button mat-button class=\"buttonClass\" matStepperNext>Next</button>\n        </div>\n      </form>\n    </mat-step>\n    <mat-step [stepControl]=\"sixthFormGroup\">\n      <form [formGroup]=\"sixthFormGroup\" fxLayout=\"column\" (ngSubmit)=\"form5()\" #formfive=\"ngForm\">\n        <ng-template matStepLabel>Payment</ng-template>\n\n\n\n        <div style=\"padding-bottom:10px;\" fxLayout=\"column\">\n\n          <label class=\"desc-text\" style=\"margin-top:15px;margin-bottom:10px;font-weight:400\">Advertisement Plans</label>\n\n\n          <div fxLayout=\"row wrap\">\n            <div *ngFor=\"let item of plansArray\">\n              <ion-card *ngIf=\"item.isAdvertisement == 0 \" fxLayout=\"column\"\n                [ngClass]=\"(adPlanName == item.name) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\"\n                class=\"card-css\" (click)=\"checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays)\">\n                <label [ngClass]=\"(adPlanName == item.name) ? 'h-css-one' : 'h-css-two' \" style=\"font-size:17px;font-weight:450\">${{item.price}}</label>\n                <label [ngClass]=\"(adPlanName == item.name) ? 'label-css-one' : 'label-css-two' \" fxLayoutAlign=\"center center\" style=\"font-size:11px;font-weight:400;margin-top:6px;\">{{item.name}}</label>\n\n              </ion-card>\n            </div>\n\n          </div>\n\n          <label class=\"desc-text\" style=\"margin-top:10px;margin-bottom:10px;font-weight:400\">Banner Plans</label>\n\n          <div fxLayout=\"row wrap\">\n            <div *ngFor=\"let item of plansArray\" >\n              <ion-card *ngIf=\"item.isAdvertisement == 1 \"  fxLayout=\"column\"\n                [ngClass]=\"(bannerPlanName == item.name) ? 'card-one' : 'card-two' \" fxLayoutAlign=\"center center\"\n                class=\"card-css\" (click)=\"checkBannerPriceCard(item.name,item.price,item.noOfDays)\">\n                <label [ngClass]=\"(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' \" style=\"font-size:17px;font-weight:450\">${{item.price}}</label>\n                <label [ngClass]=\"(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' \"  fxLayoutAlign=\"center center\" style=\"font-size:11px;font-weight:400;margin-top:6px;\">{{item.name}}</label>\n              </ion-card>\n            </div>\n          </div>\n\n          <div fxFlex=\"100\" *ngIf=\"totalCalculatePayment != 0 \" style=\"margin-top:15px;padding:10px;\">\n            <label style=\"color:#fb7645\">Total : $ {{totalCalculatePayment}} </label>\n\n          </div>\n\n\n        </div>\n        <div fxFlex=\"100\">\n          <button class=\"buttonPayClass\" *ngIf=\"totalCalculatePayment == 0 \"\n            (click)=\"submmitAdvertisementData()\">Update</button>\n          <button class=\"buttonPayClass\" *ngIf=\"totalCalculatePayment != 0 \" (click)=\"submmitAdvertisementData()\">Pay\n            with RazorPay</button>\n        </div>\n\n      </form>\n    </mat-step>\n  </mat-vertical-stepper>\n\n  <div class=\"cl_bottom_fix\" fxLayout=\"row\" fxLayoutAlign=\"space-around center\" style=\"margin-top:10px\">\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"home()\">\n      <ion-icon name=\"home\" class=\"cl_bottom_nav_css\" (click)=\"home()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">HOME</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openChatList()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"document\" (click)=\"openChatList()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">CHATS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"postAdvertisement()\">\n      <ion-icon class=\"cl_post_css\" name=\"add-circle\" (click)=\"postAdvertisement()\">\n      </ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_selected-text_font\">SELL</label>\n    </div>\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openFavourite()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"heart\" (click)=\"openFavourite()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">MY ADS</label>\n    </div>\n\n\n    <div fxLayout=\"column\" fxLayoutAlign=\"center center\" style=\"width:20%\" (click)=\"openProfile()\">\n      <ion-icon class=\"cl_bottom_nav_css\" name=\"person\" (click)=\"openProfile()\"></ion-icon>\n      <label fxLayoutAlign=\"center center\" class=\"cl_text_font\">PROFILE</label>\n    </div>\n\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -121,7 +121,7 @@ var NewadvertisementformPageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".mat-stepper-vertical {\n  margin-top: 8px;\n}\n\n.mat-form-field {\n  margin-top: 16px;\n}\n\n.cl_image_div {\n  width: 100%;\n  height: 120px;\n  padding-left: 10px;\n  padding-right: 10px;\n  margin-top: 10px;\n}\n\n.cl_first_column_img {\n  width: 47%;\n  color: #b6b3b3;\n  height: 120px;\n  border: 1px solid #d4d1d1;\n  margin-right: 10px;\n  border-radius: 10px;\n}\n\n.cl_second_column_img {\n  width: 47%;\n  height: 120px;\n  color: #b6b3b3;\n  border: 1px solid #d4d1d1;\n  border-radius: 10px;\n}\n\n.cl_images {\n  width: 40%;\n  height: 25%;\n  color: #b6b3b3;\n}\n\n.cl_display_img {\n  width: 100%;\n  height: 100%;\n  border-radius: 10px;\n}\n\n.buttonClass {\n  background-color: #fa7549;\n  color: white;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.buttonPayClass {\n  background: linear-gradient(to right, #fe4f14, #fe8860, #feae93);\n  color: white;\n  padding: 12px;\n  width: 100%;\n  font-weight: 500;\n  border-radius: 5px;\n  font-size: 16px;\n}\n\n.disabledClass {\n  background-color: #f1f4f9;\n  color: black;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.buttonBackClass {\n  background-color: #f1f4f9;\n  color: black;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.mat-step-icon .mat-icon {\n  font-size: 13px !important;\n  height: 16px;\n  width: 16px;\n}\n\n.desc-text {\n  font-size: 14px;\n}\n\n.text-font-size {\n  font-size: 13px;\n}\n\n.floating-label-css {\n  font-size: 13px;\n}\n\n.margin-top-css {\n  margin-top: 0px;\n}\n\n.table-text-size {\n  font-size: 10px;\n}\n\n.table-title-text-size {\n  font-size: 9px;\n}\n\ntd {\n  padding: 10px;\n  border: 1px solid #a8a7a7;\n}\n\nth {\n  padding: 10px;\n  font-weight: normal;\n  background-color: #f1f4f9;\n  border: 1px solid #a8a7a7;\n}\n\n.cl_bottom_nav_css {\n  width: 24px;\n  height: 24px;\n  width: 100%;\n  color: gray;\n  background-color: #ffffff;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  width: 100%;\n  padding: 8px;\n  border-top: 1px solid #f1f4f9;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 100%;\n  width: 24px;\n  height: 24px;\n  color: #fb7645;\n  background-color: #ffffff;\n}\n\n.cl_text_font {\n  padding-top: 4px;\n  font-size: 11px;\n}\n\n.cl_selected-text_font {\n  padding-top: 4px;\n  font-size: 11px;\n  color: #fb7645;\n}\n\nion-radio {\n  --color-checked: #fb7645;\n}\n\n::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #fb7645;\n  /*replace with your color*/\n}\n\n::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: #f5b9a6;\n  /*replace with your color*/\n}\n\n.card-css {\n  border-radius: 7px;\n  width: 80px;\n  height: 80px;\n}\n\n.card-one {\n  background: linear-gradient(to bottom, #fe4f14, #fe8860, #feae93);\n  --color:white;\n}\n\n.card-two {\n  --background: white !important;\n  --color:black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9uZXdhZHZlcnRpc2VtZW50Zm9ybS9uZXdhZHZlcnRpc2VtZW50Zm9ybS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL25ld2FkdmVydGlzZW1lbnRmb3JtL25ld2FkdmVydGlzZW1lbnRmb3JtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7QUNDSjs7QURFRTtFQUNFLGdCQUFBO0FDQ0o7O0FERUU7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGtCQUFBO0VBQ0MsbUJBQUE7RUFDQyxnQkFBQTtBQ0NOOztBREVFO0VBQ0UsVUFBQTtFQUNBLGNBQUE7RUFDQSxhQUFBO0VBQ0MseUJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDQ0w7O0FERUU7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNDLGNBQUE7RUFDQyx5QkFBQTtFQUNDLG1CQUFBO0FDQ1A7O0FERUU7RUFDRSxVQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7QUNDSjs7QURFRTtFQUNFLFdBQUE7RUFDQyxZQUFBO0VBQ0EsbUJBQUE7QUNDTDs7QURFRTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNDSjs7QURDRTtFQUNFLGdFQUFBO0VBRUEsWUFBQTtFQUNBLGFBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7QUNDSjs7QURJRTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNESjs7QURJRTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNESjs7QURLQTtFQUNFLDBCQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUNGRjs7QURLQTtFQUNFLGVBQUE7QUNGRjs7QURNQTtFQUNFLGVBQUE7QUNIRjs7QURNQTtFQUNFLGVBQUE7QUNIRjs7QURPQTtFQUNFLGVBQUE7QUNKRjs7QURRQTtFQUNFLGVBQUE7QUNMRjs7QURRQTtFQUNFLGNBQUE7QUNMRjs7QURPQTtFQUNFLGFBQUE7RUFDQSx5QkFBQTtBQ0pGOztBRFFBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EseUJBQUE7RUFDQSx5QkFBQTtBQ0xGOztBRFFBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFHQSxXQUFBO0VBQ0EsV0FBQTtFQUdBLHlCQUFBO0FDVEY7O0FEWUE7RUFDRSxlQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0MsNkJBQUE7RUFDQyx1QkFBQTtBQ1RKOztBRFlBO0VBQ0UsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUdBLHlCQUFBO0FDWEY7O0FEZUE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7QUNaRjs7QURlQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNaRjs7QURjQTtFQUNFLHdCQUFBO0FDWEY7O0FEY0E7RUFDRSx5QkFBQTtFQUEyQiwwQkFBQTtBQ1Y3Qjs7QURjQTtFQUNFLHlCQUFBO0VBQTRCLDBCQUFBO0FDVjlCOztBRGFBO0VBRUUsa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQ1hGOztBRGNBO0VBQ0UsaUVBQUE7RUFFQSxhQUFBO0FDWkY7O0FEZ0JBO0VBRUUsOEJBQUE7RUFDQSxhQUFBO0FDZEYiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9uZXdhZHZlcnRpc2VtZW50Zm9ybS9uZXdhZHZlcnRpc2VtZW50Zm9ybS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWF0LXN0ZXBwZXItdmVydGljYWwge1xuICAgIG1hcmdpbi10b3A6IDhweDtcbiAgfVxuICBcbiAgLm1hdC1mb3JtLWZpZWxkIHtcbiAgICBtYXJnaW4tdG9wOiAxNnB4O1xuICB9XG4gXG4gIC5jbF9pbWFnZV9kaXZ7XG4gICAgd2lkdGg6MTAwJTsgXG4gICAgaGVpZ2h0OjEyMHB4O1xuICAgIHBhZGRpbmctbGVmdDoxMHB4O1xuICAgICBwYWRkaW5nLXJpZ2h0OjEwcHg7XG4gICAgICBtYXJnaW4tdG9wOjEwcHg7XG4gIH1cblxuICAuY2xfZmlyc3RfY29sdW1uX2ltZ3tcbiAgICB3aWR0aDo0NyU7IFxuICAgIGNvbG9yOnJnYigxODIsIDE3OSwgMTc5KTtcbiAgICBoZWlnaHQ6MTIwcHg7XG4gICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYigyMTIsIDIwOSwgMjA5KTtcbiAgICAgbWFyZ2luLXJpZ2h0OjEwcHg7XG4gICAgIGJvcmRlci1yYWRpdXM6MTBweDtcbiAgfVxuXG4gIC5jbF9zZWNvbmRfY29sdW1uX2ltZ3tcbiAgICB3aWR0aDo0NyU7XG4gICAgaGVpZ2h0OjEyMHB4O1xuICAgICBjb2xvcjpyZ2IoMTgyLCAxNzksIDE3OSk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCByZ2IoMjEyLCAyMDksIDIwOSk7XG4gICAgICAgYm9yZGVyLXJhZGl1czoxMHB4O1xuICB9XG5cbiAgLmNsX2ltYWdlc3tcbiAgICB3aWR0aDo0MCU7IFxuICAgIGhlaWdodDoyNSU7XG4gICAgY29sb3I6cmdiKDE4MiwgMTc5LCAxNzkpO1xuICB9XG5cbiAgLmNsX2Rpc3BsYXlfaW1ne1xuICAgIHdpZHRoOjEwMCU7XG4gICAgIGhlaWdodDoxMDAlOyBcbiAgICAgYm9yZGVyLXJhZGl1czoxMHB4O1xuICB9XG5cbiAgLmJ1dHRvbkNsYXNze1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNmYTc1NDk7XG4gICAgY29sb3I6d2hpdGU7XG4gICAgcGFkZGluZy1sZWZ0OjEwcHg7XG4gICAgcGFkZGluZy1yaWdodDoxMHB4O1xuICB9XG4gIC5idXR0b25QYXlDbGFzc3tcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsI2ZlODg2MCwjZmVhZTkzKTtcbiAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiAjZmE3NTQ5O1xuICAgIGNvbG9yOndoaXRlO1xuICAgIHBhZGRpbmc6MTJweDtcbiAgICB3aWR0aDoxMDAlO1xuICAgIGZvbnQtd2VpZ2h0OjUwMDtcbiAgICBib3JkZXItcmFkaXVzOjVweDtcbiAgICBmb250LXNpemU6MTZweDtcblxuICAgIC8vIHBhZGRpbmctbGVmdDoxMHB4O1xuICAgIC8vIHBhZGRpbmctcmlnaHQ6MTBweDtcbiAgfVxuICAuZGlzYWJsZWRDbGFzc3tcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmNGY5O1xuICAgIGNvbG9yOmJsYWNrO1xuICAgIHBhZGRpbmctbGVmdDoxMHB4O1xuICAgIHBhZGRpbmctcmlnaHQ6MTBweDtcbiAgfVxuXG4gIC5idXR0b25CYWNrQ2xhc3N7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjRmOTtcbiAgICBjb2xvcjpibGFjaztcbiAgICBwYWRkaW5nLWxlZnQ6MTBweDtcbiAgICBwYWRkaW5nLXJpZ2h0OjEwcHg7XG4gIH1cblxuXG4ubWF0LXN0ZXAtaWNvbiAubWF0LWljb24ge1xuICBmb250LXNpemU6IDEzcHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAxNnB4O1xuICB3aWR0aDogMTZweDtcbn1cblxuLmRlc2MtdGV4dHtcbiAgZm9udC1zaXplOjE0cHg7XG4gIFxufVxuXG4udGV4dC1mb250LXNpemV7XG4gIGZvbnQtc2l6ZToxM3B4O1xufVxuXG4uZmxvYXRpbmctbGFiZWwtY3Nze1xuICBmb250LXNpemU6MTNweDtcbn1cblxuXG4ubWFyZ2luLXRvcC1jc3Mge1xuICBtYXJnaW4tdG9wOiAwcHg7XG59XG5cblxuLnRhYmxlLXRleHQtc2l6ZXtcbiAgZm9udC1zaXplOjEwcHg7XG59XG5cbi50YWJsZS10aXRsZS10ZXh0LXNpemV7XG4gIGZvbnQtc2l6ZTo5cHg7XG59XG50ZHtcbiAgcGFkZGluZzogMTBweDtcbiAgYm9yZGVyOjFweCBzb2xpZCByZ2IoMTY4LCAxNjcsIDE2Nyk7XG59XG5cblxudGgge1xuICBwYWRkaW5nOiAxMHB4O1xuICBmb250LXdlaWdodDpub3JtYWw7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWY0Zjk7XG4gIGJvcmRlcjoxcHggc29saWQgcmdiKDE2OCwgMTY3LCAxNjcpO1xufVxuXG4uY2xfYm90dG9tX25hdl9jc3N7XG4gIHdpZHRoOjI0cHg7XG4gIGhlaWdodDoyNHB4O1xuICAvLyBjb2xvcjpncmF5O1xuXG4gIHdpZHRoOjEwMCU7XG4gIGNvbG9yOmdyYXk7XG4gIC8vIHBhZGRpbmctdG9wOjVweDtcbiAgLy8gcGFkZGluZy1ib3R0b206NXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xufVxuXG4uY2xfYm90dG9tX2ZpeHtcbiAgcG9zaXRpb246IGZpeGVkOyBcbiAgYm90dG9tOjBweDtcbiAgd2lkdGg6MTAwJTtcbiAgcGFkZGluZzo4cHg7XG4gICBib3JkZXItdG9wOjFweCBzb2xpZCAjZjFmNGY5O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4uY2xfcG9zdF9jc3N7XG4gIHdpZHRoOjEwMCU7XG4gIHdpZHRoOjI0cHg7XG4gIGhlaWdodDoyNHB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbiAgLy8gcGFkZGluZy10b3A6NXB4O1xuICAvLyBwYWRkaW5nLWJvdHRvbTo1cHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XG4gXG59XG5cbi5jbF90ZXh0X2ZvbnR7XG4gIHBhZGRpbmctdG9wOjRweDtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4uY2xfc2VsZWN0ZWQtdGV4dF9mb250e1xuICBwYWRkaW5nLXRvcDo0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgY29sb3I6ICNmYjc2NDU7XG59XG5pb24tcmFkaW8ge1xuICAtLWNvbG9yLWNoZWNrZWQ6ICNmYjc2NDU7XG59XG5cbjo6bmctZGVlcCAubWF0LXNsaWRlLXRvZ2dsZS5tYXQtY2hlY2tlZDpub3QoLm1hdC1kaXNhYmxlZCkgLm1hdC1zbGlkZS10b2dnbGUtdGh1bWIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmI3NjQ1OyAvKnJlcGxhY2Ugd2l0aCB5b3VyIGNvbG9yKi9cbn1cblxuXG46Om5nLWRlZXAgLm1hdC1zbGlkZS10b2dnbGUubWF0LWNoZWNrZWQ6bm90KC5tYXQtZGlzYWJsZWQpIC5tYXQtc2xpZGUtdG9nZ2xlLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNWI5YTY7ICAvKnJlcGxhY2Ugd2l0aCB5b3VyIGNvbG9yKi9cbn1cblxuLmNhcmQtY3NzXG57XG4gIGJvcmRlci1yYWRpdXM6N3B4O1xuICB3aWR0aDo4MHB4O1xuICBoZWlnaHQ6ODBweDtcbn1cblxuLmNhcmQtb25lIHtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgI2ZlNGYxNCwjZmU4ODYwLCNmZWFlOTMpO1xuICAvLyAtLWJhY2tncm91bmQ6ICMxNTJhM2YgIWltcG9ydGFudDtcbiAgLS1jb2xvcjp3aGl0ZTtcbiAgXG59XG5cbi5jYXJkLXR3byB7XG5cbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAtLWNvbG9yOmJsYWNrO1xufSIsIi5tYXQtc3RlcHBlci12ZXJ0aWNhbCB7XG4gIG1hcmdpbi10b3A6IDhweDtcbn1cblxuLm1hdC1mb3JtLWZpZWxkIHtcbiAgbWFyZ2luLXRvcDogMTZweDtcbn1cblxuLmNsX2ltYWdlX2RpdiB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEyMHB4O1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG5cbi5jbF9maXJzdF9jb2x1bW5faW1nIHtcbiAgd2lkdGg6IDQ3JTtcbiAgY29sb3I6ICNiNmIzYjM7XG4gIGhlaWdodDogMTIwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNkNGQxZDE7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbn1cblxuLmNsX3NlY29uZF9jb2x1bW5faW1nIHtcbiAgd2lkdGg6IDQ3JTtcbiAgaGVpZ2h0OiAxMjBweDtcbiAgY29sb3I6ICNiNmIzYjM7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNkNGQxZDE7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG5cbi5jbF9pbWFnZXMge1xuICB3aWR0aDogNDAlO1xuICBoZWlnaHQ6IDI1JTtcbiAgY29sb3I6ICNiNmIzYjM7XG59XG5cbi5jbF9kaXNwbGF5X2ltZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG5cbi5idXR0b25DbGFzcyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYTc1NDk7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuXG4uYnV0dG9uUGF5Q2xhc3Mge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsICNmZTg4NjAsICNmZWFlOTMpO1xuICBjb2xvcjogd2hpdGU7XG4gIHBhZGRpbmc6IDEycHg7XG4gIHdpZHRoOiAxMDAlO1xuICBmb250LXdlaWdodDogNTAwO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cblxuLmRpc2FibGVkQ2xhc3Mge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmNGY5O1xuICBjb2xvcjogYmxhY2s7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbn1cblxuLmJ1dHRvbkJhY2tDbGFzcyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWY0Zjk7XG4gIGNvbG9yOiBibGFjaztcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuXG4ubWF0LXN0ZXAtaWNvbiAubWF0LWljb24ge1xuICBmb250LXNpemU6IDEzcHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAxNnB4O1xuICB3aWR0aDogMTZweDtcbn1cblxuLmRlc2MtdGV4dCB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbn1cblxuLnRleHQtZm9udC1zaXplIHtcbiAgZm9udC1zaXplOiAxM3B4O1xufVxuXG4uZmxvYXRpbmctbGFiZWwtY3NzIHtcbiAgZm9udC1zaXplOiAxM3B4O1xufVxuXG4ubWFyZ2luLXRvcC1jc3Mge1xuICBtYXJnaW4tdG9wOiAwcHg7XG59XG5cbi50YWJsZS10ZXh0LXNpemUge1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi50YWJsZS10aXRsZS10ZXh0LXNpemUge1xuICBmb250LXNpemU6IDlweDtcbn1cblxudGQge1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjYThhN2E3O1xufVxuXG50aCB7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWY0Zjk7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNhOGE3YTc7XG59XG5cbi5jbF9ib3R0b21fbmF2X2NzcyB7XG4gIHdpZHRoOiAyNHB4O1xuICBoZWlnaHQ6IDI0cHg7XG4gIHdpZHRoOiAxMDAlO1xuICBjb2xvcjogZ3JheTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX2JvdHRvbV9maXgge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogOHB4O1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2YxZjRmOTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2NzcyB7XG4gIHdpZHRoOiAxMDAlO1xuICB3aWR0aDogMjRweDtcbiAgaGVpZ2h0OiAyNHB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX3RleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLmNsX3NlbGVjdGVkLXRleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgY29sb3I6ICNmYjc2NDU7XG59XG5cbmlvbi1yYWRpbyB7XG4gIC0tY29sb3ItY2hlY2tlZDogI2ZiNzY0NTtcbn1cblxuOjpuZy1kZWVwIC5tYXQtc2xpZGUtdG9nZ2xlLm1hdC1jaGVja2VkOm5vdCgubWF0LWRpc2FibGVkKSAubWF0LXNsaWRlLXRvZ2dsZS10aHVtYiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYjc2NDU7XG4gIC8qcmVwbGFjZSB3aXRoIHlvdXIgY29sb3IqL1xufVxuXG46Om5nLWRlZXAgLm1hdC1zbGlkZS10b2dnbGUubWF0LWNoZWNrZWQ6bm90KC5tYXQtZGlzYWJsZWQpIC5tYXQtc2xpZGUtdG9nZ2xlLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNWI5YTY7XG4gIC8qcmVwbGFjZSB3aXRoIHlvdXIgY29sb3IqL1xufVxuXG4uY2FyZC1jc3Mge1xuICBib3JkZXItcmFkaXVzOiA3cHg7XG4gIHdpZHRoOiA4MHB4O1xuICBoZWlnaHQ6IDgwcHg7XG59XG5cbi5jYXJkLW9uZSB7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICNmZTRmMTQsICNmZTg4NjAsICNmZWFlOTMpO1xuICAtLWNvbG9yOndoaXRlO1xufVxuXG4uY2FyZC10d28ge1xuICAtLWJhY2tncm91bmQ6IHdoaXRlICFpbXBvcnRhbnQ7XG4gIC0tY29sb3I6YmxhY2s7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".mat-stepper-vertical {\n  margin-top: 8px;\n}\n\n.mat-form-field {\n  margin-top: 16px;\n}\n\n.cl_image_div {\n  width: 100%;\n  height: 120px;\n  padding-left: 10px;\n  padding-right: 10px;\n  margin-top: 10px;\n}\n\n.cl_first_column_img {\n  width: 47%;\n  color: #b6b3b3;\n  height: 120px;\n  border: 1px solid #d4d1d1;\n  margin-right: 10px;\n  border-radius: 10px;\n}\n\n.cl_second_column_img {\n  width: 47%;\n  height: 120px;\n  color: #b6b3b3;\n  border: 1px solid #d4d1d1;\n  border-radius: 10px;\n}\n\n.cl_images {\n  width: 40%;\n  height: 25%;\n  color: #b6b3b3;\n}\n\n.cl_display_img {\n  width: 100%;\n  height: 100%;\n  border-radius: 10px;\n}\n\n.buttonClass {\n  background-color: #fa7549;\n  color: white;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.buttonPayClass {\n  background: linear-gradient(to right, #fe4f14, #fe8860, #feae93);\n  color: white;\n  padding: 12px;\n  width: 100%;\n  font-weight: 500;\n  border-radius: 5px;\n  font-size: 16px;\n}\n\n.disabledClass {\n  background-color: #f1f4f9;\n  color: black;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.buttonBackClass {\n  background-color: #f1f4f9;\n  color: black;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.mat-step-icon .mat-icon {\n  font-size: 13px !important;\n  height: 16px;\n  width: 16px;\n}\n\n.desc-text {\n  font-size: 14px;\n}\n\n.text-font-size {\n  font-size: 13px;\n}\n\n.floating-label-css {\n  font-size: 13px;\n}\n\n.margin-top-css {\n  margin-top: 0px;\n}\n\n.table-text-size {\n  font-size: 10px;\n}\n\n.table-title-text-size {\n  font-size: 9px;\n}\n\ntd {\n  padding: 10px;\n  border: 1px solid #a8a7a7;\n}\n\nth {\n  padding: 10px;\n  font-weight: normal;\n  background-color: #f1f4f9;\n  border: 1px solid #a8a7a7;\n}\n\n.cl_bottom_nav_css {\n  width: 24px;\n  height: 24px;\n  width: 100%;\n  color: gray;\n  background-color: #ffffff;\n}\n\n.cl_bottom_fix {\n  position: fixed;\n  bottom: 0px;\n  width: 100%;\n  padding: 8px;\n  border-top: 1px solid #f1f4f9;\n  background-color: white;\n}\n\n.cl_post_css {\n  width: 100%;\n  width: 24px;\n  height: 24px;\n  color: #fb7645;\n  background-color: #ffffff;\n}\n\n.cl_text_font {\n  padding-top: 4px;\n  font-size: 11px;\n}\n\n.cl_selected-text_font {\n  padding-top: 4px;\n  font-size: 11px;\n  color: #fb7645;\n}\n\nion-radio {\n  --color-checked: #fb7645;\n}\n\n::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #fb7645;\n  /*replace with your color*/\n}\n\n::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: #f5b9a6;\n  /*replace with your color*/\n}\n\n.card-css {\n  border-radius: 6px;\n  width: 84px;\n  padding: 5px;\n  height: 84px;\n  margin: 6px;\n}\n\n.card-one {\n  background: linear-gradient(to bottom, #fc7c51, #fcb29a);\n}\n\n.h-css-one {\n  color: white;\n}\n\n.label-css-one {\n  color: white;\n}\n\n.h-css-two {\n  color: black;\n}\n\n.label-css-two {\n  color: gray;\n}\n\n.card-two {\n  --background: white !important;\n}\n\n.padding1px {\n  padding: 1px;\n}\n\n.expiryCard-css {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background: linear-gradient(to right, #f88863, #fcb29a);\n  color: #ffffff;\n  font-size: 11px;\n  line-height: 20px;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9uZXdhZHZlcnRpc2VtZW50Zm9ybS9uZXdhZHZlcnRpc2VtZW50Zm9ybS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL25ld2FkdmVydGlzZW1lbnRmb3JtL25ld2FkdmVydGlzZW1lbnRmb3JtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7QUNDSjs7QURFRTtFQUNFLGdCQUFBO0FDQ0o7O0FERUU7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGtCQUFBO0VBQ0MsbUJBQUE7RUFDQyxnQkFBQTtBQ0NOOztBREVFO0VBQ0UsVUFBQTtFQUNBLGNBQUE7RUFDQSxhQUFBO0VBQ0MseUJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDQ0w7O0FERUU7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNDLGNBQUE7RUFDQyx5QkFBQTtFQUNDLG1CQUFBO0FDQ1A7O0FERUU7RUFDRSxVQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7QUNDSjs7QURFRTtFQUNFLFdBQUE7RUFDQyxZQUFBO0VBQ0EsbUJBQUE7QUNDTDs7QURFRTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNDSjs7QURDRTtFQUNFLGdFQUFBO0VBRUEsWUFBQTtFQUNBLGFBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7QUNDSjs7QURJRTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNESjs7QURJRTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNESjs7QURLQTtFQUNFLDBCQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUNGRjs7QURLQTtFQUNFLGVBQUE7QUNGRjs7QURLQTtFQUNFLGVBQUE7QUNGRjs7QURLQTtFQUNFLGVBQUE7QUNGRjs7QURNQTtFQUNFLGVBQUE7QUNIRjs7QURPQTtFQUNFLGVBQUE7QUNKRjs7QURPQTtFQUNFLGNBQUE7QUNKRjs7QURNQTtFQUNFLGFBQUE7RUFDQSx5QkFBQTtBQ0hGOztBRE9BO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EseUJBQUE7RUFDQSx5QkFBQTtBQ0pGOztBRE9BO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFHQSxXQUFBO0VBQ0EsV0FBQTtFQUdBLHlCQUFBO0FDUkY7O0FEV0E7RUFDRSxlQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0MsNkJBQUE7RUFDQyx1QkFBQTtBQ1JKOztBRFdBO0VBQ0UsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUdBLHlCQUFBO0FDVkY7O0FEY0E7RUFDRSxnQkFBQTtFQUNBLGVBQUE7QUNYRjs7QURjQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNYRjs7QURhQTtFQUNFLHdCQUFBO0FDVkY7O0FEYUE7RUFDRSx5QkFBQTtFQUEyQiwwQkFBQTtBQ1Q3Qjs7QURhQTtFQUNFLHlCQUFBO0VBQTRCLDBCQUFBO0FDVDlCOztBRFlBO0VBRUUsa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0FDVkY7O0FEYUE7RUFDRSx3REFBQTtBQ1ZGOztBRGdCQTtFQUNFLFlBQUE7QUNiRjs7QURnQkE7RUFDRSxZQUFBO0FDYkY7O0FEZ0JBO0VBQ0UsWUFBQTtBQ2JGOztBRGdCQTtFQUNFLFdBQUE7QUNiRjs7QURlQTtFQUNFLDhCQUFBO0FDWkY7O0FEZUE7RUFDRSxZQUFBO0FDWkY7O0FEY0E7RUFDRSxpQkFBQTtFQUNBLG9CQUFBO0VBQ0EsdURBQUE7RUFDQSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNYRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL25ld2FkdmVydGlzZW1lbnRmb3JtL25ld2FkdmVydGlzZW1lbnRmb3JtLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtc3RlcHBlci12ZXJ0aWNhbCB7XG4gICAgbWFyZ2luLXRvcDogOHB4O1xuICB9XG4gIFxuICAubWF0LWZvcm0tZmllbGQge1xuICAgIG1hcmdpbi10b3A6IDE2cHg7XG4gIH1cbiBcbiAgLmNsX2ltYWdlX2RpdntcbiAgICB3aWR0aDoxMDAlOyBcbiAgICBoZWlnaHQ6MTIwcHg7XG4gICAgcGFkZGluZy1sZWZ0OjEwcHg7XG4gICAgIHBhZGRpbmctcmlnaHQ6MTBweDtcbiAgICAgIG1hcmdpbi10b3A6MTBweDtcbiAgfVxuXG4gIC5jbF9maXJzdF9jb2x1bW5faW1ne1xuICAgIHdpZHRoOjQ3JTsgXG4gICAgY29sb3I6cmdiKDE4MiwgMTc5LCAxNzkpO1xuICAgIGhlaWdodDoxMjBweDtcbiAgICAgYm9yZGVyOiAxcHggc29saWQgcmdiKDIxMiwgMjA5LCAyMDkpO1xuICAgICBtYXJnaW4tcmlnaHQ6MTBweDtcbiAgICAgYm9yZGVyLXJhZGl1czoxMHB4O1xuICB9XG5cbiAgLmNsX3NlY29uZF9jb2x1bW5faW1ne1xuICAgIHdpZHRoOjQ3JTtcbiAgICBoZWlnaHQ6MTIwcHg7XG4gICAgIGNvbG9yOnJnYigxODIsIDE3OSwgMTc5KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYigyMTIsIDIwOSwgMjA5KTtcbiAgICAgICBib3JkZXItcmFkaXVzOjEwcHg7XG4gIH1cblxuICAuY2xfaW1hZ2Vze1xuICAgIHdpZHRoOjQwJTsgXG4gICAgaGVpZ2h0OjI1JTtcbiAgICBjb2xvcjpyZ2IoMTgyLCAxNzksIDE3OSk7XG4gIH1cblxuICAuY2xfZGlzcGxheV9pbWd7XG4gICAgd2lkdGg6MTAwJTtcbiAgICAgaGVpZ2h0OjEwMCU7IFxuICAgICBib3JkZXItcmFkaXVzOjEwcHg7XG4gIH1cblxuICAuYnV0dG9uQ2xhc3N7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2ZhNzU0OTtcbiAgICBjb2xvcjp3aGl0ZTtcbiAgICBwYWRkaW5nLWxlZnQ6MTBweDtcbiAgICBwYWRkaW5nLXJpZ2h0OjEwcHg7XG4gIH1cbiAgLmJ1dHRvblBheUNsYXNze1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgI2ZlNGYxNCwjZmU4ODYwLCNmZWFlOTMpO1xuICAgIC8vIGJhY2tncm91bmQtY29sb3I6ICNmYTc1NDk7XG4gICAgY29sb3I6d2hpdGU7XG4gICAgcGFkZGluZzoxMnB4O1xuICAgIHdpZHRoOjEwMCU7XG4gICAgZm9udC13ZWlnaHQ6NTAwO1xuICAgIGJvcmRlci1yYWRpdXM6NXB4O1xuICAgIGZvbnQtc2l6ZToxNnB4O1xuXG4gICAgLy8gcGFkZGluZy1sZWZ0OjEwcHg7XG4gICAgLy8gcGFkZGluZy1yaWdodDoxMHB4O1xuICB9XG4gIC5kaXNhYmxlZENsYXNze1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWY0Zjk7XG4gICAgY29sb3I6YmxhY2s7XG4gICAgcGFkZGluZy1sZWZ0OjEwcHg7XG4gICAgcGFkZGluZy1yaWdodDoxMHB4O1xuICB9XG5cbiAgLmJ1dHRvbkJhY2tDbGFzc3tcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmNGY5O1xuICAgIGNvbG9yOmJsYWNrO1xuICAgIHBhZGRpbmctbGVmdDoxMHB4O1xuICAgIHBhZGRpbmctcmlnaHQ6MTBweDtcbiAgfVxuXG5cbi5tYXQtc3RlcC1pY29uIC5tYXQtaWNvbiB7XG4gIGZvbnQtc2l6ZTogMTNweCAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDE2cHg7XG4gIHdpZHRoOiAxNnB4O1xufVxuXG4uZGVzYy10ZXh0e1xuICBmb250LXNpemU6MTRweDtcbn1cblxuLnRleHQtZm9udC1zaXple1xuICBmb250LXNpemU6MTNweDtcbn1cblxuLmZsb2F0aW5nLWxhYmVsLWNzc3tcbiAgZm9udC1zaXplOjEzcHg7XG59XG5cblxuLm1hcmdpbi10b3AtY3NzIHtcbiAgbWFyZ2luLXRvcDogMHB4O1xufVxuXG5cbi50YWJsZS10ZXh0LXNpemV7XG4gIGZvbnQtc2l6ZToxMHB4O1xufVxuXG4udGFibGUtdGl0bGUtdGV4dC1zaXple1xuICBmb250LXNpemU6OXB4O1xufVxudGR7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJvcmRlcjoxcHggc29saWQgcmdiKDE2OCwgMTY3LCAxNjcpO1xufVxuXG5cbnRoIHtcbiAgcGFkZGluZzogMTBweDtcbiAgZm9udC13ZWlnaHQ6bm9ybWFsO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmNGY5O1xuICBib3JkZXI6MXB4IHNvbGlkIHJnYigxNjgsIDE2NywgMTY3KTtcbn1cblxuLmNsX2JvdHRvbV9uYXZfY3Nze1xuICB3aWR0aDoyNHB4O1xuICBoZWlnaHQ6MjRweDtcbiAgLy8gY29sb3I6Z3JheTtcblxuICB3aWR0aDoxMDAlO1xuICBjb2xvcjpncmF5O1xuICAvLyBwYWRkaW5nLXRvcDo1cHg7XG4gIC8vIHBhZGRpbmctYm90dG9tOjVweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX2JvdHRvbV9maXh7XG4gIHBvc2l0aW9uOiBmaXhlZDsgXG4gIGJvdHRvbTowcHg7XG4gIHdpZHRoOjEwMCU7XG4gIHBhZGRpbmc6OHB4O1xuICAgYm9yZGVyLXRvcDoxcHggc29saWQgI2YxZjRmOTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuLmNsX3Bvc3RfY3Nze1xuICB3aWR0aDoxMDAlO1xuICB3aWR0aDoyNHB4O1xuICBoZWlnaHQ6MjRweDtcbiAgY29sb3I6ICNmYjc2NDU7XG4gIC8vIHBhZGRpbmctdG9wOjVweDtcbiAgLy8gcGFkZGluZy1ib3R0b206NXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xuIFxufVxuXG4uY2xfdGV4dF9mb250e1xuICBwYWRkaW5nLXRvcDo0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLmNsX3NlbGVjdGVkLXRleHRfZm9udHtcbiAgcGFkZGluZy10b3A6NHB4O1xuICBmb250LXNpemU6IDExcHg7XG4gIGNvbG9yOiAjZmI3NjQ1O1xufVxuaW9uLXJhZGlvIHtcbiAgLS1jb2xvci1jaGVja2VkOiAjZmI3NjQ1O1xufVxuXG46Om5nLWRlZXAgLm1hdC1zbGlkZS10b2dnbGUubWF0LWNoZWNrZWQ6bm90KC5tYXQtZGlzYWJsZWQpIC5tYXQtc2xpZGUtdG9nZ2xlLXRodW1iIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZiNzY0NTsgLypyZXBsYWNlIHdpdGggeW91ciBjb2xvciovXG59XG5cblxuOjpuZy1kZWVwIC5tYXQtc2xpZGUtdG9nZ2xlLm1hdC1jaGVja2VkOm5vdCgubWF0LWRpc2FibGVkKSAubWF0LXNsaWRlLXRvZ2dsZS1iYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjViOWE2OyAgLypyZXBsYWNlIHdpdGggeW91ciBjb2xvciovXG59XG5cbi5jYXJkLWNzc1xue1xuICBib3JkZXItcmFkaXVzOjZweDtcbiAgd2lkdGg6ODRweDtcbiAgcGFkZGluZzo1cHg7XG4gIGhlaWdodDo4NHB4O1xuICBtYXJnaW46NnB4O1xufVxuXG4uY2FyZC1vbmUge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCNmYzdjNTEsI2ZjYjI5YSk7XG4gIC8vIC0tY29sb3I6d2hpdGU7XG5cbiBcbn1cblxuLmgtY3NzLW9uZXtcbiAgY29sb3I6d2hpdGU7XG59XG5cbi5sYWJlbC1jc3Mtb25le1xuICBjb2xvcjp3aGl0ZTtcbn1cblxuLmgtY3NzLXR3b3tcbiAgY29sb3I6YmxhY2s7XG59XG5cbi5sYWJlbC1jc3MtdHdve1xuICBjb2xvcjpncmF5O1xufVxuLmNhcmQtdHdvIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZSAhaW1wb3J0YW50O1xuIFxufVxuLnBhZGRpbmcxcHh7XG4gIHBhZGRpbmc6MXB4O1xufVxuLmV4cGlyeUNhcmQtY3Nze1xuICBwYWRkaW5nLXRvcDoxMHB4O1xuICBwYWRkaW5nLWJvdHRvbToxMHB4O1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsI2Y4ODg2MywjZmNiMjlhKTtcbiAgY29sb3I6I2ZmZmZmZjtcbiAgZm9udC1zaXplOjExcHg7XG4gIGxpbmUtaGVpZ2h0OiAyMHB4O1xuICBib3JkZXItcmFkaXVzOjEwcHg7XG4gIC8vIGhlaWdodDo1MHB4O1xufSIsIi5tYXQtc3RlcHBlci12ZXJ0aWNhbCB7XG4gIG1hcmdpbi10b3A6IDhweDtcbn1cblxuLm1hdC1mb3JtLWZpZWxkIHtcbiAgbWFyZ2luLXRvcDogMTZweDtcbn1cblxuLmNsX2ltYWdlX2RpdiB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEyMHB4O1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG5cbi5jbF9maXJzdF9jb2x1bW5faW1nIHtcbiAgd2lkdGg6IDQ3JTtcbiAgY29sb3I6ICNiNmIzYjM7XG4gIGhlaWdodDogMTIwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNkNGQxZDE7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbn1cblxuLmNsX3NlY29uZF9jb2x1bW5faW1nIHtcbiAgd2lkdGg6IDQ3JTtcbiAgaGVpZ2h0OiAxMjBweDtcbiAgY29sb3I6ICNiNmIzYjM7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNkNGQxZDE7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG5cbi5jbF9pbWFnZXMge1xuICB3aWR0aDogNDAlO1xuICBoZWlnaHQ6IDI1JTtcbiAgY29sb3I6ICNiNmIzYjM7XG59XG5cbi5jbF9kaXNwbGF5X2ltZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG5cbi5idXR0b25DbGFzcyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYTc1NDk7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuXG4uYnV0dG9uUGF5Q2xhc3Mge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsICNmZTg4NjAsICNmZWFlOTMpO1xuICBjb2xvcjogd2hpdGU7XG4gIHBhZGRpbmc6IDEycHg7XG4gIHdpZHRoOiAxMDAlO1xuICBmb250LXdlaWdodDogNTAwO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cblxuLmRpc2FibGVkQ2xhc3Mge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmNGY5O1xuICBjb2xvcjogYmxhY2s7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbn1cblxuLmJ1dHRvbkJhY2tDbGFzcyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWY0Zjk7XG4gIGNvbG9yOiBibGFjaztcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuXG4ubWF0LXN0ZXAtaWNvbiAubWF0LWljb24ge1xuICBmb250LXNpemU6IDEzcHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAxNnB4O1xuICB3aWR0aDogMTZweDtcbn1cblxuLmRlc2MtdGV4dCB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbn1cblxuLnRleHQtZm9udC1zaXplIHtcbiAgZm9udC1zaXplOiAxM3B4O1xufVxuXG4uZmxvYXRpbmctbGFiZWwtY3NzIHtcbiAgZm9udC1zaXplOiAxM3B4O1xufVxuXG4ubWFyZ2luLXRvcC1jc3Mge1xuICBtYXJnaW4tdG9wOiAwcHg7XG59XG5cbi50YWJsZS10ZXh0LXNpemUge1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi50YWJsZS10aXRsZS10ZXh0LXNpemUge1xuICBmb250LXNpemU6IDlweDtcbn1cblxudGQge1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjYThhN2E3O1xufVxuXG50aCB7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmMWY0Zjk7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNhOGE3YTc7XG59XG5cbi5jbF9ib3R0b21fbmF2X2NzcyB7XG4gIHdpZHRoOiAyNHB4O1xuICBoZWlnaHQ6IDI0cHg7XG4gIHdpZHRoOiAxMDAlO1xuICBjb2xvcjogZ3JheTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX2JvdHRvbV9maXgge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogOHB4O1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2YxZjRmOTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbi5jbF9wb3N0X2NzcyB7XG4gIHdpZHRoOiAxMDAlO1xuICB3aWR0aDogMjRweDtcbiAgaGVpZ2h0OiAyNHB4O1xuICBjb2xvcjogI2ZiNzY0NTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcbn1cblxuLmNsX3RleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLmNsX3NlbGVjdGVkLXRleHRfZm9udCB7XG4gIHBhZGRpbmctdG9wOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgY29sb3I6ICNmYjc2NDU7XG59XG5cbmlvbi1yYWRpbyB7XG4gIC0tY29sb3ItY2hlY2tlZDogI2ZiNzY0NTtcbn1cblxuOjpuZy1kZWVwIC5tYXQtc2xpZGUtdG9nZ2xlLm1hdC1jaGVja2VkOm5vdCgubWF0LWRpc2FibGVkKSAubWF0LXNsaWRlLXRvZ2dsZS10aHVtYiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYjc2NDU7XG4gIC8qcmVwbGFjZSB3aXRoIHlvdXIgY29sb3IqL1xufVxuXG46Om5nLWRlZXAgLm1hdC1zbGlkZS10b2dnbGUubWF0LWNoZWNrZWQ6bm90KC5tYXQtZGlzYWJsZWQpIC5tYXQtc2xpZGUtdG9nZ2xlLWJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNWI5YTY7XG4gIC8qcmVwbGFjZSB3aXRoIHlvdXIgY29sb3IqL1xufVxuXG4uY2FyZC1jc3Mge1xuICBib3JkZXItcmFkaXVzOiA2cHg7XG4gIHdpZHRoOiA4NHB4O1xuICBwYWRkaW5nOiA1cHg7XG4gIGhlaWdodDogODRweDtcbiAgbWFyZ2luOiA2cHg7XG59XG5cbi5jYXJkLW9uZSB7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICNmYzdjNTEsICNmY2IyOWEpO1xufVxuXG4uaC1jc3Mtb25lIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4ubGFiZWwtY3NzLW9uZSB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLmgtY3NzLXR3byB7XG4gIGNvbG9yOiBibGFjaztcbn1cblxuLmxhYmVsLWNzcy10d28ge1xuICBjb2xvcjogZ3JheTtcbn1cblxuLmNhcmQtdHdvIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZSAhaW1wb3J0YW50O1xufVxuXG4ucGFkZGluZzFweCB7XG4gIHBhZGRpbmc6IDFweDtcbn1cblxuLmV4cGlyeUNhcmQtY3NzIHtcbiAgcGFkZGluZy10b3A6IDEwcHg7XG4gIHBhZGRpbmctYm90dG9tOiAxMHB4O1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmODg4NjMsICNmY2IyOWEpO1xuICBjb2xvcjogI2ZmZmZmZjtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBsaW5lLWhlaWdodDogMjBweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -162,6 +162,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         this.changeDetectorRef = changeDetectorRef;
         this.toast = toast;
         this.apiCall = apiCall;
+        this.bannerUpdateStatusCheck = 1;
         this.totalCalculatePayment = 0;
         this.selectedCode = "91";
         this.countryCode = [];
@@ -187,11 +188,11 @@ var NewadvertisementformPage = /** @class */ (function () {
         this.bannerWeek = "";
         this.finalCalculation = 0;
         this.finalAdCalculation = 0;
-        this.fromDateTimestamp = 0;
-        this.fromDateTimeAd = 0;
-        this.toDateTimestamp = 0;
-        this.toDateTimeAd = 0;
         this.filterObject = {};
+        this.checkBannerEndDateTimestamp = 0;
+        this.checkBannerStartDateTimestamp = 0;
+        this.checkAdEndDateTimestamp = 0;
+        this.checkAdStartDateTimestamp = 0;
         this.genderArray = [
             {
                 "id": "0",
@@ -226,6 +227,7 @@ var NewadvertisementformPage = /** @class */ (function () {
                 "price": "4000"
             }
         ];
+        this.plansArray = [];
         //Tags
         this.tagsArray = [
             {
@@ -279,12 +281,16 @@ var NewadvertisementformPage = /** @class */ (function () {
         });
     };
     NewadvertisementformPage.prototype.ionViewWillEnter = function () {
+        var nnnn = this.toTimestamp("06/10/2020");
+        console.log("show nnnn timesatmp:" + nnnn);
+        this.getPlan();
         this.postStatus = localStorage.getItem("postStatus");
+        console.log("check status ad or update:" + this.postStatus);
         if (this.postStatus == "1") {
             this.advertisementStatus = "update";
             var advertisementDetail = localStorage.getItem("ADVERTISEMENTDATA");
             this.advertisementObject = JSON.parse(advertisementDetail);
-            console.log("show add details:" + this.advertisementObject);
+            console.log("show add details:" + JSON.stringify(this.advertisementObject));
             this.advertisementId = this.advertisementObject.id;
             this.advertisementModel['images'] = this.advertisementObject.images;
             this.firstFormGroup = this.formBuilder.group({
@@ -316,47 +322,53 @@ var NewadvertisementformPage = /** @class */ (function () {
                 selectedLanguages: [this.advertisementObject.languages, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             });
             this.getAllBanner();
-            this.fromDateTimeAd = this.advertisementObject.startDateTime;
-            this.toDateTimeAd = this.advertisementObject.endDateTime;
-            this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
-            this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
-            this.totalCalculatePayment = 0;
-            this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-            this.fifthFormGroup = this.formBuilder.group({
+            this.checkAdStartDateTimestamp = this.advertisementObject.startDateTime;
+            this.checkAdEndDateTimestamp = this.advertisementObject.endDateTime;
+            this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+            this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+            console.log("checkAdEndDateTimestamp::" + this.checkAdEndDateTimestamp);
+            console.log("get Start Date For Update::" + this.getStartDateForUpdate);
+            console.log("get End Date For Update::" + this.getEndDateForUpdate);
+            // this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
+            // this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
+            // this.totalCalculatePayment = 0;
+            // this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+            this.sixthFormGroup = this.formBuilder.group({
                 adWeek: [this.adWeek, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                 bannerWeek: [this.bannerWeek, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
             });
+            this.fifthFormGroup = this.formBuilder.group({});
             this.urls = [];
             // for(let i= 0;i < this.advertisementModel['images'].length; i++){
-            if (this.advertisementModel['images'][0] == undefined) {
+            if (this.advertisementModel['images'][0] == undefined || this.advertisementModel['images'][0] == null) {
                 this.firstImage = "";
             }
             else {
                 this.firstImage = this.advertisementModel['images'][0];
                 this.urls.push(this.firstImage);
             }
-            if (this.advertisementModel['images'][1] == undefined) {
+            if (this.advertisementModel['images'][1] == undefined || this.advertisementModel['images'][1] == null) {
                 this.secondImage = "";
             }
             else {
                 this.secondImage = this.advertisementModel['images'][1];
                 this.urls.push(this.secondImage);
             }
-            if (this.advertisementModel['images'][2] == undefined) {
+            if (this.advertisementModel['images'][2] == undefined || this.advertisementModel['images'][2] == null) {
                 this.thirdImage = "";
             }
             else {
                 this.thirdImage = this.advertisementModel['images'][2];
                 this.urls.push(this.thirdImage);
             }
-            if (this.advertisementModel['images'][3] == undefined) {
+            if (this.advertisementModel['images'][3] == undefined || this.advertisementModel['images'][3] == null) {
                 this.fourthImage = "";
             }
             else {
                 this.fourthImage = this.advertisementModel['images'][3];
                 this.urls.push(this.fourthImage);
             }
-            if (this.advertisementModel['images'][4] == undefined) {
+            if (this.advertisementModel['images'][4] == undefined || this.advertisementModel['images'][4] == null) {
                 this.fifthImage = "";
             }
             else {
@@ -367,6 +379,16 @@ var NewadvertisementformPage = /** @class */ (function () {
         else {
             this.advertisementStatus = "post";
         }
+    };
+    NewadvertisementformPage.prototype.timestampToDate = function (tmsp) {
+        var ts_ms = tmsp * 1000;
+        var date_ob = new Date(ts_ms);
+        var year = date_ob.getFullYear();
+        var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+        var date = ("0" + date_ob.getDate()).slice(-2);
+        var getStartDate = month + "/" + date + "/" + year;
+        return getStartDate;
+        var dateToday = new Date(year, parseInt(month), parseInt(date));
     };
     NewadvertisementformPage.prototype.ngOnInit = function () {
         this.getCategory();
@@ -397,10 +419,11 @@ var NewadvertisementformPage = /** @class */ (function () {
             selectedTags: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             selectedLanguages: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
         });
-        this.fifthFormGroup = this.formBuilder.group({
+        this.sixthFormGroup = this.formBuilder.group({
             adWeek: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             bannerWeek: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
+        this.fifthFormGroup = this.formBuilder.group({});
     };
     NewadvertisementformPage.prototype.getAllBanner = function () {
         var _this = this;
@@ -413,17 +436,26 @@ var NewadvertisementformPage = /** @class */ (function () {
             _this.loader.hideBlockingLoaderAuth();
             _this.bannerArray = MyResponse['result']['list'];
             if (MyResponse['result']['count'] > 0) {
+                _this.bannerUpdateStatusCheck = 1;
                 var getBannerId = MyResponse['result']['list'][0]['id'];
-                _this.fromDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
-                _this.toDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
+                _this.checkBannerStartDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
+                _this.checkBannerEndDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
+                _this.getStartDateForUpdateBanner = _this.timestampToDate(_this.checkBannerStartDateTimestamp);
+                _this.getEndDateForUpdateBanner = _this.timestampToDate(_this.checkBannerEndDateTimestamp);
+                console.log("selected getEndDateForUpdateBanner:" + _this.getEndDateForUpdateBanner);
+                console.log("get Start Date For Update Banner::" + _this.getStartDateForUpdateBanner);
+                console.log("get End Date For Update Banner::" + _this.getEndDateForUpdateBanner);
                 localStorage.setItem("bannerId", getBannerId);
-                _this.bannerWeek = _this.getDate(_this.fromDateTimestamp, _this.toDateTimestamp);
+                _this.bannerWeek = _this.getDate(_this.checkBannerStartDateTimestamp, _this.checkBannerEndDateTimestamp);
                 _this.finalCalculation = 7 + ((_this.bannerWeek - 1) * 5);
-                _this.totalCalculatePayment = 0;
-                _this.totalCalculatePayment = _this.finalCalculation + _this.finalAdCalculation;
+                // this.totalCalculatePayment = 0;
+                // this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
                 console.log("selected banner week show:" + _this.bannerWeek);
             }
             else {
+                _this.bannerUpdateStatusCheck = 0;
+                _this.checkBannerEndDateTimestamp = 0;
+                _this.checkBannerStartDateTimestamp = 0;
                 console.log("post bannee API");
             }
             _this.loader.hideBlockingLoaderAuth();
@@ -480,7 +512,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         console.log("show third record:" + this.firstImage);
         console.log("show fourth record:" + this.fourthFormData.categoryId);
         console.log("show fifth record:" + this.FifthFormData.bannerWeek);
-        this.submmitAdvertisementData();
+        // this.submmitAdvertisementData();
     };
     NewadvertisementformPage.prototype.radioGroupChange = function (event) {
         console.log("radioGroupChange", event.detail.value);
@@ -501,6 +533,7 @@ var NewadvertisementformPage = /** @class */ (function () {
     NewadvertisementformPage.prototype.submmitAdvertisementData = function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
+        // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
         var send_date = {};
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
@@ -513,8 +546,8 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['email'] = this.secondFormData.emailCtrl;
         send_date['mobile'] = this.secondFormData.mobileCtrl;
         send_date['categoryId'] = this.fourthFormData.categoryId;
-        send_date['startDateTime'] = this.fromDateTimeAd;
-        send_date['endDateTime'] = this.toDateTimeAd;
+        send_date['startDateTime'] = this.checkAdStartDateTimestamp;
+        send_date['endDateTime'] = this.checkAdEndDateTimestamp;
         send_date['isActive'] = 1;
         send_date['images'] = this.urls;
         send_date['countryCode'] = this.selectedCode;
@@ -529,9 +562,14 @@ var NewadvertisementformPage = /** @class */ (function () {
                 _this.getCategoryId = MyResponse['result']['categoryId'];
                 _this.advertisementId = MyResponse['result']['id'];
                 localStorage.setItem("categoryId", _this.getCategoryId);
-                _this.postBanner(_this.getCategoryId);
-                _this.presentToast("Advertisement posted successfully.");
-                _this.router.navigate(['/home', { categoryId: _this.getCategoryId }]);
+                if (_this.checkBannerStartDateTimestamp == 0 || _this.checkBannerEndDateTimestamp == 0 || _this.checkBannerStartDateTimestamp == null) {
+                    console.log("no banners posted.");
+                }
+                else {
+                    _this.postBanner(_this.getCategoryId);
+                }
+                _this.payWithRazor();
+                // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
                 _this.loader.hideBlockingLoaderAuth();
             }, function (error) {
                 _this.loader.hideBlockingLoaderAuth();
@@ -539,13 +577,24 @@ var NewadvertisementformPage = /** @class */ (function () {
             });
         }
         else {
+            var timestamp_formation = new Date(this.getEndDateForUpdate).getTime();
             console.log("show all forms data in send_date object:" + JSON.stringify(send_date));
             var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "users/" + this.usersId + "/advertisements/" + this.advertisementId;
             this.apiCall.put(url, send_date).subscribe(function (MyResponse) {
                 _this.getCategoryId = MyResponse['result'][0]['categoryId'];
                 console.log("shoe getCategoryId:" + _this.getCategoryId);
                 localStorage.setItem("categoryId", _this.getCategoryId);
-                _this.updateBanner(_this.getCategoryId);
+                if (_this.bannerUpdateStatusCheck == 0) {
+                    _this.postBanner(_this.getCategoryId);
+                }
+                else {
+                    _this.updateBanner(_this.getCategoryId);
+                }
+                if (_this.totalCalculatePayment == 0) {
+                }
+                else {
+                    _this.payWithRazor();
+                }
                 _this.presentToast("Advertisement updated successfully.");
                 _this.router.navigate(['/favourite']);
                 // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
@@ -565,8 +614,8 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['image'] = this.bannerImage;
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
-        send_date['startDateTime'] = this.fromDateTimestamp;
-        send_date['endDateTime'] = this.toDateTimestamp;
+        send_date['startDateTime'] = this.checkBannerStartDateTimestamp;
+        send_date['endDateTime'] = this.checkBannerEndDateTimestamp;
         send_date['lat'] = this.lattitude;
         send_date['lng'] = this.longitude;
         send_date['isActive'] = 1;
@@ -590,8 +639,8 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['image'] = this.bannerImage;
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
-        send_date['startDateTime'] = this.fromDateTimestamp;
-        send_date['endDateTime'] = this.toDateTimestamp;
+        send_date['startDateTime'] = this.checkBannerStartDateTimestamp;
+        send_date['endDateTime'] = this.checkBannerEndDateTimestamp;
         send_date['lat'] = this.lattitude;
         send_date['lng'] = this.longitude;
         send_date['isActive'] = 1;
@@ -677,6 +726,28 @@ var NewadvertisementformPage = /** @class */ (function () {
         }, function (error) {
         });
     };
+    NewadvertisementformPage.prototype.getPlan = function () {
+        var _this = this;
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "subscriptions";
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.plansArray = MyResponse['result']['list'];
+            console.log("show plansArray " + _this.plansArray);
+            if (_this.postStatus == "1") {
+                console.log("check first plan name of ad in update:");
+            }
+            else {
+                console.log("check first plan name of ad in post:");
+                for (var i = 0; i < _this.plansArray.length; i++) {
+                    if (_this.plansArray[i]['isAdvertisement'] == "0") {
+                        _this.adPlanName = _this.plansArray[i]['name'];
+                        _this.checkAdveriseMentPriceCard(_this.adPlanName, _this.plansArray[i]['price'], _this.plansArray[i]['noOfDays']);
+                        console.log("check first plan name of ad:" + _this.adPlanName);
+                    }
+                }
+            }
+        }, function (error) {
+        });
+    };
     NewadvertisementformPage.prototype.selectedChanged = function (selectedLanguage) {
         // alert("selectedLanguage:"+JSON.stringify(selectedLanguage));
         this.languagesArray = (selectedLanguage);
@@ -693,54 +764,101 @@ var NewadvertisementformPage = /** @class */ (function () {
             // this.networkServices.onPageLoadCheckInternet();
         });
     };
-    NewadvertisementformPage.prototype.checkAdveriseMentPriceCard = function (planName, price) {
+    NewadvertisementformPage.prototype.compare = function (date1, date2) {
+        console.log("first date:" + date1);
+        console.log("second date:" + date2);
+        if (date1 > date2) {
+            console.log("check first date :" + date1);
+            return date1;
+        }
+        else if (date1 < date2) {
+            console.log("check second date :" + date2);
+            return date2;
+        }
+        else
+            return (date1);
+    };
+    NewadvertisementformPage.prototype.checkAdveriseMentPriceCard = function (planName, price, noOfDays) {
+        if (this.postStatus == "1") {
+            var currentDate = new Date();
+            var compareDates = this.compare(new Date(currentDate), new Date(this.getEndDateForUpdate));
+            this.checkAdStartDateTimestamp = this.toTimestamp(compareDates);
+            var checkNew = moment__WEBPACK_IMPORTED_MODULE_6__(compareDates, "MM-DD-YYYY").add(noOfDays, 'days');
+            this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+            console.log("check final end date timestamp:" + this.checkAdEndDateTimestamp);
+        }
+        else {
+            var startAddate = new Date();
+            this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
+            console.log("start timestamp:" + this.checkAdStartDateTimestamp);
+            var checkNew = moment__WEBPACK_IMPORTED_MODULE_6__(startAddate, "MM-DD-YYYY").add(noOfDays, 'days');
+            this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
+        }
+        console.log("checkAdEndDateTimestamp fromDateTimeAd:::" + this.checkAdStartDateTimestamp);
         this.totalCalculatePayment = 0;
         this.selectedAdPrice = price;
-        console.log("show final payment:" + this.totalCalculatePayment);
-        console.log("show selectedBannerPrice payment:" + this.selectedBannerPrice);
-        console.log("show selectedAdPrice payment:" + this.selectedAdPrice);
         this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
         console.log("final payment:" + this.totalCalculatePayment);
         this.adPlanName = planName;
+        this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+        this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+        console.log("ad dates show:::" + this.getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
     };
-    NewadvertisementformPage.prototype.checkBannerPriceCard = function (planName, price) {
+    NewadvertisementformPage.prototype.checkBannerPriceCard = function (planName, price, noOfDays) {
+        console.log("no of days:::" + noOfDays);
+        if (this.postStatus == "0") {
+            console.log("post banner----");
+            var startdate = new Date();
+            this.checkBannerStartDateTimestamp = this.toTimestamp(startdate);
+            console.log("start banner timestamp:::" + this.checkBannerStartDateTimestamp);
+            var checkBannerNew = moment__WEBPACK_IMPORTED_MODULE_6__(startdate, "MM-DD-YYYY").add(noOfDays, 'days');
+            this.checkBannerEndDateTimestamp = this.toTimestamp(checkBannerNew);
+        }
+        else {
+            console.log("update banner----");
+            var currentDate = new Date();
+            var compareBannerDates = this.compare(new Date(currentDate), new Date(this.getEndDateForUpdateBanner));
+            this.checkBannerStartDateTimestamp = this.toTimestamp(compareBannerDates);
+            var checkNew = moment__WEBPACK_IMPORTED_MODULE_6__(compareBannerDates, "MM-DD-YYYY").add(noOfDays, 'days');
+            console.log("selected plan next ---:" + this.checkBannerEndDateTimestamp);
+            this.checkBannerEndDateTimestamp = this.toTimestamp(checkNew);
+        }
+        // var time = moment(this.checkBannerEndDateTimestamp).format("DD-MM-YYYY");
+        // console.log("no of days after calculation:::" + time);
         this.totalCalculatePayment = 0;
         this.selectedBannerPrice = price;
         this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
         this.bannerPlanName = planName;
+        this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+        this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+        console.log("banner dates show:::" + this.getStartDateForUpdateBanner + ":end date:" + this.getEndDateForUpdateBanner);
     };
-    NewadvertisementformPage.prototype.selectBannerWeek = function (data) {
-        this.bannerWeek = data;
-        // localStorage.setItem("boostStatus", '0');
-        // this.checkBoostStatus = localStorage.getItem("boostStatus");
-        this.finalCalculation = 7 + ((data - 1) * 5);
-        this.totalCalculatePayment = 0;
-        this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-        this.totalCalculation = this.finalCalculation;
-        this.endDate = moment__WEBPACK_IMPORTED_MODULE_6__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
-        var startDateTimeStamp = this.toTimestamp(this.todayDate);
-        var endDateTimeStamp = this.toTimestamp(this.endDate);
-        this.fromDateTimestamp = startDateTimeStamp;
-        this.toDateTimestamp = endDateTimeStamp;
-        console.log("show banner timestamp:" + startDateTimeStamp);
-        console.log("show banner date:" + moment__WEBPACK_IMPORTED_MODULE_6__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-    };
-    NewadvertisementformPage.prototype.selectAdWeek = function (data) {
-        this.adWeek = data;
-        this.finalAdCalculation = 7 + ((data - 1) * 5);
-        this.totalCalculatePayment = 0;
-        this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-        this.todayDate = new Date();
-        console.log("show no of week value::" + data);
-        this.endAdvertisementDate = moment__WEBPACK_IMPORTED_MODULE_6__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
-        var startDateTime = this.toTimestamp(this.todayDate);
-        var endDateTime = this.toTimestamp(this.endAdvertisementDate);
-        this.fromDateTimeAd = startDateTime;
-        this.toDateTimeAd = endDateTime;
-        console.log("start date timestamp:" + startDateTime);
-        console.log("end date timestamp:" + endDateTime);
-        console.log("show next date:" + moment__WEBPACK_IMPORTED_MODULE_6__(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-    };
+    // selectBannerWeek(data) {
+    //   this.bannerWeek = data;
+    //   this.finalCalculation = 7 + ((data - 1) * 5);
+    //   this.totalCalculation = this.finalCalculation;
+    //   this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
+    //   let startDateTimeStamp = this.toTimestamp(this.todayDate);
+    //   let endDateTimeStamp = this.toTimestamp(this.endDate);
+    //   this.fromDateTimestamp = startDateTimeStamp;
+    //   this.toDateTimestamp = endDateTimeStamp;
+    //   console.log("show banner timestamp:" + startDateTimeStamp)
+    //   console.log("show banner date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
+    // }
+    // selectAdWeek(data) {
+    //   this.adWeek = data;
+    //   this.finalAdCalculation = 7 + ((data - 1) * 5);
+    //   this.todayDate = new Date();
+    //   console.log("show no of week value::" + data);
+    //   this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
+    //   let startDateTime = this.toTimestamp(this.todayDate);
+    //   let endDateTime = this.toTimestamp(this.endAdvertisementDate);
+    //   this.fromDateTimeAd = startDateTime;
+    //   this.toDateTimeAd = endDateTime;
+    //   console.log("start date timestamp:" + startDateTime);
+    //   console.log("end date timestamp:" + endDateTime);
+    //   console.log("show next date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
+    // }
     NewadvertisementformPage.prototype.handleAddressChange = function (data) {
         console.log("Address Data", data);
         this.lattitude = data.geometry.location.lat();
@@ -772,6 +890,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         this.address = this.advertisementModel['landmark'], this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
     };
     NewadvertisementformPage.prototype.detectEventGallery = function (event, index) {
+        this.loader.showBlockingLoaderAuth();
         console.log(event);
         var files = event.target.files;
         console.log(files);
@@ -785,24 +904,7 @@ var NewadvertisementformPage = /** @class */ (function () {
                 this.fileToUpload = file;
                 reader.readAsDataURL(this.fileToUpload);
             }
-            // this.handleFirstFileInput(this.fileToUpload,index);
-            if (index == 0) {
-                this.handleFirstFileInput(this.fileToUpload);
-            }
-            else if (index == 1) {
-                this.handleSecondFileInput(this.fileToUpload);
-            }
-            else if (index == 2) {
-                this.handleThirdFileInput(this.fileToUpload);
-            }
-            else if (index == 3) {
-                this.handleFourthFileInput(this.fileToUpload);
-            }
-            else if (index == 4) {
-                this.handleFifthFileInput(this.fileToUpload);
-            }
-            else {
-            }
+            this.handleFirstFileInput(this.fileToUpload, index);
         }
         console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
     };
@@ -810,14 +912,14 @@ var NewadvertisementformPage = /** @class */ (function () {
         var datum = Date.parse(strDate);
         return datum / 1000;
     };
-    NewadvertisementformPage.prototype.handleFirstFileInput = function (files) {
+    NewadvertisementformPage.prototype.handleFirstFileInput = function (files, index) {
         var _this = this;
-        if (this.fileToUpload == null || this.fileToUpload == undefined) {
+        this.loader.showBlockingLoaderAuth();
+        if (files == null || files == undefined) {
         }
         var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
         console.log("check url : " + url);
         this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls[0] = MyResponse['result'][0];
             if (_this.urls.length > 4) {
                 _this.imageUrl = 0;
             }
@@ -825,121 +927,43 @@ var NewadvertisementformPage = /** @class */ (function () {
                 _this.imageUrl = 1;
             }
             _this.loader.hideBlockingLoaderAuth();
-            // if(index == 0){
-            //   this.firstImage = MyResponse['result'][0];
-            // }else  if(index == 1){
-            //   this.secondImage = MyResponse['result'][0];
-            // }else  if(index == 2){
-            //   this.thirdImage = MyResponse['result'][0];
-            // }else  if(index == 3){
-            //   this.fourthImage = MyResponse['result'][0];
-            // }else  if(index == 4){
-            //   this.fifthImage = MyResponse['result'][0];
-            // }else{
-            // }
-            _this.firstImage = MyResponse['result'][0];
+            if (index == 0) {
+                _this.urls[0] = MyResponse['result'][0];
+                _this.firstImage = MyResponse['result'][0];
+            }
+            else if (index == 1) {
+                _this.urls[1] = MyResponse['result'][0];
+                _this.secondImage = MyResponse['result'][0];
+            }
+            else if (index == 2) {
+                _this.urls[2] = MyResponse['result'][0];
+                _this.thirdImage = MyResponse['result'][0];
+            }
+            else if (index == 3) {
+                _this.urls[3] = MyResponse['result'][0];
+                _this.fourthImage = MyResponse['result'][0];
+            }
+            else if (index == 4) {
+                _this.urls[4] = MyResponse['result'][0];
+                _this.fifthImage = MyResponse['result'][0];
+            }
+            else {
+            }
             console.log("print url resonce:" + _this.firstImage);
         }, function (error) {
             _this.loader.hideBlockingLoaderAuth();
             console.log(error);
         });
     };
-    NewadvertisementformPage.prototype.handleSecondFileInput = function (files) {
-        var _this = this;
-        if (this.fileToUpload == null || this.fileToUpload == undefined) {
-        }
-        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-        console.log("check url : " + url);
-        this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls[1] = MyResponse['result'][0];
-            if (_this.urls.length > 4) {
-                _this.imageUrl = 0;
-            }
-            else {
-                _this.imageUrl = 1;
-            }
-            _this.loader.hideBlockingLoaderAuth();
-            _this.secondImage = MyResponse['result'][0];
-            console.log("print url secondImage:" + _this.secondImage);
-        }, function (error) {
-            _this.loader.hideBlockingLoaderAuth();
-            console.log(error);
-        });
-    };
-    NewadvertisementformPage.prototype.handleThirdFileInput = function (files) {
-        var _this = this;
-        if (this.fileToUpload == null || this.fileToUpload == undefined) {
-        }
-        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-        console.log("check url : " + url);
-        this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls[2] = MyResponse['result'][0];
-            if (_this.urls.length > 4) {
-                _this.imageUrl = 0;
-            }
-            else {
-                _this.imageUrl = 1;
-            }
-            _this.loader.hideBlockingLoaderAuth();
-            _this.thirdImage = MyResponse['result'][0];
-            console.log("print url thirdImage:" + _this.thirdImage);
-        }, function (error) {
-            _this.loader.hideBlockingLoaderAuth();
-            console.log(error);
-        });
-    };
-    NewadvertisementformPage.prototype.handleFourthFileInput = function (files) {
-        var _this = this;
-        if (this.fileToUpload == null || this.fileToUpload == undefined) {
-        }
-        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-        console.log("check url : " + url);
-        this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls[3] = MyResponse['result'][0];
-            if (_this.urls.length > 4) {
-                _this.imageUrl = 0;
-            }
-            else {
-                _this.imageUrl = 1;
-            }
-            _this.loader.hideBlockingLoaderAuth();
-            _this.fourthImage = MyResponse['result'][0];
-            console.log("print url fourthImage:" + _this.fourthImage);
-        }, function (error) {
-            _this.loader.hideBlockingLoaderAuth();
-            console.log(error);
-        });
-    };
-    NewadvertisementformPage.prototype.handleFifthFileInput = function (files) {
-        var _this = this;
-        if (this.fileToUpload == null || this.fileToUpload == undefined) {
-        }
-        var url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-        console.log("check url : " + url);
-        this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(function (MyResponse) {
-            _this.urls[4] = MyResponse['result'][0];
-            if (_this.urls.length > 4) {
-                _this.imageUrl = 0;
-            }
-            else {
-                _this.imageUrl = 1;
-            }
-            _this.loader.hideBlockingLoaderAuth();
-            _this.fifthImage = MyResponse['result'][0];
-            console.log("print url fifthImage:" + _this.fifthImage);
-        }, function (error) {
-            _this.loader.hideBlockingLoaderAuth();
-            console.log(error);
-        });
-    };
     NewadvertisementformPage.prototype.payWithRazor = function () {
+        var _this = this;
+        console.log("check payment count:" + this.totalCalculatePayment);
         var getName = localStorage.getItem("getName");
         var options = {
             description: 'Credits towards consultation',
             image: 'https://i.imgur.com/3g7nmJC.png',
             currency: this.currency,
             key: this.razor_key,
-            payment_capture: 1,
             amount: this.totalCalculatePayment,
             name: 'Holyhub',
             prefill: {
@@ -963,8 +987,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         // };
         var successCallback = function (success) {
             alert('payment_id: ' + success);
-            var orderId = success.razorpay_order_id;
-            var signature = success.razorpay_signature;
+            _this.gatewayLogsCheck(success);
         };
         var cancelCallback = function (error) {
             alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
@@ -983,6 +1006,34 @@ var NewadvertisementformPage = /** @class */ (function () {
             this.selectPlan[name] = true;
         }
         console.log("check data:" + JSON.stringify(this.selectPlan));
+    };
+    NewadvertisementformPage.prototype.gatewayLogsCheck = function (success) {
+        var _this = this;
+        this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+        this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
+        this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+        this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
+        this.loader.showBlockingLoaderAuth();
+        var send_date = {};
+        send_date['advertisementId'] = this.advertisementId;
+        send_date['userId'] = this.usersId;
+        send_date['paymentId'] = (success);
+        send_date['isSuccess'] = 0;
+        send_date['advertisementStartDate'] = this.getStartDateForUpdate;
+        send_date['advertisementEndDate'] = this.getEndDateForUpdate;
+        if (this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0) {
+        }
+        else {
+            send_date['bannerStartDate'] = this.getStartDateForUpdateBanner;
+            send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
+        }
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "payment-gateway-logs";
+        this.apiCall.post(url, send_date).subscribe(function (MyResponse) {
+            _this.router.navigate(['/home', { categoryId: _this.getCategoryId }]);
+            _this.loader.hideBlockingLoaderAuth();
+        }, function (error) {
+            _this.loader.hideBlockingLoaderAuth();
+        });
     };
     NewadvertisementformPage.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },

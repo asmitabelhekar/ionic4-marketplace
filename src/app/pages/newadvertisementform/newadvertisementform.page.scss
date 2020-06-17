@@ -85,7 +85,6 @@
 
 .desc-text{
   font-size:14px;
-  
 }
 
 .text-font-size{
@@ -179,20 +178,49 @@ ion-radio {
 
 .card-css
 {
-  border-radius:7px;
-  width:80px;
-  height:80px;
+  border-radius:6px;
+  width:90px;
+  padding:5px;
+  height:90px;
+  margin:6px;
 }
 
 .card-one {
-  background: linear-gradient(to bottom, #fe4f14,#fe8860,#feae93);
-  // --background: #152a3f !important;
-  --color:white;
-  
+  background: linear-gradient(to bottom,#fc7c51,#fcb29a);
+  // --color:white;
+
+ 
 }
 
-.card-two {
+.h-css-one{
+  color:white;
+}
 
+.label-css-one{
+  color:white;
+}
+
+.h-css-two{
+  color:black;
+}
+
+.label-css-two{
+  color:gray;
+}
+.card-two {
   --background: white !important;
-  --color:black;
+ 
+}
+.padding1px{
+  padding:1px;
+}
+.expiryCard-css{
+  padding-top:10px;
+  padding-bottom:10px;
+  background: linear-gradient(to right,#f88863,#fcb29a);
+  color:#ffffff;
+  font-size:11px;
+  line-height: 20px;
+  border-radius:10px;
+  // height:50px;
 }

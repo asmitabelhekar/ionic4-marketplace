@@ -17,6 +17,7 @@ declare var RazorpayCheckout: any;
 })
 export class NewadvertisementformPage implements OnInit {
 
+  bannerUpdateStatusCheck = 1;
   totalCalculatePayment: any = 0;
   adPlanName: any;
   bannerPlanName: any;
@@ -39,6 +40,7 @@ export class NewadvertisementformPage implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
+  sixthFormGroup: FormGroup;
 
   selectPlan: any = {};
   checkStatus: boolean;
@@ -86,10 +88,10 @@ export class NewadvertisementformPage implements OnInit {
   finalCalculation: any = 0;
   finalAdCalculation: any = 0;
   totalCalculation: any;
-  fromDateTimestamp: number = 0;
-  fromDateTimeAd: number = 0;
-  toDateTimestamp: number = 0;
-  toDateTimeAd: number = 0;
+  // fromDateTimestamp: number = 0;
+  // fromDateTimeAd: number = 0;
+  // toDateTimestamp: number = 0;
+  // toDateTimeAd: number = 0;
   endDate: any;
   todayDate: any;
   endAdvertisementDate: any;
@@ -103,6 +105,9 @@ export class NewadvertisementformPage implements OnInit {
   checkAdStartDateTimestamp: any = 0;
 
   getEndDateForUpdate: any;
+  getStartDateForUpdate : any;
+
+  getStartDateForUpdateBanner: any;
   getEndDateForUpdateBanner: any;
 
   genderArray = [
@@ -242,24 +247,29 @@ export class NewadvertisementformPage implements OnInit {
 
       this.checkAdStartDateTimestamp = this.advertisementObject.startDateTime;
       this.checkAdEndDateTimestamp = this.advertisementObject.endDateTime;
-      let getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+      this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+      
       this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
       console.log("checkAdEndDateTimestamp::" + this.checkAdEndDateTimestamp);
-      console.log("get Start Date For Update::" + getStartDateForUpdate);
+      console.log("get Start Date For Update::" + this.getStartDateForUpdate);
       console.log("get End Date For Update::" + this.getEndDateForUpdate);
-      this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
-      this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
-      this.totalCalculatePayment = 0;
-      this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+      // this.adWeek = this.getDate(this.fromDateTimeAd, this.toDateTimeAd);
+      // this.finalAdCalculation = 7 + ((this.adWeek - 1) * 5);
+      // this.totalCalculatePayment = 0;
+      // this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
 
-      this.fifthFormGroup = this.formBuilder.group({
+      this.sixthFormGroup = this.formBuilder.group({
         adWeek: [this.adWeek, Validators.required],
         bannerWeek: [this.bannerWeek, Validators.required]
       });
 
+      this.fifthFormGroup = this.formBuilder.group({
+
+      });
+
       this.urls = [];
       // for(let i= 0;i < this.advertisementModel['images'].length; i++){
-      if (this.advertisementModel['images'][0] == undefined) {
+      if (this.advertisementModel['images'][0] == undefined || this.advertisementModel['images'][0] == null) {
         this.firstImage = "";
       } else {
         this.firstImage = this.advertisementModel['images'][0];
@@ -267,7 +277,7 @@ export class NewadvertisementformPage implements OnInit {
 
       }
 
-      if (this.advertisementModel['images'][1] == undefined) {
+      if (this.advertisementModel['images'][1] == undefined || this.advertisementModel['images'][1] == null) {
         this.secondImage = "";
       } else {
         this.secondImage = this.advertisementModel['images'][1];
@@ -275,7 +285,7 @@ export class NewadvertisementformPage implements OnInit {
 
       }
 
-      if (this.advertisementModel['images'][2] == undefined) {
+      if (this.advertisementModel['images'][2] == undefined || this.advertisementModel['images'][2] == null) {
         this.thirdImage = "";
       } else {
         this.thirdImage = this.advertisementModel['images'][2];
@@ -283,7 +293,7 @@ export class NewadvertisementformPage implements OnInit {
 
       }
 
-      if (this.advertisementModel['images'][3] == undefined) {
+      if (this.advertisementModel['images'][3] == undefined || this.advertisementModel['images'][3] == null) {
         this.fourthImage = "";
       } else {
         this.fourthImage = this.advertisementModel['images'][3];
@@ -291,7 +301,7 @@ export class NewadvertisementformPage implements OnInit {
 
       }
 
-      if (this.advertisementModel['images'][4] == undefined) {
+      if (this.advertisementModel['images'][4] == undefined || this.advertisementModel['images'][4] == null) {
         this.fifthImage = "";
       } else {
         this.fifthImage = this.advertisementModel['images'][4];
@@ -302,7 +312,7 @@ export class NewadvertisementformPage implements OnInit {
     } else {
       this.advertisementStatus = "post";
 
-     
+
     }
   }
 
@@ -324,7 +334,6 @@ export class NewadvertisementformPage implements OnInit {
 
     for (let p = 0; p <= 52; p++) {
       this.weeksArray.push(p);
-
     }
     console.log("show weeks array:" + this.weeksArray);
 
@@ -354,10 +363,12 @@ export class NewadvertisementformPage implements OnInit {
       selectedLanguages: ['', Validators.required],
     });
 
-    this.fifthFormGroup = this.formBuilder.group({
+    this.sixthFormGroup = this.formBuilder.group({
       adWeek: ['', Validators.required],
       bannerWeek: ['', Validators.required]
     });
+
+    this.fifthFormGroup = this.formBuilder.group({});
   }
 
 
@@ -372,24 +383,27 @@ export class NewadvertisementformPage implements OnInit {
       this.loader.hideBlockingLoaderAuth();
       this.bannerArray = MyResponse['result']['list'];
       if (MyResponse['result']['count'] > 0) {
+        this.bannerUpdateStatusCheck = 1;
         let getBannerId = MyResponse['result']['list'][0]['id'];
         this.checkBannerStartDateTimestamp = MyResponse['result']['list'][0]['startDateTime'];
         this.checkBannerEndDateTimestamp = MyResponse['result']['list'][0]['endDateTime'];
-        let getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+        this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
         this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
         console.log("selected getEndDateForUpdateBanner:" + this.getEndDateForUpdateBanner);
-        console.log("get Start Date For Update Banner::" + getStartDateForUpdateBanner);
+        console.log("get Start Date For Update Banner::" + this.getStartDateForUpdateBanner);
         console.log("get End Date For Update Banner::" + this.getEndDateForUpdateBanner);
         localStorage.setItem("bannerId", getBannerId);
         this.bannerWeek = this.getDate(this.checkBannerStartDateTimestamp, this.checkBannerEndDateTimestamp);
         this.finalCalculation = 7 + ((this.bannerWeek - 1) * 5);
 
-        this.totalCalculatePayment = 0;
-        this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+        // this.totalCalculatePayment = 0;
+        // this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
         console.log("selected banner week show:" + this.bannerWeek);
 
       } else {
-
+        this.bannerUpdateStatusCheck = 0;
+        this.checkBannerEndDateTimestamp = 0;
+        this.checkBannerStartDateTimestamp = 0;
         console.log("post bannee API");
       }
 
@@ -540,10 +554,14 @@ export class NewadvertisementformPage implements OnInit {
         this.getCategoryId = MyResponse['result']['categoryId'];
         this.advertisementId = MyResponse['result']['id'];
         localStorage.setItem("categoryId", this.getCategoryId);
-        this.postBanner(this.getCategoryId);
-        // this.presentToast("Advertisement posted successfully.");
+        if (this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0 || this.checkBannerStartDateTimestamp == null) {
+          console.log("no banners posted.")
+        } else {
+          this.postBanner(this.getCategoryId);
+        }
+       
         this.payWithRazor();
-        this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
+        // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
         this.loader.hideBlockingLoaderAuth();
       }, error => {
         this.loader.hideBlockingLoaderAuth();
@@ -561,8 +579,18 @@ export class NewadvertisementformPage implements OnInit {
         this.getCategoryId = MyResponse['result'][0]['categoryId'];
         console.log("shoe getCategoryId:" + this.getCategoryId);
         localStorage.setItem("categoryId", this.getCategoryId);
-        this.updateBanner(this.getCategoryId);
-        this.payWithRazor();
+
+        if(this.bannerUpdateStatusCheck == 0){
+          this.postBanner(this.getCategoryId);
+        }else{
+          this.updateBanner(this.getCategoryId);
+        }
+        if(this.totalCalculatePayment == 0){
+
+        }else{
+          this.payWithRazor();
+        }
+       
         this.presentToast("Advertisement updated successfully.");
         this.router.navigate(['/favourite']);
         // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
@@ -711,19 +739,19 @@ export class NewadvertisementformPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.plansArray = MyResponse['result']['list'];
       console.log("show plansArray " + this.plansArray);
-      if(this.postStatus == "1"){
+      if (this.postStatus == "1") {
         console.log("check first plan name of ad in update:");
-      }else{
+      } else {
         console.log("check first plan name of ad in post:");
-        for(let i=0; i< this.plansArray.length; i++){
-          if(this.plansArray[i]['isAdvertisement'] == "0"){
+        for (let i = 0; i < this.plansArray.length; i++) {
+          if (this.plansArray[i]['isAdvertisement'] == "0") {
             this.adPlanName = this.plansArray[i]['name'];
-            this.checkAdveriseMentPriceCard(this.adPlanName,this.plansArray[i]['price'],this.plansArray[i]['noOfDays']);
-            console.log("check first plan name of ad:"+this.adPlanName);
+            this.checkAdveriseMentPriceCard(this.adPlanName, this.plansArray[i]['price'], this.plansArray[i]['noOfDays']);
+            console.log("check first plan name of ad:" + this.adPlanName);
           }
         }
       }
-     
+
     },
       error => {
 
@@ -774,7 +802,7 @@ export class NewadvertisementformPage implements OnInit {
 
       let checkNew = moment(compareDates, "MM-DD-YYYY").add(noOfDays, 'days');
       this.checkAdEndDateTimestamp = this.toTimestamp(checkNew);
-      console.log("check final end date timestamp:"+this.checkAdEndDateTimestamp);
+      console.log("check final end date timestamp:" + this.checkAdEndDateTimestamp);
     } else {
       let startAddate = new Date();
       this.checkAdStartDateTimestamp = this.toTimestamp(startAddate);
@@ -790,10 +818,10 @@ export class NewadvertisementformPage implements OnInit {
     console.log("final payment:" + this.totalCalculatePayment);
     this.adPlanName = planName;
 
-    let getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+    this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
     this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
 
-    console.log("ad dates show:::" + getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
+    console.log("ad dates show:::" + this.getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
   }
 
   checkBannerPriceCard(planName, price, noOfDays) {
@@ -829,51 +857,44 @@ export class NewadvertisementformPage implements OnInit {
     this.totalCalculatePayment = +this.selectedBannerPrice + +this.selectedAdPrice;
     this.bannerPlanName = planName;
 
-    let getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+    this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
     this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
-    console.log("banner dates show:::" + getStartDateForUpdateBanner + ":end date:" + this.getEndDateForUpdateBanner);
+    console.log("banner dates show:::" + this.getStartDateForUpdateBanner + ":end date:" + this.getEndDateForUpdateBanner);
   }
 
-  selectBannerWeek(data) {
-    this.bannerWeek = data;
+  // selectBannerWeek(data) {
+  //   this.bannerWeek = data;
 
-    // localStorage.setItem("boostStatus", '0');
-    // this.checkBoostStatus = localStorage.getItem("boostStatus");
+  //   this.finalCalculation = 7 + ((data - 1) * 5);
+  
+  //   this.totalCalculation = this.finalCalculation;
+  //   this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
 
-    this.finalCalculation = 7 + ((data - 1) * 5);
-    this.totalCalculatePayment = 0;
-    this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
+  //   let startDateTimeStamp = this.toTimestamp(this.todayDate);
+  //   let endDateTimeStamp = this.toTimestamp(this.endDate);
+  //   this.fromDateTimestamp = startDateTimeStamp;
+  //   this.toDateTimestamp = endDateTimeStamp;
+  //   console.log("show banner timestamp:" + startDateTimeStamp)
+  //   console.log("show banner date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
+  // }
+  // selectAdWeek(data) {
+  //   this.adWeek = data;
+  //   this.finalAdCalculation = 7 + ((data - 1) * 5);
+   
+  //   this.todayDate = new Date();
+  //   console.log("show no of week value::" + data);
+  //   this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
 
-    this.totalCalculation = this.finalCalculation;
-    this.endDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
-
-    let startDateTimeStamp = this.toTimestamp(this.todayDate);
-    let endDateTimeStamp = this.toTimestamp(this.endDate);
-    this.fromDateTimestamp = startDateTimeStamp;
-    this.toDateTimestamp = endDateTimeStamp;
-    console.log("show banner timestamp:" + startDateTimeStamp)
-    console.log("show banner date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-  }
-  selectAdWeek(data) {
-    this.adWeek = data;
-    this.finalAdCalculation = 7 + ((data - 1) * 5);
-    this.totalCalculatePayment = 0;
-    this.totalCalculatePayment = this.finalCalculation + this.finalAdCalculation;
-
-    this.todayDate = new Date();
-    console.log("show no of week value::" + data);
-    this.endAdvertisementDate = moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY');
-
-    let startDateTime = this.toTimestamp(this.todayDate);
-    let endDateTime = this.toTimestamp(this.endAdvertisementDate);
-    this.fromDateTimeAd = startDateTime;
-    this.toDateTimeAd = endDateTime;
-    console.log("start date timestamp:" + startDateTime);
-    console.log("end date timestamp:" + endDateTime);
+  //   let startDateTime = this.toTimestamp(this.todayDate);
+  //   let endDateTime = this.toTimestamp(this.endAdvertisementDate);
+  //   this.fromDateTimeAd = startDateTime;
+  //   this.toDateTimeAd = endDateTime;
+  //   console.log("start date timestamp:" + startDateTime);
+  //   console.log("end date timestamp:" + endDateTime);
 
 
-    console.log("show next date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
-  }
+  //   console.log("show next date:" + moment(this.todayDate).add(data, 'weeks').format('MM/DD/YYYY'));
+  // }
 
 
   handleAddressChange(data) {
@@ -914,6 +935,7 @@ export class NewadvertisementformPage implements OnInit {
 
 
   detectEventGallery(event, index) {
+    this.loader.showBlockingLoaderAuth();
     console.log(event);
     let files = event.target.files;
     console.log(files);
@@ -927,22 +949,8 @@ export class NewadvertisementformPage implements OnInit {
         reader.readAsDataURL(this.fileToUpload);
       }
 
-      // this.handleFirstFileInput(this.fileToUpload,index);
-      if (index == 0) {
-        this.handleFirstFileInput(this.fileToUpload);
-      } else if (index == 1) {
-        this.handleSecondFileInput(this.fileToUpload);
-      } else if (index == 2) {
-        this.handleThirdFileInput(this.fileToUpload);
-      } else if (index == 3) {
-        this.handleFourthFileInput(this.fileToUpload);
-      } else if (index == 4) {
-        this.handleFifthFileInput(this.fileToUpload);
-      } else {
-
-      }
-
-
+      this.handleFirstFileInput(this.fileToUpload,index);
+     
     }
     console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
   }
@@ -953,15 +961,16 @@ export class NewadvertisementformPage implements OnInit {
     return datum / 1000;
   }
 
-  handleFirstFileInput(files: FileList) {
-    if (this.fileToUpload == null || this.fileToUpload == undefined) {
+  handleFirstFileInput(files: FileList , index) {
+    this.loader.showBlockingLoaderAuth();
+    if (files == null || files == undefined) {
     }
     let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
     console.log("check url : " + url);
     this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
       MyResponse => {
 
-        this.urls[0] = MyResponse['result'][0];
+       
 
         if (this.urls.length > 4) {
           this.imageUrl = 0;
@@ -969,124 +978,25 @@ export class NewadvertisementformPage implements OnInit {
           this.imageUrl = 1;
         }
         this.loader.hideBlockingLoaderAuth();
-        // if(index == 0){
-        //   this.firstImage = MyResponse['result'][0];
-        // }else  if(index == 1){
-        //   this.secondImage = MyResponse['result'][0];
-        // }else  if(index == 2){
-        //   this.thirdImage = MyResponse['result'][0];
-        // }else  if(index == 3){
-        //   this.fourthImage = MyResponse['result'][0];
-        // }else  if(index == 4){
-        //   this.fifthImage = MyResponse['result'][0];
-        // }else{
+        if(index == 0){
+          this.urls[0] = MyResponse['result'][0];
+          this.firstImage = MyResponse['result'][0];
+        }else  if(index == 1){
+          this.urls[1] = MyResponse['result'][0];
+          this.secondImage = MyResponse['result'][0];
+        }else  if(index == 2){
+          this.urls[2] = MyResponse['result'][0];
+          this.thirdImage = MyResponse['result'][0];
+        }else  if(index == 3){
+          this.urls[3] = MyResponse['result'][0];
+          this.fourthImage = MyResponse['result'][0];
+        }else  if(index == 4){
+          this.urls[4] = MyResponse['result'][0];
+          this.fifthImage = MyResponse['result'][0];
+        }else{
 
-        // }
-
-
-
-        this.firstImage = MyResponse['result'][0];
+        }
         console.log("print url resonce:" + this.firstImage);
-      }, error => {
-        this.loader.hideBlockingLoaderAuth();
-        console.log(error);
-
-      }
-    );
-  }
-
-  handleSecondFileInput(files: FileList) {
-    if (this.fileToUpload == null || this.fileToUpload == undefined) {
-    }
-    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-    console.log("check url : " + url);
-    this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
-      MyResponse => {
-
-        this.urls[1] = MyResponse['result'][0];
-        if (this.urls.length > 4) {
-          this.imageUrl = 0;
-        } else {
-          this.imageUrl = 1;
-        }
-        this.loader.hideBlockingLoaderAuth();
-        this.secondImage = MyResponse['result'][0];
-        console.log("print url secondImage:" + this.secondImage);
-      }, error => {
-        this.loader.hideBlockingLoaderAuth();
-        console.log(error);
-
-      }
-    );
-  }
-
-  handleThirdFileInput(files: FileList) {
-    if (this.fileToUpload == null || this.fileToUpload == undefined) {
-    }
-    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-    console.log("check url : " + url);
-    this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
-      MyResponse => {
-        this.urls[2] = MyResponse['result'][0];
-
-        if (this.urls.length > 4) {
-          this.imageUrl = 0;
-        } else {
-          this.imageUrl = 1;
-        }
-        this.loader.hideBlockingLoaderAuth();
-        this.thirdImage = MyResponse['result'][0];
-        console.log("print url thirdImage:" + this.thirdImage);
-      }, error => {
-        this.loader.hideBlockingLoaderAuth();
-        console.log(error);
-
-      }
-    );
-  }
-
-  handleFourthFileInput(files: FileList) {
-    if (this.fileToUpload == null || this.fileToUpload == undefined) {
-    }
-    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-    console.log("check url : " + url);
-    this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
-      MyResponse => {
-
-        this.urls[3] = MyResponse['result'][0];
-        if (this.urls.length > 4) {
-          this.imageUrl = 0;
-        } else {
-          this.imageUrl = 1;
-        }
-        this.loader.hideBlockingLoaderAuth();
-        this.fourthImage = MyResponse['result'][0];
-        console.log("print url fourthImage:" + this.fourthImage);
-      }, error => {
-        this.loader.hideBlockingLoaderAuth();
-        console.log(error);
-
-      }
-    );
-  }
-
-  handleFifthFileInput(files: FileList) {
-    if (this.fileToUpload == null || this.fileToUpload == undefined) {
-    }
-    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
-    console.log("check url : " + url);
-    this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
-      MyResponse => {
-
-        this.urls[4] = MyResponse['result'][0];
-        if (this.urls.length > 4) {
-          this.imageUrl = 0;
-        } else {
-          this.imageUrl = 1;
-        }
-        this.loader.hideBlockingLoaderAuth();
-        this.fifthImage = MyResponse['result'][0];
-        console.log("print url fifthImage:" + this.fifthImage);
       }, error => {
         this.loader.hideBlockingLoaderAuth();
         console.log(error);
@@ -1097,6 +1007,7 @@ export class NewadvertisementformPage implements OnInit {
 
 
   payWithRazor() {
+    console.log("check payment count:"+this.totalCalculatePayment);
     let getName = localStorage.getItem("getName");
     var options = {
       description: 'Credits towards consultation',
@@ -1132,7 +1043,7 @@ export class NewadvertisementformPage implements OnInit {
       this.gatewayLogsCheck(success);
     }
 
-    var cancelCallback = function (error) {
+    var cancelCallback =  (error) => {
       alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
     };
 
@@ -1159,10 +1070,11 @@ export class NewadvertisementformPage implements OnInit {
 
   gatewayLogsCheck(success) {
 
-    let getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
+    this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
     this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
 
-    let getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
+    
+    this.getStartDateForUpdateBanner = this.timestampToDate(this.checkBannerStartDateTimestamp);
     this.getEndDateForUpdateBanner = this.timestampToDate(this.checkBannerEndDateTimestamp);
 
     this.loader.showBlockingLoaderAuth();
@@ -1172,14 +1084,20 @@ export class NewadvertisementformPage implements OnInit {
     send_date['userId'] = this.usersId;
     send_date['paymentId'] = (success);
     send_date['isSuccess'] = 0;
-    send_date['advertisementStartDate'] = getStartDateForUpdate;
+    send_date['advertisementStartDate'] = this.getStartDateForUpdate;
     send_date['advertisementEndDate'] = this.getEndDateForUpdate;
-    send_date['bannerStartDate'] = getStartDateForUpdateBanner;
-    send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
+    if(this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0){
+
+    }else{
+      send_date['bannerStartDate'] = this.getStartDateForUpdateBanner;
+      send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
+    }
+  
 
 
     let url = environment.base_url + environment.version + "payment-gateway-logs";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
       this.loader.hideBlockingLoaderAuth();
     }, error => {
       this.loader.hideBlockingLoaderAuth();

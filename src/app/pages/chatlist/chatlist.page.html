@@ -8,42 +8,37 @@
 
 <ion-content>
   <div style="width:100%;height:100%;">
-    <div *ngFor="let item of usersArray" style="margin-top:10px">
-      <div *ngIf="item.id != userId">
-
-        <ion-row (click)="detailChat(item.name, item.id)" style="margin-left:10px; width:100%">
-          <ion-col size="2">
-            <img src="../../../assets/agent.png"
-              style="border-radius: 50%;width:55px; height:55px; border:1px solid rgb(240, 234, 234)" />
-          </ion-col>
-          <ion-col size="10" style="margin-top:5px;">
-            <ion-item style="margin-left:-10px">
-              <div fxLayout="column">
-                <label style="color:black;font-size:17px;">{{item.name}}</label>
-                <label style="color:rgb(110, 108, 108); font-size:12px;">Hello</label>
-
-              </div>
-
-
-            </ion-item>
-
-
-          </ion-col>
-        </ion-row>
+    <div *ngIf="usersCount > 0 ">
+      <div *ngFor="let item of usersArray" style="margin-top:10px">
+        <div *ngIf="item.id != userId">
+  
+          <ion-row (click)="detailChat(item.name, item.id)" style="margin-left:10px; width:100%">
+            <ion-col size="2">
+              <img src="../../../assets/agent.png"
+                style="border-radius: 50%;width:55px; height:55px; border:1px solid rgb(240, 234, 234)" />
+            </ion-col>
+            <ion-col size="10" style="margin-top:5px;">
+              <ion-item style="margin-left:-10px">
+                <div fxLayout="column">
+                  <label style="color:black;font-size:17px;">{{item.name}}</label>
+                  <label style="color:rgb(110, 108, 108); font-size:12px;">Hello</label>
+  
+                </div>
+  
+  
+              </ion-item>
+  
+  
+            </ion-col>
+          </ion-row>
+        </div>
+  
+  
       </div>
-
-
     </div>
-    <!-- <div class="cl_bottom_fix">
-      <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
-        <ion-icon name="home" class="cl_bottom_nav_css" (click)="home()"></ion-icon>
-        <ion-icon name="document" class="cl_post_css" (click)="openChatList()"></ion-icon>
-        <ion-icon name="add-circle" class="cl_bottom_nav_css" (click)="postAdvertisement()">
-        </ion-icon>
-        <ion-icon name="heart" class="cl_bottom_nav_css" (click)="openFavourite()"></ion-icon>
-        <ion-icon name="person" class="cl_bottom_nav_css" (click)="openProfile()"></ion-icon>
-      </div>
-    </div> -->
+  <div *ngIf="usersCount == 0 " fxLayoutAlign="center center">
+    <h4 style="margin-top:25%;">No data available</h4>
+  </div>
 
     <div class="cl_bottom_fix" fxLayout="row" fxLayoutAlign="space-around center" style="margin-top:10px">
       
