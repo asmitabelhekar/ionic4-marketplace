@@ -222,7 +222,7 @@
 
         <div fxFlex="100" fxLayoutGap="5" fxLayout="row">
           <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center">
-            <div fxLayout="column" *ngIf="adRemainingDays != 0 ">
+            <div fxLayout="column" *ngIf="adRemainingDays != 0 " fxLayoutAlign="center center">
               <label class="padding1px">{{adRemainingDays}} days remaining.</label>
               <label class="padding1px">Advertisement plan</label>
               <label class="padding1px">expires on</label>
@@ -230,24 +230,38 @@
             </div>
 
             <div fxLayout="column" fxLayoutAlign="center center" *ngIf="adRemainingDays == 0 ">
-              <label class="padding12px"> Your advertisement plan expires on <b>{{getEndDateForUpdate | date}}</b>, please renew
-                it</label>
+              <label class="padding1px">Your advertisement plan</label>
+              <label class="padding1px">expired on</label>
+              <label class="padding1px"><b>{{getEndDateForUpdate | date }}</b></label>
+              <label class="padding1px">please renew it</label>
+              <!-- <label class="padding12px"> Your advertisement plan expires on <b>{{getEndDateForUpdate | date}}</b>, please renew
+                it</label> -->
 
             </div>
 
           </ion-card>
 
           <ion-card class="expiryCard-css" fxFlex="49" fxLayout="column" fxLayoutAlign="center center" *ngIf="checkBannerEndDateTimestamp != 0 ">
-            <div fxLayout="column" *ngIf="bannerRemainingDays != 0 ">
+            <div fxLayout="column" *ngIf="bannerRemainingDays != 0 " fxLayoutAlign="center center">
               <label class="padding1px">{{bannerRemainingDays}} days remaining.</label>
               <label class="padding1px">Banner plan</label>
               <label class="padding1px">expires on</label>
               <label class="padding1px"><b>{{getEndDateForUpdateBanner | date }}</b></label>
             </div>
-            <div fxLayout="column" *ngIf="bannerRemainingDays == 0 ">
-              <label class="padding12px"> Your advertisement plan expires on <b>{{getEndDateForUpdateBanner | date}}</b>, please renew
+            <!-- <div fxLayout="column" *ngIf="bannerRemainingDays == 0 ">
+              <label class="padding12px"> Your banner plan expires on <b>{{getEndDateForUpdateBanner | date}}</b>, please renew
                 it</label>
                 
+            </div> -->
+
+            <div fxLayout="column" fxLayoutAlign="center center" *ngIf="bannerRemainingDays == 0 ">
+              <label class="padding1px">Your banner plan</label>
+              <label class="padding1px">expired on</label>
+              <label class="padding1px"><b>{{getEndDateForUpdateBanner | date }}</b></label>
+              <label class="padding1px">please renew it</label>
+              <!-- <label class="padding12px"> Your advertisement plan expires on <b>{{getEndDateForUpdate | date}}</b>, please renew
+                it</label> -->
+
             </div>
           </ion-card>
           <!-- <ion-card class="expiryCard-css" fxFlex="48">

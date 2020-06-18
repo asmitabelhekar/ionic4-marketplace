@@ -8,6 +8,7 @@ import { ChatlistPageRoutingModule } from './chatlist-routing.module';
 
 import { ChatlistPage } from './chatlist.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     IonicModule,
     FlexLayoutModule,
+    MaterialModule,
     ChatlistPageRoutingModule
   ],
   declarations: [ChatlistPage]

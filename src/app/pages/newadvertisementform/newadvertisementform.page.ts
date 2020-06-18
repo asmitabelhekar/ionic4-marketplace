@@ -611,7 +611,12 @@ export class NewadvertisementformPage implements OnInit {
         localStorage.setItem("categoryId", this.getCategoryId);
 
         if (this.bannerUpdateStatusCheck == 0) {
-          this.postBanner(this.getCategoryId);
+          if (this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0 || this.checkBannerStartDateTimestamp == null) {
+            console.log("no banners posted.")
+          } else {
+            this.postBanner(this.getCategoryId);
+          }
+          // this.postBanner(this.getCategoryId);
         } else {
           this.updateBanner(this.getCategoryId);
         }

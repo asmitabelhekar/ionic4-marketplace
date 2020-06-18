@@ -286,6 +286,7 @@ export class HomePage {
   showPopup() {
     const dialogRef = this.dialog.open(PopupPage, {
       width: '500px',
+    // panelClass : "add-city-dialog-container"
     });
 
 

@@ -1,12 +1,17 @@
-<ion-header class="new-background-color">
+<!-- <ion-header class="new-background-color">
   <ion-toolbar class="new-background-color">
 
     <label style="color:white; font-size:17px; margin-left:10px">Chat</label>
 
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
+
+  <div fxLayoutAlign="start center" style="width: 90%;" class="cl_add_course_css">
+    <input placeholder="Search here.." (input)="search($event)" style="background: transparent;width: 100%;height: 30px;"/>
+    <mat-icon>search</mat-icon>
+  </div>
   <div style="width:100%;height:100%;">
     <div *ngIf="usersCount > 0 ">
       <div *ngFor="let item of usersArray" style="margin-top:10px">
@@ -14,13 +19,13 @@
   
           <ion-row (click)="detailChat(item.name, item.id)" style="margin-left:10px; width:100%">
             <ion-col size="2">
-              <img src="../../../assets/agent.png"
-                style="border-radius: 50%;width:55px; height:55px; border:1px solid rgb(240, 234, 234)" />
+              <img src="./assets/agent.png"
+                style="border-radius: 50%;width:55px; height:55px; border:1px solid rgb(240, 234, 234);background-color:#f1f4f9" />
             </ion-col>
             <ion-col size="10" style="margin-top:5px;">
-              <ion-item style="margin-left:-10px">
-                <div fxLayout="column">
-                  <label style="color:black;font-size:17px;">{{item.name}}</label>
+              <ion-item style="margin-left:-10px;background-color: transparent;">
+                <div fxLayout="column" >
+                  <label style="color:white;font-size:17px;">{{item.name}}</label>
                   <label style="color:rgb(110, 108, 108); font-size:12px;">Hello</label>
   
                 </div>

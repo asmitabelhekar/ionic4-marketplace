@@ -170,3 +170,17 @@ ion-segment-button {
     transform: translateY(-1.1em) scale(.75);
     width: 133.33333%;
 }
+
+
+.add-city-dialog-container .mat-dialog-container {
+  
+  border-radius: 15px;
+  margin-right:70%;
+  position: absolute; 
+  left:10px;
+  top:5px;
+  width:30%;
+ background-color: rgb(0, 0, 0,0.5);
+  height:100vh;
+  
+}

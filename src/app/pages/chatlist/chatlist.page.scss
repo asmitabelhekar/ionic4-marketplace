@@ -45,3 +45,38 @@
     font-size: 11px;
     color: #fb7645;
   }
+
+  ion-content{
+    --background: linear-gradient(to bottom,#fe8860,#feae93);
+  }
+
+  .item-content {
+    background-color:#000000;
+  }
+
+  ion-item{
+    --background:transparent;
+  }
+
+
+input {
+  border: none;
+}
+
+
+input:focus {
+  outline: none;
+}
+
+
+.cl_add_course_css{
+  border: 1px solid grey;
+  // padding-top:10px;
+  // padding-bottom:10px;
+  // padding-left:13px;
+  // padding-right:13px;
+  border-radius: 15px;
+  padding:5px;
+    margin:20px;
+       cursor: pointer;
+}
