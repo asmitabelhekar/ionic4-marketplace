@@ -809,6 +809,10 @@ var routes = [
     {
         path: 'razorpay',
         loadChildren: function () { return __webpack_require__.e(/*! import() | pages-razorpay-razorpay-module */ "pages-razorpay-razorpay-module").then(__webpack_require__.bind(null, /*! ./pages/razorpay/razorpay.module */ "./src/app/pages/razorpay/razorpay.module.ts")).then(function (m) { return m.RazorpayPageModule; }); }
+    },
+    {
+        path: 'paymentlogs',
+        loadChildren: function () { return Promise.all(/*! import() | pages-paymentlogs-paymentlogs-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-paymentlogs-paymentlogs-module")]).then(__webpack_require__.bind(null, /*! ./pages/paymentlogs/paymentlogs.module */ "./src/app/pages/paymentlogs/paymentlogs.module.ts")).then(function (m) { return m.PaymentlogsPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

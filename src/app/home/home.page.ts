@@ -25,7 +25,7 @@ export class HomePage {
   bookmarkId: any;
   checkString: string;
   bannerImg: any;
-  bannerCount : any;
+  bannerCount: any;
   checkStatus: boolean;
   categoryId = 5;
   categoryName = "Music";
@@ -42,7 +42,7 @@ export class HomePage {
   getBookmarkObj: any = {};
   postBookmarkObj: any = {};
   advertisementModel: any = {};
-  lastPage : any;
+  lastPage: any;
   firstView = 1;
 
 
@@ -55,8 +55,7 @@ export class HomePage {
     public networkServices: NetworkService,
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,
-    public router: Router)
-     {
+    public router: Router) {
     this.menuController.enable(false);
     this.getCategory();
     this.getLanguages();
@@ -118,7 +117,7 @@ export class HomePage {
     }
     console.log("get categoryId::" + this.categoryId);
     this.getBannerData(this.categoryId);
-   
+
   }
 
   getCategory() {
@@ -144,16 +143,15 @@ export class HomePage {
   }
 
   getAdvertisement(categoryId) {
+    this.advertisementArray = [];
     this.loader.showBlockingLoaderAuth();
     let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
     this.apiCall.getAd(url).subscribe(MyResponse => {
 
-      
-
       this.advertisementArray = this.advertisementArray.concat(MyResponse['result']['list']);
       this.countAdvertisement = MyResponse['result']['count'];
       this.lastPage = Math.ceil(this.countAdvertisement / 10);
-      console.log("show total count:"+this.lastPage);
+      console.log("show total count:" + this.lastPage);
       this.loader.hideBlockingLoaderAuth();
     },
       error => {
@@ -163,7 +161,7 @@ export class HomePage {
       })
   }
 
-  viewMore(){
+  viewMore() {
     this.currentPage += 1;
     this.getAdvertisement(this.categoryId);
     // let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=1";
@@ -176,10 +174,10 @@ export class HomePage {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
       this.bannerCount = MyResponse['result']['count'];
-      if(this.bannerCount == 0){
-        this.showNoBanner=1;
-      }else{
-        this.showNoBanner=0;
+      if (this.bannerCount == 0) {
+        this.showNoBanner = 1;
+      } else {
+        this.showNoBanner = 0;
       }
       this.loader.hideBlockingLoaderAuth();
     },
@@ -286,7 +284,7 @@ export class HomePage {
   showPopup() {
     const dialogRef = this.dialog.open(PopupPage, {
       width: '500px',
-    // panelClass : "add-city-dialog-container"
+      // panelClass : "add-city-dialog-container"
     });
 
 
@@ -328,43 +326,51 @@ export class HomePage {
   }
 
 
-  showAdvertisementDetail(categoryId, id) {
+  showAdvertisementDetail(categoryId, id, isBookmarked) {
+    console.log("check bookmarked:" + isBookmarked);
     let sendId = {
       "id": id,
       "categoryId": categoryId,
       "status": "category",
-      "adType": 1
+      "adType": 1,
+      "isBookmarked": isBookmarked
     }
 
     console.log("send image::" + id);
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
 
-  bookmarkAdvertisement(advertisementid) {
-    this.checkStatus = this.postBookmarkObj.hasOwnProperty(advertisementid);
-    console.log("check for status:" + this.checkStatus);
-    if (this.checkStatus) {
-      console.log("before delete:" + (this.postBookmarkObj));
-      delete this.postBookmarkObj[advertisementid];
-      localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+  bookmarkAdvertisement(advertisementid, isBookmarked,item) {
+    console.log("show isBookmarked:" + isBookmarked);
+    console.log("show advertisementid:" + advertisementid);
+    console.log("show advertisement object:" + JSON.stringify(item));
+    
+    let getObj = item;
+
+   
+    if (isBookmarked == 1) {
+      for(let i=0; i< this.advertisementArray.length;i++){
+        if(advertisementid == this.advertisementArray[i]['id']){
+          console.log("show advertisementid inside if:" + this.advertisementArray[i]['id']);
+          this.advertisementArray[i]['isBookmarked'] = 0;
+        }
+      }
+  
       this.removeBookmark(advertisementid);
-
-
-
-      console.log("after delete:" + (this.postBookmarkObj));
     } else {
-      this.postBookmarkObj[advertisementid] = true;
-      localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
-      console.log("display object:" + (this.postBookmarkObj));
-
-      this.loader.showBlockingLoaderAuth();
+      for(let i=0; i< this.advertisementArray.length;i++){
+        if(advertisementid == this.advertisementArray[i]['id']){
+          this.advertisementArray[i]['isBookmarked'] = 1;
+        }
+      }
+  
       let send_date = {};
       this.advertisementModel['userId'] = localStorage.getItem("userId");
 
       send_date['userId'] = this.advertisementModel['userId'];
       let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
       this.apiCall.postAuth(url, send_date).subscribe(MyResponse => {
-
+        // this.getAdvertisement(this.categoryId);
         this.loader.hideBlockingLoaderAuth();
       }, error => {
         this.presentToast("Please try again");
@@ -372,12 +378,46 @@ export class HomePage {
 
       })
     }
-
   }
+
+  // bookmarkAdvertisement(advertisementid) {
+  //   this.checkStatus = this.postBookmarkObj.hasOwnProperty(advertisementid);
+  //   console.log("check for status:" + this.checkStatus);
+  //   if (this.checkStatus) {
+  //     console.log("before delete:" + (this.postBookmarkObj));
+  //     delete this.postBookmarkObj[advertisementid];
+  //     localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+  //     this.removeBookmark(advertisementid);
+
+
+
+  //     console.log("after delete:" + (this.postBookmarkObj));
+  //   } else {
+  //     this.postBookmarkObj[advertisementid] = true;
+  //     localStorage.setItem("BOOKMARK", JSON.stringify(this.postBookmarkObj));
+  //     console.log("display object:" + (this.postBookmarkObj));
+
+  //     this.loader.showBlockingLoaderAuth();
+  //     let send_date = {};
+  //     this.advertisementModel['userId'] = localStorage.getItem("userId");
+
+  //     send_date['userId'] = this.advertisementModel['userId'];
+  //     let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+  //     this.apiCall.postAuth(url, send_date).subscribe(MyResponse => {
+  //       this.getAdvertisement(this.categoryId);
+  //       this.loader.hideBlockingLoaderAuth();
+  //     }, error => {
+  //       this.presentToast("Please try again");
+  //       this.loader.hideBlockingLoaderAuth();
+
+  //     })
+  //   }
+
+  // }
 
   removeBookmark(advertisementId) {
     this.userId = localStorage.getItem("userId");
-    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000; 
+    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000;
     this.apiCall.getAd(url).subscribe(MyResponse => {
       this.getBookMarkArray = MyResponse['result']['list'];
       for (let i = 0; i < this.getBookMarkArray.length; i++) {
@@ -399,7 +439,7 @@ export class HomePage {
 
       let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
       this.apiCall.deleteAuth(url).subscribe(MyResponse => {
-
+        // this.getAdvertisement(this.categoryId);
         this.loader.hideBlockingLoaderAuth();
       }, error => {
         this.presentToast("Please try again");

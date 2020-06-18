@@ -1,18 +1,19 @@
 <ion-header>
   <ion-toolbar class="new-background-color" fxLayoutAlign="center center">
-    <ion-row fxLayoutAlign="center center">
+    <ion-row fxLayoutAlign="center center" style="padding:5px">
       <ion-col size="1">
         <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
       </ion-col>
-      <ion-col size="9" fxLayoutAlign="start center">
-        <!-- <ion-label style="color:white;" class="TitleText">{{name}}</ion-label> -->
-        <ion-label style="color:white;" class="TitleText">detail</ion-label>
+      <ion-col size="11" fxLayoutAlign="start center" fxLayout="row">
+        <img *ngIf="image == '' " src="../../../assets/agent.png" class="img-css" />
+        <img *ngIf="image != '' " src="{{image}}" class="img-css" />
+        <ion-label style="color:white;" class="TitleText">{{name}}</ion-label>
       </ion-col>
    
     
-     <ion-col size="2">
+     <!-- <ion-col size="2">
        <ion-icon name="search" style="color:white; height:20px; width: 20px; margin:10px"></ion-icon>
-     </ion-col>
+     </ion-col> -->
     </ion-row>
 
 
@@ -31,12 +32,11 @@
     <ion-col size="12">
       <div fxLayout="column">
         <section fxLayout="row" fxLayoutAlign="start center" style="margin-left:10px;">
-         <div>
+         <!-- <div>
           <img src="./assets/agent.png" class="placeholder-css" /> 
-         </div>
-         <div style="border-radius:8px;width:auto;min-width:40%; max-width: 60%;margin-left:10px; padding:10px; background-color: #ebeff3">
-          <label style="font-size: 15px;">{{item.message}}</label>
-
+         </div> -->
+         <div style="border-radius:7px;width:auto;min-width:40%; max-width: 60%;margin-left:10px; padding:10px; background-color: #faa285;color:white">
+          <label style="font-size: 13px;">{{item.message}}</label>
          </div>
         </section>
        <!-- <label style="font-size:12px; margin-top:3px">{{item.modified | date}}</label> -->
@@ -49,8 +49,8 @@
  
 <div *ngIf="msgCount != '0' ">
   <div fxLayout="column" fxLayoutAlign="end end"  *ngIf="item.senderId == userId ">
-    <section  style="border-radius:8px;width:auto;min-width:40%; max-width: 70%;margin-top:20px; margin-right:10px; padding:10px; background-color: #d3e2f1">
-      <label>{{item.message}}</label>
+    <section  style="border-radius:7px;width:auto;min-width:40%; max-width: 70%;margin-top:20px; margin-right:10px; padding:10px; background-color: #fe4f14;color:white">
+      <label style="font-size: 13px;">{{item.message}}</label>
       <!-- <img src="../../../assets/defaultpic.png" style="height:80px; width:80px; border:1px solid gray" /> -->
     </section>
     <!-- <label style="margin-right:10px;font-size:12px; margin-top:3px">{{item.modified | date}}</label> -->

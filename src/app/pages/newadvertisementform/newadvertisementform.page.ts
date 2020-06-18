@@ -1073,13 +1073,13 @@ export class NewadvertisementformPage implements OnInit {
     // };
 
     var successCallback = (success) => {
-      alert('payment_id: ' + success);
+      // alert('payment_id: ' + success);
 
       this.gatewayLogsCheck(success);
     }
 
     var cancelCallback = (error) => {
-      alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
+      // alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
     };
 
     RazorpayCheckout.open(options, successCallback, cancelCallback);

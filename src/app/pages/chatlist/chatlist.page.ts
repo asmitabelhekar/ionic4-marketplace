@@ -12,83 +12,112 @@ import { NetworkService } from 'src/app/service/network/network.service';
   styleUrls: ['./chatlist.page.scss'],
 })
 export class ChatlistPage implements OnInit {
-  lastMessage : any;
-  profileImg : any = "";
-  usersCount : any = 0;
-  userId : any;
-  noInternet  = "0";
+  lastMessage: any;
+  profileImg: any = "";
+  usersCount: any = 0;
+  userId: any;
+  noInternet = "0";
   usersArray = [];
+  showSearch = 0;
+  showClose = 0;
+  url : any;
 
   constructor(public router: Router,
-    public loader : LoaderService,
-    public apiCall : ApiService,
-    public networkServices : NetworkService,
-    public menuController : MenuController) { 
-      this.menuController.enable(false);
-      this.userId = localStorage.getItem("userId");
-    }
-
-  ngOnInit() {
-    this.profileImg = localStorage.getItem("profileImage");
-    this.getUsers();
+    public loader: LoaderService,
+    public apiCall: ApiService,
+    public networkServices: NetworkService,
+    public menuController: MenuController) {
+    this.menuController.enable(false);
     this.userId = localStorage.getItem("userId");
   }
 
-  ionViewWillEnter(){
+  ngOnInit() {
+    this.profileImg = localStorage.getItem("profileImage");
+    // this.getUsers();
     this.userId = localStorage.getItem("userId");
-    console.log("get userId:"+this.userId);
-    this.getUsers();
+  }
+
+  ionViewWillEnter() {
+    this.url = environment.base_url + environment.version + "users/" + this.userId + "/chat-users";
+    this.userId = localStorage.getItem("userId");
+    console.log("get userId:" + this.userId);
+    this.getUsers(this.url);
 
     console.log("show page : Chat List");
   }
 
-  detailChat(name, id) {
+  detailChat(name, id, image) {
+    if (image == null) {
+      image = "";
+    }
+
+    console.log("show image as abc::::" + image);
     let userDetail = {
-      "name" : name,
-      "id" : id
+      "name": name,
+      "id": id,
+      "image": image
     }
     this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
   }
 
-  openChatList(){
+  openChatList() {
     this.router.navigate(['/chatlist']);
   }
 
-  postAdvertisement(){
+  postAdvertisement() {
     let status = "0";
     localStorage.setItem("postStatus", status);
     this.router.navigate(['/newadvertisementform']);
     // this.router.navigate(['/secondpageadvertisement']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home']);
   }
 
-  openFavourite(){
+  openFavourite() {
     this.router.navigate(['/favourite']);
   }
 
-  openProfile(){
+  openProfile() {
     this.router.navigate(['/profile']);
   }
 
-  getUsers(){
-    this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version  +"users/" + this.userId + "/chat-users";
+  getUsers(url) {
+    // this.loader.showBlockingLoaderAuth();
+    // let url = environment.base_url + environment.version + "users/" + this.userId + "/chat-users";
     this.apiCall.get(url).subscribe(MyResponse => {
-     this.usersArray = MyResponse['result']['list'];
-     this.usersCount = MyResponse['result']['count'];
-     console.log("show users:"+this.usersArray);
-     this.loader.hideBlockingLoaderAuth();
-     this.noInternet = '0';
+      this.usersArray = MyResponse['result']['list'];
+      this.usersCount = MyResponse['result']['count'];
+      console.log("show users:" + this.usersArray);
+      // this.loader.hideBlockingLoaderAuth();
+      this.noInternet = '0';
     },
       error => {
         this.noInternet = '1';
-        this.loader.hideBlockingLoaderAuth();
+        // this.loader.hideBlockingLoaderAuth();
         this.networkServices.checkInternetConnection();
         this.networkServices.onPageLoadCheckInternet();
       })
   }
 
+  searchShow() {
+    this.showSearch = 1;
+
+  }
+
+  goBackword() {
+    this.showSearch = 0;
+  }
+
+  search($event) {
+    console.log("show key search:" + $event.data);
+    let getKey = $event.data;
+    if(getKey.length > 0){
+      this.showClose = 1;
+
+      this.url = environment.base_url + environment.version + "users/" + this.userId + "/chat-users?" + "search=" + getKey;
+      this.getUsers(this.url);
+    }
+  }
 }

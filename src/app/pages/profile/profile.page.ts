@@ -201,5 +201,10 @@ export class ProfilePage implements OnInit {
     }
     this.router.navigate(['/updateprofile', { profileData : JSON.stringify(this.profileDetail)}]);
   }
+
+
+  viewPaymentLogs(){
+    this.router.navigate(['/paymentlogs']);
+  }
 }
 

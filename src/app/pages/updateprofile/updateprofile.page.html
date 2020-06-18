@@ -2,10 +2,11 @@
   <ion-toolbar class="new-background-color" fxLayoutAlign="center center">
   <ion-row fxLayoutAlign="center center">
     <ion-col size="1">
+      
       <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
     </ion-col>
     <ion-col size="11" fxLayoutAlign="start center">
-      <ion-label style="color:white;" class="TitleText">Update Profile</ion-label>
+      <ion-label style="color:white;" class="TitleText">Edit Profile</ion-label>
     </ion-col>
  
   </ion-row>
@@ -15,8 +16,17 @@
 
 
 <ion-content>
+<div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
 
-  <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
+  <div fxLayoutAlign="center center" fxLayout="column" onclick="document.getElementById('profile_pic_upload').click()">
+    <img *ngIf="profileImg == '' " src="../../../assets/agent.png" class="img-css" />
+    <img  *ngIf="profileImg != '' " src="{{profileImg}}" class="img-css" />
+    <label class="pic-text">Change profile picture</label>
+  </div>
+  <input style="display: none;" id="profile_pic_upload" type="file" (change)="detectEventGallery($event)">
+  
+
+  <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:25px">
     <mat-form-field style="width:96%;" appearance="outline">
       <mat-label>Name</mat-label>
           <input matInput class="form-control" type="text" name="name" [(ngModel)]="profileModel.name" #name="ngModel"
@@ -53,25 +63,18 @@
     <mat-label>Mobile</mat-label>
         <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="profileModel.contact" #contact="ngModel"
           align="center" >
-          <!-- <mat-error>
+          <mat-error>
             <div class="form-group">
               <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">
                 Mobile Is Requird
               </div>
             </div>
-          </mat-error> -->
+          </mat-error>
   </mat-form-field>
   </div>
 
-  <!-- <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
-    <mat-form-field style="width:96%;" appearance="outline">
-      <mat-label>Password</mat-label>
-          <input matInput class="form-control" type="text" name="password" [(ngModel)]="profileModel.password" #password="ngModel"
-            align="center" required pattern="[a-zA-Z0-9,.  ]+$" disabled>
-        
-    </mat-form-field>
-  </div> -->
-
-  <button mat-raised-button class="updateProfileButton" [disabled]="email.invalid ||  name.invalid"
-  (click)="updateProfileData(advertisementModel)"><b>Update</b></button>
+  <button mat-raised-button class="updateProfileButton" [disabled]="email.invalid || contact.invalid ||  name.invalid"
+  (click)="updateProfileData(advertisementModel)">Update</button>
+</div>
+ 
 </ion-content>

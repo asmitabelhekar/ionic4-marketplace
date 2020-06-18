@@ -87,3 +87,35 @@ input:focus {
     margin:20px;
        cursor: pointer;
 }
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+
+.cl-back-button{
+  background: url('../../../assets/back_white.png') center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  outline: 0;
+  box-shadow: 0 0 0 0;
+  // margin-right: 15px;
+}
+
+.back-icon-css{
+  width:28px;
+ color:#f35b28;
+  height:28px;
+}
+
+.close-icon-css{
+  width:34px;
+  color:gray;
+   height:34px;
+}

@@ -74,6 +74,10 @@ const routes: Routes = [
   {
     path: 'razorpay',
     loadChildren: () => import('./pages/razorpay/razorpay.module').then( m => m.RazorpayPageModule)
+  },
+  {
+    path: 'paymentlogs',
+    loadChildren: () => import('./pages/paymentlogs/paymentlogs.module').then( m => m.PaymentlogsPageModule)
   }
  
 

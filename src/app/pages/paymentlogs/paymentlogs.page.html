@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar class="new-background-color" fxLayoutAlign="center center">
+    <ion-row fxLayoutAlign="center center" style="padding:5px">
+      <ion-col size="1">
+        <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
+      </ion-col>
+      <ion-col size="11" fxLayoutAlign="start center" fxLayout="row">
+       
+        <ion-label style="color:white;" class="TitleText">Payment Log</ion-label>
+      </ion-col>
+   
+    
+     <!-- <ion-col size="2">
+       <ion-icon name="search" style="color:white; height:20px; width: 20px; margin:10px"></ion-icon>
+     </ion-col> -->
+    </ion-row>
+
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" fxFlex="100">
+    <label>{{item.id}}</label>
+    <label>{{item.advertisementId}}</label>
+    <label>{{item.userId}}</label>
+    <label>{{item.advertisementEndDate | date}}</label>
+
+  </ion-card>
+</ion-content>

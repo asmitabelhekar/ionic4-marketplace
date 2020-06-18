@@ -22,6 +22,7 @@ export class DetailchatPage implements OnInit {
   userId: any;
   name: any;
   id: any;
+  image: any = "";
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -36,6 +37,10 @@ export class DetailchatPage implements OnInit {
     this.detailData = JSON.parse(this.activatedRoute.snapshot.params['userDetail']);
     this.name = this.detailData.name;
     this.id = this.detailData.id;
+    this.image =this.detailData.image;
+    if(this.image == null){
+      this.image = "";
+    }
     this.getChatMassages();
 
   }

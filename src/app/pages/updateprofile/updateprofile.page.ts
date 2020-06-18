@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { ToastController } from '@ionic/angular';
+import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 
 @Component({
   selector: 'app-updateprofile',
@@ -16,10 +17,13 @@ export class UpdateprofilePage implements OnInit {
   userRole : any;
   getProfileDetail: any;
   profileModel : any = {};
+  profileImg : any = "" ;
+  fileToUpload: any;
 
   constructor(
     public router : Router,
     public apiCall : ApiService,
+    public loader : LoaderService,
     public toast : ToastController,
     public activatedRoute : ActivatedRoute
     ) { }
@@ -77,4 +81,51 @@ export class UpdateprofilePage implements OnInit {
     });
     toast.present();
   }
+
+  detectEventGallery(event) {
+    this.loader.showBlockingLoaderAuth();
+    console.log(event);
+    let files = event.target.files;
+    console.log(files);
+    if (files) {
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+        }
+        console.log(file);
+        this.fileToUpload = file;
+        reader.readAsDataURL(this.fileToUpload);
+      }
+
+      this.handleFirstFileInput(this.fileToUpload);
+
+    }
+    console.log("file uploaded::" + JSON.stringify(this.fileToUpload));
+  }
+
+
+  handleFirstFileInput(files: FileList) {
+    this.loader.showBlockingLoaderAuth();
+    if (files == null || files == undefined) {
+    }
+    let url = "https://xy2y3lhble.execute-api.ap-south-1.amazonaws.com/dev";
+    console.log("check url : " + url);
+    this.apiCall.callPostApiForImage(url, this.fileToUpload).subscribe(
+      MyResponse => {
+
+
+        this.loader.hideBlockingLoaderAuth();
+      
+          this.profileImg = MyResponse['result'][0];
+     
+        console.log("print url resonce:" + this.profileImg);
+      }, error => {
+        this.loader.hideBlockingLoaderAuth();
+        console.log(error);
+
+      }
+    );
+  }
+
+
 }

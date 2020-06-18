@@ -59,6 +59,7 @@ export class AdvertisementdetailPage implements OnInit {
   advertisementType: any;
   getBase64Image: any;
   getpathofimage: any;
+  isBookmarked : any = 0;
 
   image: any;
   public sendTo: any;
@@ -150,6 +151,7 @@ export class AdvertisementdetailPage implements OnInit {
     this.userId = localStorage.getItem('userId');
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
     this.advertisementType = this.getIds.adType;
+    this.isBookmarked = this.getIds.isBookmarked;
     let getStatus = this.getIds.status;
     console.log("get status in ad detail::"+getStatus);
     // this.getIds = JSON.parse(getdata);

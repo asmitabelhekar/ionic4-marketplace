@@ -85,14 +85,14 @@
       </div> -->
       </div>
 
-      <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row">
+      <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row" (click)="viewPaymentLogs()()">
         <div fxFlex="20"  fxLayoutAlign="center start">
           <ion-icon class="icon-css" name="document"></ion-icon>
         </div>
         <div fxFlex="60"  fxLayoutAlign="start start">
           <ion-label class="cl_content_fontsize">Payment History</ion-label>
         </div>
-        <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
+        <div fxFlex="20" fxLayoutAlign="center start">
           <ion-icon class="arrow-icon-css" name="chevron-forward-outline"></ion-icon>
         </div>
         </div>

@@ -279,12 +279,14 @@ export class FavouritePage implements OnInit {
     this.router.navigate(['/profile']);
   }
 
-  showAdvertisementDetail(data, id) {
+  showAdvertisementDetail(data, id, isBookmarked) {
+    console.log("check myadd bookmarked:"+isBookmarked);
     let sendId = {
       "id": id,
       "categoryId": this.categoryId,
       "status": "users",
-      "adType": 0
+      "adType": 0,
+      "isBookmarked":isBookmarked
     }
     // alert("show data::"+JSON.stringify(data));
     localStorage.setItem("url", data);
@@ -292,12 +294,14 @@ export class FavouritePage implements OnInit {
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
 
-  showBookmarkAdvertisementDetail(categoryId, adId){
+  showBookmarkAdvertisementDetail(categoryId, adId,isBookmarked){
+    console.log("check bookmark bookmarked:"+isBookmarked);
     let sendId = {
       "id": adId,
       "categoryId": categoryId,
       "status": "category",
-      "adType": 1
+      "adType": 1,
+      "isBookmarked":isBookmarked
     }
     // alert("show data::"+JSON.stringify(data));
     // localStorage.setItem("url", data);
