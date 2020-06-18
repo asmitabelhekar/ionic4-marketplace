@@ -4,7 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   // { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
-  // { path: 'sliderintro', loadChildren: () => import('./pages/sliderintro/sliderintro.module').then( m => m.SliderintroPageModule)},
+  // { path: 'detailchat',     loadChildren: () => import('./pages/detailchat/detailchat.module').then( m => m.DetailchatPageModule)
+// },
   { path : 'login' , loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)},
   {
     path: 'popup',

@@ -109,7 +109,7 @@ export class AdvertisementdetailPage implements OnInit {
   getDetailAdvertisement() {
 
     this.loader.showBlockingLoaderAuth();
-    this.apiCall.get(this.url).subscribe(MyResponse => {
+    this.apiCall.getAd(this.url).subscribe(MyResponse => {
       this.advertisementArray = MyResponse['result'];
       this.advertisementId = this.advertisementArray['id'];
       this.address = this.advertisementArray['address'];
@@ -150,7 +150,8 @@ export class AdvertisementdetailPage implements OnInit {
     this.userId = localStorage.getItem('userId');
     this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
     this.advertisementType = this.getIds.adType;
-
+    let getStatus = this.getIds.status;
+    console.log("get status in ad detail::"+getStatus);
     // this.getIds = JSON.parse(getdata);
     if (this.getIds.status == "users") {
 

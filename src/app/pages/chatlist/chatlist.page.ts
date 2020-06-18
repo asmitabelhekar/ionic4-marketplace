@@ -12,7 +12,8 @@ import { NetworkService } from 'src/app/service/network/network.service';
   styleUrls: ['./chatlist.page.scss'],
 })
 export class ChatlistPage implements OnInit {
-
+  lastMessage : any;
+  profileImg : any = "";
   usersCount : any = 0;
   userId : any;
   noInternet  = "0";
@@ -28,6 +29,7 @@ export class ChatlistPage implements OnInit {
     }
 
   ngOnInit() {
+    this.profileImg = localStorage.getItem("profileImage");
     this.getUsers();
     this.userId = localStorage.getItem("userId");
   }

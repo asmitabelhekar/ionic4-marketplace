@@ -223,7 +223,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
     AdvertisementdetailPage.prototype.getDetailAdvertisement = function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
-        this.apiCall.get(this.url).subscribe(function (MyResponse) {
+        this.apiCall.getAd(this.url).subscribe(function (MyResponse) {
             _this.advertisementArray = MyResponse['result'];
             _this.advertisementId = _this.advertisementArray['id'];
             _this.address = _this.advertisementArray['address'];
@@ -259,6 +259,8 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.userId = localStorage.getItem('userId');
         this.getIds = JSON.parse(this.activatedRoute.snapshot.params['sendId']);
         this.advertisementType = this.getIds.adType;
+        var getStatus = this.getIds.status;
+        console.log("get status in ad detail::" + getStatus);
         // this.getIds = JSON.parse(getdata);
         if (this.getIds.status == "users") {
             this.advertisementId = this.getIds.id;
@@ -640,11 +642,34 @@ var ApiService = /** @class */ (function () {
         console.log(url);
         return this.http.post(url, data, httpOptions);
     };
+    //POST
+    ApiService.prototype.postAuth = function (url, data) {
+        var auth_token = localStorage.getItem("authToken");
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': auth_token
+            })
+        };
+        console.log(url);
+        return this.http.post(url, data, httpOptions);
+    };
     //GET
     ApiService.prototype.get = function (url) {
         var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Content-Type': 'application/json',
+            })
+        };
+        console.log(url);
+        return this.http.get(url, httpOptions);
+    };
+    ApiService.prototype.getAd = function (url) {
+        var auth_token = localStorage.getItem("authToken");
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': auth_token
             })
         };
         console.log(url);
@@ -669,6 +694,30 @@ var ApiService = /** @class */ (function () {
             })
         };
         return this.http.delete(url);
+    };
+    ApiService.prototype.deleteAuth = function (url) {
+        var auth_token = localStorage.getItem("authToken");
+        console.log();
+        console.log(url);
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': auth_token
+            })
+        };
+        return this.http.delete(url, httpOptions);
+    };
+    //PUT
+    ApiService.prototype.putAuth = function (url, data) {
+        var auth_token = localStorage.getItem("authToken");
+        console.log(url);
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': auth_token
+            })
+        };
+        return this.http.put(url, data, httpOptions);
     };
     //PUT
     ApiService.prototype.put = function (url, data) {

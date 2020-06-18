@@ -31,6 +31,9 @@ export class ProfilePage implements OnInit {
   loginUserId : any;
   profileDetail: any;
   isLoggedIn = false;
+  profileImg : any = "";
+  bannersCount : any= 0;
+  advertisementCount : any=0;
 
   constructor(
     public router: Router,
@@ -47,6 +50,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+    this.profileImg = localStorage.getItem("profileImage");
     // this.userId = this.activatedRoute.snapshot.params['userId'];
     // console.log("user id:" + this.userId);
     // this.getProfileInfo();
@@ -103,6 +107,8 @@ export class ProfilePage implements OnInit {
       localStorage.setItem("getName",this.name);
       this.mobile = this.profileDetail.mobile;
       this.email = this.profileDetail.email;
+      this.bannersCount = this.profileDetail.bannersCount;
+      this.advertisementCount = this.profileDetail.advertisementCount;
       this.loader.hideBlockingLoaderAuth();
     },
       error => {

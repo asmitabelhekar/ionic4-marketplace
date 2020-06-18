@@ -35,7 +35,8 @@
         </ion-col>
       </ion-row>
 
-      <img src="./assets/agent.png" class="img-css" />
+      <img *ngIf="profileImg == '' " src="./assets/agent.png" class="img-css" />
+      <img *ngIf="profileImg != '' " src="{{profileImg}}"  class="img-css" />
      <div fxLayout="row" fxLayoutAlign="center center">
       <label style="margin-top:10px; color: white;font-size: 20px;">{{name}}</label>
       <mat-icon (click)="updateProfile()" *ngIf="updateStatus == 0 " class="cl_edit_css">edit</mat-icon>
@@ -45,11 +46,11 @@
       <div style=" position: absolute;bottom:-55px;width:100%"  fxLayoutAlign="center center">
         <ion-card class="show-count-css" fxLayout="row" fxLayoutAlign="center center">
           <div fxFlex="50" class="first-subcount-div" fxLayout="column" fxLayoutAlign="center center">
-            <label class="count-css">100</label>
+            <label class="count-css">{{advertisementCount}}</label>
             <label  class="type-text-css">Advertisement</label>
           </div>
           <div fxFlex="50" class="second-subcount-div" fxLayout="column" fxLayoutAlign="center center">
-            <label  class="count-css">150</label>
+            <label  class="count-css">{{bannersCount}}</label>
             <label  class="type-text-css">Banner</label>
           </div>
     
@@ -59,13 +60,25 @@
     </div>
 
   
+<div fxLayout="column" style="margin-top:70px;">
+  <div style="width:100%;padding:5px;" fxLayout="row" *ngIf="mobile != '' || mobile != null || mobile != undefined">
+    <div fxFlex="20"  fxLayoutAlign="center start">
+      <ion-icon class="icon-css" name="call"></ion-icon>
+    </div>
+    <div fxFlex="80"  fxLayoutAlign="start start">
+      <ion-label class="cl_content_fontsize">{{mobile}}</ion-label>
+    </div>
+    <!-- <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
+      <mat-icon class="cl_edit_css">edit</mat-icon>
+    </div> -->
+    </div>
 
-      <div style="width:100%;padding:5px;margin-top:70px;" fxLayout="row">
+    <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row" *ngIf="mobile != '' || mobile != null || mobile != undefined">
       <div fxFlex="20"  fxLayoutAlign="center start">
-        <ion-icon class="icon-css" name="call"></ion-icon>
+        <ion-icon class="icon-css" name="mail"></ion-icon>
       </div>
       <div fxFlex="80"  fxLayoutAlign="start start">
-        <ion-label class="cl_content_fontsize">{{mobile}}</ion-label>
+        <ion-label class="cl_content_fontsize">{{email}}</ion-label>
       </div>
       <!-- <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
         <mat-icon class="cl_edit_css">edit</mat-icon>
@@ -74,28 +87,18 @@
 
       <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row">
         <div fxFlex="20"  fxLayoutAlign="center start">
-          <ion-icon class="icon-css" name="mail"></ion-icon>
+          <ion-icon class="icon-css" name="document"></ion-icon>
         </div>
-        <div fxFlex="80"  fxLayoutAlign="start start">
-          <ion-label class="cl_content_fontsize">{{email}}</ion-label>
+        <div fxFlex="60"  fxLayoutAlign="start start">
+          <ion-label class="cl_content_fontsize">Payment History</ion-label>
         </div>
-        <!-- <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
-          <mat-icon class="cl_edit_css">edit</mat-icon>
-        </div> -->
+        <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
+          <ion-icon class="arrow-icon-css" name="chevron-forward-outline"></ion-icon>
+        </div>
         </div>
 
-        <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row">
-          <div fxFlex="20"  fxLayoutAlign="center start">
-            <ion-icon class="icon-css" name="document"></ion-icon>
-          </div>
-          <div fxFlex="60"  fxLayoutAlign="start start">
-            <ion-label class="cl_content_fontsize">Payment History</ion-label>
-          </div>
-          <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
-            <ion-icon class="arrow-icon-css" name="chevron-forward-outline"></ion-icon>
-          </div>
-          </div>
-
+</div>
+     
 
      
 

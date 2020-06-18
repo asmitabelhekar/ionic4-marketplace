@@ -63,14 +63,14 @@
   </mat-form-field>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
+  <!-- <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:20px">
     <mat-form-field style="width:96%;" appearance="outline">
       <mat-label>Password</mat-label>
           <input matInput class="form-control" type="text" name="password" [(ngModel)]="profileModel.password" #password="ngModel"
             align="center" required pattern="[a-zA-Z0-9,.  ]+$" disabled>
         
     </mat-form-field>
-  </div>
+  </div> -->
 
   <button mat-raised-button class="updateProfileButton" [disabled]="email.invalid ||  name.invalid"
   (click)="updateProfileData(advertisementModel)"><b>Update</b></button>

@@ -146,7 +146,7 @@ export class HomePage {
   getAdvertisement(categoryId) {
     this.loader.showBlockingLoaderAuth();
     let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
-    this.apiCall.get(url).subscribe(MyResponse => {
+    this.apiCall.getAd(url).subscribe(MyResponse => {
 
       
 
@@ -363,7 +363,7 @@ export class HomePage {
 
       send_date['userId'] = this.advertisementModel['userId'];
       let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
-      this.apiCall.post(url, send_date).subscribe(MyResponse => {
+      this.apiCall.postAuth(url, send_date).subscribe(MyResponse => {
 
         this.loader.hideBlockingLoaderAuth();
       }, error => {
@@ -378,7 +378,7 @@ export class HomePage {
   removeBookmark(advertisementId) {
     this.userId = localStorage.getItem("userId");
     let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000; 
-    this.apiCall.get(url).subscribe(MyResponse => {
+    this.apiCall.getAd(url).subscribe(MyResponse => {
       this.getBookMarkArray = MyResponse['result']['list'];
       for (let i = 0; i < this.getBookMarkArray.length; i++) {
 
@@ -398,7 +398,7 @@ export class HomePage {
       console.log("show advertisement bookmark id:" + this.bookmarkId);
 
       let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
-      this.apiCall.delete(url).subscribe(MyResponse => {
+      this.apiCall.deleteAuth(url).subscribe(MyResponse => {
 
         this.loader.hideBlockingLoaderAuth();
       }, error => {

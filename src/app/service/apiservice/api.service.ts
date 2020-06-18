@@ -26,7 +26,22 @@ public post(url,data) {
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      // 'Authorization':'Token' + " " +auth_token
+    })
+  }
+  console.log(url);
+  
+  return this.http.post(url,data,httpOptions);
+}
+
+
+//POST
+public postAuth(url,data) {
+ let auth_token = localStorage.getItem("authToken");
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization':auth_token
     })
   }
   console.log(url);
@@ -38,10 +53,25 @@ public post(url,data) {
  //GET
 
  public get(url) {
+  
 
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
+      // 'Authorization':this.auth_token
+    })
+  }
+  console.log(url);
+  return this.http.get(url,httpOptions);
+}
+
+public getAd(url) {
+  let auth_token = localStorage.getItem("authToken");
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization':auth_token
     })
   }
   console.log(url);
@@ -67,7 +97,7 @@ public delete(url) {
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      // 'Authorization':'Token' + " " +auth_token
+      // 'Authorization':this.auth_token
     })
   }
   
@@ -75,16 +105,45 @@ public delete(url) {
 }
 
 
-
-//PUT
-
-public put(url,data) {
-
+public deleteAuth(url) {
+  let auth_token = localStorage.getItem("authToken");
+  console.log();
   console.log(url);
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      // 'Authorization':'Token' + " " +auth_token
+      'Authorization':auth_token
+    })
+  }
+  
+  return this.http.delete(url,httpOptions);
+}
+
+
+
+//PUT
+
+public putAuth(url,data) {
+  let auth_token = localStorage.getItem("authToken");
+  console.log(url);
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization':auth_token
+    })
+  }
+  return this.http.put(url,data,httpOptions);
+}
+
+
+//PUT
+
+public put(url,data) {
+  console.log(url);
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+     
     })
   }
   return this.http.put(url,data,httpOptions);

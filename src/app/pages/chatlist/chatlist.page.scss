@@ -46,8 +46,15 @@
     color: #fb7645;
   }
 
-  ion-content{
-    --background: linear-gradient(to bottom,#fe8860,#feae93);
+.back-div{
+    background-size: cover;
+    height:100%;
+    background-repeat: no-repeat;
+    // position: relative;
+    width:100%;
+    background: linear-gradient(to bottom,#f35b28, #f7906e,#feae93);
+    // background-image: url("../../../assets/loginbg.png");
+    // background: url("../../../assets/loginbg.png") no-repeat center center fixed;
   }
 
   .item-content {
@@ -75,8 +82,8 @@ input:focus {
   // padding-bottom:10px;
   // padding-left:13px;
   // padding-right:13px;
-  border-radius: 15px;
-  padding:5px;
+  border-radius: 22px;
+  padding-left:15px;
     margin:20px;
        cursor: pointer;
 }

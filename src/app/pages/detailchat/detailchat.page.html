@@ -5,7 +5,8 @@
         <button ion-button class="cl-back-button" (click)="goBackword()" style="color:white;margin:7px"></button>
       </ion-col>
       <ion-col size="9" fxLayoutAlign="start center">
-        <ion-label style="color:white;" class="TitleText">{{name}}</ion-label>
+        <!-- <ion-label style="color:white;" class="TitleText">{{name}}</ion-label> -->
+        <ion-label style="color:white;" class="TitleText">detail</ion-label>
       </ion-col>
    
     
@@ -88,18 +89,3 @@
 </div>
 </ion-content>
 
-
-
-<!-- <div fxLayout="row" fxLayoutAlign="center center" style="margin-bottom:10px;width:100%">
-  <div style="width:10%;" fxLayoutAlign="center center">
-    <img *ngIf="noInternet == '0' " src="../../assets/funnelimg.png" style="width:30px;height:30px" (click)="filter()" />
-  </div>
-
-  <div fxLayout="column" style="width:18%; " fxLayoutAlign="center center" *ngFor="let item of categoryArray"
-    (click)="checkType(item.name, item.id)" [ngClass]="(displayCategory == item.id) ? 'even' : 'odd' ">
-    <img src="{{item.image}}" style="width:30px;height:30px" />
-    <div fxLayoutAlign="center center">
-      <label class="categoty-width">{{item.name}}</label>
-    </div>
-  </div>
-</div> -->

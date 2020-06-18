@@ -85,6 +85,7 @@ export class LoginPage implements OnInit {
         // this.router.navigate(['/home']);
       
         this.users = res;
+        console.log("show detail:"+JSON.stringify(this.users));
         this.gmailId = "";
         this.fbId = res.id;
         this.userName = res.name;
@@ -130,11 +131,12 @@ export class LoginPage implements OnInit {
         localStorage.setItem("userId", MyResponse['result']['id']);
         localStorage.setItem("loginType","email");
         localStorage.setItem("loginStatus", 'yes');
+        localStorage.setItem("authToken",MyResponse['result']['jwt-token']);
         localStorage.setItem("userRole", MyResponse['result']['userRole']);
         localStorage.setItem("userName", MyResponse['result']['name']);
         localStorage.setItem("userCreated", MyResponse['result']['created']);
         this.router.navigate(['/home']);
-        console.log("show login details:"+JSON.stringify(MyResponse));
+        console.log("show login token:"+MyResponse['result']['jwt-token']);
       }else{
         this.presentToast("Please try again");
       }
@@ -160,6 +162,8 @@ export class LoginPage implements OnInit {
     this.googlePlus.login({})
       .then((res) => {
         this.loginDetails = res;
+        console.log("show gmail login detail:"+JSON.stringify(this.loginDetails));
+        localStorage.setItem("profileImage",res.imageUrl);
         this.gmailId = res.userId;
         this.fbId="";
         this.userName = res.displayName;

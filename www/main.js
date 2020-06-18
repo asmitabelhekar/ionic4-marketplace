@@ -739,7 +739,8 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     // { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
-    // { path: 'sliderintro', loadChildren: () => import('./pages/sliderintro/sliderintro.module').then( m => m.SliderintroPageModule)},
+    // { path: 'detailchat',     loadChildren: () => import('./pages/detailchat/detailchat.module').then( m => m.DetailchatPageModule)
+    // },
     { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~7428c6ce"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
     {
         path: 'popup',

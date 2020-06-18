@@ -58,9 +58,9 @@ export class UpdateprofilePage implements OnInit {
     localStorage.setItem("getName",send_date['name']);
     send_date['email'] = this.profileModel['email'];
     send_date['mobile'] = this.profileModel['contact'];
-    send_date['isActive'] = 1;
+    // send_date['isActive'] = 1;
     send_date['userRole'] = this.userRole;
-    send_date['password'] = this.getProfileDetail.password;
+    // send_date['password'] = this.getProfileDetail.password;
 
     let url = environment.base_url + environment.version + "users/" + this.getProfileDetail.id ;
     this.apiCall.put(url, send_date).subscribe(MyResponse => {

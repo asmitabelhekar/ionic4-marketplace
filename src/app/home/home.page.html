@@ -83,7 +83,7 @@
 
 
       <div fxLayoutAlign="center center" *ngIf="showNoBanner == 1 " class="cl_img_div" style="background-color:rgb(175, 171, 171);">
-        <h5 align="center">No banners available</h5>
+        <h5 align="center">No banners posted</h5>
       </div>
 
     </div>
@@ -124,13 +124,17 @@
 
 
 
-
+                
               <div style="position:absolute;top:7px;right:8px;width:30px;height:30px;"
                 (click)="bookmarkAdvertisement(item.id)">
-                <ion-icon *ngIf="postBookmarkObj [item.id] == true "
+                <ion-icon *ngIf="item.isBookmarked == 1 "
+                style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart"></ion-icon>
+              <ion-icon *ngIf="item.isBookmarked == 0 "
+                style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart-outline"></ion-icon>
+                <!-- <ion-icon *ngIf="postBookmarkObj [item.id] == true "
                   style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart"></ion-icon>
                 <ion-icon *ngIf="postBookmarkObj [item.id] != true "
-                  style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart-outline"></ion-icon>
+                  style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart-outline"></ion-icon> -->
               </div>
 
               <div fxLayoutAlign="end end" fxLayout="column" (click)="showAdvertisementDetail(item.categoryId, item.id)"
@@ -228,29 +232,7 @@
         </div>
 
       </div>
-    <!-- <div fxLayout="row" class="cl_bottom_fix" style="margin:10px;width:100%">
-    <div fxLayout="column" fxLayoutAlign="center center" class="cl_post_css" style="width:20%" (click)="home()">
-          <mat-icon  fxLayoutAlign="center center" class="cl_icon">home</mat-icon>
-          <label fxLayoutAlign="center center" class="cl_text_font">HOME</label>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css" (click)="openChatList()">
-          <mat-icon fxLayoutAlign="center center" class="cl_icon"> chat_bubble_outline</mat-icon>
-          <label fxLayoutAlign="center center" class="cl_text_font">CHATS</label>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css"  (click)="postAdvertisement()">
-          <mat-icon fxLayoutAlign="center center" class="cl_icon">add_circle_outline</mat-icon>
-          <label fxLayoutAlign="center center" class="cl_text_font">SELL</label>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css" (click)="openFavourite()">
-          <mat-icon fxLayoutAlign="center center" class="cl_icon" >library_books</mat-icon>
-          <label fxLayoutAlign="center center" class="cl_text_font">MY ADS</label>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width:20%" class="cl_bottom_nav_css" (click)="openProfile()">
-          <mat-icon  fxLayoutAlign="center center" class="cl_icon">person</mat-icon>
-          <label fxLayoutAlign="center center" class="cl_text_font">ACCOUNT</label>
-        </div>
-
-    </div> -->
+   
 
 
 
