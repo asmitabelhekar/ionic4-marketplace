@@ -65,7 +65,7 @@ export class LoginPage implements OnInit {
 
 
   fbLogin() {
-    this.router.navigate(['/home']);
+    this.fbLogout();
     this.facebook.login(['public_profile', 'user_friends', 'email'])
       .then(res => {
         if (res.status === 'connected') {
@@ -139,7 +139,7 @@ export class LoginPage implements OnInit {
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
       if(MyResponse['result']['isActive'] == 1){
         localStorage.setItem("userId", MyResponse['result']['id']);
-        localStorage.setItem("loginType","email");
+        // localStorage.setItem("loginType","email");
         localStorage.setItem("loginStatus", 'yes');
         localStorage.setItem("authToken",MyResponse['result']['jwt-token']);
         if(MyResponse['result']['image'] == null || MyResponse['result']['image'] == "" || MyResponse['result']['image'] == undefined){
@@ -187,6 +187,7 @@ export class LoginPage implements OnInit {
         this.fbId="";
         this.userName = res.displayName;
         this.userEmail = res.email;
+        localStorage.setItem("loginType","gmail");
        this.login();
       }, (err) => {
 

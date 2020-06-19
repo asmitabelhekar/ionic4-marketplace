@@ -15,6 +15,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 })
 export class ProfilePage implements OnInit {
 
+  showMobile = 0;
   loginType: any;
   noInternet = 1;
   name: any;
@@ -107,8 +108,10 @@ export class ProfilePage implements OnInit {
       localStorage.setItem("getName", this.name);
       if (this.profileDetail.mobile == null || this.profileDetail.mobile == "null" || this.profileDetail.mobile == "") {
         this.mobile = "";
-       
+        this.showMobile = 1;
+        console.log("ger profile mobile null:");
       } else {
+        this.showMobile = 0;
         console.log("ger profile mobile:" + this.mobile);
         this.mobile = this.profileDetail.mobile;
       }
@@ -180,6 +183,7 @@ export class ProfilePage implements OnInit {
 
 
   }
+
   goBackword() {
     window.history.back();
   }
@@ -221,10 +225,9 @@ export class ProfilePage implements OnInit {
 
 
   viewPaymentLogs() {
-    let senData = {}
+    let senData = {};
     senData['userId'] = this.userId;
     senData['status'] = "all";
-   
     this.router.navigate(['/paymentlogs', { senPaymentLogData : JSON.stringify(senData)}]);
   }
 }

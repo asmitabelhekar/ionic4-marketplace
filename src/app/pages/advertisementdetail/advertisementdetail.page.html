@@ -133,13 +133,15 @@
   <ion-item-divider style="padding-bottom:10px" (click)="viewProfile()">
     <div style="margin-top:10px" class="cl_margin" fxLayout="row">
       <div style="width:20%; margin-left:-10px">
-        <img src="../../../assets/defaultprofilepic.png" fxLayoutAlign="start start" class="cl_default_pic" />
+        <img *ngIf="userImg == '' " src="../../../assets/defaultprofilepic.png" fxLayoutAlign="start start" class="cl_default_pic" />
+        <img *ngIf="userImg != '' " src="{{userImg}}" fxLayoutAlign="start start" class="cl_default_pic" style="border-radius:100%"/>
+   
       </div>
 
       <div style="width:75%">
         <label class="cl_gray_title cl_font_13"><b>{{userName}}</b></label><br />
         <label class="cl_gray_label cl_font_14">Member since {{userCreated | date}}</label><br />
-        <label class="cl_font_13" style="color : #50b5f2">SEE PROFILE</label>
+        <label class="cl_font_13" style="color : #fe4f14">SEE PROFILE</label>
       </div>
 
       <div fxLayoutAlign="center center">
