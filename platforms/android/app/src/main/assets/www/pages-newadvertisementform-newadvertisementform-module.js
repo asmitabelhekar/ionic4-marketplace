@@ -617,11 +617,11 @@ var NewadvertisementformPage = /** @class */ (function () {
                     _this.updateBanner(_this.getCategoryId);
                 }
                 if (_this.totalCalculatePayment == 0) {
+                    _this.presentToast("Advertisement updated successfully.");
                 }
                 else {
                     _this.payWithRazor();
                 }
-                _this.presentToast("Advertisement updated successfully.");
                 _this.router.navigate(['/favourite']);
                 // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
                 _this.loader.hideBlockingLoaderAuth();

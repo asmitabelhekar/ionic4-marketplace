@@ -304,6 +304,10 @@ var ChatlistPage = /** @class */ (function () {
             this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "users/" + this.userId + "/chat-users?" + "search=" + getKey;
             this.getUsers(this.url);
         }
+        else {
+            this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].version + "users/" + this.userId + "/chat-users";
+            this.getUsers(this.url);
+        }
     };
     ChatlistPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },

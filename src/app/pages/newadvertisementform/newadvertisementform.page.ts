@@ -621,12 +621,12 @@ export class NewadvertisementformPage implements OnInit {
           this.updateBanner(this.getCategoryId);
         }
         if (this.totalCalculatePayment == 0) {
-
+          this.presentToast("Advertisement updated successfully.");
         } else {
           this.payWithRazor();
         }
 
-        this.presentToast("Advertisement updated successfully.");
+        
         this.router.navigate(['/favourite']);
         // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
         this.loader.hideBlockingLoaderAuth();

@@ -78,6 +78,10 @@ const routes: Routes = [
   {
     path: 'paymentlogs',
     loadChildren: () => import('./pages/paymentlogs/paymentlogs.module').then( m => m.PaymentlogsPageModule)
+  },
+  {
+    path: 'filtercategory',
+    loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
   }
  
 

@@ -125,6 +125,9 @@ export class ChatlistPage implements OnInit {
 
       this.url = environment.base_url + environment.version + "users/" + this.userId + "/chat-users?" + "search=" + getKey;
       this.getUsers(this.url);
+    }else{
+      this.url = environment.base_url + environment.version + "users/" + this.userId + "/chat-users";
+      this.getUsers(this.url);
     }
   }
 }
