@@ -105,8 +105,8 @@ export class ProfilePage implements OnInit {
       this.profileDetail = MyResponse['result'];
       this.name = this.profileDetail.name;
       localStorage.setItem("getName", this.name);
-      if (this.profileDetail.mobile == null || this.profileDetail.mobile == "") {
-        this.mobile = "1";
+      if (this.profileDetail.mobile == null || this.profileDetail.mobile == "null" || this.profileDetail.mobile == "") {
+        this.mobile = "";
        
       } else {
         console.log("ger profile mobile:" + this.mobile);
@@ -221,7 +221,11 @@ export class ProfilePage implements OnInit {
 
 
   viewPaymentLogs() {
-    this.router.navigate(['/paymentlogs']);
+    let senData = {}
+    senData['userId'] = this.userId;
+    senData['status'] = "all";
+   
+    this.router.navigate(['/paymentlogs', { senPaymentLogData : JSON.stringify(senData)}]);
   }
 }
 

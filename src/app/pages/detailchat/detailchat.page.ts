@@ -90,7 +90,7 @@ export class DetailchatPage implements OnInit {
   }
 
   getChatMassages() {
-    this.loader.showBlockingLoaderAuth();
+    // this.loader.showBlockingLoaderAuth();
     this.userId = localStorage.getItem("userId");
     let url = environment.base_url + environment.version + "sender/" + this.userId + "/receive/" + this.id+ "?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {

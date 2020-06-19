@@ -1119,6 +1119,7 @@ export class NewadvertisementformPage implements OnInit {
     send_date['userId'] = this.usersId;
     send_date['paymentId'] = (success);
     send_date['isSuccess'] = 0;
+    send_date['amount'] = this.totalCalculatePayment;
     send_date['advertisementStartDate'] = this.getStartDateForUpdate;
     send_date['advertisementEndDate'] = this.getEndDateForUpdate;
     if (this.checkBannerStartDateTimestamp == 0 || this.checkBannerEndDateTimestamp == 0) {

@@ -151,6 +151,19 @@
 
   </ion-item-divider>
 
+
+  <ion-item-divider fxLayout="row" style="margin-left:-10px; padding-bottom :8px; margin-top:4px" (click)="viewPaymentLogs()" *ngIf="advertisementType == 0 ">
+   
+    <div style="margin-top:10px" class="cl_margin" fxLayout="row" fxFlex="100">
+      <div fxFlex="95">
+        <label  style="font-size:13px;color:black; font-weight:500">Payment history</label>
+      </div>
+    <div fxLayoutAlign="center center" fxFlex="5">
+
+      <mat-icon class="cl_arrow_right">keyboard_arrow_right</mat-icon>
+    </div>
+    </div>
+  </ion-item-divider>
   <div class="cl_margin" style="margin-top:5px">
     <label class="cl_adpost"><b>Add posted at</b></label>
   </div>
@@ -172,7 +185,6 @@
     </div>
     <div class="cl_call_div" fxLayout="row" (click)="makeCall()" style="cursor: pointer">
       <div fxFlex="50" fxLayoutAlign="center center">
-        <!-- <ion-icon name="call" ></ion-icon> -->
         <mat-icon class="cl_chat_icon">call</mat-icon>
       </div>
       <div fxFlex="50" fxLayoutAlign="start center">

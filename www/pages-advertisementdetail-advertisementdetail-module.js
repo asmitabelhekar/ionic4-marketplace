@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n\n  <div fxLayoutAlign=\"start center\">\n  <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\" \n    class=\"half-black\">\n    <ion-slide *ngFor=\"let item of advertisementImages\" >\n      <div style=\"width:100%;height:250px;position: relative;margin-bottom:5px\" >\n        <img src=\"{{item}}\" style=\"width:100%; height:100%\"/>\n      </div>\n\n    </ion-slide>\n  </ion-slides>\n  \n\n    <div fxLayout=\"row\" class=\"cl_header\">\n      <ion-row style=\"width:100%\">\n        <ion-col size=\"2\">\n          <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n        </ion-col>\n\n        <ion-col size=\"8\" align=\"center\">\n        </ion-col>\n        <!-- <ion-col size=\"2\" fxLayoutAlign=\"end center\" (click)=\"editAdvertisement()\" *ngIf=\"advertisementType == 0 \">\n          <mat-icon style=\"color:white;font-size:20px;margin-top:-5px;cursor:pointer \">edit</mat-icon>\n        </ion-col>\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\" *ngIf=\"advertisementType != 0 \">\n        </ion-col> -->\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\" (click)=\"sharePicker(advertisementImages[0])\">\n          <img src=\"../../../assets/sharewhitee.png\" class=\"cl_share_icon\" />\n\n        </ion-col>\n     \n      </ion-row>\n    </div>\n    <ion-row class=\"cl_middle_arrow\" style=\"width:100%\">\n      <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n      <mat-icon  class=\"cl_middle_arrow_left\" (click)=\"prevSlide(slider)\">keyboard_arrow_left</mat-icon>\n        </ion-col>\n\n        <ion-col size=\"8\">\n        </ion-col>\n\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n      <mat-icon  class=\"cl_middle_arrow_right\"  (click)=\"nextSlide(slider)\">keyboard_arrow_right</mat-icon>\n        </ion-col>\n    </ion-row>\n\n    <!-- <div fxLayout=\"row\"  class=\"cl_middle_arrow\" style=\"width:100%\">\n     \n     \n     \n    </div> -->\n  </div>\n\n\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:85%; color:black\">\n      <div fxLayout=\"column\" style=\"color:black; font-size:14px; margin-left:4px\">\n        <label>{{title}}</label>\n        <label style=\"margin-top:5px\">₹ {{price | number}}</label>\n      </div>\n\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:6%;\">\n      <div fxLayoutAlign=\"end start\" (click)=\"editAdvertisement()\" *ngIf=\"advertisementType == 0 \">\n        <mat-icon style=\"color:rgb(87, 85, 85);font-size:20px;margin-top:-2px;cursor:pointer \">edit</mat-icon>\n      </div>\n      <!-- <div fxLayoutAlign=\"end start\" (click)=\"sharePicker(advertisementImages[0])\">\n        <ion-icon name=\"share-social-outline\" class=\"cl_share_icon\"></ion-icon>\n      </div> -->\n    </div>\n    <div fxLayoutAlign=\"end start\" style=\"width:9%;\">\n      <ion-icon *ngIf=\"isBookmarked == 1 \" style=\"color:#fb7645; margin-left:5px;width:25px; height:25px;\" name=\"heart\"></ion-icon>\n      <ion-icon *ngIf=\"isBookmarked == 0 \" style=\"color:#fb7645; margin-left:5px;width:25px; height:25px;\" name=\"heart-outline\"></ion-icon>\n\n      <!-- <ion-icon fxLayoutAlign=\"end start\" name=\"heart-outline\" style=\"width:23px; height:23px;\"></ion-icon> -->\n    </div>\n  </div>\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:75%; color:black\">\n      <mat-icon style=\"color:black;font-size:15px\">place</mat-icon>\n      <label style=\"margin-left:-3px\" class=\"cl_gray_label cl_font_14\">{{address}} </label>\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:25%;\">\n      <label class=\"cl_gray_label cl_font_13\">{{date | date}}</label>\n    </div>\n  </div>\n  <!-- <ion-item-divider style=\"width:100%;margin-top:-15px\">\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n\n    <ion-row>\n      <ion-col size=\"12\">\n        <label class=\"cl_gray_title cl_font_13\"><b>Details</b></label>\n\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_14\">YEAR</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">2009</label>\n      </ion-col>\n    </ion-row>\n\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">KM DRIVEN</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">200,000 KM</label>\n      </ion-col>\n    </ion-row>\n  </div> -->\n  <ion-item-divider style=\"width:100%;margin-top:-20px; color:black\"></ion-item-divider>\n\n  <div style=\"width:96%;margin-left:2%; margin-top:5px\">\n    <label style=\"font-size:14px; color : rgb(78, 77, 77); margin-left:5px\"><b>Description</b></label>\n  </div>\n  <ion-item-divider style=\"margin-left:-2px; padding-bottom :8px; margin-top:4px\">\n    <label class=\"cl_gray_label cl_font_14\">{{description}}</label>\n  </ion-item-divider>\n\n  <ion-item-divider style=\"padding-bottom:10px\" (click)=\"viewProfile()\">\n    <div style=\"margin-top:10px\" class=\"cl_margin\" fxLayout=\"row\">\n      <div style=\"width:20%; margin-left:-10px\">\n        <img src=\"../../../assets/defaultprofilepic.png\" fxLayoutAlign=\"start start\" class=\"cl_default_pic\" />\n      </div>\n\n      <div style=\"width:75%\">\n        <label class=\"cl_gray_title cl_font_13\"><b>{{userName}}</b></label><br />\n        <label class=\"cl_gray_label cl_font_14\">Member since {{userCreated | date}}</label><br />\n        <label class=\"cl_font_13\" style=\"color : #50b5f2\">SEE PROFILE</label>\n      </div>\n\n      <div fxLayoutAlign=\"center center\">\n\n        <mat-icon class=\"cl_arrow_right\">keyboard_arrow_right</mat-icon>\n      </div>\n\n    </div>\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n    <label class=\"cl_adpost\"><b>Add posted at</b></label>\n  </div>\n  <div id=\"map_canvas\" style=\" margin-bottom:20%;margin-top:10px;\"></div>\n\n\n\n\n\n  <div class=\"cl_call_message_maindiv\" fxLayout=\"row\">\n    <div class=\"cl_message_div\" fxLayout=\"row\" (click)=\"sendMessage()\" style=\"cursor: pointer\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <!-- <ion-icon name=\"call\" ></ion-icon> -->\n        <mat-icon class=\"cl_chat_icon\">chat</mat-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CHAT</label>\n      </div>\n    </div>\n    <div class=\"cl_call_div\" fxLayout=\"row\" (click)=\"makeCall()\" style=\"cursor: pointer\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <!-- <ion-icon name=\"call\" ></ion-icon> -->\n        <mat-icon class=\"cl_chat_icon\">call</mat-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CALL</label>\n      </div>\n    </div>\n\n    <!-- <div style=\"width:50%;\" fxLayout=\"row\" (click)=\"makeCall()\" style=\"cursor: pointer\">\n      <div fxFlex=\"50\" align=\"center\">\n        <ion-icon name=\"call\"  class=\"cl_call_icon\"></ion-icon>\n      </div>\n      <div fxFlex=\"50\" align=\"center\">\n        <label class=\"cl_font_14\" >CALL</label>\n      </div>\n    </div> -->\n  </div>\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n\n  <div fxLayoutAlign=\"start center\">\n  <ion-slides [options]=\"slideOptions\" pager=\"true\" #slider (ionSlidesDidLoad)=\"slidesDidLoad(slider)\" \n    class=\"half-black\">\n    <ion-slide *ngFor=\"let item of advertisementImages\" >\n      <div style=\"width:100%;height:250px;position: relative;margin-bottom:5px\" >\n        <img src=\"{{item}}\" style=\"width:100%; height:100%\"/>\n      </div>\n\n    </ion-slide>\n  </ion-slides>\n  \n\n    <div fxLayout=\"row\" class=\"cl_header\">\n      <ion-row style=\"width:100%\">\n        <ion-col size=\"2\">\n          <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n        </ion-col>\n\n        <ion-col size=\"8\" align=\"center\">\n        </ion-col>\n        <!-- <ion-col size=\"2\" fxLayoutAlign=\"end center\" (click)=\"editAdvertisement()\" *ngIf=\"advertisementType == 0 \">\n          <mat-icon style=\"color:white;font-size:20px;margin-top:-5px;cursor:pointer \">edit</mat-icon>\n        </ion-col>\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\" *ngIf=\"advertisementType != 0 \">\n        </ion-col> -->\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\" (click)=\"sharePicker(advertisementImages[0])\">\n          <img src=\"../../../assets/sharewhitee.png\" class=\"cl_share_icon\" />\n\n        </ion-col>\n     \n      </ion-row>\n    </div>\n    <ion-row class=\"cl_middle_arrow\" style=\"width:100%\">\n      <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n      <mat-icon  class=\"cl_middle_arrow_left\" (click)=\"prevSlide(slider)\">keyboard_arrow_left</mat-icon>\n        </ion-col>\n\n        <ion-col size=\"8\">\n        </ion-col>\n\n        <ion-col size=\"2\" fxLayoutAlign=\"center center\">\n      <mat-icon  class=\"cl_middle_arrow_right\"  (click)=\"nextSlide(slider)\">keyboard_arrow_right</mat-icon>\n        </ion-col>\n    </ion-row>\n\n    <!-- <div fxLayout=\"row\"  class=\"cl_middle_arrow\" style=\"width:100%\">\n     \n     \n     \n    </div> -->\n  </div>\n\n\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:85%; color:black\">\n      <div fxLayout=\"column\" style=\"color:black; font-size:14px; margin-left:4px\">\n        <label>{{title}}</label>\n        <label style=\"margin-top:5px\">₹ {{price | number}}</label>\n      </div>\n\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:6%;\">\n      <div fxLayoutAlign=\"end start\" (click)=\"editAdvertisement()\" *ngIf=\"advertisementType == 0 \">\n        <mat-icon style=\"color:rgb(87, 85, 85);font-size:20px;margin-top:-2px;cursor:pointer \">edit</mat-icon>\n      </div>\n      <!-- <div fxLayoutAlign=\"end start\" (click)=\"sharePicker(advertisementImages[0])\">\n        <ion-icon name=\"share-social-outline\" class=\"cl_share_icon\"></ion-icon>\n      </div> -->\n    </div>\n    <div fxLayoutAlign=\"end start\" style=\"width:9%;\">\n      <ion-icon *ngIf=\"isBookmarked == 1 \" style=\"color:#fb7645; margin-left:5px;width:25px; height:25px;\" name=\"heart\"></ion-icon>\n      <ion-icon *ngIf=\"isBookmarked == 0 \" style=\"color:#fb7645; margin-left:5px;width:25px; height:25px;\" name=\"heart-outline\"></ion-icon>\n\n      <!-- <ion-icon fxLayoutAlign=\"end start\" name=\"heart-outline\" style=\"width:23px; height:23px;\"></ion-icon> -->\n    </div>\n  </div>\n\n  <div fxLayout=\"row\" style=\"margin-top:10px;\" class=\"cl_margin\">\n    <div fxLayoutAlign=\"start start\" style=\"width:75%; color:black\">\n      <mat-icon style=\"color:black;font-size:15px\">place</mat-icon>\n      <label style=\"margin-left:-3px\" class=\"cl_gray_label cl_font_14\">{{address}} </label>\n    </div>\n\n    <div fxLayoutAlign=\"end start\" style=\"width:25%;\">\n      <label class=\"cl_gray_label cl_font_13\">{{date | date}}</label>\n    </div>\n  </div>\n  <!-- <ion-item-divider style=\"width:100%;margin-top:-15px\">\n\n  </ion-item-divider>\n\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n\n    <ion-row>\n      <ion-col size=\"12\">\n        <label class=\"cl_gray_title cl_font_13\"><b>Details</b></label>\n\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_14\">YEAR</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">2009</label>\n      </ion-col>\n    </ion-row>\n\n    <ion-row style=\"margin-top:-5px\">\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">KM DRIVEN</label>\n      </ion-col>\n\n      <ion-col size=\"6\">\n        <label class=\"cl_gray_label cl_font_13\">200,000 KM</label>\n      </ion-col>\n    </ion-row>\n  </div> -->\n  <ion-item-divider style=\"width:100%;margin-top:-20px; color:black\"></ion-item-divider>\n\n  <div style=\"width:96%;margin-left:2%; margin-top:5px\">\n    <label style=\"font-size:14px; color : rgb(78, 77, 77); margin-left:5px\"><b>Description</b></label>\n  </div>\n  <ion-item-divider style=\"margin-left:-2px; padding-bottom :8px; margin-top:4px\">\n    <label class=\"cl_gray_label cl_font_14\">{{description}}</label>\n  </ion-item-divider>\n\n  <ion-item-divider style=\"padding-bottom:10px\" (click)=\"viewProfile()\">\n    <div style=\"margin-top:10px\" class=\"cl_margin\" fxLayout=\"row\">\n      <div style=\"width:20%; margin-left:-10px\">\n        <img src=\"../../../assets/defaultprofilepic.png\" fxLayoutAlign=\"start start\" class=\"cl_default_pic\" />\n      </div>\n\n      <div style=\"width:75%\">\n        <label class=\"cl_gray_title cl_font_13\"><b>{{userName}}</b></label><br />\n        <label class=\"cl_gray_label cl_font_14\">Member since {{userCreated | date}}</label><br />\n        <label class=\"cl_font_13\" style=\"color : #50b5f2\">SEE PROFILE</label>\n      </div>\n\n      <div fxLayoutAlign=\"center center\">\n\n        <mat-icon class=\"cl_arrow_right\">keyboard_arrow_right</mat-icon>\n      </div>\n\n    </div>\n\n  </ion-item-divider>\n\n\n  <ion-item-divider fxLayout=\"row\" style=\"margin-left:-10px; padding-bottom :8px; margin-top:4px\" (click)=\"viewPaymentLogs()\" *ngIf=\"advertisementType == 0 \">\n   \n    <div style=\"margin-top:10px\" class=\"cl_margin\" fxLayout=\"row\" fxFlex=\"100\">\n      <div fxFlex=\"95\">\n        <label  style=\"font-size:13px;color:black; font-weight:500\">Payment history</label>\n      </div>\n    <div fxLayoutAlign=\"center center\" fxFlex=\"5\">\n\n      <mat-icon class=\"cl_arrow_right\">keyboard_arrow_right</mat-icon>\n    </div>\n    </div>\n  </ion-item-divider>\n  <div class=\"cl_margin\" style=\"margin-top:5px\">\n    <label class=\"cl_adpost\"><b>Add posted at</b></label>\n  </div>\n  <div id=\"map_canvas\" style=\" margin-bottom:20%;margin-top:10px;\"></div>\n\n\n\n\n\n  <div class=\"cl_call_message_maindiv\" fxLayout=\"row\">\n    <div class=\"cl_message_div\" fxLayout=\"row\" (click)=\"sendMessage()\" style=\"cursor: pointer\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <!-- <ion-icon name=\"call\" ></ion-icon> -->\n        <mat-icon class=\"cl_chat_icon\">chat</mat-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CHAT</label>\n      </div>\n    </div>\n    <div class=\"cl_call_div\" fxLayout=\"row\" (click)=\"makeCall()\" style=\"cursor: pointer\">\n      <div fxFlex=\"50\" fxLayoutAlign=\"center center\">\n        <mat-icon class=\"cl_chat_icon\">call</mat-icon>\n      </div>\n      <div fxFlex=\"50\" fxLayoutAlign=\"start center\">\n        <label class=\"cl_font_14\">CALL</label>\n      </div>\n    </div>\n\n    <!-- <div style=\"width:50%;\" fxLayout=\"row\" (click)=\"makeCall()\" style=\"cursor: pointer\">\n      <div fxFlex=\"50\" align=\"center\">\n        <ion-icon name=\"call\"  class=\"cl_call_icon\"></ion-icon>\n      </div>\n      <div fxFlex=\"50\" align=\"center\">\n        <label class=\"cl_font_14\" >CALL</label>\n      </div>\n    </div> -->\n  </div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -175,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AdvertisementdetailPage = /** @class */ (function () {
-    function AdvertisementdetailPage(activatedRoute, platform, networkServices, apiCall, networkService, callNumber, googlemaps, router, fileChooser, base64, file, actionSheetCtrl, socialSharing, nativeGeocoder, filePath, loader) {
+    function AdvertisementdetailPage(activatedRoute, platform, networkServices, apiCall, networkService, callNumber, googlemaps, router, fileChooser, base64, file, actionSheetCtrl, socialSharing, nativeGeocoder, filePath, toast, loader) {
         this.activatedRoute = activatedRoute;
         this.platform = platform;
         this.networkServices = networkServices;
@@ -191,6 +191,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.socialSharing = socialSharing;
         this.nativeGeocoder = nativeGeocoder;
         this.filePath = filePath;
+        this.toast = toast;
         this.loader = loader;
         this.displayfavourite = "0";
         this.lattitude = 0;
@@ -199,9 +200,11 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.loc = {};
         this.getImage = localStorage.getItem("url");
         this.advertisementArray = [];
+        this.userImg = "";
         this.getBookmarkObj = {};
         this.keysObject = [];
         this.isBookmarked = 0;
+        this.userMobile = "";
         this.subject = 'Message from Marketplace App';
         this.message = 'Marketplace App .';
         // public image : string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcO627ajsCYsf_HE5L8MXfugvvUe8ouCm8A6688WXreyA73dVf&usqp=CAU';
@@ -439,8 +442,15 @@ var AdvertisementdetailPage = /** @class */ (function () {
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.profileDetail = MyResponse['result'];
             _this.userName = _this.profileDetail.name;
+            _this.userMobile = _this.profileDetail.mobile;
             localStorage.setItem("getName", _this.userName);
             _this.userId = _this.profileDetail.id;
+            if (_this.profileDetail.image == "" || _this.profileDetail.image == null) {
+                _this.userImg = "";
+            }
+            else {
+                _this.userImg = _this.profileDetail.image;
+            }
             _this.userCreated = _this.profileDetail.created;
             _this.loader.hideBlockingLoaderAuth();
         }, function (error) {
@@ -536,12 +546,37 @@ var AdvertisementdetailPage = /** @class */ (function () {
         }
     };
     AdvertisementdetailPage.prototype.makeCall = function () {
-        this.callNumber.callNumber(this.mobile, true);
+        if (this.userMobile == "" || this.userMobile == "null" || this.userMobile == undefined) {
+            console.log("show number empty::::" + this.userMobile);
+            this.presentToast("Sorry, you don't have number for call");
+        }
+        else {
+            console.log("show number:" + this.userMobile);
+            this.callNumber.callNumber(this.userMobile, true);
+        }
+    };
+    AdvertisementdetailPage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toast.create({
+                            message: message,
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     AdvertisementdetailPage.prototype.sendMessage = function () {
         var userDetail = {
             "name": this.userName,
-            "id": this.userId
+            "id": this.userId,
+            "image": this.userImg
         };
         this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
         // this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
@@ -553,6 +588,13 @@ var AdvertisementdetailPage = /** @class */ (function () {
         var status = "1";
         localStorage.setItem("postStatus", status);
         this.router.navigate(['/newadvertisementform']);
+    };
+    AdvertisementdetailPage.prototype.viewPaymentLogs = function () {
+        var senData = {};
+        senData['userId'] = this.userId;
+        senData['advertisementId'] = this.advertisementId;
+        senData['status'] = "add";
+        this.router.navigate(['/paymentlogs', { senPaymentLogData: JSON.stringify(senData) }]);
     };
     AdvertisementdetailPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
@@ -570,6 +612,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
         { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"] },
         { type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__["NativeGeocoder"] },
         { type: _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_8__["FilePath"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ToastController"] },
         { type: src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -597,6 +640,7 @@ var AdvertisementdetailPage = /** @class */ (function () {
             _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"],
             _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__["NativeGeocoder"],
             _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_8__["FilePath"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ToastController"],
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
     ], AdvertisementdetailPage);
     return AdvertisementdetailPage;

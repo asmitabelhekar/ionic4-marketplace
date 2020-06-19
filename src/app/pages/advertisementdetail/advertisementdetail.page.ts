@@ -14,7 +14,7 @@ import {
   MarkerOptions,
   Marker
 } from "@ionic-native/google-maps";
-import { Platform, IonSlides, ActionSheetController } from '@ionic/angular';
+import { Platform, IonSlides, ActionSheetController, ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { NetworkService } from 'src/app/service/network/network.service';
@@ -52,6 +52,7 @@ export class AdvertisementdetailPage implements OnInit {
   getIds: any;
   advertisementArray = [];
   userName: any;
+  userImg :any = "";
   userCreated: any;
   url: any;
   getBookmarkObj: any = {};
@@ -60,7 +61,7 @@ export class AdvertisementdetailPage implements OnInit {
   getBase64Image: any;
   getpathofimage: any;
   isBookmarked : any = 0;
-
+  userMobile : any = "";
   image: any;
   public sendTo: any;
   public subject: string = 'Message from Marketplace App';
@@ -86,6 +87,7 @@ export class AdvertisementdetailPage implements OnInit {
     private socialSharing: SocialSharing,
     public nativeGeocoder: NativeGeocoder,
     public filePath: FilePath,
+    public toast : ToastController,
     public loader: LoaderService) {
 
   }
@@ -342,8 +344,15 @@ export class AdvertisementdetailPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.userName = this.profileDetail.name;
+      this.userMobile = this.profileDetail.mobile;
       localStorage.setItem("getName",this.userName);
       this.userId = this.profileDetail.id;
+      if( this.profileDetail.image == "" || this.profileDetail.image == null){
+        this.userImg = "";
+      }else{
+        this.userImg = this.profileDetail.image;
+      }
+      
       this.userCreated = this.profileDetail.created;
       this.loader.hideBlockingLoaderAuth();
     },
@@ -446,14 +455,29 @@ export class AdvertisementdetailPage implements OnInit {
 
 
   makeCall() {
-    this.callNumber.callNumber(this.mobile, true);
+    if(this.userMobile == "" || this.userMobile == "null" || this.userMobile == undefined){
+      console.log("show number empty::::"+this.userMobile);
+      this.presentToast("Sorry, you don't have number for call");
+    }else{
+      console.log("show number:"+this.userMobile);
+      this.callNumber.callNumber(this.userMobile, true);
+    }
   }
 
+
+  async presentToast(message) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 4000
+    });
+    toast.present();
+  }
 
   sendMessage() {
     let userDetail = {
       "name": this.userName,
-      "id": this.userId
+      "id": this.userId,
+      "image" : this.userImg
     }
     this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
     // this.router.navigate(['/detailchat', { name: "Asmita Belhekar" }]);
@@ -468,6 +492,15 @@ export class AdvertisementdetailPage implements OnInit {
     let status = "1";
     localStorage.setItem("postStatus", status);
     this.router.navigate(['/newadvertisementform']);
+  }
+
+  viewPaymentLogs() {
+    let senData = {}
+    senData['userId'] = this.userId;
+    senData['advertisementId'] = this.advertisementId;
+    senData['status'] = "add";
+   
+    this.router.navigate(['/paymentlogs', { senPaymentLogData : JSON.stringify(senData)}]);
   }
 
 }

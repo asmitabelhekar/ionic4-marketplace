@@ -61,11 +61,11 @@
 
   
 <div fxLayout="column" style="margin-top:70px;">
-  <div style="width:100%;padding:5px;" fxLayout="row" *ngIf="mobile != '1'">
-    <div *ngIf="mobile != ''" fxFlex="20"  fxLayoutAlign="center start">
+  <div style="width:100%;padding:5px;" fxLayout="row" *ngIf="mobile != '' || mobile != 'null'">
+    <div *ngIf="mobile != '' || mobile != 'null'" fxFlex="20"  fxLayoutAlign="center start">
       <ion-icon class="icon-css" name="call"></ion-icon>
     </div>
-    <div *ngIf="mobile != ''" fxFlex="80"  fxLayoutAlign="start start">
+    <div *ngIf="mobile != '' || mobile != 'null'" fxFlex="80"  fxLayoutAlign="start start">
       <ion-label class="cl_content_fontsize">{{mobile}}</ion-label>
     </div>
     <!-- <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
