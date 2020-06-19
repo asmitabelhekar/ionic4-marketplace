@@ -7,11 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PaymentlogsPageRoutingModule } from './paymentlogs-routing.module';
 
 import { PaymentlogsPage } from './paymentlogs.page';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    FlexLayoutModule,
+    MaterialModule,
     IonicModule,
     PaymentlogsPageRoutingModule
   ],

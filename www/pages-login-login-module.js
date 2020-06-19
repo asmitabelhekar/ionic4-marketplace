@@ -236,6 +236,7 @@ var LoginPage = /** @class */ (function () {
         this.gmailId = "";
         this.fbId = "";
         this.isLoggedIn = false;
+        this.imageUrl = "";
         this.users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
         this.menuController.enable(false);
         // let initParams: InitParams = {
@@ -280,7 +281,8 @@ var LoginPage = /** @class */ (function () {
             .then(function (res) {
             // this.router.navigate(['/home']);
             _this.users = res;
-            console.log("show detail:" + JSON.stringify(_this.users));
+            _this.imageUrl = _this.users.picture.data.url;
+            console.log("show fb url:" + _this.imageUrl);
             _this.gmailId = "";
             _this.fbId = res.id;
             _this.userName = res.name;
@@ -304,6 +306,11 @@ var LoginPage = /** @class */ (function () {
         send_date['name'] = this.userName;
         // send_date['mobile'] = this.loginModel.mobile;
         send_date['userRole'] = 0;
+        if (this.imageUrl == "" || this.imageUrl == null) {
+        }
+        else {
+            send_date['image'] = this.imageUrl;
+        }
         send_date['email'] = this.userEmail;
         if (this.gmailId != "") {
             send_date['gmailId'] = this.gmailId;
@@ -318,11 +325,17 @@ var LoginPage = /** @class */ (function () {
                 localStorage.setItem("loginType", "email");
                 localStorage.setItem("loginStatus", 'yes');
                 localStorage.setItem("authToken", MyResponse['result']['jwt-token']);
+                if (MyResponse['result']['image'] == null || MyResponse['result']['image'] == "" || MyResponse['result']['image'] == undefined) {
+                    localStorage.setItem("profilePic", MyResponse['result']['image']);
+                }
+                else {
+                    localStorage.setItem("profilePic", MyResponse['result']['image']);
+                }
                 localStorage.setItem("userRole", MyResponse['result']['userRole']);
                 localStorage.setItem("userName", MyResponse['result']['name']);
                 localStorage.setItem("userCreated", MyResponse['result']['created']);
-                _this.router.navigate(['/home']);
-                console.log("show login token:" + MyResponse['result']['jwt-token']);
+                _this.router.navigate(['/home', { categoryId: "5" }]);
+                console.log("show login data:" + JSON.stringify(MyResponse['result']));
             }
             else {
                 _this.presentToast("Please try again");
@@ -356,8 +369,12 @@ var LoginPage = /** @class */ (function () {
             .then(function (res) {
             _this.loginDetails = res;
             console.log("show gmail login detail:" + JSON.stringify(_this.loginDetails));
-            localStorage.setItem("profileImage", res.imageUrl);
+            // localStorage.setItem("profileImage",res.imageUrl);
             _this.gmailId = res.userId;
+            _this.imageUrl = res.imageUrl;
+            if (_this.imageUrl == null) {
+                _this.imageUrl = "";
+            }
             _this.fbId = "";
             _this.userName = res.displayName;
             _this.userEmail = res.email;

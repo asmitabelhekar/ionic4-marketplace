@@ -155,8 +155,16 @@ var HomePage = /** @class */ (function () {
         // this.currentPage = 0;
         // this.getAdvertisement(this.categoryId);
     }
+    HomePage.prototype.ngOnInit = function () {
+        this.advertisementArray = [];
+        this.currentPage = 0;
+        this.getAdvertisement(this.categoryId);
+        // var data={"id" : 1, "second" : "abcd"};
+    };
     HomePage.prototype.ionViewWillEnter = function () {
         this.advertisementArray = [];
+        // this.currentPage = 0;
+        // this.getAdvertisement(this.categoryId);
         var city = localStorage.getItem("cityname");
         if (city == "" || city == "undefined" || city == null) {
             this.cityName = "";
@@ -166,14 +174,13 @@ var HomePage = /** @class */ (function () {
             this.cityName = city;
             console.log("city name display:" + city);
         }
-        var jsonString = localStorage.getItem("BOOKMARK");
-        this.postBookmarkObj = JSON.parse(jsonString);
-        if (this.postBookmarkObj == null || this.postBookmarkObj == "" || this.postBookmarkObj == undefined) {
-            this.postBookmarkObj = {};
-        }
-        else {
-        }
-        console.log("show retrieved object:" + this.postBookmarkObj);
+        // var jsonString = localStorage.getItem("BOOKMARK");
+        // this.postBookmarkObj = JSON.parse(jsonString);
+        // if (this.postBookmarkObj == null || this.postBookmarkObj == "" || this.postBookmarkObj == undefined) {
+        //   this.postBookmarkObj = {};
+        // } else {
+        // }
+        // console.log("show retrieved object:" + this.postBookmarkObj);
         this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
         if (this.categoryId == undefined) {
             this.categoryId = 5;
@@ -183,30 +190,25 @@ var HomePage = /** @class */ (function () {
             this.getAdvertisement(this.categoryId);
         }
         else {
-            if (this.categoryId == 1) {
-                this.categoryName = "Dance";
-                console.log("check ::1");
-            }
-            else if (this.categoryId == 2) {
-                this.categoryName = "Yoga";
-                console.log("check ::2");
-            }
-            else if (this.categoryId == 3) {
-                this.categoryName = "Meditation";
-                console.log("check ::3");
-            }
-            else if (this.categoryId == 4) {
-                this.categoryName = "Massage";
-                console.log("check ::4");
-            }
-            else if (this.categoryId == 5) {
-                this.categoryName = "Music";
-                console.log("check ::5");
-            }
-            else {
-                this.categoryName = "Music";
-                console.log("check ::6");
-            }
+            // if (this.categoryId == 1) {
+            //   this.categoryName = "Dance";
+            //   console.log("check ::1");
+            // } else if (this.categoryId == 2) {
+            //   this.categoryName = "Yoga";
+            //   console.log("check ::2");
+            // } else if (this.categoryId == 3) {
+            //   this.categoryName = "Meditation";
+            //   console.log("check ::3");
+            // } else if (this.categoryId == 4) {
+            //   this.categoryName = "Massage";
+            //   console.log("check ::4");
+            // } else if (this.categoryId == 5) {
+            //   this.categoryName = "Music";
+            //   console.log("check ::5");
+            // } else {
+            //   this.categoryName = "Music";
+            //   console.log("check ::6");
+            // }
             this.checkType(this.categoryName, this.categoryId);
         }
         console.log("get categoryId::" + this.categoryId);
@@ -236,6 +238,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.getAdvertisement = function (categoryId) {
         var _this = this;
+        console.log("check fb ads::");
         this.advertisementArray = [];
         this.loader.showBlockingLoaderAuth();
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";

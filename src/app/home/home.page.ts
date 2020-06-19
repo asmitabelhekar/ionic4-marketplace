@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonSlides, MenuController, ToastController, AlertController } from '@ionic/angular';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { PopupPage } from '../pages/popup/popup.page';
@@ -15,7 +15,7 @@ import { empty } from 'rxjs';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
   showNoBanner = 0;
   getBookMarkArray: any;
   Languages: any;
@@ -45,6 +45,12 @@ export class HomePage {
   lastPage: any;
   firstView = 1;
 
+  ngOnInit() {
+    this.advertisementArray = [];
+    this.currentPage = 0;
+    this.getAdvertisement(this.categoryId);
+    // var data={"id" : 1, "second" : "abcd"};
+  }
 
   constructor(
     public dialog: MatDialog,
@@ -67,7 +73,11 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
+    this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
+
     this.advertisementArray = [];
+      // this.currentPage = 0;
+      // this.getAdvertisement(this.categoryId);
     let city = localStorage.getItem("cityname");
     if (city == "" || city == "undefined" || city == null) {
       this.cityName = "";
@@ -77,16 +87,15 @@ export class HomePage {
       console.log("city name display:" + city);
     }
 
-    var jsonString = localStorage.getItem("BOOKMARK");
-    this.postBookmarkObj = JSON.parse(jsonString);
-    if (this.postBookmarkObj == null || this.postBookmarkObj == "" || this.postBookmarkObj == undefined) {
-      this.postBookmarkObj = {};
-    } else {
+    // var jsonString = localStorage.getItem("BOOKMARK");
+    // this.postBookmarkObj = JSON.parse(jsonString);
+    // if (this.postBookmarkObj == null || this.postBookmarkObj == "" || this.postBookmarkObj == undefined) {
+    //   this.postBookmarkObj = {};
+    // } else {
 
-    }
+    // }
 
-    console.log("show retrieved object:" + this.postBookmarkObj);
-    this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
+    // console.log("show retrieved object:" + this.postBookmarkObj);
     if (this.categoryId == undefined) {
       this.categoryId = 5;
       console.log("check ::0");
@@ -94,25 +103,25 @@ export class HomePage {
       this.currentPage = 0;
       this.getAdvertisement(this.categoryId);
     } else {
-      if (this.categoryId == 1) {
-        this.categoryName = "Dance";
-        console.log("check ::1");
-      } else if (this.categoryId == 2) {
-        this.categoryName = "Yoga";
-        console.log("check ::2");
-      } else if (this.categoryId == 3) {
-        this.categoryName = "Meditation";
-        console.log("check ::3");
-      } else if (this.categoryId == 4) {
-        this.categoryName = "Massage";
-        console.log("check ::4");
-      } else if (this.categoryId == 5) {
-        this.categoryName = "Music";
-        console.log("check ::5");
-      } else {
-        this.categoryName = "Music";
-        console.log("check ::6");
-      }
+      // if (this.categoryId == 1) {
+      //   this.categoryName = "Dance";
+      //   console.log("check ::1");
+      // } else if (this.categoryId == 2) {
+      //   this.categoryName = "Yoga";
+      //   console.log("check ::2");
+      // } else if (this.categoryId == 3) {
+      //   this.categoryName = "Meditation";
+      //   console.log("check ::3");
+      // } else if (this.categoryId == 4) {
+      //   this.categoryName = "Massage";
+      //   console.log("check ::4");
+      // } else if (this.categoryId == 5) {
+      //   this.categoryName = "Music";
+      //   console.log("check ::5");
+      // } else {
+      //   this.categoryName = "Music";
+      //   console.log("check ::6");
+      // }
       this.checkType(this.categoryName, this.categoryId);
     }
     console.log("get categoryId::" + this.categoryId);
@@ -143,6 +152,7 @@ export class HomePage {
   }
 
   getAdvertisement(categoryId) {
+    console.log("check fb ads::")
     this.advertisementArray = [];
     this.loader.showBlockingLoaderAuth();
     let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";

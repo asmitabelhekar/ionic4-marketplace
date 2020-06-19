@@ -28,16 +28,16 @@ export class ProfilePage implements OnInit {
   lattitude: any;
   longitude: any;
   address: any;
-  loginUserId : any;
+  loginUserId: any;
   profileDetail: any;
   isLoggedIn = false;
-  profileImg : any = "";
-  bannersCount : any= 0;
-  advertisementCount : any=0;
+  profileImg: any = "";
+  bannersCount: any = 0;
+  advertisementCount: any = 0;
 
   constructor(
     public router: Router,
-    public alertCtrl : AlertController,
+    public alertCtrl: AlertController,
     public networkServices: NetworkService,
     public activatedRoute: ActivatedRoute,
     public loader: LoaderService,
@@ -45,19 +45,19 @@ export class ProfilePage implements OnInit {
     private googlePlus: GooglePlus,
     public menuController: MenuController,
     public apiCall: ApiService
-    ) {
+  ) {
     this.menuController.enable(false);
   }
 
   ngOnInit() {
-    this.profileImg = localStorage.getItem("profileImage");
+    // this.profileImg = localStorage.getItem("profileImage");
     // this.userId = this.activatedRoute.snapshot.params['userId'];
     // console.log("user id:" + this.userId);
     // this.getProfileInfo();
     // this.getCountryCode();
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.userId = this.activatedRoute.snapshot.params['userId'];
     console.log("user id:" + this.userId);
     this.loginType = localStorage.getItem("loginType");
@@ -93,10 +93,10 @@ export class ProfilePage implements OnInit {
       // this.updateStatus = 1;
     }
     this.loginUserId = localStorage.getItem('userId');
-    if(this.loginUserId == this.userId){
+    if (this.loginUserId == this.userId) {
       this.updateStatus = 0;
       console.log("match id:");
-    }else{
+    } else {
       this.updateStatus = 1;
       console.log("id not match");
     }
@@ -104,9 +104,25 @@ export class ProfilePage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.name = this.profileDetail.name;
-      localStorage.setItem("getName",this.name);
-      this.mobile = this.profileDetail.mobile;
+      localStorage.setItem("getName", this.name);
+      if (this.profileDetail.mobile == null || this.profileDetail.mobile == "") {
+        this.mobile = "1";
+       
+      } else {
+        console.log("ger profile mobile:" + this.mobile);
+        this.mobile = this.profileDetail.mobile;
+      }
+      // this.mobile = this.profileDetail.mobile;
       this.email = this.profileDetail.email;
+      this.profileImg = this.profileDetail.image;
+      if (this.profileImg == null || this.profileImg == undefined || this.profileImg == "") {
+        console.log("ger profile empty");
+        this.profileImg = "";
+      }
+      else {
+        console.log("ger profileimage:" + this.profileImg);
+        this.profileImg = this.profileDetail.image;
+      }
       this.bannersCount = this.profileDetail.bannersCount;
       this.advertisementCount = this.profileDetail.advertisementCount;
       this.loader.hideBlockingLoaderAuth();
@@ -143,28 +159,28 @@ export class ProfilePage implements OnInit {
 
   logOut() {
 
-    if(this.loginType == "fb"){
+    if (this.loginType == "fb") {
       this.facebook.logout()
-      .then(res => this.isLoggedIn = false)
-      .catch(e => console.log('Error logout from Facebook', e));
+        .then(res => this.isLoggedIn = false)
+        .catch(e => console.log('Error logout from Facebook', e));
       localStorage.clear();
       this.router.navigate(['/login']);
       localStorage.setItem("loginStatus", "no");
 
-    }else if(this.loginType == "gmail"){
+    } else if (this.loginType == "gmail") {
       this.googlePlus.logout();
       localStorage.clear();
       this.router.navigate(['/login']);
       localStorage.setItem("loginStatus", "no");
-    }else{
+    } else {
       localStorage.clear();
       this.router.navigate(['/login']);
       localStorage.setItem("loginStatus", "no");
     }
 
-   
+
   }
-  goBackword(){
+  goBackword() {
     window.history.back();
   }
 
@@ -184,7 +200,7 @@ export class ProfilePage implements OnInit {
           text: 'Yes',
           handler: () => {
             console.log('Confirm Okay');
-           this.logOut();
+            this.logOut();
           }
         }
       ]
@@ -193,17 +209,18 @@ export class ProfilePage implements OnInit {
     await alert.present();
   }
 
-  updateProfile(){
+  updateProfile() {
     let profileData = {
-      "name" : this.name,
-      "email" : this.email,
-      "mobile" : this.mobile
+      "name": this.name,
+      "email": this.email,
+      "mobile": this.mobile,
+      "image": this.profileImg
     }
-    this.router.navigate(['/updateprofile', { profileData : JSON.stringify(this.profileDetail)}]);
+    this.router.navigate(['/updateprofile', { profileData: JSON.stringify(this.profileDetail) }]);
   }
 
 
-  viewPaymentLogs(){
+  viewPaymentLogs() {
     this.router.navigate(['/paymentlogs']);
   }
 }

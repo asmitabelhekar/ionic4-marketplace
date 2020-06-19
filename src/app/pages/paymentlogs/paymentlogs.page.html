@@ -21,11 +21,11 @@
 <ion-content>
 
 
-  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" fxFlex="100">
+  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" fxFlex="100" style="padding:8px;">
     <label>{{item.id}}</label>
     <label>{{item.advertisementId}}</label>
     <label>{{item.userId}}</label>
-    <label>{{item.advertisementEndDate | date}}</label>
+    <label>{{item.created | date}}</label>
 
   </ion-card>
 </ion-content>

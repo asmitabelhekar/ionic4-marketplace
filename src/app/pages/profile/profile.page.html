@@ -35,7 +35,7 @@
         </ion-col>
       </ion-row>
 
-      <img *ngIf="profileImg == '' " src="./assets/agent.png" class="img-css" />
+      <img *ngIf="profileImg == '' " src="../../../assets/agent.png" class="img-css" />
       <img *ngIf="profileImg != '' " src="{{profileImg}}"  class="img-css" />
      <div fxLayout="row" fxLayoutAlign="center center">
       <label style="margin-top:10px; color: white;font-size: 20px;">{{name}}</label>
@@ -61,11 +61,11 @@
 
   
 <div fxLayout="column" style="margin-top:70px;">
-  <div style="width:100%;padding:5px;" fxLayout="row" *ngIf="mobile != '' || mobile != null || mobile != undefined">
-    <div fxFlex="20"  fxLayoutAlign="center start">
+  <div style="width:100%;padding:5px;" fxLayout="row" *ngIf="mobile != '1'">
+    <div *ngIf="mobile != ''" fxFlex="20"  fxLayoutAlign="center start">
       <ion-icon class="icon-css" name="call"></ion-icon>
     </div>
-    <div fxFlex="80"  fxLayoutAlign="start start">
+    <div *ngIf="mobile != ''" fxFlex="80"  fxLayoutAlign="start start">
       <ion-label class="cl_content_fontsize">{{mobile}}</ion-label>
     </div>
     <!-- <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
@@ -73,7 +73,7 @@
     </div> -->
     </div>
 
-    <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row" *ngIf="mobile != '' || mobile != null || mobile != undefined">
+    <div style="width:100%;padding:5px;margin-top:20px;" fxLayout="row">
       <div fxFlex="20"  fxLayoutAlign="center start">
         <ion-icon class="icon-css" name="mail"></ion-icon>
       </div>
@@ -90,7 +90,7 @@
           <ion-icon class="icon-css" name="document"></ion-icon>
         </div>
         <div fxFlex="60"  fxLayoutAlign="start start">
-          <ion-label class="cl_content_fontsize">Payment History</ion-label>
+          <ion-label class="cl_content_fontsize">Payment history</ion-label>
         </div>
         <div fxFlex="20" fxLayoutAlign="center start">
           <ion-icon class="arrow-icon-css" name="chevron-forward-outline"></ion-icon>

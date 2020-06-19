@@ -34,6 +34,18 @@ export class UpdateprofilePage implements OnInit {
     let getData = this.activatedRoute.snapshot.params['profileData'];
     this.getProfileDetail = JSON.parse(getData);
     console.log("getProfileDetail id:"+this.getProfileDetail.id);
+    this.profileImg = this.getProfileDetail.image;
+    console.log("ger profile image:"+this.profileImg);
+    if (this.profileImg == null || this.profileImg == undefined || this.profileImg == "") {
+      console.log("ger profile empty");
+      this.profileImg = "1";
+    }
+    else {
+      console.log("ger profileimage:" + this.profileImg);
+      this.profileImg = this.getProfileDetail.image;
+    }
+
+
     if(this.loginUserId == this.getProfileDetail.id){
       this.updateStatus = 0;
     }else{
@@ -42,7 +54,7 @@ export class UpdateprofilePage implements OnInit {
     this.profileModel['name'] = this.getProfileDetail.name;
     this.profileModel['email'] = this.getProfileDetail.email;
     this.profileModel['contact'] = this.getProfileDetail.mobile;
-    this.profileModel['password'] = this.getProfileDetail.password;
+    // this.profileModel['password'] = this.getProfileDetail.password;
   }
 
   goBackword(){
@@ -50,28 +62,35 @@ export class UpdateprofilePage implements OnInit {
   }
 
   updateProfileData(){
-    if(this.profileModel['contact'] == null){
-      this.profileModel['contact'] = "";
+
+    if(this.profileImg == "1" || this.profileImg == null){
+      this.presentToast("Please upload profile picture.");
+    }else{
+      if(this.profileModel['contact'] == null){
+        this.profileModel['contact'] = "";
+      }
+      console.log("profile name:"+this.profileModel['name']);
+      console.log("profile email:"+this.profileModel['email']);
+      console.log("profile contact:"+this.profileModel['contact']);
+  
+      let send_date = {};
+      send_date['name'] = this.profileModel['name'];
+      send_date['image'] = this.profileImg;
+      localStorage.setItem("getName",send_date['name']);
+      send_date['email'] = this.profileModel['email'];
+      send_date['mobile'] = this.profileModel['contact'];
+      // send_date['isActive'] = 1;
+      // send_date['userRole'] = this.userRole;
+      // send_date['password'] = this.getProfileDetail.password;
+  
+      let url = environment.base_url + environment.version + "users/" + this.getProfileDetail.id ;
+      this.apiCall.put(url, send_date).subscribe(MyResponse => {
+        this.presentToast("Profile updated successfully.");
+        this.router.navigate(['/profile']);
+      }, error => {
+      });
     }
-    console.log("profile name:"+this.profileModel['name']);
-    console.log("profile email:"+this.profileModel['email']);
-    console.log("profile contact:"+this.profileModel['contact']);
-
-    let send_date = {};
-    send_date['name'] = this.profileModel['name'];
-    localStorage.setItem("getName",send_date['name']);
-    send_date['email'] = this.profileModel['email'];
-    send_date['mobile'] = this.profileModel['contact'];
-    // send_date['isActive'] = 1;
-    send_date['userRole'] = this.userRole;
-    // send_date['password'] = this.getProfileDetail.password;
-
-    let url = environment.base_url + environment.version + "users/" + this.getProfileDetail.id ;
-    this.apiCall.put(url, send_date).subscribe(MyResponse => {
-      this.presentToast("Profile updated successfully.")
-      this.router.navigate(['/profile']);
-    }, error => {
-    });
+   
   }
 
   async presentToast(message) {

@@ -19,8 +19,8 @@
 <div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
 
   <div fxLayoutAlign="center center" fxLayout="column" onclick="document.getElementById('profile_pic_upload').click()">
-    <img *ngIf="profileImg == '' " src="../../../assets/agent.png" class="img-css" />
-    <img  *ngIf="profileImg != '' " src="{{profileImg}}" class="img-css" />
+    <img *ngIf="profileImg == '1' " src="../../../assets/agent.png" class="img-css" />
+    <img  *ngIf="profileImg != '1' " src="{{profileImg}}" class="img-css" />
     <label class="pic-text">Change profile picture</label>
   </div>
   <input style="display: none;" id="profile_pic_upload" type="file" (change)="detectEventGallery($event)">
@@ -28,9 +28,9 @@
 
   <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;margin-top:25px">
     <mat-form-field style="width:96%;" appearance="outline">
-      <mat-label>Name</mat-label>
+      <mat-label class="label-text-css">Name</mat-label>
           <input matInput class="form-control" type="text" name="name" [(ngModel)]="profileModel.name" #name="ngModel"
-            align="center" required pattern="[a-zA-Z0-9,.  ]+$">
+            align="center" required style="font-size:13px;">
             <mat-error>
               <div class="form-group" style="margin-bottom:10px">
                 <div *ngIf="name.invalid && (name.dirty || name.touched)">
@@ -44,9 +44,9 @@
 
   <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
     <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%;" appearance="outline">
-      <mat-label style="color:black; background-color: white;">Email</mat-label>
+      <mat-label class="label-text-css" >Email</mat-label>
       <input matInput class="form-control " name="email" [(ngModel)]="profileModel.email" #email="ngModel"
-        pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+        pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  style="font-size:13px;" />
       <mat-error>
         <div class="form-group">
           <div *ngIf="email.invalid && (email.dirty || email.touched)" >
@@ -60,9 +60,9 @@
 
   <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
   <mat-form-field style="width:96%; margin-left: 2% ; margin-right: 2%" appearance="outline">
-    <mat-label>Mobile</mat-label>
+    <mat-label class="label-text-css">Mobile</mat-label>
         <input matInput class="form-control" type="tel" name="contact" minlength="10" maxlength="10" [(ngModel)]="profileModel.contact" #contact="ngModel"
-          align="center" >
+          align="center"  style="font-size:13px;" required>
           <mat-error>
             <div class="form-group">
               <div *ngIf="contact.invalid && (contact.dirty || contact.touched)">

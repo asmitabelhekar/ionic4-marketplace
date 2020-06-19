@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
   userName : any;
   userEmail : any;
   isLoggedIn = false;
+  imageUrl : any = "";
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
 
   constructor(public router: Router,
@@ -85,7 +86,8 @@ export class LoginPage implements OnInit {
         // this.router.navigate(['/home']);
       
         this.users = res;
-        console.log("show detail:"+JSON.stringify(this.users));
+        this.imageUrl = this.users.picture.data.url;
+        console.log("show fb url:"+this.imageUrl);
         this.gmailId = "";
         this.fbId = res.id;
         this.userName = res.name;
@@ -116,7 +118,15 @@ export class LoginPage implements OnInit {
     send_date['name'] = this.userName;
     // send_date['mobile'] = this.loginModel.mobile;
     send_date['userRole'] = 0;
+
+    if(this.imageUrl == "" || this.imageUrl == null){
+
+    }else{
+      send_date['image'] = this.imageUrl;
+    }
+   
     send_date['email'] = this.userEmail;
+
     if(this.gmailId != ""){
       send_date['gmailId'] = this.gmailId;
     }
@@ -132,11 +142,16 @@ export class LoginPage implements OnInit {
         localStorage.setItem("loginType","email");
         localStorage.setItem("loginStatus", 'yes');
         localStorage.setItem("authToken",MyResponse['result']['jwt-token']);
+        if(MyResponse['result']['image'] == null || MyResponse['result']['image'] == "" || MyResponse['result']['image'] == undefined){
+          localStorage.setItem("profilePic", MyResponse['result']['image']);
+        }else{
+          localStorage.setItem("profilePic", MyResponse['result']['image']);
+        }
         localStorage.setItem("userRole", MyResponse['result']['userRole']);
         localStorage.setItem("userName", MyResponse['result']['name']);
         localStorage.setItem("userCreated", MyResponse['result']['created']);
-        this.router.navigate(['/home']);
-        console.log("show login token:"+MyResponse['result']['jwt-token']);
+        this.router.navigate(['/home',{categoryId: "5"}]);
+        console.log("show login data:"+JSON.stringify(MyResponse['result']));
       }else{
         this.presentToast("Please try again");
       }
@@ -163,8 +178,12 @@ export class LoginPage implements OnInit {
       .then((res) => {
         this.loginDetails = res;
         console.log("show gmail login detail:"+JSON.stringify(this.loginDetails));
-        localStorage.setItem("profileImage",res.imageUrl);
+        // localStorage.setItem("profileImage",res.imageUrl);
         this.gmailId = res.userId;
+        this.imageUrl = res.imageUrl;
+        if(this.imageUrl == null){
+          this.imageUrl = "";
+        }
         this.fbId="";
         this.userName = res.displayName;
         this.userEmail = res.email;
