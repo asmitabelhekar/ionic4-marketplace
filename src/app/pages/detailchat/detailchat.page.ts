@@ -37,9 +37,11 @@ export class DetailchatPage implements OnInit {
     this.detailData = JSON.parse(this.activatedRoute.snapshot.params['userDetail']);
     this.name = this.detailData.name;
     this.id = this.detailData.id;
-    this.image =this.detailData.image;
-    if(this.image == null){
+    
+    if(this.detailData.image == null || this.detailData.image == ""){
       this.image = "";
+    }else{
+      this.image =this.detailData.image;
     }
     this.getChatMassages();
 

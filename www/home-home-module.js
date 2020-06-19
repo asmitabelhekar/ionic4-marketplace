@@ -162,6 +162,7 @@ var HomePage = /** @class */ (function () {
         // var data={"id" : 1, "second" : "abcd"};
     };
     HomePage.prototype.ionViewWillEnter = function () {
+        this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
         this.advertisementArray = [];
         // this.currentPage = 0;
         // this.getAdvertisement(this.categoryId);
@@ -181,7 +182,6 @@ var HomePage = /** @class */ (function () {
         // } else {
         // }
         // console.log("show retrieved object:" + this.postBookmarkObj);
-        this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
         if (this.categoryId == undefined) {
             this.categoryId = 5;
             console.log("check ::0");

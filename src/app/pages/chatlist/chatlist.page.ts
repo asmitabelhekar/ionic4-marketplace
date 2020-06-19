@@ -110,6 +110,13 @@ export class ChatlistPage implements OnInit {
     this.showSearch = 0;
   }
 
+  clearSearch(){
+    this.showSearch = 0;
+    this.url = environment.base_url + environment.version + "users/" + this.userId + "/chat-users";
+   
+    this.getUsers(this.url);
+  }
+
   search($event) {
     console.log("show key search:" + $event.data);
     let getKey = $event.data;

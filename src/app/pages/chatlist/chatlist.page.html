@@ -29,7 +29,7 @@
           style="background: white;width: 87%;font-size:13px;color:rgb(61, 60, 60)" />
       </div>
       <div fxLayoutAlign="start center" *ngIf="showClose == 1" style="width: 15%;">
-        <ion-icon class="close-icon-css" (click)="goBackword()" name="close"></ion-icon>
+        <ion-icon class="close-icon-css" (click)="clearSearch()" name="close"></ion-icon>
       </div>
     </div>
 
@@ -46,7 +46,9 @@
             
           <div fxLayout="row" (click)="detailChat(item.name, item.id, item.image)" style="margin-left:10px; width:100%;padding:5px;">
             <div style="width:18%">
-              <img src="{{profileImg}}"
+              <img *ngIf="item.image == null || item.image == '' " src="../../../assets/agent.png"
+              style="border-radius: 50%;width:70px; height:68px; border:1px solid rgb(240, 234, 234);background-color:#f1f4f9" />
+              <img *ngIf="item.image != null || item.image != '' " src="{{item.image}}"
                 style="border-radius: 50%;width:70px; height:68px; border:1px solid rgb(240, 234, 234);background-color:#f1f4f9" />
             </div>
             <div style="margin-top:5px;width:82%">
