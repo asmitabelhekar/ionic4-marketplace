@@ -218,7 +218,7 @@ text-justify: inter-word;
   width:95%;
    padding:8px;
   position: fixed;
-  bottom:10px;
+  bottom:5px;
   text-justify: inter-word;
 }
 
@@ -226,8 +226,10 @@ text-justify: inter-word;
   position: absolute;
    bottom:20px;
    width:100%;
-   font-size:1.5em;
-    font-weight:400;
+   font-size:1.6em;
+   font-family:sans-serif;
+    font-weight:470;
+    color:white;
 }
 
 .color-change{

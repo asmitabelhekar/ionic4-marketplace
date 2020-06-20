@@ -1,0 +1,55 @@
+ion-content {
+    --background:transparent;
+  }
+  
+  .accordion-list {
+    margin-bottom: 4px;
+    --ion-item-background: transparent;
+  
+    .section, .section-active {
+      --min-height: 58px;
+    }
+  }
+  
+  .section {
+    --ion-item-background: transparent;
+    --ion-item-color: #fff;
+  }
+  .section-active {
+    --ion-item-background: linear-gradient(to right, #fe4f14,#fe8860,#feae93);
+    // --ion-item-background: #fe4f14;
+    --ion-item-color: #fff;
+    font-weight: 600;
+  
+    ion-icon {
+      color: #fff;
+    }
+  }
+  
+  .child-list {
+    padding: 0;
+    margin: 0;
+    .child, .child-active {
+      margin-bottom: 2px;
+    }
+  }
+  
+  .child {
+    --ion-item-background: #transparent;
+    --ion-item-color: #fff;
+  }
+  
+  .child-active {
+    --ion-item-background: #feae93;
+    --ion-item-color: #fff;
+  
+    ion-icon {
+      color: #fff;
+    }
+  }
+  
+  .product-list {
+    padding: 0;
+    margin: 0;
+  }
+  

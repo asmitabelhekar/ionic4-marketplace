@@ -9,6 +9,8 @@ import { ApiService } from '../service/apiservice/api.service';
 import { LoaderService } from '../service/loaderservice/loader.service';
 import { NetworkService } from '../service/network/network.service';
 import { empty } from 'rxjs';
+import { FiltercategoryPage } from '../pages/filtercategory/filtercategory.page';
+import { FiltercategoryPageModule } from '../pages/filtercategory/filtercategory.module';
 
 @Component({
   selector: 'app-home',
@@ -223,8 +225,26 @@ export class HomePage implements OnInit{
 
 
   filter() {
-    this.router.navigate(['/showfilterdata']);
+    const dialogRef = this.dialog.open(FiltercategoryPage, {
+      // width: '500px',
+      panelClass : "show-filter-category-dialogue"
+    });
+
+
+    dialogRef.afterClosed().subscribe(async result => {
+      console.log("show filter category:"+result);
+      console.log("show filtered data:"+JSON.stringify(result));
+      this.getBannerData(result.categoryId);
+      this.getAdvertisement(result.subCategoryId);
+      this.displayCategory = result.categoryId;
+      localStorage.setItem("category",result.subCategoryId);
+    });
+    // this.router.navigate(['/showfilterdata']);
   }
+
+
+
+
   checkType(title, id) {
     console.log("check title id ::" + title + "   " + "id" + id);
     this.categoryId = id;

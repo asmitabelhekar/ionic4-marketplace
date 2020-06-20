@@ -93,7 +93,7 @@
     <div style="width:100%; background-color:white;margin-top:10px; height:auto">
 
       <div fxLayout="row" fxLayoutAlign="space-between" style="margin-bottom:10px;width:100%;">
-        <div style="width:10%;" fxLayoutAlign="end center">
+        <div style="width:10%;" fxLayoutAlign="end center" (click)="filter()">
           <!-- <mat-icon  *ngIf="noInternet == '0' "  style="font-size:40px;color:#fb7645;margin-top:-30px;">filter_list</mat-icon> -->
           <!-- <ion-icon *ngIf="noInternet == '0' " name="options" style="width:35px;height:50px;color:#fb7645;margin-top:-10px" (click)="filter()"></ion-icon> -->
           <img *ngIf="noInternet == '0' " src="../../assets/newimgfilter.png"

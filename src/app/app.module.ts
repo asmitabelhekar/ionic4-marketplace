@@ -35,12 +35,13 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 // import { FacebookService } from 'ngx-facebook';
 import { FacebookModule } from 'ngx-facebook'
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { FiltercategoryPage } from './pages/filtercategory/filtercategory.page';
 
 
 @NgModule({
   declarations: [AppComponent,
-     PopupPage, PopupaddressComponent],
-  entryComponents: [PopupPage, PopupaddressComponent],
+     PopupPage,FiltercategoryPage],
+  entryComponents: [PopupPage,FiltercategoryPage],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     MatFormFieldModule,

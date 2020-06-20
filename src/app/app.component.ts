@@ -48,7 +48,6 @@ export class AppComponent {
     {
       title: 'Log Out',
       url: '/',
-
     }
   ];
   constructor(

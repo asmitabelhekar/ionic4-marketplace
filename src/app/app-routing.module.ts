@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   // { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
-  // { path: 'detailchat',     loadChildren: () => import('./pages/detailchat/detailchat.module').then( m => m.DetailchatPageModule)
+//   { path: 'filtercategory',    loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
 // },
   { path : 'login' , loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)},
   {
@@ -79,10 +79,10 @@ const routes: Routes = [
     path: 'paymentlogs',
     loadChildren: () => import('./pages/paymentlogs/paymentlogs.module').then( m => m.PaymentlogsPageModule)
   },
-  {
-    path: 'filtercategory',
-    loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
-  }
+  // {
+  //   path: 'filtercategory',
+  //   loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
+  // }
  
 
 ];
