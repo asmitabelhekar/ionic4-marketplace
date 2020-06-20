@@ -93,9 +93,15 @@ export class AppComponent {
       // })
 
       this.platform.backButton.subscribe(() => {
-        if (this.router.url === '/home') {
-          this.presentAlert()
-          return
+
+        let checkFilterPopup = localStorage.getItem("filterOpen");
+        if(checkFilterPopup ==  "0" || checkFilterPopup == undefined){
+          // this.router.navigate(['/home']);
+        }else{
+          if (this.router.url === '/home') {
+            this.presentAlert()
+            return
+          }
         }
       });
 

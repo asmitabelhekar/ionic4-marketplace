@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
@@ -12,28 +12,32 @@ import { HomePage } from 'src/app/home/home.page';
 })
 export class FiltercategoryPage implements OnInit {
 
-  parentSelectionIndex : any = 7;
-  childSelectionIndex : any = 0;
-  // parentArray : any;
+
+  categoryId = "";
+
   parentArray: any[];
+  categoryArray = [];
   automaticClose = false;
-  cate = 4;
-  subcat = 68;
+
+  subCategoryId: any = "";
 
   constructor(private http: HttpClient,
     public dialogRef: MatDialogRef<HomePage>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public apiCall : ApiService) {
+    public apiCall: ApiService) {
     // this.http.get('assets/information.json').subscribe(res => {
     //   this.information = res['items'];
     //   this.information[0].open = true;
     // });
   }
   ngOnInit(): void {
-   let category =  localStorage.getItem("category");
-   console.log("show category on filter screen:"+category);
+
     this.getCategory();
-   this.toggleSection(this.parentSelectionIndex);
+    localStorage.setItem("filterOpen", "1");
+    this.categoryId = localStorage.getItem("selectedParent");
+    this.subCategoryId = localStorage.getItem("selectedChild");
+    console.log("show category on filter screen:" + this.categoryId);
+    //  this.toggleSection(this.parentSelectionIndex);
 
     throw new Error("Method not implemented.");
   }
@@ -42,43 +46,57 @@ export class FiltercategoryPage implements OnInit {
     let url = environment.base_url + environment.version + "category/" + 0 + "/sub-category"
     this.apiCall.get(url).subscribe(MyResponse => {
       this.parentArray = MyResponse['result']['list'];
-     console.log("show category data:"+JSON.stringify(this.parentArray));
+
+      for (let i = 0; i < this.parentArray.length; i++) {
+        if (this.parentArray[i]['name'] == "Parent Category") {
+        } else {
+          this.categoryArray.push(this.parentArray[i]);
+        }
+      }
+      console.log("show category data:" + JSON.stringify(this.parentArray));
     },
       error => {
-      
+
       })
   }
 
-  toggleSection(index) {
-    this.parentSelectionIndex = index;
-    console.log("check toggle section:"+index);
-    this.parentArray[index].open = !this.parentArray[index].open;
-    console.log("check toggle section open show:"+this.parentArray[index].open);
-    if (this.automaticClose && this.parentArray[index].open) {
-      this.parentArray
-      .filter((item, itemIndex) => itemIndex != index)
-      .map(item => item.open = false);
-    }
-    // this.dialogRef.close(categoryId);
+  toggleSection(index, categoryId) {
+    this.categoryId = categoryId;
+    localStorage.setItem("selectedParent", this.categoryId);
+    // this.categoryArray[index].open = !this.categoryArray[index].open;
+    // if (this.automaticClose && this.categoryArray[index].open) {
+    //   this.categoryArray
+    //   .filter((item, itemIndex) => itemIndex != index)
+    //   .map(item => item.open = false);
+    // }
   }
 
-  toggleItem(index, childIndex,categoryId, subCategoryId) {
-    console.log("check categoryId:"+categoryId);
-    console.log("check subCategoryId:"+subCategoryId);
-    console.log("check toggleitem:"+childIndex);
-    this.parentArray[index].childrens[childIndex].open = !this.parentArray[index].childrens[childIndex].open;
+  toggleItem(index, childIndex, categoryId, subCategoryId) {
+    this.subCategoryId = subCategoryId;
+    localStorage.setItem("selectedChild", subCategoryId);
+    // this.categoryArray[index].childrens[childIndex].open = !this.categoryArray[index].childrens[childIndex].open;
     let checkId = {
-      "categoryId" : categoryId,
-      "subCategoryId" : subCategoryId,
-      "parentSelectionIndex" : this.parentSelectionIndex
+      "categoryId": categoryId,
+      "subCategoryId": subCategoryId,
     }
     this.dialogRef.close(checkId);
   }
 
 
   applyFilter(titleName) {
-
     this.dialogRef.close(titleName);
+  }
+
+  clearFilter() {
+    this.categoryId = "";
+    this.subCategoryId = "";
+    localStorage.setItem("selectedParent", this.categoryId);
+    localStorage.setItem("selectedChild", this.subCategoryId);
+    let checkId = {
+      "categoryId":  "5",
+      "subCategoryId": "5",
+    }
+    this.dialogRef.close(checkId);
   }
 
 }

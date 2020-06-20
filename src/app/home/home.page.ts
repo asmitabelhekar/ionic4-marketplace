@@ -137,6 +137,7 @@ export class HomePage implements OnInit{
     this.apiCall.get(url).subscribe(MyResponse => {
       this.parentArray = MyResponse['result']['list'];
       for (let i = 0; i < this.parentArray.length; i++) {
+        // this.displayCategory = this.parentArray[0]['id'];
         if (this.parentArray[i]['name'] == "Parent Category") {
         } else {
           this.categoryArray.push(this.parentArray[i]);
@@ -226,8 +227,10 @@ export class HomePage implements OnInit{
 
   filter() {
     const dialogRef = this.dialog.open(FiltercategoryPage, {
+      
       // width: '500px',
       panelClass : "show-filter-category-dialogue"
+      
     });
 
 
@@ -237,7 +240,8 @@ export class HomePage implements OnInit{
       this.getBannerData(result.categoryId);
       this.getAdvertisement(result.subCategoryId);
       this.displayCategory = result.categoryId;
-      localStorage.setItem("category",result.subCategoryId);
+      localStorage.setItem("categoryId",result.subCategoryId);
+      localStorage.setItem("filterOpen","0");
     });
     // this.router.navigate(['/showfilterdata']);
   }

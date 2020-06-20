@@ -449,7 +449,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n\n  <ion-list style=\"border-bottom:1px solid white\" *ngFor=\"let item of parentArray; let i = index;\" class=\"accordion-list\" detail=\"false\" no-padding>\n    <ion-item tappable  (click)=\"toggleSection(i,item.id)\"\n      [ngClass]=\"{'section-active': item.open, 'section': !item.open}\">\n      <ion-row style=\"width:100%;color:white\" tappable >\n        <ion-col size=\"10\"  >\n          <ion-label>\n            {{item.name}}\n          </ion-label>\n        </ion-col>\n\n        <ion-col size=\"2\"   >\n          <!-- <ion-icon  style=\"color:white;width:25px; height:25px;\" name=\"arrow-dropright\" *ngIf=\"!item.open\"></ion-icon>\n          <ion-icon  style=\"color:white;width:25px; height:25px;\" name=\"arrow-dropdown\" *ngIf=\"item.open\"></ion-icon> -->\n      \n      \n          <mat-icon style=\"color:white;width:25px; height:25px;\" *ngIf=\"!item.open\">keyboard_arrow_right</mat-icon>\n          <mat-icon style=\"color:white;width:25px; height:25px;\" *ngIf=\"item.open\">keyboard_arrow_down</mat-icon>\n        </ion-col>\n      </ion-row>\n\n    </ion-item>\n\n    <div *ngIf=\"item.childrens && item.open\">\n      <ion-list class=\"child-list\" *ngFor=\"let child of item.childrens; let j = index;\" lines=\"none\">\n        <!-- <ion-item tappable (click)=\"toggleItem(i, j)\" *ngIf=\"child.name\" [ngClass]=\"{'child-active': child.open, 'child': !child.open}\">\n        <ion-icon slot=\"start\" style=\"color:white\" name=\"add\" *ngIf=\"!child.open\"></ion-icon>\n        <ion-icon slot=\"start\" style=\"color:white\" name=\"close\" *ngIf=\"child.open\"></ion-icon>\n        <ion-label>\n          {{child.name}}\n        </ion-label>\n      </ion-item> -->\n        <ion-item tappable *ngIf=\"child.name\" (click)=\"toggleItem(i,j,item.id, child.id)\" style=\"text-align: start;\"\n          [ngClass]=\"{'child-active': child.open, 'child': !child.open}\">\n          <ion-label style=\"color:white; margin-left:5px;\" >\n            {{child.name}}\n          </ion-label>\n        </ion-item>\n\n        <!-- <app-category [category]=\"child\" *ngIf=\"!child.children\"></app-category>\n\n      <ion-list *ngIf=\"child.children && child.open\" class=\"category-list\" lines=\"none\">\n        <app-category [category]=\"category\" *ngFor=\"let category of child.children\"></app-category>\n      </ion-list> -->\n\n      </ion-list>\n    </div>\n\n\n    <ion-item *ngIf=\"item.childrens.length == 0 && item.open\" style=\"text-align: center;\">\n      <ion-label style=\"color:white\">\n        Sorry, nothing in here!\n      </ion-label>\n    </ion-item>\n\n    <!-- <p *ngIf=\"item.childrens.length == 0 && item.open\" style=\"color:white\" text-center>Sorry, nothing in here!</p> -->\n\n  </ion-list>\n\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n<button *ngIf=\"categoryId != '' \" mat-raised-button class=\"clear-button-css\" (click)=\"clearFilter()\">Clear Filter</button>\n  <ion-list style=\"border-bottom:1px solid white\" *ngFor=\"let item of categoryArray; let i = index;\" class=\"accordion-list\" detail=\"false\" no-padding>\n    <ion-item tappable  (click)=\"toggleSection(i,item.id)\" [ngClass]=\"(categoryId == item.id) ? 'section-active' : 'section' \">\n      <ion-row style=\"width:100%;color:white\" tappable >\n        <ion-col size=\"10\"  >\n          <ion-label>\n            {{item.name}}\n          </ion-label>\n        </ion-col>\n\n        <ion-col size=\"2\"   >\n         \n          <mat-icon style=\"color:white;width:25px; height:25px;\" *ngIf=\"categoryId != item.id\">keyboard_arrow_right</mat-icon>\n          <mat-icon style=\"color:white;width:25px; height:25px;\" *ngIf=\"categoryId == item.id\">keyboard_arrow_down</mat-icon>\n        </ion-col>\n      </ion-row>\n\n    </ion-item>\n\n    <div *ngIf=\"item.childrens && item.id == categoryId \">\n      <ion-list class=\"child-list\" *ngFor=\"let child of item.childrens; let j = index;\" lines=\"none\">\n        \n        <ion-item tappable *ngIf=\"child.name\" (click)=\"toggleItem(i,j,item.id, child.id)\" style=\"text-align: start;\"\n        [ngClass]=\"(subCategoryId == child.id) ? 'child-active' : 'child' \">\n          <ion-label style=\"color:white; margin-left:5px;\" >\n            {{child.name}}\n          </ion-label>\n        </ion-item>\n\n      \n      </ion-list>\n    </div>\n\n\n    <ion-item *ngIf=\"item.childrens.length == 0 && item.id == categoryId\" style=\"text-align: center;\">\n      <ion-label style=\"color:white\">\n        Sorry, nothing in here!\n      </ion-label>\n    </ion-item>\n\n    <!-- <p *ngIf=\"item.childrens.length == 0 && item.open\" style=\"color:white\" text-center>Sorry, nothing in here!</p> -->\n\n  </ion-list>\n\n  <!-- <ion-list style=\"border-bottom:1px solid white\" *ngFor=\"let item of categoryArray; let i = index;\" class=\"accordion-list\" detail=\"false\" no-padding>\n    <ion-item tappable  (click)=\"toggleSection(i,item.id)\"\n      [ngClass]=\"{'section-active': item.open, 'section': !item.open}\">\n      <ion-row style=\"width:100%;color:white\" tappable >\n        <ion-col size=\"10\"  >\n          <ion-label>\n            {{item.name}}\n          </ion-label>\n        </ion-col>\n\n        <ion-col size=\"2\"   >\n         \n          <mat-icon style=\"color:white;width:25px; height:25px;\" *ngIf=\"!item.open\">keyboard_arrow_right</mat-icon>\n          <mat-icon style=\"color:white;width:25px; height:25px;\" *ngIf=\"item.open\">keyboard_arrow_down</mat-icon>\n        </ion-col>\n      </ion-row>\n\n    </ion-item>\n\n    <div *ngIf=\"item.childrens && item.open\">\n      <ion-list class=\"child-list\" *ngFor=\"let child of item.childrens; let j = index;\" lines=\"none\">\n        \n        <ion-item tappable *ngIf=\"child.name\" (click)=\"toggleItem(i,j,item.id, child.id)\" style=\"text-align: start;\"\n          [ngClass]=\"{'child-active': child.open, 'child': !child.open}\">\n          <ion-label style=\"color:white; margin-left:5px;\" >\n            {{child.name}}\n          </ion-label>\n        </ion-item>\n\n      \n      </ion-list>\n    </div>\n\n\n    <ion-item *ngIf=\"item.childrens.length == 0 && item.open\" style=\"text-align: center;\">\n      <ion-label style=\"color:white\">\n        Sorry, nothing in here!\n      </ion-label>\n    </ion-item>\n\n  </ion-list> -->\n\n</ion-content>");
 
 /***/ }),
 
@@ -936,9 +936,15 @@ var AppComponent = /** @class */ (function () {
             //   let json = notification.data
             // })
             _this.platform.backButton.subscribe(function () {
-                if (_this.router.url === '/home') {
-                    _this.presentAlert();
-                    return;
+                var checkFilterPopup = localStorage.getItem("filterOpen");
+                if (checkFilterPopup == "0" || checkFilterPopup == undefined) {
+                    // this.router.navigate(['/home']);
+                }
+                else {
+                    if (_this.router.url === '/home') {
+                        _this.presentAlert();
+                        return;
+                    }
                 }
             });
             //share deep linking
@@ -1244,7 +1250,7 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --background:transparent;\n}\n\n.accordion-list {\n  margin-bottom: 4px;\n  --ion-item-background: transparent;\n}\n\n.accordion-list .section, .accordion-list .section-active {\n  --min-height: 40px;\n}\n\n.section {\n  --ion-item-background: transparent;\n  --ion-item-color: #fff;\n}\n\n.section-active {\n  --ion-item-background: linear-gradient(to right, #fe4f14,#fe8860,#feae93);\n  --ion-item-color: #fff;\n  font-weight: 500;\n}\n\n.section-active ion-icon {\n  color: #fff;\n}\n\n.child-list {\n  padding: 0;\n  margin: 0;\n}\n\n.child-list .child, .child-list .child-active {\n  margin-bottom: 2px;\n}\n\n.child {\n  --ion-item-background: #transparent;\n  --ion-item-color: #fff;\n}\n\n.child-active {\n  --ion-item-background: #feae93;\n  --ion-item-color: #fff;\n}\n\n.child-active ion-icon {\n  color: #fff;\n}\n\n.product-list {\n  padding: 0;\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9maWx0ZXJjYXRlZ29yeS9maWx0ZXJjYXRlZ29yeS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2ZpbHRlcmNhdGVnb3J5L2ZpbHRlcmNhdGVnb3J5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0FDQ0o7O0FERUU7RUFDRSxrQkFBQTtFQUNBLGtDQUFBO0FDQ0o7O0FEQ0k7RUFDRSxrQkFBQTtBQ0NOOztBREdFO0VBQ0Usa0NBQUE7RUFDQSxzQkFBQTtBQ0FKOztBREVFO0VBQ0UseUVBQUE7RUFFQSxzQkFBQTtFQUNBLGdCQUFBO0FDQUo7O0FERUk7RUFDRSxXQUFBO0FDQU47O0FESUU7RUFDRSxVQUFBO0VBQ0EsU0FBQTtBQ0RKOztBREVJO0VBQ0Usa0JBQUE7QUNBTjs7QURJRTtFQUNFLG1DQUFBO0VBQ0Esc0JBQUE7QUNESjs7QURJRTtFQUNFLDhCQUFBO0VBQ0Esc0JBQUE7QUNESjs7QURHSTtFQUNFLFdBQUE7QUNETjs7QURLRTtFQUNFLFVBQUE7RUFDQSxTQUFBO0FDRkoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9maWx0ZXJjYXRlZ29yeS9maWx0ZXJjYXRlZ29yeS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudCB7XG4gICAgLS1iYWNrZ3JvdW5kOnRyYW5zcGFyZW50O1xuICB9XG4gIFxuICAuYWNjb3JkaW9uLWxpc3Qge1xuICAgIG1hcmdpbi1ib3R0b206IDRweDtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICBcbiAgICAuc2VjdGlvbiwgLnNlY3Rpb24tYWN0aXZlIHtcbiAgICAgIC0tbWluLWhlaWdodDogNDBweDtcbiAgICB9XG4gIH1cbiAgXG4gIC5zZWN0aW9uIHtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICAgIC0taW9uLWl0ZW0tY29sb3I6ICNmZmY7XG4gIH1cbiAgLnNlY3Rpb24tYWN0aXZlIHtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgI2ZlNGYxNCwjZmU4ODYwLCNmZWFlOTMpO1xuICAgIC8vIC0taW9uLWl0ZW0tYmFja2dyb3VuZDogI2ZlNGYxNDtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiAjZmZmO1xuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gIFxuICAgIGlvbi1pY29uIHtcbiAgICAgIGNvbG9yOiAjZmZmO1xuICAgIH1cbiAgfVxuICBcbiAgLmNoaWxkLWxpc3Qge1xuICAgIHBhZGRpbmc6IDA7XG4gICAgbWFyZ2luOiAwO1xuICAgIC5jaGlsZCwgLmNoaWxkLWFjdGl2ZSB7XG4gICAgICBtYXJnaW4tYm90dG9tOiAycHg7XG4gICAgfVxuICB9XG4gIFxuICAuY2hpbGQge1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDogI3RyYW5zcGFyZW50O1xuICAgIC0taW9uLWl0ZW0tY29sb3I6ICNmZmY7XG4gIH1cbiAgXG4gIC5jaGlsZC1hY3RpdmUge1xuICAgIC0taW9uLWl0ZW0tYmFja2dyb3VuZDogI2ZlYWU5MztcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiAjZmZmO1xuICBcbiAgICBpb24taWNvbiB7XG4gICAgICBjb2xvcjogI2ZmZjtcbiAgICB9XG4gIH1cbiAgXG4gIC5wcm9kdWN0LWxpc3Qge1xuICAgIHBhZGRpbmc6IDA7XG4gICAgbWFyZ2luOiAwO1xuICB9XG4gICIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOnRyYW5zcGFyZW50O1xufVxuXG4uYWNjb3JkaW9uLWxpc3Qge1xuICBtYXJnaW4tYm90dG9tOiA0cHg7XG4gIC0taW9uLWl0ZW0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG59XG4uYWNjb3JkaW9uLWxpc3QgLnNlY3Rpb24sIC5hY2NvcmRpb24tbGlzdCAuc2VjdGlvbi1hY3RpdmUge1xuICAtLW1pbi1oZWlnaHQ6IDQwcHg7XG59XG5cbi5zZWN0aW9uIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgLS1pb24taXRlbS1jb2xvcjogI2ZmZjtcbn1cblxuLnNlY3Rpb24tYWN0aXZlIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsI2ZlODg2MCwjZmVhZTkzKTtcbiAgLS1pb24taXRlbS1jb2xvcjogI2ZmZjtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cbi5zZWN0aW9uLWFjdGl2ZSBpb24taWNvbiB7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG4uY2hpbGQtbGlzdCB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn1cbi5jaGlsZC1saXN0IC5jaGlsZCwgLmNoaWxkLWxpc3QgLmNoaWxkLWFjdGl2ZSB7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbn1cblxuLmNoaWxkIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiAjdHJhbnNwYXJlbnQ7XG4gIC0taW9uLWl0ZW0tY29sb3I6ICNmZmY7XG59XG5cbi5jaGlsZC1hY3RpdmUge1xuICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6ICNmZWFlOTM7XG4gIC0taW9uLWl0ZW0tY29sb3I6ICNmZmY7XG59XG4uY2hpbGQtYWN0aXZlIGlvbi1pY29uIHtcbiAgY29sb3I6ICNmZmY7XG59XG5cbi5wcm9kdWN0LWxpc3Qge1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDA7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --background:transparent;\n}\n\n.accordion-list {\n  margin-bottom: 4px;\n  --ion-item-background: transparent;\n}\n\n.accordion-list .section, .accordion-list .section-active {\n  --min-height: 40px;\n}\n\n.section {\n  --ion-item-background: transparent;\n  --ion-item-color: #fff;\n}\n\n.section-active {\n  --ion-item-background: linear-gradient(to right, #fe4f14,#fe8860,#feae93);\n  --ion-item-color: #fff;\n  font-weight: 500;\n}\n\n.section-active ion-icon {\n  color: #fff;\n}\n\n.child-list {\n  padding: 0;\n  margin: 0;\n}\n\n.child-list .child, .child-list .child-active {\n  margin-bottom: 2px;\n}\n\n.child {\n  --ion-item-background: #transparent;\n  --ion-item-color: #fff;\n}\n\n.child-active {\n  --ion-item-background: #feae93;\n  --ion-item-color: #fff;\n}\n\n.child-active ion-icon {\n  color: #fff;\n}\n\n.product-list {\n  padding: 0;\n  margin: 0;\n}\n\n.clear-button-css {\n  background: linear-gradient(to right, #fe4f14, #fe8860, #feae93);\n  color: white;\n  width: 100%;\n  font-size: 14px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RoYW5hbmpheXJhdXQvRGVza3RvcC9pb25pYzQtbWFya2V0cGxhY2Uvc3JjL2FwcC9wYWdlcy9maWx0ZXJjYXRlZ29yeS9maWx0ZXJjYXRlZ29yeS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2ZpbHRlcmNhdGVnb3J5L2ZpbHRlcmNhdGVnb3J5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHdCQUFBO0FDQ0o7O0FERUU7RUFDRSxrQkFBQTtFQUNBLGtDQUFBO0FDQ0o7O0FEQ0k7RUFDRSxrQkFBQTtBQ0NOOztBREdFO0VBQ0Usa0NBQUE7RUFDQSxzQkFBQTtBQ0FKOztBREVFO0VBQ0UseUVBQUE7RUFFQSxzQkFBQTtFQUNBLGdCQUFBO0FDQUo7O0FERUk7RUFDRSxXQUFBO0FDQU47O0FESUU7RUFDRSxVQUFBO0VBQ0EsU0FBQTtBQ0RKOztBREVJO0VBQ0Usa0JBQUE7QUNBTjs7QURJRTtFQUNFLG1DQUFBO0VBQ0Esc0JBQUE7QUNESjs7QURJRTtFQUNFLDhCQUFBO0VBQ0Esc0JBQUE7QUNESjs7QURHSTtFQUNFLFdBQUE7QUNETjs7QURLRTtFQUNFLFVBQUE7RUFDQSxTQUFBO0FDRko7O0FES0U7RUFDRSxnRUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtBQ0ZKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvZmlsdGVyY2F0ZWdvcnkvZmlsdGVyY2F0ZWdvcnkucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQge1xuICAgIC0tYmFja2dyb3VuZDp0cmFuc3BhcmVudDtcbiAgfVxuICBcbiAgLmFjY29yZGlvbi1saXN0IHtcbiAgICBtYXJnaW4tYm90dG9tOiA0cHg7XG4gICAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgXG4gICAgLnNlY3Rpb24sIC5zZWN0aW9uLWFjdGl2ZSB7XG4gICAgICAtLW1pbi1oZWlnaHQ6IDQwcHg7XG4gICAgfVxuICB9XG4gIFxuICAuc2VjdGlvbiB7XG4gICAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiAjZmZmO1xuICB9XG4gIC5zZWN0aW9uLWFjdGl2ZSB7XG4gICAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsI2ZlODg2MCwjZmVhZTkzKTtcbiAgICAvLyAtLWlvbi1pdGVtLWJhY2tncm91bmQ6ICNmZTRmMTQ7XG4gICAgLS1pb24taXRlbS1jb2xvcjogI2ZmZjtcbiAgICBmb250LXdlaWdodDogNTAwO1xuICBcbiAgICBpb24taWNvbiB7XG4gICAgICBjb2xvcjogI2ZmZjtcbiAgICB9XG4gIH1cbiAgXG4gIC5jaGlsZC1saXN0IHtcbiAgICBwYWRkaW5nOiAwO1xuICAgIG1hcmdpbjogMDtcbiAgICAuY2hpbGQsIC5jaGlsZC1hY3RpdmUge1xuICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xuICAgIH1cbiAgfVxuICBcbiAgLmNoaWxkIHtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6ICN0cmFuc3BhcmVudDtcbiAgICAtLWlvbi1pdGVtLWNvbG9yOiAjZmZmO1xuICB9XG4gIFxuICAuY2hpbGQtYWN0aXZlIHtcbiAgICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6ICNmZWFlOTM7XG4gICAgLS1pb24taXRlbS1jb2xvcjogI2ZmZjtcbiAgXG4gICAgaW9uLWljb24ge1xuICAgICAgY29sb3I6ICNmZmY7XG4gICAgfVxuICB9XG4gIFxuICAucHJvZHVjdC1saXN0IHtcbiAgICBwYWRkaW5nOiAwO1xuICAgIG1hcmdpbjogMDtcbiAgfVxuICBcbiAgLmNsZWFyLWJ1dHRvbi1jc3N7XG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjZmU0ZjE0LCNmZTg4NjAsI2ZlYWU5Myk7XG4gICAgY29sb3I6d2hpdGU7XG4gICAgd2lkdGg6MTAwJTtcbiAgICBmb250LXNpemU6MTRweDtcbiAgfSIsImlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOnRyYW5zcGFyZW50O1xufVxuXG4uYWNjb3JkaW9uLWxpc3Qge1xuICBtYXJnaW4tYm90dG9tOiA0cHg7XG4gIC0taW9uLWl0ZW0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG59XG4uYWNjb3JkaW9uLWxpc3QgLnNlY3Rpb24sIC5hY2NvcmRpb24tbGlzdCAuc2VjdGlvbi1hY3RpdmUge1xuICAtLW1pbi1oZWlnaHQ6IDQwcHg7XG59XG5cbi5zZWN0aW9uIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgLS1pb24taXRlbS1jb2xvcjogI2ZmZjtcbn1cblxuLnNlY3Rpb24tYWN0aXZlIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsI2ZlODg2MCwjZmVhZTkzKTtcbiAgLS1pb24taXRlbS1jb2xvcjogI2ZmZjtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cbi5zZWN0aW9uLWFjdGl2ZSBpb24taWNvbiB7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG4uY2hpbGQtbGlzdCB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn1cbi5jaGlsZC1saXN0IC5jaGlsZCwgLmNoaWxkLWxpc3QgLmNoaWxkLWFjdGl2ZSB7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbn1cblxuLmNoaWxkIHtcbiAgLS1pb24taXRlbS1iYWNrZ3JvdW5kOiAjdHJhbnNwYXJlbnQ7XG4gIC0taW9uLWl0ZW0tY29sb3I6ICNmZmY7XG59XG5cbi5jaGlsZC1hY3RpdmUge1xuICAtLWlvbi1pdGVtLWJhY2tncm91bmQ6ICNmZWFlOTM7XG4gIC0taW9uLWl0ZW0tY29sb3I6ICNmZmY7XG59XG4uY2hpbGQtYWN0aXZlIGlvbi1pY29uIHtcbiAgY29sb3I6ICNmZmY7XG59XG5cbi5wcm9kdWN0LWxpc3Qge1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDA7XG59XG5cbi5jbGVhci1idXR0b24tY3NzIHtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjZmU0ZjE0LCAjZmU4ODYwLCAjZmVhZTkzKTtcbiAgY29sb3I6IHdoaXRlO1xuICB3aWR0aDogMTAwJTtcbiAgZm9udC1zaXplOiAxNHB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1276,21 +1282,22 @@ var FiltercategoryPage = /** @class */ (function () {
         this.dialogRef = dialogRef;
         this.data = data;
         this.apiCall = apiCall;
-        this.parentSelectionIndex = 7;
-        this.childSelectionIndex = 0;
+        this.categoryId = "";
+        this.categoryArray = [];
         this.automaticClose = false;
-        this.cate = 4;
-        this.subcat = 68;
+        this.subCategoryId = "";
         // this.http.get('assets/information.json').subscribe(res => {
         //   this.information = res['items'];
         //   this.information[0].open = true;
         // });
     }
     FiltercategoryPage.prototype.ngOnInit = function () {
-        var category = localStorage.getItem("category");
-        console.log("show category on filter screen:" + category);
         this.getCategory();
-        this.toggleSection(this.parentSelectionIndex);
+        localStorage.setItem("filterOpen", "1");
+        this.categoryId = localStorage.getItem("selectedParent");
+        this.subCategoryId = localStorage.getItem("selectedChild");
+        console.log("show category on filter screen:" + this.categoryId);
+        //  this.toggleSection(this.parentSelectionIndex);
         throw new Error("Method not implemented.");
     };
     FiltercategoryPage.prototype.getCategory = function () {
@@ -1298,36 +1305,50 @@ var FiltercategoryPage = /** @class */ (function () {
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "category/" + 0 + "/sub-category";
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.parentArray = MyResponse['result']['list'];
+            for (var i = 0; i < _this.parentArray.length; i++) {
+                if (_this.parentArray[i]['name'] == "Parent Category") {
+                }
+                else {
+                    _this.categoryArray.push(_this.parentArray[i]);
+                }
+            }
             console.log("show category data:" + JSON.stringify(_this.parentArray));
         }, function (error) {
         });
     };
-    FiltercategoryPage.prototype.toggleSection = function (index) {
-        this.parentSelectionIndex = index;
-        console.log("check toggle section:" + index);
-        this.parentArray[index].open = !this.parentArray[index].open;
-        console.log("check toggle section open show:" + this.parentArray[index].open);
-        if (this.automaticClose && this.parentArray[index].open) {
-            this.parentArray
-                .filter(function (item, itemIndex) { return itemIndex != index; })
-                .map(function (item) { return item.open = false; });
-        }
-        // this.dialogRef.close(categoryId);
+    FiltercategoryPage.prototype.toggleSection = function (index, categoryId) {
+        this.categoryId = categoryId;
+        localStorage.setItem("selectedParent", this.categoryId);
+        // this.categoryArray[index].open = !this.categoryArray[index].open;
+        // if (this.automaticClose && this.categoryArray[index].open) {
+        //   this.categoryArray
+        //   .filter((item, itemIndex) => itemIndex != index)
+        //   .map(item => item.open = false);
+        // }
     };
     FiltercategoryPage.prototype.toggleItem = function (index, childIndex, categoryId, subCategoryId) {
-        console.log("check categoryId:" + categoryId);
-        console.log("check subCategoryId:" + subCategoryId);
-        console.log("check toggleitem:" + childIndex);
-        this.parentArray[index].childrens[childIndex].open = !this.parentArray[index].childrens[childIndex].open;
+        this.subCategoryId = subCategoryId;
+        localStorage.setItem("selectedChild", subCategoryId);
+        // this.categoryArray[index].childrens[childIndex].open = !this.categoryArray[index].childrens[childIndex].open;
         var checkId = {
             "categoryId": categoryId,
             "subCategoryId": subCategoryId,
-            "parentSelectionIndex": this.parentSelectionIndex
         };
         this.dialogRef.close(checkId);
     };
     FiltercategoryPage.prototype.applyFilter = function (titleName) {
         this.dialogRef.close(titleName);
+    };
+    FiltercategoryPage.prototype.clearFilter = function () {
+        this.categoryId = "";
+        this.subCategoryId = "";
+        localStorage.setItem("selectedParent", this.categoryId);
+        localStorage.setItem("selectedChild", this.subCategoryId);
+        var checkId = {
+            "categoryId": this.categoryId,
+            "subCategoryId": this.subCategoryId,
+        };
+        this.dialogRef.close(checkId);
     };
     FiltercategoryPage.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },

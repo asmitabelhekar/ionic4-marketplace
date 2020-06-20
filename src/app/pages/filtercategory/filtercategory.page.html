@@ -1,6 +1,49 @@
 <ion-content>
+<button *ngIf="categoryId != '' " mat-raised-button class="clear-button-css" (click)="clearFilter()">Clear Filter</button>
+  <ion-list style="border-bottom:1px solid white" *ngFor="let item of categoryArray; let i = index;" class="accordion-list" detail="false" no-padding>
+    <ion-item tappable  (click)="toggleSection(i,item.id)" [ngClass]="(categoryId == item.id) ? 'section-active' : 'section' ">
+      <ion-row style="width:100%;color:white" tappable >
+        <ion-col size="10"  >
+          <ion-label>
+            {{item.name}}
+          </ion-label>
+        </ion-col>
 
-  <ion-list style="border-bottom:1px solid white" *ngFor="let item of parentArray; let i = index;" class="accordion-list" detail="false" no-padding>
+        <ion-col size="2"   >
+         
+          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId != item.id">keyboard_arrow_right</mat-icon>
+          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId == item.id">keyboard_arrow_down</mat-icon>
+        </ion-col>
+      </ion-row>
+
+    </ion-item>
+
+    <div *ngIf="item.childrens && item.id == categoryId ">
+      <ion-list class="child-list" *ngFor="let child of item.childrens; let j = index;" lines="none">
+        
+        <ion-item tappable *ngIf="child.name" (click)="toggleItem(i,j,item.id, child.id)" style="text-align: start;"
+        [ngClass]="(subCategoryId == child.id) ? 'child-active' : 'child' ">
+          <ion-label style="color:white; margin-left:5px;" >
+            {{child.name}}
+          </ion-label>
+        </ion-item>
+
+      
+      </ion-list>
+    </div>
+
+
+    <ion-item *ngIf="item.childrens.length == 0 && item.id == categoryId" style="text-align: center;">
+      <ion-label style="color:white">
+        Sorry, nothing in here!
+      </ion-label>
+    </ion-item>
+
+    <!-- <p *ngIf="item.childrens.length == 0 && item.open" style="color:white" text-center>Sorry, nothing in here!</p> -->
+
+  </ion-list>
+
+  <!-- <ion-list style="border-bottom:1px solid white" *ngFor="let item of categoryArray; let i = index;" class="accordion-list" detail="false" no-padding>
     <ion-item tappable  (click)="toggleSection(i,item.id)"
       [ngClass]="{'section-active': item.open, 'section': !item.open}">
       <ion-row style="width:100%;color:white" tappable >
@@ -11,10 +54,7 @@
         </ion-col>
 
         <ion-col size="2"   >
-          <!-- <ion-icon  style="color:white;width:25px; height:25px;" name="arrow-dropright" *ngIf="!item.open"></ion-icon>
-          <ion-icon  style="color:white;width:25px; height:25px;" name="arrow-dropdown" *ngIf="item.open"></ion-icon> -->
-      
-      
+         
           <mat-icon style="color:white;width:25px; height:25px;" *ngIf="!item.open">keyboard_arrow_right</mat-icon>
           <mat-icon style="color:white;width:25px; height:25px;" *ngIf="item.open">keyboard_arrow_down</mat-icon>
         </ion-col>
@@ -24,13 +64,7 @@
 
     <div *ngIf="item.childrens && item.open">
       <ion-list class="child-list" *ngFor="let child of item.childrens; let j = index;" lines="none">
-        <!-- <ion-item tappable (click)="toggleItem(i, j)" *ngIf="child.name" [ngClass]="{'child-active': child.open, 'child': !child.open}">
-        <ion-icon slot="start" style="color:white" name="add" *ngIf="!child.open"></ion-icon>
-        <ion-icon slot="start" style="color:white" name="close" *ngIf="child.open"></ion-icon>
-        <ion-label>
-          {{child.name}}
-        </ion-label>
-      </ion-item> -->
+        
         <ion-item tappable *ngIf="child.name" (click)="toggleItem(i,j,item.id, child.id)" style="text-align: start;"
           [ngClass]="{'child-active': child.open, 'child': !child.open}">
           <ion-label style="color:white; margin-left:5px;" >
@@ -38,12 +72,7 @@
           </ion-label>
         </ion-item>
 
-        <!-- <app-category [category]="child" *ngIf="!child.children"></app-category>
-
-      <ion-list *ngIf="child.children && child.open" class="category-list" lines="none">
-        <app-category [category]="category" *ngFor="let category of child.children"></app-category>
-      </ion-list> -->
-
+      
       </ion-list>
     </div>
 
@@ -54,8 +83,6 @@
       </ion-label>
     </ion-item>
 
-    <!-- <p *ngIf="item.childrens.length == 0 && item.open" style="color:white" text-center>Sorry, nothing in here!</p> -->
-
-  </ion-list>
+  </ion-list> -->
 
 </ion-content>

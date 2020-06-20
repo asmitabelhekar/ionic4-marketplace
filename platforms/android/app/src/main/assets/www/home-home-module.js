@@ -312,7 +312,8 @@ var HomePage = /** @class */ (function () {
                 this.getBannerData(result.categoryId);
                 this.getAdvertisement(result.subCategoryId);
                 this.displayCategory = result.categoryId;
-                localStorage.setItem("category", result.subCategoryId);
+                localStorage.setItem("categoryId", result.subCategoryId);
+                localStorage.setItem("filterOpen", "0");
                 return [2 /*return*/];
             });
         }); });
