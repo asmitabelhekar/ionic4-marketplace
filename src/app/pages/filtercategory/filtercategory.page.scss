@@ -7,7 +7,7 @@ ion-content {
     --ion-item-background: transparent;
   
     .section, .section-active {
-      --min-height: 58px;
+      --min-height: 40px;
     }
   }
   
@@ -19,7 +19,7 @@ ion-content {
     --ion-item-background: linear-gradient(to right, #fe4f14,#fe8860,#feae93);
     // --ion-item-background: #fe4f14;
     --ion-item-color: #fff;
-    font-weight: 600;
+    font-weight: 500;
   
     ion-icon {
       color: #fff;
