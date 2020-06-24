@@ -90,7 +90,12 @@ export class AppComponent {
       if (this.platform.is('cordova')) {
       } else {
       }
+
+      
       timer(4000).subscribe(() => this.showSplash = false)
+
+
+
 
       setTimeout (
         () => {

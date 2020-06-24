@@ -17,7 +17,7 @@ import { FiltercategoryPageModule } from '../pages/filtercategory/filtercategory
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   showNoBanner = 0;
   getBookMarkArray: any;
   Languages: any;
@@ -29,7 +29,7 @@ export class HomePage implements OnInit{
   bannerImg: any;
   bannerCount: any;
   checkStatus: boolean;
-  categoryId = 5;
+  categoryId : any= 5;
   categoryName = "Music";
   noInternet = "0";
   displayCategory: any = "5";
@@ -49,13 +49,13 @@ export class HomePage implements OnInit{
   loadingBlock;
 
   ngOnInit() {
-    this.loader.blockingLoaderAuth.subscribe(event => {
-      this.loadingBlock = event;
-    });
+    // this.loader.blockingLoaderAuth.subscribe(event => {
+    //   this.loadingBlock = event;
+    // });
 
-    this.advertisementArray = [];
-    this.currentPage = 0;
-    this.getAdvertisement(this.categoryId);
+    // this.advertisementArray = [];
+    // this.currentPage = 0;
+    // this.getAdvertisement(this.categoryId);
     // var data={"id" : 1, "second" : "abcd"};
   }
 
@@ -65,7 +65,7 @@ export class HomePage implements OnInit{
     public toast: ToastController,
     public alertCtrl: AlertController,
     public loader: LoaderService,
-    
+
     public networkServices: NetworkService,
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,
@@ -84,8 +84,8 @@ export class HomePage implements OnInit{
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
 
     this.advertisementArray = [];
-      // this.currentPage = 0;
-      // this.getAdvertisement(this.categoryId);
+    // this.currentPage = 0;
+    // this.getAdvertisement(this.categoryId);
     let city = localStorage.getItem("cityname");
     if (city == "" || city == "undefined" || city == null) {
       this.cityName = "";
@@ -162,9 +162,14 @@ export class HomePage implements OnInit{
 
   getAdvertisement(categoryId) {
     console.log("check fb ads::")
-    this.advertisementArray = [];
+    // this.advertisementArray = [];
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
+    let url ;
+    if(categoryId == "clear"){
+      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10";
+    }else{
+      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
+    }
     this.apiCall.getAd(url).subscribe(MyResponse => {
 
       this.advertisementArray = this.advertisementArray.concat(MyResponse['result']['list']);
@@ -180,16 +185,26 @@ export class HomePage implements OnInit{
       })
   }
 
+  
+
   viewMore() {
     this.currentPage += 1;
-    this.getAdvertisement(this.categoryId);
+  
+      this.getAdvertisement(this.categoryId);
+
     // let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=1";
 
   }
 
   getBannerData(categoryId) {
     this.loader.showBlockingLoaderAuth();
-    let url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
+    let url ;
+    if(categoryId == "clear"){
+      url = environment.base_url + environment.version + "/banners?" + "size=1000";
+    }else{
+      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000";
+    }
+    //  url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
       this.bannerCount = MyResponse['result']['count'];
@@ -206,6 +221,7 @@ export class HomePage implements OnInit{
         this.networkServices.onPageLoadCheckInternet();
       })
   }
+
 
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
@@ -233,21 +249,28 @@ export class HomePage implements OnInit{
 
   filter() {
     const dialogRef = this.dialog.open(FiltercategoryPage, {
-      
+
       // width: '500px',
-      panelClass : "show-filter-category-dialogue"
-      
+      panelClass: "show-filter-category-dialogue"
+
     });
 
 
     dialogRef.afterClosed().subscribe(async result => {
-      console.log("show filter category:"+result);
-      console.log("show filtered data:"+JSON.stringify(result));
-      this.getBannerData(result.categoryId);
-      this.getAdvertisement(result.subCategoryId);
-      this.displayCategory = result.categoryId;
-      localStorage.setItem("categoryId",result.subCategoryId);
-      localStorage.setItem("filterOpen","0");
+      console.log("show filter category:" + result);
+      console.log("show filtered data:" + JSON.stringify(result));
+
+      if(result.categoryId == "clear"){
+        this.currentPage = 0;
+      }
+     this.categoryId = result.categoryId;
+        this.getBannerData(result.categoryId);
+        this.getAdvertisement(result.subCategoryId);
+        this.displayCategory = result.categoryId;
+        localStorage.setItem("categoryId", result.subCategoryId);
+
+      localStorage.setItem("filterOpen", "0");
+
     });
     // this.router.navigate(['/showfilterdata']);
   }
@@ -380,30 +403,30 @@ export class HomePage implements OnInit{
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
 
-  bookmarkAdvertisement(advertisementid, isBookmarked,item) {
+  bookmarkAdvertisement(advertisementid, isBookmarked, item) {
     console.log("show isBookmarked:" + isBookmarked);
     console.log("show advertisementid:" + advertisementid);
     console.log("show advertisement object:" + JSON.stringify(item));
-    
+
     let getObj = item;
 
-   
+
     if (isBookmarked == 1) {
-      for(let i=0; i< this.advertisementArray.length;i++){
-        if(advertisementid == this.advertisementArray[i]['id']){
+      for (let i = 0; i < this.advertisementArray.length; i++) {
+        if (advertisementid == this.advertisementArray[i]['id']) {
           console.log("show advertisementid inside if:" + this.advertisementArray[i]['id']);
           this.advertisementArray[i]['isBookmarked'] = 0;
         }
       }
-  
+
       this.removeBookmark(advertisementid);
     } else {
-      for(let i=0; i< this.advertisementArray.length;i++){
-        if(advertisementid == this.advertisementArray[i]['id']){
+      for (let i = 0; i < this.advertisementArray.length; i++) {
+        if (advertisementid == this.advertisementArray[i]['id']) {
           this.advertisementArray[i]['isBookmarked'] = 1;
         }
       }
-  
+
       let send_date = {};
       this.advertisementModel['userId'] = localStorage.getItem("userId");
 

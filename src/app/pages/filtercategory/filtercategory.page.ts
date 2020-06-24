@@ -93,8 +93,8 @@ export class FiltercategoryPage implements OnInit {
     localStorage.setItem("selectedParent", this.categoryId);
     localStorage.setItem("selectedChild", this.subCategoryId);
     let checkId = {
-      "categoryId":  "5",
-      "subCategoryId": "5",
+      "categoryId":  "clear",
+      "subCategoryId": "clear",
     }
     this.dialogRef.close(checkId);
   }
