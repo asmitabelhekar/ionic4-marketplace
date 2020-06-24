@@ -46,8 +46,13 @@ export class HomePage implements OnInit{
   advertisementModel: any = {};
   lastPage: any;
   firstView = 1;
+  loadingBlock;
 
   ngOnInit() {
+    this.loader.blockingLoaderAuth.subscribe(event => {
+      this.loadingBlock = event;
+    });
+
     this.advertisementArray = [];
     this.currentPage = 0;
     this.getAdvertisement(this.categoryId);
@@ -60,6 +65,7 @@ export class HomePage implements OnInit{
     public toast: ToastController,
     public alertCtrl: AlertController,
     public loader: LoaderService,
+    
     public networkServices: NetworkService,
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,

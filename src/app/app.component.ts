@@ -12,6 +12,8 @@ import { NgZone } from '@angular/core';
 import { ChatlistPage } from './pages/chatlist/chatlist.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { timer } from 'rxjs/observable/timer';
+
 // import { Storage } from '@ionic/storage';
 
 @Component({
@@ -20,7 +22,10 @@ import { FCM } from '@ionic-native/fcm/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  rootPage: string;
+  rootPage:any = HomePage;
+  showSplash = true;
+
+
   @ViewChild('myNav', { static: false }) navCtrl: NavController;
   @ViewChild(NavController, { static: false }) navChild: NavController;
   loadingBlock;
@@ -69,17 +74,32 @@ export class AppComponent {
 
 
   ngOnInit() {
-    this.preloader.blockingLoaderAuth.subscribe(event => {
-      this.loadingBlock = event;
-    });
+    // this.preloader.blockingLoaderAuth.subscribe(event => {
+    //   this.loadingBlock = event;
+    // });
   }
 
 
   initializeApp() {
-    this.preloader.showBlockingLoaderAuth();
+    // this.preloader.showBlockingLoaderAuth();
     this.platform.ready().then(() => {
       this.statusBar.styleLightContent();
+    
+
       this.splashScreen.hide();
+      if (this.platform.is('cordova')) {
+      } else {
+      }
+      timer(4000).subscribe(() => this.showSplash = false)
+
+      setTimeout (
+        () => {
+          this.preloader.blockingLoaderAuth.subscribe(event => {
+            this.loadingBlock = event;
+          });
+        }, 4 * 1000
+      );
+
       this.loginSession();
       this.fcm.subscribeToTopic('people');
       this.fcmNotification();
