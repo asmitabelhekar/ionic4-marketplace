@@ -22,8 +22,8 @@ import { timer } from 'rxjs/observable/timer';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  rootPage:any = HomePage;
-  showSplash = true;
+  // rootPage:any = HomePage;
+  // showSplash = true;
 
 
   @ViewChild('myNav', { static: false }) navCtrl: NavController;
@@ -74,9 +74,9 @@ export class AppComponent {
 
 
   ngOnInit() {
-    // this.preloader.blockingLoaderAuth.subscribe(event => {
-    //   this.loadingBlock = event;
-    // });
+    this.preloader.blockingLoaderAuth.subscribe(event => {
+      this.loadingBlock = event;
+    });
   }
 
 
@@ -87,23 +87,23 @@ export class AppComponent {
     
 
       this.splashScreen.hide();
-      if (this.platform.is('cordova')) {
-      } else {
-      }
+      // if (this.platform.is('cordova')) {
+      // } else {
+      // }
 
       
-      timer(2000).subscribe(() => this.showSplash = false)
+      // timer(2000).subscribe(() => this.showSplash = false)
 
 
 
 
-      setTimeout (
-        () => {
-          this.preloader.blockingLoaderAuth.subscribe(event => {
-            this.loadingBlock = event;
-          });
-        }, 4 * 1000
-      );
+      // setTimeout (
+      //   () => {
+      //     this.preloader.blockingLoaderAuth.subscribe(event => {
+      //       this.loadingBlock = event;
+      //     });
+      //   }, 4 * 1000
+      // );
 
       this.loginSession();
       this.fcm.subscribeToTopic('people');

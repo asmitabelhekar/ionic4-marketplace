@@ -71,19 +71,14 @@
         <ion-icon name="share-social-outline" class="cl_share_icon"></ion-icon>
       </div> -->
     </div>
-    <div fxLayoutAlign="end start" style="width:9%;">
+    <div fxLayoutAlign="end start" style="width:9%;" fxLayout="column">
 
-      <!-- <img *ngIf="gender == 1 " src="../../../assets/newmicon.png" class="width:18px; height:18px" />
-      <img *ngIf="gender == 0 " src="../../../assets/newficon.png" class="width:18px; height:18px" /> -->
+    
+      <ion-icon *ngIf="isBookmarked == 1 " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart"></ion-icon>
+      <ion-icon *ngIf="isBookmarked == 0 " style="color:#fb7645; margin-left:5px;width:23px; height:23px;" name="heart-outline"></ion-icon>
 
       <ion-icon *ngIf="gender == 1 " name="male-outline" style="color:#fb7645;width:22px;height:22px; margin-left:5px"></ion-icon>
       <ion-icon *ngIf="gender == 0 " name="female-outline" style="color:#fb7645;width:22px;height:22px; margin-left:5px"></ion-icon>
-
-      <!-- <img *ngIf="gender == 1 " src="../../../assets/maleicon.png" class="width:18px; height:18px" />
-      <img *ngIf="gender == 0 " src="../../../assets/femaleicon.png" class="width:18px; height:18px" /> -->
-
-      <ion-icon *ngIf="isBookmarked == 1 " style="color:#fb7645; margin-left:5px;width:25px; height:25px;" name="heart"></ion-icon>
-      <ion-icon *ngIf="isBookmarked == 0 " style="color:#fb7645; margin-left:5px;width:25px; height:25px;" name="heart-outline"></ion-icon>
 
       <!-- <ion-icon fxLayoutAlign="end start" name="heart-outline" style="width:23px; height:23px;"></ion-icon> -->
     </div>
