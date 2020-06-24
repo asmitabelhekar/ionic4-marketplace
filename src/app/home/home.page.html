@@ -141,10 +141,20 @@
                 
               <div style="position:absolute;top:7px;right:8px;width:30px;height:30px;"
                 (click)="bookmarkAdvertisement(item.id,item.isBookmarked,item)">
+
+              
                 <ion-icon *ngIf="item.isBookmarked == 1 "
                 style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart"></ion-icon>
               <ion-icon *ngIf="item.isBookmarked == 0 "
                 style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart-outline"></ion-icon>
+
+                <ion-icon *ngIf="item.gender == 1 " name="male-outline" style="color:#fb7645;width:23px;height:23px; margin-left:5px"></ion-icon>
+                <ion-icon *ngIf="item.gender == 0 " name="female-outline" style="color:#fb7645;width:23px;height:23px; margin-left:5px"></ion-icon>
+
+                
+                <!-- <img *ngIf="item.gender == 1 " src="../../assets/maleicon.png" style="width:18px; height:18px" />
+                <img *ngIf="item.gender == 0 " src="../../assets/femaleicon.png" style="width:18px; height:18px" /> -->
+
                 <!-- <ion-icon *ngIf="postBookmarkObj [item.id] == true "
                   style="color:#fb7645;width:24px;height:24px; margin-left:5px" name="heart"></ion-icon>
                 <ion-icon *ngIf="postBookmarkObj [item.id] != true "

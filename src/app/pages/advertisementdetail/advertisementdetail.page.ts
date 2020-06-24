@@ -63,6 +63,7 @@ export class AdvertisementdetailPage implements OnInit {
   isBookmarked : any = 0;
   userMobile : any = "";
   image: any;
+  gender : any;
   public sendTo: any;
   public subject: string = 'Message from Marketplace App';
   public message: string = 'Marketplace App .';
@@ -121,6 +122,7 @@ export class AdvertisementdetailPage implements OnInit {
       this.lattitude = this.advertisementArray['latitude'];
       this.longitude = this.advertisementArray['longitude'];
       this.price = this.advertisementArray['price'];
+      this.gender = this.advertisementArray['gender'];
       this.mobile = this.advertisementArray['mobile'];
       this.date = this.advertisementArray['modified'];
       this.userId = this.advertisementArray['userId'];

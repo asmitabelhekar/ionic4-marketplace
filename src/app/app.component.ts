@@ -92,7 +92,7 @@ export class AppComponent {
       }
 
       
-      timer(4000).subscribe(() => this.showSplash = false)
+      timer(2000).subscribe(() => this.showSplash = false)
 
 
 
