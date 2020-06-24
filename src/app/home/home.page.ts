@@ -11,6 +11,7 @@ import { NetworkService } from '../service/network/network.service';
 import { empty } from 'rxjs';
 import { FiltercategoryPage } from '../pages/filtercategory/filtercategory.page';
 import { FiltercategoryPageModule } from '../pages/filtercategory/filtercategory.module';
+import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ export class HomePage implements OnInit {
   bannerImg: any;
   bannerCount: any;
   checkStatus: boolean;
-  categoryId : any= 5;
+  categoryId: any = 5;
   categoryName = "Music";
   noInternet = "0";
   displayCategory: any = "5";
@@ -47,6 +48,9 @@ export class HomePage implements OnInit {
   lastPage: any;
   firstView = 1;
   loadingBlock;
+  isTracking: any;
+  currentLat: any;
+  currentLong: any;
 
   ngOnInit() {
     // this.loader.blockingLoaderAuth.subscribe(event => {
@@ -65,7 +69,7 @@ export class HomePage implements OnInit {
     public toast: ToastController,
     public alertCtrl: AlertController,
     public loader: LoaderService,
-
+    public google: GoogleMaps,
     public networkServices: NetworkService,
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,
@@ -81,6 +85,9 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
+
+   
+
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
 
     this.advertisementArray = [];
@@ -162,12 +169,14 @@ export class HomePage implements OnInit {
 
   getAdvertisement(categoryId) {
     console.log("check fb ads::")
-    // this.advertisementArray = [];
+    if(this.currentPage == 0){
+      this.advertisementArray = [];
+    }
     this.loader.showBlockingLoaderAuth();
-    let url ;
-    if(categoryId == "clear"){
+    let url;
+    if (categoryId == "clear") {
       url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10";
-    }else{
+    } else {
       url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
     }
     this.apiCall.getAd(url).subscribe(MyResponse => {
@@ -185,12 +194,10 @@ export class HomePage implements OnInit {
       })
   }
 
-  
-
   viewMore() {
     this.currentPage += 1;
-  
-      this.getAdvertisement(this.categoryId);
+
+    this.getAdvertisement(this.categoryId);
 
     // let url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=1";
 
@@ -198,10 +205,10 @@ export class HomePage implements OnInit {
 
   getBannerData(categoryId) {
     this.loader.showBlockingLoaderAuth();
-    let url ;
-    if(categoryId == "clear"){
+    let url;
+    if (categoryId == "clear") {
       url = environment.base_url + environment.version + "/banners?" + "size=1000";
-    }else{
+    } else {
       url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000";
     }
     //  url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
@@ -260,14 +267,14 @@ export class HomePage implements OnInit {
       console.log("show filter category:" + result);
       console.log("show filtered data:" + JSON.stringify(result));
 
-      if(result.categoryId == "clear"){
+      if (result.categoryId == "clear") {
         this.currentPage = 0;
       }
-     this.categoryId = result.categoryId;
-        this.getBannerData(result.categoryId);
-        this.getAdvertisement(result.subCategoryId);
-        this.displayCategory = result.categoryId;
-        localStorage.setItem("categoryId", result.subCategoryId);
+      this.categoryId = result.categoryId;
+      this.getBannerData(result.categoryId);
+      this.getAdvertisement(result.subCategoryId);
+      this.displayCategory = result.categoryId;
+      localStorage.setItem("categoryId", result.subCategoryId);
 
       localStorage.setItem("filterOpen", "0");
 

@@ -8,6 +8,7 @@ import { HomePage } from './home.page';
 import { MaterialModule } from '../material.module'
 import { MatDialogModule } from '@angular/material';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     IonicModule,
     GooglePlaceModule,
     MaterialModule,
+
     RouterModule.forChild([
       {
         path: '',
