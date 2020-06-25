@@ -30,10 +30,10 @@ export class HomePage implements OnInit {
   bannerImg: any;
   bannerCount: any;
   checkStatus: boolean;
-  categoryId: any = 3;
+  categoryId: any = "clear";
   categoryName = "Music";
   noInternet = "0";
-  displayCategory: any = "3";
+  displayCategory: any = "clear";
   languageImage = "";
   cityName = "";
   currentPage = 0;
@@ -112,7 +112,7 @@ export class HomePage implements OnInit {
 
     // console.log("show retrieved object:" + this.postBookmarkObj);
     if (this.categoryId == undefined) {
-      this.categoryId = 3;
+      this.categoryId = "clear";
       console.log("check ::0");
       this.advertisementArray = [];
       this.currentPage = 0;

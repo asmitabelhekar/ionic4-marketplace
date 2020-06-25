@@ -136,10 +136,10 @@ var HomePage = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.router = router;
         this.showNoBanner = 0;
-        this.categoryId = 3;
+        this.categoryId = "clear";
         this.categoryName = "Music";
         this.noInternet = "0";
-        this.displayCategory = "3";
+        this.displayCategory = "clear";
         this.languageImage = "";
         this.cityName = "";
         this.currentPage = 0;
@@ -191,7 +191,7 @@ var HomePage = /** @class */ (function () {
         // }
         // console.log("show retrieved object:" + this.postBookmarkObj);
         if (this.categoryId == undefined) {
-            this.categoryId = 3;
+            this.categoryId = "clear";
             console.log("check ::0");
             this.advertisementArray = [];
             this.currentPage = 0;
