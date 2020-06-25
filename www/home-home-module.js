@@ -196,6 +196,7 @@ var HomePage = /** @class */ (function () {
             this.advertisementArray = [];
             this.currentPage = 0;
             this.getAdvertisement(this.categoryId);
+            this.getBannerData(this.categoryId);
         }
         else {
             // if (this.categoryId == 1) {
@@ -220,7 +221,7 @@ var HomePage = /** @class */ (function () {
             this.checkType(this.categoryName, this.categoryId);
         }
         console.log("get categoryId::" + this.categoryId);
-        this.getBannerData(this.categoryId);
+        // this.getBannerData(this.categoryId);
     };
     HomePage.prototype.getCategory = function () {
         var _this = this;
@@ -281,7 +282,7 @@ var HomePage = /** @class */ (function () {
         this.loader.showBlockingLoaderAuth();
         var url;
         if (categoryId == "clear") {
-            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "/banners?" + "size=1000";
+            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "banners?" + "size=1000";
         }
         else {
             url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + categoryId + "/banners?" + "size=1000";

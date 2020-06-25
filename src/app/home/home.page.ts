@@ -117,6 +117,7 @@ export class HomePage implements OnInit {
       this.advertisementArray = [];
       this.currentPage = 0;
       this.getAdvertisement(this.categoryId);
+      this.getBannerData(this.categoryId);
     } else {
       // if (this.categoryId == 1) {
       //   this.categoryName = "Dance";
@@ -140,7 +141,7 @@ export class HomePage implements OnInit {
       this.checkType(this.categoryName, this.categoryId);
     }
     console.log("get categoryId::" + this.categoryId);
-    this.getBannerData(this.categoryId);
+    // this.getBannerData(this.categoryId);
 
   }
 
@@ -207,7 +208,7 @@ export class HomePage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     let url;
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "/banners?" + "size=1000";
+      url = environment.base_url + environment.version + "banners?" + "size=1000";
     } else {
       url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000";
     }
