@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n<ion-content>\n<div style=\"width:100%; height:100%\" (click)=\"reconnect()\">\n<img src=\"../../../assets/reconnect.png\" style=\"width:100%; height:100%\" />\n</div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header class=\"new-background-color\">\n    <ion-toolbar class=\"new-background-color\">\n  \n      <label style=\"color:white; font-size:17px; margin-left:10px\">No Internet</label>\n  \n    </ion-toolbar>\n  </ion-header>\n<ion-content>\n<div style=\"width:100%; height:100%\" (click)=\"reconnect()\">\n<img src=\"../../../assets/reconnect.png\" style=\"width:100%; height:100%\" />\n</div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -160,100 +160,6 @@ var CheckinternetPage = /** @class */ (function () {
             src_app_service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
     ], CheckinternetPage);
     return CheckinternetPage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/service/apiservice/api.service.ts":
-/*!***************************************************!*\
-  !*** ./src/app/service/apiservice/api.service.ts ***!
-  \***************************************************/
-/*! exports provided: ApiService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-var ApiService = /** @class */ (function () {
-    function ApiService(http) {
-        this.http = http;
-    }
-    //Image Upload Post
-    ApiService.prototype.callPostApiForImage = function (url, data) {
-        var formData = new FormData();
-        formData.append('image', data);
-        // formData.append('isSaveToLocal', 'false');
-        // console.log("url", url,data,options);
-        return this.http.post(url, formData);
-    };
-    //POST
-    ApiService.prototype.post = function (url, data) {
-        var httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-            })
-        };
-        console.log(url);
-        return this.http.post(url, data, httpOptions);
-    };
-    //GET
-    ApiService.prototype.get = function (url) {
-        var httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-            })
-        };
-        console.log(url);
-        return this.http.get(url, httpOptions);
-    };
-    // public getCode(url,token) {
-    // console.log("show token::"+token);
-    //   const httpOptions = {
-    //     headers: new HttpHeaders({
-    //       'Content-Type':  'application/json',
-    //       'Authorization':'Token' + " " +"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtdmdhZGFnaUBnbWFpbC5jb20ifSwiZXhwIjoxNTY2MjM0ODU0fQ.nMWPN38zptwwDKAo11bFyjhCRuzNhZc6NqqCaYJVxP0"
-    //     })
-    //   }
-    //   console.log(url);
-    //   return this.http.get(url,httpOptions);
-    // }
-    ApiService.prototype.delete = function (url) {
-        console.log(url);
-        var httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-            })
-        };
-        return this.http.delete(url);
-    };
-    //PUT
-    ApiService.prototype.put = function (url, data) {
-        console.log(url);
-        var httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-            })
-        };
-        return this.http.put(url, data, httpOptions);
-    };
-    ApiService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-    ]; };
-    ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], ApiService);
-    return ApiService;
 }());
 
 

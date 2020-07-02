@@ -101,6 +101,8 @@ ext {
 apply from: "../cordova-plugin-googlemaps/marketplace-tbxml-android.gradle"
 apply from: "../cordova-plugin-googlemaps/marketplace-pgm-custom.gradle"
 apply from: "../cordova-plugin-fcm-with-dependecy-updated/marketplace-FCMPlugin.gradle"
+apply from: "../cordova-plugin-badge/v1-badge.gradle"
+apply from: "../cordova-plugin-local-notification/v1-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()

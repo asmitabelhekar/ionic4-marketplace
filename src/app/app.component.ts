@@ -109,13 +109,7 @@ export class AppComponent {
       this.fcm.subscribeToTopic('people');
       this.fcmNotification();
 
-      // this.localNotifications.on('click').subscribe(notification => {
-      //   console.log('Notification str: ' + JSON.stringify(notification))
-      //   this.router.navigate(['/notification']);
-      //   let json = notification.data
-
-
-      // })
+    
 
       this.platform.backButton.subscribe(() => {
 
@@ -177,6 +171,32 @@ export class AppComponent {
         this.router.navigate(['notificationlist']);
         console.log("Received in background");
       } else {
+
+
+        // this.localNotifications.on('click').subscribe(notification => {
+        //   console.log('Notification str: ' + JSON.stringify(notification))
+        //   this.router.navigate(['/notification']);
+        //   let json = notification.data
+  
+  
+        // })
+
+
+ this.localNotifications.schedule({
+          id: 1,
+          title: "Hello",
+          text: "check 111",
+          foreground: true,
+          sound: "default",
+          trigger: { at: new Date() },
+          icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+          actions: "FCM_PLUGIN_ACTIVITY",
+          data: {
+            landing_page: "notificationlist",
+            price: "5000"
+          }
+        });
+
         console.log("Received in foreground");
 
       };
