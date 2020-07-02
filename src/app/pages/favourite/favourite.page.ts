@@ -111,6 +111,63 @@ export class FavouritePage implements OnInit {
     }
   }
 
+  activeInactiveAd(item){
+
+    let isActive = 0;
+    if(item.isActive){
+      isActive = 0;
+      console.log();
+
+    }else{
+
+      isActive = 1;
+    }
+    
+
+    console.log("check",""+JSON.stringify(item));
+    // /api/v1.0.0/users/{userId}/advertisementsActiveInactive/{id}
+
+    let send_date = {};
+    send_date['userId'] = item.userId;
+    // send_date['isActive'] = isActive;
+    send_date['id'] = item.id;
+    // /api/v1.0.0/users/{userId}/advertisementsActiveInactive/{id}
+    // /api/v1.0.0/users/{userId}/advertisementsActiveInactive/{id}
+    let url = environment.base_url + environment.version + "users/" + item.userId + "/advertisementsActiveInactive/" + item.id ;   
+    this.apiCall.putOnlyUrl(url).subscribe(MyResponse => {
+
+
+      if(MyResponse['isSuccess']){
+
+
+        this.changeActiveStatus(MyResponse['result'][0]);
+      }
+      
+
+      // console.log("checking",""+JSON.stringify(MyResponse));
+
+      // this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.presentToast("Please try again");
+      this.loader.hideBlockingLoaderAuth();
+
+    })
+
+  }
+
+  changeActiveStatus(item){
+
+    for(let k=0 ;k < this.advertisementArray.length;k++){
+
+      if(item.id==this.advertisementArray[k].id){
+
+        this.advertisementArray[k].isActive = item.isActive
+      }
+
+
+    }
+  }
+
   bookmarkAdvertisement(advertisementid) {
 
     this.checkStatus = this.getBookmarkObj.hasOwnProperty(advertisementid);
@@ -279,7 +336,10 @@ export class FavouritePage implements OnInit {
     this.router.navigate(['/profile']);
   }
 
-  showAdvertisementDetail(data, id, isBookmarked) {
+  showAdvertisementDetail(data, id, isBookmarked,isActive) {
+
+
+    if(isActive){
     console.log("check myadd bookmarked:"+isBookmarked);
     let sendId = {
       "id": id,
@@ -292,6 +352,10 @@ export class FavouritePage implements OnInit {
     localStorage.setItem("url", data);
     console.log("send image::" + id);
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+  }else{
+    this.presentToast("Advertise is inactive");
+  }
+
   }
 
   showBookmarkAdvertisementDetail(categoryId, adId,isBookmarked){

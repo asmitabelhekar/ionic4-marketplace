@@ -99,4 +99,8 @@ export class FiltercategoryPage implements OnInit {
     this.dialogRef.close(checkId);
   }
 
+  closeFilter() {
+    this.dialogRef.close();
+  }
+
 }

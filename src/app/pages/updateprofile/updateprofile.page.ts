@@ -79,6 +79,7 @@ export class UpdateprofilePage implements OnInit {
       localStorage.setItem("getName",send_date['name']);
       send_date['email'] = this.profileModel['email'];
       send_date['mobile'] = this.profileModel['contact'];
+      // send_date['token'] =localStorage.getItem("fcmToken");
       // send_date['isActive'] = 1;
       // send_date['userRole'] = this.userRole;
       // send_date['password'] = this.getProfileDetail.password;

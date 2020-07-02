@@ -113,7 +113,7 @@
           <img *ngIf="noInternet == '0' " src="../../assets/newimgfilter.png"
             style="width:25px;height:35px;color:#fb7645;"  />
         </div>
-        <div style="overflow-x: scroll;width:87%" fxLayout="row">
+        <div  style="overflow-x: scroll;width:87%" fxLayout="row" id="container1">
           <div fxLayout="column" fxLayoutAlign="center center" style="width:145px;" *ngFor="let item of categoryArray"
             (click)="checkType(item.name, item.id)" [ngClass]="(displayCategory == item.id) ? 'even' : 'odd' ">
             <img fxLayoutAlign="center center" src="{{item.image}}" style="width:30px;height:30px" />
@@ -121,6 +121,19 @@
               <label class="categoty-width" class="categoty-width">{{item.name}}</label>
             </div>
           </div>
+        </div>
+
+        <div style="width:10%;" fxLayoutAlign="center center" (click)="scrollHorizontal()">
+          <!-- <mat-icon  *ngIf="noInternet == '0' "  style="font-size:40px;color:#fb7645;margin-top:-30px;">filter_list</mat-icon> -->
+          <!-- <ion-icon *ngIf="noInternet == '0' " name="options" style="width:35px;height:50px;color:#fb7645;margin-top:-10px" (click)="filter()"></ion-icon> -->
+          <!-- <img *ngIf="noInternet == '0' " src="../../assets/newimgfilter.png"
+            style="width:25px;height:35px;color:#fb7645;"  /> -->
+
+            <!-- <div fxFlex="20" fxLayoutAlign="center start"> -->
+              <ion-icon class="arrow-icon-css" style="width:25px;height:35px;color:#fb7645;" name="chevron-forward-outline"></ion-icon>
+            <!-- </div> -->
+
+
         </div>
 
 

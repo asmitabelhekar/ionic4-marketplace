@@ -150,4 +150,16 @@ public put(url,data) {
 }
 
 
+public putOnlyUrl(url) {
+  console.log(url);
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+     
+    })
+  }
+  return this.http.put(url,httpOptions);
+}
+
+
 }

@@ -1,5 +1,6 @@
 <ion-content>
 <button *ngIf="categoryId != '' " mat-raised-button class="clear-button-css" (click)="clearFilter()">Clear Filter</button>
+<button *ngIf="categoryId == '' " mat-raised-button class="clear-button-css" (click)="closeFilter()">Close Filter</button>
   <ion-list style="border-bottom:1px solid white" *ngFor="let item of categoryArray; let i = index;" class="accordion-list" detail="false" no-padding>
     <ion-item tappable  (click)="toggleSection(i,item.id)" [ngClass]="(categoryId == item.id) ? 'section-active' : 'section' ">
       <ion-row style="width:100%;color:white" tappable >

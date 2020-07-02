@@ -96,7 +96,19 @@ export class DetailchatPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.chatArray = MyResponse['result']['list'];
       this.msgCount = MyResponse['result']['count'];
-      console.log("show users:" + this.chatArray);
+      console.log("show users:" + JSON.stringify(this.chatArray));
+
+
+      for(let k=0;k< this.chatArray.length; k++){
+
+        // toLocaleString(); 
+        this.chatArray[k].created = new Date(this.chatArray[k].created).toLocaleDateString() +" "+ new Date(this.chatArray[k].created).toLocaleTimeString();
+
+        // var localDate = new Date(utcDate);
+      }
+
+    
+
       this.loader.hideBlockingLoaderAuth();
       this.noInternet = '0';
     },

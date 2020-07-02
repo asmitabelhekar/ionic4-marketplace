@@ -64,6 +64,9 @@ export class AdvertisementdetailPage implements OnInit {
   userMobile : any = "";
   image: any;
   gender : any;
+  advertisementModel: any = {};
+  getBookMarkArray: any;
+  bookmarkId: any;
   public sendTo: any;
   public subject: string = 'Message from Marketplace App';
   public message: string = 'Marketplace App .';
@@ -206,7 +209,7 @@ export class AdvertisementdetailPage implements OnInit {
       console.log(this.getBase64Image = base64)
     )
     this.image = this.getBase64Image;
-    console.log("show final base64Image:" + this.image)
+    // console.log("show final base64Image:" + this.image)
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
@@ -254,6 +257,126 @@ export class AdvertisementdetailPage implements OnInit {
     actionSheet.present();
   }
 
+
+  bookmarkAdvertisement(advertisementid, isBookmarked) {
+    console.log("show isBookmarked:" + isBookmarked);
+    console.log("show advertisementid:" + advertisementid);
+    // console.log("show advertisement object:" + JSON.stringify(item));
+
+    // let getObj = item;
+
+
+    if (isBookmarked == 1) {
+      
+      this.isBookmarked = 0;
+      this.removeBookmark(advertisementid);
+    } else {
+      // for (let i = 0; i < this.advertisementArray.length; i++) {
+      //   if (advertisementid == this.advertisementArray[i]['id']) {
+      //     this.advertisementArray[i]['isBookmarked'] = 1;
+      //   }
+      // }
+
+      let send_date = {};
+      this.advertisementModel['userId'] = localStorage.getItem("userId");
+
+      send_date['userId'] = this.advertisementModel['userId'];
+      let url = environment.base_url + environment.version + "categories/" + this.categoryId + "/advertisements/" + advertisementid + "/bookmark";
+      this.apiCall.postAuth(url, send_date).subscribe(MyResponse => {
+
+        console.log("checking",""+JSON.stringify(MyResponse));
+
+        console.log(MyResponse["isSuccess"]);
+
+        if(MyResponse["isSuccess"]){
+
+          this.isBookmarked =1;
+        }
+
+        // this.getAdvertisement(this.categoryId);
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
+      })
+    }
+  }
+
+  removeBookmark(advertisementId) {
+    this.userId = localStorage.getItem("userId");
+    let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000;
+    this.apiCall.getAd(url).subscribe(MyResponse => {
+      this.getBookMarkArray = MyResponse['result']['list'];
+      for (let i = 0; i < this.getBookMarkArray.length; i++) {
+
+        console.log("show advertisement id:" + advertisementId);
+
+        if (this.getBookMarkArray[i]['id'] == advertisementId) {
+          console.log("show advertisement bookmark id:" + this.getBookMarkArray[i]['bookmarkId']);
+
+          this.bookmarkId = this.getBookMarkArray[i]['bookmarkId'];
+          console.log("check ------ bookmark id:" + this.bookmarkId);
+
+        } else {
+          console.log("show advertisement bookmark id failure ::" + this.getBookMarkArray[i]['bookmarkId']);
+
+        }
+      }
+      console.log("show advertisement bookmark id:" + this.bookmarkId);
+
+      let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + this.bookmarkId;
+      this.apiCall.deleteAuth(url).subscribe(MyResponse => {
+        // this.getAdvertisement(this.categoryId);
+        this.loader.hideBlockingLoaderAuth();
+      }, error => {
+        this.presentToast("Please try again");
+        this.loader.hideBlockingLoaderAuth();
+
+      })
+    },
+      error => {
+
+      })
+  }
+
+
+  //  removeBookmark(advertisementId) {
+  //   this.userId = localStorage.getItem("userId");
+    // let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks?" + "size=" + 1000;
+    // this.apiCall.getAd(url).subscribe(MyResponse => {
+      // this.getBookMarkArray = MyResponse['result']['list'];
+      // for (let i = 0; i < this.getBookMarkArray.length; i++) {
+
+      //   console.log("show advertisement id:" + advertisementId);
+
+      //   if (this.getBookMarkArray[i]['id'] == advertisementId) {
+      //     console.log("show advertisement bookmark id:" + this.getBookMarkArray[i]['bookmarkId']);
+
+      //     this.bookmarkId = this.getBookMarkArray[i]['bookmarkId'];
+      //     console.log("check ------ bookmark id:" + this.bookmarkId);
+
+      //   } else {
+      //     console.log("show advertisement bookmark id failure ::" + this.getBookMarkArray[i]['bookmarkId']);
+
+      //   }
+      // }
+      // console.log("show advertisement bookmark id:" + this.bookmarkId);
+
+      // let url = environment.base_url + environment.version + "users/" + this.userId + "/bookmarks/" + advertisementId;
+      // this.apiCall.deleteAuth(url).subscribe(MyResponse => {
+      //   // this.getAdvertisement(this.categoryId);
+      //   this.loader.hideBlockingLoaderAuth();
+      // }, error => {
+      //   this.presentToast("Please try again");
+      //   this.loader.hideBlockingLoaderAuth();
+
+      // })
+    // },
+    //   error => {
+
+    //   })
+  // }
 
 
 
@@ -346,7 +469,7 @@ export class AdvertisementdetailPage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
       this.userName = this.profileDetail.name;
-      this.userMobile = this.profileDetail.mobile;
+      // this.userMobile = this.profileDetail.mobile;
       localStorage.setItem("getName",this.userName);
       this.userId = this.profileDetail.id;
       if( this.profileDetail.image == "" || this.profileDetail.image == null){
@@ -457,6 +580,7 @@ export class AdvertisementdetailPage implements OnInit {
 
 
   makeCall() {
+    this.userMobile = this.mobile;
     if(this.userMobile == "" || this.userMobile == "null" || this.userMobile == undefined){
       console.log("show number empty::::"+this.userMobile);
       this.presentToast("Sorry, you don't have number for call");

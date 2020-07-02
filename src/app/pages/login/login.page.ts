@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
-import { MenuController, ToastController, LoadingController } from '@ionic/angular';
+import { MenuController, ToastController, LoadingController,Platform,IonRouterOutlet } from '@ionic/angular';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
@@ -35,7 +35,16 @@ export class LoginPage implements OnInit {
     private googlePlus: GooglePlus,
     public nativeStorage: NativeStorage,
     public loadingController: LoadingController,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet,
     public apiCall: ApiService) {
+
+      this.platform = platform;
+      this.platform.backButton.subscribeWithPriority(-1, () => {
+        if (this.routerOutlet.canGoBack()) {
+          navigator['app'].exitApp();
+        }
+      });
 
     this.menuController.enable(false);
 
@@ -65,7 +74,7 @@ export class LoginPage implements OnInit {
 
 
   fbLogin() {
-    this.fbLogout();
+    // this.fbLogout();
     this.facebook.login(['public_profile', 'user_friends', 'email'])
       .then(res => {
         if (res.status === 'connected') {
@@ -92,7 +101,7 @@ export class LoginPage implements OnInit {
         this.fbId = res.id;
         this.userName = res.name;
         this.userEmail = res.email;
-      this.login();
+        this.login();
       })
       .catch(e => {
         console.log(e);
@@ -106,6 +115,11 @@ export class LoginPage implements OnInit {
       .catch(e => console.log('Error logout from Facebook', e));
   }
 
+  ionViewWillLeave() {
+    // this.navCtrl.popToRoot();
+    console.log("Looks like I’m about to leave :11");
+   
+    }
 
 
 
@@ -115,25 +129,37 @@ export class LoginPage implements OnInit {
     let send_date = {};
 
 
-    send_date['name'] = this.userName;
-    // send_date['mobile'] = this.loginModel.mobile;
-    send_date['userRole'] = 0;
+    // send_date['name'] = this.userName;
+    // // send_date['mobile'] = this.loginModel.mobile;
+    // send_date['userRole'] = 0;
 
-    if(this.imageUrl == "" || this.imageUrl == null){
+    // if(this.imageUrl == "" || this.imageUrl == null){
 
-    }else{
-      send_date['image'] = this.imageUrl;
-    }
+    // }else{
+    //   send_date['image'] = this.imageUrl;
+    // }
    
-    send_date['email'] = this.userEmail;
+    // send_date['email'] = this.userEmail;
 
-    if(this.gmailId != ""){
-      send_date['gmailId'] = this.gmailId;
-    }
+    // if(this.gmailId != ""){
+    //   send_date['gmailId'] = this.gmailId;
+    // }
 
-    if(this.fbId != ""){
-      send_date['facebookId'] = this.fbId;
-    }
+    // if(this.fbId != ""){
+    //   send_date['facebookId'] = this.fbId;
+    // }
+
+    
+send_date['name'] = "Asmita Belhekar";
+send_date['userRole'] = 0;
+send_date['image'] = "https://lh3.googleusercontent.com/a-/AOh14GgUQz70Tw0LjfLiFy0I7C-6RmtV2mdG5j9PEIX9Ww";
+send_date['email'] = "asmita.belhekar@gmail.com";
+send_date['gmailId'] = "110231677548942846776";
+
+// send_date['token'] =localStorage.getItem("fcmToken");
+
+console.log("my token",""+JSON.stringify(send_date));
+   
 
     let url = environment.base_url + environment.version + "users";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {
@@ -150,7 +176,8 @@ export class LoginPage implements OnInit {
         localStorage.setItem("userRole", MyResponse['result']['userRole']);
         localStorage.setItem("userName", MyResponse['result']['name']);
         localStorage.setItem("userCreated", MyResponse['result']['created']);
-        this.router.navigate(['/home',{categoryId: "5"}]);
+        this.router.navigate(['/home',{categoryId: "5"}],{ replaceUrl: true });
+        // this.router.navigateByUrl('/profile', { replaceUrl: true }) 
         console.log("show login data:"+JSON.stringify(MyResponse['result']));
       }else{
         this.presentToast("Please try again");
@@ -188,9 +215,9 @@ export class LoginPage implements OnInit {
         this.userName = res.displayName;
         this.userEmail = res.email;
         localStorage.setItem("loginType","gmail");
-       this.login();
+        this.login();
       }, (err) => {
-
+            
       })
   }
 

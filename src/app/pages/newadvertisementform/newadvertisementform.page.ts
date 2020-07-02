@@ -11,11 +11,15 @@ import { Router } from '@angular/router';
 declare var RazorpayCheckout: any;
 
 @Component({
+  
   selector: 'app-newadvertisementform',
   templateUrl: './newadvertisementform.page.html',
   styleUrls: ['./newadvertisementform.page.scss'],
 })
+
 export class NewadvertisementformPage implements OnInit {
+
+  
 
   bannerUpdateStatusCheck = 1;
   totalCalculatePayment: any = 0;
@@ -196,6 +200,47 @@ export class NewadvertisementformPage implements OnInit {
 
 
   }
+
+  clearImage(index){
+
+    switch(index){
+
+      case 1:
+        this.firstImage = "";
+        break;
+      case 2:
+        this.secondImage = "";
+        break;
+      case 3:
+        this.thirdImage = "";
+        break;
+      case 4:
+        this.fourthImage = "";
+        break;
+
+      case 5:
+      this.fifthImage = "";
+      break; 
+
+
+    }
+
+  }
+
+  closeDropdown(matSelect){
+
+    matSelect.close();
+
+  }
+
+  deselectBannerPlan(){
+
+    this.bannerPlanName = '';
+  }
+
+  openedChange(opened: boolean) {
+    console.log(opened ? 'opened' : 'closed');
+}
 
 
   ionViewWillEnter() {

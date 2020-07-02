@@ -357,6 +357,22 @@ label.check_width {
       -webkit-animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
       animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
     }
+
+    .icon-css{
+      height:20px;
+      width:20px;
+       margin:2px;
+       color:#fb7645;
+    }
+    
+    .arrow-icon-css{
+      height:25px;
+      width:25px;
+       margin:2px;
+       color:#fb7645;
+    }
+
+
     @-webkit-keyframes left-spin {
       from {
         -webkit-transform: rotate(130deg);

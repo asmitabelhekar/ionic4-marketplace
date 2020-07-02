@@ -9,10 +9,6 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"GooglePlus\"><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -59,6 +55,14 @@
             {
               "xml": "<access origin=\"https://*.akamaihd.net\" />",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Badge\"><param name=\"browser-package\" value=\"Badge\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -66,9 +70,6 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.ionic.marketplace"
-    },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "io.ionic.marketplace"
     },
@@ -151,24 +152,19 @@
       "FACEBOOK_HYBRID_APP_EVENTS": "false",
       "FACEBOOK_ANDROID_SDK_VERSION": "5.13.0",
       "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.holyhub.v1"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.holyhub.v1"
     }
   },
   "dependent_plugins": {},
   "modules": [
-    {
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "id": "cordova-plugin-device.device",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
-      ]
-    },
-    {
-      "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
-      "id": "cordova-plugin-device.DeviceProxy",
-      "pluginId": "cordova-plugin-device",
-      "runs": true
-    },
     {
       "file": "plugins/cordova-plugin-googlemaps/www/Promise.js",
       "id": "cordova-plugin-googlemaps.Promise",
@@ -852,10 +848,71 @@
       "clobbers": [
         "facebookConnectPlugin"
       ]
+    },
+    {
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "id": "cordova-plugin-device.device",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+      "id": "cordova-plugin-device.DeviceProxy",
+      "pluginId": "cordova-plugin-device",
+      "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-badge/www/badge.js",
+      "id": "cordova-plugin-badge.Badge",
+      "pluginId": "cordova-plugin-badge",
+      "clobbers": [
+        "cordova.plugins.notification.badge"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-badge/src/browser/favico.min.js",
+      "id": "cordova-plugin-badge.Badge.Favico",
+      "pluginId": "cordova-plugin-badge",
+      "clobbers": [
+        "cordova.plugins.notification.badge.Favico"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-badge/src/browser/BadgeProxy.js",
+      "id": "cordova-plugin-badge.Badge.Proxy",
+      "pluginId": "cordova-plugin-badge",
+      "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
+      "id": "cordova-plugin-local-notification.LocalNotification",
+      "pluginId": "cordova-plugin-local-notification",
+      "clobbers": [
+        "cordova.plugins.notification.local"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
+      "id": "cordova-plugin-local-notification.LocalNotification.Core",
+      "pluginId": "cordova-plugin-local-notification",
+      "clobbers": [
+        "cordova.plugins.notification.local.core",
+        "plugin.notification.local.core"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
+      "id": "cordova-plugin-local-notification.LocalNotification.Util",
+      "pluginId": "cordova-plugin-local-notification",
+      "merges": [
+        "cordova.plugins.notification.local.core",
+        "plugin.notification.local.core"
+      ]
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-device": "2.0.2",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "2.7.1",
     "cordova-plugin-ionic-keyboard": "2.2.0",
@@ -880,6 +937,9 @@
     "cordova-plugin-googleplus": "8.5.0",
     "com.razorpay.cordova": "0.16.1",
     "cordova-plugin-nativestorage": "2.3.2",
-    "cordova-plugin-facebook4": "6.4.0"
+    "cordova-plugin-facebook4": "6.4.0",
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-badge": "0.8.8",
+    "cordova-plugin-local-notification": "0.9.0-beta.2"
   }
 }

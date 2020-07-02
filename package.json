@@ -50,10 +50,10 @@
     "call-number": "^1.0.1",
     "com-badrit-base64": "^0.2.0",
     "com.razorpay.cordova": "1.4.11",
-    "cordova-android": "8.1.0",
     "cordova-browser": "6.0.0",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.1",
+    "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-facebook": "^0.2.2",
     "cordova-plugin-facebook4": "^6.4.0",
     "cordova-plugin-fcm-with-dependecy-updated": "^6.3.1",
@@ -130,7 +130,6 @@
       "cordova-plugin-nativegeocoder": {},
       "cordova-plugin-geolocation": {},
       "cordova-plugin-googlemaps": {},
-      "mx.ferreyra.callnumber": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-x-socialsharing": {
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
@@ -161,11 +160,12 @@
       "cordova-plugin-facebook4": {
         "APP_ID": "293072848530685",
         "APP_NAME": "holyhub"
-      }
+      },
+      "cordova-plugin-local-notification": {}
     },
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

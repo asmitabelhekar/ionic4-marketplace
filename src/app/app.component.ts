@@ -11,6 +11,7 @@ import { AdvertisementdetailPage } from './pages/advertisementdetail/advertiseme
 import { NgZone } from '@angular/core';
 import { ChatlistPage } from './pages/chatlist/chatlist.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
 import { FCM } from '@ionic-native/fcm/ngx';
 import { timer } from 'rxjs/observable/timer';
 
@@ -69,6 +70,7 @@ export class AppComponent {
     public localNotifications: LocalNotifications
   ) {
     this.initializeApp();
+   
   }
 
 
@@ -172,11 +174,26 @@ export class AppComponent {
       console.log(token);
     });
     this.fcm.onNotification().subscribe(data => {
-      console.log("show notification data:" + data);
+      console.log("show notification data:" + JSON.stringify(data));
       if (data.wasTapped) {
         this.router.navigate(['notificationlist']);
         console.log("Received in background");
       } else {
+
+        this.localNotifications.schedule({
+          id: 1,
+          title: "Hello",
+          text: "Hii",
+          foreground: true,
+          sound: "default",
+          trigger: { at: new Date() },
+          icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+          actions: "FCM_PLUGIN_ACTIVITY",
+          data: {
+            landing_page: "notificationlist",
+            price: "5000"
+          }
+        });
         console.log("Received in foreground");
 
       };
@@ -227,20 +244,9 @@ export class AppComponent {
 }
 
 
- // this.localNotifications.schedule({
-        //   id: 1,
-        //   title: data.title,
-        //   text: data.body,
-        //   foreground: true,
-        //   sound: "default",
-        //   trigger: { at: new Date() },
-        //   icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
-        //   actions: "FCM_PLUGIN_ACTIVITY",
-        //   data: {
-        //     landing_page: "notificationlist",
-        //     price: "5000"
-        //   }
-        // });
+
+
+ 
 
 
         // AIzaSyDZTo3RezTgFPhJOaUEMYMFCAv0RJxjYfQ

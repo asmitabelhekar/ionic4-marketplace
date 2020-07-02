@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonSlides, MenuController, ToastController, AlertController } from '@ionic/angular';
+import { IonSlides, MenuController, ToastController, AlertController,Platform,IonRouterOutlet } from '@ionic/angular';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { PopupPage } from '../pages/popup/popup.page';
 import { FilterpopupComponent } from '../filterpopup/filterpopup.component';
@@ -73,16 +73,31 @@ export class HomePage implements OnInit {
     public networkServices: NetworkService,
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet,
     public router: Router) {
     this.menuController.enable(false);
     this.getCategory();
     this.getLanguages();
+    this.platform = platform;
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      if (!this.routerOutlet.canGoBack()) {
+        navigator['app'].exitApp();
+      }
+    });
+   
     // this.getBannerData(this.categoryId);
     // this.advertisementArray = [];
     // this.currentPage = 0;
     // this.getAdvertisement(this.categoryId);
 
   }
+
+  ionViewWillLeave() {
+    // this.navCtrl.popToRoot();
+    console.log("Looks like I’m about to leave :11");
+    
+    }
 
   ionViewWillEnter() {
 
@@ -195,6 +210,36 @@ export class HomePage implements OnInit {
       })
   }
 
+  getAdvertisementWithSubcategory(categoryId,subCategoryId) {
+    console.log("check fb ads::")
+    if(this.currentPage == 0){
+      this.advertisementArray = [];
+    }
+
+    // /api/v1.0.0/categories/{categoryId}/subcategories/{subcategoryId}/advertisements
+
+    this.loader.showBlockingLoaderAuth();
+    let url;
+    if (categoryId == "clear") {
+      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10";
+    } else {
+      url = environment.base_url + environment.version + "categories/" + categoryId+ "/subcategories/"+subCategoryId + "/advertisements?page=" + this.currentPage + "&size=10";
+    }
+    this.apiCall.getAd(url).subscribe(MyResponse => {
+
+      this.advertisementArray = this.advertisementArray.concat(MyResponse['result']['list']);
+      this.countAdvertisement = MyResponse['result']['count'];
+      this.lastPage = Math.ceil(this.countAdvertisement / 10);
+      console.log("show total count:" + this.lastPage);
+      this.loader.hideBlockingLoaderAuth();
+    },
+      error => {
+        this.loader.hideBlockingLoaderAuth();
+        this.networkServices.checkInternetConnection();
+        this.networkServices.onPageLoadCheckInternet();
+      })
+  }
+
   viewMore() {
     this.currentPage += 1;
 
@@ -253,6 +298,11 @@ export class HomePage implements OnInit {
       })
   }
 
+  scrollHorizontal(){
+    document.getElementById('container1').scrollLeft += 30; 
+  }
+
+
 
 
   filter() {
@@ -263,7 +313,7 @@ export class HomePage implements OnInit {
 
     });
 
-
+    
     dialogRef.afterClosed().subscribe(async result => {
       console.log("show filter category:" + result);
       console.log("show filtered data:" + JSON.stringify(result));
@@ -273,7 +323,8 @@ export class HomePage implements OnInit {
       }
       this.categoryId = result.categoryId;
       this.getBannerData(result.categoryId);
-      this.getAdvertisement(result.subCategoryId);
+      // this.getAdvertisement(result.subCategoryId);
+      this.getAdvertisementWithSubcategory(result.categoryId,result.subCategoryId);
       this.displayCategory = result.categoryId;
       localStorage.setItem("categoryId", result.subCategoryId);
 

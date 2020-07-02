@@ -88,7 +88,9 @@
           </ion-col>
         </ion-row>
 
-        <label class="floating-label-css" style="color:gray;margin-top:5px;margin-bottom:5px;">Just start typing you
+        <label class="floating-label-css" style="color:gray;margin-top:5px;margin-bottom:5px;">
+          If you don’t want to disclose the location, mention nearest area. 
+          Just start typing you
           will get autocomplete result
           for address</label>
         <mat-form-field appearance="outline" class="margin-top-css">
@@ -111,41 +113,69 @@
 
 
         <div class="cl_image_div" style="margin-top:20px;" fxLayout="row">
-          <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img"
-            onclick="document.getElementById('image_upload1').click()">
-            <ion-icon *ngIf="firstImage == '' " name="camera" class="cl_images"></ion-icon>
-            <label class="floating-label-css" *ngIf="firstImage == '' " align="center">Upload Image</label>
-            <img *ngIf="firstImage != '' " src="{{firstImage}}" class="cl_display_img">
+          <div fxLayout="column" style="position:relative" fxLayoutAlign="center center" class="cl_first_column_img"
+           >
+            <div  class="closeButtonOnImage"
+            (click)="clearImage(1)">
+            <ion-icon *ngIf="firstImage != '' "  style="color:#fb7645;width:23px;height:23px;" name="close-outline"></ion-icon>
+            </div>
+            <ion-icon *ngIf="firstImage == '' " name="camera"  onclick="document.getElementById('image_upload1').click()" class="cl_images"></ion-icon>
+              <label class="floating-label-css"  onclick="document.getElementById('image_upload1').click()" *ngIf="firstImage == '' " align="center">Upload Image</label>
+              <img *ngIf="firstImage != '' "  onclick="document.getElementById('image_upload1').click()" src="{{firstImage}}" class="cl_display_img">
           </div>
-          <div fxLayout="column" fxLayoutAlign="center center" class="cl_second_column_img"
-            onclick="document.getElementById('image_upload2').click()">
-            <ion-icon *ngIf="secondImage == '' " name="camera" class="cl_images"></ion-icon>
-            <label class="floating-label-css" *ngIf="secondImage == '' " align="center">upload Image</label>
-            <img *ngIf="secondImage != '' " src="{{secondImage}}" class="cl_display_img">
+
+
+          <div fxLayout="column" style="position:relative"  fxLayoutAlign="center center" class="cl_second_column_img"
+            >
+            <div  class="closeButtonOnImage"
+            (click)="clearImage(2)">
+            <ion-icon *ngIf="secondImage != '' "  style="color:#fb7645;width:23px;height:23px;" name="close-outline"></ion-icon>
+           </div>
+            <ion-icon *ngIf="secondImage == '' " name="camera" onclick="document.getElementById('image_upload2').click()" class="cl_images"></ion-icon>
+            <label class="floating-label-css" onclick="document.getElementById('image_upload2').click()" *ngIf="secondImage == '' " align="center">Upload Image</label>
+            <img *ngIf="secondImage != '' " onclick="document.getElementById('image_upload2').click()" src="{{secondImage}}" class="cl_display_img">
           </div>
         </div>
 
         <div class="cl_image_div" fxLayout="row">
-          <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img"
-            onclick="document.getElementById('image_upload3').click()">
-            <ion-icon *ngIf="thirdImage == '' " name="camera" class="cl_images"></ion-icon>
-            <label class="floating-label-css" *ngIf="thirdImage == '' " align="center">upload Image</label>
-            <img *ngIf="thirdImage != '' " src="{{thirdImage}}" class="cl_display_img">
+          <div fxLayout="column" style="position:relative" fxLayoutAlign="center center" class="cl_first_column_img"
+            >
+           
+            <div  class="closeButtonOnImage"
+            (click)="clearImage(3)">
+            <ion-icon *ngIf="thirdImage != '' "  style="color:#fb7645;width:23px;height:23px;" name="close-outline"></ion-icon>
+           </div>
+            <ion-icon *ngIf="thirdImage == '' " name="camera" onclick="document.getElementById('image_upload3').click()" class="cl_images"></ion-icon>
+            <label class="floating-label-css" onclick="document.getElementById('image_upload3').click()" *ngIf="thirdImage == '' " align="center">Upload Image</label>
+            <img *ngIf="thirdImage != '' " onclick="document.getElementById('image_upload3').click()" src="{{thirdImage}}" class="cl_display_img">
           </div>
-          <div fxLayout="column" fxLayoutAlign="center center" class="cl_second_column_img"
-            onclick="document.getElementById('image_upload4').click()">
-            <ion-icon *ngIf="fourthImage == '' " name="camera" class="cl_images"></ion-icon>
-            <label class="floating-label-css" *ngIf="fourthImage == '' " align="center">upload Image</label>
-            <img *ngIf="fourthImage != '' " src="{{fourthImage}}" class="cl_display_img">
+
+          <div fxLayout="column" style="position:relative" fxLayoutAlign="center center" class="cl_second_column_img"
+            >
+            <div  class="closeButtonOnImage"
+            (click)="clearImage(4)">
+            <ion-icon *ngIf="fourthImage != '' "  style="color:#fb7645;width:23px;height:23px;" name="close-outline"></ion-icon>
+           </div>
+            <ion-icon *ngIf="fourthImage == '' " name="camera" onclick="document.getElementById('image_upload4').click()" class="cl_images"></ion-icon>
+            <label class="floating-label-css" onclick="document.getElementById('image_upload4').click()" *ngIf="fourthImage == '' " align="center">Upload Image</label>
+            <img *ngIf="fourthImage != '' " onclick="document.getElementById('image_upload4').click()" src="{{fourthImage}}" class="cl_display_img">
           </div>
         </div>
 
         <div class="cl_image_div" fxLayout="row">
-          <div fxLayout="column" fxLayoutAlign="center center" class="cl_first_column_img"
-            onclick="document.getElementById('image_upload5').click()">
-            <ion-icon *ngIf="fifthImage == '' " name="camera" class="cl_images"></ion-icon>
-            <label class="floating-label-css" *ngIf="fifthImage == '' " align="center">upload Image</label>
-            <img *ngIf="fifthImage != '' " src="{{fifthImage}}" class="cl_display_img">
+          <div fxLayout="column" style="position:relative" fxLayoutAlign="center center" class="cl_first_column_img"
+            >
+            
+            <div  class="closeButtonOnImage"
+            (click)="clearImage(5)">
+            <ion-icon *ngIf="fifthImage != '' "  style="color:#fb7645;width:23px;height:23px;" name="close-outline"></ion-icon>
+           </div>
+            
+            <ion-icon *ngIf="fifthImage == '' " name="camera" onclick="document.getElementById('image_upload5').click()" class="cl_images"></ion-icon>
+            <label class="floating-label-css" onclick="document.getElementById('image_upload5').click()" *ngIf="fifthImage == '' " align="center">Upload Image</label>
+            <img *ngIf="fifthImage != '' " onclick="document.getElementById('image_upload5').click()" src="{{fifthImage}}" class="cl_display_img">
+          
+          
           </div>
 
         </div>
@@ -191,23 +221,37 @@
 
         <mat-form-field style="width:100%;" appearance="outline" class="margin-top-css">
           <mat-label class="floating-label-css">Tags</mat-label>
-          <mat-select style="font-size:13px;" name="tag" formControlName="selectedTags"
+          <mat-select #matSelect1  style="font-size:13px;" name="tag" formControlName="selectedTags"
             (selectionChange)="selectedTags(selectedTags)" class="filter-select" [(value)]="selectedTags" multiple>
             <mat-option *ngFor="let tag of tagsArray" [value]="tag.name">
               {{tag.name}}
             </mat-option>
+
+            <div fxFlex="100" fxLayoutGap="15px" style="margin-bottom:10px;" fxLayoutAlign="center center">
+            <button style="align-items: center;align-self:center;margin-bottom: 10px;" mat-button class="buttonClass" (click)="closeDropdown(matSelect1)"  >Submit</button>
+
+          </div>
           </mat-select>
+          <!-- <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
+            <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
+            <button mat-button class="buttonClass" matStepperNext>Next</button>
+          </div> -->
+          
         </mat-form-field>
 
 
         <mat-form-field style="width:100%;" appearance="outline" class="margin-top-css">
           <mat-label class="floating-label-css">Languages you support</mat-label>
-          <mat-select style="font-size:13px;" name="year" formControlName="selectedLanguages"
+          <mat-select #matSelect style="font-size:13px;" name="year" formControlName="selectedLanguages"
             (selectionChange)="selectedChanged(selectedLanguages)" class="filter-select" [(value)]="selectedLanguages"
             multiple>
             <mat-option *ngFor="let year of languageArray" [value]="year.name">
               {{year.name}}
             </mat-option>
+            <div fxFlex="100" fxLayoutGap="15px" style="margin-bottom:10px;" fxLayoutAlign="center center">
+              <button style="align-items: center;align-self:center;margin-bottom: 10px;" mat-button class="buttonClass" (click)="closeDropdown(matSelect)"  >Submit</button>
+  
+            </div>
           </mat-select>
         </mat-form-field>
         <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
@@ -330,11 +374,12 @@
           <div fxLayout="row wrap">
             <div *ngFor="let item of plansArray">
               <ion-card *ngIf="item.isAdvertisement == 1 " fxLayout="column"
-                [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
-                class="card-css" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)">
-                <label [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
+                [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " 
+                class="card-css" >  
+                <ion-icon  (click)="deselectBannerPlan()" class="closeButtonEnd" name="close-outline"></ion-icon>  
+                <label fxLayoutAlign="center center" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)" [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
                   style="font-size:17px;font-weight:450">${{item.price}}</label>
-                <label [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
+                <label fxLayoutAlign="center center" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)" [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
                   fxLayoutAlign="center center"
                   style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
               </ion-card>

@@ -167,17 +167,17 @@ export class ProfilePage implements OnInit {
         .then(res => this.isLoggedIn = false)
         .catch(e => console.log('Error logout from Facebook', e));
       localStorage.clear();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'],{ replaceUrl: true });
       localStorage.setItem("loginStatus", "no");
 
     } else if (this.loginType == "gmail") {
       this.googlePlus.logout();
       localStorage.clear();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'],{ replaceUrl: true });
       localStorage.setItem("loginStatus", "no");
     } else {
       localStorage.clear();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'],{ replaceUrl: true });
       localStorage.setItem("loginStatus", "no");
     }
 
