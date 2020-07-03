@@ -6,16 +6,16 @@
         <label style="color:white;margin-left:35px;font-size:15px;;cursor: pointer;margin-top:0px">{{cityName}}</label>
 
       </ion-col>
-      <ion-col size="6" fxLayoutAlign="center center">
-        <label style="color:white; font-size:17px; margin-left:10px; margin-top:3px">Holyhub</label>
+      <ion-col size="5" fxLayoutAlign="center center">
+        <label style="color:white; font-size:17px; margin-left: 10px ;margin-top:3px">Holyhub</label>
       </ion-col>
-      <ion-col size="3">
+      <ion-col size="2">
         <img src="{{languageImage}}" [matMenuTriggerFor]="menu" class="languageImg" />
         <!-- <mat-icon [matMenuTriggerFor]="menu"
       style="position: fixed; right:22px;color:white;font-size:20px; bottom : 15px;cursor: pointer;">
       g_translate</mat-icon> -->
         <mat-menu #menu="matMenu">
-          <div fxLayout="row" style="margin-left:10px;margin-top:10px;" *ngFor="let language of Languages"
+          <div fxLayout="row" style="margin-top:10px;" *ngFor="let language of Languages"
             [ngClass]="language.image == languageImage ? 'selected-category-back' : 'category-back' "
             (click)="getLanguage(language.image)">
             <button fxLayout="row" mat-button style="padding:5px;">
@@ -29,9 +29,10 @@
 
         </mat-menu>
       </ion-col>
-      <!-- <ion-col size="1" (click)="notifications()">
-      <ion-icon name="notifications-outline"></ion-icon>
-    </ion-col> -->
+      <ion-col size="1" (click)="notifications()"  style="margin-left: 10px" fxLayoutAlign="end end">
+        <!-- <img src="{{languageImage}}" [matMenuTriggerFor]="menu" class="notifImg" /> -->
+      <ion-icon class="notifImg"  name="notifications-outline"></ion-icon>
+    </ion-col>
     </ion-row>
 
 

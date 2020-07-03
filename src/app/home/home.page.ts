@@ -586,7 +586,11 @@ export class HomePage implements OnInit {
 
 
   notifications() {
-    this.router.navigate(['/notificationlist'])
+    let senData = {};
+    senData['userId'] = this.userId;
+    senData['status'] = "all";
+    this.router.navigate(['/notificationlistall', { senPaymentLogData : JSON.stringify(senData)}]);
+
   }
 
   getLanguage(image) {

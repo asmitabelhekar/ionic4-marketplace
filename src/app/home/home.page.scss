@@ -215,8 +215,17 @@ label.check_width {
 .languageImg{
   width:27px;
   height:27px;
+  // position: fixed;
+   right:10px;
+   border-radius:50%;
+  cursor: pointer;
+}
+
+.notifImg{
+  width:27px;
+  height:27px;
   position: fixed;
-   right:22px;
+   right:2px;
    border-radius:50%;
   cursor: pointer;
 }

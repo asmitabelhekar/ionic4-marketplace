@@ -741,50 +741,50 @@ var routes = [
     // { path: '', redirectTo: 'sliderintro', pathMatch: 'full' },
     //   { path: 'filtercategory',    loadChildren: () => import('./pages/filtercategory/filtercategory.module').then( m => m.FiltercategoryPageModule)
     // },
-    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
+    { path: 'login', loadChildren: function () { return Promise.all(/*! import() | pages-login-login-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); } },
     {
         path: 'popup',
-        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-popup-popup-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("pages-popup-popup-module")]).then(__webpack_require__.bind(null, /*! ./pages/popup/popup.module */ "./src/app/pages/popup/popup.module.ts")).then(function (m) { return m.PopupPageModule; }); }
     },
     {
         path: 'chatlist',
-        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-chatlist-chatlist-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-chatlist-chatlist-module")]).then(__webpack_require__.bind(null, /*! ./pages/chatlist/chatlist.module */ "./src/app/pages/chatlist/chatlist.module.ts")).then(function (m) { return m.ChatlistPageModule; }); }
     },
     {
         path: 'detailchat',
-        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-detailchat-detailchat-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-detailchat-detailchat-module")]).then(__webpack_require__.bind(null, /*! ./pages/detailchat/detailchat.module */ "./src/app/pages/detailchat/detailchat.module.ts")).then(function (m) { return m.DetailchatPageModule; }); }
     },
     {
         path: 'postadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-postadvertisement-postadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("pages-postadvertisement-postadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/postadvertisement/postadvertisement.module */ "./src/app/pages/postadvertisement/postadvertisement.module.ts")).then(function (m) { return m.PostadvertisementPageModule; }); }
     },
     {
         path: 'showfilterdata',
-        loadChildren: function () { return Promise.all(/*! import() | pages-showfilterdata-showfilterdata-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("pages-showfilterdata-showfilterdata-module")]).then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-showfilterdata-showfilterdata-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-showfilterdata-showfilterdata-module")]).then(__webpack_require__.bind(null, /*! ./pages/showfilterdata/showfilterdata.module */ "./src/app/pages/showfilterdata/showfilterdata.module.ts")).then(function (m) { return m.ShowfilterdataPageModule; }); }
     },
     {
         path: 'nextadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-nextadvertisement-nextadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("pages-nextadvertisement-nextadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/nextadvertisement/nextadvertisement.module */ "./src/app/pages/nextadvertisement/nextadvertisement.module.ts")).then(function (m) { return m.NextadvertisementPageModule; }); }
     },
     {
         path: 'secondpageadvertisement',
-        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-secondpageadvertisement-secondpageadvertisement-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-secondpageadvertisement-secondpageadvertisement-module")]).then(__webpack_require__.bind(null, /*! ./pages/secondpageadvertisement/secondpageadvertisement.module */ "./src/app/pages/secondpageadvertisement/secondpageadvertisement.module.ts")).then(function (m) { return m.SecondpageadvertisementPageModule; }); }
     },
     {
         path: 'home',
-        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
     },
     {
         path: 'favourite',
-        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-favourite-favourite-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("pages-favourite-favourite-module")]).then(__webpack_require__.bind(null, /*! ./pages/favourite/favourite.module */ "./src/app/pages/favourite/favourite.module.ts")).then(function (m) { return m.FavouritePageModule; }); }
     },
     {
         path: 'profile',
-        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-profile-profile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-profile-profile-module")]).then(__webpack_require__.bind(null, /*! ./pages/profile/profile.module */ "./src/app/pages/profile/profile.module.ts")).then(function (m) { return m.ProfilePageModule; }); }
     },
     {
         path: 'advertisementdetail',
-        loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-advertisementdetail-advertisementdetail-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-advertisementdetail-advertisementdetail-module")]).then(__webpack_require__.bind(null, /*! ./pages/advertisementdetail/advertisementdetail.module */ "./src/app/pages/advertisementdetail/advertisementdetail.module.ts")).then(function (m) { return m.AdvertisementdetailPageModule; }); }
     },
     {
         path: 'orderhistory',
@@ -792,7 +792,7 @@ var routes = [
     },
     {
         path: 'updateprofile',
-        loadChildren: function () { return Promise.all(/*! import() | pages-updateprofile-updateprofile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("pages-updateprofile-updateprofile-module")]).then(__webpack_require__.bind(null, /*! ./pages/updateprofile/updateprofile.module */ "./src/app/pages/updateprofile/updateprofile.module.ts")).then(function (m) { return m.UpdateprofilePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-updateprofile-updateprofile-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("pages-updateprofile-updateprofile-module")]).then(__webpack_require__.bind(null, /*! ./pages/updateprofile/updateprofile.module */ "./src/app/pages/updateprofile/updateprofile.module.ts")).then(function (m) { return m.UpdateprofilePageModule; }); }
     },
     {
         path: 'checkinternet',
@@ -803,8 +803,12 @@ var routes = [
         loadChildren: function () { return __webpack_require__.e(/*! import() | pages-notificationlist-notificationlist-module */ "pages-notificationlist-notificationlist-module").then(__webpack_require__.bind(null, /*! ./pages/notificationlist/notificationlist.module */ "./src/app/pages/notificationlist/notificationlist.module.ts")).then(function (m) { return m.NotificationlistPageModule; }); }
     },
     {
+        path: 'notificationlistall',
+        loadChildren: function () { return Promise.all(/*! import() | pages-notificationlistall-notificationlistall-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-notificationlistall-notificationlistall-module")]).then(__webpack_require__.bind(null, /*! ./pages/notificationlistall/notificationlistall.module */ "./src/app/pages/notificationlistall/notificationlistall.module.ts")).then(function (m) { return m.NotificationListAllPageModule; }); }
+    },
+    {
         path: 'newadvertisementform',
-        loadChildren: function () { return Promise.all(/*! import() | pages-newadvertisementform-newadvertisementform-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-newadvertisementform-newadvertisementform-module")]).then(__webpack_require__.bind(null, /*! ./pages/newadvertisementform/newadvertisementform.module */ "./src/app/pages/newadvertisementform/newadvertisementform.module.ts")).then(function (m) { return m.NewadvertisementformPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-newadvertisementform-newadvertisementform-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("default~pages-newadvertisementform-newadvertisementform-module~pages-secondpageadvertisement-secondp~de5ad748"), __webpack_require__.e("pages-newadvertisementform-newadvertisementform-module")]).then(__webpack_require__.bind(null, /*! ./pages/newadvertisementform/newadvertisementform.module */ "./src/app/pages/newadvertisementform/newadvertisementform.module.ts")).then(function (m) { return m.NewadvertisementformPageModule; }); }
     },
     {
         path: 'razorpay',
@@ -812,7 +816,7 @@ var routes = [
     },
     {
         path: 'paymentlogs',
-        loadChildren: function () { return Promise.all(/*! import() | pages-paymentlogs-paymentlogs-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~50c8b009"), __webpack_require__.e("common"), __webpack_require__.e("pages-paymentlogs-paymentlogs-module")]).then(__webpack_require__.bind(null, /*! ./pages/paymentlogs/paymentlogs.module */ "./src/app/pages/paymentlogs/paymentlogs.module.ts")).then(function (m) { return m.PaymentlogsPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-paymentlogs-paymentlogs-module */[__webpack_require__.e("default~home-home-module~pages-advertisementdetail-advertisementdetail-module~pages-chatlist-chatlis~02ad5a64"), __webpack_require__.e("common"), __webpack_require__.e("pages-paymentlogs-paymentlogs-module")]).then(__webpack_require__.bind(null, /*! ./pages/paymentlogs/paymentlogs.module */ "./src/app/pages/paymentlogs/paymentlogs.module.ts")).then(function (m) { return m.PaymentlogsPageModule; }); }
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -941,11 +945,6 @@ var AppComponent = /** @class */ (function () {
             _this.loginSession();
             _this.fcm.subscribeToTopic('people');
             _this.fcmNotification();
-            // this.localNotifications.on('click').subscribe(notification => {
-            //   console.log('Notification str: ' + JSON.stringify(notification))
-            //   this.router.navigate(['/notification']);
-            //   let json = notification.data
-            // })
             _this.platform.backButton.subscribe(function () {
                 var checkFilterPopup = localStorage.getItem("filterOpen");
                 if (checkFilterPopup == "0" || checkFilterPopup == undefined) {
@@ -1009,8 +1008,49 @@ var AppComponent = /** @class */ (function () {
                     actions: "FCM_PLUGIN_ACTIVITY",
                     data: {
                         landing_page: "notificationlist",
-                        price: "5000"
+                        price: "5000",
+                        type: 1
                     }
+                });
+                _this.localNotifications.on('click').subscribe(function (notification) {
+                    console.log('Notification str: ' + JSON.stringify(notification));
+                    //    let sendId = {
+                    //   "id": match.$args.id,
+                    //   "categoryId": match.$args.categoryId,
+                    //   "status": "category",
+                    //   "adType": 1
+                    // }ss
+                    switch (notification.data.type) {
+                        case 0:
+                            _this.router.navigate(['/home']);
+                            break;
+                        case 1:
+                            //// id is receiver id
+                            //// name is receiver name
+                            //// image is receiver image
+                            var userDetail = {
+                                "name": "Username",
+                                "id": 48,
+                                "image": ''
+                            };
+                            _this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
+                            break;
+                        case 2:
+                            ///// id is advertisement id 
+                            var sendId = {
+                                "id": 189,
+                                "categoryId": 71,
+                                "status": "category",
+                                "adType": 1
+                            };
+                            _this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+                            break;
+                        case 3:
+                            _this.router.navigate(['/chatlist']);
+                            break;
+                    }
+                    // this.router.navigate(['/advertisementdetail']);
+                    // let json = notification.data
                 });
                 console.log("Received in foreground");
             }

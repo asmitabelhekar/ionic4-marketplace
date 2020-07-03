@@ -111,13 +111,7 @@ export class AppComponent {
       this.fcm.subscribeToTopic('people');
       this.fcmNotification();
 
-      // this.localNotifications.on('click').subscribe(notification => {
-      //   console.log('Notification str: ' + JSON.stringify(notification))
-      //   this.router.navigate(['/notification']);
-      //   let json = notification.data
-
-
-      // })
+      
 
       this.platform.backButton.subscribe(() => {
 
@@ -191,9 +185,67 @@ export class AppComponent {
           actions: "FCM_PLUGIN_ACTIVITY",
           data: {
             landing_page: "notificationlist",
-            price: "5000"
+            price: "5000",
+            type:1
           }
         });
+
+
+
+        this.localNotifications.on('click').subscribe(notification => {
+          console.log('Notification str: ' + JSON.stringify(notification))
+          //    let sendId = {
+          //   "id": match.$args.id,
+          //   "categoryId": match.$args.categoryId,
+          //   "status": "category",
+          //   "adType": 1
+          // }ss
+  
+          
+          switch(notification.data.type){
+  
+            case 0:
+              this.router.navigate(['/home']);              
+            break;
+  
+            case 1:
+
+            //// id is receiver id
+            //// name is receiver name
+            //// image is receiver image
+              let userDetail = {
+                "name": "Username",
+                "id": 48,
+                "image": ''
+              }
+              this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
+            break;
+  
+            case 2:
+             
+             ///// id is advertisement id 
+
+              let sendId = {
+                "id": 189,
+                "categoryId": 71,
+                "status": "category",
+                "adType": 1
+              }
+              this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+            break;
+  
+            case 3:
+              this.router.navigate(['/chatlist']);
+            break;
+          }
+  
+          // this.router.navigate(['/advertisementdetail']);
+          // let json = notification.data
+  
+  
+        })
+
+
         console.log("Received in foreground");
 
       };

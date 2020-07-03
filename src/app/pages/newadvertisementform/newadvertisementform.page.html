@@ -60,6 +60,21 @@
 
         </div>
 
+        <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+
+          <mat-form-field fxLayoutAlign="center center" *ngIf="isOtpRequested == 1 " appearance="outline" class="margin-top-css" style="width:40%; height:82px;  ">
+            <mat-label class="floating-label-css">Enter Otp</mat-label>
+            <input matInput type="number" minlength="4" class="text-font-size" maxlength="4" formControlName="otpCtrl"
+              required>
+          </mat-form-field>
+
+          <div fxLayoutAlign="end center" fxFlex="100">
+            <button *ngIf="isOtpRequested == 0 " mat-button  (click)="sendOtp()"  class="buttonClass">Verify Mobile</button>
+            <button *ngIf="isOtpRequested == 1 " mat-button  class="buttonClass">Verify Otp</button>
+          </div>
+
+          </div>
+
 
         <ion-row
           style="border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px">

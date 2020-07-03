@@ -156,6 +156,8 @@ var DetailchatPage = /** @class */ (function () {
         this.detailData = JSON.parse(this.activatedRoute.snapshot.params['userDetail']);
         this.name = this.detailData.name;
         this.id = this.detailData.id;
+        console.log(this.name);
+        console.log("pp " + this.id);
         if (this.detailData.image == null || this.detailData.image == "") {
             this.image = "";
         }

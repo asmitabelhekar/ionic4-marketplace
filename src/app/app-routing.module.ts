@@ -68,6 +68,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/notificationlist/notificationlist.module').then( m => m.NotificationlistPageModule)
   },
   {
+    path: 'notificationlistall',
+    loadChildren: () => import('./pages/notificationlistall/notificationlistall.module').then( m => m.NotificationListAllPageModule)
+  },
+  {
     path: 'newadvertisementform',
     loadChildren: () => import('./pages/newadvertisementform/newadvertisementform.module').then( m => m.NewadvertisementformPageModule)
   },

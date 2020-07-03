@@ -114,6 +114,7 @@ export class NewadvertisementformPage implements OnInit {
 
   getStartDateForUpdateBanner: any;
   getEndDateForUpdateBanner: any;
+  isOtpRequested = 0;
 
   genderArray = [
     {
@@ -197,6 +198,25 @@ export class NewadvertisementformPage implements OnInit {
         this.countryCode = json;
         console.log(this.data);
       });
+
+
+  }
+
+  sendOtp(){
+
+    this.isOtpRequested = 1;
+
+    let url = "http://sms.abpss.us/api/sendhttp.php?authkey=MTM2ZGRmMGYyZjE&mobiles=892807933&message=Welcome to HolyHub.Your otp is 1234&sender=ABPSYS&type=1&route=2";
+    this.apiCall.get(url).subscribe(MyResponse => {
+
+      console.log("OTP",""+JSON.stringify(MyResponse));
+
+    });
+
+
+
+
+    // 
 
 
   }
@@ -405,6 +425,7 @@ export class NewadvertisementformPage implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       emailCtrl: ['', Validators.required],
       mobileCtrl: ['', Validators.required],
+      otpCtrl: ['', Validators.required],
       countryCodeCtrl: ['91', Validators.required],
       addressCtrl: ['', Validators.required],
       checkRadioButton: [this.checkRadioButton, Validators.required]
