@@ -7,9 +7,9 @@
 
       </ion-col>
       <ion-col size="5" fxLayoutAlign="center center">
-        <label style="color:white; font-size:17px; margin-left: 10px ;margin-top:3px">Holyhub</label>
+        <label style="color:white; font-size:17px; margin-left: 15px ;margin-top:3px">Holyhub</label>
       </ion-col>
-      <ion-col size="2">
+      <ion-col size="2" fxLayoutAlign="center end">
         <img src="{{languageImage}}" [matMenuTriggerFor]="menu" class="languageImg" />
         <!-- <mat-icon [matMenuTriggerFor]="menu"
       style="position: fixed; right:22px;color:white;font-size:20px; bottom : 15px;cursor: pointer;">
@@ -29,7 +29,7 @@
 
         </mat-menu>
       </ion-col>
-      <ion-col size="1" (click)="notifications()"  style="margin-left: 10px" fxLayoutAlign="end end">
+      <ion-col size="1" (click)="notifications()"  style="margin-right: 10px" fxLayoutAlign="end center">
         <!-- <img src="{{languageImage}}" [matMenuTriggerFor]="menu" class="notifImg" /> -->
       <ion-icon class="notifImg"  name="notifications-outline"></ion-icon>
     </ion-col>
@@ -132,7 +132,12 @@
 
             <!-- <div fxFlex="20" fxLayoutAlign="center start"> -->
               <ion-icon class="arrow-icon-css" style="width:25px;height:35px;color:#fb7645;" name="chevron-forward-outline"></ion-icon>
-            <!-- </div> -->
+           
+
+              <!-- <ion-icon class="arrow-icon-css" style="width:25px;height:35px;color:#fb7645;" name="chevron-back-outline"></ion-icon> -->
+           
+           
+              <!-- </div> -->
 
 
         </div>

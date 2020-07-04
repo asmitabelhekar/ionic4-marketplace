@@ -985,6 +985,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.fcm.getToken().then(function (token) {
             console.log("TOKEN: " + token);
+            localStorage.setItem("fcmToken", token);
             // alert("show token:"+token);
         });
         this.fcm.onTokenRefresh().subscribe(function (token) {
@@ -997,19 +998,19 @@ var AppComponent = /** @class */ (function () {
                 console.log("Received in background");
             }
             else {
+                console.log(JSON.stringify(data));
                 _this.localNotifications.schedule({
                     id: 1,
-                    title: "Hello",
-                    text: "Hii",
+                    title: data.title,
+                    text: data.body,
                     foreground: true,
                     sound: "default",
                     trigger: { at: new Date() },
-                    icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+                    icon: 'http://d3lgrseqpnv6xt.cloudfront.net/1593765236250.png',
                     actions: "FCM_PLUGIN_ACTIVITY",
                     data: {
-                        landing_page: "notificationlist",
-                        price: "5000",
-                        type: 1
+                        type: data.type,
+                        details: data.details
                     }
                 });
                 _this.localNotifications.on('click').subscribe(function (notification) {
@@ -1021,19 +1022,22 @@ var AppComponent = /** @class */ (function () {
                     //   "adType": 1
                     // }ss
                     switch (notification.data.type) {
-                        case 0:
-                            _this.router.navigate(['/home']);
+                        case "0":
+                            console.log(notification.data.type);
+                            console.log(notification.data.details);
+                            // let userDetail
+                            // let userDetail = {
+                            //   "name": "Username",
+                            //   "id": 48,
+                            //   "image": ''
+                            // }
+                            _this.router.navigate(['/detailchat', { userDetail: notification.data.details }]);
                             break;
                         case 1:
+                            _this.router.navigate(['/home']);
                             //// id is receiver id
                             //// name is receiver name
                             //// image is receiver image
-                            var userDetail = {
-                                "name": "Username",
-                                "id": 48,
-                                "image": ''
-                            };
-                            _this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
                             break;
                         case 2:
                             ///// id is advertisement id 
@@ -1635,6 +1639,16 @@ var ApiService = /** @class */ (function () {
         var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Content-Type': 'application/json',
+            })
+        };
+        console.log(url);
+        return this.http.get(url, httpOptions);
+    };
+    ApiService.prototype.getUrl = function (url) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            // 'Content-Type':  'application/json',
+            // 'Authorization':this.auth_token
             })
         };
         console.log(url);

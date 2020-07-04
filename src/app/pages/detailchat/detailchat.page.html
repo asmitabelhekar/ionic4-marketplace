@@ -34,7 +34,7 @@
             <!-- <ion-card-header> -->
               <ion-card-title><label style="font-size: 13px;">{{item.message}}</label></ion-card-title>
               
-              <ion-card-title style="align-self: flex-end;align-content: flex-end;"> <label style="font-size: 11px;align-content: flex-end;align-self:end;">{{item.created}}</label></ion-card-title>
+              <ion-card-title fxLayoutAlign="end end" > <label style="font-size: 11px;align-content: flex-end;align-self:end;">{{item.created}}</label></ion-card-title>
              
             <!-- </ion-card-header> -->
           
@@ -52,8 +52,10 @@
         <div fxLayout="column" fxLayoutAlign="end end" *ngIf="item.senderId == userId " >
           <ion-card
             style="border-radius:7px;width:auto;min-width:40%; max-width: 70%;margin-top:8px; margin-right:13px; padding:8px; background-color: #fe4f14;color:white">
-            <label style="font-size: 13px;">{{item.message}}</label>
-            <label style="font-size: 13px;">{{item.created}}</label>
+            <ion-card-title><label style="font-size: 13px;color: white;">{{item.message}}</label></ion-card-title>
+              
+            <ion-card-title fxLayoutAlign="end end" style="color: white;"> <label style="font-size: 11px;align-content: flex-end;align-self:end;">{{item.created}}</label></ion-card-title>
+  
           </ion-card>
         </div>
 

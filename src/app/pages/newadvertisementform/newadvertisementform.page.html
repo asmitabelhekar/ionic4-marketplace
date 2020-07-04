@@ -40,41 +40,7 @@
             pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
         </mat-form-field>
 
-        <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
-          <mat-form-field class="margin-top-css" style="width:25%; height:82px; margin-right:10px; "
-            appearance="outline">
-            <mat-label class="floating-label-css">Select Code</mat-label>
-            <mat-select name="type" formControlName="countryCodeCtrl" style="font-size:13px;"
-              (selectionChange)="selectCountryCode(selectedCode)" class="filter-select" [(value)]="selectedCode">
-              <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
-                +{{code.dial_code}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="margin-top-css" style="width:74%; height:82px; ">
-            <mat-label class="floating-label-css">Mobile</mat-label>
-            <input matInput type="tel" minlength="10" class="text-font-size" maxlength="10" formControlName="mobileCtrl"
-              required>
-          </mat-form-field>
-
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
-
-          <mat-form-field fxLayoutAlign="center center" *ngIf="isOtpRequested == 1 " appearance="outline" class="margin-top-css" style="width:40%; height:82px;  ">
-            <mat-label class="floating-label-css">Enter Otp</mat-label>
-            <input matInput type="number" minlength="4" class="text-font-size" maxlength="4" formControlName="otpCtrl"
-              required>
-          </mat-form-field>
-
-          <div fxLayoutAlign="end center" fxFlex="100">
-            <button *ngIf="isOtpRequested == 0 " mat-button  (click)="sendOtp()"  class="buttonClass">Verify Mobile</button>
-            <button *ngIf="isOtpRequested == 1 " mat-button  class="buttonClass">Verify Otp</button>
-          </div>
-
-          </div>
-
+      
 
         <ion-row
           style="border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px">
@@ -85,18 +51,13 @@
 
           <ion-col size="8" fxLayoutAlign="center center">
             <ion-radio-group (ionChange)="radioGroupChange($event)" formControlName="checkRadioButton">
-
               <div fxLayout="row" fxLayoutGap="10px">
                 <div *ngFor="let item of genderArray" fxLayoutAlign="center center">
                   <ion-radio value="{{item.value}}"></ion-radio>
                   <ion-label fxLayoutAlign="center center" class="floating-label-css" style="margin-left:10px">
                     {{item.name}}</ion-label>
                 </div>
-
-
-
               </div>
-
             </ion-radio-group>
 
 
@@ -114,10 +75,64 @@
             #placesRef="ngx-places" name="city" required (onAddressChange)="handleAddressChange($event)">
         </mat-form-field>
 
+
+        <div fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+          <mat-form-field class="margin-top-css" style="width:25%; height:82px; margin-right:10px; "
+            appearance="outline">
+            <mat-label class="floating-label-css">Select Code</mat-label>
+            <mat-select name="type" formControlName="countryCodeCtrl" style="font-size:13px;"
+              (selectionChange)="selectCountryCode(selectedCode)" class="filter-select" [(value)]="selectedCode">
+              <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
+                +{{code.dial_code}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="margin-top-css" style="width:74%; height:82px; ">
+            <mat-label class="floating-label-css">Mobile</mat-label>
+            <input *ngIf="isOtpRequested == 0 "matInput type="tel" minlength="10" class="text-font-size" maxlength="10" formControlName="mobileCtrl"
+              required >
+              <input  *ngIf="isOtpRequested == 1 || isOtpVerified == 1 " matInput type="tel" minlength="10" class="text-font-size" maxlength="10" formControlName="mobileCtrl"
+              required readonly>
+          </mat-form-field>
+
+        </div>
+
+        <div fxLayout="row" *ngIf="isOtpVerified == 0 " fxLayoutAlign="center center" style="width:100%;">
+
+        
+          <mat-form-field  *ngIf="isOtpRequested == 1 " appearance="outline" class="margin-top-css" style="width:60%; height:82px;margin-right:10px;   ">
+            <mat-label class="floating-label-css">Enter Otp</mat-label>
+            <input matInput type="number" class="text-font-size" minlength="4" maxlength="4" formControlName="otpCtrl"
+              required>
+          </mat-form-field>
+
+          <div   style="width:39%;margin-bottom:5px;margin-right: 10px;">
+            <button *ngIf="isOtpRequested == 0 "  mat-button  (click)="sendOtp()"  class="buttonClass">Verify Mobile</button>
+            <button *ngIf="isOtpRequested == 1 " mat-button (click)="verifyOtp()"  class="buttonClass">Verify Otp</button>
+          </div>
+
+       
+
+        </div>
+
+        <div *ngIf="isOtpRequested == 1 && isOtpVerified == 0"  fxLayout="row" fxLayoutAlign="center center" style="width:100%;">
+
+          <label class="floating-label-css-underline"  (click)="editMobile()" >
+            <u>Edit Mobile</u> </label>
+
+            <label class="floating-label-css-underline1" (click)="sendOtp()" >
+              <u>Resend Otp</u> </label>
+          </div>
+
+
+
+
         <div fxFlex="100" fxLayoutGap="15px" fxLayoutAlign="start start">
           <button mat-button class="buttonBackClass" matStepperPrevious>Back</button>
-          <button mat-button class="buttonClass" matStepperNext>Next</button>
+          <button *ngIf="isOtpVerified ==1" mat-button class="buttonClass" matStepperNext>Next</button>
         </div>
+        
       </form>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">

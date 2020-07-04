@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
   isTracking: any;
   currentLat: any;
   currentLong: any;
+  
 
   ngOnInit() {
     // this.loader.blockingLoaderAuth.subscribe(event => {
@@ -299,6 +300,14 @@ export class HomePage implements OnInit {
   }
 
   scrollHorizontal(){
+
+    // let  p = this.categoryArray.length -4;
+
+    // let n = p * 60;
+
+    
+        
+
     document.getElementById('container1').scrollLeft += 30; 
   }
 

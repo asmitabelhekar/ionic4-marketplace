@@ -65,6 +65,22 @@ public postAuth(url,data) {
   return this.http.get(url,httpOptions);
 }
 
+
+public getUrl(url) {
+  
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      // 'Content-Type':  'application/json',
+      // 'Authorization':this.auth_token
+    })
+  }
+  console.log(url);
+  return this.http.get(url,httpOptions);
+}
+
+
+
 public getAd(url) {
   let auth_token = localStorage.getItem("authToken");
 

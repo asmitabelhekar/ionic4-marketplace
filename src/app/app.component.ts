@@ -161,10 +161,12 @@ export class AppComponent {
   fcmNotification() {
     this.fcm.getToken().then(token => {
       console.log("TOKEN: " + token)
+      localStorage.setItem("fcmToken", token);
       // alert("show token:"+token);
     });
 
     this.fcm.onTokenRefresh().subscribe(token => {
+     
       console.log(token);
     });
     this.fcm.onNotification().subscribe(data => {
@@ -173,20 +175,19 @@ export class AppComponent {
         this.router.navigate(['notificationlist']);
         console.log("Received in background");
       } else {
-
+        console.log(JSON.stringify(data));
         this.localNotifications.schedule({
           id: 1,
-          title: "Hello",
-          text: "Hii",
+          title: data.title,
+          text: data.body,
           foreground: true,
           sound: "default",
           trigger: { at: new Date() },
-          icon: 'https://www.keralanikah.com/assets/assisted/images/blog/googl_files/big-facebook-icon.jpg',
+          icon: 'http://d3lgrseqpnv6xt.cloudfront.net/1593765236250.png',
           actions: "FCM_PLUGIN_ACTIVITY",
           data: {
-            landing_page: "notificationlist",
-            price: "5000",
-            type:1
+            type:data.type,
+            details:data.details
           }
         });
 
@@ -204,22 +205,30 @@ export class AppComponent {
           
           switch(notification.data.type){
   
-            case 0:
-              this.router.navigate(['/home']);              
+            case "0":
+
+            console.log(notification.data.type);
+
+            console.log(notification.data.details);
+
+            // let userDetail
+
+              // let userDetail = {
+              //   "name": "Username",
+              //   "id": 48,
+              //   "image": ''
+              // }
+              this.router.navigate(['/detailchat', { userDetail: notification.data.details }]);
+
+                        
             break;
   
             case 1:
-
+              this.router.navigate(['/home']);   
             //// id is receiver id
             //// name is receiver name
             //// image is receiver image
-              let userDetail = {
-                "name": "Username",
-                "id": 48,
-                "image": ''
-              }
-              this.router.navigate(['/detailchat', { userDetail: JSON.stringify(userDetail) }]);
-            break;
+             break;
   
             case 2:
              

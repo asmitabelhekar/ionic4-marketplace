@@ -150,13 +150,21 @@ export class LoginPage implements OnInit {
     // }
 
     
-send_date['name'] = "Asmita Belhekar";
+send_date['name'] = "Akshay Madake";
 send_date['userRole'] = 0;
-send_date['image'] = "https://lh3.googleusercontent.com/a-/AOh14GgUQz70Tw0LjfLiFy0I7C-6RmtV2mdG5j9PEIX9Ww";
-send_date['email'] = "asmita.belhekar@gmail.com";
-send_date['gmailId'] = "110231677548942846776";
+send_date['image'] = "http://d3lgrseqpnv6xt.cloudfront.net/1593068644973.jpg";
+send_date['email'] = "akshaymadake1@gmail.com";
+send_date['gmailId'] = "108308451660503119865";
 
-// send_date['token'] =localStorage.getItem("fcmToken");
+// send_date['name'] = "Asmita Belhekar";
+// send_date['userRole'] = 0;
+// send_date['image'] = "https://lh3.googleusercontent.com/a-/AOh14GgUQz70Tw0LjfLiFy0I7C-6RmtV2mdG5j9PEIX9Ww";
+// send_date['email'] = "asmita.belhekar@gmail.com";
+// send_date['gmailId'] = "110231677548942846776";
+
+
+
+send_date['fcmToken'] =localStorage.getItem("fcmToken");
 
 console.log("my token",""+JSON.stringify(send_date));
    

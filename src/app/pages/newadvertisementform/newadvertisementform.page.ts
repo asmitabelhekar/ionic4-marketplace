@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 
 declare var RazorpayCheckout: any;
@@ -115,6 +116,8 @@ export class NewadvertisementformPage implements OnInit {
   getStartDateForUpdateBanner: any;
   getEndDateForUpdateBanner: any;
   isOtpRequested = 0;
+  isOtpVerified=0;
+  generatedOtp:any;
 
   genderArray = [
     {
@@ -188,6 +191,7 @@ export class NewadvertisementformPage implements OnInit {
     public router: Router,
     public changeDetectorRef: ChangeDetectorRef,
     public toast: ToastController,
+    public http : HttpClient,
     public apiCall: ApiService) {
     this.read_data();
   }
@@ -203,23 +207,86 @@ export class NewadvertisementformPage implements OnInit {
   }
 
   sendOtp(){
+    
 
-    this.isOtpRequested = 1;
+    // console.log("form data"+ this.secondFormData);
+    // this.isOtpRequested = 1;
 
-    let url = "http://sms.abpss.us/api/sendhttp.php?authkey=MTM2ZGRmMGYyZjE&mobiles=892807933&message=Welcome to HolyHub.Your otp is 1234&sender=ABPSYS&type=1&route=2";
-    this.apiCall.get(url).subscribe(MyResponse => {
+     let mobileNo = this.secondFormGroup.value.mobileCtrl;
+    // //  let mobileNo = "8928097933";
 
-      console.log("OTP",""+JSON.stringify(MyResponse));
+     console.log(mobileNo);
+     console.log("length "+mobileNo.length);
 
-    });
+      if(mobileNo.length < 10){
+        this.presentToast("Please enter valid mobile");
+       
+       }else{
+        // this.loader.showBlockingLoaderAuth();
+        this.generatedOtp = Math. floor(1000 + Math. random() * 9000); 
+        this.isOtpRequested = 1;
+        console.log(this.generatedOtp);
+
+        let url = "http://sms.abpss.us/api/sendhttp.php?authkey=MTM2ZGRmMGYyZjE&mobiles="+mobileNo+"&message=Welcome to HolyHub.Your otp is "+this.generatedOtp+"&sender=ABPSYS&type=1&route=2";
+      
+        this.apiCall.getUrl(url).subscribe(MyResponse => {
+          this.loader.hideBlockingLoaderAuth();
+          console.log("checking response",""+JSON.stringify(MyResponse));
+          this.isOtpRequested = 1;
+        },
+        error => {
+          this.loader.hideBlockingLoaderAuth();
+        })
+
+       }
+      }
+
+      verifyOtp(){
 
 
+        if(this.secondFormGroup.value.otpCtrl==this.generatedOtp){
+
+          this.isOtpVerified =1;
+
+          this.presentToast("Mobile verified successfully");
+
+        }else{
+
+           this.presentToast("Please enter correct otp");
+
+        }
 
 
-    // 
+      }
 
+      editMobile(){
 
-  }
+        console.log("in edit mobile");
+        this.isOtpRequested = 0;
+
+      }
+
+     
+
+  // async getData() {
+  //   try {
+  //     let url = "http://sms.abpss.us/api/sendhttp.php?authkey=MTM2ZGRmMGYyZjE&mobiles=892807933&message=Welcome to HolyHub.Your otp is 1234&sender=ABPSYS&type=1&route=2";
+
+  //     const params = {};
+  //     const headers = {};
+
+  //     const response = await this.http.get(url, params, headers);
+
+  //     console.log(response.status);
+  //     console.log(JSON.parse(response.data)); // JSON data returned by server
+  //     console.log(response.headers);
+
+  //   } catch (error) {
+  //     console.error(error.status);
+  //     console.error(error.error); // Error message as string
+  //     console.error(error.headers);
+  //   }
+  // }
 
   clearImage(index){
 
@@ -291,6 +358,7 @@ export class NewadvertisementformPage implements OnInit {
 
       this.cityName = this.advertisementObject.address;
 
+      console.log("form initializing");
       this.secondFormGroup = this.formBuilder.group({
         emailCtrl: [this.advertisementObject.email, Validators.required],
         mobileCtrl: [this.advertisementObject.mobile, Validators.required],
@@ -298,6 +366,7 @@ export class NewadvertisementformPage implements OnInit {
         addressCtrl: [this.advertisementObject.address, Validators.required],
         checkRadioButton: [this.checkRadioButton, Validators.required]
       });
+      
 
       this.categoryId = this.advertisementObject.categoryId;
       this.getSubCategory(this.categoryId);
@@ -569,7 +638,7 @@ export class NewadvertisementformPage implements OnInit {
   }
 
   form2() {
-    console.log(this.secondFormGroup.value);
+    console.log("form 2"+this.secondFormGroup);
     this.secondFormData = this.secondFormGroup.value;
   }
 

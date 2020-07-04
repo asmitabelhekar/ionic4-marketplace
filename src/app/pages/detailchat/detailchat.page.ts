@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/service/apiservice/api.service';
 import { LoaderService } from 'src/app/service/loaderservice/loader.service';
 import { NetworkService } from 'src/app/service/network/network.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController,IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-detailchat',
@@ -13,7 +13,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class DetailchatPage implements OnInit {
 
-
+  @ViewChild(IonContent, {read: IonContent, static: false}) myContent: IonContent;
   detailData: any;
   chatModel: any = {};
   chatArray = [];
@@ -31,6 +31,13 @@ export class DetailchatPage implements OnInit {
     public loader: LoaderService,
     public toast: ToastController
   ) { }
+
+
+  ScrollToBottom(){
+    setTimeout(() => {
+      this.myContent.scrollToBottom(300);
+   }, 1000);
+  }
 
   ngOnInit() {
 
@@ -52,7 +59,16 @@ export class DetailchatPage implements OnInit {
 
   ionViewWillEnter() {
     this.getChatMassages();
+    
   }
+
+
+  ionViewDidLoad(){
+    this.ScrollToBottom();
+  }
+ 
+
+
 
   goBackword() {
     window.history.back();
@@ -114,6 +130,7 @@ export class DetailchatPage implements OnInit {
 
       this.loader.hideBlockingLoaderAuth();
       this.noInternet = '0';
+      
     },
       error => {
         this.noInternet = '1';

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "574132364137",
-    "firebase_url": "https://holyhub-baa28.firebaseio.com",
-    "project_id": "holyhub-baa28",
-    "storage_bucket": "holyhub-baa28.appspot.com"
+    "project_number": "584990804616",
+    "firebase_url": "https://holyhub-94aca.firebaseio.com",
+    "project_id": "holyhub-94aca",
+    "storage_bucket": "holyhub-94aca.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:574132364137:android:cfa54b743a0c3db44613f8",
+        "mobilesdk_app_id": "1:584990804616:android:0c3995e905340738b2ed3d",
         "android_client_info": {
           "package_name": "com.holyhub.v1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "574132364137-b6kn4882tue41gv4tafpfpqtift8o3rh.apps.googleusercontent.com",
+          "client_id": "584990804616-psepfin11b4nueki0078agf5280jstoh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDXMM7HfLR8GbT01JiyQ__VR6y6mOivQ1E"
+          "current_key": "AIzaSyAN0qR7JVZNmUABjpKu11sZbhu0-MkMlfo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "574132364137-b6kn4882tue41gv4tafpfpqtift8o3rh.apps.googleusercontent.com",
+              "client_id": "584990804616-psepfin11b4nueki0078agf5280jstoh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
