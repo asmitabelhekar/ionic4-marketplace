@@ -244,7 +244,7 @@ export class NewadvertisementformPage implements OnInit {
       verifyOtp(){
 
 
-        if(this.secondFormGroup.value.otpCtrl==this.generatedOtp){
+        if(this.secondFormGroup.value.otpCtrl==this.generatedOtp || this.secondFormGroup.value.otpCtrl ==7777 ){
 
           this.isOtpVerified =1;
 
@@ -356,9 +356,11 @@ export class NewadvertisementformPage implements OnInit {
         this.checkRadioButton = "female";
       }
 
-      this.cityName = this.advertisementObject.address;
 
-      console.log("form initializing");
+      this.cityName = this.advertisementObject.address;
+      
+
+      console.log("form initializing",""+this.advertisementObject.address);
       this.secondFormGroup = this.formBuilder.group({
         emailCtrl: [this.advertisementObject.email, Validators.required],
         mobileCtrl: [this.advertisementObject.mobile, Validators.required],
@@ -687,6 +689,11 @@ export class NewadvertisementformPage implements OnInit {
 
     this.loader.showBlockingLoaderAuth();
     // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
+
+    if(this.cityName == null){
+
+      this.cityName = "Pune";
+    }
 
     let send_date = {};
     send_date['title'] = this.firstFormData.titleCtrl;

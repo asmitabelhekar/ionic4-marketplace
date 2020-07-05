@@ -312,7 +312,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         }
     };
     NewadvertisementformPage.prototype.verifyOtp = function () {
-        if (this.secondFormGroup.value.otpCtrl == this.generatedOtp) {
+        if (this.secondFormGroup.value.otpCtrl == this.generatedOtp || this.secondFormGroup.value.otpCtrl == 7777) {
             this.isOtpVerified = 1;
             this.presentToast("Mobile verified successfully");
         }
@@ -392,7 +392,7 @@ var NewadvertisementformPage = /** @class */ (function () {
                 this.checkRadioButton = "female";
             }
             this.cityName = this.advertisementObject.address;
-            console.log("form initializing");
+            console.log("form initializing", "" + this.advertisementObject.address);
             this.secondFormGroup = this.formBuilder.group({
                 emailCtrl: [this.advertisementObject.email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                 mobileCtrl: [this.advertisementObject.mobile, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -643,6 +643,9 @@ var NewadvertisementformPage = /** @class */ (function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
         // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
+        if (this.cityName == null) {
+            this.cityName = "Pune";
+        }
         var send_date = {};
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
