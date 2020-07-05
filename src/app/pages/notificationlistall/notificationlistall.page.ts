@@ -39,10 +39,33 @@ export class NotificationListAllPage implements OnInit {
     window.history.back();
   }
 
-  gotoPerticularNotification(){
+  gotoPerticularNotification(item){
 
+ 
 
-    console.log("here");
+    console.log("here",""+JSON.stringify(item));
+
+    switch(item.typeOfNotification){
+  
+      case 0:
+        this.router.navigate(['/detailchat', { userDetail: JSON.stringify(item.details) }]);                        
+      break;
+
+      case 1:
+        this.router.navigate(['/home']);   
+       break;
+
+      case 2:
+         this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(item.details) }]);
+      break;
+
+      case 3:
+        this.router.navigate(['/chatlist']);
+      break;
+
+      default:
+        this.router.navigate(['/home']);  
+    }
 
   }
 

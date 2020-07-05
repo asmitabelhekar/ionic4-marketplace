@@ -191,72 +191,30 @@ export class AppComponent {
           }
         });
 
-
-
         this.localNotifications.on('click').subscribe(notification => {
-          console.log('Notification str: ' + JSON.stringify(notification))
-          //    let sendId = {
-          //   "id": match.$args.id,
-          //   "categoryId": match.$args.categoryId,
-          //   "status": "category",
-          //   "adType": 1
-          // }ss
-  
-          
+          console.log('Notification str: ' + JSON.stringify(notification))   
           switch(notification.data.type){
   
             case "0":
-
-            console.log(notification.data.type);
-
-            console.log(notification.data.details);
-
-            // let userDetail
-
-              // let userDetail = {
-              //   "name": "Username",
-              //   "id": 48,
-              //   "image": ''
-              // }
-              this.router.navigate(['/detailchat', { userDetail: notification.data.details }]);
-
-                        
+              this.router.navigate(['/detailchat', { userDetail: notification.data.details }]);                        
             break;
   
             case "1":
               this.router.navigate(['/home']);   
-            //// id is receiver id
-            //// name is receiver name
-            //// image is receiver image
              break;
   
             case "2":
-             
-             ///// id is advertisement id 
-
-              // let sendId = {
-              //   "id": 189,
-              //   "categoryId": 71,
-              //   "status": "category",
-              //   "adType": 1
-              // }
-              this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(notification.data.details) }]);
+               this.router.navigate(['/advertisementdetail', { sendId: notification.data.details }]);
             break;
   
             case "3":
               this.router.navigate(['/chatlist']);
             break;
+
+            default:
+              this.router.navigate(['/home']);  
           }
-  
-          // this.router.navigate(['/advertisementdetail']);
-          // let json = notification.data
-  
-  
         })
-
-
-        console.log("Received in foreground");
-
       };
     });
   }

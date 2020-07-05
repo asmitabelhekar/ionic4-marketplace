@@ -35,7 +35,7 @@
 
 <div *ngIf="logsCount > 0 " fxLayout="column" fxFlex="100">
 
-  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" (click)="gotoPerticularNotification()" fxFlex="100" style="padding-left:15px;padding-right:15px;padding-top:10px;padding-bottom:10px;border-radius:8px;margin-top:10px;">
+  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" (click)="gotoPerticularNotification(item)" fxFlex="100" style="padding-left:15px;padding-right:15px;padding-top:10px;padding-bottom:10px;border-radius:8px;margin-top:10px;">
     <div fxLayout="row" fxFlex="100" style="margin:3px;">
       <div fxFlex="90">
         <label class="title-css">{{item.title}}</label>
