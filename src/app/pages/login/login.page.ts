@@ -9,6 +9,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { FacebookModule, FacebookService, LoginResponse, InitParams } from 'ngx-facebook';
 import { JsonPipe } from '@angular/common';
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -37,6 +39,7 @@ export class LoginPage implements OnInit {
     public loadingController: LoadingController,
     private platform: Platform,
     private routerOutlet: IonRouterOutlet,
+    public fcm: FCM,
     public apiCall: ApiService) {
 
       this.platform = platform;
@@ -121,9 +124,18 @@ export class LoginPage implements OnInit {
    
     }
 
+    ionViewWillEnter(){
+      this.fcm.getToken().then(token => {
+        console.log("TOKEN: " + token)
+        localStorage.setItem("fcmToken", token);
+        // alert("show token:"+token);
+      });
+    }
+
 
 
   login() {
+  
 
     this.loader.showBlockingLoaderAuth();
     let send_date = {};
