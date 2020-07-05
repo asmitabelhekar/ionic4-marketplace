@@ -20,26 +20,39 @@
 </ion-header>
 <ion-content>
 
+
+
+<!-- "id": 75,
+"typeOfNotification": 1,
+"title": "string",
+"description": "Create Admin Notification Entry",
+"details": {},
+"isActive": 1,
+"isDeleted": 0,
+"created": "2020-07-04T14:57:41.395Z",
+"modified": "2020-07-04T14:57:41.395Z",
+"userId": 35 -->
+
 <div *ngIf="logsCount > 0 " fxLayout="column" fxFlex="100">
 
-  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" fxFlex="100" style="padding-left:15px;padding-right:15px;padding-top:10px;padding-bottom:10px;border-radius:8px;margin-top:10px;">
+  <ion-card *ngFor="let item of paymentLogsArray" fxLayout="column" (click)="gotoPerticularNotification()" fxFlex="100" style="padding-left:15px;padding-right:15px;padding-top:10px;padding-bottom:10px;border-radius:8px;margin-top:10px;">
     <div fxLayout="row" fxFlex="100" style="margin:3px;">
       <div fxFlex="90">
         <label class="title-css">{{item.title}}</label>
       </div>
-      <div fxFlex="10" fxLayoutAlign="end end">
+      <!-- <div fxFlex="10" fxLayoutAlign="end end">
         <label class="amount-css">${{item.amount}}</label>
-      </div>
+      </div> -->
     </div>
 
     <div fxLayout="row" fxFlex="100" style="margin:3px;">
       <div fxFlex="80">
-        <label class="paymentid-css">{{item.paymentId}}</label>
+        <label class="paymentid-css">{{item.description}}</label>
       </div>
-      <div fxFlex="20" fxLayoutAlign="end end">
+      <!-- <div fxFlex="20" fxLayoutAlign="end end">
         <label *ngIf="item.isSuccess == 0 " style="color:green;font-size:12px;">Success</label>
         <label *ngIf="item.isSuccess == 1 " style="color:red;font-size:13px;">Fail</label>
-      </div>
+      </div> -->
     </div>
 
 

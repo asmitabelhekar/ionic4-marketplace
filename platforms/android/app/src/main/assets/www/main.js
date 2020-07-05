@@ -1033,23 +1033,23 @@ var AppComponent = /** @class */ (function () {
                             // }
                             _this.router.navigate(['/detailchat', { userDetail: notification.data.details }]);
                             break;
-                        case 1:
+                        case "1":
                             _this.router.navigate(['/home']);
                             //// id is receiver id
                             //// name is receiver name
                             //// image is receiver image
                             break;
-                        case 2:
+                        case "2":
                             ///// id is advertisement id 
-                            var sendId = {
-                                "id": 189,
-                                "categoryId": 71,
-                                "status": "category",
-                                "adType": 1
-                            };
-                            _this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
+                            // let sendId = {
+                            //   "id": 189,
+                            //   "categoryId": 71,
+                            //   "status": "category",
+                            //   "adType": 1
+                            // }
+                            _this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(notification.data.details) }]);
                             break;
-                        case 3:
+                        case "3":
                             _this.router.navigate(['/chatlist']);
                             break;
                     }

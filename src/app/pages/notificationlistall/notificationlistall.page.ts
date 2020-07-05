@@ -39,6 +39,13 @@ export class NotificationListAllPage implements OnInit {
     window.history.back();
   }
 
+  gotoPerticularNotification(){
+
+
+    console.log("here");
+
+  }
+
 
   getPaymentLogs() {
     // this.loader.showBlockingLoaderAuth();
@@ -58,12 +65,20 @@ export class NotificationListAllPage implements OnInit {
         "userId": this.getData.userId
       }
     }
+
+
+    // ​userid​/{id}​/notification​/list
     
-    let url = environment.base_url + environment.version + "payment-gateway-logs?filters=" + JSON.stringify(filterObj);
+    // let url = environment.base_url + environment.version + "payment-gateway-logs?filters=" + JSON.stringify(filterObj);
+    let userId= localStorage.getItem("userId");
+    // let url = environment.base_url + environment.version + "userid​/"+userId​+"/notification​/list";
+    // http://3.6.135.154:17700/api/v1.0.0/userid/35/notification/list?page=0&size=10&filters=%7B%7D
+    // console.log(url);
+    let url = "http://3.6.135.154:17700/api/v1.0.0/userid/"+userId+"/notification/list";
     this.apiCall.get(url).subscribe(MyResponse => {
       this.paymentLogsArray = MyResponse['result']['list'];
       this.logsCount = MyResponse['result']['count'];
-      console.log("show payment logs:" + JSON.stringify(this.paymentLogsArray));
+      console.log("show payment logs:" + JSON.stringify(MyResponse));
       // this.loader.hideBlockingLoaderAuth();
     },
       error => {
@@ -73,3 +88,4 @@ export class NotificationListAllPage implements OnInit {
       })
   }
 }
+
