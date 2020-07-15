@@ -57,10 +57,10 @@
   <div style="background-color:white" class="cl_margin100">
 
     <div>
-      <ion-slides [options]="slideOptions" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)"
-        class="half-black">
-        <ion-slide *ngFor="let item of bannerArray"
-          (click)="showAdvertisementDetail(item.categoryId, item.advertisementId, item.isBookmarked)">
+      <ion-slides [options]="slideOptions"  (ionSlideDidChange)="onSlideChanged(slider)"   pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)"
+        class="half-black"   >
+        <ion-slide *ngFor="let item of bannerArray"   
+          (click)="showAdvertisementDetail(item.categoryId, item.advertisementId, item.isBookmarked,item.id)">
          
           <div *ngIf="bannerCount != 0 " class="cl_img_div">
             <img src="{{item.image}}" class="cl_margin100" />

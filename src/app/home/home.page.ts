@@ -51,9 +51,12 @@ export class HomePage implements OnInit {
   isTracking: any;
   currentLat: any;
   currentLong: any;
+
   
 
   ngOnInit() {
+
+
     // this.loader.blockingLoaderAuth.subscribe(event => {
     //   this.loadingBlock = event;
     // });
@@ -184,6 +187,27 @@ export class HomePage implements OnInit {
       })
   }
 
+  
+
+  onSlideChanged(slides: IonSlides){
+
+   slides.getActiveIndex().then(index => {
+     
+      let item =  this.bannerArray[index];
+
+
+    this.callViewBannerCount(item.id,item.categoryId);
+
+
+   });
+
+  
+
+  }
+ 
+
+ 
+
   getAdvertisement(categoryId) {
     console.log("check fb ads::")
     if(this.currentPage == 0){
@@ -279,6 +303,8 @@ export class HomePage implements OnInit {
 
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
+
+    
   }
 
 
@@ -457,7 +483,7 @@ export class HomePage implements OnInit {
   }
 
 
-  showAdvertisementDetail(categoryId, id, isBookmarked) {
+  showAdvertisementDetail(categoryId, id, isBookmarked,bannerId) {
     console.log("check bookmarked:" + isBookmarked);
     let sendId = {
       "id": id,
@@ -467,9 +493,39 @@ export class HomePage implements OnInit {
       "isBookmarked": isBookmarked
     }
 
+    // this.callViewBannerCount(bannerId,categoryId);
+
     console.log("send image::" + id);
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
+
+  callViewBannerCount(bannerId,categoryId){
+
+    console.log("dddddd",""+bannerId);
+
+    let send_data = {
+
+      "userId":localStorage.getItem("userId"),
+      "bannerId" : bannerId,
+      "categoryId": categoryId,
+
+    }
+   
+    let url = environment.base_url + environment.version + "banners/view_count";
+
+    console.log("my url",""+url);
+    this.apiCall.post(url, send_data).subscribe(MyResponse => {
+      // this.getAdvertisement(this.categoryId);
+      this.loader.hideBlockingLoaderAuth();
+    }, error => {
+      this.presentToast("Please try again");
+      this.loader.hideBlockingLoaderAuth();
+
+    })
+
+
+  }
+
 
   bookmarkAdvertisement(advertisementid, isBookmarked, item) {
     console.log("show isBookmarked:" + isBookmarked);
