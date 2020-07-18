@@ -359,7 +359,7 @@ var HomePage = /** @class */ (function () {
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "languages";
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.Languages = MyResponse['result']['list'];
-            _this.languageImage = _this.Languages[3]['image'];
+            _this.languageImage = _this.Languages[0]['image'];
             _this.loader.hideBlockingLoaderAuth();
             _this.noInternet = '0';
         }, function (error) {
@@ -524,15 +524,15 @@ var HomePage = /** @class */ (function () {
         this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
     };
     HomePage.prototype.callViewBannerCount = function (bannerId, categoryId) {
+        // console.log("dddddd",""+bannerId);
         var _this = this;
-        console.log("dddddd", "" + bannerId);
         var send_data = {
             "userId": localStorage.getItem("userId"),
             "bannerId": bannerId,
             "categoryId": categoryId,
         };
         var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "banners/view_count";
-        console.log("my url", "" + url);
+        // console.log("my url",""+url);
         this.apiCall.post(url, send_data).subscribe(function (MyResponse) {
             // this.getAdvertisement(this.categoryId);
             _this.loader.hideBlockingLoaderAuth();

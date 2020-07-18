@@ -313,7 +313,7 @@ export class HomePage implements OnInit {
     let url = environment.base_url + environment.version + "languages";
     this.apiCall.get(url).subscribe(MyResponse => {
       this.Languages = MyResponse['result']['list'];
-      this.languageImage = this.Languages[3]['image'];
+      this.languageImage = this.Languages[0]['image'];
       this.loader.hideBlockingLoaderAuth();
       this.noInternet = '0';
     },
@@ -501,7 +501,7 @@ export class HomePage implements OnInit {
 
   callViewBannerCount(bannerId,categoryId){
 
-    console.log("dddddd",""+bannerId);
+    // console.log("dddddd",""+bannerId);
 
     let send_data = {
 
@@ -513,7 +513,7 @@ export class HomePage implements OnInit {
    
     let url = environment.base_url + environment.version + "banners/view_count";
 
-    console.log("my url",""+url);
+    // console.log("my url",""+url);
     this.apiCall.post(url, send_data).subscribe(MyResponse => {
       // this.getAdvertisement(this.categoryId);
       this.loader.hideBlockingLoaderAuth();

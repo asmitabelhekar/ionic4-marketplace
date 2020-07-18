@@ -20,7 +20,7 @@ export class CheckinternetPage implements OnInit {
 
   reconnect(){
     // this.loader.showBlockingLoaderAuth();
-    let url = "http://3.6.135.154:17700/api/test";
+    let url = "http://15.207.0.34:17700/api/test";
     this.apiService.get(url).subscribe(MyResponse => {
     window.history.back();
       // this.loader.hideBlockingLoaderAuth();

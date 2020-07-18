@@ -141,32 +141,32 @@ export class LoginPage implements OnInit {
     let send_date = {};
 
 
-    // send_date['name'] = this.userName;
-    // // send_date['mobile'] = this.loginModel.mobile;
-    // send_date['userRole'] = 0;
+    send_date['name'] = this.userName;
+    // send_date['mobile'] = this.loginModel.mobile;
+    send_date['userRole'] = 0;
 
-    // if(this.imageUrl == "" || this.imageUrl == null){
+    if(this.imageUrl == "" || this.imageUrl == null){
 
-    // }else{
-    //   send_date['image'] = this.imageUrl;
-    // }
+    }else{
+      send_date['image'] = this.imageUrl;
+    }
    
-    // send_date['email'] = this.userEmail;
+    send_date['email'] = this.userEmail;
 
-    // if(this.gmailId != ""){
-    //   send_date['gmailId'] = this.gmailId;
-    // }
+    if(this.gmailId != ""){
+      send_date['gmailId'] = this.gmailId;
+    }
 
-    // if(this.fbId != ""){
-    //   send_date['facebookId'] = this.fbId;
-    // }
+    if(this.fbId != ""){
+      send_date['facebookId'] = this.fbId;
+    }
 
     
-send_date['name'] = "Akshay Madake";
-send_date['userRole'] = 0;
-send_date['image'] = "http://d3lgrseqpnv6xt.cloudfront.net/1593068644973.jpg";
-send_date['email'] = "akshaymadake1@gmail.com";
-send_date['gmailId'] = "108308451660503119865";
+// send_date['name'] = "Akshay Madake";
+// send_date['userRole'] = 0;
+// send_date['image'] = "http://d3lgrseqpnv6xt.cloudfront.net/1593068644973.jpg";
+// send_date['email'] = "akshaymadake1@gmail.com";
+// send_date['gmailId'] = "108308451660503119865";
 
 // send_date['name'] = "Asmita Belhekar";
 // send_date['userRole'] = 0;

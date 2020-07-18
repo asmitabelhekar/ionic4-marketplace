@@ -138,7 +138,7 @@ var CheckinternetPage = /** @class */ (function () {
     };
     CheckinternetPage.prototype.reconnect = function () {
         // this.loader.showBlockingLoaderAuth();
-        var url = "http://3.6.135.154:17700/api/test";
+        var url = "http://15.207.0.34:17700/api/test";
         this.apiService.get(url).subscribe(function (MyResponse) {
             window.history.back();
             // this.loader.hideBlockingLoaderAuth();

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url : "http://3.6.135.154:17700/api/",
+  base_url : "http://15.207.0.34:17700/api/",
   googleWebClientId: "401245627689-4ceut94d75nmslud8un0lafphp6mm6ph.apps.googleusercontent.com",
   version : "v1.0.0/"
 };
