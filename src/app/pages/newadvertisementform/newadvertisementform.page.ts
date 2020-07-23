@@ -110,6 +110,9 @@ export class NewadvertisementformPage implements OnInit {
   checkAdEndDateTimestamp: any = 0;
   checkAdStartDateTimestamp: any = 0;
 
+  planIdAdvertise = 0;
+  planIdBanner = 0;
+
   getEndDateForUpdate: any;
   getStartDateForUpdate: any;
 
@@ -225,6 +228,8 @@ export class NewadvertisementformPage implements OnInit {
         // this.loader.showBlockingLoaderAuth();
         this.generatedOtp = Math. floor(1000 + Math. random() * 9000); 
         this.isOtpRequested = 1;
+        this.presentToast("Please enter otp sent on mobile "+mobileNo);
+
         console.log(this.generatedOtp);
 
         let url = "http://sms.abpss.us/api/sendhttp.php?authkey=MTM2ZGRmMGYyZjE&mobiles="+mobileNo+"&message=Welcome to HolyHub.Your otp is "+this.generatedOtp+"&sender=ABPSYS&type=1&route=2";
@@ -923,7 +928,7 @@ export class NewadvertisementformPage implements OnInit {
         for (let i = 0; i < this.plansArray.length; i++) {
           if (this.plansArray[i]['isAdvertisement'] == "0") {
             this.adPlanName = this.plansArray[i]['name'];
-            this.checkAdveriseMentPriceCard(this.adPlanName, this.plansArray[i]['price'], this.plansArray[i]['noOfDays']);
+            this.checkAdveriseMentPriceCard(this.adPlanName, this.plansArray[i]['price'], this.plansArray[i]['noOfDays'],this.plansArray[i]['id']);
             console.log("check first plan name of ad:" + this.adPlanName);
           }
         }
@@ -969,7 +974,9 @@ export class NewadvertisementformPage implements OnInit {
   }
 
 
-  checkAdveriseMentPriceCard(planName, price, noOfDays) {
+  checkAdveriseMentPriceCard(planName, price, noOfDays, planId) {
+
+    this.planIdAdvertise = planId;
 
     if (this.postStatus == "1") {
       let currentDate = new Date();
@@ -1001,8 +1008,10 @@ export class NewadvertisementformPage implements OnInit {
     console.log("ad dates show:::" + this.getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
   }
 
-  checkBannerPriceCard(planName, price, noOfDays) {
+  checkBannerPriceCard(planName, price, noOfDays , planId) {
     console.log("no of days:::" + noOfDays);
+
+    this.planIdBanner = planId;
 
     if (this.postStatus == "0") {
 
@@ -1271,7 +1280,8 @@ export class NewadvertisementformPage implements OnInit {
       send_date['bannerEndDate'] = this.getEndDateForUpdateBanner;
     }
 
-
+    send_date['planIdAdvertise'] = this.planIdAdvertise;
+    send_date['planIdBanner'] = this.planIdBanner;
 
     let url = environment.base_url + environment.version + "payment-gateway-logs";
     this.apiCall.post(url, send_date).subscribe(MyResponse => {

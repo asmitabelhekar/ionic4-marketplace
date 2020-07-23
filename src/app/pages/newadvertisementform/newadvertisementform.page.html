@@ -387,7 +387,7 @@
             <div *ngFor="let item of plansArray">
               <ion-card *ngIf="item.isAdvertisement == 0 " fxLayout="column"
                 [ngClass]="(adPlanName == item.name) ? 'card-one' : 'card-two' " fxLayoutAlign="center center"
-                class="card-css" (click)="checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays)">
+                class="card-css" (click)="checkAdveriseMentPriceCard(item.name,item.price,item.noOfDays,item.id)">
                 <label [ngClass]="(adPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
                   style="font-size:17px;font-weight:450">${{item.price}}</label>
                 <label [ngClass]="(adPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
@@ -407,9 +407,9 @@
                 [ngClass]="(bannerPlanName == item.name) ? 'card-one' : 'card-two' " 
                 class="card-css" >  
                 <ion-icon  (click)="deselectBannerPlan()" class="closeButtonEnd" name="close-outline"></ion-icon>  
-                <label fxLayoutAlign="center center" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)" [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
+                <label fxLayoutAlign="center center" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays,item.id)" [ngClass]="(bannerPlanName == item.name) ? 'h-css-one' : 'h-css-two' "
                   style="font-size:17px;font-weight:450">${{item.price}}</label>
-                <label fxLayoutAlign="center center" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays)" [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
+                <label fxLayoutAlign="center center" (click)="checkBannerPriceCard(item.name,item.price,item.noOfDays,item.id)" [ngClass]="(bannerPlanName == item.name) ? 'label-css-one' : 'label-css-two' "
                   fxLayoutAlign="center center"
                   style="font-size:11px;font-weight:400;margin-top:6px;">{{item.name}}</label>
               </ion-card>
