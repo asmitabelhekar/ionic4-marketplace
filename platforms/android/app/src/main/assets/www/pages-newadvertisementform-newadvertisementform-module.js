@@ -1109,10 +1109,12 @@ var NewadvertisementformPage = /** @class */ (function () {
         //   this.submmitAdvertisementData();
         // };
         var successCallback = function (success) {
+            console.log("payment success");
             // alert('payment_id: ' + success);
             _this.gatewayLogsCheck(success);
         };
         var cancelCallback = function (error) {
+            console.log("payment failed");
             // alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
         };
         RazorpayCheckout.open(options, successCallback, cancelCallback);
@@ -1141,7 +1143,7 @@ var NewadvertisementformPage = /** @class */ (function () {
         send_date['advertisementId'] = this.advertisementId;
         send_date['userId'] = this.usersId;
         send_date['paymentId'] = (success);
-        send_date['isSuccess'] = 0;
+        send_date['isSuccess'] = 1;
         send_date['amount'] = this.totalCalculatePayment;
         send_date['advertisementStartDate'] = this.getStartDateForUpdate;
         send_date['advertisementEndDate'] = this.getEndDateForUpdate;
