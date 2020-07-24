@@ -1109,13 +1109,11 @@ var NewadvertisementformPage = /** @class */ (function () {
         //   this.submmitAdvertisementData();
         // };
         var successCallback = function (success) {
-            console.log("payment success");
             // alert('payment_id: ' + success);
             _this.gatewayLogsCheck(success);
         };
         var cancelCallback = function (error) {
-            console.log("payment failed");
-            // alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
+            alert("show payment gateway error:" + error.description + ' (Error ' + error.code + ')');
         };
         RazorpayCheckout.open(options, successCallback, cancelCallback);
     };
