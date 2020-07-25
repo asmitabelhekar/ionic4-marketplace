@@ -12,6 +12,7 @@ import { empty } from 'rxjs';
 import { FiltercategoryPage } from '../pages/filtercategory/filtercategory.page';
 import { FiltercategoryPageModule } from '../pages/filtercategory/filtercategory.module';
 import { GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -49,8 +50,8 @@ export class HomePage implements OnInit {
   firstView = 1;
   loadingBlock;
   isTracking: any;
-  currentLat: any;
-  currentLong: any;
+  currentLat: any =18.5204;
+  currentLong: any = 73.8567;
 
   
 
@@ -65,6 +66,7 @@ export class HomePage implements OnInit {
     // this.currentPage = 0;
     // this.getAdvertisement(this.categoryId);
     // var data={"id" : 1, "second" : "abcd"};
+    this.getLocation();
   }
 
   constructor(
@@ -74,6 +76,7 @@ export class HomePage implements OnInit {
     public alertCtrl: AlertController,
     public loader: LoaderService,
     public google: GoogleMaps,
+    private geolocation: Geolocation,
     public networkServices: NetworkService,
     public menuController: MenuController,
     public activatedRoute: ActivatedRoute,
@@ -102,6 +105,30 @@ export class HomePage implements OnInit {
     console.log("Looks like I’m about to leave :11");
     
     }
+
+    getLocation() {
+      this.geolocation.getCurrentPosition().then((resp) => {
+        this.currentLat = resp.coords.latitude;
+        this.currentLong = resp.coords.longitude;
+
+        console.log(" hh"+ this.currentLat);
+
+        console.log( "kk" +this.currentLong);
+  
+        // let obj = {};
+        // obj['lat'] = this.latt;
+        // obj['lng'] = this.lng;
+        // this.storage.set("current_location", obj).then(() => {
+  
+        // })
+        this.getAdvertisement(this.categoryId);
+        this.getBannerData(this.categoryId);
+        console.log(resp);
+      }).catch((error) => {
+        console.log('Error getting location', error);
+      });
+    }
+  
 
   ionViewWillEnter() {
 
@@ -216,10 +243,12 @@ export class HomePage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     let url;
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10";
+      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong ;
     } else {
-      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
+      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong;
     }
+
+    console.log("url",""+url);
     this.apiCall.getAd(url).subscribe(MyResponse => {
 
       this.advertisementArray = this.advertisementArray.concat(MyResponse['result']['list']);
@@ -278,9 +307,9 @@ export class HomePage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     let url;
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "banners?" + "size=1000";
+      url = environment.base_url + environment.version + "banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong;
     } else {
-      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000";
+      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong;
     }
     //  url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {

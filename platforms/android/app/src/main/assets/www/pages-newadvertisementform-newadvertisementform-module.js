@@ -364,9 +364,6 @@ var NewadvertisementformPage = /** @class */ (function () {
     NewadvertisementformPage.prototype.closeDropdown = function (matSelect) {
         matSelect.close();
     };
-    NewadvertisementformPage.prototype.deselectBannerPlan = function () {
-        this.bannerPlanName = '';
-    };
     NewadvertisementformPage.prototype.openedChange = function (opened) {
         console.log(opened ? 'opened' : 'closed');
     };
@@ -646,9 +643,6 @@ var NewadvertisementformPage = /** @class */ (function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
         // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
-        if (this.cityName == null) {
-            this.cityName = "Pune";
-        }
         var send_date = {};
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;
@@ -925,6 +919,14 @@ var NewadvertisementformPage = /** @class */ (function () {
         this.getStartDateForUpdate = this.timestampToDate(this.checkAdStartDateTimestamp);
         this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
         console.log("ad dates show:::" + this.getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
+    };
+    NewadvertisementformPage.prototype.deselectBannerPlan = function () {
+        this.bannerPlanName = '';
+        this.checkBannerStartDateTimestamp = 0;
+        this.checkBannerEndDateTimestamp = 0;
+        this.planIdBanner = 0;
+        this.totalCalculatePayment = this.selectedAdPrice;
+        ;
     };
     NewadvertisementformPage.prototype.checkBannerPriceCard = function (planName, price, noOfDays, planId) {
         console.log("no of days:::" + noOfDays);

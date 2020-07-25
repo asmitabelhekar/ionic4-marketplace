@@ -111,6 +111,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_network_network_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../service/network/network.service */ "./src/app/service/network/network.service.ts");
 /* harmony import */ var _pages_filtercategory_filtercategory_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../pages/filtercategory/filtercategory.page */ "./src/app/pages/filtercategory/filtercategory.page.ts");
 /* harmony import */ var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/google-maps */ "./node_modules/@ionic-native/google-maps/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+
 
 
 
@@ -124,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(dialog, apiCall, toast, alertCtrl, loader, google, networkServices, menuController, activatedRoute, platform, routerOutlet, router) {
+    function HomePage(dialog, apiCall, toast, alertCtrl, loader, google, geolocation, networkServices, menuController, activatedRoute, platform, routerOutlet, router) {
         var _this = this;
         this.dialog = dialog;
         this.apiCall = apiCall;
@@ -132,6 +134,7 @@ var HomePage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.loader = loader;
         this.google = google;
+        this.geolocation = geolocation;
         this.networkServices = networkServices;
         this.menuController = menuController;
         this.activatedRoute = activatedRoute;
@@ -155,6 +158,8 @@ var HomePage = /** @class */ (function () {
         this.postBookmarkObj = {};
         this.advertisementModel = {};
         this.firstView = 1;
+        this.currentLat = 18.5204;
+        this.currentLong = 73.8567;
         this.menuController.enable(false);
         this.getCategory();
         this.getLanguages();
@@ -177,10 +182,30 @@ var HomePage = /** @class */ (function () {
         // this.currentPage = 0;
         // this.getAdvertisement(this.categoryId);
         // var data={"id" : 1, "second" : "abcd"};
+        this.getLocation();
     };
     HomePage.prototype.ionViewWillLeave = function () {
         // this.navCtrl.popToRoot();
         console.log("Looks like I’m about to leave :11");
+    };
+    HomePage.prototype.getLocation = function () {
+        var _this = this;
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            _this.currentLat = resp.coords.latitude;
+            _this.currentLong = resp.coords.longitude;
+            console.log(" hh" + _this.currentLat);
+            console.log("kk" + _this.currentLong);
+            // let obj = {};
+            // obj['lat'] = this.latt;
+            // obj['lng'] = this.lng;
+            // this.storage.set("current_location", obj).then(() => {
+            // })
+            _this.getAdvertisement(_this.categoryId);
+            _this.getBannerData(_this.categoryId);
+            console.log(resp);
+        }).catch(function (error) {
+            console.log('Error getting location', error);
+        });
     };
     HomePage.prototype.ionViewWillEnter = function () {
         this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
@@ -275,11 +300,12 @@ var HomePage = /** @class */ (function () {
         this.loader.showBlockingLoaderAuth();
         var url;
         if (categoryId == "clear") {
-            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "advertisements?page=" + this.currentPage + "&size=10";
+            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "advertisements?page=" + this.currentPage + "&size=10&latitude=" + this.currentLat + "&longitude=" + this.currentLong;
         }
         else {
-            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10";
+            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude=" + this.currentLat + "&longitude=" + this.currentLong;
         }
+        console.log("url", "" + url);
         this.apiCall.getAd(url).subscribe(function (MyResponse) {
             _this.advertisementArray = _this.advertisementArray.concat(MyResponse['result']['list']);
             _this.countAdvertisement = MyResponse['result']['count'];
@@ -329,10 +355,10 @@ var HomePage = /** @class */ (function () {
         this.loader.showBlockingLoaderAuth();
         var url;
         if (categoryId == "clear") {
-            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "banners?" + "size=1000";
+            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "banners?" + "size=1000&latitude=" + this.currentLat + "&longitude=" + this.currentLong;
         }
         else {
-            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + categoryId + "/banners?" + "size=1000";
+            url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + categoryId + "/banners?" + "size=1000&latitude=" + this.currentLat + "&longitude=" + this.currentLong;
         }
         //  url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
         this.apiCall.get(url).subscribe(function (MyResponse) {
@@ -665,6 +691,7 @@ var HomePage = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
         { type: _service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_8__["LoaderService"] },
         { type: _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_11__["GoogleMaps"] },
+        { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__["Geolocation"] },
         { type: _service_network_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
@@ -684,6 +711,7 @@ var HomePage = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"],
             _service_loaderservice_loader_service__WEBPACK_IMPORTED_MODULE_8__["LoaderService"],
             _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_11__["GoogleMaps"],
+            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__["Geolocation"],
             _service_network_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],

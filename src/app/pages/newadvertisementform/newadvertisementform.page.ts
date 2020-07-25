@@ -325,10 +325,7 @@ export class NewadvertisementformPage implements OnInit {
 
   }
 
-  deselectBannerPlan(){
-
-    this.bannerPlanName = '';
-  }
+  
 
   openedChange(opened: boolean) {
     console.log(opened ? 'opened' : 'closed');
@@ -695,10 +692,7 @@ export class NewadvertisementformPage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
 
-    if(this.cityName == null){
-
-      this.cityName = "Pune";
-    }
+   
 
     let send_date = {};
     send_date['title'] = this.firstFormData.titleCtrl;
@@ -1006,6 +1000,16 @@ export class NewadvertisementformPage implements OnInit {
     this.getEndDateForUpdate = this.timestampToDate(this.checkAdEndDateTimestamp);
 
     console.log("ad dates show:::" + this.getStartDateForUpdate + ":end date:" + this.getEndDateForUpdate);
+  }
+
+  deselectBannerPlan(){
+
+    this.bannerPlanName = '';
+    this.checkBannerStartDateTimestamp = 0;
+    this.checkBannerEndDateTimestamp = 0;
+    this.planIdBanner = 0;
+
+    this.totalCalculatePayment = this.selectedAdPrice;;
   }
 
   checkBannerPriceCard(planName, price, noOfDays , planId) {
