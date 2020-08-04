@@ -1,6 +1,6 @@
-<ion-content>
-<button *ngIf="categoryId != '' " mat-raised-button class="clear-button-css" (click)="clearFilter()">Clear Filter</button>
-<button *ngIf="categoryId == '' " mat-raised-button class="clear-button-css" (click)="closeFilter()">Close Filter</button>
+<ion-content >
+<button  *ngIf="categoryId != '' " mat-raised-button class="clear-button-css" (click)="clearFilter()">Clear Filter</button>
+<button  *ngIf="categoryId == '' " mat-raised-button class="clear-button-css" (click)="closeFilter()">Close Filter</button>
   <ion-list style="border-bottom:1px solid white" *ngFor="let item of categoryArray; let i = index;" class="accordion-list" detail="false" no-padding>
     <ion-item tappable  (click)="toggleSection(i,item.id)" [ngClass]="(categoryId == item.id) ? 'section-active' : 'section' ">
       <ion-row style="width:100%;color:white" tappable >
@@ -12,14 +12,16 @@
 
         <ion-col size="2"   >
          
-          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId != item.id">keyboard_arrow_right</mat-icon>
-          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId == item.id">keyboard_arrow_down</mat-icon>
+          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId != item.id" >keyboard_arrow_right</mat-icon>
+          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId == item.id && isSameSection ==1" >keyboard_arrow_right</mat-icon>
+          
+          <mat-icon style="color:white;width:25px; height:25px;" *ngIf="categoryId == item.id && isSameSection !=1 ">keyboard_arrow_down</mat-icon>
         </ion-col>
       </ion-row>
 
     </ion-item>
 
-    <div *ngIf="item.childrens && item.id == categoryId ">
+    <div *ngIf="item.childrens && item.id == categoryId && isSameSection ==0">
       <ion-list class="child-list" *ngFor="let child of item.childrens; let j = index;" lines="none">
         
         <ion-item tappable *ngIf="child.name" (click)="toggleItem(i,j,item.id, child.id)" style="text-align: start;"

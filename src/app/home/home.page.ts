@@ -52,6 +52,7 @@ export class HomePage implements OnInit {
   isTracking: any;
   currentLat: any =18.5204;
   currentLong: any = 73.8567;
+  selectedLanguage = "Hindi";
 
   
 
@@ -242,11 +243,28 @@ export class HomePage implements OnInit {
     }
     this.loader.showBlockingLoaderAuth();
     let url;
+
+   if(this.cityName.length > 0){
+
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong ;
+      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName ;
     } else {
-      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong;
+      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName;
     }
+
+   } else{
+
+    if (categoryId == "clear") {
+      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage ;
+    } else {
+      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage;
+    }
+
+
+   }
+
+
+  
 
     console.log("url",""+url);
     this.apiCall.getAd(url).subscribe(MyResponse => {
@@ -306,11 +324,24 @@ export class HomePage implements OnInit {
   getBannerData(categoryId) {
     this.loader.showBlockingLoaderAuth();
     let url;
+
+    if(this.cityName.length > 0){
+
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong;
+      url = environment.base_url + environment.version + "banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName ;;
     } else {
-      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong;
+      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName ;;
     }
+  }else{
+    if (categoryId == "clear") {
+      url = environment.base_url + environment.version + "banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage;
+    } else {
+      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage;
+    }
+
+  }
+
+
     //  url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=" + 1000;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.bannerArray = MyResponse['result']['list'];
@@ -372,7 +403,7 @@ export class HomePage implements OnInit {
   filter() {
     const dialogRef = this.dialog.open(FiltercategoryPage, {
 
-      // width: '500px',
+      width: '200px',
       panelClass: "show-filter-category-dialogue"
 
     });
@@ -475,14 +506,21 @@ export class HomePage implements OnInit {
 
 
     dialogRef.afterClosed().subscribe(async result => {
-      console.log("show city name:" + result);
-      this.cityName = result;
+      console.log("show city name:" + JSON.stringify(result));
+      // this.cityName = result.city_name;
       if (result == "" || result == "undefined" || result == null) {
         this.cityName = "";
       } else {
-        this.cityName = result;
+        this.cityName = result.city_name;
+        this.currentLat = result.latitude;
+        this.currentLong = result.longitude;
       }
+
+      this.getAdvertisement(this.categoryId);
+      this.getBannerData(this.categoryId);
+
       localStorage.setItem("cityname", this.cityName);
+
     });
   }
 
@@ -687,8 +725,14 @@ export class HomePage implements OnInit {
 
   }
 
-  getLanguage(image) {
-    this.languageImage = image;
-    console.log("language image show:" + image);
+  getLanguage(data) {
+    this.languageImage = data.image;
+
+    this.selectedLanguage = data.name;
+
+    this.getAdvertisement(this.categoryId);
+    this.getBannerData(this.categoryId);
+    
+    console.log("language image show:" + data.image);
   }
 }

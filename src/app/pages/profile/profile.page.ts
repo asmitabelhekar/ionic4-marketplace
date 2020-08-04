@@ -21,6 +21,7 @@ export class ProfilePage implements OnInit {
   name: any;
   email: any;
   updateStatus = 0;
+  gender :any;
   mobile: any;
   roleId: any;
   username: any;
@@ -104,6 +105,7 @@ export class ProfilePage implements OnInit {
     let url = environment.base_url + environment.version + "users/" + this.userId;
     this.apiCall.get(url).subscribe(MyResponse => {
       this.profileDetail = MyResponse['result'];
+      console.log("checking profile info",""+JSON.stringify(this.profileDetail));
       this.name = this.profileDetail.name;
       localStorage.setItem("getName", this.name);
       if (this.profileDetail.mobile == null || this.profileDetail.mobile == "null" || this.profileDetail.mobile == "") {
@@ -117,6 +119,18 @@ export class ProfilePage implements OnInit {
       }
       // this.mobile = this.profileDetail.mobile;
       this.email = this.profileDetail.email;
+
+      if(this.profileDetail.gender ==0){
+
+        this.gender = "Male";
+
+      }else if(this.profileDetail.gender ==1){
+        this.gender = "Female";
+      }else {
+        this.gender = "not updated"
+      }
+
+      this.gender 
       this.profileImg = this.profileDetail.image;
       if (this.profileImg == null || this.profileImg == undefined || this.profileImg == "") {
         console.log("ger profile empty");

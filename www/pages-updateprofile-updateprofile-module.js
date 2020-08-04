@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\" fxLayoutAlign=\"center center\">\n  <ion-row fxLayoutAlign=\"center center\">\n    <ion-col size=\"1\">\n      \n      <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n    </ion-col>\n    <ion-col size=\"11\" fxLayoutAlign=\"start center\">\n      <ion-label style=\"color:white;\" class=\"TitleText\">Edit Profile</ion-label>\n    </ion-col>\n \n  </ion-row>\n   \n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n<div fxLayout=\"column\" fxFlex=\"100\" fxLayoutAlign=\"center center\">\n\n  <div fxLayoutAlign=\"center center\" fxLayout=\"column\" onclick=\"document.getElementById('profile_pic_upload').click()\">\n    <img *ngIf=\"profileImg == '1' \" src=\"../../../assets/agent.png\" class=\"img-css\" />\n    <img  *ngIf=\"profileImg != '1' \" src=\"{{profileImg}}\" class=\"img-css\" />\n    <label class=\"pic-text\">Change profile picture</label>\n  </div>\n  <input style=\"display: none;\" id=\"profile_pic_upload\" type=\"file\" (change)=\"detectEventGallery($event)\">\n  \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:25px\">\n    <mat-form-field style=\"width:96%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\">Name</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"name\" [(ngModel)]=\"profileModel.name\" #name=\"ngModel\"\n            align=\"center\" required style=\"font-size:13px;\">\n            <mat-error>\n              <div class=\"form-group\" style=\"margin-bottom:10px\">\n                <div *ngIf=\"name.invalid && (name.dirty || name.touched)\">\n                  Name Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\" >Email</mat-label>\n      <input matInput class=\"form-control \" name=\"email\" [(ngModel)]=\"profileModel.email\" #email=\"ngModel\"\n        pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\"  style=\"font-size:13px;\" />\n      <mat-error>\n        <div class=\"form-group\">\n          <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" >\n           Invalid email address\n          </div>\n        </div>\n      </mat-error>\n  \n    </mat-form-field>\n  </div>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%\" appearance=\"outline\">\n    <mat-label class=\"label-text-css\">Mobile</mat-label>\n        <input matInput class=\"form-control\" type=\"tel\" name=\"contact\" minlength=\"10\" maxlength=\"10\" [(ngModel)]=\"profileModel.contact\" #contact=\"ngModel\"\n          align=\"center\"  style=\"font-size:13px;\" required>\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"contact.invalid && (contact.dirty || contact.touched)\">\n                Mobile Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n  </div>\n\n  <button mat-raised-button class=\"updateProfileButton\" [disabled]=\"email.invalid || contact.invalid ||  name.invalid\"\n  (click)=\"updateProfileData(advertisementModel)\">Update</button>\n</div>\n \n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\" fxLayoutAlign=\"center center\">\n  <ion-row fxLayoutAlign=\"center center\">\n    <ion-col size=\"1\">\n      \n      <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n    </ion-col>\n    <ion-col size=\"11\" fxLayoutAlign=\"start center\">\n      <ion-label style=\"color:white;\" class=\"TitleText\">Edit Profile</ion-label>\n    </ion-col>\n \n  </ion-row>\n   \n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n<div fxLayout=\"column\" fxFlex=\"100\" fxLayoutAlign=\"center center\">\n\n  <div fxLayoutAlign=\"center center\" fxLayout=\"column\" onclick=\"document.getElementById('profile_pic_upload').click()\">\n    <img *ngIf=\"profileImg == '1' \" src=\"../../../assets/agent.png\" class=\"img-css\" />\n    <img  *ngIf=\"profileImg != '1' \" src=\"{{profileImg}}\" class=\"img-css\" />\n    <label class=\"pic-text\">Change profile picture</label>\n  </div>\n  <input style=\"display: none;\" id=\"profile_pic_upload\" type=\"file\" (change)=\"detectEventGallery($event)\">\n  \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:25px\">\n    <mat-form-field style=\"width:96%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\">Name</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"name\" [(ngModel)]=\"profileModel.name\" #name=\"ngModel\"\n            align=\"center\" required style=\"font-size:13px;\">\n            <mat-error>\n              <div class=\"form-group\" style=\"margin-bottom:10px\">\n                <div *ngIf=\"name.invalid && (name.dirty || name.touched)\">\n                  Name Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\" >Email</mat-label>\n      <input matInput class=\"form-control \" name=\"email\" [(ngModel)]=\"profileModel.email\" #email=\"ngModel\"\n        pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\"  style=\"font-size:13px;\" />\n      <mat-error>\n        <div class=\"form-group\">\n          <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" >\n           Invalid email address\n          </div>\n        </div>\n      </mat-error>\n  \n    </mat-form-field>\n  </div>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%\" appearance=\"outline\">\n    <mat-label class=\"label-text-css\">Mobile</mat-label>\n        <input matInput class=\"form-control\" type=\"tel\" name=\"contact\" minlength=\"10\" maxlength=\"10\" [(ngModel)]=\"profileModel.contact\" #contact=\"ngModel\"\n          align=\"center\"  style=\"font-size:13px;\" required>\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"contact.invalid && (contact.dirty || contact.touched)\">\n                Mobile Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n  </div>\n\n  <ion-row\n  style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:96%; margin-top:5px;margin-bottom:15px\">\n  <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n    <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n  </ion-col>\n\n  <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n    <ion-radio-group class=\"form-control\" (ionChange)=\"radioGroupChange($event)\"  [(ngModel)]=\"profileModel.gender\" #gender=\"ngModel\">\n      <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n        <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n          <ion-radio checked=\"true\" value=\"{{item.value}}\" ></ion-radio> \n          <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">\n            {{item.name}}</ion-label>\n        </div>\n      </div>\n    </ion-radio-group>\n\n\n  </ion-col>\n</ion-row>\n\n  <button mat-raised-button class=\"updateProfileButton\" [disabled]=\"email.invalid || contact.invalid ||  name.invalid\"\n  (click)=\"updateProfileData(advertisementModel)\">Update</button>\n</div>\n \n</ion-content>\n");
 
 /***/ }),
 
@@ -180,7 +180,7 @@ var UpdateprofilePageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".cl-back-button {\n  background: url('back_white.png') center;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  width: 25px;\n  height: 25px;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n\n.TitleHeader {\n  width: 100%;\n  height: 50px;\n  display: inline-flex;\n  align-items: center;\n}\n\n.TitleText {\n  font-size: 19px;\n  width: 81%;\n  color: #ffffff;\n  margin-left: 10px;\n}\n\n.updateProfileButton {\n  background: linear-gradient(to right, #fe4f14, #fe8860, #feae93);\n  color: white;\n  padding-left: 50px;\n  padding-right: 50px;\n  margin-top: 10%;\n  font-weight: 450;\n  border-radius: 25px;\n  font-size: 16px;\n}\n\n.img-css {\n  width: 100px;\n  height: 100px;\n  border-radius: 100%;\n  color: white;\n  margin-top: 50px;\n  background: #f1f4f9;\n  border: 0.5px solid #9b9999;\n}\n\n.pic-text {\n  color: #fb7645;\n  font-size: 15px;\n  font-weight: 450;\n  margin: 5px;\n}\n\n.label-text-css {\n  font-size: 11px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2Frc2hheS5tYWRrZS9EZXNrdG9wL0V4ZXJjaXNlL2lvbmljNC1tYXJrZXRwbGFjZS9zcmMvYXBwL3BhZ2VzL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSx3Q0FBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSw0QkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FDQUo7O0FES0U7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG9CQUFBO0VBQ0EsbUJBQUE7QUNGSjs7QURLRTtFQUdFLGVBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FDSko7O0FEU0E7RUFDRSxnRUFBQTtFQUVBLFlBQUE7RUFFQSxrQkFBQTtFQUNBLG1CQUFBO0VBSUMsZUFBQTtFQUVDLGdCQUFBO0VBQ0EsbUJBQUE7RUFDRixlQUFBO0FDWkY7O0FEZ0JBO0VBQ0UsWUFBQTtFQUNDLGFBQUE7RUFDQSxtQkFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMkJBQUE7QUNiSDs7QURpQkE7RUFDRSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtBQ2RGOztBRGtCSztFQUNDLGVBQUE7QUNmTiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5jbC1iYWNrLWJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kOiB1cmwoJy4uLy4uLy4uL2Fzc2V0cy9iYWNrX3doaXRlLnBuZycpIGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIHdpZHRoOiAyNXB4O1xuICAgIGhlaWdodDogMjVweDtcbiAgICBvdXRsaW5lOiAwO1xuICAgIGJveC1zaGFkb3c6IDAgMCAwIDA7XG4gICAgLy8gbWFyZ2luLXJpZ2h0OiAxNXB4O1xuICB9XG4gIFxuICBcbiAgLlRpdGxlSGVhZGVye1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogNTBweDtcbiAgICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICB9XG4gIFxuICAuVGl0bGVUZXh0e1xuICAgIC8vIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICAgIC8vIHRleHQtYWxpZ246bGVmdDtcbiAgICBmb250LXNpemU6IDE5cHg7XG4gICAgd2lkdGg6IDgxJTtcbiAgICBjb2xvcjogI2ZmZmZmZjtcbiAgICBtYXJnaW4tbGVmdDoxMHB4O1xuICAgIC8vIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIH1cblxuXG4udXBkYXRlUHJvZmlsZUJ1dHRvbntcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjZmU0ZjE0LCNmZTg4NjAsI2ZlYWU5Myk7XG4gIC8vIGJhY2tncm91bmQtY29sb3I6ICNmYjc2NDU7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgLy8gd2lkdGg6MjglO1xuICBwYWRkaW5nLWxlZnQ6NTBweDtcbiAgcGFkZGluZy1yaWdodDo1MHB4O1xuICAvLyBwYWRkaW5nLWJvdHRvbTo1cHg7XG4gIC8vIHBhZGRpbmctdG9wOjVweDtcbiBcbiAgIG1hcmdpbi10b3A6MTAlO1xuICBcbiAgICBmb250LXdlaWdodDo0NTA7XG4gICAgYm9yZGVyLXJhZGl1czoyNXB4O1xuICBmb250LXNpemU6MTZweDtcbn1cblxuXG4uaW1nLWNzc3tcbiAgd2lkdGg6MTAwcHg7XG4gICBoZWlnaHQ6MTAwcHg7IFxuICAgYm9yZGVyLXJhZGl1czogMTAwJTtcbiAgIGNvbG9yOndoaXRlO1xuICAgbWFyZ2luLXRvcDo1MHB4O1xuICAgYmFja2dyb3VuZDojZjFmNGY5O1xuICAgYm9yZGVyOjAuNXB4IHNvbGlkIHJnYigxNTUsIDE1MywgMTUzKSA7XG4gICAgLy8gcGFkZGluZzo1cHg7XG59XG5cbi5waWMtdGV4dHtcbiAgY29sb3I6I2ZiNzY0NTtcbiAgZm9udC1zaXplOjE1cHg7XG4gIGZvbnQtd2VpZ2h0OiA0NTA7XG4gIG1hcmdpbjo1cHg7XG59XG5cblxuICAgICAubGFiZWwtdGV4dC1jc3N7XG4gICAgICBmb250LXNpemU6MTFweDtcbiAgICAgfVxuIiwiLmNsLWJhY2stYnV0dG9uIHtcbiAgYmFja2dyb3VuZDogdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2JhY2tfd2hpdGUucG5nXCIpIGNlbnRlcjtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICB3aWR0aDogMjVweDtcbiAgaGVpZ2h0OiAyNXB4O1xuICBvdXRsaW5lOiAwO1xuICBib3gtc2hhZG93OiAwIDAgMCAwO1xufVxuXG4uVGl0bGVIZWFkZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiA1MHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLlRpdGxlVGV4dCB7XG4gIGZvbnQtc2l6ZTogMTlweDtcbiAgd2lkdGg6IDgxJTtcbiAgY29sb3I6ICNmZmZmZmY7XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xufVxuXG4udXBkYXRlUHJvZmlsZUJ1dHRvbiB7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgI2ZlNGYxNCwgI2ZlODg2MCwgI2ZlYWU5Myk7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgcGFkZGluZy1sZWZ0OiA1MHB4O1xuICBwYWRkaW5nLXJpZ2h0OiA1MHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGZvbnQtd2VpZ2h0OiA0NTA7XG4gIGJvcmRlci1yYWRpdXM6IDI1cHg7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cblxuLmltZy1jc3Mge1xuICB3aWR0aDogMTAwcHg7XG4gIGhlaWdodDogMTAwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXRvcDogNTBweDtcbiAgYmFja2dyb3VuZDogI2YxZjRmOTtcbiAgYm9yZGVyOiAwLjVweCBzb2xpZCAjOWI5OTk5O1xufVxuXG4ucGljLXRleHQge1xuICBjb2xvcjogI2ZiNzY0NTtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBmb250LXdlaWdodDogNDUwO1xuICBtYXJnaW46IDVweDtcbn1cblxuLmxhYmVsLXRleHQtY3NzIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".cl-back-button {\n  background: url('back_white.png') center;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  width: 25px;\n  height: 25px;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n\n.TitleHeader {\n  width: 100%;\n  height: 50px;\n  display: inline-flex;\n  align-items: center;\n}\n\n.floating-label-css {\n  font-size: 13px;\n}\n\n.TitleText {\n  font-size: 19px;\n  width: 81%;\n  color: #ffffff;\n  margin-left: 10px;\n}\n\n.updateProfileButton {\n  background: linear-gradient(to right, #fe4f14, #fe8860, #feae93);\n  color: white;\n  padding-left: 50px;\n  padding-right: 50px;\n  margin-top: 10%;\n  font-weight: 450;\n  border-radius: 25px;\n  font-size: 16px;\n}\n\n.img-css {\n  width: 100px;\n  height: 100px;\n  border-radius: 100%;\n  color: white;\n  margin-top: 50px;\n  background: #f1f4f9;\n  border: 0.5px solid #9b9999;\n}\n\n.pic-text {\n  color: #fb7645;\n  font-size: 15px;\n  font-weight: 450;\n  margin: 5px;\n}\n\n.label-text-css {\n  font-size: 11px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2Frc2hheS5tYWRrZS9EZXNrdG9wL0V4ZXJjaXNlL2lvbmljNC1tYXJrZXRwbGFjZS9zcmMvYXBwL3BhZ2VzL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSx3Q0FBQTtFQUNBLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSw0QkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FDQUo7O0FES0U7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG9CQUFBO0VBQ0EsbUJBQUE7QUNGSjs7QURLRTtFQUNFLGVBQUE7QUNGSjs7QURLRTtFQUdFLGVBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FDSko7O0FEU0E7RUFDRSxnRUFBQTtFQUVBLFlBQUE7RUFFQSxrQkFBQTtFQUNBLG1CQUFBO0VBSUMsZUFBQTtFQUVDLGdCQUFBO0VBQ0EsbUJBQUE7RUFDRixlQUFBO0FDWkY7O0FEZ0JBO0VBQ0UsWUFBQTtFQUNDLGFBQUE7RUFDQSxtQkFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMkJBQUE7QUNiSDs7QURpQkE7RUFDRSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtBQ2RGOztBRGtCSztFQUNDLGVBQUE7QUNmTiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5jbC1iYWNrLWJ1dHRvbntcbiAgICBiYWNrZ3JvdW5kOiB1cmwoJy4uLy4uLy4uL2Fzc2V0cy9iYWNrX3doaXRlLnBuZycpIGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIHdpZHRoOiAyNXB4O1xuICAgIGhlaWdodDogMjVweDtcbiAgICBvdXRsaW5lOiAwO1xuICAgIGJveC1zaGFkb3c6IDAgMCAwIDA7XG4gICAgLy8gbWFyZ2luLXJpZ2h0OiAxNXB4O1xuICB9XG4gIFxuICBcbiAgLlRpdGxlSGVhZGVye1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogNTBweDtcbiAgICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICB9XG5cbiAgLmZsb2F0aW5nLWxhYmVsLWNzc3tcbiAgICBmb250LXNpemU6MTNweDtcbiAgfVxuICBcbiAgLlRpdGxlVGV4dHtcbiAgICAvLyBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgICAvLyB0ZXh0LWFsaWduOmxlZnQ7XG4gICAgZm9udC1zaXplOiAxOXB4O1xuICAgIHdpZHRoOiA4MSU7XG4gICAgY29sb3I6ICNmZmZmZmY7XG4gICAgbWFyZ2luLWxlZnQ6MTBweDtcbiAgICAvLyBhbGlnbi1pdGVtczogY2VudGVyO1xuICB9XG5cblxuLnVwZGF0ZVByb2ZpbGVCdXR0b257XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgI2ZlNGYxNCwjZmU4ODYwLCNmZWFlOTMpO1xuICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiAjZmI3NjQ1O1xuICBjb2xvcjogd2hpdGU7XG4gIC8vIHdpZHRoOjI4JTtcbiAgcGFkZGluZy1sZWZ0OjUwcHg7XG4gIHBhZGRpbmctcmlnaHQ6NTBweDtcbiAgLy8gcGFkZGluZy1ib3R0b206NXB4O1xuICAvLyBwYWRkaW5nLXRvcDo1cHg7XG4gXG4gICBtYXJnaW4tdG9wOjEwJTtcbiAgXG4gICAgZm9udC13ZWlnaHQ6NDUwO1xuICAgIGJvcmRlci1yYWRpdXM6MjVweDtcbiAgZm9udC1zaXplOjE2cHg7XG59XG5cblxuLmltZy1jc3N7XG4gIHdpZHRoOjEwMHB4O1xuICAgaGVpZ2h0OjEwMHB4OyBcbiAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gICBjb2xvcjp3aGl0ZTtcbiAgIG1hcmdpbi10b3A6NTBweDtcbiAgIGJhY2tncm91bmQ6I2YxZjRmOTtcbiAgIGJvcmRlcjowLjVweCBzb2xpZCByZ2IoMTU1LCAxNTMsIDE1MykgO1xuICAgIC8vIHBhZGRpbmc6NXB4O1xufVxuXG4ucGljLXRleHR7XG4gIGNvbG9yOiNmYjc2NDU7XG4gIGZvbnQtc2l6ZToxNXB4O1xuICBmb250LXdlaWdodDogNDUwO1xuICBtYXJnaW46NXB4O1xufVxuXG5cbiAgICAgLmxhYmVsLXRleHQtY3Nze1xuICAgICAgZm9udC1zaXplOjExcHg7XG4gICAgIH1cbiIsIi5jbC1iYWNrLWJ1dHRvbiB7XG4gIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9iYWNrX3doaXRlLnBuZ1wiKSBjZW50ZXI7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgd2lkdGg6IDI1cHg7XG4gIGhlaWdodDogMjVweDtcbiAgb3V0bGluZTogMDtcbiAgYm94LXNoYWRvdzogMCAwIDAgMDtcbn1cblxuLlRpdGxlSGVhZGVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogNTBweDtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5mbG9hdGluZy1sYWJlbC1jc3Mge1xuICBmb250LXNpemU6IDEzcHg7XG59XG5cbi5UaXRsZVRleHQge1xuICBmb250LXNpemU6IDE5cHg7XG4gIHdpZHRoOiA4MSU7XG4gIGNvbG9yOiAjZmZmZmZmO1xuICBtYXJnaW4tbGVmdDogMTBweDtcbn1cblxuLnVwZGF0ZVByb2ZpbGVCdXR0b24ge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZTRmMTQsICNmZTg4NjAsICNmZWFlOTMpO1xuICBjb2xvcjogd2hpdGU7XG4gIHBhZGRpbmctbGVmdDogNTBweDtcbiAgcGFkZGluZy1yaWdodDogNTBweDtcbiAgbWFyZ2luLXRvcDogMTAlO1xuICBmb250LXdlaWdodDogNDUwO1xuICBib3JkZXItcmFkaXVzOiAyNXB4O1xuICBmb250LXNpemU6IDE2cHg7XG59XG5cbi5pbWctY3NzIHtcbiAgd2lkdGg6IDEwMHB4O1xuICBoZWlnaHQ6IDEwMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMDAlO1xuICBjb2xvcjogd2hpdGU7XG4gIG1hcmdpbi10b3A6IDUwcHg7XG4gIGJhY2tncm91bmQ6ICNmMWY0Zjk7XG4gIGJvcmRlcjogMC41cHggc29saWQgIzliOTk5OTtcbn1cblxuLnBpYy10ZXh0IHtcbiAgY29sb3I6ICNmYjc2NDU7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgZm9udC13ZWlnaHQ6IDQ1MDtcbiAgbWFyZ2luOiA1cHg7XG59XG5cbi5sYWJlbC10ZXh0LWNzcyB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -209,6 +209,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UpdateprofilePage = /** @class */ (function () {
+    // genderArray = [
+    //   {
+    //     "id": "0",
+    //     "value": "male",
+    //     "name": "Male"
+    //   },
+    //   {
+    //     "id": "1",
+    //     "value": "female",
+    //     "name": "Female"
+    //   }
+    // ];
     function UpdateprofilePage(router, apiCall, loader, toast, activatedRoute) {
         this.router = router;
         this.apiCall = apiCall;
@@ -218,12 +230,26 @@ var UpdateprofilePage = /** @class */ (function () {
         this.updateStatus = 0;
         this.profileModel = {};
         this.profileImg = "";
+        this.checkRadioButton = "male";
+        this.genderArray = [
+            {
+                "id": "0",
+                "value": "0",
+                "name": "Male"
+            },
+            {
+                "id": "1",
+                "value": "1",
+                "name": "Female"
+            }
+        ];
     }
     UpdateprofilePage.prototype.ngOnInit = function () {
         this.loginUserId = localStorage.getItem('userId');
         this.userRole = localStorage.getItem('userRole');
         var getData = this.activatedRoute.snapshot.params['profileData'];
         this.getProfileDetail = JSON.parse(getData);
+        this.callGetUserDetails();
         console.log("getProfileDetail id:" + this.getProfileDetail.id);
         this.profileImg = this.getProfileDetail.image;
         console.log("ger profile image:" + this.profileImg);
@@ -244,10 +270,48 @@ var UpdateprofilePage = /** @class */ (function () {
         this.profileModel['name'] = this.getProfileDetail.name;
         this.profileModel['email'] = this.getProfileDetail.email;
         this.profileModel['contact'] = this.getProfileDetail.mobile;
+        // if(this.getProfileDetail.gender ==0){
+        //   this.selectedRadioGroup = "male"
+        // }else if(this.getProfileDetail.gender ==1){
+        //   this.selectedRadioGroup = "female"
+        // }
+        // this.profileModel['gender'] =  
+        // this.selectedRadioGroup= this.getProfileDetail.gender;
         // this.profileModel['password'] = this.getProfileDetail.password;
+    };
+    UpdateprofilePage.prototype.callGetUserDetails = function () {
+        var _this = this;
+        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "users/" + this.loginUserId;
+        this.apiCall.get(url).subscribe(function (MyResponse) {
+            _this.getProfileDetailN = MyResponse['result'];
+            _this.profileModel['gender'] = _this.getProfileDetailN['gender'];
+            if (_this.profileModel['gender'] == 0) {
+                _this.selectedRadioGroup = "0";
+            }
+            else if (_this.profileModel['gender'] == 1) {
+                _this.selectedRadioGroup = "1";
+            }
+            console.log("json string", "" + JSON.stringify(_this.getProfileDetailN));
+        });
     };
     UpdateprofilePage.prototype.goBackword = function () {
         window.history.back();
+    };
+    UpdateprofilePage.prototype.radioGroupChange = function (event) {
+        console.log("radioGroupChange", event.detail.value);
+        this.selectedRadioGroup = event.detail.value;
+        if (this.selectedRadioGroup == 'male') {
+            this.profileModel['gender'] = 0;
+            // this.checkRadioButton = "male";
+        }
+        else if (this.selectedRadioGroup == 'female') {
+            this.profileModel['gender'] = 1;
+            // this.checkRadioButton = "female";
+        }
+        // else {
+        //   this.profileModel['gender']  = -1;
+        //   this.checkRadioButton = "female";
+        // }
     };
     UpdateprofilePage.prototype.updateProfileData = function () {
         var _this = this;
@@ -267,6 +331,7 @@ var UpdateprofilePage = /** @class */ (function () {
             localStorage.setItem("getName", send_date['name']);
             send_date['email'] = this.profileModel['email'];
             send_date['mobile'] = this.profileModel['contact'];
+            send_date['gender'] = this.profileModel['gender'];
             // send_date['token'] =localStorage.getItem("fcmToken");
             // send_date['isActive'] = 1;
             // send_date['userRole'] = this.userRole;

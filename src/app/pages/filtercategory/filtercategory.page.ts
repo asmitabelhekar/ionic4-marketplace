@@ -15,6 +15,10 @@ export class FiltercategoryPage implements OnInit {
 
   categoryId = "";
 
+  activeIndex = 0;
+
+  isSameSection = 0;
+
   parentArray: any[];
   categoryArray = [];
   automaticClose = false;
@@ -62,7 +66,16 @@ export class FiltercategoryPage implements OnInit {
 
   toggleSection(index, categoryId) {
     this.categoryId = categoryId;
+   let cId = localStorage.getItem("selectedParent");
+    if(cId ==  this.categoryId &&  this.isSameSection !=1){
+
+      this.isSameSection =1;
+    }else{
+      this.isSameSection =0;
+    }
     localStorage.setItem("selectedParent", this.categoryId);
+   
+   
     // this.categoryArray[index].open = !this.categoryArray[index].open;
     // if (this.automaticClose && this.categoryArray[index].open) {
     //   this.categoryArray

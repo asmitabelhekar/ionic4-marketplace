@@ -34,7 +34,9 @@ export class NewadvertisementformPage implements OnInit {
   // { "code": "81", "name": "Japan" },
   // { "code": "52", "name": "Mexico" }];
   selectedRadioGroup: any;
+  selectedRadioGroupPrice: any;
   checkRadioButton: any = "male";
+  checkRadioButtonPrice: any = "rupees";
   getCategoryId: any;
   advertisementStatus: any;
   advertisementId: any;
@@ -75,6 +77,7 @@ export class NewadvertisementformPage implements OnInit {
   cityName: any;
   pincode: any;
   usersId: any;
+  cityNameToSend:any;
 
   //getAllFormsData
   firstFormData: any;
@@ -121,6 +124,21 @@ export class NewadvertisementformPage implements OnInit {
   isOtpRequested = 0;
   isOtpVerified=0;
   generatedOtp:any;
+
+  priceArray = [
+
+    {
+      "id": "0",
+      "value": "rupees",
+      "name": "Rupees"
+    },
+    {
+      "id": "1",
+      "value": "dollars",
+      "name": "Dollars"
+    }
+
+  ]
 
   genderArray = [
     {
@@ -273,25 +291,6 @@ export class NewadvertisementformPage implements OnInit {
 
      
 
-  // async getData() {
-  //   try {
-  //     let url = "http://sms.abpss.us/api/sendhttp.php?authkey=MTM2ZGRmMGYyZjE&mobiles=892807933&message=Welcome to HolyHub.Your otp is 1234&sender=ABPSYS&type=1&route=2";
-
-  //     const params = {};
-  //     const headers = {};
-
-  //     const response = await this.http.get(url, params, headers);
-
-  //     console.log(response.status);
-  //     console.log(JSON.parse(response.data)); // JSON data returned by server
-  //     console.log(response.headers);
-
-  //   } catch (error) {
-  //     console.error(error.status);
-  //     console.error(error.error); // Error message as string
-  //     console.error(error.headers);
-  //   }
-  // }
 
   clearImage(index){
 
@@ -352,6 +351,17 @@ export class NewadvertisementformPage implements OnInit {
         descriptionCtrl: [this.advertisementObject.description, Validators.required],
         priceCtrl: [this.advertisementObject.price, Validators.required]
       });
+
+     
+
+      if(this.advertisementObject.adPriceType  ==0){
+
+        this.checkRadioButtonPrice = "rupees"
+      }else{
+        this.checkRadioButtonPrice = "dollars"
+      }
+      
+
       if (this.advertisementObject.gender == 0) {
         this.checkRadioButton = "male";
       } else {
@@ -484,16 +494,17 @@ export class NewadvertisementformPage implements OnInit {
     this.getLanguages();
     this.todayDate = new Date();
 
-    for (let p = 0; p <= 52; p++) {
-      this.weeksArray.push(p);
-    }
-    console.log("show weeks array:" + this.weeksArray);
+    // for (let p = 0; p <= 52; p++) {
+    //   this.weeksArray.push(p);
+    // }
+    // console.log("show weeks array:" + this.weeksArray);
 
 
     this.firstFormGroup = this.formBuilder.group({
       titleCtrl: ['', Validators.required],
       descriptionCtrl: ['', Validators.required],
-      priceCtrl: ['', Validators.required]
+      priceCtrl: ['', Validators.required],
+      checkRadioButtonPrice: [this.checkRadioButtonPrice, Validators.required]
     });
     this.secondFormGroup = this.formBuilder.group({
       emailCtrl: ['', Validators.required],
@@ -681,10 +692,24 @@ export class NewadvertisementformPage implements OnInit {
     } else if (this.selectedRadioGroup == 'female') {
       this.advertisementModel['gender'] = 1;
       this.checkRadioButton = "female";
-    } else {
-      this.advertisementModel['gender'] = 1;
-      this.checkRadioButton = "female";
-    }
+    } 
+    
+    // else {
+    //   this.advertisementModel['gender'] = 1;
+    //   this.checkRadioButton = "female";
+    // }
+  }
+
+  radioGroupChangePrice(event) {
+    console.log("radioGroupChange", event.detail.value);
+    this.selectedRadioGroupPrice = event.detail.value;
+    if (this.selectedRadioGroupPrice == 'rupees') {
+      this.advertisementModel['priceUnit'] = 0;
+      this.checkRadioButtonPrice = "rupees";
+    } else if (this.selectedRadioGroupPrice == 'dollars') {
+      this.advertisementModel['priceUnit'] = 1;
+      this.checkRadioButtonPrice = "dollars";
+    } 
   }
 
   submmitAdvertisementData() {
@@ -692,6 +717,14 @@ export class NewadvertisementformPage implements OnInit {
     this.loader.showBlockingLoaderAuth();
     // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
 
+    if( this.advertisementModel['priceUnit'] == null){
+      this.advertisementModel['priceUnit'] = 0;
+    }
+
+
+    if( this.advertisementModel['gender'] == null){
+      this.advertisementModel['gender'] = 0;
+    }
    
 
     let send_date = {};
@@ -701,7 +734,9 @@ export class NewadvertisementformPage implements OnInit {
     send_date['latitude'] = this.lattitude;
     send_date['longitude'] = this.longitude;
     send_date['address'] = this.cityName;
+    send_date['city'] = this.cityNameToSend;
     send_date['gender'] = this.advertisementModel['gender'];
+    send_date['adPriceType'] = this.advertisementModel['priceUnit'];
     send_date['languages'] = this.fourthFormData.selectedLanguages;
     send_date['email'] = this.secondFormData.emailCtrl;
     send_date['mobile'] = this.secondFormData.mobileCtrl;
@@ -731,7 +766,14 @@ export class NewadvertisementformPage implements OnInit {
           this.postBanner(this.getCategoryId);
         }
 
-        this.payWithRazor();
+        if (this.totalCalculatePayment == 0) {
+          this.presentToast("Advertisement added successfully.");
+          this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
+        } else {
+          this.payWithRazor();
+        }
+
+       
         // this.router.navigate(['/home', { categoryId: this.getCategoryId }]);
         this.loader.hideBlockingLoaderAuth();
       }, error => {
@@ -1008,6 +1050,7 @@ export class NewadvertisementformPage implements OnInit {
     this.checkBannerStartDateTimestamp = 0;
     this.checkBannerEndDateTimestamp = 0;
     this.planIdBanner = 0;
+    this.selectedBannerPrice = 0;
 
     this.totalCalculatePayment = this.selectedAdPrice;;
   }
@@ -1121,6 +1164,9 @@ export class NewadvertisementformPage implements OnInit {
     }
     console.log(this.cityName, this.stateName, this.countryName, this.pincode, this.advertisementModel['landmark'], this.advertisementModel['location']);
     this.address = this.advertisementModel['landmark'], this.advertisementModel['location'], this.cityName, this.countryName, this.pincode;
+    
+    this.cityNameToSend = this.cityName;
+ 
   }
 
 

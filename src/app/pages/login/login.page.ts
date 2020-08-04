@@ -161,6 +161,7 @@ export class LoginPage implements OnInit {
       send_date['facebookId'] = this.fbId;
     }
 
+    send_date['gender'] = -1;
     
 // send_date['name'] = "Akshay Madake";
 // send_date['userRole'] = 0;

@@ -73,6 +73,28 @@
   </mat-form-field>
   </div>
 
+  <!-- <ion-row
+  style="border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:96%; margin-top:5px;margin-bottom:15px">
+  <ion-col size="4" fxLayoutAlign="start center">
+    <label class="floating-label-css" fxLayoutAlign="start center">Gender</label>
+
+  </ion-col>
+
+  <ion-col size="8" fxLayoutAlign="center center">
+    <ion-radio-group class="form-control" (ionChange)="radioGroupChange($event)"  [(ngModel)]="profileModel.gender" #gender="ngModel">
+      <div fxLayout="row" fxLayoutGap="10px">
+        <div *ngFor="let item of genderArray" fxLayoutAlign="center center">
+          <ion-radio checked="true" value="{{item.value}}" ></ion-radio> 
+          <ion-label fxLayoutAlign="center center" class="floating-label-css" style="margin-left:10px">
+            {{item.name}}</ion-label>
+        </div>
+      </div>
+    </ion-radio-group>
+
+
+  </ion-col>
+</ion-row> -->
+
   <button mat-raised-button class="updateProfileButton" [disabled]="email.invalid || contact.invalid ||  name.invalid"
   (click)="updateProfileData(advertisementModel)">Update</button>
 </div>

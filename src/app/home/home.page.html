@@ -17,7 +17,7 @@
         <mat-menu #menu="matMenu">
           <div fxLayout="row" style="margin-top:10px;" *ngFor="let language of Languages"
             [ngClass]="language.image == languageImage ? 'selected-category-back' : 'category-back' "
-            (click)="getLanguage(language.image)">
+            (click)="getLanguage(language)">
             <button fxLayout="row" mat-button style="padding:5px;">
               <ion-row>
                 <img src="{{language.image}}" style="width:20px; height:20px" />

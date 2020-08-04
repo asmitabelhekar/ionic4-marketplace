@@ -15,6 +15,29 @@
           <input matInput type="text" formControlName="titleCtrl" required class="text-font-size">
         </mat-form-field>
 
+        <ion-row
+        style="border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:100%; margin-top:5px;margin-bottom:15px">
+        <ion-col size="4" fxLayoutAlign="start center">
+          <label class="floating-label-css" fxLayoutAlign="start center">Price in</label>
+
+        </ion-col>
+
+        <ion-col size="8" fxLayoutAlign="center center">
+          <ion-radio-group (ionChange)="radioGroupChangePrice($event)" formControlName="checkRadioButtonPrice">
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div *ngFor="let item of priceArray" fxLayoutAlign="center center">
+                <ion-radio value="{{item.value}}"></ion-radio>
+                <ion-label fxLayoutAlign="center center" class="floating-label-css" style="margin-left:10px">
+                  {{item.name}}</ion-label>
+              </div>
+            </div>
+          </ion-radio-group>
+
+
+        </ion-col>
+      </ion-row>
+
+
 
         <mat-form-field appearance="outline" class="margin-top-css">
           <mat-label class="floating-label-css">Price</mat-label>
@@ -53,7 +76,7 @@
             <ion-radio-group (ionChange)="radioGroupChange($event)" formControlName="checkRadioButton">
               <div fxLayout="row" fxLayoutGap="10px">
                 <div *ngFor="let item of genderArray" fxLayoutAlign="center center">
-                  <ion-radio value="{{item.value}}"></ion-radio>
+                  <ion-radio  checked="true" value="{{item.value}}"></ion-radio>
                   <ion-label fxLayoutAlign="center center" class="floating-label-css" style="margin-left:10px">
                     {{item.name}}</ion-label>
                 </div>
@@ -425,7 +448,11 @@
         </div>
         <div fxFlex="100">
           <button class="buttonPayClass" *ngIf="totalCalculatePayment == 0 "
+            (click)="submmitAdvertisementData()">Submit</button>
+
+            <button class="buttonPayClass" *ngIf="advertisementStatus == update "
             (click)="submmitAdvertisementData()">Update</button>
+
           <button class="buttonPayClass" *ngIf="totalCalculatePayment != 0 " (click)="submmitAdvertisementData()">Pay
             with RazorPay</button>
         </div>

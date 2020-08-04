@@ -80,9 +80,18 @@
       <div fxFlex="80"  fxLayoutAlign="start start">
         <ion-label class="cl_content_fontsize">{{email}}</ion-label>
       </div>
+    
       <!-- <div fxFlex="20" fxLayoutAlign="center start"  (click)="updateProfile()" *ngIf="updateStatus == 0 ">
         <mat-icon class="cl_edit_css">edit</mat-icon>
       </div> -->
+      </div>
+      <div *ngIf="gender != 'not updated'" style="width:100%;padding:5px;margin-top:20px;" fxLayout="row">
+      <div fxFlex="20"  fxLayoutAlign="center start">
+        <ion-icon class="icon-css" name="person"></ion-icon>
+      </div>
+      <div fxFlex="80"  fxLayoutAlign="start start">
+        <ion-label class="cl_content_fontsize">{{gender}}</ion-label>
+      </div>
       </div>
 
       <div style="width:100%;padding:5px;margin-top:20px;" *ngIf="updateStatus == 0 " fxLayout="row" (click)="viewPaymentLogs()()">

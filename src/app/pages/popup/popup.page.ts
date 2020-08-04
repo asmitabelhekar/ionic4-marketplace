@@ -64,7 +64,12 @@ export class PopupPage implements OnInit {
       // this.presentToast("Please enter city name");
     }else{
       localStorage.setItem("cityname",this.cityName);
-      this.dialogRef.close(this.cityName);
+      let obj = {
+        "city_name" : this.cityName,
+        "latitude" : this.lattitude,
+        "longitude" : this.longitude
+      }
+      this.dialogRef.close(obj);
     }
    
   }
