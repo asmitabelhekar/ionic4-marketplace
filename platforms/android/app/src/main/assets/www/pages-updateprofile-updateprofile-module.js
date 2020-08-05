@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\" fxLayoutAlign=\"center center\">\n  <ion-row fxLayoutAlign=\"center center\">\n    <ion-col size=\"1\">\n      \n      <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n    </ion-col>\n    <ion-col size=\"11\" fxLayoutAlign=\"start center\">\n      <ion-label style=\"color:white;\" class=\"TitleText\">Edit Profile</ion-label>\n    </ion-col>\n \n  </ion-row>\n   \n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n<div fxLayout=\"column\" fxFlex=\"100\" fxLayoutAlign=\"center center\">\n\n  <div fxLayoutAlign=\"center center\" fxLayout=\"column\" onclick=\"document.getElementById('profile_pic_upload').click()\">\n    <img *ngIf=\"profileImg == '1' \" src=\"../../../assets/agent.png\" class=\"img-css\" />\n    <img  *ngIf=\"profileImg != '1' \" src=\"{{profileImg}}\" class=\"img-css\" />\n    <label class=\"pic-text\">Change profile picture</label>\n  </div>\n  <input style=\"display: none;\" id=\"profile_pic_upload\" type=\"file\" (change)=\"detectEventGallery($event)\">\n  \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:25px\">\n    <mat-form-field style=\"width:96%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\">Name</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"name\" [(ngModel)]=\"profileModel.name\" #name=\"ngModel\"\n            align=\"center\" required style=\"font-size:13px;\">\n            <mat-error>\n              <div class=\"form-group\" style=\"margin-bottom:10px\">\n                <div *ngIf=\"name.invalid && (name.dirty || name.touched)\">\n                  Name Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\" >Email</mat-label>\n      <input matInput class=\"form-control \" name=\"email\" [(ngModel)]=\"profileModel.email\" #email=\"ngModel\"\n        pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\"  style=\"font-size:13px;\" />\n      <mat-error>\n        <div class=\"form-group\">\n          <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" >\n           Invalid email address\n          </div>\n        </div>\n      </mat-error>\n  \n    </mat-form-field>\n  </div>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%\" appearance=\"outline\">\n    <mat-label class=\"label-text-css\">Mobile</mat-label>\n        <input matInput class=\"form-control\" type=\"tel\" name=\"contact\" minlength=\"10\" maxlength=\"10\" [(ngModel)]=\"profileModel.contact\" #contact=\"ngModel\"\n          align=\"center\"  style=\"font-size:13px;\" required>\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"contact.invalid && (contact.dirty || contact.touched)\">\n                Mobile Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n  </div>\n\n  <ion-row\n  style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:96%; margin-top:5px;margin-bottom:15px\">\n  <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n    <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n  </ion-col>\n\n  <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n    <ion-radio-group class=\"form-control\" (ionChange)=\"radioGroupChange($event)\"  [(ngModel)]=\"profileModel.gender\" #gender=\"ngModel\">\n      <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n        <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n          <ion-radio checked=\"true\" value=\"{{item.value}}\" ></ion-radio> \n          <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">\n            {{item.name}}</ion-label>\n        </div>\n      </div>\n    </ion-radio-group>\n\n\n  </ion-col>\n</ion-row>\n\n  <button mat-raised-button class=\"updateProfileButton\" [disabled]=\"email.invalid || contact.invalid ||  name.invalid\"\n  (click)=\"updateProfileData(advertisementModel)\">Update</button>\n</div>\n \n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"new-background-color\">\n  <ion-toolbar class=\"new-background-color\" fxLayoutAlign=\"center center\">\n  <ion-row fxLayoutAlign=\"center center\">\n    <ion-col size=\"1\">\n      \n      <button ion-button class=\"cl-back-button\" (click)=\"goBackword()\" style=\"color:white;margin:7px\"></button>\n    </ion-col>\n    <ion-col size=\"11\" fxLayoutAlign=\"start center\">\n      <ion-label style=\"color:white;\" class=\"TitleText\">Edit Profile</ion-label>\n    </ion-col>\n \n  </ion-row>\n   \n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n<div fxLayout=\"column\" fxFlex=\"100\" fxLayoutAlign=\"center center\">\n\n  <div fxLayoutAlign=\"center center\" fxLayout=\"column\" onclick=\"document.getElementById('profile_pic_upload').click()\">\n    <img *ngIf=\"profileImg == '1' \" src=\"../../../assets/agent.png\" class=\"img-css\" />\n    <img  *ngIf=\"profileImg != '1' \" src=\"{{profileImg}}\" class=\"img-css\" />\n    <label class=\"pic-text\">Change profile picture</label>\n  </div>\n  <input style=\"display: none;\" id=\"profile_pic_upload\" type=\"file\" (change)=\"detectEventGallery($event)\">\n  \n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;margin-top:25px\">\n    <mat-form-field style=\"width:96%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\">Name</mat-label>\n          <input matInput class=\"form-control\" type=\"text\" name=\"name\" [(ngModel)]=\"profileModel.name\" #name=\"ngModel\"\n            align=\"center\" required style=\"font-size:13px;\">\n            <mat-error>\n              <div class=\"form-group\" style=\"margin-bottom:10px\">\n                <div *ngIf=\"name.invalid && (name.dirty || name.touched)\">\n                  Name Is Requird\n                </div>\n              </div>\n            </mat-error>\n    </mat-form-field>\n  </div>\n\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n    <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%;\" appearance=\"outline\">\n      <mat-label class=\"label-text-css\" >Email</mat-label>\n      <input matInput class=\"form-control \" name=\"email\" [(ngModel)]=\"profileModel.email\" #email=\"ngModel\"\n        pattern=\"[A-Za-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\"  style=\"font-size:13px;\" />\n      <mat-error>\n        <div class=\"form-group\">\n          <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" >\n           Invalid email address\n          </div>\n        </div>\n      </mat-error>\n  \n    </mat-form-field>\n  </div>\n\n  <div fxLayout=\"row\" fxLayoutAlign=\"center center\" style=\"width:100%;\">\n  <mat-form-field style=\"width:96%; margin-left: 2% ; margin-right: 2%\" appearance=\"outline\">\n    <mat-label class=\"label-text-css\">Mobile</mat-label>\n        <input matInput class=\"form-control\" type=\"tel\" name=\"contact\" minlength=\"10\" maxlength=\"10\" [(ngModel)]=\"profileModel.contact\" #contact=\"ngModel\"\n          align=\"center\"  style=\"font-size:13px;\" required>\n          <mat-error>\n            <div class=\"form-group\">\n              <div *ngIf=\"contact.invalid && (contact.dirty || contact.touched)\">\n                Mobile Is Requird\n              </div>\n            </div>\n          </mat-error>\n  </mat-form-field>\n  </div>\n\n  <!-- <ion-row\n  style=\"border: 1px solid #d3d5da;border-radius: 5px;height:60px; padding-left:8px; width:96%; margin-top:5px;margin-bottom:15px\">\n  <ion-col size=\"4\" fxLayoutAlign=\"start center\">\n    <label class=\"floating-label-css\" fxLayoutAlign=\"start center\">Gender</label>\n\n  </ion-col>\n\n  <ion-col size=\"8\" fxLayoutAlign=\"center center\">\n    <ion-radio-group class=\"form-control\" (ionChange)=\"radioGroupChange($event)\"  [(ngModel)]=\"profileModel.gender\" #gender=\"ngModel\">\n      <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n        <div *ngFor=\"let item of genderArray\" fxLayoutAlign=\"center center\">\n          <ion-radio checked=\"true\" value=\"{{item.value}}\" ></ion-radio> \n          <ion-label fxLayoutAlign=\"center center\" class=\"floating-label-css\" style=\"margin-left:10px\">\n            {{item.name}}</ion-label>\n        </div>\n      </div>\n    </ion-radio-group>\n\n\n  </ion-col>\n</ion-row> -->\n\n  <button mat-raised-button class=\"updateProfileButton\" [disabled]=\"email.invalid || contact.invalid ||  name.invalid\"\n  (click)=\"updateProfileData(advertisementModel)\">Update</button>\n</div>\n \n</ion-content>\n");
 
 /***/ }),
 
@@ -249,7 +249,7 @@ var UpdateprofilePage = /** @class */ (function () {
         this.userRole = localStorage.getItem('userRole');
         var getData = this.activatedRoute.snapshot.params['profileData'];
         this.getProfileDetail = JSON.parse(getData);
-        this.callGetUserDetails();
+        // this.callGetUserDetails();
         console.log("getProfileDetail id:" + this.getProfileDetail.id);
         this.profileImg = this.getProfileDetail.image;
         console.log("ger profile image:" + this.profileImg);
@@ -279,40 +279,33 @@ var UpdateprofilePage = /** @class */ (function () {
         // this.selectedRadioGroup= this.getProfileDetail.gender;
         // this.profileModel['password'] = this.getProfileDetail.password;
     };
-    UpdateprofilePage.prototype.callGetUserDetails = function () {
-        var _this = this;
-        var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].version + "users/" + this.loginUserId;
-        this.apiCall.get(url).subscribe(function (MyResponse) {
-            _this.getProfileDetailN = MyResponse['result'];
-            _this.profileModel['gender'] = _this.getProfileDetailN['gender'];
-            if (_this.profileModel['gender'] == 0) {
-                _this.selectedRadioGroup = "0";
-            }
-            else if (_this.profileModel['gender'] == 1) {
-                _this.selectedRadioGroup = "1";
-            }
-            console.log("json string", "" + JSON.stringify(_this.getProfileDetailN));
-        });
-    };
+    // callGetUserDetails() {
+    //   let url = environment.base_url + environment.version + "users/" + this.loginUserId
+    //   this.apiCall.get(url).subscribe(MyResponse => {
+    //       this.getProfileDetailN = MyResponse['result'];
+    //       this.profileModel['gender'] = this.getProfileDetailN['gender'];
+    //       if(this.profileModel['gender'] == 0){
+    //         this.selectedRadioGroup = "0";
+    //       }else if(this.profileModel['gender'] == 1){
+    //         this.selectedRadioGroup = "1";
+    //       }
+    //        console.log("json string",""+JSON.stringify(this.getProfileDetailN));
+    //   });
+    // }
     UpdateprofilePage.prototype.goBackword = function () {
         window.history.back();
     };
-    UpdateprofilePage.prototype.radioGroupChange = function (event) {
-        console.log("radioGroupChange", event.detail.value);
-        this.selectedRadioGroup = event.detail.value;
-        if (this.selectedRadioGroup == 'male') {
-            this.profileModel['gender'] = 0;
-            // this.checkRadioButton = "male";
-        }
-        else if (this.selectedRadioGroup == 'female') {
-            this.profileModel['gender'] = 1;
-            // this.checkRadioButton = "female";
-        }
-        // else {
-        //   this.profileModel['gender']  = -1;
-        //   this.checkRadioButton = "female";
-        // }
-    };
+    // radioGroupChange(event) {
+    //   console.log("radioGroupChange", event.detail.value);
+    //   this.selectedRadioGroup = event.detail.value;
+    //   if (this.selectedRadioGroup == 'male' ) {
+    //     this.profileModel['gender'] = 0;
+    //     // this.checkRadioButton = "male";
+    //   } else if (this.selectedRadioGroup == 'female' ) {
+    //     this.profileModel['gender'] = 1;
+    //     // this.checkRadioButton = "female";
+    //   }
+    // }
     UpdateprofilePage.prototype.updateProfileData = function () {
         var _this = this;
         if (this.profileImg == "1" || this.profileImg == null) {
@@ -331,7 +324,7 @@ var UpdateprofilePage = /** @class */ (function () {
             localStorage.setItem("getName", send_date['name']);
             send_date['email'] = this.profileModel['email'];
             send_date['mobile'] = this.profileModel['contact'];
-            send_date['gender'] = this.profileModel['gender'];
+            send_date['gender'] = -1;
             // send_date['token'] =localStorage.getItem("fcmToken");
             // send_date['isActive'] = 1;
             // send_date['userRole'] = this.userRole;

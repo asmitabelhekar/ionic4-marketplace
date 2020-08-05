@@ -197,7 +197,7 @@ console.log("my token",""+JSON.stringify(send_date));
         localStorage.setItem("userRole", MyResponse['result']['userRole']);
         localStorage.setItem("userName", MyResponse['result']['name']);
         localStorage.setItem("userCreated", MyResponse['result']['created']);
-        this.router.navigate(['/home',{categoryId: "5"}],{ replaceUrl: true });
+        this.router.navigate(['/home',{categoryId: "73"}],{ replaceUrl: true });
         // this.router.navigateByUrl('/profile', { replaceUrl: true }) 
         console.log("show login data:"+JSON.stringify(MyResponse['result']));
       }else{

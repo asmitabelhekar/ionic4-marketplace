@@ -639,10 +639,10 @@ var NewadvertisementformPage = /** @class */ (function () {
             this.advertisementModel['gender'] = 1;
             this.checkRadioButton = "female";
         }
-        else {
-            this.advertisementModel['gender'] = 1;
-            this.checkRadioButton = "female";
-        }
+        // else {
+        //   this.advertisementModel['gender'] = 1;
+        //   this.checkRadioButton = "female";
+        // }
     };
     NewadvertisementformPage.prototype.radioGroupChangePrice = function (event) {
         console.log("radioGroupChange", event.detail.value);
@@ -660,6 +660,12 @@ var NewadvertisementformPage = /** @class */ (function () {
         var _this = this;
         this.loader.showBlockingLoaderAuth();
         // let getEndDtaeNo = parseInt(this.checkAdEndDateTimestamp); 
+        if (this.advertisementModel['priceUnit'] == null) {
+            this.advertisementModel['priceUnit'] = 0;
+        }
+        if (this.advertisementModel['gender'] == null) {
+            this.advertisementModel['gender'] = 0;
+        }
         var send_date = {};
         send_date['title'] = this.firstFormData.titleCtrl;
         send_date['description'] = this.firstFormData.descriptionCtrl;

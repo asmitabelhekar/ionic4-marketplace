@@ -143,7 +143,7 @@ var HomePage = /** @class */ (function () {
         this.router = router;
         this.showNoBanner = 0;
         this.categoryId = "clear";
-        this.categoryName = "Music";
+        this.categoryName = "";
         this.noInternet = "0";
         this.displayCategory = "clear";
         this.languageImage = "";
@@ -194,7 +194,7 @@ var HomePage = /** @class */ (function () {
         this.geolocation.getCurrentPosition().then(function (resp) {
             _this.currentLat = resp.coords.latitude;
             _this.currentLong = resp.coords.longitude;
-            console.log(" hh" + _this.currentLat);
+            console.log(" hh" + resp);
             console.log("kk" + _this.currentLong);
             // let obj = {};
             // obj['lat'] = this.latt;
@@ -210,6 +210,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.ionViewWillEnter = function () {
         this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
+        // this.categoryId = "clear";
         this.advertisementArray = [];
         // this.currentPage = 0;
         // this.getAdvertisement(this.categoryId);
@@ -302,10 +303,10 @@ var HomePage = /** @class */ (function () {
         var url;
         if (this.cityName.length > 0) {
             if (categoryId == "clear") {
-                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "advertisements?page=" + this.currentPage + "&size=10&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName;
+                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "advertisements?page=" + this.currentPage + "&size=10&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName.trim();
             }
             else {
-                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName;
+                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName.trim();
             }
         }
         else {
@@ -367,11 +368,11 @@ var HomePage = /** @class */ (function () {
         var url;
         if (this.cityName.length > 0) {
             if (categoryId == "clear") {
-                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "banners?" + "size=1000&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName;
+                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "banners?" + "size=1000&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName.trim();
                 ;
             }
             else {
-                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + categoryId + "/banners?" + "size=1000&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName;
+                url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].base_url + src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].version + "category/" + categoryId + "/banners?" + "size=1000&latitude=" + this.currentLat + "&longitude=" + this.currentLong + "&language=" + this.selectedLanguage + "&city=" + this.cityName.trim();
                 ;
             }
         }

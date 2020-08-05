@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   bannerCount: any;
   checkStatus: boolean;
   categoryId: any = "clear";
-  categoryName = "Music";
+  categoryName = "";
   noInternet = "0";
   displayCategory: any = "clear";
   languageImage = "";
@@ -112,7 +112,7 @@ export class HomePage implements OnInit {
         this.currentLat = resp.coords.latitude;
         this.currentLong = resp.coords.longitude;
 
-        console.log(" hh"+ this.currentLat);
+        console.log(" hh"+ resp);
 
         console.log( "kk" +this.currentLong);
   
@@ -136,6 +136,8 @@ export class HomePage implements OnInit {
    
 
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
+
+    // this.categoryId = "clear";
 
     this.advertisementArray = [];
     // this.currentPage = 0;
@@ -247,9 +249,9 @@ export class HomePage implements OnInit {
    if(this.cityName.length > 0){
 
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName ;
+      url = environment.base_url + environment.version + "advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName.trim() ;
     } else {
-      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName;
+      url = environment.base_url + environment.version + "categories/" + categoryId + "/advertisements?page=" + this.currentPage + "&size=10&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName.trim();
     }
 
    } else{
@@ -328,9 +330,9 @@ export class HomePage implements OnInit {
     if(this.cityName.length > 0){
 
     if (categoryId == "clear") {
-      url = environment.base_url + environment.version + "banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName ;;
+      url = environment.base_url + environment.version + "banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName.trim() ;;
     } else {
-      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName ;;
+      url = environment.base_url + environment.version + "category/" + categoryId + "/banners?" + "size=1000&latitude="+this.currentLat+"&longitude="+this.currentLong+"&language="+this.selectedLanguage+"&city="+this.cityName.trim() ;;
     }
   }else{
     if (categoryId == "clear") {
