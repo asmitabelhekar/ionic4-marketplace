@@ -355,6 +355,7 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage.prototype.logOut = function () {
         var _this = this;
+        localStorage.setItem("cityname", "");
         if (this.loginType == "fb") {
             this.facebook.logout()
                 .then(function (res) { return _this.isLoggedIn = false; })

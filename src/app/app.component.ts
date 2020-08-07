@@ -248,6 +248,7 @@ export class AppComponent {
 
   loginSession() {
     let loginStatus = localStorage.getItem("loginStatus");
+    localStorage.setItem("cityname", "");
     if (loginStatus == "yes") {
       this.router.navigate(['/home']);
     } else {

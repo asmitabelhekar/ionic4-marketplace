@@ -160,7 +160,7 @@ var HomePage = /** @class */ (function () {
         this.firstView = 1;
         this.currentLat = 18.5204;
         this.currentLong = 73.8567;
-        this.selectedLanguage = "Hindi";
+        this.selectedLanguage = "English";
         this.menuController.enable(false);
         this.getCategory();
         this.getLanguages();

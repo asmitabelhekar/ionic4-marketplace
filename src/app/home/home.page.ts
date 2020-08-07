@@ -52,7 +52,7 @@ export class HomePage implements OnInit {
   isTracking: any;
   currentLat: any =18.5204;
   currentLong: any = 73.8567;
-  selectedLanguage = "Hindi";
+  selectedLanguage = "English";
 
   
 

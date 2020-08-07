@@ -1075,6 +1075,7 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.loginSession = function () {
         var loginStatus = localStorage.getItem("loginStatus");
+        localStorage.setItem("cityname", "");
         if (loginStatus == "yes") {
             this.router.navigate(['/home']);
         }

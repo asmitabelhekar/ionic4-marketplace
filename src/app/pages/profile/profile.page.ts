@@ -176,6 +176,8 @@ export class ProfilePage implements OnInit {
 
   logOut() {
 
+    localStorage.setItem("cityname", "");
+
     if (this.loginType == "fb") {
       this.facebook.logout()
         .then(res => this.isLoggedIn = false)
