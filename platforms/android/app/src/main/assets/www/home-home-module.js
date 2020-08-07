@@ -410,6 +410,7 @@ var HomePage = /** @class */ (function () {
         this.apiCall.get(url).subscribe(function (MyResponse) {
             _this.Languages = MyResponse['result']['list'];
             _this.languageImage = _this.Languages[0]['image'];
+            _this.selectedLanguage = _this.Languages[1]['name'];
             _this.loader.hideBlockingLoaderAuth();
             _this.noInternet = '0';
         }, function (error) {

@@ -376,6 +376,8 @@ export class HomePage implements OnInit {
     this.apiCall.get(url).subscribe(MyResponse => {
       this.Languages = MyResponse['result']['list'];
       this.languageImage = this.Languages[0]['image'];
+      this.selectedLanguage = this.Languages[0]['name'];
+      console.log("checkinglanguage",""+this.selectedLanguage);
       this.loader.hideBlockingLoaderAuth();
       this.noInternet = '0';
     },
