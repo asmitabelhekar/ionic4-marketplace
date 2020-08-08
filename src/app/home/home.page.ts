@@ -567,6 +567,8 @@ export class HomePage implements OnInit {
     // this.callViewBannerCount(bannerId,categoryId);
 
     console.log("send image::" + id);
+    this.currentPage = 0;
+    this.advertisementArray = [];
     this.router.navigate(['/advertisementdetail', { sendId: JSON.stringify(sendId) }]);
   }
 
