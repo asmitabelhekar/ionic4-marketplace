@@ -205,12 +205,12 @@ var NewadvertisementformPage = /** @class */ (function () {
             {
                 "id": "0",
                 "value": "rupees",
-                "name": "Rupees"
+                "name": "₹"
             },
             {
                 "id": "1",
                 "value": "dollars",
-                "name": "Dollars"
+                "name": "$"
             }
         ];
         this.genderArray = [

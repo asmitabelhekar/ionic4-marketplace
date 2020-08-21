@@ -130,12 +130,12 @@ export class NewadvertisementformPage implements OnInit {
     {
       "id": "0",
       "value": "rupees",
-      "name": "Rupees"
+      "name": "₹"
     },
     {
       "id": "1",
       "value": "dollars",
-      "name": "Dollars"
+      "name": "$"
     }
 
   ]
