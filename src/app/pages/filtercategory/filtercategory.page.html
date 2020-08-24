@@ -4,7 +4,10 @@
   <ion-list style="border-bottom:1px solid white" *ngFor="let item of categoryArray; let i = index;" class="accordion-list" detail="false" no-padding>
     <ion-item tappable  (click)="toggleSection(i,item.id)" [ngClass]="(categoryId == item.id) ? 'section-active' : 'section' ">
       <ion-row style="width:100%;color:white" tappable >
-        <ion-col size="10"  >
+        <ion-col size="2">
+          <mat-icon style="color:white;width:25px; height:25px;padding-bottom: 2px;"  ><img src="{{item.image}}"></mat-icon>
+        </ion-col>
+        <ion-col size="8"  >
           <ion-label>
             {{item.name}}
           </ion-label>
@@ -26,9 +29,23 @@
         
         <ion-item tappable *ngIf="child.name" (click)="toggleItem(i,j,item.id, child.id)" style="text-align: start;"
         [ngClass]="(subCategoryId == child.id) ? 'child-active' : 'child' ">
-          <ion-label style="color:white; margin-left:5px;" >
-            {{child.name}}
-          </ion-label>
+        <ion-row style="width:100%;color:white" tappable >
+        
+          <ion-col size="2">
+            <mat-icon style="color:white;width:25px; height:25px;padding-bottom: 2px;"  ><img src="{{child.image}}"></mat-icon>
+          </ion-col>
+          <ion-col size="8"  >
+            <ion-label style="color:white; margin-left:5px;" >
+              {{child.name}}
+            </ion-label>
+          </ion-col>
+        
+          
+
+
+          </ion-row>
+
+
         </ion-item>
 
       
